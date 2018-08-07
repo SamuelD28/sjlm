@@ -39,7 +39,6 @@ let newsData    = [
     Title: "Vente de Billet de l'impact",
     Important: true,
     Category: "Évènement",
-    DatePublished: "2018-07-15",
     DateDue: "2018-11-02",
     Image: "sample4.jpg",
     File: "test.pdf",
