@@ -1,0 +1,103 @@
+#homePage{
+    display: grid;
+    grid-area: main;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "statistic statistic statistic statistic"
+        "maps maps maps maps"
+        "todos todos mails mails";
+    grid-gap: 1vw;
+    padding: 1vw;
+}
+
+#maps{
+    grid-area: maps;
+    height: 25vw;
+}
+
+#todos{
+    grid-area: todos;
+}
+
+#mails{
+    grid-area: mails;
+}
+
+.statistic{
+    background-color:  white;
+    padding: 1vw 2vw;
+}
+
+.statTitle{
+    border-bottom: 1px solid #ececec;
+    padding-bottom: .25vw;
+}
+
+.statData{
+    color: #6A6A6A;
+    font-weight: bold;
+    margin: .5vw 0vw;
+}
+
+.statPourcentage{
+    border-radius: .5vw;
+    font-size: 1vw;
+    padding: .25vw .5vw;
+}
+
+.increase{
+    background-color: #e8f5e9;
+    color: #4caf50;
+}
+
+.decrease{
+    background-color: #ffebee ;
+    color: #f44336 ;
+}
+
+.todoItem{
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    color: #5A5A5A;
+    font-size: 1vw;
+    list-style: none;
+    justify-content: space-between;
+    margin: 1.5vw 0vw;
+    padding: .5vw 0vw;
+}    
+
+.mailItem{
+    display: grid;
+    grid-template-columns: auto 3fr;
+    grid-template-rows: auto;
+    grid-template-areas: "mailAvatar mailInfo";
+    grid-gap: 1vw;
+    margin: 1vw 0vw;
+    padding: .25vw 0;
+}
+
+.mailAvatar{
+    grid-area: mailAvatar;
+    height: 100px;
+    width: 100px;
+}
+
+.mailInfo{
+    color: #5A5A5A;
+    display: flex;
+    flex-direction: column;
+    padding: .5vw 0vw;
+    padding-right: 1vw;
+    grid-area: mailInfo;
+    justify-content: space-between;
+}
+
+.mailUnread{
+    background-color: #f3f3f3;
+    font-weight: bold;
+}
+
+.mailTime{
+    font-weight: bold;
+}

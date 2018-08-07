@@ -1,0 +1,82 @@
+.news{
+    border: 2px solid #ececec;
+    height: 22.5vw;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease;
+    text-align: left;
+}
+
+.news:hover .newsBtn{
+    cursor: pointer;
+    transform: translateX(0%);
+    transition: transform .25s ease;
+}
+
+.news:hover::after{
+    opacity: .5;
+}
+
+.newsImportant{
+    background-color: #e91e63;
+    color: white;
+    padding: .5vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.newsBtn{
+    border: none;
+    color: white;
+    padding: 1vw;
+    position: absolute;
+    top: 0;
+    transition: transform .25s ease;
+    z-index: 100;
+}
+
+.newsEdit{
+    background-color: #ff9800;
+    left: 0;
+    transform: translateX(-110%);
+}
+
+.newsDelete{
+    background-color: #e91e63;
+    right: 0;
+    transform: translateX(110%);
+}
+
+.newsTitle{
+    align-self: center;
+    color: #6A6A6A;
+    grid-area: newsTitle;
+}
+
+.newsCategory{
+    align-self: center;
+    background-color: white;
+    color: #6A6A6A;
+    font-weight: bold;
+    padding: .5vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    grid-area: newsCategory;
+    text-align: center;
+}
+
+.newsDesc, .newsTitle{
+    margin: .25vw .5vw;
+}
+
+.newsDesc{
+    color: #6A6A6A;
+    grid-area: newsDesc;
+}
+
+.newsImg{
+    height: 15vw;
+    grid-area: newsImg;
+}

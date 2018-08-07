@@ -1,0 +1,14 @@
+#membersPage{
+    background-color: whitesmoke;
+    padding: 5vw;
+}
+
+.membersContent{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2vw;
+}
+
+.membersCreate{
+    position: relative;
+}

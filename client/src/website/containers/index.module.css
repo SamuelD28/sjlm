@@ -1,0 +1,188 @@
+#websiteContent{
+    position: relative;
+    margin-left: 250px;
+}
+
+#bodyOverlay{
+    background-color: #37474F;
+    content: " ";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .4s ease;
+}
+
+/*Css for the banner section*/
+.banner{
+    align-items: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.bannerVideo{
+    object-fit: fill;
+    filter: brightness(70%);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bannerContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.bannerSlogan, .bannerKeyword{
+    color: white !important;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight:lighter;
+}
+
+.bannerSlogan{
+    font-size: 2em;
+    margin: 0;
+}
+
+.bannerKeyword{
+    border: 2px solid white;
+    font-size: 3.5em;
+    letter-spacing: .25em;
+    padding: .75em 2.5em;
+    margin-bottom: 2em;
+    margin-top: .1em;
+}
+
+.bannerSearch{
+    display: flex;
+}
+
+.bannerInput{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #f1efee;
+    width: 90%;
+}
+
+.bannerInput::placeholder{
+    color: white;
+}
+
+.bannerInput:focus{
+    outline: none;
+}
+
+.bannerBtn{
+    background-color: #f1efee;
+    color:  #37474F;
+    width: 10%;
+}
+
+/*Css for the news Section*/
+
+.news{
+    background-color: whitesmoke;
+    padding: 0 5vw;
+    padding-bottom: 5vw;
+}
+
+.newsContent{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 3.75vw 7.5vw;
+}
+
+.sectionTitle{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.75em;
+    padding: 1.5vw 0;
+}
+
+
+.title{
+    margin: 0;
+    width: 85%;
+    font-weight: 100;
+}
+
+.titleBtn{
+    background-color:  #263238;
+    color: white;
+    font-family: "Open sans", sans-serif;
+    width: 15%;
+    font-size: .6em;
+    padding: .5vw;
+}
+
+.members{
+    background-color: whitesmoke;
+    padding: 0 5vw;
+    padding-bottom: 5vw;
+}
+
+.membersContent{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 4vw;
+}
+
+.contact{
+    background-color: whitesmoke;
+    padding: 0 5vw;
+    padding-bottom: 5vw;
+}
+
+.contactContent{
+    display: flex;
+}
+
+.contactForm{
+    align-items: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
+    grid-template-areas: "firstNameInput lastNameInput"
+                         "emailInput phoneInput"
+                         "subjectInput subjectInput"
+                         "messageInput messageInput"
+                         "send send";
+    grid-gap: 0 3vw;
+    margin: 0 auto;
+}
+
+.send{
+    background-color: #37474F;
+    grid-area: send;
+    padding: .25vw;
+}
+
+.firstNameInput{
+    grid-area: firstNameInput;
+}
+.lastNameInput{
+    grid-area: lastNameInput;
+}
+.emailInput{
+    grid-area: emailInput;
+}
+.phoneInput{
+    grid-area: phoneInput;
+}
+.subjectInput{
+    grid-area: subjectInput;
+}
+.messageInput{
+    align-self: stretch;
+    grid-area: messageInput;
+}
+.fileInput{
+    grid-area: fileInput;
+}

@@ -1,0 +1,20 @@
+/*news section*/
+#newsPage{
+    padding: 3vw;
+    position: relative;
+}
+
+.actionBtn{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw;
+}
+
+.newsContainer{
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 1.5vw;
+    position: relative;
+}

@@ -1,0 +1,90 @@
+#navbar{
+    border-right: 1px solid #ececec;
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    z-index: 1000;
+}
+
+#headbar{
+    box-sizing: border-box;
+    border-bottom: 1px solid #ececec;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 5vw;
+    width: 100%;
+    grid-area: headbar;
+    padding-left: 1.5vw;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.headbarIcon{
+    font-size: 1.5vw;
+}
+
+.logoContainer{
+    border-bottom: 1px solid #ececec;
+    box-sizing: border-box;
+    padding-left: 1vw;
+}
+
+.logoImg{
+    width: 25%;
+    height: 25%;
+}
+
+.logoTxt{
+    color: #373737;
+    font-size: 1vw;
+    margin-left: 1vw;
+}
+
+.navbarContainer{
+    padding: 1.25vw;
+}
+
+.navbarItem{
+    align-items: center;
+    color: #B2B2B2;
+    display: flex;
+    flex-direction: row;
+    font-size: 1vw;
+    padding: 1vw 0vw;
+}
+
+.navbarLink{
+    transition: color .25s ease;
+    margin-right: 2vw;
+}
+
+.navbarIcon{
+    margin-right: 2vw;
+    width: 10%;
+}
+
+.navbarBorder{
+    height: 1px;
+    width: 100%;
+    background-color: #ececec;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform .25s ease;
+}
+
+.navbarItem:hover > .navbarBorder{
+    transform: scaleX(1);
+    transition: transform .25s ease;
+}
+
+.navbarItem:hover > .navbarLink{
+    color: #373737;
+    transition: color .25s ease;
+}

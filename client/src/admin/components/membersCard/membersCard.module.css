@@ -1,0 +1,44 @@
+.membersCard{
+    align-items: space-between;
+    background-color: white;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "membersPhoto membersName"
+                         "membersPhoto membersTitle"
+                         "membersPhoto membersMail"
+                         "membersPhoto membersPhone"
+                         "membersPhoto membersDesc";
+    grid-gap: .5vw 0;
+    padding: 1vw;
+    position: relative;
+}
+
+.membersPhoto{
+    width: 100%;
+    height: 100%;
+    grid-area: membersPhoto;
+}
+
+.membersName{
+    margin: 0 1vw;
+    border-bottom: 2px solid whitesmoke;
+    grid-area: membersName;
+}
+.membersTitle{
+    margin: 0 1vw;
+    grid-area: membersTitle;
+}
+.membersMail{
+    margin: 0 1vw;
+    grid-area: membersMail;
+}
+.membersPhone{
+    margin: 0 1vw;
+    grid-area: membersPhone;
+}
+.membersDesc{
+    margin: 0;
+    margin: 0 1vw;
+    grid-area: membersDesc;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "saint-jacques-le-mineur",
+  "version": "1.0.0",
+  "description": "Website for the city of saint-jacques-le-mineur",
+  "main": "app.js",
+  "scripts": {
+    "test": "honey"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamuelD28/Sjlm.git"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "express",
+    "mongodb",
+    "mongoose",
+    "angular",
+    "ejs"
+  ],
+  "author": "Samuel Dube",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SamuelD28/Sjlm/issues"
+  },
+  "homepage": "https://github.com/SamuelD28/Sjlm#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.2.2"
+  }
+}

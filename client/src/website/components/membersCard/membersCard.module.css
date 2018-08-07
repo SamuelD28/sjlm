@@ -1,0 +1,41 @@
+.membersCard{
+    background-color: #f0eeed;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.membersCard::after{
+    content: " ";
+    background-color: #90A4AE;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    transition: opacity .2s ease;
+    height: 100%;
+}
+
+.membersCard:hover::after{
+    opacity: .1;
+    transition: opacity .2s ease;
+}
+
+.membersPhoto{
+    height: 20vw;
+}
+
+.membersTitle{
+    font-size: 1em;
+}
+
+.membersName{
+    font-size: 2em;
+    margin: .5vw 0;
+}
+
+.membersInfo{
+    padding: .75vw .5vw;
+}
