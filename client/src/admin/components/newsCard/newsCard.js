@@ -1,42 +1,30 @@
 import React, {Component} from 'react';
-import {Utility, Ajax} from '../../../shared/utility.js';
+
 //Css module import
 import CSSModules from 'react-css-modules';
 import styles     from './newsCard.module.css';
-//Components import
-import NewsEdit from '../newsEdit/newsEdit.js';
 
 class NewsCard extends Component{
     
-    constructor(props)
+    DisplayImportantTag(item)
     {
-        super(props);
-        this.state = {};
-        this.GetData =  Ajax.GetData.bind(this)
+        if(item.Important)
+            return <span styleName="newsImportant">Prioritaire</span>;
     }
-    
-    componentDidMount()
-    {
-        this.GetData("/api/news");
-    }
-    
+
     render(){
-        if(this.state.data !== undefined)
-        {
-            return(
-            this.state.data.map((item,index) =>(
-                <div key={item._id}>
-                    <div styleName="news">
-                        <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('/${item.Image}')`}}></div>
-                        <h4 styleName="newsTitle">{item.Title}</h4>
-                        <span styleName="newsCategory">{item.Category}</span>
-                        <p styleName="newsDesc">{item.Description.substring(0, 100)}...</p>
-                        <NewsEdit item={item}/>
-                    </div>
-                </div>
-            )))    
-        }
-    }
+    if(this.props.news !== undefined)
+    return(
+    <div>
+        <div styleName="news">
+            <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('/${this.props.news.Image}')`}}></div>
+            <h3 styleName="newsTitle">{this.props.news.Title}</h3>
+            {this.DisplayImportantTag(this.props.news)}
+            <span styleName="newsCategory">{this.props.news.Category}</span>
+            <p styleName="newsDesc">{this.props.news.Description.substring(0, 100)}...</p>
+        </div>
+    </div>
+    )}
 }
 
 export default CSSModules(NewsCard, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});

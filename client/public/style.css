@@ -290,6 +290,9 @@ h1, h2, h3, h4, h5,h6{
     background-position: center;
     background-size: cover;
     transition: all .25s ease;
+}
+
+.img-modal{
     height: 100%;
 }
 

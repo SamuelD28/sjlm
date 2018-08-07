@@ -10,33 +10,32 @@ import styles from './newsCreate.module.css';
 
 class NewsCreate extends Component{
     
-    constructor(props){
+    constructor(props)
+    {
         super(props);
         
         this.formData = {};
-        this.state = {};
-        
+        this.previousState = {news : this.props.news};
+        this.PostNewsData = Ajax.PostData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit  = this.handleSubmit.bind(this);
     }
     
-    handleSubmit()
+    async handleSubmit()
     {
-        Ajax.PostData.bind(this);
-        Ajax.PostData("/api/news" , this.state.formData);
+        await this.PostNewsData("/api/news");
+        this.previousState.news.push(this.formData);
+        this.props.UpdateNews(this.previousState);    
     }
 
     handleChange(e)
     {
         let inputValue = Forms.RetrieveValueFromInput(e);
         Forms.AppendValueToObject(e, this.formData, inputValue);
-        let formData = this.formData;
-        this.setState({formData});
     }        
     
     render()
     {
-     
     return(
     <Modal trigger={
     <div className="cardContainer">
@@ -93,7 +92,7 @@ class NewsCreate extends Component{
                         <Form.Field inline>
                             <input className="ui checkbox" onClick={Forms.ToggleInput} linkedto="DateDue" type="checkbox" />
                             <label>Date D'échéance</label>
-                            <input name="Datedue" type="date" disabled onChange={this.handleChange}/>
+                            <input name="DateDue" type="date" disabled onChange={this.handleChange}/>
                         </Form.Field>
                         <Form.Field>
                             <button type="submit" className="btn btn-primary" modal="createMewsModal"><i className="fas fa-save"></i> Publier</button>

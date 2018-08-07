@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Ajax} from '../../../shared/utility.js';
 
 // Css Module import
 import CSSModules from 'react-css-modules';
@@ -9,40 +10,19 @@ class MembersCard extends Component{
     {
         super(props);
         this.state = {};
-        this.GetMembers = this.GetMembers.bind(this);
+        this.GetMembers = Ajax.GetData.bind(this);
     }
     
     componentDidMount()
     {
-        this.GetMembers();
-    }
-    
-    //Methode dupliquer, a extraire dans un utilitaires
-    GetMembers()
-    {
-        let Url = "/api/members";
-        // let UI_LatestNewsContainer  = document.querySelector(".news-container");
-        // let UI_EditNewsContainer    = document.getElementById("edit-news-container");
-        return (fetch(Url)
-        .then(res =>{
-            if(res.status === 404 || res.status === 500)
-                throw new Error("[-Server is unavailable at this moment-]");
-            else
-                return res.json();
-        })
-        .then(members =>{
-            this.setState({members});
-        })
-        .catch(err =>{
-            return(err);
-        }));
+        this.GetMembers("/api/members");
     }
     
     render(){
-    if(this.state.members !== undefined)
+    if(this.state.data !== undefined)
     {
     return(
-    this.state.members.map((item, index) =>(
+    this.state.data.map((item, index) =>(
     <div styleName="membersCard" key={index}>
         <div styleName="membersPhoto" className="img-bg" style={{backgroundImage: `url('/${item.Photo}')`}}></div>
         <div styleName="membersInfo">

@@ -48,7 +48,7 @@ let Api = new Object();
 Api.FindNews = function(req, res)
 {
     let newsLimit = (req.params.limit === undefined)? 12: req.params.limit;
-    let Query = News.find({}).sort("-Important").sort("-DatePublished").limit(Number(newsLimit));
+    let Query = News.find({}).limit(Number(newsLimit));
     Query.exec()
          .then((news) => {
             res.json(news); 
@@ -72,10 +72,10 @@ Api.CreateNews = function(req, res)
 
 Api.UpdateNews = function(req, res)
 {
-    News.findByIdAndUpdate(req.params.id, req.body)
+    News.findByIdAndUpdate(req.params.id, req.body, {new : true})
         .then((news) =>{
             console.log("~Updated News ID : " + req.params.id);
-           res.send(news);
+            res.send(news);
         })
         .catch((err) => {
             console.log("~An Error occured while updating News. \n ERROR: " + err);

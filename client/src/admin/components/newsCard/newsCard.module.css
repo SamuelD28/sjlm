@@ -1,7 +1,6 @@
 .news{
     border: 2px solid #ececec;
     height: 22.5vw;
-    position: relative;
     overflow: hidden;
     transition: transform .25s ease;
     text-align: left;

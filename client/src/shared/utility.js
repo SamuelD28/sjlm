@@ -193,7 +193,7 @@ Forms.RetrieveValueFromInput = function(e)
     try{
         let target = e.target;
         let type = target.type;
-        let value = target.value;
+        let value;
         
         switch(type){
             case "checkbox": 
@@ -242,26 +242,34 @@ Ajax.GetData = function(url)
     }));
 }
 
-Ajax.PostData = function(url, formData)
+//Function need to pause the thread in order to let the program handle the retrieved data
+Ajax.PostData = async function(url)
 {
-    console.log("calling function");
-    let content = JSON.stringify(formData);
+    let content = JSON.stringify(this.formData);
     let bodyObject = {  method: "POST",
                         headers: {"Content-Type" : "application/json"},
                         body: content}
     
-    fetch("/api/news" , bodyObject)
-    .then((res) =>{
-        console.log(res);
-    });
+    await   fetch(url , bodyObject)
+            .then((res) =>{
+                if(res.status === 404 || res.status ===500){
+                    throw new Error("[-Server is unavailable at this moment-]");
+                }
+                else{
+                    return res.json();
+                }
+            })
+            .then((data) =>{
+                this.formData = data;
+            });
 }
 
-function PutData()
+Ajax.PutData = function ()
 {
-    
+       
 }
 
-function DeleteData()
+Ajax.DeleteData = function ()
 {
     
 }
