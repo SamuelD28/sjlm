@@ -39,15 +39,6 @@
     padding: .5vw;
 }
 
-.errorMessage{
-    color: #e91e63;
-    font-size: 1vw;
-}
-
-.errorContainer{
-    grid-area: errorContainer;
-}
-
 .titleInput{
     grid-area: titleInput;
 }

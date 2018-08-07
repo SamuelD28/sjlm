@@ -31,14 +31,8 @@ class NewsCard extends Component{
                         <h4 styleName="newsTitle">{item.Title}</h4>
                         <span styleName="newsCategory">{item.Category}</span>
                         <p styleName="newsDesc">{item.Description.substring(0, 100)}...</p>
-                        <div className="cardOverlay cardEdit" onClick={Utility.OpenModal.bind(this)} modal={item._id}>
-                            <div className="cardOverlayBtn">
-                                <i className="fas fa-edit"></i>
-                                <h4>Modifier</h4>
-                            </div>
-                        </div>
+                        <NewsEdit item={item}/>
                     </div>
-                    <NewsEdit item={item}/>
                 </div>
             )))    
         }

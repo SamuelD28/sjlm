@@ -188,6 +188,43 @@ Forms.ChangeLabelText =function(event)
     }
 }
 
+Forms.RetrieveValueFromInput = function(e)
+{
+    try{
+        let target = e.target;
+        let type = target.type;
+        let value = target.value;
+        
+        switch(type){
+            case "checkbox": 
+                    value = target.checked; 
+                    break;
+            case "file":
+                    Forms.ChangeLabelText(e);
+                    value = target.files[0].name;
+                    break;
+            default:
+                    value = target.value;
+        }
+        return value;
+    }
+    catch(err){
+        console.log("~An Error occured while extracting data from the form");
+    }
+}
+
+Forms.AppendValueToObject = function(e, object, value)
+{
+    try{
+        const name = e.target.name;
+        return object[name] =  value;
+    }
+    catch(err){
+        console.log("~An Error occured while appending the value to the object");
+    }
+}
+
+
 Ajax.GetData = function(url)
 {
     return (fetch(url)

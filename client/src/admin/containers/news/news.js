@@ -1,6 +1,5 @@
 //--------Declaration---------//
 import React, {Component} from 'react';
-import {Utility} from "../../../shared/utility.js";
 
 // Css module improt
 import CSSModules from 'react-css-modules';

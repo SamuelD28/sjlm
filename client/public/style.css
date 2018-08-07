@@ -47,6 +47,26 @@ h1, h2, h3, h4, h5,h6{
     color: #F1C40F;
 }
 
+.text-info{
+    color: #2980B9;
+}
+
+.text-sm{
+    font-size: .75em;
+}
+
+.text-md{
+    font-size: 1.15em;
+}
+
+.text-lg{
+    font-size: 1.25em;
+}
+
+.text-xl{
+    font-size: 1.35em;
+}
+
 .btn{
     background-color: #bfbfbf;
     border: 1px solid #bfbfbf;
@@ -237,7 +257,9 @@ h1, h2, h3, h4, h5,h6{
 }
 
 .section-row{
-    display: flex;
+    
+    display: flex !important;
+    width: 100% !important;
 }
 
 .img-full{
@@ -268,6 +290,7 @@ h1, h2, h3, h4, h5,h6{
     background-position: center;
     background-size: cover;
     transition: all .25s ease;
+    height: 100%;
 }
 
 .float-right{
@@ -335,4 +358,8 @@ input[type=file]{
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+
+input[type=date]{
+    /*margin: 0 0.5vw !important;*/
 }

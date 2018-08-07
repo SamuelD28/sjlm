@@ -28,26 +28,9 @@ class NewsCreate extends Component{
 
     handleChange(e)
     {
-        let target = e.target;
-        let name = target.name;
-        let type = target.type;
-        let value = target.value;
-        
-        switch(type){
-            case "checkbox": 
-                    value = target.checked; 
-                    break;
-            case "file":
-                    Forms.ChangeLabelText(e);
-                    value = target.files[0].name;
-                    break;
-            default:
-                    value = target.value;
-        }
-        
-        this.formData[name] =  value;
+        let inputValue = Forms.RetrieveValueFromInput(e);
+        Forms.AppendValueToObject(e, this.formData, inputValue);
         let formData = this.formData;
-        
         this.setState({formData});
     }        
     
