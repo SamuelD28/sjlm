@@ -213,17 +213,16 @@ Forms.RetrieveValueFromInput = function(e)
     }
 }
 
-Forms.AppendValueToObject = function(e, object, value)
+Forms.AppendValueToObject = function(e, objectToAppend, valueToAppend)
 {
     try{
-        const name = e.target.name;
-        return object[name] =  value;
+        const keyToAppend = e.target.name;
+        return objectToAppend[keyToAppend] =  valueToAppend;
     }
     catch(err){
         console.log("~An Error occured while appending the value to the object");
     }
 }
-
 
 Ajax.GetData = function(url)
 {
@@ -245,6 +244,11 @@ Ajax.GetData = function(url)
 //Function need to pause the thread in order to let the program handle the retrieved data
 Ajax.PostData = async function(url)
 {
+    try{
+    
+    if(this.formData === undefined)
+        throw new Error("~PostData requires a formData object to be appended to the this context");
+        
     let content = JSON.stringify(this.formData);
     let bodyObject = {  method: "POST",
                         headers: {"Content-Type" : "application/json"},
@@ -262,11 +266,43 @@ Ajax.PostData = async function(url)
             .then((data) =>{
                 this.formData = data;
             });
+    }
+    catch(err)
+    {
+        console.log(err.message);
+    }
 }
 
-Ajax.PutData = function ()
+Ajax.PutData = function (url, newData)
 {
-       
+    console.log(newData);
+    try{
+        //Create the request body to be sent to the api
+        let ajaxContent      = { method: "PUT",
+                                headers: {"Content-Type" : "application/json"},
+                                body: JSON.stringify(newData)}
+                                
+        //Ajax Request
+        fetch(url + newData["_id"] , ajaxContent)
+        .then((res) =>{
+            if(!res.ok)
+                throw new Error("An error occured while proccessing the data to the server");
+            else{
+                return res.json();
+            }
+        })
+        .then((data) =>{
+            this.props.UpdateNewsInPreviousState(data);
+            this.props.UpdateNews();
+        })
+        .catch((err) =>{
+            console.log(err);
+        })
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
 }
 
 Ajax.DeleteData = function ()

@@ -13,9 +13,7 @@ class NewsCreate extends Component{
     constructor(props)
     {
         super(props);
-        
         this.formData = {};
-        this.previousState = {news : this.props.news};
         this.PostNewsData = Ajax.PostData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit  = this.handleSubmit.bind(this);
@@ -24,10 +22,10 @@ class NewsCreate extends Component{
     async handleSubmit()
     {
         await this.PostNewsData("/api/news");
-        this.previousState.news.push(this.formData);
-        this.props.UpdateNews(this.previousState);    
+        await this.props.AddNewsToPreviousState(this.formData);
+        this.props.UpdateNews();    
     }
-
+    
     handleChange(e)
     {
         let inputValue = Forms.RetrieveValueFromInput(e);
@@ -59,10 +57,10 @@ class NewsCreate extends Component{
                         </Form.Field>
                         <Form.Group>
                             <Form.Field width={12}>
-                               <input name="Title" type="text" placeholder="Titre" onChange={this.handleChange} />
+                               <input name="Title" type="text" placeholder="Titre" onChange={this.handleChange} required/>
                             </Form.Field>
                             <Form.Field width={4}>
-                                <select className="ui dropdown" name="Category" onChange={this.handleChange}>
+                                <select className="ui dropdown" name="Category" onChange={this.handleChange} required>
                                     <option defaultValue>Catégorie</option>
                                     <option>Évenement</option>
                                     <option>Activité</option>
@@ -77,12 +75,12 @@ class NewsCreate extends Component{
                             </Form.Field>
                         </Form.Group>
                         <Form.Field>
-                            <textarea name="Description" type="textarea" placeholder=" Description" onChange={this.handleChange}></textarea>
+                            <textarea name="Description" type="textarea" placeholder=" Description" onChange={this.handleChange} required></textarea>
                         </Form.Field>
                         <Form.Group>
                             <Form.Field>
                                 <label className="btn btn-sm btn-outline-info" htmlFor="imgInput"><i className="far fa-image"></i> Choisir une Image</label>                        
-                                <input id="imgInput" name="Image" type="file" onChange={this.handleChange}/>
+                                <input id="imgInput" name="Image" type="file" onChange={this.handleChange} required/>
                             </Form.Field>
                             <Form.Field>
                                 <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="far fa-file"></i> Choisir un Fichier</label>
@@ -92,7 +90,7 @@ class NewsCreate extends Component{
                         <Form.Field inline>
                             <input className="ui checkbox" onClick={Forms.ToggleInput} linkedto="DateDue" type="checkbox" />
                             <label>Date D'échéance</label>
-                            <input name="DateDue" type="date" disabled onChange={this.handleChange}/>
+                            <input name="DateDue" type="date" disabled onChange={this.handleChange} required/>
                         </Form.Field>
                         <Form.Field>
                             <button type="submit" className="btn btn-primary" modal="createMewsModal"><i className="fas fa-save"></i> Publier</button>

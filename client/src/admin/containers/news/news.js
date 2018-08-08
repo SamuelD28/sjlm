@@ -17,28 +17,41 @@ class News extends Component{
     {
         super(props);
         this.state = {};
+        this.previousState = {};
         this.GetNewsData = Ajax.GetData.bind(this);
         this.UpdateNews = this.UpdateNews.bind(this);
+        this.AddNewsToPreviousState = this.AddNewsToPreviousState.bind(this);
+        this.UpdateNewsInPreviousState = this.UpdateNewsInPreviousState.bind(this);
     }
 
-    componentDidMount()
+    async componentDidMount()
     {
-        this.GetNewsData("/api/news"); //Set the state with the retrieve data
+        await this.GetNewsData("/api/news"); //Set the state with the retrieve data
+        this.previousState = {data: this.state.data.slice()};
     }
 
-    UpdateNews(data)
+    AddNewsToPreviousState(formData)
     {
-        console.log("Trying to update the news");
-        console.log(data);
-        this.setState(data.data);
+        this.previousState.data.push(formData);
+    }
+    
+    UpdateNewsInPreviousState(modifiedData)
+    {
+        let oldData = this.previousState.data.findIndex((element) => {return element._id === modifiedData._id});
+        this.previousState.data[oldData] = modifiedData;
+    }
+
+    UpdateNews()
+    {
+        this.setState(this.previousState);
     }
     
     DisplayNewsCard()
     {
         return this.state.data.map((item,index)=> (
-            <div className="cardContainer" key={item._id}> 
+            <div className="cardContainer" key={index}> 
                 <NewsCard news={item} UpdateNews={this.UpdateNews}/>
-                <NewsEdit news={item} UpdateNews={this.UpdateNews}/>
+                <NewsEdit news={item} UpdateNews={this.UpdateNews} UpdateNewsInPreviousState={this.UpdateNewsInPreviousState}/>
             </div>
         ));
     }
@@ -51,7 +64,7 @@ class News extends Component{
             <h4 className={adminStyles.sectionTitle}>Actualités Récentes</h4>
             <button className="btn btn-primary">Rechercher</button>
             <div className={adminStyles.sectionContent} styleName="newsContainer">
-                <NewsCreate news={this.state.data} UpdateNews={this.UpdateNews}/>
+                <NewsCreate AddNewsToPreviousState={this.AddNewsToPreviousState} UpdateNews={this.UpdateNews}/>
                 {this.DisplayNewsCard()}
             </div>
         </section>
