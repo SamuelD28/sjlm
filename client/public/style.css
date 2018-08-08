@@ -366,3 +366,7 @@ input[type=file]{
 input[type=date]{
     /*margin: 0 0.5vw !important;*/
 }
+
+.newsCreate{
+    height: 22.5vw;
+}

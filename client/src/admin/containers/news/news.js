@@ -1,6 +1,6 @@
 //--------Declaration---------//
 import React, {Component} from 'react';
-import {Ajax} from '../../../shared/utility.js';
+import {Ajax, Utility} from '../../../shared/utility.js';
 
 // Css module improt
 import CSSModules from 'react-css-modules';
@@ -17,54 +17,84 @@ class News extends Component{
     {
         super(props);
         this.state = {};
-        this.previousState = {};
-        this.GetNewsData = Ajax.GetData.bind(this);
-        this.UpdateNews = this.UpdateNews.bind(this);
-        this.AddNewsToPreviousState = this.AddNewsToPreviousState.bind(this);
-        this.UpdateNewsInPreviousState = this.UpdateNewsInPreviousState.bind(this);
+        this.tempState= {};
+        this.AppendToTempState = this.AppendToTempState.bind(this);
+        this.UpdateTempState = this.UpdateTempState.bind(this);
+        this.RemoveFromTempState = this.RemoveFromTempState.bind(this);
     }
 
     async componentDidMount()
     {
-        await this.GetNewsData("/api/news"); //Set the state with the retrieve data
-        this.previousState = {data: this.state.data.slice()};
+        //GERER LE CAS OU AUCUNE ACTUALITER EST DANS LA BASE DE DONNER
+        
+        let news = await Ajax.GetData("/api/news"); 
+        
+        this.tempState = {news: news.slice()};
+        this.setState(this.tempState);
     }
 
-    AddNewsToPreviousState(formData)
+    AppendToTempState(formData)
     {
-        this.previousState.data.push(formData);
+        try{
+            Utility.IsValuesUndefinedOrNull(formData, this.tempState.news);
+            this.tempState.news.push(formData);
+            this.setState(this.tempState);
+        }
+        catch(err){
+            console.log(err.message);
+        }
     }
     
-    UpdateNewsInPreviousState(modifiedData)
+    RemoveFromTempState(formData)
     {
-        let oldData = this.previousState.data.findIndex((element) => {return element._id === modifiedData._id});
-        this.previousState.data[oldData] = modifiedData;
+        try{
+            Utility.IsValuesUndefinedOrNull(formData, this.tempState.news);
+            let indexToRemoveAt = this.tempState.news.findIndex((element) =>(element._id === formData._id));
+            this.tempState.news.splice(indexToRemoveAt, 1);
+            this.setState(this.tempState);
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+    
+    UpdateTempState(modifiedData)
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(this.tempState.news, modifiedData);
+            let oldData = this.tempState.news.findIndex((element) => {return element._id === modifiedData._id});
+            this.tempState.news[oldData] = modifiedData;
+            this.setState(this.tempState);
+        }
+        catch(err){
+            console.log(err.message);
+        }
     }
 
-    UpdateNews()
-    {
-        this.setState(this.previousState);
-    }
-    
     DisplayNewsCard()
     {
-        return this.state.data.map((item,index)=> (
-            <div className="cardContainer" key={index}> 
-                <NewsCard news={item} UpdateNews={this.UpdateNews}/>
-                <NewsEdit news={item} UpdateNews={this.UpdateNews} UpdateNewsInPreviousState={this.UpdateNewsInPreviousState}/>
-            </div>
-        ));
+        if(this.tempState.news !== undefined){
+            let array = this.tempState.news.slice().sort((a, b) => (b.Important === true));
+            // array.sort((a, b) => b.DatePublished > a.DatePublished);
+            // array.sort((a, b) => b.Important === true);
+            
+            return array.map((item,index)=> (
+                <div className="cardContainer" key={item._id}> 
+                    <NewsCard news={item} />
+                    <NewsEdit news={item} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
+                </div>
+            ));
+        }
     }
 
     render(){
-    if(this.state.data !== undefined)
     return(
     <div id={styles.newsPage} className={adminStyles.adminPage}> 
         <section className={adminStyles.sectionContainer} id="latestNews">
             <h4 className={adminStyles.sectionTitle}>Actualités Récentes</h4>
             <button className="btn btn-primary">Rechercher</button>
             <div className={adminStyles.sectionContent} styleName="newsContainer">
-                <NewsCreate AddNewsToPreviousState={this.AddNewsToPreviousState} UpdateNews={this.UpdateNews}/>
+                <NewsCreate AppendToTempState={this.AppendToTempState}/>
                 {this.DisplayNewsCard()}
             </div>
         </section>

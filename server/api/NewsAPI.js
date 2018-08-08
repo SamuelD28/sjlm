@@ -47,7 +47,7 @@ let Api = new Object();
 
 Api.FindNews = function(req, res)
 {
-    let newsLimit = (req.params.limit === undefined)? 12: req.params.limit;
+    let newsLimit = (req.params.limit === undefined)? 24: req.params.limit;
     let Query = News.find({}).limit(Number(newsLimit));
     Query.exec()
          .then((news) => {

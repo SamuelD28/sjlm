@@ -108,6 +108,15 @@ Utility.ChangeBtnState =function(e)
     button.disabled = false;
 }
 
+Utility.IsValuesUndefinedOrNull = function()
+{
+    for(let i = 0 ; i <= arguments.length - 1 ; i++)
+    {
+        if(arguments[i] === undefined || arguments[i] === null)
+            throw new Error(`~An Error Occured. The value you are trying to access is undefined or null`);
+    }
+}
+
 Forms.ValidateFormInput = function(inputs)
 {
     inputs.forEach((input) =>{
@@ -224,90 +233,116 @@ Forms.AppendValueToObject = function(e, objectToAppend, valueToAppend)
     }
 }
 
-Ajax.GetData = function(url)
-{
-    return (fetch(url)
-    .then(res =>{
-        if(res.status === 404 || res.status === 500)
-            throw new Error("[-Server is unavailable at this moment-]");
-        else
-            return res.json();
-    })
-    .then(data =>{
-        this.setState({data});
-    })
-    .catch(err =>{
-        return(err);
-    }));
-}
-
-//Function need to pause the thread in order to let the program handle the retrieved data
-Ajax.PostData = async function(url)
+Ajax.GetData = async function(url)
 {
     try{
-    
-    if(this.formData === undefined)
-        throw new Error("~PostData requires a formData object to be appended to the this context");
-        
-    let content = JSON.stringify(this.formData);
-    let bodyObject = {  method: "POST",
-                        headers: {"Content-Type" : "application/json"},
-                        body: content}
-    
-    await   fetch(url , bodyObject)
-            .then((res) =>{
-                if(res.status === 404 || res.status ===500){
-                    throw new Error("[-Server is unavailable at this moment-]");
-                }
-                else{
-                    return res.json();
-                }
-            })
-            .then((data) =>{
-                this.formData = data;
-            });
+        Utility.IsValuesUndefinedOrNull(url);
+        let requestedData;
+        await   fetch(url)
+                .then(res =>{
+                    return CheckRequestStatus(res);
+                })
+                .then(data =>{
+                    requestedData = data;
+                })
+                .catch(err =>{
+                    console.log(err.message);                
+                });
+        return requestedData;
     }
-    catch(err)
-    {
+    catch(err){
         console.log(err.message);
     }
 }
 
-Ajax.PutData = function (url, newData)
+Ajax.PostData = async function(url, formData)
 {
-    console.log(newData);
     try{
-        //Create the request body to be sent to the api
-        let ajaxContent      = { method: "PUT",
-                                headers: {"Content-Type" : "application/json"},
-                                body: JSON.stringify(newData)}
-                                
-        //Ajax Request
-        fetch(url + newData["_id"] , ajaxContent)
-        .then((res) =>{
-            if(!res.ok)
-                throw new Error("An error occured while proccessing the data to the server");
-            else{
-                return res.json();
-            }
-        })
-        .then((data) =>{
-            this.props.UpdateNewsInPreviousState(data);
-            this.props.UpdateNews();
-        })
-        .catch((err) =>{
-            console.log(err);
-        })
+        Utility.IsValuesUndefinedOrNull(url, formData);
+        
+        let postedData;
+        let content = JSON.stringify(formData);
+        let bodyObject = {  method: "POST",
+                            headers: {"Content-Type" : "application/json"},
+                            body: content};
+        
+        await   fetch(url , bodyObject)
+                .then((res) =>{
+                    return CheckRequestStatus(res);
+                })
+                .then((data) =>{
+                    postedData = data;
+                })
+                .catch((err) =>{
+                    console.log(err.message);   
+                });
+                
+        return postedData;        
     }
-    catch(err)
-    {
-        console.log(err);
+    catch(err){
+        console.log(err.message);
     }
 }
 
-Ajax.DeleteData = function ()
+Ajax.PutData = async function (url, newData)
 {
-    
+    try{
+        Utility.IsValuesUndefinedOrNull(url, newData);
+        
+        let updatedData;
+        let ajaxContent = { method: "PUT",
+                            headers: {"Content-Type" : "application/json"},
+                            body: JSON.stringify(newData)};
+                                
+        await   fetch(url + newData["_id"] , ajaxContent)
+                .then((res) =>{
+                    return CheckRequestStatus(res);
+                })
+                .then((data) =>{
+                    updatedData = data;
+                })
+                .catch((err) =>{
+                    console.log(err.message);
+                });
+                
+        return updatedData;
+    }
+    catch(err){
+        console.log(err.message);
+    }
+}
+
+Ajax.DeleteData = async function(url, id)
+{
+    try{
+        Utility.IsValuesUndefinedOrNull(url, id);
+        
+        let ajaxContent = {method:"DELETE"};
+                                
+        await   fetch(url +  id, ajaxContent)
+                .then((res) =>{
+                    return CheckRequestStatus(res);
+                })
+                .then((data) =>{
+                    console.log("Deleted Data")
+                })
+                .catch((err) =>{
+                    console.log(err.message);
+                });
+    }
+    catch(err){
+        console.log(err.message);
+    }
+}
+
+function CheckRequestStatus(res)
+{
+    if(!res.ok){
+        throw new Error(`[-Error Proccessing the information. Status Code : ${res.status} -]`);
+    }
+    else{
+        return res.json();
+    }
 }
 
 export {Utility, Forms, Ajax};

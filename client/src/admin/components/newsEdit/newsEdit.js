@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, Form} from 'semantic-ui-react';
-import {Forms , Ajax} from '../../../shared/utility.js';
+import {Modal, Form, Dimmer, Icon, Message, Loader} from 'semantic-ui-react';
+import {Forms , Ajax, Utility} from '../../../shared/utility.js';
 import moment from 'moment';
 
 //Css module import
@@ -9,6 +9,22 @@ import styles from './newsEdit.module.css';
 
 class NewsEdit extends Component{
     
+    //Initial State declaration
+    state = ({
+        disableLoader: true,
+        displayDimmer: false,
+        hideStatus: true,
+        statusMessage: "",
+        statusType: {
+            type: "",
+            info: false,
+            warning: false,
+            positive: false,
+            negative: false
+        },
+        disableSubmit: true
+    });
+    
     constructor(props)
     { 
         super(props);
@@ -16,18 +32,98 @@ class NewsEdit extends Component{
         this.formData =Object.create(this.props.news);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.UpdateNews = Ajax.PutData.bind(this);
+        this.DeleteNewsInDb = this.DeleteNewsInDb.bind(this);
+        
+        this.DeleteNewsInState = this.DeleteNewsInState.bind(this);
+        this.ResetActionUI = this.ResetActionUI.bind(this);
+        this.DisplayLoader = this.DisplayLoader.bind(this);
+        this.DisplayStatus = this.DisplayStatus.bind(this);
     }
     
     handleChange(e)
     {
+        this.setState({disableSubmit: false});
         let inputValue = Forms.RetrieveValueFromInput(e);
         Forms.AppendValueToObject(e, this.formData, inputValue);
     }  
      
-    handleSubmit()
+    async handleSubmit()
     {
-        this.UpdateNews("/api/news/", this.formData);
+        this.DisplayLoader();
+        
+        let updatedData = await Ajax.PutData("/api/news/", this.formData);
+        this.props.UpdateTempState(updatedData);
+        
+        setTimeout(() =>{
+            this.DisplayStatus("Modifications enregistrées",  "info");
+            this.ResetActionUI();
+            
+        }, 1000);
+    }
+    
+    DeleteNewsInDb(e)
+    {
+        e.preventDefault();
+        
+        this.DisplayLoader();
+        Ajax.DeleteData("/api/news/", this.formData._id);
+        
+        setTimeout(() =>{
+            this.DisplayStatus("Actualité supprimée", "negative");
+            this.DeleteNewsInState();
+        }, 1000);
+    }
+    
+    DeleteNewsInState()
+    {
+        setTimeout(() =>{
+            this.props.RemoveFromTempState(this.formData);
+        }, 1000);
+    }
+    
+    DisplayStatus(statusMessage, statusType)
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(statusMessage, statusType);
+            
+            switch(statusType)
+            {
+                case "warning": this.setState({statusType: {warning: true}});break;
+                case "negative": this.setState({statusType: {negative: true}});break;
+                case "positive": this.setState({statusType: {positive: true}});break;
+                case "info": this.setState({statusType: {info: true}});break;
+                default: throw new Error("~You need to provide a status type when using the message component");
+            }
+            
+            this.setState({
+                statusMessage: statusMessage,
+                disableLoader: true,
+                hideStatus: false
+            });
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+    
+    DisplayLoader()
+    {
+        this.setState({
+            disableLoader: false,
+            displayDimmer: true
+        });
+    }
+    
+    ResetActionUI()
+    {
+        setTimeout(() => {
+            this.setState({
+                disableLoader: true,
+                displayDimmer: false,
+                hideStatus: true,
+                disableSubmit: true
+            });
+        }, 1000);
     }
      
     render(){
@@ -91,10 +187,26 @@ class NewsEdit extends Component{
                         <input name="DateDue" type="date" onChange={this.handleChange} defaultValue={moment(this.formData.DateDue).format("YYYY[-]MM[-]DD")}/>
                     </Form.Field>
                     <Form.Field>
-                        <button type="submit" className="btn btn-primary"><i className="fas fa-save"></i> Sauvegarder</button>
+                        <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="fas fa-save"></i> Sauvegarder</button>
+                        <button style={{float: 'right'}} onClick={this.DeleteNewsInDb} className="btn btn-danger"><i className="fas fa-trash"></i> Supprimer</button>
                     </Form.Field>
                 </Form>
             </Modal.Description>
+            <Dimmer active={this.state.displayDimmer} inverted>
+                    <Loader disabled={this.state.disableLoader} size="large"/>
+                    <Message 
+                        hidden={this.state.hideStatus} 
+                        size="large" 
+                        info={this.state.statusType.info}
+                        warning={this.state.statusType.warning}
+                        negative={this.state.statusType.negative}
+                        positive={this.state.statusType.positive}>
+                        <Message.Header>
+                            <Icon name='check' />
+                            {this.state.statusMessage}
+                        </Message.Header>
+                    </Message>
+            </Dimmer>
         </Modal.Content>
     </Modal>
     )}
