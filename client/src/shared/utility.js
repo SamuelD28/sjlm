@@ -18,96 +18,140 @@ Utility.FindAllAndCreateArray = function(element)
 //Fonction that adjust the height of an element to fill up the entire screen
 Utility.AdjustFullHeight = function(elements)
 {
-    if(elements.constructor === Array){
-        elements.forEach((element) => {
-        element.style.height = window.innerHeight + "px";
-    });
+    try{
+        Utility.IsValuesUndefinedOrNull(elements);
+        if(elements.constructor === Array){
+            elements.forEach((element) => {
+            element.style.height = window.innerHeight + "px";
+        });
+        }
+        else{
+            elements.style.height = window.innerHeight + "px";
+        }
     }
-    else{
-        elements.style.height = window.innerHeight + "px";
+    catch(err){
+        console.log(err.message);
     }
 }
 
 //Fonction that disable a certain input based on a checkbox checked value
 Utility.DisableInputWithCheckbox = function(checkbox, input)
 {
-    //Temporaire, a changer rapidement pour eviter de faire planter la fonction
-    if(checkbox.constructor === Array)
-    {
-        input[0].disabled = true;
-        checkbox.forEach((element) => {
-            element.addEventListener("click" , function(event){
-                Utility.ToggleInput(event, input[0]);
-            });      
-        });
+    try{
+        Utility.IsValuesUndefinedOrNull(checkbox, input);
+        if(checkbox.constructor === Array)
+        {
+            input[0].disabled = true;
+            checkbox.forEach((element) => {
+                element.addEventListener("click" , function(event){
+                    Utility.ToggleInput(event, input[0]);
+                });      
+            });
+        }
+        else{
+            input.disabled = true;
+            checkbox.addEventListener("click" , function(event){
+                Utility.ToggleInput(event, input);
+            });
+        }
     }
-    else{
-        input.disabled = true;
-        checkbox.addEventListener("click" , function(event){
-            Utility.ToggleInput(event, input);
-        });
+    catch(err){
+        console.log(err.message);
     }
 }
     
 //Fonction that change the value of a checkbox to be true or false instead of on and off
 Utility.ChangeCheckboxValueTrueFalse = function(event)
 {
-    event.target.value = event.target.checked;
+    try{
+        Utility.IsValuesUndefinedOrNull(event);
+        event.target.value = event.target.checked;
+    }
+    catch(err){
+        console.log(err.message);
+    }
 }
 
 //Fonction that prevent the default 
 Utility.PreventFormSubmission = function(submitBtns)
 {
-    if(submitBtns.constructor === Array)
-    {
-        submitBtns.forEach((btn) =>{
-            btn.addEventListener("click" , function(e){
+    try{
+        Utility.IsValuesUndefinedOrNull(submitBtns);
+        if(submitBtns.constructor === Array)
+        {
+            submitBtns.forEach((btn) =>{
+                btn.addEventListener("click" , function(e){
+                    e.preventDefault();
+                }); 
+            });
+        }
+        else
+        {
+            submitBtns.addEventListener("click" , function(e){
                 e.preventDefault();
-            }); 
-        });
+            });    
+        }
     }
-    else
-    {
-        submitBtns.addEventListener("click" , function(e){
-            e.preventDefault();
-        });    
+    catch(err){
+        console.log(err.message);
     }
 }
 
 //Function that open up the corresponding modal box
 Utility.OpenModal = function(e)
 {
-    let modalID =  e.target.getAttribute("modal");
-    let modalNews = document.getElementById(modalID);
-    if(modalNews !== null)
-    {
+    try{
+        let modalID =  e.target.getAttribute("modal");
+        let modalNews = document.getElementById(modalID);
+        
+        Utility.IsValuesUndefinedOrNull(modalID, modalNews);
+        
         modalNews.style.height = window.innerHeight + "px";
         modalNews.style.display = "flex";
+    }
+    catch(err){
+        console.log(err.message);
     }
 }
 
 //Function that close the corresponding modal box
 Utility.CloseModal = function(event, modalID)
 {
-    if(!event.defaultPrevented)
-        event.preventDefault();
-    
-    
-    let id = (modalID !== undefined)? modalID: event.target.getAttribute("modal");
-    let modalBox = document.getElementById(id);
-    if(modalBox !== null)
+    try{
+        
+        if(!event.defaultPrevented)
+            event.preventDefault();
+        
+        let id = (modalID !== undefined)? modalID: event.target.getAttribute("modal");
+        let modalBox = document.getElementById(id);
+        
+        Utility.IsValuesUndefinedOrNull(modalBox);
+        
         modalBox.style.display = "none";
+    }
+    catch(err){
+        console.log(err.message);
+    }
 }
 
 //Function that toggle the disable on a btn element
 Utility.ChangeBtnState =function(e)
 {
-    let form = document.getElementById("form-" + this.tempState.initialData._id);
-    let button = form.querySelector(".confirm");
-    button.style.backgroundColor = "#02a9f4";  
-    button.disabled = false;
+    try{
+        let form = document.getElementById("form");
+        
+        Utility.IsValuesUndefinedOrNull(form);
+        
+        let button = form.querySelector(".confirm");
+        button.style.backgroundColor = "#02a9f4";  
+        button.disabled = false;
+    }
+    catch(err){
+        console.log(err.message);
+    }
 }
 
+//Function that takes all the parameters passed to the function and check if any is null or undefined. Throw an error if so.
 Utility.IsValuesUndefinedOrNull = function()
 {
     for(let i = 0 ; i <= arguments.length - 1 ; i++)
@@ -117,39 +161,57 @@ Utility.IsValuesUndefinedOrNull = function()
     }
 }
 
+// Function that gatters all the required inputs inside a form and verify that they have information in them
 Forms.ValidateFormInput = function(inputs)
 {
-    inputs.forEach((input) =>{
-        if(!input.value && !input.disabled)
-        {
-            throw new Error("Input Validation Failed"); //A corriger, donner plus dinformations concernant l'erreur
-        }
-    });
+    try{
+        Utility.IsValuesUndefinedOrNull(inputs);
+        inputs.forEach((input) =>{
+            if(!input.value && !input.disabled)
+            {
+                throw new Error("Input Validation Failed"); //A corriger, donner plus dinformations concernant l'erreur
+            }
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
+//Function that creates a json object with a form data object passed as a parameter.
 Forms.CreateJsonObjectWithFormData = function(formData)
 {
-    let jsonObject = {};
-    formData.forEach(function(value, key){
-            if(key === "Image" || key === "File")
-            {
-                if(value.name)
-                jsonObject[key] = value.name;  
-            }
-            else
-                jsonObject[key] = value;    
-        });  
-    return JSON.stringify(jsonObject);
+    try{
+        let jsonObject = {};
+        
+        Utility.IsValuesUndefinedOrNull(formData);
+        
+        formData.forEach(function(value, key){
+                if(key === "Image" || key === "File")
+                {
+                    if(value.name)
+                    jsonObject[key] = value.name;  
+                }
+                else
+                    jsonObject[key] = value;    
+            });  
+        return JSON.stringify(jsonObject);
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 //Function that toggle disable on a input
 Forms.ToggleInput = function(event, input)
 {
     try{
+        Utility.IsValuesUndefinedOrNull(event, input);
+        
         let linkedInputAttribute = event.target.getAttribute("linkedto");
         let parentInput = event.target.parentNode;
         let childrens = Array.from(parentInput.childNodes);
-    
+        
         //Try to find the input based on the linkedto attribute placed on the checkbox.
         let linkedInput = childrens.find((child) => {
             if(child.name !== undefined)
@@ -186,10 +248,8 @@ Forms.ChangeLabelText =function(event)
                 return undefined;
         });
         
-        if(label !== undefined || label !== null)
-            label.textContent = inputFile.value;
-        else
-            throw new Error("Oops, looks like the label attribute for or input attribute id doesn't match.");
+        Utility.IsValuesUndefinedOrNull(label,inputFile);
+        
     }
     catch(err)
     {
@@ -197,9 +257,12 @@ Forms.ChangeLabelText =function(event)
     }
 }
 
+//Function that retrieve the proper value value from any input.
 Forms.RetrieveValueFromInput = function(e)
 {
     try{
+        Utility.IsValuesUndefinedOrNull(e);
+        
         let target = e.target;
         let type = target.type;
         let value;
@@ -222,17 +285,20 @@ Forms.RetrieveValueFromInput = function(e)
     }
 }
 
+//Function that creates a key to an object passed as a paraemter with the value passed as a parameter
 Forms.AppendValueToObject = function(e, objectToAppend, valueToAppend)
 {
     try{
+        Utility.IsValuesUndefinedOrNull(objectToAppend, valueToAppend);
         const keyToAppend = e.target.name;
         return objectToAppend[keyToAppend] =  valueToAppend;
     }
     catch(err){
-        console.log("~An Error occured while appending the value to the object");
+        console.log(err.message);
     }
 }
 
+//Ajax Get request. Needs a url passed as a parameter otherwise it throws an error
 Ajax.GetData = async function(url)
 {
     try{
@@ -255,13 +321,14 @@ Ajax.GetData = async function(url)
     }
 }
 
-Ajax.PostData = async function(url, formData)
+//Ajax Post request. Needs a url and the data to post to the server otherwise it throws an error
+Ajax.PostData = async function(url, dataToPost)
 {
     try{
-        Utility.IsValuesUndefinedOrNull(url, formData);
+        Utility.IsValuesUndefinedOrNull(url, dataToPost);
         
         let postedData;
-        let content = JSON.stringify(formData);
+        let content = JSON.stringify(dataToPost);
         let bodyObject = {  method: "POST",
                             headers: {"Content-Type" : "application/json"},
                             body: content};
@@ -284,6 +351,7 @@ Ajax.PostData = async function(url, formData)
     }
 }
 
+//Ajax Put Request. Needs a url and the new data to post. The new data needs to contain an id property since the server uses this.
 Ajax.PutData = async function (url, newData)
 {
     try{
@@ -312,6 +380,7 @@ Ajax.PutData = async function (url, newData)
     }
 }
 
+//Ajax Delete Request. Needs a url and an id since the server uses this.
 Ajax.DeleteData = async function(url, id)
 {
     try{
@@ -335,14 +404,20 @@ Ajax.DeleteData = async function(url, id)
     }
 }
 
+//Ajax function used to check the response status from the request. Throws an error if the status is not 200(success)
 function CheckRequestStatus(res)
 {
-    if(!res.ok){
-        throw new Error(`[-Error Proccessing the information. Status Code : ${res.status} -]`);
+    try{
+        Utility.IsValuesUndefinedOrNull(res);
+        if(!res.ok)
+            throw new Error(`[-Error Proccessing the information. Status Code : ${res.status} -]`);
+        else
+            return res.json();
     }
-    else{
-        return res.json();
+    catch(err){
+        console.log(err);
     }
 }
 
+// Exports all the utility objects
 export {Utility, Forms, Ajax};
