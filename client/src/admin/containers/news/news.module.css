@@ -14,7 +14,7 @@
     background-color: white;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-auto-rows: 22vw;
     grid-gap: 1.5vw;
     position: relative;
 }

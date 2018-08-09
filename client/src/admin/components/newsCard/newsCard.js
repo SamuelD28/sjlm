@@ -17,14 +17,12 @@ class NewsCard extends Component{
     render(){
     if(this.props.news !== undefined)
     return(
-    <div>
-        <div styleName="news">
-            <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('/${this.props.news.Image}')`}}></div>
-            <h3 styleName="newsTitle">{this.props.news.Title}</h3>
-            {this.DisplayImportantTag(this.props.news)}
-            <span styleName="newsCategory">{this.props.news.Category}</span>
-            <p styleName="newsDesc">{this.props.news.Description.substring(0, 100)}...</p>
-        </div>
+    <div styleName="news">
+        <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('/${this.props.news.Image}')`}}></div>
+        <h3 styleName="newsTitle">{this.props.news.Title}</h3>
+        {this.DisplayImportantTag(this.props.news)}
+        <span styleName="newsCategory">{this.props.news.Category}</span>
+        <p styleName="newsDesc">{this.props.news.Description.substring(0, 100)}...</p>
     </div>
     )}
 }

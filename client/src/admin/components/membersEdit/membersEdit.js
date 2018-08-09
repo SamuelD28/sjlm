@@ -1,9 +1,24 @@
 //Initial Declaration and importation
 import React, {Component} from 'react';
-import {Modal, Form, Input, Label} from 'semantic-ui-react';
-import {Forms, Ajax} from '../../../shared/utility.js';
+import {Modal, Form, Input, Label, Dimmer, Message, Loader, Icon} from 'semantic-ui-react';
+import {Forms, Ajax, Utility} from '../../../shared/utility.js';
 
 class MembersEdit extends Component{
+    
+    state = ({
+        disableLoader: true,
+        displayDimmer: false,
+        hideStatus: true,
+        statusMessage: "",
+        statusType: {
+            type: "",
+            info: false,
+            warning: false,
+            positive: false,
+            negative: false
+        },
+        disableSubmit: true
+    });
     
     constructor(props)
     {
@@ -14,25 +29,101 @@ class MembersEdit extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         
         this.DeleteMembersInDb = this.DeleteMembersInDb.bind(this);
+        this.DeleteMembersInState = this.DeleteMembersInState.bind(this);
+        this.ResetActionUI = this.ResetActionUI.bind(this);
+        this.DisplayLoader = this.DisplayLoader.bind(this);
+        this.DisplayStatus = this.DisplayStatus.bind(this);
     }
     
     handleChange(e)
     {
+        this.setState({disableSubmit: false})
         let inputValue = Forms.RetrieveValueFromInput(e);
         Forms.AppendValueToObject(e, this.formData, inputValue);
     }
     
     async handleSubmit()
     {
+        this.DisplayLoader();
+        
         let updatedData = await Ajax.PutData("/api/members/", this.formData);
         this.props.UpdateTempState(updatedData);
+        
+        setTimeout(() =>{
+            this.DisplayStatus("Modifications enregistrées",  "info");
+            this.ResetActionUI();
+            
+        }, 1000);
     }
     
+    //Function     
     DeleteMembersInDb(e)
     {
         e.preventDefault();
-        Ajax.DeleteData("/api/members/" , this.formData._id);
-        this.props.RemoveFromTempState(this.formData);
+        
+        this.DisplayLoader();
+        Ajax.DeleteData("/api/members/", this.formData._id);
+        
+        setTimeout(() =>{
+            this.DisplayStatus("Membre supprimé", "negative");
+            this.DeleteMembersInState();
+        }, 1000);
+    }
+    
+    //Function that remove the news contained within the parent container only if the news has been removed from the database.
+    DeleteMembersInState()
+    {
+        setTimeout(() =>{
+            this.props.RemoveFromTempState(this.formData);
+        }, 1000);
+    }
+    
+    //Function that display a status message concerning the different operation status. This function works in correlation with the Message Component inherited from semantic UI.
+    DisplayStatus(statusMessage, statusType)
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(statusMessage, statusType);
+            
+            switch(statusType)
+            {
+                case "warning": this.setState({statusType: {warning: true}});break;
+                case "negative": this.setState({statusType: {negative: true}});break;
+                case "positive": this.setState({statusType: {positive: true}});break;
+                case "info": this.setState({statusType: {info: true}});break;
+                default: throw new Error("~You need to provide a status type when using the message component");
+            }
+            
+            this.setState({
+                statusMessage: statusMessage,
+                disableLoader: true,
+                hideStatus: false
+            });
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+    
+    //Function that display the loader when a new action is commited.
+    DisplayLoader()
+    {
+        this.setState({
+            disableLoader: false,
+            displayDimmer: true
+        });
+    }
+    
+    //Functino that reset the state used for user interaction.
+    ResetActionUI()
+    {
+        setTimeout(() => {
+            this.setState({
+                disableLoader: true,
+                displayDimmer: false,
+                hideStatus: true,
+                disableSubmit: true
+            });
+        }, 1000);
     }
     
     render(){
@@ -99,10 +190,25 @@ class MembersEdit extends Component{
                     </Form.Group>
                     <Form.Field>
                         <button onClick={this.DeleteMembersInDb} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
-                        <button style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
+                        <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
                     </Form.Field>
                 </Form>
             </Modal.Description>
+            <Dimmer active={this.state.displayDimmer} inverted>
+                    <Loader disabled={this.state.disableLoader} size="large"/>
+                    <Message 
+                        hidden={this.state.hideStatus} 
+                        size="large" 
+                        info={this.state.statusType.info}
+                        warning={this.state.statusType.warning}
+                        negative={this.state.statusType.negative}
+                        positive={this.state.statusType.positive}>
+                        <Message.Header>
+                            <Icon name='check' />
+                            {this.state.statusMessage}
+                        </Message.Header>
+                    </Message>
+            </Dimmer>
         </Modal.Content>
     </Modal>    
     )}

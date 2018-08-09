@@ -72,15 +72,19 @@ class NewsCreate extends Component{
     render()
     {
     return(
-    <Modal onClose={this.ResetForm.bind(this)} trigger={
-    <div className="cardContainer newsCreate">
+    <Modal 
+    onClose={this.ResetForm.bind(this)} 
+    trigger={
+    <div className="cardContainer">
         <div className="cardOverlay">
             <div className="cardOverlayBtn">
                 <i className="icon plus"></i>
                 <h4>Ajouter</h4>
             </div>
         </div>
-    </div>} closeIcon>
+    </div>
+    } 
+    closeIcon>
     <Modal.Header>Nouvelle Actualitée</Modal.Header>
     <Modal.Content>
         <Modal.Description>
