@@ -3,6 +3,7 @@
     background-color: white;
     justify-content: center;
     display: grid;
+    height: 100%;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "membersPhoto membersName"
                          "membersPhoto membersTitle"

@@ -38,7 +38,7 @@ class NewsCreate extends Component{
         });
         
         let postedData = await Ajax.PostData("/api/news", this.formData);
-        this.props.AppendToTempState(postedData);
+        this.props.CreateInTempState(postedData);
         
         //Hides the laoding and dispaly the status message
         setTimeout(() =>{
@@ -76,7 +76,7 @@ class NewsCreate extends Component{
     <div className="cardContainer newsCreate">
         <div className="cardOverlay">
             <div className="cardOverlayBtn">
-                <i className="fas fa-plus"></i>
+                <i className="icon plus"></i>
                 <h4>Ajouter</h4>
             </div>
         </div>
@@ -129,7 +129,7 @@ class NewsCreate extends Component{
                         <input name="DateDue" type="date" disabled onChange={this.handleChange} required/>
                     </Form.Field>
                     <Form.Field>
-                        <button type="submit" className="btn btn-primary" modal="createMewsModal"><i className="fas fa-save"></i> Publier</button>
+                        <button type="submit" className="btn btn-primary"><i className="icon save"></i> Publier</button>
                     </Form.Field>
                 </Form>
             </Modal.Description>

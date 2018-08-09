@@ -1,0 +1,76 @@
+//Initial Declaration and importation
+import {Component} from 'react';
+import {Utility, Ajax} from './utility.js';
+
+class CrudComponent extends Component{
+    
+    constructor(props)
+    {
+        super(props);
+        this.state = {};
+        this.tempState= {};
+    }
+    
+    ReadInTempState = async (url) =>
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(url);
+            //GERER LE CAS OU AUCUNE ACTUALITER EST DANS LA BASE DE DONNER
+            let data = await Ajax.GetData(url); 
+            this.tempState = {db: data.slice()};
+            this.UpdateStateWithTempState();
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+
+    //Function that push a new object to the tempState array.
+    CreateInTempState = (formData) =>
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(formData, this.tempState.db);
+            this.tempState.db.push(formData);
+            this.UpdateStateWithTempState();
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+    
+    //Function that removes an object from the tempState array.
+    RemoveFromTempState = (formData) =>
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(formData, this.tempState.db);
+            let indexToRemoveAt = this.tempState.db.findIndex((element) =>(element._id === formData._id));
+            this.tempState.db.splice(indexToRemoveAt, 1);
+            this.UpdateStateWithTempState();
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+    
+    //Function that updates an object in the tempstate array.
+    UpdateTempState = (modifiedData) =>
+    {
+        try{
+            Utility.IsValuesUndefinedOrNull(this.tempState.db, modifiedData);
+            let oldData = this.tempState.db.findIndex((element) => {return element._id === modifiedData._id});
+            this.tempState.db[oldData] = modifiedData;
+            this.setState(this.tempState);
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+
+    //Function that updates the state with the tmepstate data.
+    UpdateStateWithTempState = () =>
+    {
+        this.setState(this.tempState);
+    }
+}
+
+export default CrudComponent;

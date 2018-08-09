@@ -143,7 +143,7 @@ class NewsEdit extends Component{
     <Modal size="large" trigger={
         <div className="cardOverlay cardEdit">
             <div className="cardOverlayBtn">
-                <i className="fas fa-edit"></i>
+                <i className="icon edit"></i>
                 <h4>Modifier</h4>
             </div>
         </div>} closeIcon>
@@ -198,8 +198,8 @@ class NewsEdit extends Component{
                         <input name="DateDue" type="date" onChange={this.handleChange} defaultValue={moment(this.formData.DateDue).format("YYYY[-]MM[-]DD")}/>
                     </Form.Field>
                     <Form.Field>
-                        <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="fas fa-save"></i> Sauvegarder</button>
-                        <button style={{float: 'right'}} onClick={this.DeleteNewsInDb} className="btn btn-danger"><i className="fas fa-trash"></i> Supprimer</button>
+                        <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Sauvegarder</button>
+                        <button style={{float: 'right'}} onClick={this.DeleteNewsInDb} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
                     </Form.Field>
                 </Form>
             </Modal.Description>

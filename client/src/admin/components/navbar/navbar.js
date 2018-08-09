@@ -26,49 +26,49 @@ class Navbar extends Component{
             <div styleName="navbarContainer">
                 <li>
                     <NavLink styleName="navbarItem" to="/admin"> 
-                        <span styleName="navbarIcon"><i className="fas fa-home blue"></i></span>
+                        <span styleName="navbarIcon"><i className="icon home"></i></span>
                         <span href="#" styleName="navbarLink">Accueil</span>
                         <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink styleName="navbarItem" to="/admin/news">
-                        <span styleName="navbarIcon"><i className="fas fa-newspaper brown"></i></span>
+                        <span styleName="navbarIcon"><i className="icon newspaper"></i></span>
                         <span href="#" styleName="navbarLink">Actualitées</span>
                         <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>
                 <li>
                     <a styleName="navbarItem" href="">
-                        <span styleName="navbarIcon"><i className="fas fa-calendar-alt red"></i></span>
+                        <span styleName="navbarIcon"><i className="icon calendar"></i></span>
                         <span href="#" styleName="navbarLink">Calendrier</span>
                         <div styleName="navbarBorder"></div>
                     </a>
                 </li>
                 <li>
                     <a styleName="navbarItem" href="">
-                        <span styleName="navbarIcon"><i className="fas fa-copy yellow"></i></span>
+                        <span styleName="navbarIcon"><i className="icon copy"></i></span>
                         <span href="#" styleName="navbarLink">Pages</span>
                         <div styleName="navbarBorder"></div>
                     </a>
                 </li>
                 <li>
                     <NavLink styleName="navbarItem" to="/admin/members">
-                        <span styleName="navbarIcon"><i className="fas fa-users green"></i></span>
+                        <span styleName="navbarIcon"><i className="icon users"></i></span>
                         <span href="#" styleName="navbarLink">Membres</span>
                         <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>
                 <li>
                     <a styleName="navbarItem" href=""> 
-                        <span styleName="navbarIcon"><i className="fas fa-envelope blue"></i></span>
+                        <span styleName="navbarIcon"><i className="icon envelope"></i></span>
                         <span styleName="navbarLink">Mail</span>
                         <div styleName="navbarBorder"></div>
                     </a>
                 </li>
                 <li>
                     <a styleName="navbarItem" href="">
-                        <span styleName="navbarIcon"><i className="fas fa-cogs brown"></i></span>
+                        <span styleName="navbarIcon"><i className="icon cogs"></i></span>
                         <span href="#" styleName="navbarLink">Paramètres</span>
                         <div styleName="navbarBorder"></div>
                     </a>

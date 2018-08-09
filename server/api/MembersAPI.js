@@ -51,10 +51,10 @@ Api.GetMembers = function(req, res)
 
 Api.CreateMembers = function(req, res)
 {
-    let Query = Members.create(req.body);
-    Query.exec()
+    Members.create(req.body)
          .then((members) =>{
             console.log("~Successfully created member"); 
+            res.send(members);
          })
          .catch((err) => {
             console.log(err); 

@@ -240,16 +240,17 @@ Forms.ChangeLabelText =function(event)
         let inputs = Array.from(event.target.parentNode.childNodes);
         
         let label = inputs.find((child) =>{
-            let forAttribute = child.getAttribute("for");
-            
-            if(forAttribute !== undefined)
-                return forAttribute === idAttribute;
-            else
-                return undefined;
-        });
+                    let forAttribute = child.getAttribute("for");
+                        
+                    if(forAttribute !== undefined)
+                        return forAttribute === idAttribute;
+                    else
+                        return undefined;
+                    });
         
-        Utility.IsValuesUndefinedOrNull(label,inputFile);
+        Utility.IsValuesUndefinedOrNull(label,inputFile); //break if no label is found
         
+        label.textContent = event.target.files[0].name;
     }
     catch(err)
     {
