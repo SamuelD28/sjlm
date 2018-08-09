@@ -1,6 +1,6 @@
 /*global fetch*/
 import React from 'react';
-import CrudComponent from '../../../shared/CrudComponent.js';
+import CrudComponent from '../../components/CrudComponent.js';
 
 // Css Module Import
 import CSSModules from 'react-css-modules';
@@ -25,9 +25,9 @@ class Members extends CrudComponent{
             //BUG WITH SORTING OF THE ARRAY. IT BREAKS PAST 10 ELEMENTS
             let array = this.tempState.db.slice();
             return array.map((item,index)=> (
-                <div className="cardContainer">
-                    <MembersCard members={item} key={item._id}/>
-                    <MembersEdit />
+                <div className="cardContainer"  key={item._id}>
+                    <MembersCard members={item}/>
+                    <MembersEdit members={item} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
                 </div>
             ));
         }

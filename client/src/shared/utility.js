@@ -157,7 +157,7 @@ Utility.IsValuesUndefinedOrNull = function()
     for(let i = 0 ; i <= arguments.length - 1 ; i++)
     {
         if(arguments[i] === undefined || arguments[i] === null)
-            throw new Error(`~An Error Occured. The value you are trying to access is undefined or null`);
+            throw new Error(`~Warning : The value you are trying to access is undefined or null`);
     }
 }
 

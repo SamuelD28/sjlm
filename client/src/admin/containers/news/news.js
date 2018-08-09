@@ -1,6 +1,6 @@
 //--------Declaration---------//
 import React from 'react';
-import CrudComponent from '../../../shared/CrudComponent.js';
+import CrudComponent from '../../components/CrudComponent.js';
 
 // Css module improt
 import CSSModules from 'react-css-modules';

@@ -36,8 +36,8 @@ class NewsEdit extends Component{
         this.formData =Object.create(this.props.news);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.DeleteNewsInDb = this.DeleteNewsInDb.bind(this);
         
+        this.DeleteNewsInDb = this.DeleteNewsInDb.bind(this);
         this.DeleteNewsInState = this.DeleteNewsInState.bind(this);
         this.ResetActionUI = this.ResetActionUI.bind(this);
         this.DisplayLoader = this.DisplayLoader.bind(this);
@@ -198,8 +198,8 @@ class NewsEdit extends Component{
                         <input name="DateDue" type="date" onChange={this.handleChange} defaultValue={moment(this.formData.DateDue).format("YYYY[-]MM[-]DD")}/>
                     </Form.Field>
                     <Form.Field>
-                        <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Sauvegarder</button>
-                        <button style={{float: 'right'}} onClick={this.DeleteNewsInDb} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
+                        <button onClick={this.DeleteNewsInDb} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
+                        <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
                     </Form.Field>
                 </Form>
             </Modal.Description>

@@ -22,6 +22,7 @@ class MembersCreate extends Component{
         this.props.CreateInTempState(postedData);
     }
     
+    //METHODE REPETIVE. EXTRAIRE DANS UNE CLASSE?
     handleChange(e)
     {
         let inputValue = Forms.RetrieveValueFromInput(e);
@@ -71,7 +72,7 @@ class MembersCreate extends Component{
                     </Form.Group>
                     <Form.Field>
                         <select required name="Occupation" onChange={this.handleChange}>
-                            <option value="" disabled selected hidde>Occupation</option> 
+                            <option value="" disabled selected hidden>Occupation</option> 
                             <option>Maire</option>
                             <option>Mairesse</option>
                             <option>Conseiller municipal</option>

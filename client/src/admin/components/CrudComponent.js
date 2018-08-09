@@ -1,6 +1,6 @@
 //Initial Declaration and importation
 import {Component} from 'react';
-import {Utility, Ajax} from './utility.js';
+import {Utility, Ajax} from '../../shared/utility.js';
 
 class CrudComponent extends Component{
     
@@ -59,7 +59,7 @@ class CrudComponent extends Component{
             Utility.IsValuesUndefinedOrNull(this.tempState.db, modifiedData);
             let oldData = this.tempState.db.findIndex((element) => {return element._id === modifiedData._id});
             this.tempState.db[oldData] = modifiedData;
-            this.setState(this.tempState);
+            this.UpdateStateWithTempState();
         }
         catch(err){
             console.log(err.message);

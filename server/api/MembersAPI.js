@@ -30,7 +30,8 @@ let membersSchema = new Schema({
         required: true
     },
     Phone: {
-        type: String
+        type: String,
+        default: "450 347-5446"
     }
 });
 let Members = mongoose.model("Members" , membersSchema);
@@ -51,6 +52,7 @@ Api.GetMembers = function(req, res)
 
 Api.CreateMembers = function(req, res)
 {
+    console.log(req.body);
     Members.create(req.body)
          .then((members) =>{
             console.log("~Successfully created member"); 
@@ -63,7 +65,7 @@ Api.CreateMembers = function(req, res)
 
 Api.UpdateMembers = function(req, res)
 {
-    let Query = Members.findByIdAndUpdate(req.params.id, req.body);
+    let Query = Members.findByIdAndUpdate(req.params.id, req.body, {new: true});
     Query.exec()
          .then((members) =>{
             console.log("~Updated Members ID : " + req.params.id);
@@ -79,7 +81,7 @@ Api.DeleteMembers = function(req, res)
     let Query = Members.findByIdAndRemove(req.params.id);
     Query.exec()
          .then(() =>{
-            console.log("~Successfully deleted Members Id : " + req.params.id);
+            console.log("~Deleted Members Id : " + req.params.id);
          })
          .catch((err) =>{
             console.log("~An Error occured while deleting this members \n ERROR : " + err);
