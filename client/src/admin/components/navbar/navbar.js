@@ -46,11 +46,11 @@ class Navbar extends Component{
                     </a>
                 </li>
                 <li>
-                    <a styleName="navbarItem" href="">
+                    <NavLink styleName="navbarItem" to="/admin/pages">
                         <span styleName="navbarIcon"><i className="icon copy"></i></span>
                         <span href="#" styleName="navbarLink">Pages</span>
                         <div styleName="navbarBorder"></div>
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
                     <NavLink styleName="navbarItem" to="/admin/members">

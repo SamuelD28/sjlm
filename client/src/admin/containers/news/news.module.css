@@ -1,9 +1,3 @@
-/*news section*/
-#newsPage{
-    padding: 3vw;
-    position: relative;
-}
-
 .actionBtn{
     display: flex;
     justify-content: space-between;

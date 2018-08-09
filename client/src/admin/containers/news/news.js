@@ -40,7 +40,7 @@ class News extends CrudComponent{
 
     render(){
     return(
-    <div id={styles.newsPage} className={adminStyles.adminPage}> 
+    <div className={adminStyles.adminPage}> 
         <section className={adminStyles.sectionContainer} id="latestNews">
             <h4 className={adminStyles.sectionTitle}>Actualités Récentes</h4>
             <button className="btn btn-primary">Rechercher</button>
