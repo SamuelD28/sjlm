@@ -7,9 +7,10 @@ import moment from 'moment';
 import CSSModules from 'react-css-modules';
 import styles from './newsEdit.module.css';
 
+//This component is responsible for both the modification and suppression of news post in the database. The data are passed by the parent container news.
 class NewsEdit extends Component{
     
-    //Initial State declaration
+    //Initial State declaration. Used for user interaction
     state = ({
         disableLoader: true,
         displayDimmer: false,
@@ -25,8 +26,11 @@ class NewsEdit extends Component{
         disableSubmit: true
     });
     
+    //We initialise the form data with a new object reference that way we dont trigger the update function on the state in the parent container.
     constructor(props)
     { 
+        //NEED TO ADD A TEMPSTATE OBJECT THAT HOLDS ALL THE ORIGINAL DATA. THAT WAY IF WE DONT SAVE AND QUIT THE DATA ARE RESET.
+        
         super(props);
         
         this.formData =Object.create(this.props.news);
@@ -40,6 +44,7 @@ class NewsEdit extends Component{
         this.DisplayStatus = this.DisplayStatus.bind(this);
     }
     
+    //Function that handles all the change we make in the unputs contained within the form.
     handleChange(e)
     {
         this.setState({disableSubmit: false});
@@ -47,6 +52,7 @@ class NewsEdit extends Component{
         Forms.AppendValueToObject(e, this.formData, inputValue);
     }  
      
+    //Function that handles the submit of the form.
     async handleSubmit()
     {
         this.DisplayLoader();
@@ -61,6 +67,7 @@ class NewsEdit extends Component{
         }, 1000);
     }
     
+    //Function that request the suppression of the news in the database.
     DeleteNewsInDb(e)
     {
         e.preventDefault();
@@ -74,6 +81,7 @@ class NewsEdit extends Component{
         }, 1000);
     }
     
+    //Function that remove the news contained within the parent container only if the news has been removed from the database.
     DeleteNewsInState()
     {
         setTimeout(() =>{
@@ -81,6 +89,7 @@ class NewsEdit extends Component{
         }, 1000);
     }
     
+    //Function that display a status message concerning the different operation status. This function works in correlation with the Message Component inherited from semantic UI.
     DisplayStatus(statusMessage, statusType)
     {
         try{
@@ -106,6 +115,7 @@ class NewsEdit extends Component{
         }
     }
     
+    //Function that display the loader when a new action is commited.
     DisplayLoader()
     {
         this.setState({
@@ -114,6 +124,7 @@ class NewsEdit extends Component{
         });
     }
     
+    //Functino that reset the state used for user interaction.
     ResetActionUI()
     {
         setTimeout(() => {

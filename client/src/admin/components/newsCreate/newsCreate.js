@@ -8,15 +8,17 @@ import {Form, Modal, Loader, Dimmer, Icon, Message} from 'semantic-ui-react';
 import CSSModules from 'react-css-modules';
 import styles from './newsCreate.module.css';
 
+//This components hold the form to and fonctionality to create a new post in the database.
 class NewsCreate extends Component{
     
-    //Initial State declaration
+    //Initial State declaration. Used for use interaction.
     state = ({
         disableLoader: true,
         displayDimmer: false,
         hideStatus: true
     });
     
+    //We initialise an empty form data in witch we will append every input that we entered informations
     constructor(props)
     {
         super(props);
@@ -26,8 +28,10 @@ class NewsCreate extends Component{
         this.ResetForm = this.ResetForm.bind(this);
     }
     
+    //Function that handles the sbmit of the form
     async handleSubmit()
     {
+        //Display the laoding
         await this.setState({
             displayDimmer : true,
             disableLoader: false
@@ -36,6 +40,7 @@ class NewsCreate extends Component{
         let postedData = await Ajax.PostData("/api/news", this.formData);
         this.props.AppendToTempState(postedData);
         
+        //Hides the laoding and dispaly the status message
         setTimeout(() =>{
             this.setState({
                 disableLoader: true,
@@ -45,12 +50,14 @@ class NewsCreate extends Component{
         }, 1000);
     }
     
+    //Function that handles every change we make to the inputs contain in the form.
     handleChange(e)
     {
         let inputValue = Forms.RetrieveValueFromInput(e);
         Forms.AppendValueToObject(e, this.formData, inputValue);
     }        
     
+    //Function that resets the state when the modal box is closed.
     ResetForm()
     {
         setTimeout(() => {

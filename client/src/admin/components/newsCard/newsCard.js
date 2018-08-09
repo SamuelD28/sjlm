@@ -4,8 +4,10 @@ import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import styles     from './newsCard.module.css';
 
+//This Component is responsible for displaying a card holding the information aobut a news object. The data is passed by the parent container.
 class NewsCard extends Component{
     
+    //Function that displa an important tag if the news important property is set to true.
     DisplayImportantTag(item)
     {
         if(item.Important)

@@ -11,8 +11,10 @@ import NewsCard from '../../components/newsCard/newsCard.js';
 import NewsCreate from '../../components/newsCreate/newsCreate.js';
 import NewsEdit from '../../components/newsEdit/newsEdit.js';
 
+//This components holds the state for all the other components to interact with. Function are created here to give services to other components
 class News extends Component{
     
+    //We initialise a tempState here. Everytime we want to update the state we first update the tempstate.
     constructor(props)
     {
         super(props);
@@ -23,16 +25,17 @@ class News extends Component{
         this.RemoveFromTempState = this.RemoveFromTempState.bind(this);
     }
 
+    //Creates a get request to the server to initiliase the state with data.
     async componentDidMount()
     {
         //GERER LE CAS OU AUCUNE ACTUALITER EST DANS LA BASE DE DONNER
         
         let news = await Ajax.GetData("/api/news"); 
-        
         this.tempState = {news: news.slice()};
         this.setState(this.tempState);
     }
 
+    //Function that push a new object to the tempState array.
     AppendToTempState(formData)
     {
         try{
@@ -45,6 +48,7 @@ class News extends Component{
         }
     }
     
+    //Function that removes an object from the tempState array.
     RemoveFromTempState(formData)
     {
         try{
@@ -58,6 +62,7 @@ class News extends Component{
         }
     }
     
+    //Function that updates an object in the tempstate array.
     UpdateTempState(modifiedData)
     {
         try{
@@ -71,9 +76,11 @@ class News extends Component{
         }
     }
 
+    //Function that display an array for every news card hold in the tempstate array.
     DisplayNewsCard()
     {
         if(this.tempState.news !== undefined){
+            //BUG WITH SORTING OF THE ARRAY. IT BREAKS PAST 10 ELEMENTS
             let array = this.tempState.news.slice().sort((a, b) => (b.Important === true));
             // array.sort((a, b) => b.DatePublished > a.DatePublished);
             // array.sort((a, b) => b.Important === true);
