@@ -308,35 +308,35 @@ class Navbar extends Component{
             <ul styleName="navbarContent">
                 <li styleName="navbarItem primaryLink" menu="city">
                     Découvrir la ville
-                    <i className="fas fa-compass"></i>
+                    <i className="icon large compass"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" menu="administration">
                     Administration
-                    <i className="fas fa-users"></i>
+                    <i className="icon large users"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" menu="service">
                     Les Services
-                    <i className="fas fa-book"></i>
+                    <i className="icon large book"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" menu="culture">
                     Cultures et Loisirs
-                    <i className="fas fa-dumbbell"></i>
+                    <i className="icon large futbol"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" menu="finance">
                     Finances
-                    <i className="fas fa-coins"></i>
+                    <i className="icon large balance scale"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" menu="news">
                     Actualités
-                    <i className="far fa-newspaper"></i>
+                    <i className="icon large newspaper"></i>
                 </li>
             </ul>
             <div styleName="navbarSocial">
-                <h4 styleName="menu-title">Suivez-nous !</h4>
-                <div>
-                    <span styleName="navbarSocialItem"><i className="fab fa-instagram"></i></span>
-                    <span styleName="navbarSocialItem"><i className="fab fa-twitter-square"></i></span>
-                    <span styleName="navbarSocialItem"><i className="fab fa-facebook-square"></i></span>
+                <h4 styleName="menuTitle">Suivez-nous !</h4>
+                <div styleName="navbarSocialItems">
+                    <i styleName="navbarSocialItem" className="icon instagram"></i>
+                    <i styleName="navbarSocialItem" className="icon twitter square"></i>
+                    <i styleName="navbarSocialItem" className="icon facebook  square"></i>
                 </div>
             </div>
         </div>

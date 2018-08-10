@@ -1,0 +1,19 @@
+.columnContainer{
+    background-color: white;
+    box-shadow: .2vw .2vw .5vw #D4D4D4;
+    margin: 0 1vw;
+}
+
+.pagesLeftColumn{
+    align-items: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 20vw;
+    text-align: center;
+    width: 20%; 
+}
+
+.pagesRightColumn{
+    padding: 1vw;
+    width: 80%;
+}

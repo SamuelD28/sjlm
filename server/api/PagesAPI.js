@@ -6,6 +6,16 @@ let mongoose        = require("mongoose");
 let Schema = mongoose.Schema;
 let pagesSchema = new Schema(
 {
+    PageCategory: {
+        type: String,
+        required: true,
+        default: "Autres"
+    },
+    Template: {
+        type: Number,
+        required: true,
+        default: 1
+    },
     Banner: {
         type: String,
         required: true

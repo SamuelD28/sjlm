@@ -34,7 +34,7 @@ class Index extends Component{
                     <span styleName='bannerKeyword'>Accueillante</span>
                     <form styleName='bannerSearch'>
                         <input styleName='bannerInput' placeholder='Que recherchez-vous?' type='text' />
-                        <button styleName='bannerBtn'><i className='fas fa-search'></i></button>
+                        <button><i className='icon search'></i></button>
                     </form>
                 </div>
             </div>

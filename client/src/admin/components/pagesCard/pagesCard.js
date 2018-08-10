@@ -5,8 +5,10 @@ class PagesCard extends Component{
     
     render(){
     return(
-        <h4>{this.props.pages.PageTitle.toUpperCase()}</h4>
+        <div styleName="pagesCard">
+            <h4>{this.props.pages.PageTitle.toUpperCase()}</h4>
+        </div>
     )}
-}
 
+}
 export default PagesCard;

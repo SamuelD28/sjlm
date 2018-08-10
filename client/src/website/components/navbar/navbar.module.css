@@ -44,10 +44,6 @@
     list-style: none;
 }
 
-.fas, .far{
-    font-size: 1.4em !important;
-}
-
 .navbarItem{
     align-items: center;
     box-sizing: border-box;
@@ -68,6 +64,7 @@
 
 .navbarSocial{
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -75,9 +72,13 @@
     justify-content: center;
 }
 
+.navbarSocialItems{
+    margin-top: .5vw;
+}
+
 .navbarSocialItem{
     cursor: pointer;
-    font-size: 2.75em;
+    font-size: 2.75em !important;
     margin: 0 .1em;
     transition: color .1s linear;
 }
@@ -87,7 +88,7 @@
     transition: color .1s linear;
 }
 .menuTitle{
-    padding-bottom: 1vw;
+    padding-bottom: .5vw;
     border-bottom: 2px solid #e3dcd8;
 }
 
@@ -133,3 +134,4 @@
     transition: transform .25s ease;
     transform: rotate(45deg) translate(0%,0%);;
 }
+

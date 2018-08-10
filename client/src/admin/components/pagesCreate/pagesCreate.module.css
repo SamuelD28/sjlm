@@ -1,0 +1,33 @@
+.pagesForm{
+    display: grid !important;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: "pagesContentInput pagesTitleInput pagesTitleInput"
+                         "pagesContentInput pagesCategoryInput pagesTemplateInput"
+                         "pagesContentInput pagesBannerInput ."
+                         "pagesContentInput pagesSubmit .";
+    grid-gap: 1vw;
+}
+
+.pagesCategoryInput{
+    grid-area: pagesCategoryInput;
+}
+
+.pagesContentInput{
+    grid-area: pagesContentInput;
+}
+
+.pagesTitleInput{
+    grid-area: pagesTitleInput;
+}
+
+.pagesTemplateInput{
+    grid-area: pagesTemplateInput;
+}
+
+.pagesBannerInput{
+    grid-area: pagesBannerInput;
+}
+
+.pagesSubmit{
+    grid-area: pagesSubmit;
+}
