@@ -1,14 +1,15 @@
 //Initial Declaration and importation
 import React, {Component} from 'react';
-import {Modal, Form, Grid , Dimmer, Loader,Icon, Message} from 'semantic-ui-react';
+import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms, Ajax} from '../../../shared/utility.js';
+import LoaderComponent from '../LoaderComponent.js';
 
 //Css Module 
 import CSSModules from 'react-css-modules';
 import styles from './pagesCreate.module.css';
 
-//Quill Text Editor
+//Quill Text Editor declaration
 const modules = {
     toolbar:[
       [{ 'header': [1, 2, 3, 4, 5 ,6] }],
@@ -24,59 +25,54 @@ const formats = [
     'align'
 ];
 
+//Component responsible for creating new page
 class PagesCreate extends Component{
     
-    state = ({
-        disableLoader: true,
-        displayDimmer: false,
-        hideStatus: true
-    });
-    
+    //Initialise with an empty form data that will be use by the form
     constructor(props)
     {
         super(props);
         this.formData = {};
+        this.state = ({disableSubmit: true});
     }
     
-    handleSubmit = async () =>
+    //Function that post the new page to the db and insert it in the state
+    CreatePageInDb = async () =>
     {
-        await this.setState({
-            displayDimmer : true,
-            disableLoader: false
-        });
+        //Change the loader component status 
+        this.ChangeActionState(1000, true, "Post");
         
+        //Does a post request to the server
         let postedData = await Ajax.PostData("/api/pages", this.formData);
-        this.props.CreateInTempState(postedData);
         
-         setTimeout(() =>{
-            this.setState({
-                disableLoader: true,
-                hideStatus: false
-            });
-            
-        }, 1000);
+        //Add the newly created page in the tempstate
+        this.props.CreateInTempState(postedData);
     }
     
-    handleChange = (e) =>
+    //Function that handle the changes made in all the different inputs except the text editor
+    HandleChange = (e) =>
     {
+        this.setState({disableSubmit: false});
         let inputValue = Forms.RetrieveValueFromInput(e);
         Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
     }
     
-    handleChangeInTextEditor = (e) =>
+    //Function that handle the changes made in the text editor
+    HandleChangeInTextEditor = (e) =>
     {
         Forms.AppendValueToObject("PageContent", this.formData, e);
     }
     
-    ResetForm()
+    //Function that modify the action state that interacts with the action loader component
+    ChangeActionState = (latency, isOnGoing, type) => 
     {
-        setTimeout(() => {
-            this.setState({
-                disableLoader: true,
-                displayDimmer: false,
-                hideStatus: true
-            });
-        }, 1000);
+        this.setState({
+            action: {
+                latency: latency,
+                isOnGoing: isOnGoing,
+                type: type
+            }
+        });
     }
     
     render(){
@@ -99,15 +95,15 @@ class PagesCreate extends Component{
     <Modal.Header>Ajouter une nouvelle page</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.CreatePageInDb}>
                     <Grid columns={2} divided>
                         <Grid.Row stretched>
                             <Grid.Column width={6}>
                                 <Form.Field>
-                                    <input name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.handleChange}/>
+                                    <input name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.HandleChange}/>
                                 </Form.Field>
                                 <Form.Field>
-                                    <select name="PageCategory" defaultValue="default" onChange={this.handleChange}>
+                                    <select name="PageCategory" defaultValue="default" onChange={this.HandleChange}>
                                         <option value="default">Catégorie</option>
                                         <option value="city">Découvrir la ville</option>
                                         <option value="administration">Administration</option>
@@ -119,7 +115,7 @@ class PagesCreate extends Component{
                                     </select>
                                 </Form.Field>
                                 <Form.Field>
-                                    <select name="Template" defaultValue="default" onChange={this.handleChange}>
+                                    <select name="Template" defaultValue="default" onChange={this.HandleChange}>
                                         <option value="default">Template</option>
                                         <option value="1"> 1 | Défaut</option>
                                         <option value="2"> 2 | Sans Bannière</option>
@@ -128,10 +124,10 @@ class PagesCreate extends Component{
                                 </Form.Field>
                                 <Form.Input>
                                         <label className="btn btn-sm btn-outline-info" htmlFor="bannerInput"><i className="icon image"></i> Choisir une bannière</label>
-                                        <input required name="Banner" type="file" id="bannerInput" onChange={this.handleChange}/>
+                                        <input required name="Banner" type="file" id="bannerInput" onChange={this.HandleChange}/>
                                 </Form.Input>
                                 <Form.Field>
-                                    <button type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
+                                    <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                 </Form.Field>
                             </Grid.Column>
                             <Grid.Column width={10}>
@@ -139,21 +135,14 @@ class PagesCreate extends Component{
                                 name="PageContent"
                                 modules={modules}
                                 formats={formats}
-                                onChange={this.handleChangeInTextEditor}
+                                onChange={this.HandleChangeInTextEditor}
                                 />
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
                 </Form>
             </Modal.Description>
-            <Dimmer active={this.state.displayDimmer} inverted>
-                    <Loader size="large" disabled={this.state.disableLoader}/>
-                    <Message size="large" hidden={this.state.hideStatus} positive>
-                        <Message.Header>
-                            <Icon name='check' /> Mise en ligne
-                        </Message.Header>
-                    </Message>
-            </Dimmer>
+            <LoaderComponent action={this.state.action} />
         </Modal.Content>
     </Modal>    
     )}

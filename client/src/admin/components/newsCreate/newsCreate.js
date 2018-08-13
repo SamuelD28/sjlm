@@ -2,7 +2,8 @@
 
 import React, {Component} from 'react';
 import {Forms, Ajax} from '../../../shared/utility.js';
-import {Form, Modal, Loader, Dimmer, Icon, Message} from 'semantic-ui-react';
+import {Form, Modal} from 'semantic-ui-react';
+import LoaderComponent from '../LoaderComponent.js';
 
 // Css module import
 import CSSModules from 'react-css-modules';
@@ -11,69 +12,51 @@ import styles from './newsCreate.module.css';
 //This components hold the form to and fonctionality to create a new post in the database.
 class NewsCreate extends Component{
     
-    //Initial State declaration. Used for use interaction.
-    state = ({
-        disableLoader: true,
-        displayDimmer: false,
-        hideStatus: true
-    });
-    
     //We initialise an empty form data in witch we will append every input that we entered informations
     constructor(props)
     {
         super(props);
         this.formData = {};
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit  = this.handleSubmit.bind(this);
-        this.ResetForm = this.ResetForm.bind(this);
+        this.state= ({disableSubmit : true});
     }
     
     //Function that handles the sbmit of the form
-    async handleSubmit()
+    CreateNewsInDb = async () =>
     {
-        //Display the laoding
-        await this.setState({
-            displayDimmer : true,
-            disableLoader: false
-        });
+        //Change the laoder component status
+        this.ChangeActionState(1000, true, "Post");
         
+        //Does a post request to the server
         let postedData = await Ajax.PostData("/api/news", this.formData);
+    
+        //Add the newly created news in the temporary state
         this.props.CreateInTempState(postedData);
-        
-        //Hides the laoding and dispaly the status message
-        setTimeout(() =>{
-            this.setState({
-                disableLoader: true,
-                hideStatus: false
-            });
-            
-        }, 1000);
     }
     
     //Function that handles every change we make to the inputs contain in the form.
-    handleChange(e)
+    HandleChange = (e) =>
     {
+        this.setState({disableSubmit: false});
         let inputValue = Forms.RetrieveValueFromInput(e);
         Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-    }        
+    }      
     
-    //Function that resets the state when the modal box is closed.
-    ResetForm()
+    //Function that modify the action state that interacts with the action loader component
+    ChangeActionState = (latency, isOnGoing, type) => 
     {
-        setTimeout(() => {
-            this.setState({
-                disableLoader: true,
-                displayDimmer: false,
-                hideStatus: true
-            });
-        }, 1000);
+        this.setState({
+            action: {
+                latency: latency,
+                isOnGoing: isOnGoing,
+                type: type
+            }
+        });
     }
     
     render()
     {
     return(
     <Modal 
-    onClose={this.ResetForm.bind(this)} 
     trigger={
     <div className="cardContainer">
         <div className="cardOverlay">
@@ -88,19 +71,19 @@ class NewsCreate extends Component{
     <Modal.Header>Nouvelle Actualitée</Modal.Header>
     <Modal.Content>
         <Modal.Description>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.CreateNewsInDb}>
                     <Form.Field>
                         <div className="ui toggle checkbox">
-                            <input onChange={this.handleChange} name="Important" type="checkbox" />
+                            <input onChange={this.HandleChange} name="Important" type="checkbox" />
                             <label>Actualitée Prioritaire</label>
                         </div>
                     </Form.Field>
                     <Form.Group>
                         <Form.Field width={12}>
-                           <input name="Title" type="text" placeholder="Titre" onChange={this.handleChange} required/>
+                           <input name="Title" type="text" placeholder="Titre" onChange={this.HandleChange} required/>
                         </Form.Field>
                         <Form.Field width={4}>
-                            <select className="ui dropdown" name="Category" onChange={this.handleChange} required>
+                            <select className="ui dropdown" name="Category" onChange={this.HandleChange} required>
                                 <option defaultValue>Catégorie</option>
                                 <option>Évenement</option>
                                 <option>Activité</option>
@@ -115,36 +98,29 @@ class NewsCreate extends Component{
                         </Form.Field>
                     </Form.Group>
                     <Form.Field>
-                        <textarea name="Description" type="textarea" placeholder=" Description" onChange={this.handleChange} required></textarea>
+                        <textarea name="Description" type="textarea" placeholder=" Description" onChange={this.HandleChange} required></textarea>
                     </Form.Field>
                     <Form.Group>
                         <Form.Field>
                             <label className="btn btn-sm btn-outline-info" htmlFor="imgInput"><i className="far fa-image"></i> Choisir une Image</label>                        
-                            <input id="imgInput" name="Image" type="file" onChange={this.handleChange} required/>
+                            <input id="imgInput" name="Image" type="file" onChange={this.HandleChange} required/>
                         </Form.Field>
                         <Form.Field>
                             <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="far fa-file"></i> Choisir un Fichier</label>
-                            <input id="documentInput" name="File" type="file" onChange={this.handleChange}/>
+                            <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
                         </Form.Field>
                     </Form.Group>
                     <Form.Field inline>
                         <input className="ui checkbox" onClick={Forms.ToggleInput} linkedto="DateDue" type="checkbox" />
                         <label>Date D'échéance</label>
-                        <input name="DateDue" type="date" disabled onChange={this.handleChange} required/>
+                        <input name="DateDue" type="date" disabled onChange={this.HandleChange} required/>
                     </Form.Field>
                     <Form.Field>
-                        <button type="submit" className="btn btn-primary"><i className="icon save"></i> Publier</button>
+                        <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Publier</button>
                     </Form.Field>
                 </Form>
             </Modal.Description>
-            <Dimmer active={this.state.displayDimmer} inverted>
-                    <Loader size="large" disabled={this.state.disableLoader}/>
-                    <Message size="large" hidden={this.state.hideStatus} positive>
-                        <Message.Header>
-                            <Icon name='check' /> Mise en ligne
-                        </Message.Header>
-                    </Message>
-            </Dimmer>
+            <LoaderComponent action={this.state.action}/>
         </Modal.Content>
     </Modal>    
     )}

@@ -52,7 +52,6 @@ Api.GetMembers = function(req, res)
 
 Api.CreateMembers = function(req, res)
 {
-    console.log(req.body);
     Members.create(req.body)
          .then((members) =>{
             console.log("~Successfully created member"); 
