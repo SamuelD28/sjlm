@@ -16,7 +16,9 @@ class MembersCreate extends Component{
     CreateMemberInDb = async () =>
     {
         this.ChangeActionState(1000, true, "Post");
+        
         let postedData = await Ajax.PostData("/api/members", this.formData);
+        
         this.props.CreateInTempState(postedData);
     }
     

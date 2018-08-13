@@ -72,7 +72,7 @@ class PagesCard extends Component{
         console.log(this.formData);
     }
     
-    //Function that handles the change in the text editor
+    //Function that handles the change in the text
     HandleChangeInTextEditor = (e) =>
     {
         this.setState({disableSubmit: false})

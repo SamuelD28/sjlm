@@ -58,6 +58,7 @@ class LoaderComponent extends Component{
             case "POST": this.DisplayAction("Données sauvegardées", "positive");break;
             case "PUT": this.DisplayAction("Modifications sauvegardées", "info"); break;
             case "DELETE" : this.DisplayAction("Suppression effectuée", "negative"); break;
+            default: throw new Error("~Error : The requested action is not handled. Action : " + this.props.action.type);
         }
     }
     
