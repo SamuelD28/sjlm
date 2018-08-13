@@ -270,6 +270,11 @@ h1, h2, h3, h4, h5,h6{
     width: 100% !important;
 }
 
+.section-form{
+    display: flex !important;
+    width: 100% !important;
+}
+
 .section-column{
     display: flex !important;
     flex-direction: column !important;
@@ -377,4 +382,19 @@ input[type=date]{
 }
 .icon{
     margin: 0 !important;
+}
+
+
+/*Css to affect the quill text editor. Could be extracted for faster time load*/
+.quill{
+    border: 1px solid #ccc;
+}
+
+.ql-container{
+    border: none !important;
+}
+
+.ql-toolbar{
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
 }

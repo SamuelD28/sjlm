@@ -1,19 +1,27 @@
-.pagesForm{
-    display: grid !important;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-areas: "pagesContentInput pagesTitleInput pagesTitleInput"
-                         "pagesContentInput pagesCategoryInput pagesTemplateInput"
-                         "pagesContentInput pagesBannerInput ."
-                         "pagesContentInput pagesSubmit .";
-    grid-gap: 1vw;
+.pagesFormRight{
+    width: 60%;
+    display: inline-block;
 }
+
+.pagesFormLeft{
+    display: inline-block;
+    width: 40%;
+}
+
+.pagesInputs{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "pagesTitleInput pagesTitleInput"
+                           "pagesCategoryInput pagesTemplateInput"
+                           "pagesBannerInput ."
+                           "pagesSubmit .";
+    grid-gap: 1vw;
+    /*padding-right: 1vw;*/
+}
+
 
 .pagesCategoryInput{
     grid-area: pagesCategoryInput;
-}
-
-.pagesContentInput{
-    grid-area: pagesContentInput;
 }
 
 .pagesTitleInput{
@@ -30,4 +38,5 @@
 
 .pagesSubmit{
     grid-area: pagesSubmit;
+    width: 60%;
 }

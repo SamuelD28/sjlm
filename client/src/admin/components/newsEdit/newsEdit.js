@@ -149,7 +149,7 @@ class NewsEdit extends Component{
         </div>} closeIcon>
         <Modal.Header>Modifier une Actualitée</Modal.Header>
         <Modal.Content>
-            <Modal.Description className="section-row">
+            <Modal.Description className="section-form">
                 <div className="ui spaced image img-bg" style={{backgroundImage: `url('/${this.formData.Image}')`, width: "40%"}}>
                 </div>
                 <Form onSubmit={this.handleSubmit} style={{width: "60%"}}>

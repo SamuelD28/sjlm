@@ -141,7 +141,7 @@ class MembersEdit extends Component{
     closeIcon>
     <Modal.Header>Modifier un membre</Modal.Header>
         <Modal.Content>
-            <Modal.Description className="section-row">
+            <Modal.Description className="section-form">
                 <div className="ui spaced image img-bg" style={{backgroundImage: `url('/${this.formData.Photo}')`, width: "40%"}}>
                 </div>
                 <Form onSubmit={this.handleSubmit} style={{width: "60%"}}>

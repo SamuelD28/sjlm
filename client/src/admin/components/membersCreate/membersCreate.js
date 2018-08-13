@@ -17,7 +17,6 @@ class MembersCreate extends Component{
     
     async handleSubmit()
     {
-        console.log("form is beeing submitted");
         let postedData = await Ajax.PostData("/api/members", this.formData);
         this.props.CreateInTempState(postedData);
     }

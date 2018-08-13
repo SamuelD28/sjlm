@@ -1,0 +1,58 @@
+.pagesCard{
+    border: 2px solid rgba(34,36,38,.15);
+    cursor: pointer;
+    margin: .5vw 0 ;
+    padding: .5vw;
+}
+
+.pagesCard > h4{
+    transition: transform .15s ease;
+}
+
+.pagesCard:hover > h4{
+    transform: translateX(1.5%);
+    transition: transform .15s ease;
+}
+
+.pagesFormRight{
+    width: 60%;
+    display: inline-block;
+}
+
+.pagesFormLeft{
+    display: inline-block;
+    width: 40%;
+}
+
+.pagesInputs{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "pagesTitleInput pagesTitleInput"
+                           "pagesCategoryInput pagesTemplateInput"
+                           "pagesBannerInput ."
+                           "pagesSubmit .";
+    grid-gap: 1vw;
+    /*padding-right: 1vw;*/
+}
+
+
+.pagesCategoryInput{
+    grid-area: pagesCategoryInput;
+}
+
+.pagesTitleInput{
+    grid-area: pagesTitleInput;
+}
+
+.pagesTemplateInput{
+    grid-area: pagesTemplateInput;
+}
+
+.pagesBannerInput{
+    grid-area: pagesBannerInput;
+}
+
+.pagesSubmit{
+    grid-area: pagesSubmit;
+    width: 60%;
+}

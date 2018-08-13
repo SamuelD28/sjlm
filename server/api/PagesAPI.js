@@ -50,10 +50,10 @@ Api.GetPages = function(req, res)
 
 Api.CreatePages = function(req, res)
 {
-    let Query = Pages.create(req.body);
-    Query.exec()
+    Pages.create(req.body)
          .then((members) =>{
             console.log("~Successfully created pages"); 
+            res.json(members);
          })
          .catch((err) => {
             console.log(err); 

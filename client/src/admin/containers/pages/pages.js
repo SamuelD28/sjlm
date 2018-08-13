@@ -37,7 +37,7 @@ class Pages extends CrudComponent{
     <div className={adminStyles.adminPage}> 
         <section className="section-row">
             <div styleName="pagesLeftColumn columnContainer">
-                <PagesCreate />
+                <PagesCreate CreateInTempState={this.CreateInTempState}/>
                 <button className="btn btn-primary"><i className="search icon"></i> Rechercher</button>
                 <Label style={{margin: ".5vw"}} basic pointing="right" size="large">Nombres de Pages : 36</Label>
                 <Label style={{margin: ".5vw"}} basic pointing="right" size="large">Nombre de Catégories : 7 </Label>

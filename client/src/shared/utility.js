@@ -287,11 +287,10 @@ Forms.RetrieveValueFromInput = function(e)
 }
 
 //Function that creates a key to an object passed as a paraemter with the value passed as a parameter
-Forms.AppendValueToObject = function(e, objectToAppend, valueToAppend)
+Forms.AppendValueToObject = function(keyToAppend, objectToAppend, valueToAppend)
 {
     try{
         Utility.IsValuesUndefinedOrNull(objectToAppend, valueToAppend);
-        const keyToAppend = e.target.name;
         return objectToAppend[keyToAppend] =  valueToAppend;
     }
     catch(err){
