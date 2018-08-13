@@ -62,7 +62,7 @@ Api.CreatePages = function(req, res)
 
 Api.UpdatePages = function(req, res)
 {
-    let Query = Pages.findByIdAndUpdate(req.params.id, req.body);
+    let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true});
     Query.exec()
          .then((members) =>{
             console.log("~Updated Members ID : " + req.params.id);

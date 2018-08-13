@@ -49,7 +49,7 @@ class NewsEdit extends Component{
     {
         this.setState({disableSubmit: false});
         let inputValue = Forms.RetrieveValueFromInput(e);
-        Forms.AppendValueToObject(e, this.formData, inputValue);
+        Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
     }  
      
     //Function that handles the submit of the form.

@@ -356,7 +356,6 @@ Ajax.PutData = async function (url, newData)
 {
     try{
         Utility.IsValuesUndefinedOrNull(url, newData);
-        
         let updatedData;
         let ajaxContent = { method: "PUT",
                             headers: {"Content-Type" : "application/json"},

@@ -54,7 +54,7 @@ class NewsCreate extends Component{
     handleChange(e)
     {
         let inputValue = Forms.RetrieveValueFromInput(e);
-        Forms.AppendValueToObject(e, this.formData, inputValue);
+        Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
     }        
     
     //Function that resets the state when the modal box is closed.

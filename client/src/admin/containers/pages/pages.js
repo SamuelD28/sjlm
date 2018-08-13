@@ -27,7 +27,7 @@ class Pages extends CrudComponent{
             let array = this.tempState.db.slice();
             return( 
             array.map((item , index) =>(
-            <PagesCard pages={item} key={item._id}/>
+            <PagesCard pages={item} key={item._id} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
             )))
         }
     }

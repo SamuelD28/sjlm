@@ -1,6 +1,6 @@
 //Initial Declaration and importation
 import React, {Component} from 'react';
-import {Modal, Form, Grid } from 'semantic-ui-react';
+import {Modal, Form, Grid , Dimmer, Loader,Icon, Message} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms, Ajax} from '../../../shared/utility.js';
 
@@ -26,6 +26,12 @@ const formats = [
 
 class PagesCreate extends Component{
     
+    state = ({
+        disableLoader: true,
+        displayDimmer: false,
+        hideStatus: true
+    });
+    
     constructor(props)
     {
         super(props);
@@ -34,8 +40,21 @@ class PagesCreate extends Component{
     
     handleSubmit = async () =>
     {
+        await this.setState({
+            displayDimmer : true,
+            disableLoader: false
+        });
+        
         let postedData = await Ajax.PostData("/api/pages", this.formData);
         this.props.CreateInTempState(postedData);
+        
+         setTimeout(() =>{
+            this.setState({
+                disableLoader: true,
+                hideStatus: false
+            });
+            
+        }, 1000);
     }
     
     handleChange = (e) =>
@@ -47,6 +66,17 @@ class PagesCreate extends Component{
     handleChangeInTextEditor = (e) =>
     {
         Forms.AppendValueToObject("PageContent", this.formData, e);
+    }
+    
+    ResetForm()
+    {
+        setTimeout(() => {
+            this.setState({
+                disableLoader: true,
+                displayDimmer: false,
+                hideStatus: true
+            });
+        }, 1000);
     }
     
     render(){
@@ -73,10 +103,12 @@ class PagesCreate extends Component{
                     <Grid columns={2} divided>
                         <Grid.Row stretched>
                             <Grid.Column width={6}>
-                                <div styleName="pagesInputs">
-                                    <input name="PageTitle" styleName="pagesTitleInput" type="text" placeholder="Titre de la page" onChange={this.handleChange}/>
-                                    <select name="PageCategory" styleName="pagesCategoryInput" onChange={this.handleChange}>
-                                        <option selected default hidden>Catégorie</option>
+                                <Form.Field>
+                                    <input name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.handleChange}/>
+                                </Form.Field>
+                                <Form.Field>
+                                    <select name="PageCategory" defaultValue="default" onChange={this.handleChange}>
+                                        <option value="default">Catégorie</option>
                                         <option value="city">Découvrir la ville</option>
                                         <option value="administration">Administration</option>
                                         <option value="services">Les services</option>
@@ -85,18 +117,22 @@ class PagesCreate extends Component{
                                         <option value="news">Actualités</option>
                                         <option value="others">Autres</option>
                                     </select>
-                                    <select name="Template" styleName="pagesTemplateInput" onChange={this.handleChange}>
-                                        <option selected default hidden>Template</option>
+                                </Form.Field>
+                                <Form.Field>
+                                    <select name="Template" defaultValue="default" onChange={this.handleChange}>
+                                        <option value="default">Template</option>
                                         <option value="1"> 1 | Défaut</option>
                                         <option value="2"> 2 | Sans Bannière</option>
                                         <option value="3"> 3 | Bannière sur côté</option>
                                     </select>
-                                    <div styleName="pagesBannerInput">
+                                </Form.Field>
+                                <Form.Input>
                                         <label className="btn btn-sm btn-outline-info" htmlFor="bannerInput"><i className="icon image"></i> Choisir une bannière</label>
                                         <input required name="Banner" type="file" id="bannerInput" onChange={this.handleChange}/>
-                                    </div>
-                                    <button styleName="pagesSubmit" type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
-                                </div>
+                                </Form.Input>
+                                <Form.Field>
+                                    <button type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
+                                </Form.Field>
                             </Grid.Column>
                             <Grid.Column width={10}>
                                 <ReactQuill 
@@ -110,6 +146,14 @@ class PagesCreate extends Component{
                     </Grid>
                 </Form>
             </Modal.Description>
+            <Dimmer active={this.state.displayDimmer} inverted>
+                    <Loader size="large" disabled={this.state.disableLoader}/>
+                    <Message size="large" hidden={this.state.hideStatus} positive>
+                        <Message.Header>
+                            <Icon name='check' /> Mise en ligne
+                        </Message.Header>
+                    </Message>
+            </Dimmer>
         </Modal.Content>
     </Modal>    
     )}
