@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import {Ajax, Forms, Utility} from '../../shared/utility.js';
 
-//This Component is responsible for the interactions with the database make inside a form. Put/Delete/Post.
+//This Component is responsible for the interactions with the database. Put/Delete/Post.
 //This Component relies on the Crud Component. You need to pass the crud component methods that you want to do (Put, Delete, Post)
 //as props to the child form component. See the Crud Component for more info on how to integrate it to a component.
 class FormComponent extends Component{

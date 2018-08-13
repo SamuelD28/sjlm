@@ -22,6 +22,7 @@ class MembersEdit extends FormComponent{
     //Function that deletes the member in the db
     handleDelete = (e) =>
     {
+        //COULD BE OPTIMISED
         e.preventDefault();
         this.DeleteInDb("/api/members/");
     }

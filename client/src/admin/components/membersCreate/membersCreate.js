@@ -1,44 +1,16 @@
 //Initial declaration and importation 
-import React, {Component} from 'react';
+import React from 'react';
+import FormComponent from '../FormComponent.js';
 import {Modal, Form, Input, Label} from 'semantic-ui-react';
 import {Forms, Ajax} from '../../../shared/utility.js';
 import LoaderComponent from '../LoaderComponent.js';
 
-class MembersCreate extends Component{
+class MembersCreate extends FormComponent{
     
-    constructor(props)
+    //Function that creates 
+    HandleSubmit = () =>
     {
-        super(props);
-        this.formData = {};
-        this.state = ({disableSubmit: true});
-    }
-    
-    CreateMemberInDb = async () =>
-    {
-        this.ChangeActionState(1000, true, "Post");
-        
-        let postedData = await Ajax.PostData("/api/members", this.formData);
-        
-        this.props.CreateInTempState(postedData);
-    }
-    
-    //METHODE REPETIVE. EXTRAIRE DANS UNE CLASSE?
-    HandleChange = (e) =>
-    {
-        let inputValue = Forms.RetrieveValueFromInput(e);
-        Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-    }
-    
-     //Function that modify the action state that interacts with the action loader component. COULD BE EXTRACTED LATER ON.
-    ChangeActionState = (latency, isOnGoing, type) => 
-    {
-        this.setState({
-            action: {
-                latency: latency,
-                isOnGoing: isOnGoing,
-                type: type
-            }
-        });
+        this.CreateInDb("/api/members");    
     }
     
     render(){
@@ -59,7 +31,7 @@ class MembersCreate extends Component{
     <Modal.Header>Ajouter un nouveau membre</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.CreateMemberInDb}>
+                <Form onSubmit={this.HandleSubmit}>
                     <Form.Group widths="equal">
                         <Form.Field required>
                             <input required name="FirstName" type="text" placeholder="Nom" onChange={this.HandleChange}/>

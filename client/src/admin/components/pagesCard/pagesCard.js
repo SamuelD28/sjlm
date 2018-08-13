@@ -1,5 +1,6 @@
 //Initial Declaration and state initialisation
-import React, {Component} from 'react';
+import React from 'react';
+import FormComponent from '../FormComponent.js';
 import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms, Ajax} from '../../../shared/utility.js';
@@ -26,69 +27,32 @@ const formats = [
     'align'
 ];
 
-
-class PagesCard extends Component{
+class PagesCard extends FormComponent{
     
     constructor(props)
     {
         super(props);
         this.formData = Object.create(this.props.pages);
-        this.state=({disableSubmit: true});
     }
     
     //Function that update a resquested page in the db and then updates it in the temporary state
-    UpdatePageInDb = async () =>
+    HandleSubmit = () =>
     {
-        //Tells the loader component to change its status
-        this.ChangeActionState(1000, true, "Put");
-        
-        //Does a put request to the server
-        let updatedData = await Ajax.PutData("/api/pages/", this.formData);
-        
-        //Updates the page in the temp state
-        this.props.UpdateTempState(updatedData);
+        this.UpdateInDb("/api/pages/");
     }
     
     //Function that delete the requested page in the db and then removes it from the temporary state
-    DeletePageInDb = (e) =>
+    HandleDelete = (e) =>
     {
         e.preventDefault();
-        
-        this.ChangeActionState(1000, true, "Delete");
-        
-        Ajax.DeleteData("/api/pages/", this.formData._id);
-        
-        setTimeout(() =>{
-            this.props.RemoveFromTempState(this.formData);
-        }, 2000);
+        this.DeleteInDb("/api/pages/");
     }
     
-    //Function that handles the change of every input in the form except the text editor
-    HandleChange = (e) =>
-    {
-        this.setState({disableSubmit: false});
-        let inputValue = Forms.RetrieveValueFromInput(e);
-        Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-        console.log(this.formData);
-    }
-    
-    //Function that handles the change in the text
+    //Function that handles the change in the text. NEEDS TO BE IMPLEMENTED IN THE FORM COMPONENT.
     HandleChangeInTextEditor = (e) =>
     {
         this.setState({disableSubmit: false})
         Forms.AppendValueToObject("PageContent", this.formData, e);
-    }
-    
-     //Function that modify the action state that interacts with the action loader component
-    ChangeActionState = (latency, isOnGoing, type) => 
-    {
-        this.setState({
-            action: {
-                latency: latency,
-                isOnGoing: isOnGoing,
-                type: type
-            }
-        });
     }
     
     render(){
@@ -104,7 +68,7 @@ class PagesCard extends Component{
     <Modal.Header>Ajouter une nouvelle page</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.UpdatePageInDb}>
+                <Form onSubmit={this.HandleSubmit}>
                     <Grid columns={2} divided>
                         <Grid.Row>
                             <Grid.Column width={6}> 
@@ -134,7 +98,7 @@ class PagesCard extends Component{
                                         <input name="Banner" type="file" id="bannerInput" onChange={this.HandleChange}/>
                                     </Form.Input>
                                     <Form.Field>
-                                        <button onClick={this.DeletePageInDb} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
+                                        <button onClick={this.HandleDelete} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
                                         <button disabled={this.state.disableSubmit} type="submit" style={{float: 'right'}} className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                     </Form.Field>
                             </Grid.Column>

@@ -78,7 +78,7 @@ Api.DeletePages = function(req, res)
     let Query = Pages.findByIdAndRemove(req.params.id);
     Query.exec()
          .then(() =>{
-            console.log("~Successfully deleted Members Id : " + req.params.id);
+            console.log("~Deleted Pages Id : " + req.params.id);
          })
          .catch((err) =>{
             console.log("~An Error occured while deleting this pages \n ERROR : " + err);

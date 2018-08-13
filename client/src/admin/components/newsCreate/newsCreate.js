@@ -1,6 +1,5 @@
-/* global fetch*/
-
-import React, {Component} from 'react';
+import React from 'react';
+import FormComponent from '../FormComponent.js';
 import {Forms, Ajax} from '../../../shared/utility.js';
 import {Form, Modal} from 'semantic-ui-react';
 import LoaderComponent from '../LoaderComponent.js';
@@ -10,47 +9,12 @@ import CSSModules from 'react-css-modules';
 import styles from './newsCreate.module.css';
 
 //This components hold the form to and fonctionality to create a new post in the database.
-class NewsCreate extends Component{
-    
-    //We initialise an empty form data in witch we will append every input that we entered informations
-    constructor(props)
-    {
-        super(props);
-        this.formData = {};
-        this.state= ({disableSubmit : true});
-    }
+class NewsCreate extends FormComponent{
     
     //Function that handles the sbmit of the form
-    CreateNewsInDb = async () =>
+    HandleSubmit = () =>
     {
-        //Change the laoder component status
-        this.ChangeActionState(1000, true, "Post");
-        
-        //Does a post request to the server
-        let postedData = await Ajax.PostData("/api/news", this.formData);
-    
-        //Add the newly created news in the temporary state
-        this.props.CreateInTempState(postedData);
-    }
-    
-    //Function that handles every change we make to the inputs contain in the form.
-    HandleChange = (e) =>
-    {
-        this.setState({disableSubmit: false});
-        let inputValue = Forms.RetrieveValueFromInput(e);
-        Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-    }      
-    
-    //Function that modify the action state that interacts with the action loader component
-    ChangeActionState = (latency, isOnGoing, type) => 
-    {
-        this.setState({
-            action: {
-                latency: latency,
-                isOnGoing: isOnGoing,
-                type: type
-            }
-        });
+        this.CreateInDb("/api/news");
     }
     
     render()
@@ -71,7 +35,7 @@ class NewsCreate extends Component{
     <Modal.Header>Nouvelle Actualitée</Modal.Header>
     <Modal.Content>
         <Modal.Description>
-                <Form onSubmit={this.CreateNewsInDb}>
+                <Form onSubmit={this.HandleSubmit}>
                     <Form.Field>
                         <div className="ui toggle checkbox">
                             <input onChange={this.HandleChange} name="Important" type="checkbox" />
