@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms, Ajax} from '../../../shared/utility.js';
-import LoaderComponent from '../LoaderComponent.js';
+import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 //Css Module 
 import CSSModules from 'react-css-modules';

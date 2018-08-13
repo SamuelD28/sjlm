@@ -134,6 +134,14 @@ Utility.CloseModal = function(event, modalID)
     }
 }
 
+//Function that the class was instantiated via abstraction and not directly. Otherwise throws an error that we purposely dont catch.
+Utility.IsClassAbstract = function(context, classObject)
+{
+    if(context.constructor === classObject){
+        throw new Error("~Error : This is an abstract class, you can't instantiate it directly.");
+    }
+}
+
 //Function that toggle the disable on a btn element
 Utility.ChangeBtnState =function(e)
 {

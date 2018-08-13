@@ -1,8 +1,8 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
-import {Forms, Ajax} from '../../../shared/utility.js';
+import {Forms} from '../../../shared/utility.js';
 import {Form, Modal} from 'semantic-ui-react';
-import LoaderComponent from '../LoaderComponent.js';
+import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 // Css module import
 import CSSModules from 'react-css-modules';

@@ -12,6 +12,7 @@ class FormComponent extends Component{
         super(props);
         this.formData = {};
         this.state = ({disableSubmit: true});
+        Utility.IsClassAbstract(this, FormComponent);
     }
     
     //Function that handles the change made in every input except the one in hte texte editor

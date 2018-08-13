@@ -8,12 +8,13 @@ import {Utility, Ajax} from '../../shared/utility.js';
 //interacts with the database but its not necessary. See form component for more information.
 class CrudComponent extends Component{
     
-    //Initialise an empty state and temporary state
+    //Initialise an empty state and temporary state. Apply the abstract constraits to the constructor.
     constructor(props)
     {
         super(props);
         this.state = {};
         this.tempState= {};
+        Utility.IsClassAbstract(this, CrudComponent);
     }
     
     //Function that reads the data from the server and insert it in the temporary state.

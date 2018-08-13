@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Dimmer, Message, Icon, Loader} from 'semantic-ui-react';
-import {Utility} from '../../shared/utility.js';
+import {Utility} from '../../../shared/utility.js';
 
 class LoaderComponent extends Component{
     

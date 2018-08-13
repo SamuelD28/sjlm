@@ -2,8 +2,7 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Modal, Form, Input, Label} from 'semantic-ui-react';
-import {Forms, Ajax} from '../../../shared/utility.js';
-import LoaderComponent from '../LoaderComponent.js';
+import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 class MembersCreate extends FormComponent{
     

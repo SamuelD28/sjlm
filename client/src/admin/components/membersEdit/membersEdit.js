@@ -2,7 +2,7 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Modal, Form, Input, Label} from 'semantic-ui-react';
-import LoaderComponent from '../LoaderComponent.js';
+import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 class MembersEdit extends FormComponent{
     
