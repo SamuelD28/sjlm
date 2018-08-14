@@ -108,6 +108,7 @@
 .secondaryLink{
     align-items: center;
     box-sizing: border-box;
+    color: inherit;
     display: flex;
     white-space: nowrap;
     transition: all .5s ease;

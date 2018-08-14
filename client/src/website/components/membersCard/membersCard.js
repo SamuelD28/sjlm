@@ -10,19 +10,19 @@ class MembersCard extends Component{
     {
         super(props);
         this.state = {};
-        this.GetMembers = Ajax.GetData.bind(this);
     }
     
-    componentDidMount()
+    async componentDidMount()
     {
-        this.GetMembers("/api/members");
+        let members = await Ajax.GetData("/api/members");
+        this.setState({members});
     }
     
     render(){
-    if(this.state.data !== undefined)
+    if(this.state.members !== undefined)
     {
     return(
-    this.state.data.map((item, index) =>(
+    this.state.members.map((item, index) =>(
     <div styleName="membersCard" key={index}>
         <div styleName="membersPhoto" className="img-bg" style={{backgroundImage: `url('/${item.Photo}')`}}></div>
         <div styleName="membersInfo">

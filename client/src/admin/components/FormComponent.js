@@ -6,7 +6,7 @@ import {Ajax, Forms, Utility} from '../../shared/utility.js';
 //as props to the child form component. See the Crud Component for more info on how to integrate it to a component.
 class FormComponent extends Component{
     
-    //Initialise an empty form data object that needs to be instantiate in the children component.
+    //Initialise an empty form data object that needs to be instantiate in the children component. Apply the abstraction constraits so the class is not instantiated directly.
     constructor(props)
     {
         super(props);

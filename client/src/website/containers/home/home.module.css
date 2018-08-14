@@ -78,9 +78,12 @@
     outline: none;
 }
 
-.bannerBtn{
+.searchBtn{
+    border: none;
     background-color: #f1efee;
     color:  #37474F;
+    cursor: pointer;
+    padding: .5vw .25vw;
     width: 10%;
 }
 
@@ -100,10 +103,10 @@
 }
 
 .sectionTitle{
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.75em;
-    padding: 1.5vw 0;
+    background-color:  white;
+    display: inline-block;
+    padding: 1vw 1.5vw;
+    margin: 1vw 0;
 }
 
 
@@ -141,48 +144,12 @@
     padding-bottom: 5vw;
 }
 
-.contactContent{
-    display: flex;
+.contactInfo{
+    background-color: white;
+    padding: .5vw;
 }
 
 .contactForm{
-    align-items: center;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
-    grid-template-areas: "firstNameInput lastNameInput"
-                         "emailInput phoneInput"
-                         "subjectInput subjectInput"
-                         "messageInput messageInput"
-                         "send send";
-    grid-gap: 0 3vw;
-    margin: 0 auto;
-}
-
-.send{
-    background-color: #37474F;
-    grid-area: send;
-    padding: .25vw;
-}
-
-.firstNameInput{
-    grid-area: firstNameInput;
-}
-.lastNameInput{
-    grid-area: lastNameInput;
-}
-.emailInput{
-    grid-area: emailInput;
-}
-.phoneInput{
-    grid-area: phoneInput;
-}
-.subjectInput{
-    grid-area: subjectInput;
-}
-.messageInput{
-    align-self: stretch;
-    grid-area: messageInput;
-}
-.fileInput{
-    grid-area: fileInput;
+    background-color: white;
+    padding: .5vw;
 }

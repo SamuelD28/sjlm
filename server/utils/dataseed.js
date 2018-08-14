@@ -122,11 +122,13 @@ let membersData = [
 let pagesData   = [
 {
     Banner: "sample1.jpg",
+    PageCategory: "city",
     PageTitle: "LA MUNICIPALITÉ",
     PageContent: "Nous vous invitons à découvrir d’où vient notre appellation. Qui était Saint Jacques le Mineur. ''Saint Jacques apôtre'', est appelé Jacques d’Alphée, c’est-à-dire fils d’Alphée, frère du Seigneur, Jacques le Mineur et Jacques le Juste. Telles sont les origines du nom de notre communauté. Parcourez ensuite les textes relatant l’histoire et les origines de notre fondation sous le système seigneurial de l’an 1834. Puis, reportez-vous en 1873 et revivez l’atmosphère de l’époque dans notre paroisse. Si vous désirez en savoir plus sur les origines de notre belle municipalité; ses curés, ses églises et leurs difficultés d’implantation, les cimetières, les croix de chemin, la très belle chapelle reposoir, la vie municipale de l’époque avec ses écoles, ses chemins et montées. La vie scolaire, la vie d’autrefois avec une multitude de merveilleuses photos relatant les pratiques d’antan, l’architecture québécoise des années 1750-1825, des années 1800-1900, les maisons de la fin du 19e siècle et du début du 20e siècle, et plus encore sur la vie des familles fondatrices de Saint-Jacques-le-Mineur, nous vous invitons à vous procurer le très beau livre publié lors du 150ième anniversaire de fondation de la municipalité. ‘’ En hommage aux familles d’hier à celles d’aujourd’hui et à celles de demain’’."
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "city",
     PageTitle: "HISTORIQUE",
     PageContent: `LES ORIGINES
                     Les limites du territoire actuel de Saint-Jacques-le-Mineur se sont définies entre 1834 et 1856. En septembre 1832, une partie des habitants de la Côte St-Marc, St-André et Ste-Marguerite-de-Blairfindie (L’acadie) font part dans une requête, de leur désir d’être érigés en nouvelle paroise. Mgr Signay, évêque de Québec (l’évêché de Montréal n’existera qu’à partir de 1836), leur accorde ce privilège le 26 novembre 1834 après s’être assuré qu’il y avait assez de propriétaires pour bâtir une église et faire vivre un curé.
@@ -152,12 +154,14 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "administration",
     PageTitle: "ÉLUS ET ADMINISTRATION",
     PageContent: `Les municipalités disposent de pouvoirs qui leur sont délégués en vertu des lois adoptées par l’Assemblée nationale du Québec pour répondre aux besoins de leur population. Les principales compétences qui leur sont conférées concernent l’urbanisme, le zonage, le réseau routier local, l’eau potable et l’assainissement des eaux usées, la gestion des matières résiduelles, le développement communautaire et culturel, la cour municipale, l’habitation et le logement social, la police et la protection des incendies et les mesures d’urgence. Elles peuvent aussi intervenir dans plusieurs autres domaines tels la culture, les loisirs, les activités communautaires, les parcs et le développement économique local entre autres.
                   Nous vous invitons à découvrir les milles et uns aspects de la vie municipale. Vous retrouverez dans cette section les règlements municipaux, les avis publics, les procès-verbaux, le bottin des employés. Les membres du conseil municipal vous y sont présentés et le calendrier des séances du conseil est indiqué. C’est votre municipalité apprenez à la connaître.`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "city",
     PageTitle: "MOT DE LA MAIRESSE",
     PageContent: `C’est avec une grande fierté que je vous souhaite la bienvenue sur le site de la municipalité de Saint-Jacques-le-Mineur et vous convie à y faire une visite virtuelle ! 
                 Le site regroupe une foule d’informations tant sur notre histoire que sur notre structure organisationnelle et politique actuelle. Il présente également les différents services que nous offrons aux Jacqueminois et Jacqueminoises ; notre programmation culturelle, sportive et de loisirs ; les différents comités actifs sur notre territoire ; le bottin de nos entreprises et artisans locaux. Vous y trouverez également des informations ponctuelles d’intérêt général.
@@ -168,6 +172,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "administration",
     PageTitle: "CONSEIL MUNICIPAL",
     PageContent: `Le conseil municipal représente la population et prend les décisions sur les orientations et les priorités d’action de la municipalité. Il doit s’assurer que les services offerts dans la municipalité répondent aux besoins de la communauté.
                     La séance du conseil municipal est par excellence un exercice de démocratie municipale. Les élus prennent les décisions sous la forme de résolutions ou de règlements qu’ils adoptent lors d’une telle séance.
@@ -175,11 +180,13 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "news",
     PageTitle: "SÉANCE DU CONSEIL",
     PageContent: `La séance du conseil est le moment où se prend les décisions. Toutes les séances, ordinaires ou extraordinaires, sont publiques. Les citoyens et les citoyennes peuvent donc y assister pour connaître les décisions et les orientations prises par les élus. Une séance ordinaire doit être tenue à tous les mois selon le calendrier préétabli. Les séances extraordinaires, quant à elles, sont convoquées au besoin lorsqu’une décision du conseil est nécessaire avant la prochaine séance ordinaire.`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "finances",
     PageTitle: "BUDGET ANNUEL",
     PageContent: `Le budget annuel de la Municipalité de Saint-Jacques-le-Mineur est adopté par le conseil municipal lors d’une séance extraordinaire à tous les ans à la mi-décembre.
                     En vertu des lois, les municipalités ont l’obligation de présenter un budget équilibré, c’est-à-dire que les revenus doivent être au moins égaux aux dépenses prévues au budget. Le budget annuel, dont la principale source de revenus est issue des taxes municipales, permet à la municipalité d’absorber les coûts des services offerts aux contribuables.
@@ -190,6 +197,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "administration",
     PageTitle: "LOI SUR L’ACCÈS À L’INFORMATION",
     PageContent: `Accès à l’information
                     L’accès aux documents de la Municipalité permet aux citoyens de consulter les procès-verbaux des réunions du conseil, les livres de comptes, les pièces justificatives de même que tous les documents faisant partie des archives de la Municipalité.
@@ -199,6 +207,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "finances",
     PageTitle: "TAXES ET ÉVALUATIONS FONCIÈRES",
     PageContent: `Le rôle d’évaluation
                     Le rôle d’évaluation foncière est un résumé de l’inventaire des immeubles situés sur le territoire de la municipalité, évalués sur une même base et à une même date. En vigueur pour trois exercices financiers municipaux consécutifs, il sert principalement à indiquer la valeur de ces immeubles aux fins des taxations foncière municipale et scolaire. Le rôle d’évaluation foncière et une pièce majeure de l’information dont dispose le conseil pour préparer le budget. En effet, le prélèvement des taxes, qui constitue la principale source de recettes des municipalités, est basé en majeure partie sur l’évaluation foncière municipale.
@@ -224,6 +233,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "TRAVAUX PUBLICS ET URBANISME",
     PageContent: `Le Conseil de ville, la direction et les employés de la municipalité travaillent quotidiennement à offrir un environnement sain et une qualité de vie aux citoyens; à leur dispenser toute une gamme de services; et à répondre à leurs besoins dans des sphères d’activité très variées:
                 Environnement : collecte des ordures et recyclage, écocentre, récupération de piles etc.
@@ -237,6 +247,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "SERVICES PUBLICS",
     PageContent: `Animal errant, perdu ou trouvé
                     Déneigement
@@ -253,6 +264,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "Permis",
     PageContent: `Faire une demande
                     Voici les formulaires de demande de permis à remplir pour l'obtention d'un permis.
@@ -273,12 +285,14 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "city",
     PageTitle: "DÉVELOPPEMENT COMMERCIAL",
     PageContent: `Saint-Jacques-le-Mineur est composé de deux périmètres urbains distincts dont les vocations sont totalement différentes. Un premier qui englobe le village avec sa vision locale et de proximité. Nous espérons y voir se développer dans un avenir prochain une vie commerciale proche du citoyen. L’architecture québécoise est chez nous représentée par différents styles de maisons. Il y aurait certainement une de ces belles propriétés qui pourrait être transformée en B & B prête à accueillir les visiteurs pour une nuitée ou deux. Une autre pourrait se développer en épicerie locale, genre marché général ou en boutique pour vendre nos fabuleux produits locaux. Les opportunités sont grandes. Vous avez un projet; venez nous rencontrer.
                   Notre second périmètre urbain est établi à la sortie 21 de l’autoroute 15. Il s’inscrit dans un rayonnement régional et est désigné pôle économique pour son affectation de commerce lourd. Sa localisation de proximité avec l’autoroute 15 et sa position géographique de 29 kilomètres de l’entrée au Canada des visiteurs venant des États américains font de ce périmètre un choix des plus intéressant pour tout investisseur. Vous désirez implanter une entreprise, les portes de l’hôtel de ville vous sont grandes ouvertes. Venez en discuter avec nous.`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "ÉDUCATION",
     PageContent: `École Saint-Jacques
         115, rue Renaud, Saint-Jacques-le-Mineur, J0J 1Z0
@@ -291,6 +305,7 @@ let pagesData   = [
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "PRÉVENTION ET SÉCURITÉ",
     PageContent: `Service de protection des incendies de la municipalité de Saint-Jacques-le-Mineur
 La mission du service de sécurité incendie s’inscrit dans les responsabilités dévolues à une municipalité en matière de protection de ses citoyens.
@@ -375,6 +390,7 @@ Renseignements généraux : 450-245-0666`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "administration",
     PageTitle: "RÈGLEMENTS MUNICIPAUX",
     PageContent: `Le conseil d’une municipalité ne peut adopter des règlements que sur les sujets que la loi lui permet de réglementer. Le règlement est la décision du conseil qui fixe des règles relatives à une question d’ordre général. Contrairement à l’adoption de la résolution, l’adoption du règlement est soumise à des formalités fixées par la loi. Notamment, le règlement devra être précédé d’un avis de motion et être publié. Enfin, certains règlements sont également soumis à l’approbation des citoyens, ou d’une partie de ceux-ci, ou encore à l’approbation du gouvernement, du Ministre des Affaires municipales, des Régions et de l’Occupation du territoire, ou enfin à l’approbation d’un autre ministre ou organisme.
                 C’est la loi qui prévoit les cas où le conseil doit procéder par règlement et non par résolution.
@@ -382,6 +398,7 @@ Renseignements généraux : 450-245-0666`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "city",
     PageTitle: "ENVIRONNEMENT",
     PageContent: `L’un des grands défis pour la municipalité est de gérer de façon responsable les matières résiduelles produites sur notre territoire. L’élimination complète des déchets a longtemps été l’unique façon d’en disposer. De nos jours, la notion de gestion des matières résiduelles va bien au-delà de l’enfouissement et de l’incinération.
                 En matière de gestion des matières résiduelles, les 3RV… vous connaissez?
@@ -395,6 +412,7 @@ Renseignements généraux : 450-245-0666`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "MATIÈRES RÉSIDUELLES",
     PageContent: `Collecte pêle-mêle des matières recyclables et bac admissible
                 À compter du 15 octobre 2012, toutes les matières recyclables pourront être mélangées ensemble dans votre bac de recyclage. Verre, papier, plastique, carton et métal peuvent être déposés d’un côté du bac comme de l’autre. Toutes les matières doivent être à l’intérieur du bac car le camion mécanisé ne permet pas une collecte manuelle des matières qui seraient dans un sac ou une boîte à côté du bac.
@@ -407,6 +425,7 @@ Renseignements généraux : 450-245-0666`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "RECYCLER LES VIEUX ÉLECTRONIQUES",
     PageContent: `Pourquoi les produits électroniques doivent être recyclés?
                 Comme les boîtes de conserve et les journaux, les produits électroniques ne devraient jamais finir dans la poubelle. Une grande partie des plastiques et des métaux qu’ils contiennent peut être récupérée et réutilisée afin de fabriquer toutes sortes de choses.
@@ -414,6 +433,7 @@ Renseignements généraux : 450-245-0666`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "services",
     PageTitle: "Collectes des branches",
     PageContent: `Trois dates à retenir en 2018 :  22 mai, 7 août et 23 octobre 2018
                     Les branches doivent être déposées en bordure de la rue, le bout coupé du côté de la chaussée, au plus tard à 7h la journée de la collecte;
@@ -429,6 +449,7 @@ Renseignements généraux : 450-245-0666`
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "city",
     PageTitle: "MESURES PRISES PAR LA MUNICIPALITÉ",
     PageContent: `Vidange des fosses septiques
 Obligation de la municipalité
@@ -476,6 +497,7 @@ Preuve de naissance de votre enfant (certificat de naissance ou acte de naissanc
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "cultures",
     PageTitle: "LOISIRS ET BIBLIOTHÈQUE",
     PageContent: `Que serait une municipalité sans ses acteurs et installations sportives et communautaires? La municipalité de Saint-Jacques-le-Mineur offre des équipements et infrastructures qui font le plaisir de tous : terrains de jeu, parcs, terrain de baseball, patinoire, bibliothèque, organismes locaux tels que le Cercle des Fermières, etc.
                 Un merci chaleureux à nos nombreux bénévoles!
@@ -488,6 +510,7 @@ Preuve de naissance de votre enfant (certificat de naissance ou acte de naissanc
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "cultures",
     PageTitle: "BIBLIOTHÈQUE",
     PageContent: `Heures d’ouvertures
                 Lundi 18h30 à 20h30
@@ -500,6 +523,7 @@ Preuve de naissance de votre enfant (certificat de naissance ou acte de naissanc
 },
 {
     Banner: "sample1.jpg",
+    PageCategory: "finances",
     PageTitle: "CONTRATS",
     PageContent: `La loi prévoit des modalités différentes d’adjudication des contrats selon le montant et la nature du contrat à octroyer.
                     Pour les contrats comportant une dépense inférieure à 25 000$, il n’existe aucune règle précise et on peut procéder de gré à gré.

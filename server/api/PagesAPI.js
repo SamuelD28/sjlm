@@ -36,6 +36,18 @@ let Pages = mongoose.model("Pages" , pagesSchema);
 //Helpers Api functions to interact with the news
 let Api = new Object();
 
+Api.GetOnePage = function(req, res)
+{
+    let Query = Pages.findById(req.params.id);
+    Query.exec()
+         .then((page) =>{
+            res.json(page);
+         })
+         .catch((err) =>{
+            console.log(err);
+         });
+}
+
 Api.GetPages = function(req, res)
 {
     let Query = Pages.find({});
@@ -65,7 +77,7 @@ Api.UpdatePages = function(req, res)
     let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true});
     Query.exec()
          .then((members) =>{
-            console.log("~Updated Members ID : " + req.params.id);
+            console.log("~Updated Page ID : " + req.params.id);
             res.send(members);
          })
          .catch((err) =>{

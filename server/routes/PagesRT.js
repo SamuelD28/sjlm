@@ -10,8 +10,9 @@ let express         = require("express"),
 router.route("/")
       .get(Pages.Api.GetPages)
       .post(Pages.Api.CreatePages);
-
+      
 router.route("/:id")
+      .get(Pages.Api.GetOnePage)
       .put(Pages.Api.UpdatePages)
       .delete(Pages.Api.DeletePages);
       

@@ -5,22 +5,23 @@ import CSSModules from 'react-css-modules';
 import styles from './newsCard.module.css';
 
 class NewsCard extends Component{
+    
     constructor(props)
     {
         super(props);
         this.state = {};
-        this.GetLatestNews = Ajax.GetData.bind(this);
     }
     
-    componentDidMount()
+    async componentDidMount()
     {
-        this.GetLatestNews("/api/news/6");        
+        let news =  await Ajax.GetData("/api/news/6");   
+        this.setState({news});
     }
     
     render(){
-    if(this.state.data !== undefined){
+    if(this.state.news !== undefined){
     return(
-    this.state.data.map((item, index)=> (
+    this.state.news.map((item, index)=> (
     <div styleName='newsCard' key={index}>
         <div styleName='newsImg' style={{backgroundImage: `url('/${item.Image}')`}}>
             <h3 styleName='newsCategory'>{item.Category}</h3>

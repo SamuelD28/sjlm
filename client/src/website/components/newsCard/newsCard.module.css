@@ -1,5 +1,5 @@
 .newsCard{
-    background-color:#f0eeed;
+    background-color:white;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@
 
 .newsCard::after{
     content: " ";
-    background-color: #90A4AE;
+    background-color:#273746;
     position: absolute;
     top: 0;
     left: 0;
@@ -17,6 +17,7 @@
     width: 100%;
     transition: opacity .2s ease;
     height: 100%;
+    z-index: 100;
 }
 
 .newsCard:hover::after{
@@ -32,17 +33,12 @@
 }
 
 .newsCategory{
-    background-color: whitesmoke;
-    font-weight: lighter;
+    background-color: white;
     position: absolute;
     padding: .5vw;
     top: 0;
     left: 0;
     z-index: 1;
-}
-
-.newsTitle{
-    font-weight: lighter;
 }
 
 .newsDesc{
