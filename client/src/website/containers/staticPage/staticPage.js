@@ -1,6 +1,6 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
-import {Ajax} from '../../../shared/utility.js';
+import {Ajax, Utility} from '../../../shared/utility.js';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';
@@ -47,11 +47,12 @@ class StaticPage extends Component{
         <div styleName="bannerPhoto" style={{backgroundImage : `url('/${this.state.page.Banner}')`}}>
             <div styleName="pageCategoryContainer">
                 <div styleName="pageCategoryOverlay"></div>
-                <h2 styleName="pageCategory">Découvrir la ville</h2>
+                <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}</h2>
             </div>
         </div>
         <div styleName="pageContent">
             <h1 styleName="pageTitle">{this.state.page.PageTitle}</h1>
+            <a href="http://saint-jacque-le-mineur-samueld28.c9users.io:8080/pdf/test.pdf" target="_blank"> Pdf </a>
             <div dangerouslySetInnerHTML={this.CreateMarkup()}></div>
         </div>
         <div styleName="pageFooter" className="text-primary">

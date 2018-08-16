@@ -2,6 +2,7 @@
 let mongoose        = require("mongoose");
 
 //----------------Model-------------//
+
 //Schema for the news
 let Schema = mongoose.Schema;
 let pagesSchema = new Schema(
@@ -30,6 +31,7 @@ let pagesSchema = new Schema(
     }
 }
 );
+
 //Model for the news
 let Pages = mongoose.model("Pages" , pagesSchema);
 

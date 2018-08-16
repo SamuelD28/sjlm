@@ -20,6 +20,7 @@ app.use(methodOverride("_method"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/media"));
+app.use('/pdf', express.static(__dirname + '/pdf'));
 
 //Connection to the database
 mongoose.Promise = Promise;

@@ -7,13 +7,6 @@ import {NavLink} from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
 
-const test = ` <NavLink to="/static" styleName="navbarItem secondaryLink">
-            {item.PageTitle}
-            <div styleName="cubeContainer">
-                <span styleName="secondaryCube"></span>
-            </div>
-        </NavLink>`;
-
 //----------Core Code-------//
 class Navbar extends Component{
     
@@ -27,6 +20,7 @@ class Navbar extends Component{
     
     DisplaySecondMenu =  function(event, UI_NavbarSecondary, UI_NavbarSecondaryContent, UI_PrimaryLinks)
     {
+        
         UI_NavbarSecondary.style.transform = "translateX(100%)";
         
         let menuAttribute = event.target.getAttribute("menu");
@@ -60,27 +54,27 @@ class Navbar extends Component{
     
     ToggleNavbarContent = function(allNavarContent, singleNavbarContent)
     {
-         allNavarContent.forEach((element) => {
-            element.style.display = "none"; 
-        });
-        
-        if(singleNavbarContent !== undefined)
+        try{
+            
+            Utility.IsValuesUndefinedOrNull(allNavarContent, singleNavbarContent);
+            
+            allNavarContent.forEach((element) => {
+                element.style.display = "none"; 
+            });
+            
+            if(singleNavbarContent !== undefined)
+            {
+                singleNavbarContent.style.display = "flex";
+            }
+        }
+        catch(err)
         {
-            singleNavbarContent.style.display = "flex";
+            console.log(err.message);
         }
     }
-    //DOIT EXTRAIRE TOUTES CES METHODES
     
-    constructor(props)
+    CreateMenuSystem = function()
     {
-        super(props);
-        this.state = {};
-    }
-    
-    //Life Cycle methods
-    async componentDidMount()
-    {
-        //DOIT EXTRAIRE TOUTE CES METHODES
         let UI_Navbar                   = document.getElementById(styles.navbar),
             UI_NavbarSecondary          = document.getElementById(styles.navbarSecondary),
             UI_PrimaryLinks             = Array.from(document.getElementsByClassName(styles.primaryLink));
@@ -95,7 +89,20 @@ class Navbar extends Component{
             });
         });
         Utility.AdjustFullHeight(UI_Navbar);   
-        //DOIT EXTRAIRE TOUTE CES METHODES
+        
+    }
+    //DOIT EXTRAIRE TOUTES CES METHODES
+    
+    constructor(props)
+    {
+        super(props);
+        this.state = {};
+    }
+    
+    //Life Cycle methods
+    async componentDidMount()
+    {
+        this.CreateMenuSystem();
         
         let pages = await Ajax.GetData("/api/pages");
         this.setState({pages});
@@ -115,7 +122,8 @@ class Navbar extends Component{
             return(
             Array.from(category).map((item, i)=> (
             <ul styleName="navbarContent secondaryContent" id={item} key={i}>
-                <li styleName="navbarContentTitle">{item}</li>
+                <li styleName="navbarContentTitle">{Utility.TranslatePageCategory(item)}
+                </li>
                 {this.FindPagesBasedOnCategory(item)}
             </ul>
             )))
@@ -139,7 +147,7 @@ class Navbar extends Component{
     return(
     <div id={styles.navbar}>
     <div id={styles.navbarSecondary}>
-            {this.InsertInMenu()}
+        {this.InsertInMenu()}
     </div>
     <div id={styles.navbarPrimary}>
         <NavLink to="/" styleName="navbarLogo">
@@ -170,6 +178,10 @@ class Navbar extends Component{
             <li styleName="navbarItem primaryLink" menu="news">
                 Actualités
                 <i className="icon large newspaper"></i>
+            </li>
+            <li styleName="navbarItem primaryLink" menu="others">
+                Autres
+                <i className="icon large help"></i>
             </li>
         </ul>
         <div styleName="navbarSocial">

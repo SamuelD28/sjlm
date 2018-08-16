@@ -11,19 +11,24 @@ import CSSModules from 'react-css-modules';
 import styles from './pagesCard.module.css';
 
 //Quill Editor
+
+
+
 //Quill Text Editor
 const modules = {
     toolbar:[
       [{ 'header': [1, 2, 3, 4, 5 ,6] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
       ['bold', 'italic', 'underline','strike', 'blockquote', 'link'],
-      [{'list': 'ordered'}, {'list': 'bullet'},{'indent': '-1'}, {'indent': '+1'},{ 'align': [] }],
+      [{'list': 'ordered'}, {'list': 'bullet'},{ 'align': [] }],
       ['clean']
     ]};
 const formats = [
     'header',
+    'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet',
-    'indent','link',
+    'link',
     'align'
 ];
 
@@ -89,8 +94,8 @@ class PagesCard extends FormComponent{
                                     <Form.Field>
                                         <select name="Template" defaultValue={this.props.pages.Template} onChange={this.HandleChange}>
                                             <option value="1"> 1 | Défaut</option>
-                                            <option value="2"> 2 | Sans Bannière</option>
-                                            <option value="3"> 3 | Bannière sur côté</option>
+                                            <option disabled value="2"> 2 | Sans Bannière</option>
+                                            <option disabled value="3"> 3 | Bannière sur côté</option>
                                         </select>
                                     </Form.Field>
                                     <Form.Input>

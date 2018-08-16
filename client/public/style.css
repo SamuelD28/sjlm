@@ -20,12 +20,6 @@ a:hover{
     transition: color .15s ease-in;
 }
 
-ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
 body{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.2em;
@@ -38,12 +32,6 @@ h1, h2, h3, h4, h5,h6{
     font-weight: normal;
     font-family: 'Oswald', sans-serif;
     letter-spacing: 2px;
-}
-
-blockquote{
-    border-left: 4px solid #ccc;
-    padding-left: .3vw;
-    margin: .2vw 0;
 }
 
 .text-primary{
@@ -391,21 +379,23 @@ input[type=date]{
     margin: 0 !important;
 }
 
+/*Quill Text editor*/
 
-/*Css to affect the quill text editor. Could be extracted for faster time load*/
-.quill{
-    border: 1px solid #ccc;
-}
-
-.ql-container{
-    border: none !important;
-}
-
-.ql-toolbar{
-    border: none !important;
-    border-bottom: 1px solid #ccc !important;
-}
-
-.ql-align-justify{
+.ql-align-justify {
     text-align: justify;
 }
+
+.ql-align-center {
+    text-align: center;
+}
+
+.ql-align-right{
+    text-align: right;
+}
+
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: .5vw;
+    margin: .3vw 0;
+}
+

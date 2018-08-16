@@ -9,6 +9,23 @@ let Utility = {};
 let Forms = {};
 let Ajax = {};
 
+Utility.TranslatePageCategory = function(pageCategory)
+{
+    let translatedContent;
+        switch(pageCategory)
+        {
+            case "city": translatedContent = "Découvrir la ville"; break;
+            case "administration": translatedContent = "Administration"; break;
+            case "services": translatedContent = "Les Services"; break;
+            case "cultures": translatedContent = "Cultures et loisirs"; break;
+            case "finances": translatedContent = "Finances"; break;
+            case "news": translatedContent = "Actualitées"; break;
+            case "others": translatedContent = "Autres"; break;
+            default: translatedContent = "Oops, erreur"; break;
+        }
+        return translatedContent;
+}
+
 //Fonction that finds a series of elements and returns a proper array with it
 Utility.FindAllAndCreateArray = function(element)
 {
