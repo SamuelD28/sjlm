@@ -12,15 +12,17 @@ let express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     methodOverride  = require("method-override"),
-    dataSeed        = require("./utils/dataseed.js");
+    dataSeed        = require("./utils/dataseed.js"),
+    cookieParser    = require("cookie-parser");
 
 //----------------Initialisation-------------//
 
 app.use(methodOverride("_method"))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({limit : '10mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
 app.use(express.static(__dirname + "/media"));
-app.use('/pdf', express.static(__dirname + '/pdf'));
+app.use(cookieParser());
+require("dotenv").config();
 
 //Connection to the database
 mongoose.Promise = Promise;
@@ -28,13 +30,15 @@ mongoose.connect("mongodb://localhost:27017/sjlm", {useNewUrlParser : true}); //
 
 //----------------Routing-------------//
 
-let NewsRT      = require(__dirname + "/routes/NewsRT.js");
-let MembersRT   = require(__dirname + "/routes/MembersRT.js");
-let PagesRt     = require(__dirname + "/routes/PagesRT.js");
+let NewsRT      = require(__dirname + "/routes/NewsRT.js"),
+    MembersRT   = require(__dirname + "/routes/MembersRT.js"),
+    PagesRt     = require(__dirname + "/routes/PagesRT.js"),
+    UserRT      = require(__dirname + "/routes/UserRT.js");
 
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
 app.use("/api/news" , NewsRT);
+app.use("/api/user" , UserRT);
 
 //----------------Listener-------------//
 

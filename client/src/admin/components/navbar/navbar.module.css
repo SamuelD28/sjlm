@@ -1,4 +1,4 @@
-#navbar{
+.navbar{
     border-right: 1px solid #ececec;
     background-color: white;
     font-family: "Roboto", sans-serif;
@@ -9,6 +9,7 @@
     left: 0;
     width: 15vw;
     z-index: 1000;
+    list-style: none;
 }
 
 #headbar{
@@ -36,17 +37,6 @@
     padding-left: 1vw;
 }
 
-.logoImg{
-    width: 25%;
-    height: 25%;
-}
-
-.logoTxt{
-    color: #373737;
-    font-size: 1vw;
-    margin-left: 1vw;
-}
-
 .navbarContainer{
     padding: 1.25vw;
 }
@@ -57,7 +47,7 @@
     display: flex;
     flex-direction: row;
     font-size: 1vw;
-    padding: 1vw 0vw;
+    padding: 1vw;
 }
 
 .navbarLink{

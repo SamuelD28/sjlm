@@ -45,14 +45,10 @@ class StaticPage extends Component{
     return(
     <div styleName="staticPage">
         <div styleName="bannerPhoto" style={{backgroundImage : `url('/${this.state.page.Banner}')`}}>
-            <div styleName="pageCategoryContainer">
-                <div styleName="pageCategoryOverlay"></div>
-                <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}</h2>
-            </div>
         </div>
         <div styleName="pageContent">
+            <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}/</h2>
             <h1 styleName="pageTitle">{this.state.page.PageTitle}</h1>
-            <a href="http://saint-jacque-le-mineur-samueld28.c9users.io:8080/pdf/test.pdf" target="_blank"> Pdf </a>
             <div dangerouslySetInnerHTML={this.CreateMarkup()}></div>
         </div>
         <div styleName="pageFooter" className="text-primary">

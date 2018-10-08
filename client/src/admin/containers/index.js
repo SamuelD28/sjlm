@@ -1,6 +1,7 @@
 //---------Declaration-----------//
 import React, {Component} from 'react';
 import Navbar from '../components/navbar/navbar.js'
+
 //Navigation component
 import {Switch, Route} from 'react-router-dom';
 import Home from './home/home.js';
@@ -21,8 +22,8 @@ class Index extends Component{
             <Route exact path="/admin/members" component={Members} />
         </Switch>
     </div>
-    )
-    }
+    )}
 }
 
 export default Index;
+

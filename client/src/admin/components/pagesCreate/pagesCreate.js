@@ -97,7 +97,7 @@ class PagesCreate extends Component{
             <Modal.Description>
                 <Form onSubmit={this.CreatePageInDb}>
                     <Grid columns={2} divided>
-                        <Grid.Row stretched>
+                        <Grid.Row>
                             <Grid.Column width={6}>
                                 <Form.Field>
                                     <input name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.HandleChange}/>

@@ -10,10 +10,6 @@ import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import CSSModules from 'react-css-modules';
 import styles from './pagesCard.module.css';
 
-//Quill Editor
-
-
-
 //Quill Text Editor
 const modules = {
     toolbar:[
@@ -21,14 +17,17 @@ const modules = {
       [{ 'size': ['small', false, 'large', 'huge'] }],
       ['bold', 'italic', 'underline','strike', 'blockquote', 'link'],
       [{'list': 'ordered'}, {'list': 'bullet'},{ 'align': [] }],
+      ['image'],
       ['clean']
-    ]};
+    ],
+};
 const formats = [
     'header',
     'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet',
     'link',
+    'image',
     'align'
 ];
 

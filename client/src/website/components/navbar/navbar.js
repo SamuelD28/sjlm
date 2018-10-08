@@ -112,12 +112,11 @@ class Navbar extends Component{
     InsertInMenu()
     {
         let category = new Set([]);
-        
         if(this.state.pages !== undefined){
             
-            this.state.pages.map((item, index)=> {
-            category.add(item.PageCategory);
-            });
+            this.state.pages.map((item, index)=>(
+            category.add(item.PageCategory)
+            ));
             
             return(
             Array.from(category).map((item, i)=> (
@@ -151,7 +150,7 @@ class Navbar extends Component{
     </div>
     <div id={styles.navbarPrimary}>
         <NavLink to="/" styleName="navbarLogo">
-            <div className="img-bg" style={{backgroundImage:'url(/logo2_bga.png'}}>
+            <div className="img-logo  img-bg" style={{backgroundImage:'url(/logo2_bga.png'}}>
             </div>
         </NavLink>
         <ul styleName="navbarContent">

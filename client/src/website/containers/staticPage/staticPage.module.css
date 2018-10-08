@@ -9,6 +9,13 @@
     margin-bottom: 1em;
 }
 
+.pageTitle::after{
+    background-color: #37474F ;
+    content: "";
+    width: 10%;
+    height: 2px;
+}
+
 .bannerPhoto{
     align-items: flex-end;
     background-size: cover;
@@ -22,33 +29,14 @@
     z-index: -1;
 }
 
-.pageCategoryContainer{
-    position: relative;
-    width: 50%;
-}
-
 .pageCategory{
-    border-bottom: 2px solid white;
-    color: white;
     font-size: 2.25em;
-    padding-left: .25vw;
-    padding-bottom: .5vw !important;
-}
-
-.pageCategoryOverlay{
-    background-color: rgba(0,0,0,0.25);
-    content: " ";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    margin: 0;
 }
 
 .pageContent{
     background-color: whitesmoke;
-    padding: 7.5vw 10vw;
+    padding: 2.5vw 10vw;
 }
 
 .pageFooter{

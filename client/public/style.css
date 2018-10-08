@@ -7,8 +7,6 @@ html > div{
     display: none !important;
 }
 
-/*General Style declaration*/
-
 a{
     cursor: pointer;
     text-decoration: none;
@@ -27,6 +25,14 @@ body{
     margin: 0;
 }
 
+img{
+    max-width: 100%;
+}
+
+p{
+    margin-bottom: 0;  
+} 
+
 h1, h2, h3, h4, h5,h6{
     color: #37474F;
     font-weight: normal;
@@ -37,12 +43,15 @@ h1, h2, h3, h4, h5,h6{
 .text-primary{
     color: #4c4c4c;
 }
+
 .text-muted{
     color: #ABB2B9;
 }
+
 .text-danger{
     color: #C0392B;
 }
+
 .text-warning{
     color: #F1C40F;
 }
@@ -122,21 +131,25 @@ h1, h2, h3, h4, h5,h6{
     border-color: #808B96;
     color: #808B96;
 }
+
 .btn-outline-success{
     background-color: transparent !important;
     border-color: #16A085;
     color: #16A085;
 }
+
 .btn-outline-danger{
     background-color: transparent !important;
     border-color: #e91e63;
     color: #e91e63;
 }
+
 .btn-outline-warning{
     background-color: transparent !important;
     border-color: #F1C40F;
     color: #F1C40F;
 }
+
 .btn-outline-info{
     background-color:  transparent !important;
     border-color: #2980B9 !important;
@@ -157,14 +170,17 @@ h1, h2, h3, h4, h5,h6{
     background-color: #547799;
     border-color: #547799;
 }
+
 .btn-secondary:hover{
     background-color: #a8b0b7;
     border-color: #a8b0b7;
 }
+
 .btn-success:hover{
     background-color: #1eddb7;
     border-color: #1eddb7;
 }
+
 .btn-danger:hover{
     background-color: #ee598b;
     border-color: #ee598b;
@@ -174,6 +190,7 @@ h1, h2, h3, h4, h5,h6{
     background-color: #f4d24b;
     border-color: #f4d24b;
 }
+
 .btn-info:hover{
     background-color: #56a5d9;
     border-color: #56a5d9;
@@ -298,15 +315,18 @@ h1, h2, h3, h4, h5,h6{
     display: inline-block;
 }
 
+.img-logo{
+    height: 100%;
+}
+
 .img-bg{
     background-position: center;
     background-size: cover;
-    height: 100%;
     transition: all .25s ease;
+    width: 100%;
 }
 
 .img-modal{
-    height: 100%;
 }
 
 .float-right{
@@ -328,18 +348,23 @@ h1, h2, h3, h4, h5,h6{
 .blue{
     color:#2196f3 !important;
 }
+
 .brown{
     color: #795548 !important;
 }
+
 .orange{
     color: #ff5722 !important;
 }
+
 .red{
     color: #e91e63 !important;
 }
+
 .yellow{
     color: #ff9800 !important;
 }
+
 .green{
     color: #009688 !important;
 }
@@ -375,11 +400,23 @@ input[type=file]{
 input[type=date]{
     /*margin: 0 0.5vw !important;*/
 }
+
 .icon{
     margin: 0 !important;
 }
 
 /*Quill Text editor*/
+.ql-size-huge {
+    font-size: 2.5em;
+}
+
+.ql-size-large {
+    font-size: 1.5em;
+}
+
+.ql-size-small {
+    font-size: 0.75em;
+}
 
 .ql-align-justify {
     text-align: justify;
