@@ -2,9 +2,17 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
+import {Ajax} from '../../../shared/utility.js';
+import { Route } from 'react-router-dom'
 
-class Navbar extends Component{
-    render(){
+
+async function Logout(history){
+    let user = await Ajax.GetData("/api/user/logout");
+    history.push('/admin/login');
+}
+
+const Navbar = () =>{
+    
     return(
      <ul styleName="navbar" >
         <li styleName="logoContainer">
@@ -55,14 +63,19 @@ class Navbar extends Component{
             </a>
         </li>
         <li>
-            <a styleName="navbarItem" href="">
-                <span styleName="navbarIcon"><i className="icon cogs"></i></span>
-                <span href="#" styleName="navbarLink">Paramètres</span>
+            <a styleName="navbarItem" href=""> 
+                <span styleName="navbarIcon"><i className="icon chess queen"></i></span>
+                <span styleName="navbarLink">Administrateur</span>
                 <div styleName="navbarBorder"></div>
             </a>
         </li>
+        <li>
+            <Route render={({ history}) => (
+                <button className="btn btn-xs btn-outline-danger" onClick={() => { Logout(history) }}> Déconnexion</button>)} >
+            </Route>
+        </li>
     </ul>
-    )}
+    )
 }
 
 export default CSSModules(Navbar, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});

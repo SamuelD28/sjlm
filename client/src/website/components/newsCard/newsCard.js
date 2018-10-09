@@ -27,7 +27,7 @@ class NewsCard extends Component{
             <h3 styleName='newsCategory'>{item.Category}</h3>
         </div>
         <div styleName='newsInfo'>
-            <h2 styleName='newsTitle'>{item.Title}</h2>
+            <h2>{item.Title}</h2>
             <p styleName='newsDesc'>{item.Description.substring(0, 200)}...</p>
         </div>
         <div styleName='arrowContainer'>

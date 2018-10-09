@@ -1,49 +1,8 @@
 //----------------Dependencies-------------//
-let mongoose        = require("mongoose"),
-    DateHtmlFormat  = require("../utils/DateHtmlMD.js"),
-    Utility         = require("../utils/utility.js");
+let News            = require("../models/NewsMD.js"),
+    Api             = new Object();
 
 //--------------Model-------------//
-//Schema for the news
-let newsSchema = new mongoose.Schema({
-    Title:{
-        type: String,
-        required: true
-    },
-    Important:{
-        type: Boolean,
-        default: false
-    },
-    Category:{
-        type: String,
-        default: "Autres"
-    },
-    DatePublished:{
-        type: Date,
-        default: new Date(),
-    },
-    DateDue:{
-        type: Date,
-        default: new Date(),
-    },
-    Image:{
-        type:  String,
-        required: true,
-    },
-    File:{
-        type: String
-    },
-    Description:{
-        type: String,
-        required: true
-    }
-});
-
-//Model for the news
-let News = mongoose.model("News" , newsSchema);
-
-//Helpers Api functions to interact with the news
-let Api = new Object();
 
 Api.FindNews = function(req, res)
 {
@@ -94,4 +53,4 @@ Api.DeleteNews = function(req , res)
 }
 
 //----------------Module Exports-------------//
-module.exports  = {Api: Api, Model: News};
+module.exports  = Api;

@@ -1,0 +1,39 @@
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 10vw;
+    width: 40%;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: .5vw;
+    width: 65%;
+}
+
+.loginImage{
+    background-color: whitesmoke;
+    border-radius: 25% 0 0 0;
+    width: 35%;
+}
+
+.loginLabel{
+    font-size: 1.2em !important;
+}
+
+.loginTitle{
+    margin: .5vw 0;
+}
+
+.loginBack{
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+}
+
+.loginBtn{
+    justify-self: flex-end;
+}

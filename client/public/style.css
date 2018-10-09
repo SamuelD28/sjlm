@@ -196,6 +196,10 @@ h1, h2, h3, h4, h5,h6{
     border-color: #56a5d9;
 }
 
+.btn-xs{
+    padding: .25vw .5vw;
+}
+
 .btn-sm{
     padding: .5vw .75vw;
 }

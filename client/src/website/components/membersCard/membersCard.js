@@ -15,6 +15,7 @@ class MembersCard extends Component{
     async componentDidMount()
     {
         let members = await Ajax.GetData("/api/members");
+        
         this.setState({members});
     }
     

@@ -1,6 +1,9 @@
 //---------Declaration-----------//
-import React, {Component} from 'react';
+import React from 'react';
 import Navbar from '../components/navbar/navbar.js'
+
+//Hoc components
+import Auth from '../hoc/auth.js';
 
 //Navigation component
 import {Switch, Route} from 'react-router-dom';
@@ -8,21 +11,22 @@ import Home from './home/home.js';
 import News from './news/news.js';
 import Members from './members/members.js';
 import Pages from './pages/pages.js';
+import Login from '../components/login/login.js';
 
 //----------Core Code-------//
-class Index extends Component{
-    render(){
+const Index = (props) => {
+    
     return(
     <div>
-        <Navbar />
+        <Navbar/>
         <Switch>
-            <Route exact path="/admin" component={Home} />
-            <Route exact path="/admin/news" component={News} />
-            <Route exact path="/admin/pages" component={Pages} />
-            <Route exact path="/admin/members" component={Members} />
+            <Route exact path="/admin" component={Auth(Home, true)}/>
+            <Route exact path="/admin/news" component={Auth(News, true)} />
+            <Route exact path="/admin/pages" component={Auth(Pages, true)} />
+            <Route exact path="/admin/members" component={Auth(Members, true)} />
+            <Route exact path="/admin/login" component={Auth(Login, false)} />
         </Switch>
-    </div>
-    )}
+    </div>)
 }
 
 export default Index;

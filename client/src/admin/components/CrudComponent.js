@@ -23,7 +23,7 @@ class CrudComponent extends Component{
         try{
             Utility.IsValuesUndefinedOrNull(url);
             //GERER LE CAS OU AUCUNE ACTUALITER EST DANS LA BASE DE DONNER
-            let data = await Ajax.GetData(url); 
+            let data = await Ajax.GetData(url);
             this.tempState = {db: data.slice()};
             this.UpdateStateWithTempState();
         }

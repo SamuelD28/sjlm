@@ -9,8 +9,17 @@ Mdw.IsAuth = function(req , res, next){
                 throw err;
             if(!user)
                 return res.json({isAuth: false});
-                
-            req.user = user;
+            
+            let userSlim = {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                role: user.role,
+                isAuth : true,
+                token: user.token
+            }
+            
+            req.user = userSlim;
             next();
     });
 }

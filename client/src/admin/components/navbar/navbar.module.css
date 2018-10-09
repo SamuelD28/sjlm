@@ -79,3 +79,7 @@
     color: #373737;
     transition: color .25s ease;
 }
+
+.navbarLogout{
+    color: #e91e63 !important;
+}

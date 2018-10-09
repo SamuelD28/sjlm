@@ -71,6 +71,11 @@
     transition: all .2s ease;
  }
 
+/*.primaryLink:hover{*/
+/*    background-color: #37474F;*/
+/*    color: white;*/
+/*}*/
+
 .navbarSocial{
     align-items: center;
     box-sizing: border-box;

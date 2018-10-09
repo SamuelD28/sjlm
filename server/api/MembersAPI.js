@@ -1,40 +1,7 @@
 //----------------Dependencies-------------//
 
-let mongoose = require("mongoose");
-
-//----------------Model-------------//
-
-let Schema =  mongoose.Schema;
-let membersSchema = new Schema({
-    FirstName: {
-        type: String,
-        required: true
-    },
-    LastName: {
-        type: String,
-        required: true
-    },
-    Photo: {
-        type: String,
-        required: true
-    },
-    Occupation: {
-        type: String,
-        required: true
-    },
-    PersonnalNote: {
-        type: String
-    },
-    Email:{
-        type: String,
-        required: true
-    },
-    Phone: {
-        type: String,
-        default: "450 347-5446"
-    }
-});
-let Members = mongoose.model("Members" , membersSchema);
+let mongoose    = require("mongoose"),
+    Members     = require("../models/MembersMD.js");
 
 let Api = new Object();
 
@@ -89,4 +56,4 @@ Api.DeleteMembers = function(req, res)
 
 //----------------Module Exports-------------//
 
-module.exports = {Api: Api, Model: Members};
+module.exports = Api;

@@ -1,18 +1,19 @@
 //----------------Dependencies-------------//
 
-let express         = require("express"),
-    router          = express.Router(),
-    Members         = require(__dirname + "/../api/MembersAPI.js");
+let express = require("express"),
+    router  = express.Router(),
+    Api     = require(__dirname + "/../api/MembersAPI.js"),
+    Mdw     = require(__dirname + "/../middleware/UserMW.js");
     
 //----------------Routing-------------//
 
 router.route("/")
-      .get(Members.Api.GetMembers)
-      .post(Members.Api.CreateMembers);
+      .get(Api.GetMembers)
+      .post(Api.CreateMembers);
       
 router.route("/:id")
-      .put(Members.Api.UpdateMembers)
-      .delete(Members.Api.DeleteMembers);
+      .put(Api.UpdateMembers)
+      .delete(Api.DeleteMembers);
 
 //----------------Module Export-------------//
 

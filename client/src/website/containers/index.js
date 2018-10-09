@@ -1,5 +1,5 @@
 //---------Declaration-----------//
-import React, {Component} from 'react';
+import React from 'react';
 import Navbar from '../components/navbar/navbar.js'
 //Navigation component
 import {Switch, Route} from 'react-router-dom';
@@ -7,8 +7,7 @@ import Home from './home/home.js';
 import StaticPage from './staticPage/staticPage.js';
 
 //----------Core Code-------//
-class Index extends Component{
-    render(){
+const Index = (props) =>{
     return(
     <div>
         <Navbar />
@@ -18,7 +17,6 @@ class Index extends Component{
         </Switch>
     </div>
     )
-    }
 }
 
 export default Index;

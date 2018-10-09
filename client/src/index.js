@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 //----------Core Code-------//
 ReactDOM.render(<Router>
                     <Switch>
-                        <Route path="/admin" component={Admin} />
+                        <Route path="/admin" component={Admin}/>
                         <Route path="/" component={Website} />
                     </Switch>
                 </Router>,document.getElementById("root"));

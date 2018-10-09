@@ -26,7 +26,7 @@ require("dotenv").config();
 
 //Connection to the database
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost:27017/sjlm", {useNewUrlParser : true}); //Get rid of a deprecatino warning. Must specified mongo db port in the url now
+mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a deprecatino warning. Must specified mongo db port in the url now
 
 //----------------Routing-------------//
 

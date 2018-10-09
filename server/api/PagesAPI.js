@@ -1,42 +1,5 @@
-//----------------Dependencies-------------//
-let mongoose        = require("mongoose");
-
-//----------------Model-------------//
-
-//Schema for the news
-let Schema = mongoose.Schema;
-let pagesSchema = new Schema(
-{
-    PageCategory: {
-        type: String,
-        required: true,
-        default: "Autres"
-    },
-    Template: {
-        type: Number,
-        required: true,
-        default: 1
-    },
-    Banner: {
-        type: String,
-        required: true
-    },
-    PageTitle: {
-        type: String,
-        required: true
-    },
-    PageContent: {
-        type: String,
-        required: true
-    }
-}
-);
-
-//Model for the news
-let Pages = mongoose.model("Pages" , pagesSchema);
-
-//Helpers Api functions to interact with the news
-let Api = new Object();
+let Pages   = require("../models/PagesMD.js"),
+    Api     = new Object();
 
 Api.GetOnePage = function(req, res)
 {
@@ -100,4 +63,4 @@ Api.DeletePages = function(req, res)
 }
 
 //----------------Module Exports-------------//
-module.exports  = {Api: Api, Model: Pages};
+module.exports  = Api;

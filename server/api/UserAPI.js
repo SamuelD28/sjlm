@@ -3,7 +3,7 @@ let User        = require("../models/UserMD.js"),
     
 //Method that needs to be implemented
 Api.TestAuth = function(req ,res){
-    res.status(200).json({success: true});
+   res.status(200).json(req.user);
 }
 
 Api.GetAllUser = function(req, res){
