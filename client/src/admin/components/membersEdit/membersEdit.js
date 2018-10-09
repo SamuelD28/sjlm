@@ -10,21 +10,7 @@ class MembersEdit extends FormComponent{
     constructor(props)
     {
         super(props);
-        this.formData = Object.create(this.props.members);
-    }
-    
-    //Function that updates the member in the db
-    handleSubmit =  () =>
-    {
-        this.UpdateInDb("/api/members/");
-    }
-    
-    //Function that deletes the member in the db
-    handleDelete = (e) =>
-    {
-        //COULD BE OPTIMISED
-        e.preventDefault();
-        this.DeleteInDb("/api/members/");
+        this.formData = Object.create(this.props.members); //See if you could remove
     }
     
     render(){
@@ -45,7 +31,7 @@ class MembersEdit extends FormComponent{
             <Modal.Description className="section-form">
                 <div className="ui spaced image img-bg" style={{backgroundImage: `url('/${this.formData.Photo}')`, width: "40%"}}>
                 </div>
-                <Form onSubmit={this.handleSubmit} style={{width: "60%"}}>
+                <Form onSubmit={()=> {this.UpdateInDb("/api/members/")}} style={{width: "60%"}}>
                     <Form.Group widths="equal">
                         <Form.Field required>
                             <input required name="FirstName" type="text" defaultValue={this.formData.FirstName} onChange={this.HandleChange}/>
@@ -90,7 +76,7 @@ class MembersEdit extends FormComponent{
                         </Form.Field>
                     </Form.Group>
                     <Form.Field>
-                        <button onClick={this.handleDelete} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
+                        <button onClick={() => {this.DeleteInDb("/api/members/")}} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
                         <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
                     </Form.Field>
                 </Form>

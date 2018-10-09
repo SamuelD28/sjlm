@@ -11,12 +11,6 @@ import styles from './newsCreate.module.css';
 //This components hold the form to and fonctionality to create a new post in the database.
 class NewsCreate extends FormComponent{
     
-    //Function that handles the sbmit of the form
-    HandleSubmit = () =>
-    {
-        this.CreateInDb("/api/news");
-    }
-    
     render()
     {
     return(
@@ -35,7 +29,7 @@ class NewsCreate extends FormComponent{
     <Modal.Header>Nouvelle Actualitée</Modal.Header>
     <Modal.Content>
         <Modal.Description>
-                <Form onSubmit={this.HandleSubmit}>
+                <Form onSubmit={() => {this.CreateInDb("/api/news")}}>
                     <Form.Field>
                         <div className="ui toggle checkbox">
                             <input onChange={this.HandleChange} name="Important" type="checkbox" />

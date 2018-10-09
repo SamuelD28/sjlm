@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {NavLink} from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
@@ -8,10 +8,11 @@ import { Route } from 'react-router-dom'
 
 async function Logout(history){
     let user = await Ajax.GetData("/api/user/logout");
-    history.push('/admin/login');
+    if(user.isAuth)
+        history.push('/admin/login');
 }
 
-const Navbar = () =>{
+const Navbar = (props) =>{
     
     return(
      <ul styleName="navbar" >

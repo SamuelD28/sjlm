@@ -1,13 +1,10 @@
 //Initial Declaration and importation
-import React, {Component} from 'react';
+import React from 'react';
+import FormComponent from '../FormComponent.js';
 import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms, Ajax} from '../../../shared/utility.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
-
-//Css Module 
-import CSSModules from 'react-css-modules';
-import styles from './pagesCreate.module.css';
 
 //Quill Text Editor declaration
 const modules = {
@@ -26,57 +23,15 @@ const formats = [
 ];
 
 //Component responsible for creating new page
-class PagesCreate extends Component{
-    
-    //Initialise with an empty form data that will be use by the form
-    constructor(props)
-    {
-        super(props);
-        this.formData = {};
-        this.state = ({disableSubmit: true});
-    }
-    
-    //Function that post the new page to the db and insert it in the state
-    CreatePageInDb = async () =>
-    {
-        //Change the loader component status 
-        this.ChangeActionState(1000, true, "Post");
-        
-        //Does a post request to the server
-        let postedData = await Ajax.PostData("/api/pages", this.formData);
-        
-        //Add the newly created page in the tempstate
-        this.props.CreateInTempState(postedData);
-    }
-    
-    //Function that handle the changes made in all the different inputs except the text editor
-    HandleChange = (e) =>
-    {
-        this.setState({disableSubmit: false});
-        let inputValue = Forms.RetrieveValueFromInput(e);
-        Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-    }
+class PagesCreate extends FormComponent{
     
     //Function that handle the changes made in the text editor
     HandleChangeInTextEditor = (e) =>
     {
         Forms.AppendValueToObject("PageContent", this.formData, e);
     }
-    
-    //Function that modify the action state that interacts with the action loader component
-    ChangeActionState = (latency, isOnGoing, type) => 
-    {
-        this.setState({
-            action: {
-                latency: latency,
-                isOnGoing: isOnGoing,
-                type: type
-            }
-        });
-    }
-    
+
     render(){
-    
     return(
     <Modal 
     onMount={this.InitialiseTextEditor}
@@ -95,7 +50,7 @@ class PagesCreate extends Component{
     <Modal.Header>Ajouter une nouvelle page</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.CreatePageInDb}>
+                <Form onSubmit={() => {this.CreateInDb("/api/pages")}}>
                     <Grid columns={2} divided>
                         <Grid.Row>
                             <Grid.Column width={6}>
@@ -148,4 +103,4 @@ class PagesCreate extends Component{
     )}
 }
 
-export default CSSModules(PagesCreate, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default PagesCreate;

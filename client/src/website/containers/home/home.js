@@ -11,21 +11,18 @@ import styles from './home.module.css';
 import NewsCard from '../../components/newsCard/newsCard.js';
 import MembersCard from '../../components/membersCard/membersCard.js';
 
-//----------Core Code-------//
 class Home extends Component{
-    //Life cycle methods
+    
     componentDidMount()
     {
-        let UI_HomeContent              = document.getElementById(styles.websiteContent),
-            UI_Banner                   = document.querySelector("." + styles.banner);
-        Utility.AdjustFullHeight(UI_Banner);
-        Utility.AdjustFullHeight(UI_HomeContent);
+        Utility.AdjustFullHeight(this.refs.websiteContent);
+        Utility.AdjustFullHeight(this.refs.banner);
     }
     
     render(){
     return( 
-        <div id={styles.websiteContent}>
-            <div styleName='banner'>
+        <div id={styles.websiteContent} ref="websiteContent">
+            <div styleName='banner' ref="banner">
                 <video styleName="bannerVideo" autoPlay muted loop>
                     <source src="/sjlm.mp4" type="video/mp4">
                     </source>

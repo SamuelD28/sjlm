@@ -18,19 +18,6 @@ class NewsEdit extends FormComponent{
         this.formData =Object.create(this.props.news);
     }
     
-    //Function that handles the submit of the form.
-    HandleSubmit =  (e) =>
-    {
-        this.UpdateInDb("/api/news/");
-    }
-    
-    //Function that request the suppression of the news in the database.
-    HandleDelete = (e) =>
-    {
-        e.preventDefault();
-        this.DeleteInDb("/api/news/");
-    }
-    
     render(){
     if(this.formData !== undefined){
     return(
@@ -46,7 +33,7 @@ class NewsEdit extends FormComponent{
             <Modal.Description className="section-form">
                 <div className="ui spaced image img-bg" style={{backgroundImage: `url('/${this.formData.Image}')`, width: "40%"}}>
                 </div>
-                <Form onSubmit={this.HandleSubmit} style={{width: "60%"}}>
+                <Form onSubmit={() => {this.UpdateInDb("/api/news/")}} style={{width: "60%"}}>
                     <Form.Field>
                         <span className="text-info text-xl" ><i className="clock outline icon"></i> Publication :  {`${moment(this.formData.DatePublished).format("YYYY MM DD")}`}</span>
                     </Form.Field>
@@ -92,7 +79,7 @@ class NewsEdit extends FormComponent{
                         <input name="DateDue" type="date" onChange={this.HandleChange} defaultValue={moment(this.formData.DateDue).format("YYYY[-]MM[-]DD")}/>
                     </Form.Field>
                     <Form.Field>
-                        <button onClick={this.HandleDelete} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
+                        <button onClick={() => {this.DeleteInDb("/api/news/")}} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
                         <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
                     </Form.Field>
                 </Form>

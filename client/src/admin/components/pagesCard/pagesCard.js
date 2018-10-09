@@ -39,19 +39,6 @@ class PagesCard extends FormComponent{
         this.formData = Object.create(this.props.pages);
     }
     
-    //Function that update a resquested page in the db and then updates it in the temporary state
-    HandleSubmit = () =>
-    {
-        this.UpdateInDb("/api/pages/");
-    }
-    
-    //Function that delete the requested page in the db and then removes it from the temporary state
-    HandleDelete = (e) =>
-    {
-        e.preventDefault();
-        this.DeleteInDb("/api/pages/");
-    }
-    
     //Function that handles the change in the text. NEEDS TO BE IMPLEMENTED IN THE FORM COMPONENT.
     HandleChangeInTextEditor = (e) =>
     {
@@ -72,7 +59,7 @@ class PagesCard extends FormComponent{
     <Modal.Header>Ajouter une nouvelle page</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.HandleSubmit}>
+                <Form onSubmit={() => {this.UpdateInDb("/api/pages/")}}>
                     <Grid columns={2} divided>
                         <Grid.Row>
                             <Grid.Column width={6}> 
@@ -102,7 +89,7 @@ class PagesCard extends FormComponent{
                                         <input name="Banner" type="file" id="bannerInput" onChange={this.HandleChange}/>
                                     </Form.Input>
                                     <Form.Field>
-                                        <button onClick={this.HandleDelete} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
+                                        <button onClick={() => {this.DeleteInDb("/api/pages/")}} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
                                         <button disabled={this.state.disableSubmit} type="submit" style={{float: 'right'}} className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                     </Form.Field>
                             </Grid.Column>

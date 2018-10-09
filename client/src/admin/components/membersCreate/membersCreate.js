@@ -6,14 +6,7 @@ import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 class MembersCreate extends FormComponent{
     
-    //Function that creates 
-    HandleSubmit = () =>
-    {
-        this.CreateInDb("/api/members");    
-    }
-    
     render(){
-    
     return(
     <Modal 
     trigger={
@@ -30,7 +23,7 @@ class MembersCreate extends FormComponent{
     <Modal.Header>Ajouter un nouveau membre</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.HandleSubmit}>
+                <Form onSubmit={() => {this.CreateInDb("/api/members")}}>
                     <Form.Group widths="equal">
                         <Form.Field required>
                             <input required name="FirstName" type="text" placeholder="Nom" onChange={this.HandleChange}/>
