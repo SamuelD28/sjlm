@@ -39,9 +39,11 @@ class Login extends Component{
         return(
         <div styleName="loginContainer">
             <div styleName="loginBack">
-                <button className="btn btn-outline-warning">
-                    <NavLink  to="/"><i className="icon reply"></i></NavLink>
-                </button>
+                <NavLink  to="/">
+                    <button className="btn btn-outline-warning">
+                        <i className="icon reply"></i>
+                    </button>
+                </NavLink>
             </div>
             <div styleName="loginImage">
                 <img className="img-full" src="/logo2_bga.png" alt="logo" />

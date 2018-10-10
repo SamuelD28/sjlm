@@ -1,20 +1,21 @@
 //----------------Dependencies-------------//
 
-let express         = require("express"),
-    router          = express.Router(),
-    Api             = require(__dirname + "/../api/PagesAPI.js");
+let express = require("express"),
+    router  = express.Router(),
+    Api     = require(__dirname + "/../api/PagesAPI.js"),
+    Mdw     = require(__dirname + "/../middleware/UserMW.js");
 
 //----------------Routing--------------------//    
 
 // GET ADMIN
 router.route("/")
       .get(Api.GetPages)
-      .post(Api.CreatePages);
+      .post(Mdw.IsAuth, Api.CreatePages);
       
 router.route("/:id")
       .get(Api.GetOnePage)
-      .put(Api.UpdatePages)
-      .delete(Api.DeletePages);
+      .put(Mdw.IsAuth, Api.UpdatePages)
+      .delete(Mdw.IsAuth, Api.DeletePages);
       
 //----------------Module Exports-------------//    
 

@@ -12,19 +12,26 @@ export default function(ComposedClass,isPrivate)
 
         async componentDidMount()
         {
+            try{
+                let user = await Ajax.GetData("/api/user/auth");
                 
-            let user = await Ajax.GetData("/api/user/auth");
-            if(!user.isAuth && isPrivate)
-                    this.props.history.push('/admin/login');
-
-            this.setState({loading:false})
+                if(!user.isAuth && isPrivate)
+                    this.props.history.push('/login');
+                else
+                    this.setState({loading:false , user: user});
+            }
+            catch(error)
+            {
+                console.log("~An error occured while authentificating the user : " +  error);
+                this.props.history.push('/');
+            }
         }
 
         render() {
             if(this.state.loading)
                 return <div> Loading </div>;
             else
-                return <ComposedClass {...this.props} user={this.props.user}/>
+                return <ComposedClass user={this.state.user}/>
         }
     }
 

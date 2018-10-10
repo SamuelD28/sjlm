@@ -35,3 +35,15 @@
 .sectionContent{
     grid-area: sectionContent;
 }
+
+.sectionCard{
+    background-color: white;
+    box-shadow: .2vw .2vw .5vw #D4D4D4;
+    padding: .5vw;
+}
+
+.sectionWrapper{
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+}

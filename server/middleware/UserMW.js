@@ -16,7 +16,8 @@ Mdw.IsAuth = function(req , res, next){
                 email: user.email,
                 role: user.role,
                 isAuth : true,
-                token: user.token
+                token: user.token,
+                _id: user._id
             }
             
             req.user = userSlim;

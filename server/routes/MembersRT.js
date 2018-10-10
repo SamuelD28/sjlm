@@ -9,11 +9,11 @@ let express = require("express"),
 
 router.route("/")
       .get(Api.GetMembers)
-      .post(Api.CreateMembers);
+      .post(Mdw.IsAuth, Api.CreateMembers);
       
 router.route("/:id")
-      .put(Api.UpdateMembers)
-      .delete(Api.DeleteMembers);
+      .put(Mdw.IsAuth, Api.UpdateMembers)
+      .delete(Mdw.IsAuth, Api.DeleteMembers);
 
 //----------------Module Export-------------//
 

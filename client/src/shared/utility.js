@@ -385,8 +385,10 @@ Ajax.PutData = async function (url, newData)
         let ajaxContent = { method: "PUT",
                             headers: {"Content-Type" : "application/json"},
                             body: JSON.stringify(newData)};
-                                
-        await   fetch(url + newData["_id"] , ajaxContent)
+                            
+        let fullUrl= (newData["_id"] === undefined)? url : url + newData["_id"];
+        
+        await   fetch(fullUrl, ajaxContent)
                 .then((res) =>{
                     return CheckRequestStatus(res);
                 })

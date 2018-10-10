@@ -2,8 +2,8 @@ let User        = require("../models/UserMD.js"),
     Api         = new Object();
     
 //Method that needs to be implemented
-Api.TestAuth = function(req ,res){
-   res.status(200).json(req.user);
+Api.Auth = function(req ,res){
+   res.json(req.user);
 }
 
 Api.GetAllUser = function(req, res){
@@ -15,6 +15,20 @@ Api.GetAllUser = function(req, res){
     });
 }
 
+Api.UpdateUser = function(req, res)
+{
+    console.log(req.params.id);
+    let Query = User.findByIdAndUpdate(req.params.id, req.body, {new : true});
+    Query.exec()
+         .then((user) =>{
+            console.log("~Updated Page ID : " + req.params.id);
+            res.send(user);
+         })
+         .catch((err) =>{
+            console.log("~An Error occured while updating pages. \n ERROR: " + err);
+         });
+}
+
 //Method to register a new user
 Api.RegisterUser = function(req, res)
 {
@@ -24,7 +38,10 @@ Api.RegisterUser = function(req, res)
         if(err)
             return res.json({success: false, err});
         else
+        {
+            console.log("~Successfully added the new user : " + data.email);
             return res.json({success: true, data});
+        }
     })
 }
 

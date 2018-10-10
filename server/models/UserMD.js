@@ -22,13 +22,6 @@ let userSchema = new Schema({
         minLenght: 4,
         trim: true
     },
-    username: {
-        type: String,
-        required:true,
-        maxLength: 100,
-        minLenght: 6,
-        trim: true
-    },
     password: {
         type: String,
         required:true,

@@ -2,15 +2,6 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
-import {Ajax} from '../../../shared/utility.js';
-import { Route } from 'react-router-dom'
-
-
-async function Logout(history){
-    let user = await Ajax.GetData("/api/user/logout");
-    if(user.isAuth)
-        history.push('/admin/login');
-}
 
 const Navbar = (props) =>{
     
@@ -36,13 +27,6 @@ const Navbar = (props) =>{
             </NavLink>
         </li>
         <li>
-            <a styleName="navbarItem" href="">
-                <span styleName="navbarIcon"><i className="icon calendar"></i></span>
-                <span href="#" styleName="navbarLink">Calendrier</span>
-                <div styleName="navbarBorder"></div>
-            </a>
-        </li>
-        <li>
             <NavLink styleName="navbarItem" to="/admin/pages">
                 <span styleName="navbarIcon"><i className="icon copy"></i></span>
                 <span href="#" styleName="navbarLink">Pages</span>
@@ -57,23 +41,18 @@ const Navbar = (props) =>{
             </NavLink>
         </li>
         <li>
-            <a styleName="navbarItem" href=""> 
+            <NavLink styleName="navbarItem" to="/admin/mails"> 
                 <span styleName="navbarIcon"><i className="icon envelope"></i></span>
                 <span styleName="navbarLink">Mail</span>
                 <div styleName="navbarBorder"></div>
-            </a>
+            </NavLink>
         </li>
         <li>
-            <a styleName="navbarItem" href=""> 
+            <NavLink styleName="navbarItem" to="/admin/administrator"> 
                 <span styleName="navbarIcon"><i className="icon chess queen"></i></span>
                 <span styleName="navbarLink">Administrateur</span>
                 <div styleName="navbarBorder"></div>
-            </a>
-        </li>
-        <li>
-            <Route render={({ history}) => (
-                <button className="btn btn-xs btn-outline-danger" onClick={() => { Logout(history) }}> Déconnexion</button>)} >
-            </Route>
+            </NavLink>
         </li>
     </ul>
     )

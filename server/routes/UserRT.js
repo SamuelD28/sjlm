@@ -8,11 +8,13 @@ let express = require("express"),
 //~~~~~~~~~~~Routes~~~~~~~~~~~~//
 
 router.route("/")
-      .post(Api.RegisterUser)
-      .get(Api.GetAllUser);
+      .post(Mdw.IsAuth, Api.RegisterUser)
+      .get(Mdw.IsAuth, Api.GetAllUser);
+      
+router.put("/:id", Mdw.IsAuth, Api.UpdateUser);
 
 //Testing routes
-router.get("/auth", Mdw.IsAuth, Api.TestAuth);
+router.get("/auth", Mdw.IsAuth, Api.Auth);
 router.post("/login" , Api.LoginUser);
 router.get("/logout", Mdw.IsAuth, Api.LogoutUser);
 

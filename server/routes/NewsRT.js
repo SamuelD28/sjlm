@@ -10,14 +10,14 @@ let express = require("express"),
 // GET ADMIN
 router.route("/")
       .get(Api.FindNews)
-      .post(Api.CreateNews);
+      .post(Mdw.IsAuth, Api.CreateNews);
 
 router.route("/:limit")
       .get(Api.FindNews)
       
 router.route("/:id")
-      .put(Api.UpdateNews)
-      .delete(Api.DeleteNews);
+      .put(Mdw.IsAuth, Api.UpdateNews)
+      .delete(Mdw.IsAuth, Api.DeleteNews);
       
 //----------------Module Exports-------------//    
 

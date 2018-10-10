@@ -1,30 +1,34 @@
 //---------Declaration-----------//
 import React from 'react';
-import Navbar from '../components/navbar/navbar.js'
-
-//Hoc components
-import Auth from '../hoc/auth.js';
+import Navbar from '../components/navbar/navbar.js';
+import Headbar from '../components/headbar/headbar.js';
 
 //Navigation component
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect } from 'react-router-dom';
 import Home from './home/home.js';
 import News from './news/news.js';
 import Members from './members/members.js';
 import Pages from './pages/pages.js';
-import Login from '../components/login/login.js';
+import Mails from './mails/mails.js';
+import Administrator from './administrator/administrator.js';
 
 //----------Core Code-------//
+//Could add authentification here as well for better security. To review
 const Index = (props) => {
-    
     return(
     <div>
         <Navbar/>
+        <Headbar user={props.user}/>
         <Switch>
-            <Route exact path="/admin" component={Auth(Home, true)}/>
-            <Route exact path="/admin/news" component={Auth(News, true)} />
-            <Route exact path="/admin/pages" component={Auth(Pages, true)} />
-            <Route exact path="/admin/members" component={Auth(Members, true)} />
-            <Route exact path="/admin/login" component={Auth(Login, false)} />
+            <Route exact path="/admin" component={Home} something="foo"/>
+            <Route exact path="/admin/news" component={News} />
+            <Route exact path="/admin/pages" component={Pages} />
+            <Route exact path="/admin/members" component={Members} />
+            <Route exact path="/admin/mails" component={Mails} />
+            <Route exact path="/admin/administrator" render={()=><Administrator user={props.user}/>}/>
+            <Route path="/">
+                <Redirect to="/admin" />
+            </Route>
         </Switch>
     </div>)
 }
