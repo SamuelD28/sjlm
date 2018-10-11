@@ -3,6 +3,7 @@ import FormComponent from '../FormComponent.js';
 import {Modal, Form} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import moment from 'moment';
+import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
@@ -31,7 +32,7 @@ class NewsEdit extends FormComponent{
         <Modal.Header>Modifier une Actualitée</Modal.Header>
         <Modal.Content>
             <Modal.Description className="section-form">
-                <div className="ui spaced image img-bg" style={{backgroundImage: `url('/${this.formData.Image}')`, width: "40%"}}>
+                <div className="ui spaced image img-bg" style={{backgroundImage: `url('${this.formData.Images[0]}')`, width: "40%"}}>
                 </div>
                 <Form onSubmit={() => {this.UpdateInDb("/api/news/")}} style={{width: "60%"}}>
                     <Form.Field>
@@ -64,16 +65,17 @@ class NewsEdit extends FormComponent{
                     <Form.Field>
                         <textarea name="Description" type="textarea" placeholder="Description" defaultValue={this.formData.Description} onChange={this.HandleChange}></textarea>
                     </Form.Field>
-                    <Form.Group>
-                        <Form.Field>
-                            <label className="btn btn-sm btn-outline-info" htmlFor="imgInput"><i className="far fa-image"></i> {this.formData.Image}</label>                        
-                            <input id="imgInput" name="Image" type="file" onChange={this.HandleChange}/>
-                        </Form.Field>
-                        <Form.Field>
-                            <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="far fa-file"></i> {this.formData.File}</label>
-                            <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
-                        </Form.Field>
-                    </Form.Group>
+                   <CloudinaryUpload 
+                    multiple={true} 
+                    cropping={false}
+                    formData={this.formData}
+                    buttonText="Modifier une gallerie"
+                    linkedInput="Images"
+                    gallery={this.formData.Images}/>
+                    <Form.Input>
+                        <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
+                        <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
+                    </Form.Input>
                     <Form.Field width={4}>
                         <label>Date D'échéance</label>
                         <input name="DateDue" type="date" onChange={this.HandleChange} defaultValue={moment(this.formData.DateDue).format("YYYY[-]MM[-]DD")}/>

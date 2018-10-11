@@ -1,7 +1,8 @@
 //----------------Dependencies-------------//
 
 let mongoose    = require("mongoose"),
-    Members     = require("../models/MembersMD.js");
+    Members     = require("../models/MembersMD.js"),
+    cloudinary  = require("cloudinary");
 
 let Api = new Object();
 
@@ -19,6 +20,8 @@ Api.GetMembers = function(req, res)
 
 Api.CreateMembers = function(req, res)
 {
+    console.log(req.body.Photo);
+  
     Members.create(req.body)
          .then((members) =>{
             console.log("~Successfully created member"); 

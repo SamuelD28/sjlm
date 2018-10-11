@@ -26,6 +26,10 @@ let pagesSchema = new Schema(
     PageContent: {
         type: String,
         required: true
+    },
+    PageGallery:{
+        type: Array,
+        required: false
     }
 }
 );

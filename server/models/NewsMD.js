@@ -23,12 +23,14 @@ let newsSchema = new mongoose.Schema({
         type: Date,
         default: new Date(),
     },
-    Image:{
-        type:  String,
+    Images:{
+        type:  Array,
         required: true,
     },
     File:{
-        type: String
+        type: String, 
+        required: false,
+        default: 'sjlm.mp4'
     },
     Description:{
         type: String,

@@ -7,15 +7,13 @@ let mongoose    = require("mongoose"),
     User        = require("../models/UserMD.js");
 
 //----------------Initialisation-------------//
-
 let newsData    = [
 {
     Title: "Cueillette de Fraise",
     Category: "Activité",
     DatePublished: "2018-07-13",
     DateDue: "2018-07-13",
-    Image: "sample2.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
@@ -23,8 +21,7 @@ let newsData    = [
     Category: "Évènement",
     DatePublished: "2018-07-13", 
     DateDue: "2018-09-01",
-    Image: "sample1.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
@@ -32,8 +29,7 @@ let newsData    = [
     Category: "Commniqué",
     DatePublished: "2018-07-14",
     DateDue: "2018-08-11",
-    Image: "sample3.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
@@ -41,8 +37,7 @@ let newsData    = [
     Important: true,
     Category: "Évènement",
     DateDue: "2018-11-02",
-    Image: "sample4.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
@@ -50,8 +45,7 @@ let newsData    = [
     Category: "Activité",
     DatePublished: "2018-07-16",
     DateDue: "2018-09-11",
-    Image: "sample5.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
@@ -59,8 +53,7 @@ let newsData    = [
     Category: "Évènement",
     DatePublished: "2018-07-17",
     DateDue: "2018-08-01",
-    Image: "sample6.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
@@ -69,16 +62,14 @@ let newsData    = [
     Important: true,
     DatePublished: "2018-07-18",
     DateDue: "2018-07-21",
-    Image: "sample7.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 },
 {
     Title: "Ouverture de la saison de la chasse",
     Category: "Évènement",
     DateDue: "2018-12-19",
-    Image: "sample8.jpg",
-    File: "test.pdf",
+    Images: ["https://res.cloudinary.com/dohwohspb/image/upload/v1539132662/samples/sheep.jpg"],
     Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat metus sit amet mattis viverra. Sed tempor mollis sodales. Nullam quis finibus turpis. Nulla vulputate dui et erat ullamcorper pretium. Morbi vel justo nec nisl lacinia elementum quis nec sapien. Nullam eleifend tristique laoreet. Etiam maximus tortor eu neque malesuada ultricies. Mauris dignissim, mauris sit amet vestibulum varius, purus justo placerat nulla, sed euismod quam ligula nec ipsum. Suspendisse ut erat fermentum, rutrum felis quis, faucibus nisi. Sed blandit lacus libero, non mollis orci volutpat facilisis. Integer turpis elit, faucibus quis odio non, commodo finibus eros. Duis non pellentesque elit. Nam sit amet lacus sapien. Vivamus tristique volutpat dolor, sed faucibus felis facilisis sed."
 }
 ];
@@ -143,8 +134,8 @@ let pagesData = [
 {"PageCategory" : "administration", "Template" : 1, "PageTitle" : "Bottins des employés", "Banner" : "sample3.jpg", "PageContent" : "<h1>A completer</h1>"},
 {"PageCategory" : "services", "Template" : 1, "PageTitle" : "Permis", "Banner" : "sample9.jpg", "PageContent" : "<h1>Faire une demande</h1><p>Voici les&nbsp;<strong>formulaires&nbsp;</strong>de demande de permis à remplir pour l'obtention d'un permis.</p><p>Demande de permis général et certificat - Télécharger le formulaire&nbsp;&nbsp;&nbsp;<a href=\"http://www.saint-jacques-le-mineur.ca/assets/files/services-communaute/DEMANDE%20DE%20PERMIS(formulaire)%20mise%20a%20jour%2006-10-2017.pdf\" target=\"_blank\">PDF</a></p><p>Branchement privé à l'aqueduc et aux égouts - Télécharger le formulaire&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"http://www.saint-jacques-le-mineur.ca/assets/files/services-communaute/formulaire_permis_branchement_prive.pdf\" target=\"_blank\">PDF</a></p><p>Il suffit de compléter le formulaire approprié et de le retourner, en personne, par courriel ou par télécopie au Service de l’urbanisme :</p><p>Adresse : 91, rue Principale Saint-Jacques-le-Mineur, Qc J0J 1Z0</p><p>Courriel : amenagement@sjlm.ca</p><p>Télécopie : 450-347-5754</p><p>Un suivi sera fait auprès de vous rapidement, soit par courriel ou par téléphone.&nbsp;Si des documents complémentaires sont requis nous vous en aviserons. Il est également possible de communiquer directement avec le Service de l’urbanisme au (450) 347-5446 #203, pour parler à notre préposée.</p><p><br></p><p><strong>Tarifs applicables:&nbsp;</strong><a href=\"http://www.saint-jacques-le-mineur.ca/assets/files/services-communaute/4093-2016%20modif%204000-91%20tarif%20des%20permis%20et%20certificat.pdf\" target=\"_blank\"><strong>PDF</strong></a></p><p>Le paiement de votre permis peut se faire sur place, au bureau municipal (argent comptant ou chèque), ou encore par courrier, en expédiant un chèque à l’ordre de :</p><p>Municipalité Saint-Jacques-le-Mineur</p><p>91, rue Principale</p><p>Saint-Jacques-le-Mineur (Qc)</p><p>J0J 1Z0</p><p><strong>IMPORTANT :</strong>&nbsp;Il est impératif de vérifier auprès du Service de l’urbanisme de la municipalité si les travaux que vous envisagez sont réglementaires ou nécessitent l’octroi d’un permis.</p><h2>INFORMATIONS SUPPLÉMENTAIRES</h2><p>Dispositifs de traitement des eaux usées :&nbsp;<a href=\"http://www.mddelcc.gouv.qc.ca/eau/eaux-usees/guide-bonnes-pratiques-proprio-dispositifs.pdf\" target=\"_blank\">Guide de bonnes pratiques destiné aux propriétaires de dispositifs de traitement des eaux usées</a></p><p><a href=\"http://www.saint-jacques-le-mineur.ca/assets/files/2015/Fiche_bande_riveraine_COVABAR_2015.pdf\" target=\"_blank\">Aménagement des bandes riveraines: Fiche d'information préparé par COVABAR</a></p><p><br></p>"}    
 ];
-//----------------Injection in the database-------------//
 
+//----------------Injection in the database-------------//
 function SeedData()
 {
     // User.remove({}, (err) => {

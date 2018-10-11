@@ -19,17 +19,16 @@ class FormComponent extends Component{
     HandleChange = (e) =>
     {
         try{
+            
             //Enable the submit button
             this.setState({disableSubmit: false});
-            
             //Retrieve the value from the input
             let inputValue = Forms.RetrieveValueFromInput(e);
-            
              //Verify that the returmed data contains something. Otherwise trows an error.
             Utility.IsValuesUndefinedOrNull(inputValue);
-            
             //Append the value and input name to the form data object.
             Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
+            console.log(this.formData);
         }
         catch(err)
         {
@@ -43,13 +42,10 @@ class FormComponent extends Component{
         try{
             //Tells the loader to change its status
             this.ChangeActionState(1000, true, "Post");
-            
             //Does a post request to the server
             let postedData = await Ajax.PostData(url, this.formData);
-            
             //Verify that the returmed data contains something. Otherwise trows an error.
             Utility.IsValuesUndefinedOrNull(postedData, this.props.CreateInTempState); //*Create in tempstate comes from the crud component
-            
             //Create the data in the temporary state
             this.props.CreateInTempState(postedData);
         }

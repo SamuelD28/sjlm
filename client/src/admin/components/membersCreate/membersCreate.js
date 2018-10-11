@@ -3,6 +3,7 @@ import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Modal, Form, Input, Label} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
+import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 class MembersCreate extends FormComponent{
     
@@ -61,12 +62,12 @@ class MembersCreate extends FormComponent{
                         <textarea name="PersonnalNote" placeholder="Note Personnel" onChange={this.HandleChange}>
                         </textarea>
                     </Form.Field>
-                    <Form.Group>
-                        <Form.Field>
-                            <label className="btn btn-outline-info" htmlFor="photoInput"><i className="icon image"></i> Choisir une photo</label>
-                            <input required name="Photo" type="file" id="photoInput" onChange={this.HandleChange}/>
-                        </Form.Field>
-                    </Form.Group>
+                    <CloudinaryUpload 
+                    multiple={false} 
+                    cropping={true} 
+                    formData={this.formData}
+                    buttonText="Choisir une photo"
+                    linkedInput="Photo"/>
                     <button type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Ajouter</button>
                 </Form>
             </Modal.Description>

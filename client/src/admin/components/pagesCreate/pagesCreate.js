@@ -5,6 +5,7 @@ import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms} from '../../../shared/utility.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
+import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 //Quill Text Editor declaration
 const modules = {
@@ -30,7 +31,7 @@ class PagesCreate extends FormComponent{
     {
         Forms.AppendValueToObject("PageContent", this.formData, e);
     }
-
+    
     render(){
     return(
     <Modal 
@@ -77,10 +78,18 @@ class PagesCreate extends FormComponent{
                                         <option value="3"> 3 | Bannière sur côté</option>
                                     </select>
                                 </Form.Field>
-                                <Form.Input>
-                                        <label className="btn btn-sm btn-outline-info" htmlFor="bannerInput"><i className="icon image"></i> Choisir une bannière</label>
-                                        <input required name="Banner" type="file" id="bannerInput" onChange={this.HandleChange}/>
-                                </Form.Input>
+                                <CloudinaryUpload 
+                                multiple={false} 
+                                cropping={true} 
+                                formData={this.formData}
+                                buttonText="Choisir une bannière"
+                                linkedInput="Banner"/>
+                                <CloudinaryUpload 
+                                multiple={true} 
+                                cropping={false} 
+                                formData={this.formData}
+                                buttonText="Choisir une gallerie"
+                                linkedInput="PageGallery"/>
                                 <Form.Field>
                                     <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                 </Form.Field>

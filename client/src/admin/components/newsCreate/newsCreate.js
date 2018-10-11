@@ -3,6 +3,7 @@ import FormComponent from '../FormComponent.js';
 import {Forms} from '../../../shared/utility.js';
 import {Form, Modal} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
+import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 // Css module import
 import CSSModules from 'react-css-modules';
@@ -58,16 +59,16 @@ class NewsCreate extends FormComponent{
                     <Form.Field>
                         <textarea name="Description" type="textarea" placeholder=" Description" onChange={this.HandleChange} required></textarea>
                     </Form.Field>
-                    <Form.Group>
-                        <Form.Field>
-                            <label className="btn btn-sm btn-outline-info" htmlFor="imgInput"><i className="far fa-image"></i> Choisir une Image</label>                        
-                            <input id="imgInput" name="Image" type="file" onChange={this.HandleChange} required/>
-                        </Form.Field>
-                        <Form.Field>
-                            <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="far fa-file"></i> Choisir un Fichier</label>
-                            <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
-                        </Form.Field>
-                    </Form.Group>
+                    <CloudinaryUpload 
+                    multiple={true} 
+                    cropping={false} 
+                    formData={this.formData}
+                    buttonText="Choisir une gallerie"
+                    linkedInput="Images"/>
+                    <Form.Input>
+                        <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> Choisir un Fichier</label>
+                        <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
+                    </Form.Input>
                     <Form.Field inline>
                         <input className="ui checkbox" onClick={Forms.ToggleInput} linkedto="DateDue" type="checkbox" />
                         <label>Date D'échéance</label>

@@ -16,7 +16,7 @@ const NewsCard = (props) =>{
     if(props.news !== undefined)
     return(
     <div styleName="news">
-        <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('/${props.news.Image}')`}}></div>
+        <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('${props.news.Images[0]}')`}}></div>
         <h3 styleName="newsTitle">{props.news.Title}</h3>
         {DisplayImportantTag(props.news)}
         <span styleName="newsCategory">{props.news.Category}</span>

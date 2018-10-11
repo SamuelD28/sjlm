@@ -13,7 +13,8 @@ let express         = require("express"),
     mongoose        = require("mongoose"),
     methodOverride  = require("method-override"),
     dataSeed        = require("./utils/dataseed.js"),
-    cookieParser    = require("cookie-parser");
+    cookieParser    = require("cookie-parser"),
+    cloudinary      = require("cloudinary");
 
 //----------------Initialisation-------------//
 
@@ -23,6 +24,11 @@ app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
 app.use(express.static(__dirname + "/media"));
 app.use(cookieParser());
 require("dotenv").config();
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.CLOUD_API_KEY, 
+  api_secret: process.env.CLOUD_API_SECRET 
+})
 
 //Connection to the database
 mongoose.Promise = Promise;

@@ -299,7 +299,7 @@ Forms.RetrieveValueFromInput = function(e)
                     break;
             case "file":
                     Forms.ChangeLabelText(e);
-                    value = target.files[0].name;
+                    value = e.target.files[0];
                     break;
             default:
                     value = target.value;

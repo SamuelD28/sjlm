@@ -440,3 +440,13 @@ blockquote {
     margin: .3vw 0;
 }
 
+.uploads-thumbnails{
+    width: 6vw;
+    height: 6vw;
+    margin: .5vw 1vw;
+}
+
+.container-thumbnails{
+    display: flex;
+    flex-wrap: wrap;
+}
