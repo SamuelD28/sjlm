@@ -1,6 +1,7 @@
 /*global cloudinary*/
 import React, {Component} from 'react';
 import {Form} from 'semantic-ui-react';
+import {Forms} from '../../../shared/utility.js';
 
 let widgetOptions = {
     cloudName: "dohwohspb",
@@ -49,9 +50,11 @@ class CloudinaryUpload extends Component{
         super(props);
         widgetOptions.multiple = props.multiple;
         widgetOptions.cropping = props.cropping;
-        this.uploadsThumbnails = React.createRef();
-        
         this.formData = props.formData;
+        this.uploadsThumbnails = React.createRef();
+        this.Images = props.formData[props.linkedInput];
+        this.enableSubmit = props.enableSubmit;
+        this.state = "";
         this.widget = new cloudinary.createUploadWidget(widgetOptions, (error, result)=> {
             if(result && result.event === "success"){
                 console.log(result);
@@ -62,39 +65,57 @@ class CloudinaryUpload extends Component{
     
     componentDidMount()
     {
-        if(this.props.gallery !== undefined)
-            this.PopulateThumbnails(this.props.gallery);
+        this.setState({Images : this.Images});
     }
     
-    AppendUrlToFormData = (url) =>{
+    AppendUrlToFormData = async(url) =>{
         
         if(this.props.multiple){
-            if(this.formData[this.props.linkedInput] === undefined)
-                this.formData[this.props.linkedInput] = [];
+            if(this.Images === undefined)
+                this.Images = [];
                 
-            this.formData[this.props.linkedInput].push(url);
+            this.Images.push(url);
         }
-        else{
-            this.formData[this.props.linkedInput] = url;            
-        }
-        
-        console.log(this.formData);
-        this.PopulateThumbnails(this.formData[this.props.linkedInput]);
-    }
-    
-    PopulateThumbnails = (thumbnailsUrl) =>{
-        
-        if(thumbnailsUrl.constructor === Array)
-            thumbnailsUrl.forEach((thumbnail) =>{this.GenerateThumbnails(thumbnail)});
         else
-            this.GenerateThumbnails(thumbnailsUrl);
+            this.Images = url;            
+        
+        this.UpdateFormData();
     }
     
-    GenerateThumbnails = (url) => {
-        let image = document.createElement("img");
-        image.src = url;
-        image.className = "uploads-thumbnails";
-        this.uploadsThumbnails.current.append(image);
+    DisplayThumbnailImages(){
+        if(this.state.Images !== undefined && this.props.multiple)
+        return this.state.Images.map((element, index) => (
+           <img 
+           alt=""
+           key={index} 
+           className="uploads-thumbnails" 
+           src={element} 
+           onClick={() => {this.RemoveImage(element)}} /> 
+        ));
+        else if(this.state.Images !== undefined)
+        return(
+            <img 
+            alt=""
+            className="uploads-thumbnails" 
+            src={this.state.Images}/> 
+        )
+    }
+    
+    RemoveImage = async(thumbnailUrl) => {
+        
+        let index = this.Images.indexOf(thumbnailUrl);
+        if(index !== -1)
+        {
+            if(this.Images.length > 1)
+                this.Images.splice(index, 1);
+        }
+        this.UpdateFormData();
+    }
+    
+    UpdateFormData = async() => {
+        await this.setState({Images: this.Images});
+        Forms.AppendValueToObject(this.props.linkedInput, this.formData, this.state.Images);
+        this.enableSubmit();
     }
     
     OpenCloudinaryWidget = (e) =>{
@@ -112,7 +133,7 @@ class CloudinaryUpload extends Component{
             </Form.Field>
             <Form.Field>
                 <div className="container-thumbnails" ref={this.uploadsThumbnails}>
-                    
+                {this.DisplayThumbnailImages()}
                 </div>
             </Form.Field>
         </div>

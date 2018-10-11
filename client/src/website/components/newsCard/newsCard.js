@@ -23,7 +23,7 @@ class NewsCard extends Component{
     return(
     this.state.news.map((item, index)=> (
     <div styleName='newsCard' key={index}>
-        <div styleName='newsImg' style={{backgroundImage: `url('/${item.Image}')`}}>
+        <div styleName='newsImg' style={{backgroundImage: `url('${item.Images[0]}')`}}>
             <h3 styleName='newsCategory'>{item.Category}</h3>
         </div>
         <div styleName='newsInfo'>

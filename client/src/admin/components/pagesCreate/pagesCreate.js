@@ -83,13 +83,15 @@ class PagesCreate extends FormComponent{
                                 cropping={true} 
                                 formData={this.formData}
                                 buttonText="Choisir une bannière"
-                                linkedInput="Banner"/>
+                                linkedInput="Banner"
+                                enableSubmit={this.EnableSubmit}/>
                                 <CloudinaryUpload 
                                 multiple={true} 
                                 cropping={false} 
                                 formData={this.formData}
                                 buttonText="Choisir une gallerie"
-                                linkedInput="PageGallery"/>
+                                linkedInput="PageGallery"
+                                enableSubmit={this.EnableSubmit}/>
                                 <Form.Field>
                                     <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                 </Form.Field>

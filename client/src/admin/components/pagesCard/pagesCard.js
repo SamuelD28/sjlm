@@ -5,6 +5,7 @@ import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms} from '../../../shared/utility.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
+import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 //Css Module import
 import CSSModules from 'react-css-modules';
@@ -84,10 +85,20 @@ class PagesCard extends FormComponent{
                                             <option disabled value="3"> 3 | Bannière sur côté</option>
                                         </select>
                                     </Form.Field>
-                                    <Form.Input>
-                                        <label className="btn btn-sm btn-outline-info" htmlFor="bannerInput"><i className="icon image"></i> {this.props.pages.Banner}</label>
-                                        <input name="Banner" type="file" id="bannerInput" onChange={this.HandleChange}/>
-                                    </Form.Input>
+                                    <CloudinaryUpload 
+                                    multiple={false} 
+                                    cropping={true} 
+                                    formData={this.formData}
+                                    buttonText="Choisir une bannière"
+                                    linkedInput="Banner"
+                                    enableSubmit={this.EnableSubmit}/>
+                                    <CloudinaryUpload 
+                                    multiple={true} 
+                                    cropping={false} 
+                                    formData={this.formData}
+                                    buttonText="Choisir une gallerie"
+                                    linkedInput="PageGallery"
+                                    enableSubmit={this.EnableSubmit}/>
                                     <Form.Field>
                                         <button onClick={() => {this.DeleteInDb("/api/pages/")}} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
                                         <button disabled={this.state.disableSubmit} type="submit" style={{float: 'right'}} className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>

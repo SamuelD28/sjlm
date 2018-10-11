@@ -446,6 +446,11 @@ blockquote {
     margin: .5vw 1vw;
 }
 
+.uploads-thumbnails:hover{
+    opacity: .7;
+    cursor: pointer;
+}
+
 .container-thumbnails{
     display: flex;
     flex-wrap: wrap;

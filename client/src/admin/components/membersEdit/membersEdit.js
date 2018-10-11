@@ -3,6 +3,7 @@ import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Modal, Form, Input, Label} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
+import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 class MembersEdit extends FormComponent{
     
@@ -29,7 +30,7 @@ class MembersEdit extends FormComponent{
     <Modal.Header>Modifier un membre</Modal.Header>
         <Modal.Content>
             <Modal.Description className="section-form">
-                <div className="ui spaced image img-bg" style={{backgroundImage: `url('/${this.formData.Photo}')`, width: "40%"}}>
+                <div className="ui spaced image img-bg" style={{backgroundImage: `url('${this.formData.Photo}')`, width: "40%"}}>
                 </div>
                 <Form onSubmit={()=> {this.UpdateInDb("/api/members/")}} style={{width: "60%"}}>
                     <Form.Group widths="equal">
@@ -69,12 +70,13 @@ class MembersEdit extends FormComponent{
                         <textarea name="PersonnalNote" defaultValue={this.formData.PersonnalNote} onChange={this.HandleChange}>
                         </textarea>
                     </Form.Field>
-                    <Form.Group>
-                        <Form.Field>
-                            <label className="btn btn-outline-info" htmlFor="photoInput"><i className="icon image"></i> {this.formData.Photo}</label>
-                            <input name="Photo" type="file" id="photoInput" onChange={this.HandleChange}/>
-                        </Form.Field>
-                    </Form.Group>
+                    <CloudinaryUpload 
+                    multiple={false} 
+                    cropping={true} 
+                    formData={this.formData}
+                    buttonText="Choisir une photo"
+                    linkedInput="Photo"
+                    enableSubmit={this.EnableSubmit}/>
                     <Form.Field>
                         <button onClick={() => {this.DeleteInDb("/api/members/")}} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
                         <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>

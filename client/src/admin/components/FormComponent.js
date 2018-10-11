@@ -21,7 +21,7 @@ class FormComponent extends Component{
         try{
             
             //Enable the submit button
-            this.setState({disableSubmit: false});
+            this.EnableSubmit();
             //Retrieve the value from the input
             let inputValue = Forms.RetrieveValueFromInput(e);
              //Verify that the returmed data contains something. Otherwise trows an error.
@@ -34,6 +34,15 @@ class FormComponent extends Component{
         {
             console.log(err.message);
         }
+    }
+    
+    EnableSubmit = () => {
+        this.setState({disableSubmit: false});
+    }
+    
+    DisableSubmit = () =>
+    {
+        this.setState({disableSubmit: true});
     }
     
     //Function that create the requested data in the db and then add it to the temporary state

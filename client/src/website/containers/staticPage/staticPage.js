@@ -44,7 +44,7 @@ class StaticPage extends Component{
     if(this.state.page !== undefined){
     return(
     <div styleName="staticPage">
-        <div styleName="bannerPhoto" style={{backgroundImage : `url('/${this.state.page.Banner}')`}}>
+        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.Banner}')`}}>
         </div>
         <div styleName="pageContent">
             <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}/</h2>

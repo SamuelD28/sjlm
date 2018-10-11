@@ -69,9 +69,9 @@ class NewsEdit extends FormComponent{
                     multiple={true} 
                     cropping={false}
                     formData={this.formData}
-                    buttonText="Modifier une gallerie"
+                    buttonText="Ajouter une image"
                     linkedInput="Images"
-                    gallery={this.formData.Images}/>
+                    enableSubmit={this.EnableSubmit}/>
                     <Form.Input>
                         <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
                         <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
