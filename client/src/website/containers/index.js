@@ -6,11 +6,12 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import Home from './home/home.js';
 import StaticPage from './staticPage/staticPage.js';
 import NewsPage from './newsPage/newsPage.js';
+import BackTop from '../components/backTop/backTop.js';
 
 //----------Core Code-------//
 const Index = (props) =>{
     return(
-    <div>
+    <div id="websiteContent"> 
         <Navbar />
         <Switch>
             <Route exact path="/" component={Home} />
@@ -20,6 +21,7 @@ const Index = (props) =>{
                 <Redirect to="/" />
             </Route>
         </Switch>
+        <BackTop />
     </div>
     )
 }

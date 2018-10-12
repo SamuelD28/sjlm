@@ -56,11 +56,11 @@ class PagesCreate extends FormComponent{
                         <Grid.Row>
                             <Grid.Column width={6}>
                                 <Form.Field>
-                                    <input name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.HandleChange}/>
+                                    <input required name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.HandleChange}/>
                                 </Form.Field>
                                 <Form.Field>
-                                    <select name="PageCategory" defaultValue="default" onChange={this.HandleChange}>
-                                        <option value="default">Catégorie</option>
+                                    <select required name="PageCategory" defaultValue="default" onChange={this.HandleChange}>
+                                        <option value="default">Catégorie*</option>
                                         <option value="city">Découvrir la ville</option>
                                         <option value="administration">Administration</option>
                                         <option value="services">Les services</option>
@@ -71,20 +71,13 @@ class PagesCreate extends FormComponent{
                                     </select>
                                 </Form.Field>
                                 <Form.Field>
-                                    <select name="Template" defaultValue="default" onChange={this.HandleChange}>
+                                    <select required name="Template" defaultValue="default" onChange={this.HandleChange}>
                                         <option value="default">Template</option>
                                         <option value="1"> 1 | Défaut</option>
-                                        <option value="2"> 2 | Sans Bannière</option>
-                                        <option value="3"> 3 | Bannière sur côté</option>
+                                        <option disabled value="2"> 2 | Sans Bannière</option>
+                                        <option disabled value="3"> 3 | Bannière sur côté</option>
                                     </select>
                                 </Form.Field>
-                                <CloudinaryUpload 
-                                multiple={false} 
-                                cropping={true} 
-                                formData={this.formData}
-                                buttonText="Choisir une bannière"
-                                linkedInput="Banner"
-                                enableSubmit={this.EnableSubmit}/>
                                 <CloudinaryUpload 
                                 multiple={true} 
                                 cropping={false} 
@@ -98,6 +91,7 @@ class PagesCreate extends FormComponent{
                             </Grid.Column>
                             <Grid.Column width={10}>
                                 <ReactQuill 
+                                required={true}
                                 name="PageContent"
                                 modules={modules}
                                 formats={formats}

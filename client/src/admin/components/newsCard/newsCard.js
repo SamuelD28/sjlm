@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 //Css module import
 import CSSModules from 'react-css-modules';
@@ -17,10 +18,10 @@ const NewsCard = (props) =>{
     return(
     <div styleName="news">
         <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('${props.news.Images[0]}')`}}></div>
-        <h3 styleName="newsTitle">{props.news.Title}</h3>
+        <h2 styleName="newsTitle">{props.news.Title}</h2>
         {DisplayImportantTag(props.news)}
-        <span styleName="newsCategory">{props.news.Category}</span>
-        <p styleName="newsDesc">{props.news.Description.substring(0, 100)}...</p>
+        <p styleName="newsCategory">Catégorie : {props.news.Category}</p>
+        <p styleName="newsDate">Publié le : {`${moment(props.DatePublished).format("YYYY-MM-DD")}`} <i className="clock outline icon"></i></p>
     </div>
     )
 }

@@ -22,7 +22,7 @@ Api.UpdateUser = function(req, res)
     Query.exec()
          .then((user) =>{
             console.log("~Updated Page ID : " + req.params.id);
-            res.send(user);
+            res.json(user);
          })
          .catch((err) =>{
             console.log("~An Error occured while updating pages. \n ERROR: " + err);

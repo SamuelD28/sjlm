@@ -34,6 +34,13 @@ class StaticPage extends Component{
         }
     }
     
+    DisplayNewsGallery = () =>{
+        if(this.state.page.PageGallery !== undefined)
+        return this.state.page.PageGallery.map((item, index) =>(
+        <img alt="newsGallery" key={index} src={item} className="img-full" styleName="pageImgGallery"/>
+        ));
+    }
+    
     CreateMarkup()
     {
         return {__html: this.state.page.PageContent}
@@ -44,12 +51,15 @@ class StaticPage extends Component{
     if(this.state.page !== undefined){
     return(
     <div styleName="staticPage">
-        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.Banner}')`}}>
+        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}>
         </div>
         <div styleName="pageContent">
             <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}/</h2>
             <h1 styleName="pageTitle">{this.state.page.PageTitle}</h1>
-            <div dangerouslySetInnerHTML={this.CreateMarkup()}></div>
+            <div styleName="pageDescription" dangerouslySetInnerHTML={this.CreateMarkup()}></div>
+            <div styleName="pageGallery">
+                {this.DisplayNewsGallery()}
+            </div>
         </div>
         <div styleName="pageFooter" className="text-primary">
             <span><i className="copyright outline icon"></i>2018 Saint-Jacques-le-Mineur. Tous droits réservés</span>

@@ -15,10 +15,6 @@ let pagesSchema = new Schema(
         required: true,
         default: 1
     },
-    Banner: {
-        type: String,
-        required: true
-    },
     PageTitle: {
         type: String,
         required: true
@@ -29,7 +25,7 @@ let pagesSchema = new Schema(
     },
     PageGallery:{
         type: Array,
-        required: false
+        required: true
     }
 }
 );

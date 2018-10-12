@@ -41,7 +41,7 @@ class Home extends Component{
                     <h1>Les Actualités</h1>
                 </div>
                 <div styleName='newsContent'>
-                    <NewsCard />
+                    <NewsCard history={this.props.history} />
                 </div>
             </section>
             <section styleName="members">

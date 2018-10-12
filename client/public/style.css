@@ -440,10 +440,19 @@ blockquote {
     margin: .3vw 0;
 }
 
+.back-top-btn{
+    position: fixed;
+    transform-origin: 50% 50%;
+    bottom: 1vw;
+    right: 50%;
+    left: 50%;
+    z-index: 1000;
+}
+
 .uploads-thumbnails{
     width: 6vw;
     height: 6vw;
-    margin: .5vw 1vw;
+    margin: .5vw 0;
 }
 
 .uploads-thumbnails:hover{

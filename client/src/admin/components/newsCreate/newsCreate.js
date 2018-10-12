@@ -4,13 +4,41 @@ import {Forms} from '../../../shared/utility.js';
 import {Form, Modal} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
+import ReactQuill from 'react-quill';
 
 // Css module import
 import CSSModules from 'react-css-modules';
 import styles from './newsCreate.module.css';
 
+//Declaration for quill
+const modules = {
+    toolbar:[
+      [{ 'header': [1, 2, 3, 4, 5 ,6] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote', 'link'],
+      [{'list': 'ordered'}, {'list': 'bullet'},{ 'align': [] }],
+      ['image'],
+      ['clean']
+    ],
+};
+const formats = [
+    'header',
+    'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet',
+    'link',
+    'image',
+    'align'
+];
+
 //This components hold the form to and fonctionality to create a new post in the database.
 class NewsCreate extends FormComponent{
+    
+    constructor(props)
+    {
+        super(props);
+        this.TextEditor = React.createRef();
+    }
     
     render()
     {
@@ -57,23 +85,20 @@ class NewsCreate extends FormComponent{
                         </Form.Field>
                     </Form.Group>
                     <Form.Field>
-                        <textarea name="Description" type="textarea" placeholder=" Description" onChange={this.HandleChange} required></textarea>
+                    <ReactQuill 
+                    modules={modules}
+                    formats={formats}
+                    onChange={(e) => {this.ExtractValueFromTextEditor(e, this.TextEditor, "Description", "DescriptionHtml")}}
+                    ref={this.TextEditor}
+                    />
                     </Form.Field>
                     <CloudinaryUpload 
                     multiple={true} 
                     cropping={false} 
                     formData={this.formData}
                     buttonText="Choisir une gallerie"
+                    enableSubmit={this.EnableSubmit}
                     linkedInput="Images"/>
-                    <Form.Input>
-                        <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> Choisir un Fichier</label>
-                        <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
-                    </Form.Input>
-                    <Form.Field inline>
-                        <input className="ui checkbox" onClick={Forms.ToggleInput} linkedto="DateDue" type="checkbox" />
-                        <label>Date D'échéance</label>
-                        <input name="DateDue" type="date" disabled onChange={this.HandleChange} required/>
-                    </Form.Field>
                     <Form.Field>
                         <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Publier</button>
                     </Form.Field>

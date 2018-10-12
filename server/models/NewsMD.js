@@ -19,10 +19,6 @@ let newsSchema = new mongoose.Schema({
         type: Date,
         default: new Date(),
     },
-    DateDue:{
-        type: Date,
-        default: new Date(),
-    },
     Images:{
         type:  Array,
         required: true,
@@ -35,6 +31,11 @@ let newsSchema = new mongoose.Schema({
     Description:{
         type: String,
         required: true
+    },
+    DescriptionHtml: {
+        type: String,
+        required: false,
+        default: "Default text need to be inserted"
     }
 });
 

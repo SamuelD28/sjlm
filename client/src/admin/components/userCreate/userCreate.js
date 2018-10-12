@@ -23,6 +23,13 @@ class UserCreate extends FormComponent{
                     <Form.Field>
                         <Form.Input required fluid name="email"  label='Email' type="email" placeholder='Email' onChange={this.HandleChange}/>
                     </Form.Field>
+                    <Form.Field>
+                        <label>Role</label>
+                        <select defaultValue="0">
+                            <option value="0">0 | Utilisateur</option>
+                            <option value="1">1 | Administrateur</option>
+                        </select>
+                    </Form.Field>
                     <Form.Group widths="equal">
                         <Form.Input required fluid name="password" label="Mot de passe" type="password" placeholder='Mot de passe' onChange={this.HandleChange}/>
                         <Form.Input disabled fluid label='Répéter mot de passe' type="password" placeholder='Répéter mot de passe' onChange={this.HandleChange}/>

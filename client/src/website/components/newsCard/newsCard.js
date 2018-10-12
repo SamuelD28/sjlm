@@ -14,15 +14,20 @@ class NewsCard extends Component{
     
     async componentDidMount()
     {
-        let news =  await Ajax.GetData("/api/news/6");   
+        let news =  await Ajax.GetData("/api/news/limit/6");   
         this.setState({news});
+    }
+    
+    LoadNewsPage(id)
+    {
+        this.props.history.push("/news/" + id);
     }
     
     render(){
     if(this.state.news !== undefined){
     return(
     this.state.news.map((item, index)=> (
-    <div styleName='newsCard' key={index}>
+    <div styleName='newsCard' key={index} onClick={() => {this.LoadNewsPage(item._id)}}>
         <div styleName='newsImg' style={{backgroundImage: `url('${item.Images[0]}')`}}>
             <h3 styleName='newsCategory'>{item.Category}</h3>
         </div>

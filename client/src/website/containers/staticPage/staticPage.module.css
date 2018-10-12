@@ -6,7 +6,6 @@
 .pageTitle{
     font-weight: bold;
     font-size: 2.85em;
-    margin-bottom: 1em;
 }
 
 .pageTitle::after{
@@ -27,6 +26,28 @@
     padding: 2.5vw 10vw;
     width: 100%;
     z-index: -1;
+}
+
+.pageDescription{
+    margin: 3vw 0;
+}
+
+.pageGallery{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 15vw;
+    grid-gap: .5vw;
+}
+
+.pageImgGallery{
+    cursor: pointer;
+    filter: sepia(50%);
+    transition: filter .2s ease-in-out;
+}
+
+.pageImgGallery:hover{
+    filter: sepia(0);
+    transition: filter .2s ease-in-out;
 }
 
 .pageCategory{

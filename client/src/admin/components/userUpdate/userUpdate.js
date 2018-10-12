@@ -10,17 +10,19 @@ class UserUpdate extends FormComponent{
     
     render(){
     return(
-    <Form className={adminStyles.sectionCard} onSubmit={() => {this.UpdateInDb("/api/user/" + this.props.user._id)}} style={{width: "30%"}}>
+    <Form className={adminStyles.sectionCard} onSubmit={() => {this.UpdateInDb("/api/user/" + this.props.user._id)}} style={{width: "40%"}}>
         <h1>{this.props.user.firstName} {this.props.user.lastName}</h1>
         <Grid divided>
             <Grid.Row>
                 <Grid.Column>
-                    <Form.Field>
-                        <Form.Input fluid name="firstName" label="Prénom" type="text" defaultValue={this.props.user.firstName} onChange={this.HandleChange}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input fluid name="lastName"  label='Nom' type="text" defaultValue={this.props.user.lastName} onChange={this.HandleChange}/>
-                    </Form.Field>
+                    <Form.Group widths="equal">
+                        <Form.Field>
+                            <Form.Input fluid name="firstName" label="Prénom" type="text" defaultValue={this.props.user.firstName} onChange={this.HandleChange}/>
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input fluid name="lastName"  label='Nom' type="text" defaultValue={this.props.user.lastName} onChange={this.HandleChange}/>
+                        </Form.Field>
+                    </Form.Group>
                     <Form.Field>
                         <Form.Input fluid name="email"  label='Email' type="email" defaultValue={this.props.user.email} onChange={this.HandleChange}/>
                     </Form.Field>

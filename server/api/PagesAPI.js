@@ -41,9 +41,9 @@ Api.UpdatePages = function(req, res)
 {
     let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true});
     Query.exec()
-         .then((members) =>{
+         .then((pages) =>{
             console.log("~Updated Page ID : " + req.params.id);
-            res.send(members);
+            res.json(pages);
          })
          .catch((err) =>{
             console.log("~An Error occured while updating pages. \n ERROR: " + err);

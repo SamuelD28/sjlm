@@ -25,7 +25,7 @@ Api.CreateMembers = function(req, res)
     Members.create(req.body)
          .then((members) =>{
             console.log("~Successfully created member"); 
-            res.send(members);
+            res.json(members);
          })
          .catch((err) => {
             console.log(err); 
@@ -38,7 +38,7 @@ Api.UpdateMembers = function(req, res)
     Query.exec()
          .then((members) =>{
             console.log("~Updated Members ID : " + req.params.id);
-            res.send(members);
+            res.json(members);
          })
          .catch((err) =>{
             console.log("~An Error occured while updating News. \n ERROR: " + err);

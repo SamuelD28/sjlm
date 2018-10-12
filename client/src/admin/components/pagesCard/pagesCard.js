@@ -3,7 +3,6 @@ import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
-import {Forms} from '../../../shared/utility.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
@@ -38,13 +37,6 @@ class PagesCard extends FormComponent{
     {
         super(props);
         this.formData = Object.create(this.props.pages);
-    }
-    
-    //Function that handles the change in the text. NEEDS TO BE IMPLEMENTED IN THE FORM COMPONENT.
-    HandleChangeInTextEditor = (e) =>
-    {
-        this.setState({disableSubmit: false})
-        Forms.AppendValueToObject("PageContent", this.formData, e);
     }
     
     render(){
@@ -86,13 +78,6 @@ class PagesCard extends FormComponent{
                                         </select>
                                     </Form.Field>
                                     <CloudinaryUpload 
-                                    multiple={false} 
-                                    cropping={true} 
-                                    formData={this.formData}
-                                    buttonText="Choisir une bannière"
-                                    linkedInput="Banner"
-                                    enableSubmit={this.EnableSubmit}/>
-                                    <CloudinaryUpload 
                                     multiple={true} 
                                     cropping={false} 
                                     formData={this.formData}
@@ -106,10 +91,9 @@ class PagesCard extends FormComponent{
                             </Grid.Column>
                             <Grid.Column width={10}>
                                 <ReactQuill 
-                                name="PageContent"
                                 modules={modules}
                                 formats={formats}
-                                onChange={this.HandleChangeInTextEditor}
+                                onChange={(e) => {this.HandleChangeInTextEditor(e, "PageContent")}}
                                 defaultValue={this.props.pages.PageContent}
                                 />
                             </Grid.Column>

@@ -28,12 +28,31 @@ class FormComponent extends Component{
             Utility.IsValuesUndefinedOrNull(inputValue);
             //Append the value and input name to the form data object.
             Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-            console.log(this.formData);
         }
         catch(err)
         {
             console.log(err.message);
         }
+    }
+    
+    ExtractValueFromTextEditor = (e, TextEditor, inputNameRaw, inputNameHtml) =>
+    {
+        if(TextEditor.current !== null)
+        {
+            const editor = TextEditor.current.getEditor();
+            const unprivilegedEditor = TextEditor.current.makeUnprivilegedEditor(editor);
+            
+            this.HandleChangeInTextEditor(unprivilegedEditor.getText(), "Description");
+            this.HandleChangeInTextEditor(e, "DescriptionHtml");
+        }
+    }
+    
+    //Function that handles the change in the text.
+    HandleChangeInTextEditor = (e, inputName) =>
+    {
+        this.setState({disableSubmit: false})
+        Forms.AppendValueToObject(inputName, this.formData, e);
+        console.log(this.formData);
     }
     
     EnableSubmit = () => {

@@ -6,8 +6,8 @@ let News            = require("../models/NewsMD.js"),
 
 Api.FindNews = function(req, res)
 {
-    let newsLimit = (req.params.limit === undefined)? 24: req.params.limit;
-    let Query = News.find({}).limit(Number(newsLimit));
+    let newsLimit = (req.params.number === undefined)? 24: req.params.number;
+    let Query = News.find({}).sort('-DatePublished').limit(Number(newsLimit));
     Query.exec()
          .then((news) => {
             res.json(news); 
@@ -17,12 +17,36 @@ Api.FindNews = function(req, res)
          });
 }
 
+Api.FindNewsById =function(req, res)
+{
+    News.findById(req.params.id)
+        .then((news) => {
+            res.json(news);
+        })
+        .catch((err)=>{
+            console.log("~An error occured while retrieving a news by id : " + err); 
+        });
+        
+}
+
+Api.FindNewsByCategory = function(req, res)
+{
+    News.find({Category: req.params.category})
+        .then((news) => {
+            res.json(news);
+        })
+        .catch((err) => {
+            if(err)
+                console.log(err);
+        });
+}
+
 Api.CreateNews = function(req, res)
 {
     News.create(req.body)
         .then((news) => {
             console.log("~Successfully uploaded news");
-            res.send(news);
+            res.json(news);
         })
         .catch((err) =>{
             console.log(err);
@@ -34,7 +58,7 @@ Api.UpdateNews = function(req, res)
     News.findByIdAndUpdate(req.params.id, req.body, {new : true})
         .then((news) =>{
             console.log("~Updated News ID : " + req.params.id);
-            res.send(news);
+            res.json(news);
         })
         .catch((err) => {
             console.log("~An Error occured while updating News. \n ERROR: " + err);

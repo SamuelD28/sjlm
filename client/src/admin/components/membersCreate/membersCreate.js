@@ -67,6 +67,7 @@ class MembersCreate extends FormComponent{
                     cropping={true} 
                     formData={this.formData}
                     buttonText="Choisir une photo"
+                    enableSubmit={this.EnableSubmit}
                     linkedInput="Photo"/>
                     <button type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Ajouter</button>
                 </Form>

@@ -1,8 +1,12 @@
 .news{
+    align-items: left;
     border: 2px solid #ececec;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     overflow: hidden;
     transition: transform .25s ease;
+    justify-content: space-between;
     text-align: left;
 }
 
@@ -21,8 +25,8 @@
     color: white;
     padding: .5vw;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    top: 0;
+    left: 0;
 }
 
 .newsBtn{
@@ -48,26 +52,22 @@
 }
 
 .newsTitle{
-    align-self: center;
     color: #6A6A6A;
-    grid-area: newsTitle;
+    margin: 0;
+}
+
+.newsTitle, .newsDate, .newsCategory{
+    margin-top: .25vw;
+    margin-left: .25vw;
 }
 
 .newsCategory{
-    align-self: center;
-    background-color: white;
     color: #6A6A6A;
     font-weight: bold;
-    padding: .5vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    grid-area: newsCategory;
-    text-align: center;
 }
 
-.newsDesc, .newsTitle{
-    margin: .25vw .5vw;
+.newsDate{
+    color: #2980B9;
 }
 
 .newsDesc{

@@ -1,6 +1,7 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Modal, Form} from 'semantic-ui-react';
+import ReactQuill from 'react-quill';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import moment from 'moment';
 import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
@@ -8,6 +9,27 @@ import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 //Css module import
 import CSSModules from 'react-css-modules';
 import styles from './newsEdit.module.css';
+
+//Declaration for quill
+const modules = {
+    toolbar:[
+      [{ 'header': [1, 2, 3, 4, 5 ,6] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote', 'link'],
+      [{'list': 'ordered'}, {'list': 'bullet'},{ 'align': [] }],
+      ['image'],
+      ['clean']
+    ],
+};
+const formats = [
+    'header',
+    'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet',
+    'link',
+    'image',
+    'align'
+];
 
 //This component is responsible for both the modification and suppression of news post in the database. The data are passed by the parent container news.
 class NewsEdit extends FormComponent{
@@ -17,6 +39,7 @@ class NewsEdit extends FormComponent{
     { 
         super(props);
         this.formData =Object.create(this.props.news);
+        this.TextEditor = React.createRef();
     }
     
     render(){
@@ -63,7 +86,13 @@ class NewsEdit extends FormComponent{
                         </Form.Field>
                     </Form.Group>
                     <Form.Field>
-                        <textarea name="Description" type="textarea" placeholder="Description" defaultValue={this.formData.Description} onChange={this.HandleChange}></textarea>
+                        <ReactQuill 
+                        modules={modules}
+                        formats={formats}
+                        onChange={(e) => {this.ExtractValueFromTextEditor(e, this.TextEditor, "Description", "DescriptionHtml")}}
+                        defaultValue={this.formData.DescriptionHtml}
+                        ref={this.TextEditor}
+                        />
                     </Form.Field>
                    <CloudinaryUpload 
                     multiple={true} 
@@ -76,10 +105,6 @@ class NewsEdit extends FormComponent{
                         <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
                         <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
                     </Form.Input>
-                    <Form.Field width={4}>
-                        <label>Date D'échéance</label>
-                        <input name="DateDue" type="date" onChange={this.HandleChange} defaultValue={moment(this.formData.DateDue).format("YYYY[-]MM[-]DD")}/>
-                    </Form.Field>
                     <Form.Field>
                         <button onClick={() => {this.DeleteInDb("/api/news/")}} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
                         <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
