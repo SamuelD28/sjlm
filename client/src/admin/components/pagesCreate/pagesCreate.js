@@ -14,7 +14,11 @@ const modules = {
       ['bold', 'italic', 'underline','strike', 'blockquote', 'link'],
       [{'list': 'ordered'}, {'list': 'bullet'},{'indent': '-1'}, {'indent': '+1'},{ 'align': [] }],
       ['clean']
-    ]};
+    ],
+    clipboard: {
+      matchVisual: false
+    }
+};
 const formats = [
     'header',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
@@ -48,7 +52,7 @@ class PagesCreate extends FormComponent{
     </div>
     } 
     closeIcon>
-    <Modal.Header>Ajouter une nouvelle page</Modal.Header>
+    <Modal.Header>Ajouter une page</Modal.Header>
         <Modal.Content>
             <Modal.Description>
                 <Form onSubmit={() => {this.CreateInDb("/api/pages")}}>

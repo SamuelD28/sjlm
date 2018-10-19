@@ -8,7 +8,7 @@ function NavigateToTop()
 
 const BackTop = () => {
     return(
-    <button onClick={NavigateToTop} className="btn btn-md btn-primary back-top-btn"><i className="icon chevron up"></i></button>    
+    <button onClick={NavigateToTop} className="btn btn-md btn-outline-info back-top-btn"><i className="icon chevron up"></i></button>    
     )
 }
 

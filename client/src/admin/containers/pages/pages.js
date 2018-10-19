@@ -2,6 +2,7 @@
 import React from 'react';
 import CrudComponent from '../../components/CrudComponent.js';
 import {Label} from 'semantic-ui-react';
+import {Utility} from '../../../shared/utility.js';
 
 //Css Module
 import CssModules from 'react-css-modules';
@@ -15,21 +16,37 @@ import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 //This Component is responsible for holding the state that will be modified by its crud components
 class Pages extends CrudComponent{
     
-    componentDidMount()
+    async componentDidMount()
     {
-        this.ReadInTempState("/api/pages");
+        await this.ReadInTempState("/api/pages");
+        console.log(this.tempState.db);
     }
     
-    DisplayPagesCard()
+    DisplayPagesCard = () =>
     {
-        if(this.tempState.db !== undefined)
-        {
-            let array = this.tempState.db.slice();
-            return( 
-            array.map((item , index) =>(
-            <PagesCard pages={item} key={item._id} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
+        let pagesCategory = new Set([]);
+        if(this.tempState.db !== undefined){
+            
+            this.tempState.db.map((item, index)=>(
+            pagesCategory.add(item.PageCategory)
+            ));
+            
+            return(
+            Array.from(pagesCategory).map((item ,index)=> (
+                <div styleName="menuContainer">
+                    <h1 styleName="menuTitle">{Utility.TranslatePageCategory(item)}</h1>
+                    {this.InsertPagesInCategory(item)}
+                </div>
             )))
         }
+    }
+    
+    InsertPagesInCategory = (category) =>{
+        
+        let array = this.tempState.db.slice();
+        return array.filter(element => element.PageCategory === category).map((item , index) =>(
+        <PagesCard pages={item} key={item._id} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
+        ))
     }
     
     render(){
@@ -43,7 +60,7 @@ class Pages extends CrudComponent{
                 <Label style={{margin: ".5vw"}} basic pointing="right" size="large">Nombre de Catégories : 7 </Label>
             </div>
             <div styleName="pagesRightColumn columnContainer">
-                {this.DisplayPagesCard()}
+            {this.DisplayPagesCard()}
             </div>
         </section>
     </div>

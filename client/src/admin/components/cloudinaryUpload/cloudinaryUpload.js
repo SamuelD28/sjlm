@@ -11,7 +11,8 @@ let widgetOptions = {
         "url",
         "image_search"
     ],
-    googleApiKey: "<image_search_google_api_key>",
+    googleApiKey: 'AIzaSyB_WKZp9us_1a_hNgUMR27fyiGtBkFdV4Y',
+    searchByRights: true ,
     showAdvancedOptions: false,
     cropping: false,
     multiple: false,

@@ -7,6 +7,20 @@ import {NavLink} from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
 
+//This needs to be extracted in a separate api
+let categoryNews = [
+    "events",
+    "activity",
+    "communicate",
+    "roadwork",
+    "jobs",
+    "public",
+    "council",
+    "verbal",
+    "other"
+    ];
+
+//Optimisation is neccesary here****
 //----------Core Code-------//
 class Navbar extends Component{
     
@@ -23,30 +37,38 @@ class Navbar extends Component{
     
     DisplaySecondMenu =  (event) =>
     {
-        this.TogglePrimaryLinks(event);
+        this.HideNavlinksHover();
+        this.ShowNavlinkHover(event);
         
         this.refs.navbarSecondary.style.transform = "translateX(100%)";
         
         let menuAttribute       = event.target.getAttribute("menu");
         let secondaryContent    = document.getElementById(menuAttribute);
-        let allNavBarContent    = Array.from(document.getElementsByClassName(styles.secondaryContent));
-        this.ToggleNavbarContent(allNavBarContent, secondaryContent);
+        
+        if(secondaryContent === undefined || secondaryContent === null){
+            this.HideSecondMenu();
+            console.log("hiding");
+        }
+        else {
+            let allNavBarContent    = Array.from(document.getElementsByClassName(styles.secondaryContent));
+            this.ToggleNavbarContent(allNavBarContent, secondaryContent);
+        }
     }
     
-    TogglePrimaryLinks = (event) => {
-        
+    HideNavlinksHover = () => {
         let primaryLinks = Array.from(document.querySelectorAll("." + styles.primaryLink));
         primaryLinks.forEach((element) => {
             element.style.backgroundColor = "#f0eeed";
             element.style.color = "#37474F";
         });
-        
+    }
+    
+    ShowNavlinkHover = (event) => {
         event.target.style.backgroundColor = "#37474F";
         event.target.style.color = "white";
     }
     
-    ToggleNavbarContent = (allNavarContent, singleNavbarContent) =>
-    {
+    ToggleNavbarContent = (allNavarContent, singleNavbarContent) =>{
         try{
             Utility.IsValuesUndefinedOrNull(allNavarContent, singleNavbarContent);
             allNavarContent.forEach((element) => {
@@ -62,16 +84,13 @@ class Navbar extends Component{
         }
     }
     
-    async componentDidMount()
-    {
+    async componentDidMount(){
         Utility.AdjustFullHeight(this.refs.navbar);  
         let pages = await Ajax.GetData("/api/pages");
         this.setState({pages});
-        
     }
    
-    InsertInMenu()
-    {
+    InsertInMenu(){
         let category = new Set([]);
         if(this.state.pages !== undefined){
             
@@ -90,8 +109,7 @@ class Navbar extends Component{
         }
     }
     
-    FindPagesBasedOnCategory(category)
-    {
+    FindPagesBasedOnCategory(category){
         return(
         this.state.pages.filter((item)=> item.PageCategory === category).map((item, index) =>(
         <NavLink to={`/static/${item._id}`} styleName="navbarItem secondaryLink" key={item._id}>
@@ -103,11 +121,27 @@ class Navbar extends Component{
         )));
     }
     
+    ShowNewsCategory = () =>{
+        return(categoryNews.map((item, index)=>(
+            <NavLink to={`/category/${item}`} styleName="navbarItem secondaryLink" key={item}>
+                {Utility.TranslateNewsCategory(item)}
+                <div styleName="cubeContainer">
+                    <span styleName="secondaryCube"></span>
+                </div>
+            </NavLink>
+        )))
+    }    
+    
     render(){
     return(
     <div id={styles.navbar} onMouseLeave={this.HideSecondMenu} ref="navbar">
         <div id={styles.navbarSecondary} onMouseLeave={this.TogglePrimaryLinks} ref="navbarSecondary">
             {this.InsertInMenu()}
+            <ul styleName="navbarContent secondaryContent" ref="secondaryContent" id="news">
+                <li styleName="navbarContentTitle">Actualitées
+                </li>
+                {this.ShowNewsCategory()}
+            </ul>
         </div>
         <div id={styles.navbarPrimary} ref="navbarPrimary">
             <NavLink to="/" styleName="navbarLogo">
@@ -139,9 +173,9 @@ class Navbar extends Component{
                     Actualités
                     <i className="icon large newspaper"></i>
                 </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="others">
-                    Autres
-                    <i className="icon large help"></i>
+                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} onMouseLeave={this.HideNavlinksHover} menu="contact">
+                    Contacter
+                    <i className="icon large mail"></i>
                 </li>
             </ul>
             <div styleName="navbarSocial">

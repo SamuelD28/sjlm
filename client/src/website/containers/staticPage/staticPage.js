@@ -13,6 +13,7 @@ class StaticPage extends Component{
         super(props);
         this.state = {};
         this.page = {};
+        this.footer = React.createRef();
     }
     
     async componentDidMount()
@@ -35,10 +36,20 @@ class StaticPage extends Component{
     }
     
     DisplayNewsGallery = () =>{
-        if(this.state.page.PageGallery !== undefined)
-        return this.state.page.PageGallery.map((item, index) =>(
-        <img alt="newsGallery" key={index} src={item} className="img-full" styleName="pageImgGallery"/>
-        ));
+        if(this.state.page.PageGallery.length > 0)
+        return(
+        <div styleName="pageGallery">
+            {this.DisplayAllImages(this.state.page.PageGallery)}
+        </div>
+        );
+    }
+    
+    DisplayAllImages = (gallery) =>{
+        return gallery.map((item, index) =>(
+        <a href={item} target="_blank" rel="noopener noreferrer">    
+            <img alt="gallerie" key={index} src={item} className="img-full" styleName="pageImgGallery"/>
+        </a>
+        ))
     }
     
     CreateMarkup()
@@ -46,22 +57,56 @@ class StaticPage extends Component{
         return {__html: this.state.page.PageContent}
     }
     
+    DisplayPageBanner = () =>{
+        
+        if(this.state.page.PageGallery.length > 0)
+            return (<div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>)
+        else 
+            return (<div styleName="bannerPhoto" style={{backgroundImage : `url('https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg')`}}></div>)
+        
+    }
+    
+    GoBackHome = () =>{
+        this.props.history.push("/");
+    }
+    
+    GoDown = () => 
+    {
+        let website = this.footer.current;
+        website.scrollIntoView({block : "start", behavior : "smooth"});
+    }
+    
     render()
     {
     if(this.state.page !== undefined){
     return(
     <div styleName="staticPage">
-        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}>
-        </div>
+        {this.DisplayPageBanner()}
         <div styleName="pageContent">
-            <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}/</h2>
-            <h1 styleName="pageTitle">{this.state.page.PageTitle}</h1>
-            <div styleName="pageDescription" dangerouslySetInnerHTML={this.CreateMarkup()}></div>
-            <div styleName="pageGallery">
-                {this.DisplayNewsGallery()}
+            <div styleName="actionBtn">
+                <button className="btn btn-outline-info" onClick={this.GoBackHome}><i className="icon chevron left"></i> Retour</button>
+                <button className="btn btn-outline-info" onClick={this.GoDown}>Bas <i className="icon chevron down"></i></button>
             </div>
+            <div styleName="pageHeader">
+                <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}</h2>
+                <h1 styleName="pageTitle">{this.state.page.PageTitle}</h1>
+            </div>
+            <div styleName="pageDescription" dangerouslySetInnerHTML={this.CreateMarkup()}></div>
+            <div styleName="pageFile">
+                <h2>Fichiers joints</h2>
+                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
+                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Sjlm.pdf</button>
+                </a>
+                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
+                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Programmation.pdf</button>
+                </a>
+                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
+                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Horaire.pdf</button>
+                </a>
+            </div>
+            {this.DisplayNewsGallery()}
         </div>
-        <div styleName="pageFooter" className="text-primary">
+        <div styleName="pageFooter" className="text-primary" ref={this.footer}>
             <span><i className="copyright outline icon"></i>2018 Saint-Jacques-le-Mineur. Tous droits réservés</span>
             <span>Conception par <a href="">Samuel Dubé</a></span>
         </div>

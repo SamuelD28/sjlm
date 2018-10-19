@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Ajax} from '../../../shared/utility.js';
+import {Ajax, Utility} from '../../../shared/utility.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './newsCard.module.css';
@@ -29,7 +29,7 @@ class NewsCard extends Component{
     this.state.news.map((item, index)=> (
     <div styleName='newsCard' key={index} onClick={() => {this.LoadNewsPage(item._id)}}>
         <div styleName='newsImg' style={{backgroundImage: `url('${item.Images[0]}')`}}>
-            <h3 styleName='newsCategory'>{item.Category}</h3>
+            <h3 styleName='newsCategory'>{Utility.TranslateNewsCategory(item.Category)}</h3>
         </div>
         <div styleName='newsInfo'>
             <h2>{item.Title}</h2>

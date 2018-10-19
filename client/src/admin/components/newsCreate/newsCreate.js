@@ -1,6 +1,5 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
-import {Forms} from '../../../shared/utility.js';
 import {Form, Modal} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
@@ -20,6 +19,9 @@ const modules = {
       ['image'],
       ['clean']
     ],
+    clipboard: {
+      matchVisual: false
+    }
 };
 const formats = [
     'header',
@@ -72,15 +74,15 @@ class NewsCreate extends FormComponent{
                         <Form.Field width={4}>
                             <select className="ui dropdown" name="Category" onChange={this.HandleChange} required>
                                 <option defaultValue>Catégorie</option>
-                                <option>Évenement</option>
-                                <option>Activité</option>
-                                <option>Communiqué</option>
-                                <option>Travaux Routiers</option>
-                                <option>Offre Emploi</option>
-                                <option>Avis Public</option>
-                                <option>Séance du Conseil</option>
-                                <option>Procès-Verbaux</option>
-                                <option>Autres</option>
+                                <option value="events">Évenement</option>
+                                <option value="activity">Activité</option>
+                                <option value="communicate">Communiqué</option>
+                                <option value="roadwork">Travaux Routiers</option>
+                                <option value="jobs">Offre Emploi</option>
+                                <option value="public">Avis Public</option>
+                                <option value="council">Séance du Conseil</option>
+                                <option value="verbal">Procès-Verbaux</option>
+                                <option value="other">Autres</option>
                             </select>
                         </Form.Field>
                     </Form.Group>

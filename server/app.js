@@ -12,7 +12,7 @@ let express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     methodOverride  = require("method-override"),
-    dataSeed        = require("./utils/dataseed.js"),
+    // dataSeed        = require("./utils/dataseed.js"),
     cookieParser    = require("cookie-parser"),
     cloudinary      = require("cloudinary");
 

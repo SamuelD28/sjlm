@@ -20,6 +20,9 @@ const modules = {
       ['image'],
       ['clean']
     ],
+    clipboard: {
+      matchVisual: false
+    }
 };
 const formats = [
     'header',
@@ -49,7 +52,7 @@ class PagesCard extends FormComponent{
     </div>
     } 
     closeIcon>
-    <Modal.Header>Ajouter une nouvelle page</Modal.Header>
+    <Modal.Header>Modifier une page</Modal.Header>
         <Modal.Content>
             <Modal.Description>
                 <Form onSubmit={() => {this.UpdateInDb("/api/pages/")}}>
@@ -86,7 +89,7 @@ class PagesCard extends FormComponent{
                                     enableSubmit={this.EnableSubmit}/>
                                     <Form.Field>
                                         <button onClick={() => {this.DeleteInDb("/api/pages/")}} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
-                                        <button disabled={this.state.disableSubmit} type="submit" style={{float: 'right'}} className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
+                                        <button disabled={this.state.disableSubmit} type="submit" style={{float: 'right'}} className="btn btn-primary"><i className="icon file alternate"></i> Sauvegarder</button>
                                     </Form.Field>
                             </Grid.Column>
                             <Grid.Column width={10}>

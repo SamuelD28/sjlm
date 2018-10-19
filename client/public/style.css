@@ -212,6 +212,10 @@ h1, h2, h3, h4, h5,h6{
     padding: 1.25vw 1.75vw;
 }
 
+.btn-file{
+    margin-right:.5vw;
+}
+
 .cardContainer{
     position: relative;
     width: 100%;
@@ -442,10 +446,9 @@ blockquote {
 
 .back-top-btn{
     position: fixed;
-    transform-origin: 50% 50%;
+    box-shadow: none;
+    right: 1vw;
     bottom: 1vw;
-    right: 50%;
-    left: 50%;
     z-index: 1000;
 }
 

@@ -14,7 +14,7 @@ router.route("/")
 
 router.get("/category/:category", Api.FindNewsByCategory);
 router.get("/limit/:number", Api.FindNews);
-      
+     
 router.route("/:id")
       .get(Api.FindNewsById)
       .put(Mdw.IsAuth, Api.UpdateNews)
