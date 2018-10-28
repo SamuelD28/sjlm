@@ -30,17 +30,15 @@ class Navbar extends Component{
         this.state = {};
     }
     
-    HideSecondMenu = () =>
-    {
-        this.refs.navbarSecondary.style.transform = "translateX(0%)";
+    HideSecondMenu = () => {
+        this.refs.navbarSecondary.style.transform = "translateX(-150px)";
     }
     
-    DisplaySecondMenu =  (event) =>
-    {
+    DisplaySecondMenu =  (event) =>{
         this.HideNavlinksHover();
         this.ShowNavlinkHover(event);
         
-        this.refs.navbarSecondary.style.transform = "translateX(100%)";
+        this.refs.navbarSecondary.style.transform = "translateX(100px)";
         
         let menuAttribute       = event.target.getAttribute("menu");
         let secondaryContent    = document.getElementById(menuAttribute);
@@ -88,6 +86,7 @@ class Navbar extends Component{
         Utility.AdjustFullHeight(this.refs.navbar);  
         let pages = await Ajax.GetData("/api/pages");
         this.setState({pages});
+        this.ShownavbarBig();
     }
    
     InsertInMenu(){
@@ -132,6 +131,16 @@ class Navbar extends Component{
         )))
     }    
     
+    ShownavbarBig = () => 
+    {
+        if(this.props.navbarLite)
+        {
+            document.querySelectorAll(".navbarBig").forEach((element)=> {
+                element.style.display = "none";
+            });
+        }
+    }
+    
     render(){
     return(
     <div id={styles.navbar} onMouseLeave={this.HideSecondMenu} ref="navbar">
@@ -144,44 +153,43 @@ class Navbar extends Component{
             </ul>
         </div>
         <div id={styles.navbarPrimary} ref="navbarPrimary">
-            <NavLink to="/" styleName="navbarLogo">
-                <div className="img-logo  img-bg" style={{backgroundImage:'url(/logo2_bga.png'}}>
+            <NavLink to="/" styleName="navbarLogo" className="navbarBig">
+                <div className="img-logo  img-bg" style={{backgroundImage:'url(/logo2_left.png'}}>
                 </div>
             </NavLink>
             <ul styleName="navbarContent">
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="city">
-                    Découvrir la ville
+                    <span className="navbarBig">Découvrir la ville</span>
                     <i className="icon large compass"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="administration">
-                    Administration
+                    <span className="navbarBig">Administration</span>
                     <i className="icon large users"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="services">
-                    Les Services
+                    <span className="navbarBig">Les Services</span>
                     <i className="icon large book"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="cultures">
-                    Cultures et Loisirs
+                    <span className="navbarBig">Cultures et Loisirs</span>
                     <i className="icon large futbol"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="finances">
-                    Finances
+                    <span className="navbarBig">Finances</span>
                     <i className="icon large balance scale"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="news">
-                    Actualités
+                    <span className="navbarBig">Actualités</span>
                     <i className="icon large newspaper"></i>
                 </li>
                 <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} onMouseLeave={this.HideNavlinksHover} menu="contact">
-                    Contacter
+                    <span className="navbarBig">Contacter</span>
                     <i className="icon large mail"></i>
                 </li>
             </ul>
-            <div styleName="navbarSocial">
+            <div styleName="navbarSocial" className="navbarBig">
                 <h4 styleName="menuTitle">Suivez-nous !</h4>
                 <div styleName="navbarSocialItems">
-                    <i styleName="navbarSocialItem" className="icon instagram"></i>
                     <i styleName="navbarSocialItem" className="icon twitter square"></i>
                     <i styleName="navbarSocialItem" className="icon facebook  square"></i>
                 </div>

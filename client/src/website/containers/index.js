@@ -13,7 +13,7 @@ import BackTop from '../components/backTop/backTop.js';
 const Index = (props) =>{
     return(
     <div id="websiteContent"> 
-        <Navbar />
+        <Navbar navbarLite={true}/>
         <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/static/:id" component={StaticPage} />
@@ -23,7 +23,6 @@ const Index = (props) =>{
                 <Redirect to="/" />
             </Route>
         </Switch>
-        <BackTop />
     </div>
     )
 }

@@ -36,25 +36,6 @@ class Home extends Component{
                     </form>
                 </div>
             </div>
-            <section styleName='news'>
-                <div styleName='sectionTitle'>
-                    <h1>Les Actualités</h1>
-                </div>
-                <div styleName='newsContent'>
-                    <NewsCard history={this.props.history} />
-                </div>
-            </section>
-            <section styleName="members">
-                <div styleName='sectionTitle'>
-                    <h1>Le Conseil</h1>
-                </div>
-                <div styleName="membersContent">
-                    <MembersCard />
-                </div>
-            </section>
-            <section styleName="contact">
-                <ContactInfo />
-            </section>
         </div>
         );
     }
