@@ -32,8 +32,27 @@ class Home extends Component{
                     <span styleName='bannerKeyword'>Accueillante</span>
                     <form styleName='bannerSearch'>
                         <input styleName='bannerInput' placeholder='Que recherchez-vous?' type='text' />
-                        <button styleName="searchBtn"><i className='icon search'></i></button>
+                        <i className='icon search'></i>
                     </form>
+                </div>
+                <div styleName="newsSection">
+                    <div styleName="newsContent">
+                        <div styleName="newsCard">
+                            <span styleName="newsDate"><i className="icon clock outline"></i> Le 2018-10-28</span>
+                            <h1 styleName="newsTitle">Récolte Agricole de carotte</h1>
+                            <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
+                        </div>
+                        <div styleName="newsCard">
+                            <span styleName="newsDate"><i className="icon clock outline"></i> Le 2018-10-28</span>
+                            <h1 styleName="newsTitle">Récolte Agricole de carotte</h1>
+                            <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
+                        </div>
+                        <div styleName="newsCard">
+                            <span styleName="newsDate"><i className="icon clock outline"></i> Le 2018-10-28</span>
+                            <h1 styleName="newsTitle">Récolte Agricole de carotte</h1>
+                            <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

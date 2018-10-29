@@ -23,6 +23,8 @@ const Index = (props) =>{
                 <Redirect to="/" />
             </Route>
         </Switch>
+        <div id="backgroundOverlay">
+        </div>
     </div>
     )
 }

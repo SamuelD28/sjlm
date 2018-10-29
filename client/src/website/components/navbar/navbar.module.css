@@ -15,7 +15,6 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-bottom: 2vw;
     height: 100%;
     width: 100px;
 }
@@ -24,11 +23,11 @@
     background-color: #37474F; 
     box-sizing: border-box;
     position: fixed;
-    color: white;
+    color: whitesmoke;
     height: 100%;
-    width: 250px;
+    width: 300px;
     transition: all .5s ease;
-    transform: translateX(-150px);
+    transform: translateX(-200px);
 }
 
 .navbarSpacer{
@@ -37,13 +36,20 @@
 }
 
 .navbarLogo{
-    box-sizing: border-box;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    align-items: center;
+    display: flex;
+    justify-content: center;
     height: 20%;
     width: 100%;
-    /*padding: 3vw;*/
+    padding: 1vw;
+}
+
+.img-logo{
+    height: 50%;
+}
+
+.navIcon{
+    pointer-events: none;
 }
 
 .navbarContent{
@@ -54,6 +60,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
     list-style: none;
 }
 
@@ -63,22 +70,14 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    font-size: 1em;
+    font-size: .9em;
     padding: 1.5em;
     position: relative;
     width: 100%;
-}
-
-.primaryLink{
     border-bottom: 1px solid #e3dcd8;
     text-transform: uppercase;
     transition: all .2s ease;
- }
-
-/*.primaryLink:hover{*/
-/*    background-color: #37474F;*/
-/*    color: white;*/
-/*}*/
+}
 
 .navbarSocial{
     align-items: center;
@@ -112,22 +111,27 @@
 
 .navbarContentTitle{
     box-sizing: border-box;
-    border-bottom: 1px solid white;
-    font-size: 1.25em;
-    letter-spacing: 2px;
-    padding: 1.5em;
+    border-bottom: 2px solid #4D646F;
+    font-size: 1.50em;
+    padding: 3vw 1vw;
 }
 
 .secondaryContent{
     display: none;
+    margin: 0;
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
 }
 
 .secondaryLink{
-    align-items: center;
+    align-self: flex-start;
     box-sizing: border-box;
     color: inherit;
+    letter-spacing: .05vw;
     display: flex;
-    white-space: nowrap;
+    font-weight: 100;    
+    padding: 1.4vw 1vw;
     transition: all .5s ease;
 }
 

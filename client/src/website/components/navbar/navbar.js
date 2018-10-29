@@ -28,101 +28,112 @@ class Navbar extends Component{
     {
         super(props);
         this.state = {};
+        this.navbar = React.createRef();
+        this.navbarSecondary = React.createRef();
     }
     
-    HideSecondMenu = () => {
-        this.refs.navbarSecondary.style.transform = "translateX(-150px)";
-    }
-    
-    DisplaySecondMenu =  (event) =>{
-        this.HideNavlinksHover();
-        this.ShowNavlinkHover(event);
-        
-        this.refs.navbarSecondary.style.transform = "translateX(100px)";
-        
-        let menuAttribute       = event.target.getAttribute("menu");
-        let secondaryContent    = document.getElementById(menuAttribute);
-        
-        if(secondaryContent === undefined || secondaryContent === null){
-            this.HideSecondMenu();
-            console.log("hiding");
-        }
-        else {
-            let allNavBarContent    = Array.from(document.getElementsByClassName(styles.secondaryContent));
-            this.ToggleNavbarContent(allNavBarContent, secondaryContent);
-        }
-    }
-    
-    HideNavlinksHover = () => {
-        let primaryLinks = Array.from(document.querySelectorAll("." + styles.primaryLink));
-        primaryLinks.forEach((element) => {
-            element.style.backgroundColor = "#f0eeed";
-            element.style.color = "#37474F";
-        });
-    }
-    
-    ShowNavlinkHover = (event) => {
-        event.target.style.backgroundColor = "#37474F";
-        event.target.style.color = "white";
-    }
-    
-    ToggleNavbarContent = (allNavarContent, singleNavbarContent) =>{
-        try{
-            Utility.IsValuesUndefinedOrNull(allNavarContent, singleNavbarContent);
-            allNavarContent.forEach((element) => {
-                element.style.display = "none"; 
-            });
-            
-            if(singleNavbarContent !== undefined)
-                singleNavbarContent.style.display = "flex";
-        }
-        catch(err)
-        {
-            console.log(err.message);
-        }
-    }
-    
-    async componentDidMount(){
-        Utility.AdjustFullHeight(this.refs.navbar);  
+    async componentDidMount() {
+        Utility.AdjustFullHeight(this.navbar.current);  
         let pages = await Ajax.GetData("/api/pages");
-        this.setState({pages});
+        let menus = this.ExtractMenus(pages);
+        
+        
+        this.setState({pages, menus});
         this.ShownavbarBig();
     }
-   
-    InsertInMenu(){
-        let category = new Set([]);
-        if(this.state.pages !== undefined){
-            
-            this.state.pages.map((item, index)=>(
-            category.add(item.PageCategory)
-            ));
-            
+    
+    ExtractMenus = (pages) => {
+        let menus = new Set([]);
+        if(pages !== undefined){
+            pages.map((item, index)=>(
+                menus.add(item.PageCategory)));
+        }
+        menus.add("contact");
+        return Array.from(menus);
+    }
+    
+    InsertPages = () => {
+        if(this.state.menus !== undefined){
             return(
-            Array.from(category).map((item, i)=> (
-            <ul styleName="navbarContent secondaryContent" ref="secondaryContent" id={item} key={i}>
+            this.state.menus.map((item, i)=> (
+            <ul styleName="secondaryContent" id={item} key={i}>
                 <li styleName="navbarContentTitle">{Utility.TranslatePageCategory(item)}
                 </li>
-                {this.FindPagesBasedOnCategory(item)}
+                {this.FindPagesByMenu(item)}
             </ul>
             )))
         }
     }
     
-    FindPagesBasedOnCategory(category){
+    FindPagesByMenu = (menu)  =>{
         return(
-        this.state.pages.filter((item)=> item.PageCategory === category).map((item, index) =>(
-        <NavLink to={`/static/${item._id}`} styleName="navbarItem secondaryLink" key={item._id}>
-            {item.PageTitle}
-            <div styleName="cubeContainer">
-                <span styleName="secondaryCube"></span>
-            </div>
-        </NavLink>
+        this.state.pages.filter((item)=> item.PageCategory === menu).map((item, index) =>
+        (
+            <NavLink to={`/static/${item._id}`} styleName="secondaryLink" key={item._id} onClick={this.HideMenuPages}>
+                {item.PageTitle}
+                <div styleName="cubeContainer">
+                    <span styleName="secondaryCube"></span>
+                </div>
+            </NavLink>
         )));
+    }
+    
+    InsertMenus = () => {
+        if(this.state.menus !== undefined){
+        return this.state.menus.map((item, index) => (
+        <li styleName="navbarItem" 
+            onMouseEnter={this.DisplayMenuPages} 
+            menu={item}>
+            <span className="navbarBig">{Utility.TranslatePageCategory(item)}</span>
+            {this.InsertMenuIcon(item)}
+        </li>
+        ))
+        }
+    }
+    
+    InsertMenuIcon = (menu) => {
+        switch(menu){
+            case "city": return(<i styleName="navIcon" className="icon large compass"></i>);
+            case "administration": return(<i styleName="navIcon" className="icon large users"></i>);
+            case "services": return(<i styleName="navIcon" className="icon large book"></i>);
+            case "cultures": return(<i styleName="navIcon" className="icon large futbol"></i>);
+            case "finances": return(<i styleName="navIcon" className="icon large balance scale"></i>);
+            case "news": return(<i styleName="navIcon" className="icon large newspaper"></i>);
+            case "contact": return(<i styleName="navIcon" className="icon large mail"></i>);
+            default: return(<i styleName="navIcon" className="icon large compass"></i>) ;
+        }
+    }
+    
+    MenusOut = (menu) =>
+    {
+        menu.style.backgroundColor = "#f0eeed";
+        menu.style.color = "#37474F";
+    }
+    
+    MenusOver = (menu) =>
+    {
+        menu.style.backgroundColor = "#37474F";
+        menu.style.color = "whitesmoke";
+    }
+    
+    DisplayMenuPages = (e) => {
+        document.querySelectorAll("." + styles.navbarItem).forEach((element)=>{this.MenusOut(element)});
+        this.MenusOver(e.target);
+        this.navbarSecondary.current.style.transform = "translateX(100px)";
+        this.navbarSecondary.current.querySelectorAll("ul").forEach((element)=>{element.style.display = "none";})
+        document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
+        document.getElementById(e.target.getAttribute("menu")).style.display = "flex";
+    }
+    
+    HideMenuPages = () => {
+        document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
+        document.querySelectorAll("." + styles.navbarItem).forEach((element)=>{this.MenusOut(element)});
+        this.navbarSecondary.current.style.transform = "translateX(-200px)";
     }
     
     ShowNewsCategory = () =>{
         return(categoryNews.map((item, index)=>(
-            <NavLink to={`/category/${item}`} styleName="navbarItem secondaryLink" key={item}>
+            <NavLink to={`/category/${item}`} styleName="secondaryLink" key={item} onClick={this.HideMenuPages}>
                 {Utility.TranslateNewsCategory(item)}
                 <div styleName="cubeContainer">
                     <span styleName="secondaryCube"></span>
@@ -131,8 +142,7 @@ class Navbar extends Component{
         )))
     }    
     
-    ShownavbarBig = () => 
-    {
+    ShownavbarBig = () => {
         if(this.props.navbarLite)
         {
             document.querySelectorAll(".navbarBig").forEach((element)=> {
@@ -143,57 +153,29 @@ class Navbar extends Component{
     
     render(){
     return(
-    <div id={styles.navbar} onMouseLeave={this.HideSecondMenu} ref="navbar">
-        <div id={styles.navbarSecondary} onMouseLeave={this.TogglePrimaryLinks} ref="navbarSecondary">
-            {this.InsertInMenu()}
-            <ul styleName="navbarContent secondaryContent" ref="secondaryContent" id="news">
-                <li styleName="navbarContentTitle">Actualitées
+    <div 
+        id={styles.navbar} 
+        ref={this.navbar}
+        onMouseLeave={this.HideMenuPages}>
+        <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
+            {this.InsertPages()}
+            <ul styleName="secondaryContent" id="news">
+                <li styleName="navbarContentTitle">Actualités
                 </li>
                 {this.ShowNewsCategory()}
             </ul>
         </div>
         <div id={styles.navbarPrimary} ref="navbarPrimary">
-            <NavLink to="/" styleName="navbarLogo" className="navbarBig">
-                <div className="img-logo  img-bg" style={{backgroundImage:'url(/logo2_left.png'}}>
-                </div>
+            <NavLink to="/" styleName="navbarLogo">
+                <img src="/logo2_left.png" styleName="img-logo" />
             </NavLink>
             <ul styleName="navbarContent">
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="city">
-                    <span className="navbarBig">Découvrir la ville</span>
-                    <i className="icon large compass"></i>
+                <li styleName="navbarItem" onMouseEnter={this.DisplayMenuPages} menu="news">
+                    <span className="navbarBig">Actualites</span>
+                    {this.InsertMenuIcon("news")}
                 </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="administration">
-                    <span className="navbarBig">Administration</span>
-                    <i className="icon large users"></i>
-                </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="services">
-                    <span className="navbarBig">Les Services</span>
-                    <i className="icon large book"></i>
-                </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="cultures">
-                    <span className="navbarBig">Cultures et Loisirs</span>
-                    <i className="icon large futbol"></i>
-                </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="finances">
-                    <span className="navbarBig">Finances</span>
-                    <i className="icon large balance scale"></i>
-                </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} menu="news">
-                    <span className="navbarBig">Actualités</span>
-                    <i className="icon large newspaper"></i>
-                </li>
-                <li styleName="navbarItem primaryLink" onMouseEnter={this.DisplaySecondMenu} onMouseLeave={this.HideNavlinksHover} menu="contact">
-                    <span className="navbarBig">Contacter</span>
-                    <i className="icon large mail"></i>
-                </li>
+                {this.InsertMenus()}
             </ul>
-            <div styleName="navbarSocial" className="navbarBig">
-                <h4 styleName="menuTitle">Suivez-nous !</h4>
-                <div styleName="navbarSocialItems">
-                    <i styleName="navbarSocialItem" className="icon twitter square"></i>
-                    <i styleName="navbarSocialItem" className="icon facebook  square"></i>
-                </div>
-            </div>
         </div>
     </div>
     )
