@@ -5,6 +5,7 @@ import React from 'react';
 import BannerHome from '../../components/bannerHome/bannerHome.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js'
 
+//Basic style for the main div of this component
 const style = {
     alignItems: "center",
     position: "relative",
@@ -19,7 +20,7 @@ const Home = (props) =>
     return( 
     <div style={style}>
         <BannerHome />
-        <NewsColumn />
+        <NewsColumn news={props.news}/>
     </div>
     );
 }

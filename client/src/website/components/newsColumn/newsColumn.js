@@ -1,28 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './newsColumn.module.css';
+import {NavLink} from 'react-router-dom';
+import moment from 'moment';
+import 'moment/locale/fr';  // without this line it didn't work
+moment.locale('fr');
 
-class NewsColumn extends Component{
-    render(){
+function ItterateNews(news)
+{
+    if(news !== undefined)
+    return news.map((item, index) =>(
+    <div styleName="newsCard">
+        <span styleName="newsDate"><i className="icon clock outline"></i> Le {moment(item.DatePublished).format("dddd, Do MMMM")}</span>
+        <h1 styleName="newsTitle">{item.Title}</h1>
+        <NavLink to={`/news/${item._id}`} >
+            <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
+        </NavLink>
+    </div>
+    ))
+}
+
+const NewsColumn = (props) =>
+{
     return(
     <div styleName="newsSection">
-        <div styleName="newsCard">
-            <span styleName="newsDate"><i className="icon clock outline"></i> Le 2018-10-28</span>
-            <h1 styleName="newsTitle">Récolte Agricole de carotte</h1>
-            <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
-        </div>
-        <div styleName="newsCard">
-            <span styleName="newsDate"><i className="icon clock outline"></i> Le 2018-10-28</span>
-            <h1 styleName="newsTitle">Récolte Agricole de carotte</h1>
-            <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
-        </div>
-        <div styleName="newsCard">
-            <span styleName="newsDate"><i className="icon clock outline"></i> Le 2018-10-28</span>
-            <h1 styleName="newsTitle">Récolte Agricole de carotte</h1>
-            <button className="btn btn-sm btn- -primary">Lire la suite</button>
-        </div>
+        {ItterateNews(props.news)}
     </div>
-    )}
+    )
 }
 
 export default CSSModules(NewsColumn, styles, {allowMultiple: true ,handleNotFoundStyleName: "log"});

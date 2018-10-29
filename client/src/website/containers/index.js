@@ -19,13 +19,15 @@ class Index extends Component{
         this.state = {};
     }
     
+    //Method that initialise the data that will be passed down to the child component
     componentDidMount = async() =>
     {
-        let news  = await Ajax.GetData("api/news");
+        let news  = await Ajax.GetData("api/news/limit/3");
         let pages = await Ajax.GetData("api/pages");  
         this.setState({news, pages});
     }
     
+    //Method that render the navbar only when the ajax request are finished
     RenderNavbar = () =>
     {
         if(this.state.pages !== undefined)
