@@ -1,6 +1,6 @@
 //---------Declaration-------//
 import React, {Component} from "react";
-import {Utility, Ajax} from '../../../shared/utility.js';
+import {Utility} from '../../../shared/utility.js';
 import {NavLink} from 'react-router-dom';
 
 //Css module import
@@ -27,19 +27,9 @@ class Navbar extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {};
-        this.navbar = React.createRef();
+        this.menus = this.ExtractMenus(props.pages);
+        this.pages = Object.create(props.pages);
         this.navbarSecondary = React.createRef();
-    }
-    
-    async componentDidMount() {
-        Utility.AdjustFullHeight(this.navbar.current);  
-        let pages = await Ajax.GetData("/api/pages");
-        let menus = this.ExtractMenus(pages);
-        
-        
-        this.setState({pages, menus});
-        this.ShownavbarBig();
     }
     
     ExtractMenus = (pages) => {
@@ -49,69 +39,72 @@ class Navbar extends Component{
                 menus.add(item.PageCategory)));
         }
         menus.add("contact");
+        menus.add("news");
         return Array.from(menus);
     }
     
-    InsertPages = () => {
-        if(this.state.menus !== undefined){
-            return(
-            this.state.menus.map((item, i)=> (
-            <ul styleName="secondaryContent" id={item} key={i}>
-                <li styleName="navbarContentTitle">{Utility.TranslatePageCategory(item)}
+    GroupPagesByMenu = () => {
+        return this.menus.map((menu, i)=> (
+            <ul styleName="secondaryContent" id={menu} key={i}>
+                <li styleName="navbarContentTitle">{Utility.TranslatePageCategory(menu)}
                 </li>
-                {this.FindPagesByMenu(item)}
+                {this.FindPagesByMenu(menu)}
             </ul>
-            )))
-        }
+        ))
     }
     
     FindPagesByMenu = (menu)  =>{
-        return(
-        this.state.pages.filter((item)=> item.PageCategory === menu).map((item, index) =>
-        (
-            <NavLink to={`/static/${item._id}`} styleName="secondaryLink" key={item._id} onClick={this.HideMenuPages}>
-                {item.PageTitle}
-                <div styleName="cubeContainer">
-                    <span styleName="secondaryCube"></span>
-                </div>
-            </NavLink>
-        )));
+        if(menu !== "news")
+            return this.pages.filter((page)=> page.PageCategory === menu).map((page, index) =>(
+                this.CreatePageLink(`/static/${page._id}`, page.PageTitle, index)
+            ));
+        else
+            return categoryNews.map((category, index)=>( 
+                this.CreatePageLink(`/category/${category}`, category, index) 
+            ));
     }
     
-    InsertMenus = () => {
-        if(this.state.menus !== undefined){
-        return this.state.menus.map((item, index) => (
+    CreatePageLink = (urlPath, title, id) => {
+        return (
+        <NavLink to={urlPath} styleName="secondaryLink" key={id} onClick={this.HideMenuPages}>
+            {title}
+            <div styleName="cubeContainer">
+                <span styleName="secondaryCube"></span>
+            </div>
+        </NavLink>
+        )
+    }
+    
+    InsertMenus = (menus) => {
+        return this.menus.map((menu, index) => (
         <li styleName="navbarItem" 
             onMouseEnter={this.DisplayMenuPages} 
-            menu={item}>
-            <span className="navbarBig">{Utility.TranslatePageCategory(item)}</span>
-            {this.InsertMenuIcon(item)}
+            menu={menu}
+            key={index}>
+            <i styleName="navIcon" className={`icon large ${this.InsertMenuIcon(menu)}`}></i>
         </li>
         ))
-        }
     }
     
     InsertMenuIcon = (menu) => {
         switch(menu){
-            case "city": return(<i styleName="navIcon" className="icon large compass"></i>);
-            case "administration": return(<i styleName="navIcon" className="icon large users"></i>);
-            case "services": return(<i styleName="navIcon" className="icon large book"></i>);
-            case "cultures": return(<i styleName="navIcon" className="icon large futbol"></i>);
-            case "finances": return(<i styleName="navIcon" className="icon large balance scale"></i>);
-            case "news": return(<i styleName="navIcon" className="icon large newspaper"></i>);
-            case "contact": return(<i styleName="navIcon" className="icon large mail"></i>);
-            default: return(<i styleName="navIcon" className="icon large compass"></i>) ;
+            case "city": return "compass";
+            case "administration": return "users";
+            case "services": return "book";
+            case "cultures": return "futbol";
+            case "finances": return "balance scale";
+            case "news": return "newspaper";
+            case "contact": return "mail";
+            default: return "question";
         }
     }
     
-    MenusOut = (menu) =>
-    {
+    MenusOut = (menu) => {
         menu.style.backgroundColor = "#f0eeed";
         menu.style.color = "#37474F";
     }
     
-    MenusOver = (menu) =>
-    {
+    MenusOver = (menu) => {
         menu.style.backgroundColor = "#37474F";
         menu.style.color = "whitesmoke";
     }
@@ -131,49 +124,19 @@ class Navbar extends Component{
         this.navbarSecondary.current.style.transform = "translateX(-200px)";
     }
     
-    ShowNewsCategory = () =>{
-        return(categoryNews.map((item, index)=>(
-            <NavLink to={`/category/${item}`} styleName="secondaryLink" key={item} onClick={this.HideMenuPages}>
-                {Utility.TranslateNewsCategory(item)}
-                <div styleName="cubeContainer">
-                    <span styleName="secondaryCube"></span>
-                </div>
-            </NavLink>
-        )))
-    }    
-    
-    ShownavbarBig = () => {
-        if(this.props.navbarLite)
-        {
-            document.querySelectorAll(".navbarBig").forEach((element)=> {
-                element.style.display = "none";
-            });
-        }
-    }
-    
     render(){
     return(
     <div 
         id={styles.navbar} 
-        ref={this.navbar}
         onMouseLeave={this.HideMenuPages}>
         <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
-            {this.InsertPages()}
-            <ul styleName="secondaryContent" id="news">
-                <li styleName="navbarContentTitle">Actualités
-                </li>
-                {this.ShowNewsCategory()}
-            </ul>
+            {this.GroupPagesByMenu()}
         </div>
         <div id={styles.navbarPrimary} ref="navbarPrimary">
             <NavLink to="/" styleName="navbarLogo">
-                <img src="/logo2_left.png" styleName="img-logo" />
+                <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
             </NavLink>
             <ul styleName="navbarContent">
-                <li styleName="navbarItem" onMouseEnter={this.DisplayMenuPages} menu="news">
-                    <span className="navbarBig">Actualites</span>
-                    {this.InsertMenuIcon("news")}
-                </li>
                 {this.InsertMenus()}
             </ul>
         </div>
