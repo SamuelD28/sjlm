@@ -1,0 +1,65 @@
+/*Css for the banner section*/
+
+.bannerVideo{
+    object-fit: fill;
+    filter: blur(5px) brightness(60%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bannerContent{
+    display: flex;
+    flex-direction: column;
+    margin-right: 400px;
+}
+
+.bannerSlogan, .bannerKeyword{
+    color: white !important;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight:lighter;
+}
+
+.bannerSlogan{
+    align-self: flex-start;
+    font-size: 1.5em;
+    margin: 0;
+    letter-spacing: .5em;
+}
+
+.bannerKeyword{
+    border: 1px solid white;
+    font-size: 3.5em;
+    letter-spacing: .5em;
+    padding: 1.5em 2em;
+    margin: 1.5vw 0;
+}
+
+.bannerSearch{
+    align-self: flex-end;
+    border-bottom: 1px solid #f1efee;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25em;
+    padding-bottom: .25vw;
+    width: 50%;
+}
+
+.bannerInput{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.bannerInput::placeholder{
+    color: white;
+}
+
+.bannerInput:focus{
+    outline: none;
+}

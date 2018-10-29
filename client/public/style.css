@@ -18,6 +18,10 @@ a:hover{
     transition: color .15s ease-in;
 }
 
+hmtl, body{
+    height: 100%;
+}
+
 body{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.2em;
@@ -480,4 +484,8 @@ blockquote {
     transform: translateX(-100%);
     z-index: 0;
     transition: all .9s ease;
+}
+
+.full-height{
+    height: -webkit-fill-available;
 }

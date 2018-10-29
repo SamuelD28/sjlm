@@ -12,14 +12,14 @@ import BackTop from '../components/backTop/backTop.js';
 //----------Core Code-------//
 const Index = (props) =>{
     return(
-    <div id="websiteContent"> 
+    <div> 
         <Navbar navbarLite={true}/>
         <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/static/:id" component={StaticPage} />
             <Route exact path="/news/:id" component={NewsPage} />
             <Route exact path="/category/:category" component={NewsCategory} />
-            <Route path="/" >
+            <Route path="/">
                 <Redirect to="/" />
             </Route>
         </Switch>
