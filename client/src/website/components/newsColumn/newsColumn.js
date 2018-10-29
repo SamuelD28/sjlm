@@ -10,7 +10,7 @@ function ItterateNews(news)
 {
     if(news !== undefined)
     return news.map((item, index) =>(
-    <div styleName="newsCard">
+    <div styleName="newsCard" key={index}>
         <span styleName="newsDate"><i className="icon clock outline"></i> Le {moment(item.DatePublished).format("dddd, Do MMMM")}</span>
         <h1 styleName="newsTitle">{item.Title}</h1>
         <NavLink to={`/news/${item._id}`} >

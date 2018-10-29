@@ -143,7 +143,7 @@ class Navbar extends Component{
             {this.GroupPagesByMenu()}
         </div>
         <div id={styles.navbarPrimary} ref="navbarPrimary">
-            <NavLink to="/" styleName="navbarLogo">
+            <NavLink to="/" styleName="navbarLogo" onClick={this.HideMenuPages}>
                 <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
             </NavLink>
             <ul styleName="navbarContent">

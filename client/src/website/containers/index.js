@@ -22,8 +22,8 @@ class Index extends Component{
     //Method that initialise the data that will be passed down to the child component
     componentDidMount = async() =>
     {
-        let news  = await Ajax.GetData("api/news/limit/3");
-        let pages = await Ajax.GetData("api/pages");  
+        let news  = await Ajax.GetData("/api/news/limit/3");
+        let pages = await Ajax.GetData("/api/pages");  
         this.setState({news, pages});
     }
     

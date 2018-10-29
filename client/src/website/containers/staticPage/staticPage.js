@@ -46,7 +46,7 @@ class StaticPage extends Component{
     
     DisplayAllImages = (gallery) =>{
         return gallery.map((item, index) =>(
-        <a href={item} target="_blank" rel="noopener noreferrer">    
+        <a href={item} target="_blank" rel="noopener noreferrer" key={index}>    
             <img alt="gallerie" key={index} src={item} className="img-full" styleName="pageImgGallery"/>
         </a>
         ))
