@@ -1,6 +1,7 @@
 .staticPage{
     position: relative;
-    margin-left: 250px;
+    background: whitesmoke;
+    margin-left: 100px;
 }
 
 .newsTitle{
@@ -22,12 +23,6 @@
     padding: 2.5vw 10vw;
     width: 100%;
     z-index: -1;
-}
-
-.newsHeader, .newsDescription, .newsGallery, .newsFile{
-    background: white;
-    padding: .75vw;
-    margin: 2vw 0;
 }
 
 .newsGallery{
@@ -55,8 +50,11 @@
 }
 
 .newsContent{
-    background-color: whitesmoke;
-    padding: 2.5vw 10vw;
+    background-color: white;
+    box-sizing: border-box;
+    width: 70%;
+    padding: 2vw;
+    margin: 0 auto; 
 }
 
 .newsFooter{

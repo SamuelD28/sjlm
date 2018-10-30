@@ -6,6 +6,14 @@ import {Ajax, Utility} from '../../../shared/utility.js';
 import CSSModules from 'react-css-modules';
 import styles from "./staticPage.module.css";
 
+//Components
+import ImgGalleryColumn from '../../components/imgGalleryColumn/imgGalleryColumn.js';
+import SocialIconColumn from '../../components/socialIconColumn/socialIconColumn.js';
+import FileGallery from '../../components/fileGallery/fileGallery.js';
+import PageHeader from '../../components/pageHeader/pageHeader.js';
+import PageFooter from '../../components/pageFooter/pageFooter.js';
+import PageContent from '../../components/pageContent/pageContent.js';
+
 class StaticPage extends Component{
     
     constructor(props)
@@ -13,18 +21,14 @@ class StaticPage extends Component{
         super(props);
         this.state = {};
         this.page = {};
-        this.footer = React.createRef();
     }
     
-    async componentDidMount()
-    {
+    async componentDidMount() {
         this.page = await Ajax.GetData(`/api/pages/${this.props.match.params.id}`);
         this.setState({page : this.page});
     }
     
-    //OPTIMISATION NECESSAIRE. APPELLER UNE REQUETE AJAX A CHAQUE QUE LE COMPONENT UPDATE EST TRES COUTEUX
-    async componentDidUpdate()
-    {
+    async componentDidUpdate() {
         console.log("Updating component page");
         
         this.page = await Ajax.GetData(`/api/pages/${this.props.match.params.id}`);
@@ -35,28 +39,7 @@ class StaticPage extends Component{
         }
     }
     
-    DisplayNewsGallery = () =>{
-        if(this.state.page.PageGallery.length > 0)
-        return(
-        <div styleName="pageGallery">
-            {this.DisplayAllImages(this.state.page.PageGallery)}
-        </div>
-        );
-    }
-    
-    DisplayAllImages = (gallery) =>{
-        return gallery.map((item, index) =>(
-        <a href={item} target="_blank" rel="noopener noreferrer" key={index}>    
-            <img alt="gallerie" key={index} src={item} className="img-full" styleName="pageImgGallery"/>
-        </a>
-        ))
-    }
-    
-    CreateMarkup()
-    {
-        return {__html: this.state.page.PageContent}
-    }
-    
+    //On pourrait mettre la photo par default dans la db au lieu de la mettre ici
     DisplayPageBanner = () =>{
         
         if(this.state.page.PageGallery.length > 0)
@@ -66,53 +49,29 @@ class StaticPage extends Component{
         
     }
     
-    GoBackHome = () =>{
-        this.props.history.push("/");
-    }
-    
-    GoDown = () => 
-    {
-        let website = this.footer.current;
-        website.scrollIntoView({block : "start", behavior : "smooth"});
-    }
-    
     render()
     {
     if(this.state.page !== undefined){
     return(
     <div styleName="staticPage">
         {this.DisplayPageBanner()}
-        <div styleName="pageContent">
-            <div styleName="actionBtn">
-                <button className="btn btn-outline-info" onClick={this.GoBackHome}><i className="icon chevron left"></i> Retour</button>
-                <button className="btn btn-outline-info" onClick={this.GoDown}>Bas <i className="icon chevron down"></i></button>
+        <div styleName="pageLeftColumn"> 
+            <SocialIconColumn />
+            <div styleName="pageGallery">
+                <ImgGalleryColumn images={this.state.page.PageGallery} />
             </div>
-            <div styleName="pageHeader">
-                <h2 styleName="pageCategory">{Utility.TranslatePageCategory(this.state.page.PageCategory)}</h2>
-                <h1 styleName="pageTitle">{this.state.page.PageTitle}</h1>
-            </div>
-            <div styleName="pageDescription" dangerouslySetInnerHTML={this.CreateMarkup()}></div>
-            <div styleName="pageFile">
-                <h2>Fichiers joints</h2>
-                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
-                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Sjlm.pdf</button>
-                </a>
-                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
-                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Programmation.pdf</button>
-                </a>
-                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
-                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Horaire.pdf</button>
-                </a>
-            </div>
-            {this.DisplayNewsGallery()}
         </div>
-        <div styleName="pageFooter" className="text-primary" ref={this.footer}>
-            <span><i className="copyright outline icon"></i>2018 Saint-Jacques-le-Mineur. Tous droits réservés</span>
-            <span>Conception par <a href="">Samuel Dubé</a></span>
+        <div styleName="pageContainer">
+            <PageHeader 
+                title={this.state.page.PageTitle} 
+                category={Utility.TranslatePageCategory(this.state.page.PageCategory)} 
+                />
+            <PageContent content={this.state.page.PageContent} />
+            <FileGallery files={null} />
         </div>
+        <PageFooter />
     </div>
-    )}
-    }
+    )}}
 }
 
 export default CSSModules(StaticPage, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});

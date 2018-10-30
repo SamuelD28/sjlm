@@ -32,38 +32,44 @@ class Navbar extends Component{
         this.navbarSecondary = React.createRef();
     }
     
-    //Method tha extract the menus from the pages. Will be extracted later on in his own api
+    //Method tha extract the menus from the pages. Will be extracted later on in his own api 
     ExtractMenus = (pages) => {
         let menus = new Set([]);
         if(pages !== undefined){
             pages.map((item, index)=>(
                 menus.add(item.PageCategory)));
         }
-        menus.add("contact");
         menus.add("news");
+        menus.add("contact");
         return Array.from(menus);
     }
     
     //Method that groups the pages in a UL based on the menu they belong
     GroupPagesByMenu = () => {
-        return this.menus.map((menu, i)=> (
-            <ul styleName="secondaryContent" id={menu} key={i}>
-                <li styleName="navbarContentTitle">{Utility.TranslatePageCategory(menu)}
-                </li>
-                {this.FindPagesByMenu(menu)}
-            </ul>
-        ))
+        return this.menus.map((menu, i)=> (this.IsTherePagesForThisMenu(menu)))
+    }
+    
+    IsTherePagesForThisMenu = (menu) => {
+        let page = this.pages.find((page)=>{return page.PageCategory === menu});
+        if(page !== undefined || menu === "news") //Hardcoded for the news section. Not Ideal
+        return (
+        <ul styleName="secondaryContent" id={menu} key={menu}>
+            <li styleName="navbarContentTitle">{Utility.TranslatePageCategory(menu)}
+            </li>
+            {this.FindPagesByMenu(menu)}
+        </ul>
+        )
     }
     
     //Method that find the pages based on the menu
-    FindPagesByMenu = (menu)  =>{
+    FindPagesByMenu = (menu)  => {
         if(menu !== "news")
             return this.pages.filter((page)=> page.PageCategory === menu).map((page, index) =>(
                 this.CreatePageLink(`/static/${page._id}`, page.PageTitle, index)
             ));
         else
             return categoryNews.map((category, index)=>( 
-                this.CreatePageLink(`/category/${category}`, category, index) 
+                this.CreatePageLink(`/category/${category}`, Utility.TranslateNewsCategory(category), index) 
             ));
     }
     
@@ -120,11 +126,20 @@ class Navbar extends Component{
     //Method that display the pages link based on the menu choosen
     DisplayMenuPages = (e) => {
         document.querySelectorAll("." + styles.navbarItem).forEach((element)=>{this.MenusOut(element)});
-        this.MenusOver(e.target);
-        this.navbarSecondary.current.style.transform = "translateX(100px)";
         this.navbarSecondary.current.querySelectorAll("ul").forEach((element)=>{element.style.display = "none";})
-        document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
-        document.getElementById(e.target.getAttribute("menu")).style.display = "flex";
+        
+        this.MenusOver(e.target);
+        let menuPages = document.getElementById(e.target.getAttribute("menu"));
+        if(menuPages !== null)
+        {
+            document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
+            this.navbarSecondary.current.style.transform = "translateX(100px)";
+            menuPages.style.display = "flex";
+        }
+        else{
+            this.HideMenuPages();
+            this.MenusOver(e.target);
+        }
     }
     
     //Method that hides the menu when the mouse leaves it

@@ -2,10 +2,11 @@
     position: fixed;
     top: 0;
     height: -webkit-fill-available;
+    font-family: 'Oswald', sans-serif;
     left: 0;
     display: flex;
     grid-area: navbar;
-    z-index: 1000;
+    z-index: 1000; 
 }
 
 #navbarPrimary{

@@ -7,6 +7,13 @@ import moment from 'moment';
 import CSSModules from 'react-css-modules';
 import styles from "./newsPage.module.css";
 
+//Components Imports
+import ImgGalleryColumn from '../../components/imgGalleryColumn/imgGalleryColumn.js';
+import PageHeader from '../../components/pageHeader/pageHeader.js';
+import PageFooter from '../../components/pageFooter/pageFooter.js';
+import PageContent from '../../components/pageContent/pageContent.js';
+import FileGallery from '../../components/fileGallery/fileGallery.js';
+
 class NewsPage extends Component{
     
     constructor(props)
@@ -22,30 +29,6 @@ class NewsPage extends Component{
         this.setState({news : this.news});
     }
     
-    CreateMarkup()
-    {
-        return {__html: this.state.news.DescriptionHtml}
-    }
-    
-   DisplayNewsGallery = () =>{
-        if(this.state.news.Images.length > 0)
-        return(
-        <div styleName="newsGallery">
-            {this.DisplayAllImages(this.state.news.Images)}
-        </div>
-        );
-    }
-    
-    DisplayAllImages = (gallery) =>{
-        return gallery.map((item, index) =>(
-        <img alt="newsGallery" key={index} src={item} className="img-full" styleName="newsImgGallery"/>
-        ))
-    }
-    
-    GoBackHome = () =>{
-        this.props.history.push("/");
-    }
-    
     render()
     {
     if(this.state.news !== undefined){
@@ -54,36 +37,16 @@ class NewsPage extends Component{
         <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.news.Images[0]}')`}}>
         </div>
         <div styleName="newsContent">
-            <div styleName="actionBtn">
-                <button className="btn btn-outline-info" onClick={this.GoBackHome}><i className="icon chevron left"></i> Retour</button>
-                <button className="btn btn-outline-info" onClick={this.GoDown}>Bas <i className="icon chevron down"></i></button>
-            </div>
-            <div styleName="newsHeader">
-                <h2 styleName="newsCategory">{Utility.TranslateNewsCategory(this.state.news.Category)}</h2>
-                <h1 styleName="newsTitle">{this.state.news.Title}</h1>
-                <h3 styleName="newsDate">
-                    <i className="icon clock"></i> Actualitée publié le : {moment(this.state.news.DatePublished).format("YYYY-MM-DD")}
-                </h3>
-            </div>
-            <div styleName="newsDescription" dangerouslySetInnerHTML={this.CreateMarkup()}></div>
-            <div styleName="newsFile">
-                <h2>Fichiers joints</h2>
-                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
-                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Sjlm.pdf</button>
-                </a>
-                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
-                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Programmation.pdf</button>
-                </a>
-                <a href="http://www.saint-jacques-le-mineur.ca/assets/files/communaute/revue%20art%20et%20culture%20mrc.pdf" target="_blank" rel="noopener noreferrer">
-                    <button className="btn btn-outline-info btn-file"><i className="icon file"></i> Horaire.pdf</button>
-                </a>
-            </div>
-            {this.DisplayNewsGallery()}
+            <PageHeader 
+                category={Utility.TranslateNewsCategory(this.state.news.Category)}
+                title={this.state.news.Title}
+                date={this.state.news.DatePublished}
+                />
+            <PageContent content={this.state.news.DescriptionHtml} />
+            <FileGallery files={null} />
+            <ImgGalleryColumn images={this.state.news.Images} />
         </div>
-        <div styleName="newsFooter" className="text-primary">
-            <span><i className="copyright outline icon"></i>2018 Saint-Jacques-le-Mineur. Tous droits réservés</span>
-            <span>Conception par <a href="">Samuel Dubé</a></span>
-        </div>
+        <PageFooter />
     </div>
     )}
     }
