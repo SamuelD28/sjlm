@@ -1,9 +1,7 @@
 //----------------Dependencies-------------//
 
 let mongoose    = require("mongoose"),
-    Members     = require("../models/MembersMD.js"),
-    cloudinary  = require("cloudinary");
-
+    Members     = require("../models/MembersMD.js");
 let Api = new Object();
 
 Api.GetMembers = function(req, res)
@@ -56,6 +54,8 @@ Api.DeleteMembers = function(req, res)
             console.log("~An Error occured while deleting this members \n ERROR : " + err);
          });
 }
+
+
 
 //----------------Module Exports-------------//
 

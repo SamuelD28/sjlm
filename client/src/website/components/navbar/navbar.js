@@ -41,6 +41,7 @@ class Navbar extends Component{
         }
         menus.add("news");
         menus.add("contact");
+        console.log(menus);
         return Array.from(menus);
     }
     

@@ -39,12 +39,14 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a
 let NewsRT      = require(__dirname + "/routes/NewsRT.js"),
     MembersRT   = require(__dirname + "/routes/MembersRT.js"),
     PagesRt     = require(__dirname + "/routes/PagesRT.js"),
-    UserRT      = require(__dirname + "/routes/UserRT.js");
+    UserRT      = require(__dirname + "/routes/UserRT.js"),
+    MenuRT      = require(__dirname + "/routes/MenuRT.js");
 
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
 app.use("/api/news" , NewsRT);
 app.use("/api/user" , UserRT);
+app.use("/api/menu", MenuRT);
 
 //----------------Listener-------------//
 
