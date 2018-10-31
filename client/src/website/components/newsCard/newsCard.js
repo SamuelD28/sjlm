@@ -12,34 +12,25 @@ class NewsCard extends Component{
         this.state = {};
     }
     
-    async componentDidMount()
-    {
-        let news =  await Ajax.GetData("/api/news/limit/6");   
-        this.setState({news});
-    }
-    
     LoadNewsPage(id)
     {
         this.props.history.push("/news/" + id);
     }
     
     render(){
-    if(this.state.news !== undefined){
+    if(this.props.news !== undefined){
     return(
-    this.state.news.map((item, index)=> (
-    <div styleName='newsCard' key={index} onClick={() => {this.LoadNewsPage(item._id)}}>
-        <div styleName='newsImg' style={{backgroundImage: `url('${item.Images[0]}')`}}>
-            <h3 styleName='newsCategory'>{Utility.TranslateNewsCategory(item.Category)}</h3>
+    <div styleName='newsCard' key={this.props.index} onClick={() => {this.LoadNewsPage(this.props.news._id)}}>
+        <div styleName='newsImg' style={{backgroundImage: `url('${this.props.news.Images[0]}')`}}>
         </div>
         <div styleName='newsInfo'>
-            <h2>{item.Title}</h2>
-            <p styleName='newsDesc'>{item.Description.substring(0, 200)}...</p>
+            <h2 styleName="newsTitle">{this.props.news.Title}</h2>
+            <p styleName='newsDesc'>{this.props.news.Description.substring(0, 200)}...</p>
         </div>
         <div styleName='arrowContainer'>
             <div styleName='newsArrow'></div>
         </div>
     </div>
-    ))
     )}
     }
 }

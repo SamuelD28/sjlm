@@ -37,6 +37,16 @@ class StaticPage extends Component{
         }
     }
     
+    DisplayImageGallery = (images) =>
+    {
+        if(images.length > 1)
+        return(
+        <div styleName="pageGallery">
+            <ImgGalleryColumn images={images} />
+        </div>    
+        )
+    }
+    
     render()
     {
     if(this.state.page !== undefined){
@@ -45,9 +55,7 @@ class StaticPage extends Component{
         <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
         <div styleName="pageLeftColumn"> 
             <SocialIconColumn />
-            <div styleName="pageGallery">
-                <ImgGalleryColumn images={this.state.page.PageGallery} />
-            </div>
+            {this.DisplayImageGallery(this.state.page.PageGallery)}
         </div>
         <div styleName="pageContainer">
             <PageHeader 
