@@ -6,7 +6,7 @@ import BannerHome from '../../components/bannerHome/bannerHome.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js'
 
 //Basic style for the main div of this component
-const style = {
+const homeStyle = {
     alignItems: "center",
     position: "relative",
     height: "-webkit-fill-available",
@@ -15,12 +15,22 @@ const style = {
     textAlign: "center"
 };
 
+const newsSectionStyle=
+{
+    background: 'whitesmoke',
+    position: 'fixed',
+    right:'0',
+    width: '400px'
+}
+
 const Home = (props) =>
 {
     return( 
-    <div style={style}>
+    <div style={homeStyle}>
         <BannerHome />
-        <NewsColumn news={props.news}/>
+        <div style={newsSectionStyle}>
+            <NewsColumn news={props.news}/>
+        </div>
     </div>
     );
 }

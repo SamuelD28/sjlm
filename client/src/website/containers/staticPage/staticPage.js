@@ -29,8 +29,6 @@ class StaticPage extends Component{
     }
     
     async componentDidUpdate() {
-        console.log("Updating component page");
-        
         this.page = await Ajax.GetData(`/api/pages/${this.props.match.params.id}`);
         if(this.state.page.PageTitle !== undefined && this.state.PageTitle !== null)
         {
@@ -39,22 +37,12 @@ class StaticPage extends Component{
         }
     }
     
-    //On pourrait mettre la photo par default dans la db au lieu de la mettre ici
-    DisplayPageBanner = () =>{
-        
-        if(this.state.page.PageGallery.length > 0)
-            return (<div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>)
-        else 
-            return (<div styleName="bannerPhoto" style={{backgroundImage : `url('https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg')`}}></div>)
-        
-    }
-    
     render()
     {
     if(this.state.page !== undefined){
     return(
     <div styleName="staticPage">
-        {this.DisplayPageBanner()}
+        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
         <div styleName="pageLeftColumn"> 
             <SocialIconColumn />
             <div styleName="pageGallery">

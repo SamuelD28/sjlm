@@ -1,11 +1,4 @@
 
-.newsSection{
-    background: whitesmoke;
-    position: fixed;
-    right: 0;
-    width: 400px;
-}
-
 .newsCard{
     padding: 2vw 2.5vw;
     background: white;

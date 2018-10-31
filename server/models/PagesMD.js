@@ -25,7 +25,8 @@ let pagesSchema = new Schema(
     },
     PageGallery:{
         type: Array,
-        required: true
+        required: true,
+        default: ['https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg']
     }
 }
 );

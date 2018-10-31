@@ -7,7 +7,7 @@
 .bannerPhoto{
     background-size: cover;
     background-attachment: fixed;
-    filter:sepia(40%);
+    filter:sepia(40%) brightness(70%);
     height: 30em;
     padding: 2.5vw 10vw;
     width: 100%;
@@ -27,8 +27,9 @@
 
 .pageGallery{
     background: white;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1vw;
     margin-top: 5em;
     padding: 1vw;
 }
