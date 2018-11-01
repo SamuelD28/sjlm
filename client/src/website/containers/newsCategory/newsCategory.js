@@ -51,7 +51,7 @@ class NewsCategory extends Component{
     
     AppendCardToGrid = (item, index) =>
     {
-        if(index % 2 == 0)
+        if(index % 2 === 0)
         return(
         <div styleName="newsWrapper">
             <div styleName="newsContainer" key={index}>

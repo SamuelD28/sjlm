@@ -55,12 +55,9 @@ class Pages extends CrudComponent{
         <section className="section-row">
             <div styleName="pagesLeftColumn columnContainer">
                 <PagesCreate CreateInTempState={this.CreateInTempState}/>
-                <button className="btn btn-primary"><i className="search icon"></i> Rechercher</button>
-                <Label style={{margin: ".5vw"}} basic pointing="right" size="large">Nombres de Pages : 36</Label>
-                <Label style={{margin: ".5vw"}} basic pointing="right" size="large">Nombre de Catégories : 7 </Label>
             </div>
             <div styleName="pagesRightColumn columnContainer">
-            {this.DisplayPagesCard()}
+                {this.DisplayPagesCard()}
             </div>
         </section>
     </div>

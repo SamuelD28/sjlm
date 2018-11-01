@@ -1,5 +1,6 @@
 .pagesCard{
-    border: 2px solid rgba(34,36,38,.15);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .2vw;
     cursor: pointer;
     margin: .5vw 0 ;
     padding: .5vw;

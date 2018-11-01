@@ -11,8 +11,7 @@ class UserCreate extends FormComponent{
     
     render(){
     return(
-    <Form className={adminStyles.sectionCard} onSubmit={() => {this.CreateInDb("/api/user")}} style={{width: "50%"}}>
-        <h1>Ajouter un utilisateur</h1>
+    <Form onSubmit={() => {this.CreateInDb("/api/user")}}>
         <Grid divided>
             <Grid.Row>
                 <Grid.Column>

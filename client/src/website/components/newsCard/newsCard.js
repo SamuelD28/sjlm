@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Ajax, Utility} from '../../../shared/utility.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './newsCard.module.css';

@@ -1,6 +1,6 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
-import {Modal, Form} from 'semantic-ui-react';
+import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import moment from 'moment';
@@ -55,63 +55,72 @@ class NewsEdit extends FormComponent{
                 <h4>Modifier</h4>
             </div>
         </div>} closeIcon>
-        <Modal.Header>Modifier une Actualitée</Modal.Header>
+        <Modal.Header>Modifier une Actualitée 
+            <span className="text-info" >
+                <i className="clock outline icon"></i> Publication :  {`${moment(this.formData.DatePublished).format("YYYY MM DD")}`}
+            </span>
+        </Modal.Header>
         <Modal.Content>
-            <Modal.Description className="section-form">
-                <div className="ui spaced image img-bg" style={{backgroundImage: `url('${this.formData.Images[0]}')`, width: "40%"}}>
-                </div>
-                <Form onSubmit={() => {this.UpdateInDb("/api/news/")}} style={{width: "60%"}}>
-                    <Form.Field>
-                        <span className="text-info text-xl" ><i className="clock outline icon"></i> Publication :  {`${moment(this.formData.DatePublished).format("YYYY MM DD")}`}</span>
-                    </Form.Field>
-                    <Form.Field>
-                        <div className="ui toggle checkbox">
-                            <input onChange={this.HandleChange} name="Important" type="checkbox" defaultChecked={this.formData.Important}/>
-                            <label>Actualitée Prioritaire</label>
-                        </div>
-                    </Form.Field>
-                    <Form.Group>
-                        <Form.Field width={12}>
-                           <input name="Title" type="text" placeholder="Titre" onChange={this.HandleChange} defaultValue={this.formData.Title}/>
-                        </Form.Field>
-                        <Form.Field width={4}>
-                            <select className="ui dropdown" name="Category" defaultValue={this.formData.Category} onChange={this.HandleChange}>
-                                <option value="events">Évenement</option>
-                                <option value="activity">Activité</option>
-                                <option value="communicate">Communiqué</option>
-                                <option value="roadwork">Travaux Routiers</option>
-                                <option value="jobs">Offre Emploi</option>
-                                <option value="public">Avis Public</option>
-                                <option value="council">Séance du Conseil</option>
-                                <option value="verbal">Procès-Verbaux</option>
-                                <option value="other">Autres</option>
-                            </select>
-                        </Form.Field>
-                    </Form.Group>
-                    <Form.Field>
-                        <ReactQuill 
-                        modules={modules}
-                        formats={formats}
-                        onChange={(e) => {this.ExtractValueFromTextEditor(e, this.TextEditor, "Description", "DescriptionHtml")}}
-                        defaultValue={this.formData.DescriptionHtml}
-                        ref={this.TextEditor}
-                        />
-                    </Form.Field>
-                   <CloudinaryUpload 
-                    multiple={true} 
-                    cropping={false}
-                    formData={this.formData}
-                    buttonText="Ajouter une image"
-                    linkedInput="Images"
-                    enableSubmit={this.EnableSubmit}/>
-                    <Form.Input>
-                        <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
-                        <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
-                    </Form.Input>
-                    <Form.Field>
-                        <button onClick={() => {this.DeleteInDb("/api/news/")}} className="btn btn-md btn-danger"><i className="icon trash"></i> Supprimer</button>
-                        <button disabled={this.state.disableSubmit} style={{float: 'right'}} type="submit" className="btn btn-md btn-primary"><i className="icon save"></i> Sauvegarder</button>
-                    </Form.Field>
+            <Modal.Description >
+                <Form onSubmit={() => {this.UpdateInDb("/api/news/")}}>
+                    <Grid columns={2} divided>
+                            <Grid.Row>
+                                <Grid.Column width={6}> 
+                                    <Form.Field>
+                                        <div className="ui toggle checkbox">
+                                            <input onChange={this.HandleChange} name="Important" type="checkbox" defaultChecked={this.formData.Important}/>
+                                            <label>Actualitée Prioritaire</label>
+                                        </div>
+                                    </Form.Field>
+                                    <Form.Group>
+                                        <Form.Field width={12}>
+                                           <input name="Title" type="text" placeholder="Titre" onChange={this.HandleChange} defaultValue={this.formData.Title}/>
+                                        </Form.Field>
+                                        <Form.Field width={4}>
+                                            <select className="ui dropdown" name="Category" defaultValue={this.formData.Category} onChange={this.HandleChange}>
+                                                <option value="events">Évenement</option>
+                                                <option value="activity">Activité</option>
+                                                <option value="communicate">Communiqué</option>
+                                                <option value="roadwork">Travaux Routiers</option>
+                                                <option value="jobs">Offre Emploi</option>
+                                                <option value="public">Avis Public</option>
+                                                <option value="council">Séance du Conseil</option>
+                                                <option value="verbal">Procès-Verbaux</option>
+                                                <option value="other">Autres</option>
+                                            </select>
+                                        </Form.Field>
+                                    </Form.Group>
+                                    <CloudinaryUpload 
+                                    multiple={true} 
+                                    cropping={false}
+                                    formData={this.formData}
+                                    buttonText="Ajouter une image"
+                                    linkedInput="Images"
+                                    enableSubmit={this.EnableSubmit}/>
+                                    <Form.Input>
+                                        <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
+                                        <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
+                                    </Form.Input>
+                                    <Form.Group style={{position: "absolute", bottom: "0"}}>
+                                        <Form.Field>
+                                            <button onClick={() => {this.DeleteInDb("/api/news/")}}  className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
+                                        </Form.Field>
+                                        <Form.Field>
+                                            <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Sauvegarder</button>
+                                        </Form.Field>
+                                    </Form.Group>
+                                    </Grid.Column>
+                                    <Grid.Column width={10}>
+                                    <ReactQuill 
+                                    modules={modules}
+                                    formats={formats}
+                                    onChange={(e) => {this.ExtractValueFromTextEditor(e, this.TextEditor, "Description", "DescriptionHtml")}}
+                                    defaultValue={this.formData.DescriptionHtml}
+                                    ref={this.TextEditor}
+                                    />
+                                </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </Form>
             </Modal.Description>
             <LoaderComponent action={this.state.action} />

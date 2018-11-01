@@ -45,7 +45,7 @@ class PagesCard extends FormComponent{
     render(){
     return(
     <Modal 
-    size="fullscreen"
+    size="large"
     trigger={
     <div styleName="pagesCard">
         <h4>{this.props.pages.PageTitle.toUpperCase()}</h4>

@@ -4,14 +4,12 @@ import FormComponent from '../FormComponent.js';
 import {Form, Grid} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
-import adminStyles from '../../containers/index.module.css';
-
 class UserUpdate extends FormComponent{
     
     render(){
     return(
-    <Form className={adminStyles.sectionCard} onSubmit={() => {this.UpdateInDb("/api/user/" + this.props.user._id)}} style={{width: "40%"}}>
-        <h1>{this.props.user.firstName} {this.props.user.lastName}</h1>
+    <Form onSubmit={() => {this.UpdateInDb("/api/user/" + this.props.user._id)}}>
+        <h2>{this.props.user.firstName} {this.props.user.lastName}</h2>
         <Grid divided>
             <Grid.Row>
                 <Grid.Column>

@@ -39,8 +39,8 @@ class PagesCreate extends FormComponent{
     render(){
     return(
     <Modal 
+    size="large"
     onMount={this.InitialiseTextEditor}
-    size="fullscreen"
     trigger={
     <div className="cardContainer">
         <div className="cardOverlay">
@@ -58,7 +58,7 @@ class PagesCreate extends FormComponent{
                 <Form onSubmit={() => {this.CreateInDb("/api/pages")}}>
                     <Grid columns={2} divided>
                         <Grid.Row>
-                            <Grid.Column width={6}>
+                            <Grid.Column width={6}> 
                                 <Form.Field>
                                     <input required name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.HandleChange}/>
                                 </Form.Field>
@@ -89,19 +89,19 @@ class PagesCreate extends FormComponent{
                                 buttonText="Choisir une gallerie"
                                 linkedInput="PageGallery"
                                 enableSubmit={this.EnableSubmit}/>
-                                <Form.Field>
+                                <Form.Field style={{position: "absolute", bottom: "0"}}>
                                     <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                 </Form.Field>
-                            </Grid.Column>
-                            <Grid.Column width={10}>
-                                <ReactQuill 
-                                required={true}
-                                name="PageContent"
-                                modules={modules}
-                                formats={formats}
-                                onChange={this.HandleChangeInTextEditor}
-                                />
-                            </Grid.Column>
+                                </Grid.Column>
+                                <Grid.Column width={10}>
+                                    <ReactQuill 
+                                    required={true}
+                                    name="PageContent"
+                                    modules={modules}
+                                    formats={formats}
+                                    onChange={this.HandleChangeInTextEditor}
+                                    />
+                                </Grid.Column>
                         </Grid.Row>
                     </Grid>
                 </Form>

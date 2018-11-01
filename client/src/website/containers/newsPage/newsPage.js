@@ -1,7 +1,6 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
 import {Ajax, Utility} from '../../../shared/utility.js';
-import moment from 'moment';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';

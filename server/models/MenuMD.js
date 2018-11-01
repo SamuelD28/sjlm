@@ -15,18 +15,17 @@ let menuSchema = new Schema({
    },
    LinkTo:{
        type: String,
-       required: true,
-       default: "/"
+       required: false,
    },
    Icon:{
        type: String,
        required: false,
        default: "compass"
    },
-   Submenu: [{
+   ParentMenu: {
         type: Schema.Types.ObjectId, 
         ref: 'Menu' 
-   }]
+   }
 });
 
 //!!!!!Needs to be reworked for actual model validation. Right now it only logs that the validation didnt passed.!!!!

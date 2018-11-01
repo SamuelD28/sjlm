@@ -46,7 +46,7 @@ app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
 app.use("/api/news" , NewsRT);
 app.use("/api/user" , UserRT);
-app.use("/api/menu", MenuRT);
+app.use("/api/menus", MenuRT);
 
 //----------------Listener-------------//
 

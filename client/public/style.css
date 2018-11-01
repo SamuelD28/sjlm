@@ -413,11 +413,16 @@ input[type=date]{
     /*margin: 0 0.5vw !important;*/
 }
 
-.icon{
-    margin: 0 !important;
-}
+/*.icon{*/
+/*    margin: 0 !important;*/
+/*}*/
 
 /*Quill Text editor*/
+
+.ql-editor{
+    height: 500px !important;
+}
+
 .ql-size-huge {
     font-size: 2.5em;
 }
