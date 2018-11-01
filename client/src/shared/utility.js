@@ -276,12 +276,12 @@ Forms.ToggleInput = function(event, input)
 }
 
 //Function that change the file label text to match the input file it isbound to
-Forms.ChangeLabelText =function(event)
+Forms.ChangeLabelText =function(target)
 {
     try{
-        let inputFile = event.target;
-        let idAttribute = event.target.id;
-        let inputs = Array.from(event.target.parentNode.childNodes);
+        let inputFile = target;
+        let idAttribute = target.id;
+        let inputs = Array.from(target.parentNode.childNodes);
         
         let label = inputs.find((child) =>{
                     let forAttribute = child.getAttribute("for");
@@ -294,7 +294,7 @@ Forms.ChangeLabelText =function(event)
         
         Utility.IsValuesUndefinedOrNull(label,inputFile); //break if no label is found
         
-        label.textContent = event.target.files[0].name;
+        label.textContent = target.files[0].name;
     }
     catch(err)
     {
@@ -303,22 +303,19 @@ Forms.ChangeLabelText =function(event)
 }
 
 //Function that retrieve the proper value value from any input.
-Forms.RetrieveValueFromInput = function(e)
+Forms.RetrieveValueFromInput = function(target, type)
 {
     try{
-        Utility.IsValuesUndefinedOrNull(e);
-        
-        let target = e.target;
-        let type = target.type;
+        Utility.IsValuesUndefinedOrNull(target);
         let value;
-        
         switch(type){
             case "checkbox": 
+            case "radio":
                     value = target.checked; 
                     break;
             case "file":
-                    Forms.ChangeLabelText(e);
-                    value = e.target.files[0];
+                    Forms.ChangeLabelText(target);
+                    value = target.files[0];
                     break;
             default:
                     value = target.value;

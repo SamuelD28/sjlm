@@ -128,13 +128,11 @@ class CloudinaryUpload extends Component{
         return(
         <div>
             <Form.Field>
-                <button className="btn btn-outline-info" onClick={this.OpenCloudinaryWidget}>
-                    <i className="icon image"></i> {this.props.buttonText}
-                </button>
-            </Form.Field>
-            <Form.Field>
                 <div className="container-thumbnails" ref={this.uploadsThumbnails}>
-                {this.DisplayThumbnailImages()}
+                    <span className="uploads-thumbnails button-thumbnails" onClick={this.OpenCloudinaryWidget}>
+                        <i className="icon add"></i>
+                    </span>
+                    {this.DisplayThumbnailImages()}
                 </div>
             </Form.Field>
         </div>

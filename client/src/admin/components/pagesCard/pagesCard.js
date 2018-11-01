@@ -87,10 +87,14 @@ class PagesCard extends FormComponent{
                                     buttonText="Choisir une gallerie"
                                     linkedInput="PageGallery"
                                     enableSubmit={this.EnableSubmit}/>
-                                    <Form.Field>
-                                        <button onClick={() => {this.DeleteInDb("/api/pages/")}} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
-                                        <button disabled={this.state.disableSubmit} type="submit" style={{float: 'right'}} className="btn btn-primary"><i className="icon file alternate"></i> Sauvegarder</button>
-                                    </Form.Field>
+                                    <Form.Group style={{position: "absolute", bottom: "0"}}>
+                                        <Form.Field>
+                                            <button onClick={() => {this.DeleteInDb("/api/pages/")}} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
+                                        </Form.Field>
+                                        <Form.Field>
+                                            <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Sauvegarder</button>
+                                        </Form.Field>
+                                    </Form.Group>
                             </Grid.Column>
                             <Grid.Column width={10}>
                                 <ReactQuill 

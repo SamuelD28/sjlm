@@ -1,8 +1,6 @@
 .news{
     align-items: left;
-    border: 2px solid #ececec;
     display: flex;
-    flex-direction: column;
     height: 100%;
     overflow: hidden;
     transition: transform .25s ease;
@@ -27,6 +25,16 @@
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.newsInfo{
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5vw;
+    width: 60%;
 }
 
 .newsBtn{
@@ -76,6 +84,6 @@
 }
 
 .newsImg{
-    height: 15vw;
     grid-area: newsImg;
+    width: 40%;
 }

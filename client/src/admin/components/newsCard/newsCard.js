@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import {Utility} from '../../../shared/utility.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
@@ -18,10 +19,12 @@ const NewsCard = (props) =>{
     return(
     <div styleName="news">
         <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('${props.news.Images[0]}')`}}></div>
-        <h2 styleName="newsTitle">{props.news.Title}</h2>
-        {DisplayImportantTag(props.news)}
-        <p styleName="newsCategory">Catégorie : {props.news.Category}</p>
-        <p styleName="newsDate">Publié le : {`${moment(props.DatePublished).format("YYYY-MM-DD")}`} <i className="clock outline icon"></i></p>
+        <div styleName="newsInfo">
+            <h2>{props.news.Title}</h2>
+            {DisplayImportantTag(props.news)}
+            <p styleName="newsCategory">{Utility.TranslateNewsCategory(props.news.Category)}</p>
+            <p styleName="newsDate"><i className="clock outline icon"></i> {moment(props.DatePublished).format("dddd, Do MMMM")}</p>
+        </div>
     </div>
     )
 }

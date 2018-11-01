@@ -231,7 +231,6 @@ h1, h2, h3, h4, h5,h6{
     background-color: #e6e6e6;
     cursor: pointer;
     display: flex;
-    font-size: 1.5em;
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -253,11 +252,10 @@ h1, h2, h3, h4, h5,h6{
 
 .cardOverlayBtn{
     align-items: center;
-    border: 4px solid white;
+    border: 2px solid white;
     pointer-events: none;
     display: flex;
-    flex-direction: column;
-    padding: 1.5vw;
+    padding: .5vw;
     transition: all .2s ease;
 }
 
@@ -464,7 +462,6 @@ blockquote {
 .uploads-thumbnails{
     width: 6vw;
     height: 6vw;
-    margin: .5vw 0;
 }
 
 .uploads-thumbnails:hover{
@@ -472,9 +469,19 @@ blockquote {
     cursor: pointer;
 }
 
+.button-thumbnails{
+    align-items: center;
+    background: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
 .container-thumbnails{
     display: flex;
     flex-wrap: wrap;
+    margin: .5vw 0;
 }
 
 #backgroundOverlay{

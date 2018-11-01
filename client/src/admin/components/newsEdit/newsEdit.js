@@ -1,10 +1,11 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
-import {Modal, Form, Grid} from 'semantic-ui-react';
+import {Modal, Form, Grid, Select, Radio, Divider} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import moment from 'moment';
 import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
+import {Utility} from '../../../shared/utility.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
@@ -34,6 +35,19 @@ const formats = [
     'align'
 ];
 
+//News Category
+let NewsCategory = [
+"events",
+"activity",
+"communicate",
+"roadwork",
+"jobs",
+"public",
+"council",
+"verbal",
+"other"
+];
+
 //This component is responsible for both the modification and suppression of news post in the database. The data are passed by the parent container news.
 class NewsEdit extends FormComponent{
     
@@ -44,6 +58,16 @@ class NewsEdit extends FormComponent{
         this.formData =Object.create(this.props.news);
         this.TextEditor = React.createRef();
     }
+
+    GenerateCategoryOptions = () => 
+    {
+        let CategoryOptions = [];
+        NewsCategory.map((category, index)=>{
+            let CategoryObject = {text: Utility.TranslateNewsCategory(category), value: category};
+            return CategoryOptions.push(CategoryObject);
+        });
+        return CategoryOptions;
+    }
     
     render(){
     if(this.formData !== undefined){
@@ -51,45 +75,44 @@ class NewsEdit extends FormComponent{
     <Modal size="large" trigger={
         <div className="cardOverlay cardEdit">
             <div className="cardOverlayBtn">
-                <i className="icon edit"></i>
                 <h4>Modifier</h4>
             </div>
         </div>} closeIcon>
-        <Modal.Header>Modifier une Actualitée 
-            <span className="text-info" >
-                <i className="clock outline icon"></i> Publication :  {`${moment(this.formData.DatePublished).format("YYYY MM DD")}`}
+        <Modal.Header>
+            <span style={{fontSize: '.8em'}}>
+                <i className="clock outline icon"></i> Publié le {moment(this.formData.DatePublished).format("dddd, Do MMMM, YYYY")}
             </span>
         </Modal.Header>
         <Modal.Content>
             <Modal.Description >
                 <Form onSubmit={() => {this.UpdateInDb("/api/news/")}}>
-                    <Grid columns={2} divided>
+                    <Grid columns={2}>
                             <Grid.Row>
-                                <Grid.Column width={6}> 
+                                <Grid.Column width={8}> 
+                                    <Divider horizontal>Informations</Divider>
                                     <Form.Field>
-                                        <div className="ui toggle checkbox">
-                                            <input onChange={this.HandleChange} name="Important" type="checkbox" defaultChecked={this.formData.Important}/>
-                                            <label>Actualitée Prioritaire</label>
-                                        </div>
+                                       <input name="Title" type="text" placeholder="Titre" onChange={this.HandleChange} defaultValue={this.formData.Title}/>
                                     </Form.Field>
-                                    <Form.Group>
-                                        <Form.Field width={12}>
-                                           <input name="Title" type="text" placeholder="Titre" onChange={this.HandleChange} defaultValue={this.formData.Title}/>
-                                        </Form.Field>
-                                        <Form.Field width={4}>
-                                            <select className="ui dropdown" name="Category" defaultValue={this.formData.Category} onChange={this.HandleChange}>
-                                                <option value="events">Évenement</option>
-                                                <option value="activity">Activité</option>
-                                                <option value="communicate">Communiqué</option>
-                                                <option value="roadwork">Travaux Routiers</option>
-                                                <option value="jobs">Offre Emploi</option>
-                                                <option value="public">Avis Public</option>
-                                                <option value="council">Séance du Conseil</option>
-                                                <option value="verbal">Procès-Verbaux</option>
-                                                <option value="other">Autres</option>
-                                            </select>
-                                        </Form.Field>
-                                    </Form.Group>
+                                    <Form.Field width={10}>
+                                        <Select 
+                                            selection
+                                            clearable  
+                                            placeholder="Categorie..." 
+                                            name="Category"
+                                            onChange={this.HandleChange}
+                                            defaultValue={this.formData.Category}
+                                            options={this.GenerateCategoryOptions()} />
+                                    </Form.Field>
+                                    <Form.Field width={6} >
+                                        <Radio 
+                                            label="Actualitée Prioritaire"
+                                            toggle 
+                                            name="Important"
+                                            onChange={this.HandleChange}
+                                            defaultChecked={this.formData.Important}
+                                            />
+                                    </Form.Field>
+                                    <Divider horizontal>Images</Divider>
                                     <CloudinaryUpload 
                                     multiple={true} 
                                     cropping={false}
@@ -97,10 +120,6 @@ class NewsEdit extends FormComponent{
                                     buttonText="Ajouter une image"
                                     linkedInput="Images"
                                     enableSubmit={this.EnableSubmit}/>
-                                    <Form.Input>
-                                        <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
-                                        <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
-                                    </Form.Input>
                                     <Form.Group style={{position: "absolute", bottom: "0"}}>
                                         <Form.Field>
                                             <button onClick={() => {this.DeleteInDb("/api/news/")}}  className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
@@ -110,7 +129,7 @@ class NewsEdit extends FormComponent{
                                         </Form.Field>
                                     </Form.Group>
                                     </Grid.Column>
-                                    <Grid.Column width={10}>
+                                    <Grid.Column width={8}>
                                     <ReactQuill 
                                     modules={modules}
                                     formats={formats}
@@ -129,5 +148,10 @@ class NewsEdit extends FormComponent{
     )}
     }
 }
+
+// <Form.Input>
+//     <label className="btn btn-sm btn-outline-info" htmlFor="documentInput"><i className="icon file"></i> {this.formData.File}</label>
+//     <input id="documentInput" name="File" type="file" onChange={this.HandleChange}/>
+// </Form.Input>
 
 export default CSSModules(NewsEdit, styles, {allowMultiple: true, handleNotFoundStyleName: "log" });

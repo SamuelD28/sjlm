@@ -16,18 +16,28 @@ class FormComponent extends Component{
     }
     
     //Function that handles the change made in every input except the one in hte texte editor
-    HandleChange = (e) =>
+    HandleChange = (e, data) =>
     {
+        console.log(e);
+        console.log(data);
         try{
-            
-            //Enable the submit button
+            let inputValue;
+            let inputName;
             this.EnableSubmit();
-            //Retrieve the value from the input
-            let inputValue = Forms.RetrieveValueFromInput(e);
-             //Verify that the returmed data contains something. Otherwise trows an error.
+            
+            //Needs to be optimised!!!
+            if(data !== undefined)
+            {
+                inputValue = Forms.RetrieveValueFromInput(data, data.type);
+                inputName = data.name;
+            }
+            else{
+                inputValue = Forms.RetrieveValueFromInput(e.target, e.target.type);
+                inputName = e.target.name;
+            }
             Utility.IsValuesUndefinedOrNull(inputValue);
             //Append the value and input name to the form data object.
-            Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
+            Forms.AppendValueToObject(inputName, this.formData, inputValue);
         }
         catch(err)
         {

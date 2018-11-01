@@ -1,6 +1,7 @@
 //--------Declaration---------//
 import React from 'react';
 import CrudComponent from '../../components/CrudComponent.js';
+import {Dropdown} from 'semantic-ui-react';
 
 // Css module improt
 import CSSModules from 'react-css-modules';
@@ -11,13 +12,65 @@ import NewsCard from '../../components/newsCard/newsCard.js';
 import NewsCreate from '../../components/newsCreate/newsCreate.js';
 import NewsEdit from '../../components/newsEdit/newsEdit.js';
 
+let MonthOptions = [
+  {
+    text: "Janvier",
+  },
+  {
+    text: "Février",
+  },
+  {
+    text: "Mars",
+  },
+  {
+    text: "Avril",
+  },
+  {
+    text: "Mai",
+  },
+  {
+    text: "Juin",
+  },
+  {
+    text: "Juillet",
+  },
+  {
+    text: "Août",
+  },
+  {
+    text: "Septembre",
+  },
+  {
+    text: "Octobre",
+  },
+  {
+    text: "Novembre",
+    value: "Novembre"
+  },
+  {
+    text: "Décembre",
+  }
+];
+let YearOptions = [
+    {
+        text: "2018",
+        value: 2018
+    },
+    {
+        text: "2017"   
+    },
+    {
+        text: "2016"   
+    }
+];
+
 //This components holds the state for all the other components to interact with. Function are created here to give services to other components
 class News extends CrudComponent{
     
     //Creates a get request to the server to initiliase the state with data.
     componentDidMount()
     {
-        this.ReadInTempState("/api/news");
+        this.ReadInTempState("/api/news/limit/15");
     }
     
     //Function that display an array for every news card hold in the tempstate array.
@@ -41,12 +94,18 @@ class News extends CrudComponent{
     render(){
     return(
     <div className={adminStyles.adminPage}> 
-        <section className={adminStyles.sectionContainer} id="latestNews">
-            <h4 className={adminStyles.sectionTitle}>Actualités Récentes</h4>
-            <button className="btn btn-primary">Rechercher</button>
-            <div className={adminStyles.sectionContent} styleName="newsContainer">
+        <section className="section-row">
+            <div styleName="pagesLeftColumn columnContainer">
                 <NewsCreate CreateInTempState={this.CreateInTempState}/>
-                {this.DisplayNewsCard()}
+            </div>
+            <div styleName="pagesRightColumn columnContainer">
+                <div style={{marginBottom: '1.5vw'}}>
+                    <Dropdown style={{marginRight: "1.5vw"}} selection placeholder="Mois" defaultValue="Novembre" options={MonthOptions} />
+                    <Dropdown selection placeholder="Annee" defaultValue={2018} options={YearOptions} />
+                </div>
+                <div className={adminStyles.sectionContent} styleName="newsContainer">
+                    {this.DisplayNewsCard()}
+                </div>
             </div>
         </section>
     </div>
