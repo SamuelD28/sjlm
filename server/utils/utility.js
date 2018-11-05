@@ -4,40 +4,56 @@
     Description: Utility javascript file for the admin project
 */
 
+let Utility = {},
+    server  = require("log4js").getLogger('server'),
+    error   = require("log4js").getLogger('error');
 
-let Utility = {};
-
-Utility.DateMethod = {
-    ParseFullDate: function(originalDate)
-    {
-        let parsedDate;
-        let year    = originalDate.getFullYear();
-        let month   = originalDate.getMonth() + 1;
-        let day     = originalDate.getDate();
-        
-        year = String(year);
-        
-        if(month < 10)
-            month = String("0" + month);
-        if(day < 10)
-            day = String("0" + day);
-        else
-        {
-            month = String(month);
-            day = String(day);
-        }
-        parsedDate = year + "-" + month + "-" + day;    
-        return parsedDate;
-    },
-    ParseYear: function(parsedDate){
-        return parsedDate.substring(0, 4);
-    },
-    ParseMonth: function(parsedDate){
-        return parsedDate.substring(5,7);
-    },
-    ParseDay: function(parsedDate){
-        return parsedDate.substring(8,10);
+//Function that returns the correct error status based on the name
+Utility.HTTPStatusError = function(statusName)
+{
+    switch(statusName){
+        case "Success": return 200;
+        case "TypeError": return 400;
+        case "MongoNetworkError": return 500;
+        case "MongoError": return 503;
+        case "CastError": return 400; 
+        default: return 404;
     }
-};
+}
+
+//Function used to write the appropriate message inside the server.log file. Used for streamlining mainly
+Utility.WriteInLog = function(type, content)
+{
+    switch(type){
+        case "error":
+            //TODO send an email when the server catches an error
+            error.error(content);
+            break;
+        case "info":
+            server.info(content); 
+            break;
+        case "warn":
+            server.warn(content);
+        break;
+        case "trace":
+            server.trace(content);
+        break;
+    }
+}
+
+Utility.GenerateResponse = function(success, res, data)
+{
+    let statusCode;
+    
+    if(data === null)
+        throw new TypeError('The Database returned a null document');
+    
+    if(success)
+        statusCode = Utility.HTTPStatusError("Success");
+    else
+        statusCode = Utility.HTTPStatusError(data.name);
+            
+    return res.status(statusCode).json({success: success, statusCode: statusCode, data: data});
+}
 
 module.exports = Utility;

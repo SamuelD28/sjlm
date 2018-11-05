@@ -350,6 +350,11 @@ Ajax.GetData = async function(url)
                     return CheckRequestStatus(res);
                 })
                 .then(data =>{
+                    console.log(data);
+                    
+                    statuscode:
+                    
+                    
                     requestedData = data;
                 })
                 .catch(err =>{
@@ -450,9 +455,10 @@ Ajax.DeleteData = async function(url, id)
 function CheckRequestStatus(res)
 {
     try{
+        // console.log(res.json());
         Utility.IsValuesUndefinedOrNull(res);
         if(!res.ok)
-            throw new Error(`[-Error Proccessing the information. Status Code : ${res.status} -]`);
+            throw new Error(`The request failed with a status code of : ${res.status}`);
         else
             return res.json();
     }

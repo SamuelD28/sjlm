@@ -4,7 +4,6 @@
     Description  : Point d'entrée principale pour le server du site web de la municipalité de Saint-Jacques-le-Mineur
 */
 
-
 //----------------Dependencies-------------//
 
 let express         = require("express"),
@@ -12,9 +11,36 @@ let express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     methodOverride  = require("method-override"),
-    // dataSeed        = require("./utils/dataseed.js"),
+    // dataSeed        = require("./utils/dataseed.js"), use to seed base information for the database
     cookieParser    = require("cookie-parser"),
-    cloudinary      = require("cloudinary");
+    cloudinary      = require("cloudinary"),
+    log4js          = require("log4js"),
+    server          = log4js.getLogger("server");
+
+//------------Logging Initialisation-------------//
+
+/*
+    We can log different type of information using the built in api methods
+    .trace()
+    .debug()
+    .info()
+    .warn()
+    .error()
+    .fatal()
+*/
+
+log4js.configure({
+ appenders: {
+    console : {type: 'console'},
+    server: { type: 'file', filename: 'server.log' },
+    error: {type: 'file', filename: 'error.log'}
+ },
+ categories: {
+    error: {appenders: ['error'], level: 'error'},
+    server : {appenders: ['server'], level: 'info' },
+    default: { appenders: ['console'], level: 'all' }
+ }
+});
 
 //----------------Initialisation-------------//
 
@@ -28,7 +54,7 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME, 
   api_key: process.env.CLOUD_API_KEY, 
   api_secret: process.env.CLOUD_API_SECRET 
-})
+});
 
 //Connection to the database
 mongoose.Promise = Promise;
@@ -36,12 +62,32 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a
 
 //----------------Routing-------------//
 
+/*
+    Heres a basic list of http request status and their meaning. Use this list to give the 
+    client meaningfull information concerning about the server status on the request made
+    (102) : Processing request
+    (200) : Success
+    (201) : Request Success and creation fo document
+    (301)(302) : Redirection
+    (400) : Bad Request, Syntax Error
+    (401) : User non authenticated
+    (403) : Access denied
+    (404) : Page Not Found
+    (500)(503): Server Error
+    (501) : Not Implemented
+*/
+
 let NewsRT      = require(__dirname + "/routes/NewsRT.js"),
     MembersRT   = require(__dirname + "/routes/MembersRT.js"),
     PagesRt     = require(__dirname + "/routes/PagesRT.js"),
     UserRT      = require(__dirname + "/routes/UserRT.js"),
     MenuRT      = require(__dirname + "/routes/MenuRT.js");
 
+//Logs request to the server inside server.log
+app.use(log4js.connectLogger(server,{
+  level: 'auto',
+  format: (req, res, format) => format(`:remote-addr - ":method :url HTTP/:http-version" :status :content-length ":referrer" ":user-agent"`)
+}));
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
 app.use("/api/news" , NewsRT);

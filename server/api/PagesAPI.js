@@ -1,15 +1,17 @@
-let Pages   = require("../models/PagesMD.js"),
-    Api     = new Object();
+const   Pages       = require("../models/PagesMD.js"),
+        Api         = new Object(),
+        Utility     = require("../utils/utility.js");
 
 Api.GetOnePage = function(req, res)
 {
     let Query = Pages.findById(req.params.id);
     Query.exec()
          .then((page) =>{
-            res.json(page);
+            Utility.GenerateResponse(true , res , page);
          })
          .catch((err) =>{
-            console.log(err);
+            Utility.GenerateResponse(false , res , err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -18,22 +20,23 @@ Api.GetPages = function(req, res)
     let Query = Pages.find({});
     Query.exec()
          .then((pages) =>{
-            res.json(pages);
+            Utility.GenerateResponse(true, res, pages);
          })
          .catch((err) =>{
-            console.log("~Something went wrong retrieving pages data \n" + err); 
+            Utility.GenerateResponse(false , res , err);
+            Utility.WriteInLog("error", err);
          });
 }
 
 Api.CreatePages = function(req, res)
 {
     Pages.create(req.body)
-         .then((members) =>{
-            console.log("~Successfully created pages"); 
-            res.json(members);
+         .then((page) =>{
+            Utility.GenerateResponse(true, res, page);
          })
          .catch((err) => {
-            console.log(err); 
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -41,12 +44,12 @@ Api.UpdatePages = function(req, res)
 {
     let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true});
     Query.exec()
-         .then((pages) =>{
-            console.log("~Updated Page ID : " + req.params.id);
-            res.json(pages);
+         .then((page) =>{
+            Utility.GenerateResponse(true , res , page);
          })
          .catch((err) =>{
-            console.log("~An Error occured while updating pages. \n ERROR: " + err);
+            Utility.GenerateResponse(false , res , err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -55,10 +58,11 @@ Api.DeletePages = function(req, res)
     let Query = Pages.findByIdAndRemove(req.params.id);
     Query.exec()
          .then(() =>{
-            console.log("~Deleted Pages Id : " + req.params.id);
+            Utility.GenerateResponse(true, res, null);
          })
          .catch((err) =>{
-            console.log("~An Error occured while deleting this pages \n ERROR : " + err);
+            Utility.GenerateResponse(false , res , err);
+            Utility.WriteInLog("error", err);
          });
 }
 

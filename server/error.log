@@ -1,0 +1,116 @@
+[2018-11-05T02:45:41.990] [ERROR] error - { CastError: Cast to ObjectId failed for value "5bc55c526ea64b67ae67c84" at path "_id" for model "Pages"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1082:15)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:303:32)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._findOne (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1781:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  message: 'Cast to ObjectId failed for value "5bc55c526ea64b67ae67c84" at path "_id" for model "Pages"',
+  name: 'CastError',
+  stringValue: '"5bc55c526ea64b67ae67c84"',
+  kind: 'ObjectId',
+  value: '5bc55c526ea64b67ae67c84',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'Pages',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object],
+        _indexedpaths: [] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'pages',
+        collectionName: 'pages',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2018-11-05T02:46:13.494] [ERROR] error - TypeError: The Database returned a null document
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:10:21)
+[2018-11-05T02:49:51.809] [ERROR] error - { MongoNetworkError: failed to reconnect after 30 attempts with interval 1000 ms
+    at Connection.<anonymous> (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:363:13)
+    at emitTwo (events.js:106:13)
+    at Connection.emit (events.js:191:7)
+    at Socket.<anonymous> (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/connection.js:245:50)
+    at Socket.g (events.js:292:16)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1277:8)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoNetworkError',
+  message: 'failed to reconnect after 30 attempts with interval 1000 ms',
+  errorLabels: [ 'TransientTransactionError' ] }

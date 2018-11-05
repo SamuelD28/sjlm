@@ -18,7 +18,7 @@ class Login extends Component{
     HandleChange = (e) =>
     {
         try{
-            let inputValue = Forms.RetrieveValueFromInput(e);
+            let inputValue = Forms.RetrieveValueFromInput(e.target);
             Utility.IsValuesUndefinedOrNull(inputValue);
             Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
         }

@@ -1,16 +1,17 @@
 let mongoose    = require("mongoose"),
     Menu        = require("../models/MenuMD.js"),
-    Api         = new Object();
-    
+    Api         = new Object(),
+    Utility     = require("../utils/utility.js");
 
 Api.GetMenus = function(req, res){
     let Query = Menu.find({}).populate('Submenu');
     Query.exec()
          .then((menus)=>{
-            res.json(menus);
+            Utility.GenerateResponse(true, res, menus);
          })
-         .catch((error)=>{
-            console.log(error);
+         .catch((err)=>{
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -18,11 +19,11 @@ Api.CreateMenu = function(req, res)
 {
     Menu.create(req.body)
          .then((menu) =>{
-            console.log("~Successfully created menu"); 
-            res.json(menu);
+            Utility.GenerateResponse(true, res, menu);
          })
          .catch((err) => {
-            console.log(err); 
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -30,12 +31,12 @@ Api.UpdateMenu = function(req, res)
 {
     let Query = Menu.findByIdAndUpdate(req.params.id, req.body, {new: true});
     Query.exec()
-         .then((members) =>{
-            console.log("~Updated Menu ID : " + req.params.id);
-            res.json(members);
+         .then((menu) =>{
+            Utility.GenerateResponse(true, res, menu);
          })
          .catch((err) =>{
-            console.log("~An Error occured while updating Menu. \n ERROR: " + err);
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -44,10 +45,11 @@ Api.DeleteMenu = function(req, res)
     let Query = Menu.findByIdAndRemove(req.params.id);
     Query.exec()
          .then(() =>{
-            console.log("~Deleted Menu Id : " + req.params.id);
+            Utility.GenerateResponse(true, res, null);
          })
          .catch((err) =>{
-            console.log("~An Error occured while deleting this menu \n ERROR : " + err);
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -60,7 +62,8 @@ Api.DeleteAllMenu = function(req, res)
             console.log("~Deleted Menu : ");
          })
          .catch((err) =>{
-            console.log("~An Error occured while deleting this menu \n ERROR : " + err);
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 

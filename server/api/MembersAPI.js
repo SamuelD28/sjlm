@@ -1,18 +1,20 @@
 //----------------Dependencies-------------//
 
 let mongoose    = require("mongoose"),
-    Members     = require("../models/MembersMD.js");
-let Api = new Object();
+    Members     = require("../models/MembersMD.js"),
+    Api         = new Object(),
+    Utility     = require("../utils/utility.js");
 
 Api.GetMembers = function(req, res)
 {
-    let Query = Members.find({});
+    let Query = Members.find();
     Query.exec()
          .then((members) =>{
-            res.json(members);
+            Utility.GenerateResponse(true, res, members);
          })
          .catch((err) =>{
-            console.log("~Something went wrong retrieving news data \n" + err); 
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -22,11 +24,11 @@ Api.CreateMembers = function(req, res)
   
     Members.create(req.body)
          .then((members) =>{
-            console.log("~Successfully created member"); 
-            res.json(members);
+            Utility.GenerateResponse(true, res, members);
          })
          .catch((err) => {
-            console.log(err); 
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -35,11 +37,11 @@ Api.UpdateMembers = function(req, res)
     let Query = Members.findByIdAndUpdate(req.params.id, req.body, {new: true});
     Query.exec()
          .then((members) =>{
-            console.log("~Updated Members ID : " + req.params.id);
-            res.json(members);
+            Utility.GenerateResponse(true, res, members);
          })
          .catch((err) =>{
-            console.log("~An Error occured while updating News. \n ERROR: " + err);
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
 
@@ -48,14 +50,13 @@ Api.DeleteMembers = function(req, res)
     let Query = Members.findByIdAndRemove(req.params.id);
     Query.exec()
          .then(() =>{
-            console.log("~Deleted Members Id : " + req.params.id);
+            Utility.GenerateResponse(true, res, null);
          })
          .catch((err) =>{
-            console.log("~An Error occured while deleting this members \n ERROR : " + err);
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
          });
 }
-
-
 
 //----------------Module Exports-------------//
 

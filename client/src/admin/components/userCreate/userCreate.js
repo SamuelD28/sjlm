@@ -4,8 +4,6 @@ import FormComponent from '../FormComponent.js';
 import {Form, Grid} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
-import adminStyles from '../../containers/index.module.css';
-
 //Component responsible for creating new page
 class UserCreate extends FormComponent{
     

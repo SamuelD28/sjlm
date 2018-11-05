@@ -1,7 +1,6 @@
 //Initial Declaration and importation
 import React from 'react';
 import CrudComponent from '../../components/CrudComponent.js';
-import {Label} from 'semantic-ui-react';
 import {Utility} from '../../../shared/utility.js';
 
 //Css Module
