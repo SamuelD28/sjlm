@@ -15,7 +15,8 @@ let express         = require("express"),
     cookieParser    = require("cookie-parser"),
     cloudinary      = require("cloudinary"),
     log4js          = require("log4js"),
-    server          = log4js.getLogger("server");
+    server          = log4js.getLogger("server"),
+    Utility         = require("./utils/utility.js");
 
 //------------Logging Initialisation-------------//
 
@@ -97,8 +98,14 @@ app.use("/api/menus", MenuRT);
 //----------------Listener-------------//
 
 app.listen(process.env.PORT, process.env.IP, (err) => {
-    if(err)
+    if(err){
         console.log("[An Error occured while starting the server.] \n ERROR : " + err);
-    else
+        Utility.WriteInLog("info", "SERVER PROCESS STOPPED");
+        Utility.WriteInLog("error", err);
+        //TODO Restart the server when the process fails
+    }
+    else{
         console.log(`[-Server Started Successfully PORT:${process.env.PORT} -]`);
+        Utility.WriteInLog("info", "SERVER PROCESS STARTED");
+    }
 });

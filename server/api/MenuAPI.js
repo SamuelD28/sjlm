@@ -32,6 +32,7 @@ Api.UpdateMenu = function(req, res)
     let Query = Menu.findByIdAndUpdate(req.params.id, req.body, {new: true});
     Query.exec()
          .then((menu) =>{
+            Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, menu);
          })
          .catch((err) =>{
@@ -44,8 +45,8 @@ Api.DeleteMenu = function(req, res)
 {
     let Query = Menu.findByIdAndRemove(req.params.id);
     Query.exec()
-         .then(() =>{
-            Utility.GenerateResponse(true, res, null);
+         .then((menu) =>{
+            Utility.GenerateResponse(true, res, menu);
          })
          .catch((err) =>{
             Utility.GenerateResponse(false, res, err);
@@ -59,7 +60,7 @@ Api.DeleteAllMenu = function(req, res)
     let Query = Menu.remove({});
     Query.exec()
          .then(() =>{
-            console.log("~Deleted Menu : ");
+            Utility.GenerateResponse(true, res);
          })
          .catch((err) =>{
             Utility.GenerateResponse(false, res, err);

@@ -15,10 +15,9 @@ import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 //This Component is responsible for holding the state that will be modified by its crud components
 class Pages extends CrudComponent{
     
-    async componentDidMount()
+    componentDidMount()
     {
-        await this.ReadInTempState("/api/pages");
-        console.log(this.tempState.db);
+        this.ReadInTempState("/api/pages");
     }
     
     DisplayPagesCard = () =>
@@ -32,7 +31,7 @@ class Pages extends CrudComponent{
             
             return(
             Array.from(pagesCategory).map((item ,index)=> (
-                <div styleName="menuContainer">
+                <div styleName="menuContainer" key={index}>
                     <h1 styleName="menuTitle">{Utility.TranslatePageCategory(item)}</h1>
                     {this.InsertPagesInCategory(item)}
                 </div>

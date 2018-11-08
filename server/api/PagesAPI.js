@@ -45,6 +45,7 @@ Api.UpdatePages = function(req, res)
     let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true});
     Query.exec()
          .then((page) =>{
+            Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true , res , page);
          })
          .catch((err) =>{
@@ -57,8 +58,8 @@ Api.DeletePages = function(req, res)
 {
     let Query = Pages.findByIdAndRemove(req.params.id);
     Query.exec()
-         .then(() =>{
-            Utility.GenerateResponse(true, res, null);
+         .then((page) =>{
+            Utility.GenerateResponse(true, res, page);
          })
          .catch((err) =>{
             Utility.GenerateResponse(false , res , err);

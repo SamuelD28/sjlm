@@ -30,8 +30,8 @@ class NewsCategory extends Component{
     async componentDidUpdate()
     {
         let categoryHistory = this.props.match.params.category;
-        if(this.news !== undefined && this.news.length !== 0){
-            if(this.news[0].Category !== categoryHistory){
+        if(this.news.data !== undefined && this.news.data.length !== 0){
+            if(this.news.data[0].Category !== categoryHistory){
                 console.log(true);
                 this.news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
                 this.setState({news : this.news});
@@ -43,7 +43,7 @@ class NewsCategory extends Component{
     {
         if(this.state.news !== undefined)
         {
-        return this.state.news.map((item, index)=>(
+        return this.state.news.data.map((item, index)=>(
         this.AppendCardToGrid(item, index)
         ))
         }

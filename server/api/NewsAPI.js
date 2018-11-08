@@ -62,6 +62,7 @@ Api.UpdateNews = function(req, res)
 {
     News.findByIdAndUpdate(req.params.id, req.body, {new : true})
         .then((news) =>{
+            Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, news);
         })
         .catch((err) => {
@@ -73,8 +74,8 @@ Api.UpdateNews = function(req, res)
 Api.DeleteNews = function(req , res)
 {
     News.findByIdAndRemove(req.params.id)
-        .then(() =>{
-            Utility.GenerateResponse(true, res, null);
+        .then((news) =>{
+            Utility.GenerateResponse(true, res, news);
         })
         .catch((err) => {
             Utility.GenerateResponse(false, res, err);

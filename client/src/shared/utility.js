@@ -351,10 +351,6 @@ Ajax.GetData = async function(url)
                 })
                 .then(data =>{
                     console.log(data);
-                    
-                    statuscode:
-                    
-                    
                     requestedData = data;
                 })
                 .catch(err =>{

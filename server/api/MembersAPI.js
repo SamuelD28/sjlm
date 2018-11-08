@@ -20,8 +20,6 @@ Api.GetMembers = function(req, res)
 
 Api.CreateMembers = function(req, res)
 {
-    console.log(req.body.Photo);
-  
     Members.create(req.body)
          .then((members) =>{
             Utility.GenerateResponse(true, res, members);
@@ -37,6 +35,7 @@ Api.UpdateMembers = function(req, res)
     let Query = Members.findByIdAndUpdate(req.params.id, req.body, {new: true});
     Query.exec()
          .then((members) =>{
+            Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, members);
          })
          .catch((err) =>{
@@ -49,8 +48,8 @@ Api.DeleteMembers = function(req, res)
 {
     let Query = Members.findByIdAndRemove(req.params.id);
     Query.exec()
-         .then(() =>{
-            Utility.GenerateResponse(true, res, null);
+         .then((members) =>{
+            Utility.GenerateResponse(true, res, members);
          })
          .catch((err) =>{
             Utility.GenerateResponse(false, res, err);

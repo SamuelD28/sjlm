@@ -45,8 +45,7 @@ Utility.GenerateResponse = function(success, res, data)
 {
     let statusCode;
     
-    if(data === null)
-        throw new TypeError('The Database returned a null document');
+    Utility.CheckIfNull(data);
     
     if(success)
         statusCode = Utility.HTTPStatusError("Success");
@@ -55,5 +54,19 @@ Utility.GenerateResponse = function(success, res, data)
             
     return res.status(statusCode).json({success: success, statusCode: statusCode, data: data});
 }
+
+Utility.CheckIfObjectIsEmpty = function(object)
+{
+    if(Object.keys(object).length === 0 && object.constructor === Object)
+        throw new TypeError("The Object is empty");
+}
+
+Utility.CheckIfNull = function(value)
+{
+    if(value == null){
+        throw new TypeError("The returned value was null");
+    }
+}
+
 
 module.exports = Utility;

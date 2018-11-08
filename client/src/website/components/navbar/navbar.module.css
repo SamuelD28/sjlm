@@ -1,7 +1,7 @@
 #navbar{
     position: fixed;
     top: 0;
-    height: -webkit-fill-available;
+    height: stretch;
     font-family: 'Oswald', sans-serif;
     left: 0;
     display: flex;

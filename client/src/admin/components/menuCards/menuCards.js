@@ -21,7 +21,7 @@ class MenuCards extends Component{
         const { activeIndex } = this.state;
         if(this.props.menus !== undefined)
         return this.props.menus.map((menu, index)=>(
-        <Accordion fluid styled style={{margin: '1vw 0'}}>
+        <Accordion fluid styled style={{margin: '1vw 0'}} key={index}>
             <Accordion.Title active={activeIndex === index}  index={index} onClick={this.handleClick}>
                   <i className="icon dropdown" ></i>
                   <h3 style={{display: 'inline'}}>{menu.Title}</h3>
@@ -35,7 +35,7 @@ class MenuCards extends Component{
     
     render(){
     return(
-    <div fluid styled>
+    <div>
         {this.DisplayMenuCards()}
     </div>
     )}

@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 //Css module import
 import CSSModules from 'react-css-modules';
+// eslint-disable-next-line
 import styles from './navbar.module.css';
 
 //This needs to be extracted in a separate api

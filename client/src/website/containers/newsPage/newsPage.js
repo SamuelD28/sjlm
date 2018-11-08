@@ -20,44 +20,62 @@ class NewsPage extends Component{
     {
         super(props);
         this.state = {};
+        this.previousLocation = "";
         this.news = {};
     }
     
-    async componentDidMount() {
-        this.news = await Ajax.GetData('/api/news/' + this.props.match.params.id);
-        this.latestNews = await Ajax.GetData('/api/news/limit/3');
-        this.setState({news : this.news, latestNews: this.latestNews});
+    ReadRequest = async(url, keyName, cb) =>
+    {
+        let request  = await Ajax.GetData(url);
+        let tempState = {};
+        tempState[keyName.valueOf()] = request.data;
+        cb(tempState, keyName);
     }
     
-    async componentDidUpdate() {
-        this.news = await Ajax.GetData(`/api/news/${this.props.match.params.id}`);
-        if(this.state.news.Title !== undefined && this.state.Title !== null)
-        {
-            if(this.state.news.Title !== this.news.Title)
-                this.setState({news : this.news});
+    componentDidMount() {
+        this.ReadRequest(`/api/news/${this.props.match.params.id}`, "news", this.CompareTempStateWithState);
+        this.ReadRequest("/api/news/limit/3", "latestNews", this.UpdateState);
+    }
+    
+    UpdateState = (tempState, keyName) =>
+    {
+        this.setState(tempState);   
+    }
+    
+    CompareTempStateWithState = (tempState, keyName) =>
+    {
+        this.news=tempState[keyName.valueOf()];
+        if(this.news.Title !== this.state.Title)
+            this.setState(this.news);
+    }
+    
+    componentDidUpdate() {
+        if(this.previousLocation !== this.props.location.pathname){
+            this.previousLocation = this.props.location.pathname;
+            this.ReadRequest(`/api/news/${this.props.match.params.id}`, "news", this.CompareTempStateWithState);
         }
     }
     
     render()
     {
-    if(this.state.news !== undefined){
+    if(this.state.Title !== undefined){
     return(
     <div styleName="news">
-        <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.news.Images[0]}')`}}></div>
+        <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.Images[0]}')`}}></div>
         <div styleName="newsBody">
             <div styleName="newsContent">
                 <PageHeader 
-                    category={Utility.TranslateNewsCategory(this.state.news.Category)}
-                    title={this.state.news.Title}
-                    date={this.state.news.DatePublished}
+                    category={Utility.TranslateNewsCategory(this.state.Category)}
+                    title={this.state.Title}
+                    date={this.state.DatePublished}
                     />
-                <PageContent content={this.state.news.DescriptionHtml} />
+                <PageContent content={this.state.DescriptionHtml} />
             </div>
             <div styleName="newsFile">
                 <FileGallery files={null} />
             </div>
             <div styleName="newsImgGallery">
-                <ImgGalleryColumn images={this.state.news.Images}/>
+                <ImgGalleryColumn images={this.state.Images}/>
             </div>
             <div styleName="latestNews">
                 <NewsColumn news={this.state.latestNews}/>

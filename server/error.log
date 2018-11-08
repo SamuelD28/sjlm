@@ -114,3 +114,140 @@
   name: 'MongoNetworkError',
   message: 'failed to reconnect after 30 attempts with interval 1000 ms',
   errorLabels: [ 'TransientTransactionError' ] }
+[2018-11-05T13:59:19.729] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.users index: email_1 dup key: { : "samueld28" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.users index: email_1 dup key: { : "samueld28" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.users index: email_1 dup key: { : "samueld28" }' }
+[2018-11-05T14:06:48.051] [ERROR] error - TypeError: The Database returned a null document
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:48:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T14:10:46.643] [ERROR] error - TypeError: The Database returned a null document
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:48:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T14:11:43.716] [ERROR] error - TypeError: The Database returned a null document
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:35:21)
+[2018-11-05T14:14:56.778] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:29)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:62:21)
+[2018-11-05T14:15:11.812] [ERROR] error - TypeError: The Database returned a null document
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:10:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T15:21:42.833] [ERROR] error - TypeError: The Object is empty
+    at Object.Utility.CheckIfObjectIsEmpty (/home/ubuntu/workspace/project/server/utils/utility.js:62:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/UserAPI.js:27:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T15:51:44.732] [ERROR] error - TypeError: The Object is empty
+    at Object.Utility.CheckIfObjectIsEmpty (/home/ubuntu/workspace/project/server/utils/utility.js:62:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:49:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:04:21.267] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:04:34.458] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:04:49.448] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:05:22.609] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:06:05.765] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:06:24.574] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:63:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:06:36.047] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:63:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:07:32.591] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:63:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:07:43.764] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:63:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:08:28.201] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:64:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:09:47.594] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:64:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:11:33.589] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:12:30.218] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:13:01.608] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:13:08.221] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:13:53.003] [ERROR] error - TypeError: Utility.CheckIfIsNull is not a function
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:14:29.171] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:14:43.483] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:35:11.474] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:13)
+    at News.findByIdAndRemove.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:78:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:35:32.077] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MembersAPI.js:54:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:35:42.892] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.users index: email_1 dup key: { : "jean123" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.users index: email_1 dup key: { : "jean123" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.users index: email_1 dup key: { : "jean123" }' }
+[2018-11-05T16:38:26.863] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:13)
+    at User.findByIdAndRemove.then (/home/ubuntu/workspace/project/server/api/UserAPI.js:54:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:39:30.004] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:49:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:39:49.151] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:67:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:48:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:62:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-11-05T16:53:29.608] [ERROR] error - TypeError: The Object is empty
+    at Object.Utility.CheckIfObjectIsEmpty (/home/ubuntu/workspace/project/server/utils/utility.js:61:15)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MembersAPI.js:38:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)

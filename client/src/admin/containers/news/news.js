@@ -15,52 +15,67 @@ import NewsEdit from '../../components/newsEdit/newsEdit.js';
 let MonthOptions = [
   {
     text: "Janvier",
+    key: 0
   },
   {
     text: "Février",
+    key: 1
   },
   {
     text: "Mars",
+    key: 2
   },
   {
     text: "Avril",
+    key: 3
   },
   {
     text: "Mai",
+    key: 4
   },
   {
     text: "Juin",
+    key: 5
   },
   {
     text: "Juillet",
+    key: 6
   },
   {
     text: "Août",
+    key: 7
   },
   {
     text: "Septembre",
+    key: 8
   },
   {
     text: "Octobre",
+    key: 9
   },
   {
     text: "Novembre",
+    key: 11,
     value: "Novembre"
   },
   {
     text: "Décembre",
+    key: 12
   }
 ];
 let YearOptions = [
     {
         text: "2018",
+        key: 0,
         value: 2018
     },
     {
-        text: "2017"   
+        text: "2017",   
+        key: 1
     },
     {
-        text: "2016"   
+        text: "2016",
+        key: 2
     }
 ];
 

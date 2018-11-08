@@ -11,7 +11,9 @@ router.route("/")
       .post(Mdw.IsAuth, Api.RegisterUser)
       .get(Mdw.IsAuth, Api.GetAllUser);
       
-router.put("/:id", Mdw.IsAuth, Api.UpdateUser);
+router.route("/:id")
+      .put(Mdw.IsAuth, Api.UpdateUser)
+      .delete(Mdw.IsAuth, Api.DeleteUser);
 
 //Testing routes
 router.get("/auth", Mdw.IsAuth, Api.Auth);

@@ -21,10 +21,10 @@ Api.GetAllUser = function(req, res){
 
 Api.UpdateUser = function(req, res)
 {
-    console.log(req.params.id);
     let Query = User.findByIdAndUpdate(req.params.id, req.body, {new : true});
     Query.exec()
          .then((user) =>{
+            Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, user); 
          })
          .catch((err) =>{
@@ -37,8 +37,7 @@ Api.UpdateUser = function(req, res)
 //Whats the difference between using the save method and the create method?
 Api.RegisterUser = function(req, res)
 {
-    let Query  = User.create(req.body);
-    Query.exec()
+    User.create(req.body)
          .then((user)=>{
             Utility.GenerateResponse(true, res, user); 
          })
@@ -46,6 +45,18 @@ Api.RegisterUser = function(req, res)
             Utility.GenerateResponse(false, res, err);
             Utility.WriteInLog("error", err);
          });
+}
+
+Api.DeleteUser = function(req, res)
+{
+    User.findByIdAndRemove(req.params.id)
+        .then((user)=>{
+            Utility.GenerateResponse(true, res, user); 
+        })
+        .catch((err)=>{
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
+        });
 }
 
 //Method to login a new user. Create a new cookie with a token in it
