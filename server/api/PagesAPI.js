@@ -1,6 +1,7 @@
-const   Pages       = require("../models/PagesMD.js"),
-        Api         = new Object(),
-        Utility     = require("../utils/utility.js");
+const   Pages           = require("../models/PagesMD.js"),
+        Api             = new Object(),
+        Utility         = require("../utils/utility.js"),
+        NavigationLinks = require("../models/NavigationLinksMD.js");
 
 Api.GetOnePage = function(req, res)
 {
@@ -33,6 +34,10 @@ Api.CreatePages = function(req, res)
     Pages.create(req.body)
          .then((page) =>{
             Utility.GenerateResponse(true, res, page);
+            NavigationLinks.create({Title: page.PageTitle, Category: "Pages", Link : "/pages/static/" + page._id})
+                           .catch((err) => {
+                            Utility.WriteInLog("error", err);
+                           });
          })
          .catch((err) => {
             Utility.GenerateResponse(false, res, err);

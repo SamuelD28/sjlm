@@ -16,7 +16,8 @@ Utility.HTTPStatusError = function(statusName)
         case "TypeError": return 400;
         case "MongoNetworkError": return 500;
         case "MongoError": return 503;
-        case "CastError": return 400; 
+        case "ValidationError":
+        case "CastError": return 400;
         default: return 404;
     }
 }
@@ -30,7 +31,7 @@ Utility.WriteInLog = function(type, content)
             error.error(content);
             break;
         case "info":
-            server.info(content); 
+            server.info(content);
             break;
         case "warn":
             server.warn(content);
@@ -44,14 +45,14 @@ Utility.WriteInLog = function(type, content)
 Utility.GenerateResponse = function(success, res, data)
 {
     let statusCode;
-    
+
     Utility.CheckIfNull(data);
-    
+
     if(success)
         statusCode = Utility.HTTPStatusError("Success");
     else
         statusCode = Utility.HTTPStatusError(data.name);
-            
+
     return res.status(statusCode).json({success: success, statusCode: statusCode, data: data});
 }
 

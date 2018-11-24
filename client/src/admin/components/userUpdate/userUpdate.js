@@ -22,14 +22,7 @@ class UserUpdate extends FormComponent{
                         </Form.Field>
                     </Form.Group>
                     <Form.Field>
-                        <Form.Input fluid name="email"  label='Email' type="email" defaultValue={this.props.user.email} onChange={this.HandleChange}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Role</label>
-                        <select defaultValue="0">
-                            <option value="0">0 | Utilisateur</option>
-                            <option value="1">1 | Administrateur</option>
-                        </select>
+                        <Form.Input fluid name="email"  label='Nom Utilisateur' type="text" defaultValue={this.props.user.email} onChange={this.HandleChange}/>
                     </Form.Field>
                     <Form.Field>
                         <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary">Modifier</button>

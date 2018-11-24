@@ -1,5 +1,4 @@
-import React from 'react';
-import CrudComponent from '../../components/CrudComponent.js';
+import React, {Component} from 'react';
 import {Accordion} from 'semantic-ui-react';
 
 // Css Module Import
@@ -8,16 +7,15 @@ import CSSModules from 'react-css-modules';
 import styles from './administrator.module.css';
 
 //Components
-import UserCreate from '../../components/userCreate/userCreate.js';
-import UserUpdate from '../../components/userUpdate/userUpdate.js';
-import MenuCards from '../../components/menuCards/menuCards.js';
-import MenuCreate from '../../components/menuCreate/menuCreate.js';
+import UserCreate   from '../../components/userCreate/userCreate.js';
+import UserUpdate   from '../../components/userUpdate/userUpdate.js';
+import Menus        from '../menus/menus.js';
 
-class Administrator extends CrudComponent{
+class Administrator extends Component{
     
-    async componentDidMount()
-    {
-        this.ReadInTempState("/api/menus");
+    constructor(props){
+        super(props);
+        this.state = {};
     }
     
     handleClick = (e, titleProps) => {
@@ -45,21 +43,6 @@ class Administrator extends CrudComponent{
                 </Accordion>
                 <div styleName="sectionCard">
                     <UserUpdate user={this.props.user}/>
-                </div>
-            </section>
-            <section styleName="menuSection">
-                <h1>Gérer les Menus</h1>
-                <Accordion fluid styled style={{margin: '1vw 0'}}>
-                    <Accordion.Title active={activeIndex === 1}  index={1} onClick={this.handleClick}>
-                          <i className="icon dropdown" ></i>
-                          <h3 style={{display: 'inline'}}>Ajouter un Menu</h3>
-                    </Accordion.Title>
-                    <Accordion.Content active={activeIndex === 1}>
-                        <MenuCreate menus={this.state.db} />
-                    </Accordion.Content>
-                </Accordion>
-                <div styleName="sectionCard">
-                    <MenuCards menus={this.state.db} />
                 </div>
             </section>
         </div>

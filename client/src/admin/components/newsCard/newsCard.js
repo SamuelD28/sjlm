@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import {Utility} from '../../../shared/utility.js';
+import Translate from '../../../shared/translate.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
@@ -14,7 +14,7 @@ function DisplayImportantTag(item)
 }
 
 const NewsCard = (props) =>{
-    
+
     if(props.news !== undefined)
     return(
     <div styleName="news">
@@ -22,7 +22,7 @@ const NewsCard = (props) =>{
         <div styleName="newsInfo">
             <h2>{props.news.Title}</h2>
             {DisplayImportantTag(props.news)}
-            <p styleName="newsCategory">{Utility.TranslateNewsCategory(props.news.Category)}</p>
+            <p styleName="newsCategory">{Translate.NewsCategory(props.news.Category)}</p>
             <p styleName="newsDate"><i className="clock outline icon"></i> {moment(props.DatePublished).format("dddd, Do MMMM")}</p>
         </div>
     </div>

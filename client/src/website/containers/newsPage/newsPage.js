@@ -1,6 +1,7 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
-import {Ajax, Utility} from '../../../shared/utility.js';
+import {Utility} from '../../../shared/utility.js';
+import Ajax from '../../../shared/ajax.js';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';
@@ -15,7 +16,7 @@ import FileGallery from '../../components/fileGallery/fileGallery.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js';
 
 class NewsPage extends Component{
-    
+
     constructor(props)
     {
         super(props);
@@ -23,7 +24,7 @@ class NewsPage extends Component{
         this.previousLocation = "";
         this.news = {};
     }
-    
+
     ReadRequest = async(url, keyName, cb) =>
     {
         let request  = await Ajax.GetData(url);
@@ -31,31 +32,31 @@ class NewsPage extends Component{
         tempState[keyName.valueOf()] = request.data;
         cb(tempState, keyName);
     }
-    
+
     componentDidMount() {
         this.ReadRequest(`/api/news/${this.props.match.params.id}`, "news", this.CompareTempStateWithState);
         this.ReadRequest("/api/news/limit/3", "latestNews", this.UpdateState);
     }
-    
+
     UpdateState = (tempState, keyName) =>
     {
-        this.setState(tempState);   
+        this.setState(tempState);
     }
-    
+
     CompareTempStateWithState = (tempState, keyName) =>
     {
         this.news=tempState[keyName.valueOf()];
         if(this.news.Title !== this.state.Title)
             this.setState(this.news);
     }
-    
+
     componentDidUpdate() {
         if(this.previousLocation !== this.props.location.pathname){
             this.previousLocation = this.props.location.pathname;
             this.ReadRequest(`/api/news/${this.props.match.params.id}`, "news", this.CompareTempStateWithState);
         }
     }
-    
+
     render()
     {
     if(this.state.Title !== undefined){
@@ -64,7 +65,7 @@ class NewsPage extends Component{
         <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.Images[0]}')`}}></div>
         <div styleName="newsBody">
             <div styleName="newsContent">
-                <PageHeader 
+                <PageHeader
                     category={Utility.TranslateNewsCategory(this.state.Category)}
                     title={this.state.Title}
                     date={this.state.DatePublished}

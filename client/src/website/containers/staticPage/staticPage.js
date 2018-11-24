@@ -1,6 +1,7 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
-import {Ajax, Utility} from '../../../shared/utility.js';
+import {Utility} from '../../../shared/utility.js';
+import Ajax from '../../../shared/ajax.js';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';
@@ -15,14 +16,14 @@ import PageFooter from '../../components/pageFooter/pageFooter.js';
 import PageContent from '../../components/pageContent/pageContent.js';
 
 class StaticPage extends Component{
-    
+
     constructor(props)
     {
         super(props);
         this.state = {};
         this.page = {};
     }
-    
+
     ReadRequest = async(url, name) =>
     {
         let request  = await Ajax.GetData(url);
@@ -31,46 +32,46 @@ class StaticPage extends Component{
         this.page=stateObject[name.valueOf()];
         this.ComparePageWithState();
     }
-    
+
     componentDidMount() {
         this.ReadRequest(`/api/pages/${this.props.match.params.id}`, "page");
     }
-    
+
     ComparePageWithState = () =>
     {
         if(this.page.PageTitle !== this.state.PageTitle)
             this.setState(this.page);
     }
-    
+
     componentDidUpdate() {
         this.ReadRequest(`/api/pages/${this.props.match.params.id}`, "page");
         this.ComparePageWithState();
     }
-    
+
     DisplayImageGallery = (images) =>
     {
         if(images.length > 1)
         return(
         <div styleName="pageGallery">
             <ImgGalleryColumn images={images} />
-        </div>    
+        </div>
         )
     }
-    
+
     render()
     {
     if(this.state.PageTitle !== undefined){
     return(
     <div styleName="staticPage">
         <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.PageGallery[0]}')`}}></div>
-        <div styleName="pageLeftColumn"> 
+        <div styleName="pageLeftColumn">
             <SocialIconColumn />
             {this.DisplayImageGallery(this.state.PageGallery)}
         </div>
         <div styleName="pageContainer">
-            <PageHeader 
-                title={this.state.PageTitle} 
-                category={Utility.TranslatePageCategory(this.state.PageCategory)} 
+            <PageHeader
+                title={this.state.PageTitle}
+                category={Utility.TranslatePageCategory(this.state.PageCategory)}
                 />
             <PageContent content={this.state.PageContent} />
             <FileGallery files={null} />

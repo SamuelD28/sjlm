@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Ajax, Utility, Forms} from '../../../shared/utility.js';
+import {Utility, Forms} from '../../../shared/utility.js';
+import Ajax from '../../../shared/ajax.js';
 import {Form} from 'semantic-ui-react';
 import {NavLink} from 'react-router-dom';
 
@@ -8,13 +9,13 @@ import CSSModules from 'react-css-modules';
 import styles from './login.module.css';
 
 class Login extends Component{
-    
+
     constructor(props)
     {
         super(props);
         this.formData = {};
     }
-    
+
     HandleChange = (e) =>
     {
         try{
@@ -27,14 +28,15 @@ class Login extends Component{
             console.log(err.message);
         }
     }
-    
+
     HandleSubmit = async() =>{
         let user = await Ajax.PostData("/api/user/login", this.formData);
-        
         if(user.success)
             this.props.history.push("/admin");
+        else
+            console.log(user.message);
     }
-    
+
     render(){
         return(
         <div styleName="loginContainer">
@@ -51,12 +53,12 @@ class Login extends Component{
             <Form styleName="loginForm" onSubmit={this.HandleSubmit}>
                 <h2 styleName="loginTitle">Connexion à Saint-Jacques-le-Mineur</h2>
                 <Form.Field>
-                    <label styleName="loginLabel">Email</label>
-                    <input required name="email" type="email" placeholder="Email" onChange={this.HandleChange}/>
+                    <label styleName="loginLabel">Nom Utilisateur</label>
+                    <input required name="email" type="text" placeholder="Nom..." onChange={this.HandleChange}/>
                 </Form.Field>
                 <Form.Field>
                     <label styleName="loginLabel">Mot de passe</label>
-                    <input required name="password" type="password" placeholder="Mot de passe" onChange={this.HandleChange}/>
+                    <input required name="password" type="password" placeholder="Mot de passe..." onChange={this.HandleChange}/>
                 </Form.Field>
                 <div styleName="loginBtn">
                     <button type="submit" className="btn btn-outline-primary">Se Connecter</button>

@@ -34,8 +34,8 @@ img{
 }
 
 p{
-    margin-bottom: 0;  
-} 
+    margin-bottom: 0;
+}
 
 h1, h2, h3, h4, h5,h6{
     color: #37474F;
@@ -49,19 +49,19 @@ h1, h2, h3, h4, h5,h6{
 }
 
 .text-muted{
-    color: #ABB2B9;
+    color: #ABB2B9 !important;
 }
 
 .text-danger{
-    color: #C0392B;
+    color: #C0392B !important;
 }
 
 .text-warning{
-    color: #F1C40F;
+    color: #F1C40F !important;
 }
 
 .text-info{
-    color: #2980B9;
+    color: #2980B9 !important;
 }
 
 .text-sm{
@@ -253,6 +253,7 @@ h1, h2, h3, h4, h5,h6{
 .cardOverlayBtn{
     align-items: center;
     border: 2px solid white;
+    flex-direction: column;
     pointer-events: none;
     display: flex;
     padding: .5vw;
@@ -380,7 +381,7 @@ h1, h2, h3, h4, h5,h6{
 }
 
 .fileLabel:hover{
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .fileLabel{

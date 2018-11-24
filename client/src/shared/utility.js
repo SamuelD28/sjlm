@@ -7,49 +7,6 @@
 //Namespace
 let Utility = {};
 let Forms = {};
-let Ajax = {};
-
-Utility.TranslatePageCategory = function(pageCategory)
-{
-    let translatedContent;
-        switch(pageCategory)
-        {
-            case "city": translatedContent = "Découvrir la ville"; break;
-            case "administration": translatedContent = "Administration"; break;
-            case "services": translatedContent = "Les Services"; break;
-            case "cultures": translatedContent = "Cultures et loisirs"; break;
-            case "finances": translatedContent = "Finances"; break;
-            case "news": translatedContent = "Actualitées"; break;
-            case "others": translatedContent = "Autres"; break;
-            default: translatedContent = "Oops, erreur"; break;
-        }
-        return translatedContent;
-}
-
-Utility.TranslateNewsCategory = function(newsCategory)
-{
-    let translatedContent;
-        switch(newsCategory)
-        {
-            case "events": translatedContent = "Évènements"; break;
-            case "activity": translatedContent = "Activitées"; break;
-            case "communicate": translatedContent = "Communiqués"; break;
-            case "roadwork": translatedContent = "Travaux Routiers"; break;
-            case "jobs": translatedContent = "Emploi"; break;
-            case "public": translatedContent = "Avis public"; break;
-            case "council": translatedContent = "Séances du conseil"; break;
-            case "verbal": translatedContent = "Procès-verbaux"; break;
-            case "other": translatedContent = "Autres"; break;
-            default: translatedContent = "Oops, erreur"; break;
-        }
-        return translatedContent;
-}
-
-//Fonction that finds a series of elements and returns a proper array with it
-Utility.FindAllAndCreateArray = function(element)
-{
-    return Array.prototype.slice.call(document.querySelectorAll(element));
-}
 
 //Fonction that adjust the height of an element to fill up the entire screen
 Utility.AdjustFullHeight = function(elements)
@@ -81,7 +38,7 @@ Utility.DisableInputWithCheckbox = function(checkbox, input)
             checkbox.forEach((element) => {
                 element.addEventListener("click" , function(event){
                     Utility.ToggleInput(event, input[0]);
-                });      
+                });
             });
         }
         else{
@@ -95,7 +52,7 @@ Utility.DisableInputWithCheckbox = function(checkbox, input)
         console.log(err.message);
     }
 }
-    
+
 //Fonction that change the value of a checkbox to be true or false instead of on and off
 Utility.ChangeCheckboxValueTrueFalse = function(event)
 {
@@ -108,7 +65,7 @@ Utility.ChangeCheckboxValueTrueFalse = function(event)
     }
 }
 
-//Fonction that prevent the default 
+//Fonction that prevent the default
 Utility.PreventFormSubmission = function(submitBtns)
 {
     try{
@@ -118,14 +75,14 @@ Utility.PreventFormSubmission = function(submitBtns)
             submitBtns.forEach((btn) =>{
                 btn.addEventListener("click" , function(e){
                     e.preventDefault();
-                }); 
+                });
             });
         }
         else
         {
             submitBtns.addEventListener("click" , function(e){
                 e.preventDefault();
-            });    
+            });
         }
     }
     catch(err){
@@ -139,9 +96,9 @@ Utility.OpenModal = function(e)
     try{
         let modalID =  e.target.getAttribute("modal");
         let modalNews = document.getElementById(modalID);
-        
+
         Utility.IsValuesUndefinedOrNull(modalID, modalNews);
-        
+
         modalNews.style.height = window.innerHeight + "px";
         modalNews.style.display = "flex";
     }
@@ -154,15 +111,15 @@ Utility.OpenModal = function(e)
 Utility.CloseModal = function(event, modalID)
 {
     try{
-        
+
         if(!event.defaultPrevented)
             event.preventDefault();
-        
+
         let id = (modalID !== undefined)? modalID: event.target.getAttribute("modal");
         let modalBox = document.getElementById(id);
-        
+
         Utility.IsValuesUndefinedOrNull(modalBox);
-        
+
         modalBox.style.display = "none";
     }
     catch(err){
@@ -183,11 +140,11 @@ Utility.ChangeBtnState =function(e)
 {
     try{
         let form = document.getElementById("form");
-        
+
         Utility.IsValuesUndefinedOrNull(form);
-        
+
         let button = form.querySelector(".confirm");
-        button.style.backgroundColor = "#02a9f4";  
+        button.style.backgroundColor = "#02a9f4";
         button.disabled = false;
     }
     catch(err){
@@ -227,18 +184,18 @@ Forms.CreateJsonObjectWithFormData = function(formData)
 {
     try{
         let jsonObject = {};
-        
+
         Utility.IsValuesUndefinedOrNull(formData);
-        
+
         formData.forEach(function(value, key){
                 if(key === "Image" || key === "File")
                 {
                     if(value.name)
-                    jsonObject[key] = value.name;  
+                    jsonObject[key] = value.name;
                 }
                 else
-                    jsonObject[key] = value;    
-            });  
+                    jsonObject[key] = value;
+            });
         return JSON.stringify(jsonObject);
     }
     catch(err){
@@ -251,11 +208,11 @@ Forms.ToggleInput = function(event, input)
 {
     try{
         Utility.IsValuesUndefinedOrNull(event, input);
-        
+
         let linkedInputAttribute = event.target.getAttribute("linkedto");
         let parentInput = event.target.parentNode;
         let childrens = Array.from(parentInput.childNodes);
-        
+
         //Try to find the input based on the linkedto attribute placed on the checkbox.
         let linkedInput = childrens.find((child) => {
             if(child.name !== undefined)
@@ -263,7 +220,7 @@ Forms.ToggleInput = function(event, input)
             else
                 return undefined;
         });
-        
+
         if(linkedInput !== undefined || linkedInput !== null)
             linkedInput.disabled = !event.target.checked;
         else
@@ -282,18 +239,18 @@ Forms.ChangeLabelText =function(target)
         let inputFile = target;
         let idAttribute = target.id;
         let inputs = Array.from(target.parentNode.childNodes);
-        
+
         let label = inputs.find((child) =>{
                     let forAttribute = child.getAttribute("for");
-                        
+
                     if(forAttribute !== undefined)
                         return forAttribute === idAttribute;
                     else
                         return undefined;
                     });
-        
+
         Utility.IsValuesUndefinedOrNull(label,inputFile); //break if no label is found
-        
+
         label.textContent = target.files[0].name;
     }
     catch(err)
@@ -309,9 +266,9 @@ Forms.RetrieveValueFromInput = function(target, type)
         Utility.IsValuesUndefinedOrNull(target);
         let value;
         switch(type){
-            case "checkbox": 
+            case "checkbox":
             case "radio":
-                    value = target.checked; 
+                    value = target.checked;
                     break;
             case "file":
                     Forms.ChangeLabelText(target);
@@ -339,129 +296,5 @@ Forms.AppendValueToObject = function(keyToAppend, objectToAppend, valueToAppend)
     }
 }
 
-//Ajax Get request. Needs a url passed as a parameter otherwise it throws an error
-Ajax.GetData = async function(url)
-{
-    try{
-        Utility.IsValuesUndefinedOrNull(url);
-        let requestedData;
-        await   fetch(url)
-                .then(res =>{
-                    return CheckRequestStatus(res);
-                })
-                .then(data =>{
-                    console.log(data);
-                    requestedData = data;
-                })
-                .catch(err =>{
-                    console.log(err.message);                
-                });
-        return requestedData;
-    }
-    catch(err){
-        console.log(err.message);
-    }
-}
-
-//Ajax Post request. Needs a url and the data to post to the server otherwise it throws an error
-Ajax.PostData = async function(url, dataToPost)
-{
-    try{
-        Utility.IsValuesUndefinedOrNull(url, dataToPost);
-        
-        let postedData;
-        let content = JSON.stringify(dataToPost);
-        let bodyObject = {  method: "POST",
-                            headers: {"Content-Type" : "application/json"},
-                            body: content};
-        
-        await   fetch(url , bodyObject)
-                .then((res) =>{
-                    return CheckRequestStatus(res);
-                })
-                .then((data) =>{
-                    postedData = data;
-                })
-                .catch((err) =>{
-                    console.log(err.message);   
-                });
-                
-        return postedData;        
-    }
-    catch(err){
-        console.log(err.message);
-    }
-}
-
-//Ajax Put Request. Needs a url and the new data to post. The new data needs to contain an id property since the server uses this.
-Ajax.PutData = async function (url, newData)
-{
-    try{
-        Utility.IsValuesUndefinedOrNull(url, newData);
-        let updatedData;
-        let ajaxContent = { method: "PUT",
-                            headers: {"Content-Type" : "application/json"},
-                            body: JSON.stringify(newData)};
-                            
-        let fullUrl= (newData["_id"] === undefined)? url : url + newData["_id"];
-        
-        await   fetch(fullUrl, ajaxContent)
-                .then((res) =>{
-                    return CheckRequestStatus(res);
-                })
-                .then((data) =>{
-                    updatedData = data;
-                })
-                .catch((err) =>{
-                    console.log(err.message);
-                });
-                
-        return updatedData;
-    }
-    catch(err){
-        console.log(err.message);
-    }
-}
-
-//Ajax Delete Request. Needs a url and an id since the server uses this.
-Ajax.DeleteData = async function(url, id)
-{
-    try{
-        Utility.IsValuesUndefinedOrNull(url, id);
-        
-        let ajaxContent = {method:"DELETE"};
-                                
-        await   fetch(url +  id, ajaxContent)
-                .then((res) =>{
-                    return CheckRequestStatus(res);
-                })
-                .then((data) =>{
-                    console.log("Deleted Data")
-                })
-                .catch((err) =>{
-                    console.log(err.message);
-                });
-    }
-    catch(err){
-        console.log(err.message);
-    }
-}
-
-//Ajax function used to check the response status from the request. Throws an error if the status is not 200(success)
-function CheckRequestStatus(res)
-{
-    try{
-        // console.log(res.json());
-        Utility.IsValuesUndefinedOrNull(res);
-        if(!res.ok)
-            throw new Error(`The request failed with a status code of : ${res.status}`);
-        else
-            return res.json();
-    }
-    catch(err){
-        console.log(err);
-    }
-}
-
 // Exports all the utility objects
-export {Utility, Forms, Ajax};
+export {Utility, Forms};

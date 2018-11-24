@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Ajax} from '../../shared/utility.js';
+import Ajax from '../../shared/ajax.js';
 
 export default function(ComposedClass,isPrivate)
 {
@@ -14,7 +14,7 @@ export default function(ComposedClass,isPrivate)
         {
             try{
                 let user = await Ajax.GetData("/api/user/auth");
-                
+
                 if(!user.isAuth && isPrivate)
                     this.props.history.push('/login');
                 else

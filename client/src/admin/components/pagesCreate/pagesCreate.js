@@ -29,16 +29,16 @@ const formats = [
 
 //Component responsible for creating new page
 class PagesCreate extends FormComponent{
-    
+
     //Function that handle the changes made in the text editor
     HandleChangeInTextEditor = (e) =>
     {
         Forms.AppendValueToObject("PageContent", this.formData, e);
     }
-    
+
     render(){
     return(
-    <Modal 
+    <Modal
     size="large"
     onMount={this.InitialiseTextEditor}
     trigger={
@@ -50,7 +50,7 @@ class PagesCreate extends FormComponent{
             </div>
         </div>
     </div>
-    } 
+    }
     closeIcon>
     <Modal.Header>Ajouter une page</Modal.Header>
         <Modal.Content>
@@ -58,21 +58,9 @@ class PagesCreate extends FormComponent{
                 <Form onSubmit={() => {this.CreateInDb("/api/pages")}}>
                     <Grid columns={2} divided>
                         <Grid.Row>
-                            <Grid.Column width={6}> 
+                            <Grid.Column width={6}>
                                 <Form.Field>
                                     <input required name="PageTitle" type="text" placeholder="Titre de la page" onChange={this.HandleChange}/>
-                                </Form.Field>
-                                <Form.Field>
-                                    <select required name="PageCategory" defaultValue="default" onChange={this.HandleChange}>
-                                        <option value="default">Catégorie*</option>
-                                        <option value="city">Découvrir la ville</option>
-                                        <option value="administration">Administration</option>
-                                        <option value="services">Les services</option>
-                                        <option value="cultures">Cultures et loisirs</option>
-                                        <option value="finances">Finances</option>
-                                        <option value="news">Actualités</option>
-                                        <option value="others">Autres</option>
-                                    </select>
                                 </Form.Field>
                                 <Form.Field>
                                     <select required name="Template" defaultValue="default" onChange={this.HandleChange}>
@@ -82,19 +70,12 @@ class PagesCreate extends FormComponent{
                                         <option disabled value="3"> 3 | Bannière sur côté</option>
                                     </select>
                                 </Form.Field>
-                                <CloudinaryUpload 
-                                multiple={true} 
-                                cropping={false} 
-                                formData={this.formData}
-                                buttonText="Choisir une gallerie"
-                                linkedInput="PageGallery"
-                                enableSubmit={this.EnableSubmit}/>
                                 <Form.Field style={{position: "absolute", bottom: "0"}}>
                                     <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon file alternate"></i> Publier</button>
                                 </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column width={10}>
-                                    <ReactQuill 
+                                    <ReactQuill
                                     required={true}
                                     name="PageContent"
                                     modules={modules}
@@ -108,7 +89,7 @@ class PagesCreate extends FormComponent{
             </Modal.Description>
             <LoaderComponent action={this.state.action} />
         </Modal.Content>
-    </Modal>    
+    </Modal>
     )}
 }
 

@@ -35,17 +35,17 @@ const formats = [
 
 //This components hold the form to and fonctionality to create a new post in the database.
 class NewsCreate extends FormComponent{
-    
+
     constructor(props)
     {
         super(props);
         this.TextEditor = React.createRef();
     }
-    
+
     render()
     {
     return(
-    <Modal 
+    <Modal
     trigger={
     <div className="cardContainer">
         <div className="cardOverlay">
@@ -55,7 +55,7 @@ class NewsCreate extends FormComponent{
             </div>
         </div>
     </div>
-    } 
+    }
     closeIcon>
     <Modal.Header>Nouvelle Actualitée</Modal.Header>
     <Modal.Content>
@@ -87,20 +87,20 @@ class NewsCreate extends FormComponent{
                         </Form.Field>
                     </Form.Group>
                     <Form.Field>
-                    <ReactQuill 
+                    <ReactQuill
                     modules={modules}
                     formats={formats}
                     onChange={(e) => {this.ExtractValueFromTextEditor(e, this.TextEditor, "Description", "DescriptionHtml")}}
                     ref={this.TextEditor}
                     />
                     </Form.Field>
-                    <CloudinaryUpload 
-                    multiple={true} 
-                    cropping={false} 
-                    formData={this.formData}
-                    buttonText="Choisir une gallerie"
-                    enableSubmit={this.EnableSubmit}
-                    linkedInput="Images"/>
+                    <CloudinaryUpload
+                        multiple={true}
+                        cropping={false}
+                        formData={this.formData}
+                        buttonText="Choisir une gallerie"
+                        enableSubmit={this.EnableSubmit}
+                        linkedInput="Images"/>
                     <Form.Field>
                         <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Publier</button>
                     </Form.Field>
@@ -108,7 +108,7 @@ class NewsCreate extends FormComponent{
             </Modal.Description>
             <LoaderComponent action={this.state.action}/>
         </Modal.Content>
-    </Modal>    
+    </Modal>
     )}
 }
 

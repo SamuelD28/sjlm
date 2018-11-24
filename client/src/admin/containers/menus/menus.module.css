@@ -1,0 +1,32 @@
+.columnContainer {
+    padding: 1vw 1.5vw;
+    background-color: white;
+    box-shadow: 0.2vw 0.2vw 0.5vw #D4D4D4;
+    margin: 0 1vw;
+}
+
+.menuTitle {
+    color: #37474F;
+    border: 1px solid rgba(34, 36, 38, .15);
+    border-radius: .2vw;
+    cursor: pointer;
+    margin: .5vw 0;
+    padding: .5vw;
+}
+
+.submenuContainer {
+    padding: 0 1vw;
+}
+
+.leftColumn {
+    align-items: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 20vw;
+    text-align: center;
+    width: 20%;
+}
+
+.rightColumn {
+    width: 40%;
+}

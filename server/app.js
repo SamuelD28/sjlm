@@ -11,7 +11,7 @@ let express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     methodOverride  = require("method-override"),
-    // dataSeed        = require("./utils/dataseed.js"), use to seed base information for the database
+    dataSeed        = require("./utils/dataseed.js"), 
     cookieParser    = require("cookie-parser"),
     cloudinary      = require("cloudinary"),
     log4js          = require("log4js"),
@@ -78,11 +78,13 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a
     (501) : Not Implemented
 */
 
-let NewsRT      = require(__dirname + "/routes/NewsRT.js"),
-    MembersRT   = require(__dirname + "/routes/MembersRT.js"),
-    PagesRt     = require(__dirname + "/routes/PagesRT.js"),
-    UserRT      = require(__dirname + "/routes/UserRT.js"),
-    MenuRT      = require(__dirname + "/routes/MenuRT.js");
+let NewsRT              = require(__dirname + "/routes/NewsRT.js"),
+    MembersRT           = require(__dirname + "/routes/MembersRT.js"),
+    PagesRt             = require(__dirname + "/routes/PagesRT.js"),
+    UserRT              = require(__dirname + "/routes/UserRT.js"),
+    CategoryNewsRT      = require(__dirname + "/routes/CategoryNewsRT.js"),
+    MenuRT              = require(__dirname + "/routes/MenuRT.js"),
+    NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js");
 
 //Logs request to the server inside server.log
 app.use(log4js.connectLogger(server,{
@@ -94,6 +96,8 @@ app.use("/api/members", MembersRT);
 app.use("/api/news" , NewsRT);
 app.use("/api/user" , UserRT);
 app.use("/api/menus", MenuRT);
+app.use("/api/categorynews", CategoryNewsRT);
+app.use("/api/navigationlinks", NavigationLinksRT);
 
 //----------------Listener-------------//
 

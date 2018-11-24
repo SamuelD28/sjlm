@@ -22,29 +22,16 @@ class Pages extends CrudComponent{
     
     DisplayPagesCard = () =>
     {
-        let pagesCategory = new Set([]);
-        if(this.tempState.db !== undefined){
-            
-            this.tempState.db.map((item, index)=>(
-            pagesCategory.add(item.PageCategory)
-            ));
-            
+        if(this.state.db !== undefined){
             return(
-            Array.from(pagesCategory).map((item ,index)=> (
-                <div styleName="menuContainer" key={index}>
-                    <h1 styleName="menuTitle">{Utility.TranslatePageCategory(item)}</h1>
-                    {this.InsertPagesInCategory(item)}
-                </div>
+            this.state.db.map((item ,index)=> (
+                <PagesCard 
+                    pages={item}
+                    key={item._id} 
+                    UpdateTempState={this.UpdateTempState} 
+                    RemoveFromTempState={this.RemoveFromTempState}/>
             )))
         }
-    }
-    
-    InsertPagesInCategory = (category) =>{
-        
-        let array = this.tempState.db.slice();
-        return array.filter(element => element.PageCategory === category).map((item , index) =>(
-        <PagesCard pages={item} key={item._id} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
-        ))
     }
     
     render(){

@@ -4,7 +4,7 @@ let mongoose    = require("mongoose"),
     Utility     = require("../utils/utility.js");
 
 Api.GetMenus = function(req, res){
-    let Query = Menu.find({}).populate('Submenu');
+    let Query = Menu.find({}).populate('SubMenu');
     Query.exec()
          .then((menus)=>{
             Utility.GenerateResponse(true, res, menus);

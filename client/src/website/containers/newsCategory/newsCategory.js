@@ -1,6 +1,7 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
-import {Ajax, Utility} from '../../../shared/utility.js';
+import {Utility} from '../../../shared/utility.js';
+import Ajax from '../../../shared/ajax.js';
 import moment from 'moment';
 //Css Modules Importation
 import CSSModules from 'react-css-modules';
@@ -11,7 +12,7 @@ import 'moment/locale/fr';  // without this line it didn't work
 moment.locale('fr');
 
 class NewsCategory extends Component{
-    
+
     constructor(props)
     {
         super(props);
@@ -19,14 +20,14 @@ class NewsCategory extends Component{
         this.news = {};
         this.newsContainer = React.createRef();
     }
-    
+
     async componentDidMount()
     {
         Utility.AdjustFullHeight(this.newsContainer.current);
         this.news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
         this.setState({news : this.news});
     }
-    
+
     async componentDidUpdate()
     {
         let categoryHistory = this.props.match.params.category;
@@ -38,7 +39,7 @@ class NewsCategory extends Component{
             }
         }
     }
-    
+
     GenerateNewsGrid = () =>
     {
         if(this.state.news !== undefined)
@@ -48,7 +49,7 @@ class NewsCategory extends Component{
         ))
         }
     }
-    
+
     AppendCardToGrid = (item, index) =>
     {
         if(index % 2 === 0)
@@ -64,10 +65,10 @@ class NewsCategory extends Component{
                 </div>
                 <div styleName="newsGrid lowerGrid">
                 </div>
-            </div> 
+            </div>
         </div>
         )
-        else 
+        else
         return(
         <div styleName="newsWrapper">
             <div styleName="newsContainer" key={index}>
@@ -84,7 +85,7 @@ class NewsCategory extends Component{
         </div>
         )
     }
-    
+
     render()
     {
     return(

@@ -35,22 +35,22 @@ const formats = [
 ];
 
 class PagesCard extends FormComponent{
-    
+
     constructor(props)
     {
         super(props);
         this.formData = Object.create(this.props.pages);
     }
-    
+
     render(){
     return(
-    <Modal 
+    <Modal
     size="large"
     trigger={
     <div styleName="pagesCard">
         <h4>{this.props.pages.PageTitle.toUpperCase()}</h4>
     </div>
-    } 
+    }
     closeIcon>
     <Modal.Header>Modifier une page</Modal.Header>
         <Modal.Content>
@@ -58,20 +58,9 @@ class PagesCard extends FormComponent{
                 <Form onSubmit={() => {this.UpdateInDb("/api/pages/")}}>
                     <Grid columns={2} divided>
                         <Grid.Row>
-                            <Grid.Column width={6}> 
+                            <Grid.Column width={6}>
                                     <Form.Field>
                                         <input name="PageTitle" defaultValue={this.props.pages.PageTitle} onChange={this.HandleChange} type="text"/>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <select name="PageCategory" defaultValue={this.props.pages.PageCategory} onChange={this.HandleChange}>
-                                            <option value="city">Découvrir la ville</option>
-                                            <option value="administration">Administration</option>
-                                            <option value="services">Les services</option>
-                                            <option value="cultures">Cultures et loisirs</option>
-                                            <option value="finances">Finances</option>
-                                            <option value="news">Actualités</option>
-                                            <option value="others">Autres</option>
-                                        </select>
                                     </Form.Field>
                                     <Form.Field>
                                         <select name="Template" defaultValue={this.props.pages.Template} onChange={this.HandleChange}>
@@ -80,9 +69,9 @@ class PagesCard extends FormComponent{
                                             <option disabled value="3"> 3 | Bannière sur côté</option>
                                         </select>
                                     </Form.Field>
-                                    <CloudinaryUpload 
-                                    multiple={true} 
-                                    cropping={false} 
+                                    <CloudinaryUpload
+                                    multiple={true}
+                                    cropping={false}
                                     formData={this.formData}
                                     buttonText="Choisir une gallerie"
                                     linkedInput="PageGallery"
@@ -97,7 +86,7 @@ class PagesCard extends FormComponent{
                                     </Form.Group>
                             </Grid.Column>
                             <Grid.Column width={10}>
-                                <ReactQuill 
+                                <ReactQuill
                                 modules={modules}
                                 formats={formats}
                                 onChange={(e) => {this.HandleChangeInTextEditor(e, "PageContent")}}
@@ -110,7 +99,7 @@ class PagesCard extends FormComponent{
             </Modal.Description>
             <LoaderComponent action={this.state.action} />
         </Modal.Content>
-    </Modal>    
+    </Modal>
     )}
 
 }

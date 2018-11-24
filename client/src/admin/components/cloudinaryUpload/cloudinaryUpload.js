@@ -1,7 +1,6 @@
 /*global cloudinary*/
 import React, {Component} from 'react';
 import {Form} from 'semantic-ui-react';
-import {Forms} from '../../../shared/utility.js';
 
 let widgetOptions = {
     cloudName: "dohwohspb",
@@ -19,7 +18,7 @@ let widgetOptions = {
     defaultSource: "local",
     folder: "members_photos",
     styles: {
-        palette: { 
+        palette: {
             window: "#FFFFFF",
             sourceBg: "#f4f4f5",
             windowBorder: "#90a0b3",
@@ -45,86 +44,62 @@ let widgetOptions = {
 }
 
 class CloudinaryUpload extends Component{
-    
+
     //To optimise
     constructor(props){
         super(props);
+
         widgetOptions.multiple = props.multiple;
-        widgetOptions.cropping = props.cropping;
-        this.formData = props.formData;
-        this.uploadsThumbnails = React.createRef();
-        this.Images = props.formData[props.linkedInput];
-        this.enableSubmit = props.enableSubmit;
-        this.state = "";
+
+        this.updateStateInputs = this.props.updateStateInputs;
+        this.state = Object.assign({},this.props.input);
         this.widget = new cloudinary.createUploadWidget(widgetOptions, (error, result)=> {
             if(result && result.event === "success"){
-                console.log(result);
-                this.AppendUrlToFormData(result.info.secure_url);
+                this.AddImageUrl(result.info.secure_url);
             }
         });
     }
-    
-    componentDidMount()
-    {
-        this.setState({Images : this.Images});
-    }
-    
-    AppendUrlToFormData = async(url) =>{
-        
-        if(this.props.multiple){
-            if(this.Images === undefined)
-                this.Images = [];
-                
-            this.Images.push(url);
+
+    AddImageUrl = async(url) =>{
+        if(this.state.value instanceof Array){
+            let imagesArray = Array.from(this.state.value);
+            imagesArray.push(url);
+            await this.setState(Object.assign({}, this.state, {value: imagesArray}));
         }
-        else
-            this.Images = url;            
-        
-        this.UpdateFormData();
+        else{
+            await this.setState(Object.assign({}, this.state, {value: url}));
+        }
+        this.updateState(this.state.name, {value : this.state.value});
     }
-    
+
     DisplayThumbnailImages(){
-        if(this.state.Images !== undefined && this.props.multiple)
-        return this.state.Images.map((element, index) => (
-           <img 
-           alt=""
-           key={index} 
-           className="uploads-thumbnails" 
-           src={element} 
-           onClick={() => {this.RemoveImage(element)}} /> 
+
+        if(this.state.value.length > 0)
+            return this.state.value.map((element, index) => (
+                <img alt="" key={index} className="uploads-thumbnails" src={element} onClick={() => {this.RemoveImage(element)}} />
         ));
-        else if(this.state.Images !== undefined)
-        return(
-            <img 
-            alt=""
-            className="uploads-thumbnails" 
-            src={this.state.Images}/> 
-        )
     }
-    
+
     RemoveImage = async(thumbnailUrl) => {
-        
-        let index = this.Images.indexOf(thumbnailUrl);
-        if(index !== -1)
-        {
-            if(this.Images.length > 1)
-                this.Images.splice(index, 1);
+
+        let index = this.state.value.indexOf(thumbnailUrl);
+
+        if(index !== -1){
+            let imagesArray = Array.from(this.state.value);
+            imagesArray.splice(index, 1);
+            await this.setState(Object.assign({}, this.state, {value: imagesArray}));
         }
-        this.UpdateFormData();
+
+        this.updateState(this.state.name, {value:  this.state.value});
     }
-    
-    UpdateFormData = async() => {
-        await this.setState({Images: this.Images});
-        Forms.AppendValueToObject(this.props.linkedInput, this.formData, this.state.Images);
-        this.enableSubmit();
-    }
-    
+
     OpenCloudinaryWidget = (e) =>{
         e.preventDefault();
         this.widget.open();
     }
-    
+
     render(){
+        if(this.state !== undefined)
         return(
         <div>
             <Form.Field>

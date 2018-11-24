@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import moment from 'moment';
 import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
-import {Utility} from '../../../shared/utility.js';
+import Translate from '../../../shared/translate.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
@@ -50,25 +50,25 @@ let NewsCategory = [
 
 //This component is responsible for both the modification and suppression of news post in the database. The data are passed by the parent container news.
 class NewsEdit extends FormComponent{
-    
+
     //We initialise the form data with a new object reference that way we dont trigger the update function on the state in the parent container.
     constructor(props)
-    { 
+    {
         super(props);
         this.formData =Object.create(this.props.news);
         this.TextEditor = React.createRef();
     }
 
-    GenerateCategoryOptions = () => 
+    GenerateCategoryOptions = () =>
     {
         let CategoryOptions = [];
         NewsCategory.map((category, index)=>{
-            let CategoryObject = {text: Utility.TranslateNewsCategory(category), value: category};
+            let CategoryObject = {text: Translate.NewsCategory(category), value: category};
             return CategoryOptions.push(CategoryObject);
         });
         return CategoryOptions;
     }
-    
+
     render(){
     if(this.formData !== undefined){
     return(
@@ -88,33 +88,32 @@ class NewsEdit extends FormComponent{
                 <Form onSubmit={() => {this.UpdateInDb("/api/news/")}}>
                     <Grid columns={2}>
                             <Grid.Row>
-                                <Grid.Column width={8}> 
+                                <Grid.Column width={8}>
                                     <Divider horizontal>Informations</Divider>
                                     <Form.Field>
                                        <input name="Title" type="text" placeholder="Titre" onChange={this.HandleChange} defaultValue={this.formData.Title}/>
                                     </Form.Field>
                                     <Form.Field width={10}>
-                                        <Select 
+                                        <Select
                                             selection
-                                            clearable  
-                                            placeholder="Categorie..." 
+                                            clearable
                                             name="Category"
                                             onChange={this.HandleChange}
                                             defaultValue={this.formData.Category}
                                             options={this.GenerateCategoryOptions()} />
                                     </Form.Field>
                                     <Form.Field width={6} >
-                                        <Radio 
+                                        <Radio
                                             label="Actualitée Prioritaire"
-                                            toggle 
+                                            toggle
                                             name="Important"
                                             onChange={this.HandleChange}
                                             defaultChecked={this.formData.Important}
                                             />
                                     </Form.Field>
                                     <Divider horizontal>Images</Divider>
-                                    <CloudinaryUpload 
-                                    multiple={true} 
+                                    <CloudinaryUpload
+                                    multiple={true}
                                     cropping={false}
                                     formData={this.formData}
                                     buttonText="Ajouter une image"
@@ -130,7 +129,7 @@ class NewsEdit extends FormComponent{
                                     </Form.Group>
                                     </Grid.Column>
                                     <Grid.Column width={8}>
-                                    <ReactQuill 
+                                    <ReactQuill
                                     modules={modules}
                                     formats={formats}
                                     onChange={(e) => {this.ExtractValueFromTextEditor(e, this.TextEditor, "Description", "DescriptionHtml")}}

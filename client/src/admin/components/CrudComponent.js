@@ -1,13 +1,14 @@
 //Initial Declaration and importation
 import {Component} from 'react';
-import {Utility, Ajax} from '../../shared/utility.js';
+import {Utility} from '../../shared/utility.js';
+import Ajax from '../../shared/ajax.js';
 
 //This component is used on a container component. It holds the state that can be modified by its children
 //components. The container only calls the ReadInTempState to initialise the data in he state. Its children holds
 //the logic and receive the methods needed below as props. This component can be used in combination with form component which
 //interacts with the database but its not necessary. See form component for more information.
 class CrudComponent extends Component{
-    
+
     //Initialise an empty state and temporary state. Apply the abstract constraits to the constructor.
     constructor(props)
     {
@@ -16,7 +17,7 @@ class CrudComponent extends Component{
         this.tempState= {};
         Utility.IsClassAbstract(this, CrudComponent);
     }
-    
+
     //Function that reads the data from the server and insert it in the temporary state.
     ReadInTempState = async (url) =>
     {
@@ -44,7 +45,7 @@ class CrudComponent extends Component{
             console.log(err.message);
         }
     }
-    
+
     //Function that removes an object from the tempState array.
     RemoveFromTempState = (formData) =>
     {
@@ -58,7 +59,7 @@ class CrudComponent extends Component{
             console.log(err.message);
         }
     }
-    
+
     //Function that updates an object in the tempstate array.
     UpdateTempState = (modifiedData) =>
     {
