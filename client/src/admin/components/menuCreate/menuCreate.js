@@ -180,6 +180,8 @@ class MenuCreate extends Component
     }
     //---------------//
 
+
+    //--Used for debugging--/
     componentDidUpdate = () =>
     {
         console.warn("||--UPDATING--||");
@@ -193,38 +195,33 @@ class MenuCreate extends Component
             throw new TypeError("The Form Schema must contain a definition for the inputs to display");
 
         let textEditor = FormSchema.Inputs.find(obj => obj.type === "texteditor");
-
-        let inputsWithGroup = FormSchema.Inputs.filter(obj => obj.group !== undefined);
-        let inputsWithoutGroup = FormSchema.Inputs.filter(obj => obj.group === undefined && obj.type !== "texteditor"); //Could Improve!
-
+        let inputs = FormSchema.Inputs.filter(obj => obj.type !== "texteditor");
         let errorHandler = (FormSchema.FormStatus !== undefined)? FormSchema.FormStatus: {errors: [], errorsHeader: "Des erreurs sont survenues"};
 
         if(textEditor === null)
-            return this.GenerateFormNoTextEditor(inputsWithGroup, inputsWithoutGroup, errorHandler);
+            return this.GenerateLayoutWithoutTextEditor(inputs, errorHandler);
         else
-            return this.GenerateFormWithTextEditor(inputsWithGroup, inputsWithoutGroup, textEditor, errorHandler);
+            return this.GenerateLayoutWithTextEditor(inputs, textEditor, errorHandler);
     }
 
-    GenerateFormNoTextEditor = (inputsWithGroup, inputsWithoutGroup, errorHandler) =>
+    GenerateLayoutWithoutTextEditor = (inputs, errorHandler) =>
     {
         return(
         <Form onSubmit={this.handleSubmit}>
             <FormError errorHandler={errorHandler} />
-            {this.GenerateFormFields(inputsWithoutGroup)}
-            {this.GenerateFormGroups(inputsWithGroup)}
+            {this.GenerateFormInputs(inputs)}
             <SubmitBtn btnText="Ajouter" btnClassStyle="btn btn-outline-primary" />
         </Form>)
     }
 
-    GenerateFormWithTextEditor = (inputsWithGroup, inputsWithoutGroup, textEditor, errorHandler) =>
+    GenerateLayoutWithTextEditor = (inputs, textEditor, errorHandler) =>
     {
         return(
         <Form onSubmit={this.handleSubmit}>
             <Grid>
                 <Grid.Column width={8}>
                     <FormError errorHandler={errorHandler} />
-                    {this.GenerateFormFields(inputsWithoutGroup)}
-                    {this.GenerateFormGroups(inputsWithGroup)}
+                    {this.GenerateFormInputs(inputs)}
                     <SubmitBtn btnText="Ajouter" btnClassStyle="btn btn-outline-primary" />
                 </Grid.Column>
                 <Grid.Column width={8}>
@@ -234,11 +231,17 @@ class MenuCreate extends Component
         </Form>)
     }
 
-    GenerateFormGroups = (inputsWithGroup) =>
+    GenerateFormInputs = (inputs) =>
     {
-        if(inputsWithGroup !== null){
+        if(inputs !== null){
             let groups = {};
-            inputsWithGroup.map((input, index) =>{
+            let negativeCount = 0;
+            inputs.map((input, index) =>{
+
+                if(input.group === undefined){
+                    input.group = negativeCount;
+                    negativeCount--;
+                }
 
                 if(groups[input.group] === undefined)
                     groups[input.group] = [];
@@ -257,10 +260,10 @@ class MenuCreate extends Component
     }
 
     //It calls on update too much. Fix this
-    GenerateFormFields = (inputsAlone) =>
+    GenerateFormFields = (inputs) =>
     {
-        if(inputsAlone !== null){
-            return inputsAlone.map((input, index) => {
+        if(inputs !== null){
+            return inputs.map((input, index) => {
                 switch(input.type){
                     case "text": return <TextInput input={input} handleChange={this.handleChange}/>;
                     case "toggle": return <ToggleInput input={input} handleChange={this.handleChange}/>;
