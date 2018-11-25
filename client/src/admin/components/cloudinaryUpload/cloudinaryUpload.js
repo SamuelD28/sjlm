@@ -69,7 +69,7 @@ class CloudinaryUpload extends Component{
         else{
             await this.setState(Object.assign({}, this.state, {value: url}));
         }
-        this.updateState(this.state.name, {value : this.state.value});
+        this.updateStateInputs(this.state.name, {value : this.state.value});
     }
 
     DisplayThumbnailImages(){
@@ -90,7 +90,7 @@ class CloudinaryUpload extends Component{
             await this.setState(Object.assign({}, this.state, {value: imagesArray}));
         }
 
-        this.updateState(this.state.name, {value:  this.state.value});
+        this.updateStateInputs(this.state.name, {value:  this.state.value});
     }
 
     OpenCloudinaryWidget = (e) =>{

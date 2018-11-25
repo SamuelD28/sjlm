@@ -1,16 +1,22 @@
-GenerateSelectInput = (input) => {
-        if(input !== undefined)
-        return(
-        <Form.Field>
-            <label>{input.label}</label>
-            <Select
-                name={input.name}
-                clearable
-                placeholder={Translate.ModelKey(input.name) + "..."}
-                selection
-                value={input.value}
-                onChange={(e, data) =>  {this.handleChange(data)}}
-                options={input.generator()} />
-        </Form.Field>
-        )
-    }
+import React from 'react';
+import {Form, Select} from 'semantic-ui-react';
+import Translate from '../../../shared/translate.js';
+
+const SelectInput = (props) =>
+{
+    return(
+    <Form.Field>
+        <label>{props.input.label}</label>
+        <Select
+            name={props.input.name}
+            clearable
+            placeholder={Translate.ModelKey(props.input.name) + "..."}
+            selection
+            value={props.input.value}
+            onChange={(e, data) =>  {props.handleChange(data)}}
+            options={props.input.generator()} />
+    </Form.Field>
+    )
+}
+
+export default SelectInput;

@@ -1,36 +1,22 @@
 import React, {Component} from 'react';
-import {Form, Checkbox, Select, Input, Modal, Message, Grid} from 'semantic-ui-react';
+import {Form, Modal, Grid} from 'semantic-ui-react';
 
 import Ajax from '../../../shared/ajax.js';
 import Translate from '../../../shared/translate.js';
-import ReactQuill from 'react-quill';
-import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
-const modules = {
-    toolbar:[
-      [{ 'header': [1, 2, 3, 4, 5 ,6] }],
-      ['bold', 'italic', 'underline','strike', 'blockquote', 'link'],
-      [{'list': 'ordered'}, {'list': 'bullet'},{'indent': '-1'}, {'indent': '+1'},{ 'align': [] }],
-      ['clean']
-    ],
-    clipboard: {
-      matchVisual: false
-    }
-};
-const formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet',
-    'indent','link',
-    'align'
-];
+import FormError from '../FormError/formError.js';
+import TextEditor from '../TextEditor/textEditor.js';
+import TextInput from '../TextInput/textInput.js';
+import ToggleInput from '../ToggleInput/toggleInput.js';
+import SelectInput from '../SelectInput/selectInput.js';
+import SubmitBtn from '../SubmitBtn/submitBtn.js';
+import FileInput from '../FileInput/fileInput.js';
 
 class MenuCreate extends Component
 {
     constructor(props){
         super(props);
         this.TextEditor     = React.createRef();
-        this.ErrorConsole  = React.createRef();
 
         this.state = {
             Inputs : [
@@ -221,13 +207,12 @@ class MenuCreate extends Component
 
     GenerateFormNoTextEditor = (inputsWithGroup, inputsWithoutGroup, errorHandler) =>
     {
-
         return(
         <Form onSubmit={this.handleSubmit}>
-            {this.GenerateErrorHeader(errorHandler)}
+            <FormError errorHandler={errorHandler} />
             {this.GenerateFormFields(inputsWithoutGroup)}
             {this.GenerateFormGroups(inputsWithGroup)}
-            {this.GenerateSubmitButton("Ajouter" , "btn btn-outline-primary")}
+            <SubmitBtn btnText="Ajouter" btnClassStyle="btn btn-outline-primary" />
         </Form>)
     }
 
@@ -237,13 +222,13 @@ class MenuCreate extends Component
         <Form onSubmit={this.handleSubmit}>
             <Grid>
                 <Grid.Column width={8}>
-                    {this.GenerateErrorHeader(errorHandler)}
+                    <FormError errorHandler={errorHandler} />
                     {this.GenerateFormFields(inputsWithoutGroup)}
                     {this.GenerateFormGroups(inputsWithGroup)}
-                    {this.GenerateSubmitButton("Ajouter", "btn btn-outline-primary")}
+                    <SubmitBtn btnText="Ajouter" btnClassStyle="btn btn-outline-primary" />
                 </Grid.Column>
                 <Grid.Column width={8}>
-                    {this.GenerateTextEditor(textEditor)}
+                    <TextEditor input={textEditor} handleChange={this.handleChangeInTextEditor}/>
                 </Grid.Column>
             </Grid>
         </Form>)
@@ -277,11 +262,11 @@ class MenuCreate extends Component
         if(inputsAlone !== null){
             return inputsAlone.map((input, index) => {
                 switch(input.type){
-                    case "text": return this.GenerateTextInput(input);
-                    case "toggle": return  this.GenerateToggleInput(input);
-                    case "uploader": return  this.GenerateUploader(input);
-                    case "select": return this.GenerateSelectInput(input);
-                    case "texteditor" : return this.GenerateTextEditor(input);
+                    case "text": return <TextInput input={input} handleChange={this.handleChange}/>;
+                    case "toggle": return <ToggleInput input={input} handleChange={this.handleChange}/>;
+                    case "uploader": return <FileInput input={input} updateStateInputs={this.updateStateInputs} />;
+                    case "select": return <SelectInput input={input} handleChange={this.handleChange}/>;
+                    case "texteditor" : return <TextEditor input={input} handleChange={this.handleChangeInTextEditor}/>;
                     default: throw new Error("Input Type must be specified.");
                 }
             });
