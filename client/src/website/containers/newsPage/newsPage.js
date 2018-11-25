@@ -1,6 +1,6 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
-import {Utility} from '../../../shared/utility.js';
+import Translate from '../../../shared/translate.js';
 import Ajax from '../../../shared/ajax.js';
 
 //Css Modules Importation
@@ -66,7 +66,7 @@ class NewsPage extends Component{
         <div styleName="newsBody">
             <div styleName="newsContent">
                 <PageHeader
-                    category={Utility.TranslateNewsCategory(this.state.Category)}
+                    category={Translate.NewsCategory(this.state.Category)}
                     title={this.state.Title}
                     date={this.state.DatePublished}
                     />

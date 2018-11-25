@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, Checkbox, Select, Input, Modal, Message} from 'semantic-ui-react';
+import {Form, Checkbox, Select, Input, Modal, Message, Grid} from 'semantic-ui-react';
 
 import Ajax from '../../../shared/ajax.js';
 import Translate from '../../../shared/translate.js';
@@ -70,7 +70,8 @@ class MenuCreate extends Component
             ],
             FormStatus : {
                 status : ["completed", "submitting", "ongoing"],
-                errors : []
+                errors : [],
+                errorsHeader : "La vérification à échoué pour les raisons suivantes : "
             }
         };
     }
@@ -125,7 +126,8 @@ class MenuCreate extends Component
         this.updateStateInputs(inputName, {value : inputValue});
     }
 
-    updateStateFormStatus = (formObject) => {
+    updateStateFormStatus = (formObject) =>
+    {
         this.setState({FormStatus : formObject});
     }
 
@@ -137,6 +139,7 @@ class MenuCreate extends Component
         this.setState({Inputs : Inputs});
     }
 
+    //-----------------//
     GenererateMenuOptions = () =>
     {
         let MenuOptions = [];
@@ -189,97 +192,100 @@ class MenuCreate extends Component
         }
         return NavigationOptions;
     }
+    //---------------//
 
-    //It calls on update too much. Fix this
-    GenerateFormInputs = () =>
+    componentDidUpdate = () =>
     {
-        if(this.state !== undefined){
+        console.warn("||--UPDATING--||");
+    }
 
-            return this.state.Inputs.map((input, index) => {
-                    switch(input.type){
-                        case "text": return this.GenerateTextInput(input);
-                        case "toggle": return this.GenerateToggleInput(input);
-                        case "texteditor": return this.GenerateTextEditor(input);
-                        case "uploader": return this.GenerateUploader(input);
-                        case "select": return this.GenerateSelectInput(input);
-                        default: throw new Error("Input Type must be specified.");
-                    }
+    //Need optimisation
+    GenerateForm = (FormSchema) =>
+    {
+        //Throw new error if the forms schema doesnt contain inputs
+        if(FormSchema.Inputs === undefined)
+            throw new TypeError("The Form Schema must contain a definition for the inputs to display");
 
+        let textEditor = FormSchema.Inputs.find(obj => obj.type === "texteditor");
+
+        let inputsWithGroup = FormSchema.Inputs.filter(obj => obj.group !== undefined);
+        let inputsWithoutGroup = FormSchema.Inputs.filter(obj => obj.group === undefined && obj.type !== "texteditor"); //Could Improve!
+
+        let errorHandler = (FormSchema.FormStatus !== undefined)? FormSchema.FormStatus: {errors: [], errorsHeader: "Des erreurs sont survenues"};
+
+        if(textEditor === null)
+            return this.GenerateFormNoTextEditor(inputsWithGroup, inputsWithoutGroup, errorHandler);
+        else
+            return this.GenerateFormWithTextEditor(inputsWithGroup, inputsWithoutGroup, textEditor, errorHandler);
+    }
+
+    GenerateFormNoTextEditor = (inputsWithGroup, inputsWithoutGroup, errorHandler) =>
+    {
+
+        return(
+        <Form onSubmit={this.handleSubmit}>
+            {this.GenerateErrorHeader(errorHandler)}
+            {this.GenerateFormFields(inputsWithoutGroup)}
+            {this.GenerateFormGroups(inputsWithGroup)}
+            {this.GenerateSubmitButton("Ajouter" , "btn btn-outline-primary")}
+        </Form>)
+    }
+
+    GenerateFormWithTextEditor = (inputsWithGroup, inputsWithoutGroup, textEditor, errorHandler) =>
+    {
+        return(
+        <Form onSubmit={this.handleSubmit}>
+            <Grid>
+                <Grid.Column width={8}>
+                    {this.GenerateErrorHeader(errorHandler)}
+                    {this.GenerateFormFields(inputsWithoutGroup)}
+                    {this.GenerateFormGroups(inputsWithGroup)}
+                    {this.GenerateSubmitButton("Ajouter", "btn btn-outline-primary")}
+                </Grid.Column>
+                <Grid.Column width={8}>
+                    {this.GenerateTextEditor(textEditor)}
+                </Grid.Column>
+            </Grid>
+        </Form>)
+    }
+
+    GenerateFormGroups = (inputsWithGroup) =>
+    {
+        if(inputsWithGroup !== null){
+            let groups = {};
+            inputsWithGroup.map((input, index) =>{
+
+                if(groups[input.group] === undefined)
+                    groups[input.group] = [];
+
+                groups[input.group].push(input);
+            });
+
+            return  Object.keys(groups).map((key, index) =>{
+                    return(
+                        <Form.Group widths="equal">
+                            {this.GenerateFormFields(groups[key])}
+                        </Form.Group>
+                    )
             });
         }
     }
 
-    GenerateTextInput = (input) => {
-        if(input !== undefined)
-        return(
-        <Form.Field>
-            <label>{input.label}</label>
-            <Input
-                name={input.name}
-                placeholder={Translate.ModelKey(input.name) + "..."}
-                onChange={(e, data) => {this.handleChange(data)}}
-                value={input.value}
-                type={input.type}
-                ref={this[input.name]}/>
-        </Form.Field>
-        )
-    }
-
-    GenerateToggleInput = (input) => {
-        if(input !== undefined)
-        return(
-        <Form.Field>
-            <label>{input.label}</label>
-            <Checkbox
-            name={input.name}
-            onChange={(e, data) => {this.handleChange(data)}}
-            checked={input.value}
-            toggle />
-        </Form.Field>
-        )
-    }
-
-    GenerateTextEditor = (input) => {
-        if(input !== undefined)
-        return(
-        <Form.Field>
-            <ReactQuill
-            modules={modules}
-            formats={formats}
-            onChange={() => {this.handleChangeInTextEditor(this.TextEditor, input.name)}}
-            ref={this.TextEditor}
-            />
-        </Form.Field>
-        )
-    }
-
-    GenerateSelectInput = (input) => {
-        if(input !== undefined)
-        return(
-        <Form.Field>
-            <label>{input.label}</label>
-            <Select
-                name={input.name}
-                clearable
-                placeholder={Translate.ModelKey(input.name) + "..."}
-                selection
-                value={input.value}
-                onChange={(e, data) =>  {this.handleChange(data)}}
-                options={input.generator()} />
-        </Form.Field>
-        )
-    }
-
-    GenerateUploader = (input) => {
-        if(input !== undefined)
-        return(
-         <Form.Field>
-            <CloudinaryUpload
-                input={input}
-                updateStateInputs={this.updateStateInputs}
-                />
-        </Form.Field>
-        )
+    //It calls on update too much. Fix this
+    GenerateFormFields = (inputsAlone) =>
+    {
+        if(inputsAlone !== null){
+            return inputsAlone.map((input, index) => {
+                switch(input.type){
+                    case "text": return this.GenerateTextInput(input);
+                    case "toggle": return  this.GenerateToggleInput(input);
+                    case "uploader": return  this.GenerateUploader(input);
+                    case "select": return this.GenerateSelectInput(input);
+                    case "texteditor" : return this.GenerateTextEditor(input);
+                    default: throw new Error("Input Type must be specified.");
+                }
+            });
+        }
     }
 
     render()
@@ -302,20 +308,7 @@ class MenuCreate extends Component
     <Modal.Header>Ajouter un Menu</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Field>
-                        <Message
-                            negative
-                            hidden={(this.state.FormStatus.errors.length === 0)}
-                            header="La validation à échoué pour les informations suivantes"
-                            list={this.state.FormStatus.errors}
-                            />
-                    </Form.Field>
-                    {this.GenerateFormInputs()}
-                    <Form.Field>
-                        <button type="submit" className="btn btn-primary">Ajouter</button>
-                    </Form.Field>
-                </Form>
+                {this.GenerateForm(this.state)}
             </Modal.Description>
         </Modal.Content>
     </Modal>)}

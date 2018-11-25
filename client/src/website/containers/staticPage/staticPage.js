@@ -1,6 +1,6 @@
 //Initial Declaratinon and importation
 import React, {Component} from 'react';
-import {Utility} from '../../../shared/utility.js';
+import Translate from '../../../shared/translate.js';
 import Ajax from '../../../shared/ajax.js';
 
 //Css Modules Importation
@@ -71,7 +71,7 @@ class StaticPage extends Component{
         <div styleName="pageContainer">
             <PageHeader
                 title={this.state.PageTitle}
-                category={Utility.TranslatePageCategory(this.state.PageCategory)}
+                category={Translate.PageCategory(this.state.PageCategory)}
                 />
             <PageContent content={this.state.PageContent} />
             <FileGallery files={null} />
