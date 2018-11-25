@@ -9,26 +9,25 @@ import styles from './administrator.module.css';
 //Components
 import UserCreate   from '../../components/userCreate/userCreate.js';
 import UserUpdate   from '../../components/userUpdate/userUpdate.js';
-import Menus        from '../menus/menus.js';
 
 class Administrator extends Component{
-    
+
     constructor(props){
         super(props);
         this.state = {};
     }
-    
+
     handleClick = (e, titleProps) => {
         const { index } = titleProps
         const { activeIndex } = this.state
         const newIndex = activeIndex === index ? -1 : index
         this.setState({ activeIndex: newIndex })
     }
-    
+
     render(){
     const { activeIndex } = this.state;
     return(
-    <div className={adminStyles.adminPage}> 
+    <div className={adminStyles.adminPage}>
         <div styleName="admin">
             <section styleName="userSection">
                 <h1>Gérer les Utilisateurs</h1>

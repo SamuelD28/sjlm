@@ -5,7 +5,6 @@ import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import {Forms} from '../../../shared/utility.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
-import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 //Quill Text Editor declaration
 const modules = {

@@ -1,7 +1,6 @@
 //Initial Declaration and importation
 import React from 'react';
 import CrudComponent from '../../components/CrudComponent.js';
-import {Utility} from '../../../shared/utility.js';
 
 //Css Module
 import CssModules from 'react-css-modules';
@@ -14,29 +13,29 @@ import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 
 //This Component is responsible for holding the state that will be modified by its crud components
 class Pages extends CrudComponent{
-    
+
     componentDidMount()
     {
         this.ReadInTempState("/api/pages");
     }
-    
+
     DisplayPagesCard = () =>
     {
         if(this.state.db !== undefined){
             return(
             this.state.db.map((item ,index)=> (
-                <PagesCard 
+                <PagesCard
                     pages={item}
-                    key={item._id} 
-                    UpdateTempState={this.UpdateTempState} 
+                    key={item._id}
+                    UpdateTempState={this.UpdateTempState}
                     RemoveFromTempState={this.RemoveFromTempState}/>
             )))
         }
     }
-    
+
     render(){
     return(
-    <div className={adminStyles.adminPage}> 
+    <div className={adminStyles.adminPage}>
         <section className="section-row">
             <div styleName="pagesLeftColumn columnContainer">
                 <PagesCreate CreateInTempState={this.CreateInTempState}/>

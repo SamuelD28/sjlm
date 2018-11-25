@@ -11,7 +11,7 @@ const FormError = (props) => {
         <Message
             negative
             hidden={(props.errorHandler.errors.length === 0)}
-            header={props.errorHandler.headerTitle}
+            header={props.errorHandler.errorsHeader}
             list={props.errorHandler.errors}
             />
     </Form.Field>

@@ -17,22 +17,22 @@ class Menus extends CrudComponent {
         if (this.state.db !== undefined) {
             return (
                 this.state.db.map((menu, index) => (
-                    this.DisplayMenuPrincipal(menu)
+                    this.DisplayMenuPrincipal(menu, index)
                 )))
         }
     }
 
-    DisplayMenuPrincipal = (menu) => {
+    DisplayMenuPrincipal = (menu, index) => {
         if (menu.Principal)
-            return (
-                <div>
-            <div styleName="menuTitle">
-                <MenuCards menus={this.state.db} menu={menu}/>
-            </div>
-            <div styleName="submenuContainer">
-                {this.DisplaySubmenu(menu.SubMenu)}
-            </div>
-        </div>)
+            return(
+            <div key={index}>
+                <div styleName="menuTitle">
+                    <MenuCards menus={this.state.db} menu={menu}/>
+                </div>
+                <div styleName="submenuContainer">
+                    {this.DisplaySubmenu(menu.SubMenu)}
+                </div>
+            </div>)
     }
 
     DisplaySubmenu = (submenu) => {

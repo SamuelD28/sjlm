@@ -1,4 +1,4 @@
-let Translate = new Object();
+let Translate = {};
 
 Translate.PageCategory = function(pageCategory)
 {
@@ -58,6 +58,7 @@ Translate.ModelError = function(modelError, modelProperties){
         case "minlength": translatedContent = "est inférieur à la limite " + modelProperties.minlength; break;
         case "maxlength": translatedContent = "est supérieur à la limite " + modelProperties.maxlength; break;
         case "casterror": translatedContent = "problème de transformation"; break;
+        default : throw new Error("You need to provide a model error");
     }
     return translatedContent;
 }

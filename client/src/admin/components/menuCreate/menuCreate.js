@@ -9,15 +9,12 @@ import TextEditor from '../TextEditor/textEditor.js';
 import TextInput from '../TextInput/textInput.js';
 import ToggleInput from '../ToggleInput/toggleInput.js';
 import SelectInput from '../SelectInput/selectInput.js';
-import SubmitBtn from '../SubmitBtn/submitBtn.js';
 import FileInput from '../FileInput/fileInput.js';
 
 class MenuCreate extends Component
 {
     constructor(props){
         super(props);
-        this.TextEditor     = React.createRef();
-
         this.state = {
             Inputs : [
                 {
@@ -41,49 +38,63 @@ class MenuCreate extends Component
                     generator : this.GenererateIconOptions
                 },
                 {
-                    name: "Description",
-                    type: "texteditor",
-                    label: "Contenu de la page",
-                    value: "",
-                    html : ""
-                },
-                {
                     name: "Images",
                     type: "uploader",
                     value: [],
                     label: "Choisir des images"
                 },
             ],
+            TextEditor : {
+                name: "Description",
+                type: "texteditor",
+                label: "Contenu de la page",
+                value: "",
+                html : ""
+            },
             FormStatus : {
+                open: false,
                 status : ["completed", "submitting", "ongoing"],
                 errors : [],
                 errorsHeader : "La vérification à échoué pour les raisons suivantes : "
+            },
+            FormConfig : {
+                url : "/api/menus/",
+                httpRequest : "POST",
+                elementId : ""
             }
         };
     }
 
     handleSubmit = async() =>
     {
-        let postData = {};
+        let formData = {};
         this.state.Inputs.map((input, index) => {
             console.log(input.value);
-            postData = Object.assign({}, postData, {[input.name] : input.value});
+            return formData = Object.assign({}, formData, {[input.name] : input.value});
         });
 
-        let request = await Ajax.PostData("/api/menus", postData);
+        let request;
+        let url = this.state.FormConfig.url;
+        let id = this.state.FormConfig.elementId;
+        switch (this.state.FormConfig.httpRequest.toUpperCase()){
+            case "POST" : request = await Ajax.PostData(url, formData); break;
+            case "PUT"  : request = await Ajax.PutData(url + id , formData); break;
+            case "DELETE" : request = await Ajax.DeleteData(url + id); break;
+            default: throw new Error("The http request type must be specified under the FormConfig Object");
+        }
 
         if(!request.success){
             let errors = [];
 
             Object.keys(request.data.errors).map(function(key, index) {
                 let requestAlias = request.data.errors[key];
-                errors.push(
-                    Translate.ModelKey(requestAlias.path) + " " +
-                    Translate.ModelError(requestAlias.kind, requestAlias.properties)
+                return  errors.push(
+                            Translate.ModelKey(requestAlias.path) + " " +
+                            Translate.ModelError(requestAlias.kind, requestAlias.properties)
                 );
             });
 
-            this.updateStateFormStatus({errors : errors});
+            this.updateStateKey("FormStatus" , {errors : errors});
         }
 
     }
@@ -112,16 +123,45 @@ class MenuCreate extends Component
         this.updateStateInputs(inputName, {value : inputValue});
     }
 
-    updateStateFormStatus = (formObject) =>
+    handleOpen = () =>
     {
-        this.setState({FormStatus : formObject});
+        this.updateStateKey("FormStatus" , {open : true});
     }
 
-    updateStateInputs = (keyName, keyValue) =>
+    handleClose = () =>
     {
-        let index = this.state.Inputs.findIndex(input => input.name === keyName);
+        this.updateStateKey("FormStatus" , {open : false});
+        this.clearFormInputs();
+    }
+
+    clearFormInputs = () =>
+    {
+        if(this.TextEditor !== undefined)
+            this.updateStateKey("TextEditor", {value : "" , html : ""});
+
         let Inputs = Array.from(this.state.Inputs);
-        Inputs[index] = Object.assign({}, Inputs[index], keyValue);
+        if(Inputs.length !== 0){
+            Inputs.map((input, index) => {
+
+                input.value =   (input.type === "toggle")? false:
+                                (input.type === "uploader")? []: "";
+
+                return this.handleChange(input);
+            });
+        }
+    }
+
+    updateStateKey = (stateKey, stateObj) =>
+    {
+        this.setState({[stateKey.valueOf()] : Object.assign({}, this.state.FormStatus, stateObj)});
+    }
+
+    //Improvement could be made to avoid passing all the inputs to the new state
+    updateStateInputs = (inputName, inputValueObj) =>
+    {
+        let index = this.state.Inputs.findIndex(input => input.name === inputName);
+        let Inputs = Array.from(this.state.Inputs);
+        Inputs[index] = Object.assign({}, Inputs[index], inputValueObj);
         this.setState({Inputs : Inputs});
     }
 
@@ -135,8 +175,9 @@ class MenuCreate extends Component
                 if(menu.Principal)
                 {
                     let MenuObject = {text: menu.Title, value: menu._id};
-                    return MenuOptions.push(MenuObject);
+                    MenuOptions.push(MenuObject);
                 }
+                return MenuOptions;
             });
         }
         return MenuOptions;
@@ -180,49 +221,39 @@ class MenuCreate extends Component
     }
     //---------------//
 
-
-    //--Used for debugging--/
-    componentDidUpdate = () =>
-    {
-        console.warn("||--UPDATING--||");
-    }
-
-    //Need optimisation
+    //Need to find a way to generate it only one time when the node is beeing mount
     GenerateForm = (FormSchema) =>
     {
-        //Throw new error if the forms schema doesnt contain inputs
         if(FormSchema.Inputs === undefined)
             throw new TypeError("The Form Schema must contain a definition for the inputs to display");
 
-        let textEditor = FormSchema.Inputs.find(obj => obj.type === "texteditor");
-        let inputs = FormSchema.Inputs.filter(obj => obj.type !== "texteditor");
+        let textEditor = FormSchema.TextEditor;
+        let inputs = FormSchema.Inputs;
         let errorHandler = (FormSchema.FormStatus !== undefined)? FormSchema.FormStatus: {errors: [], errorsHeader: "Des erreurs sont survenues"};
 
         if(textEditor === null)
             return this.GenerateLayoutWithoutTextEditor(inputs, errorHandler);
         else
-            return this.GenerateLayoutWithTextEditor(inputs, textEditor, errorHandler);
+            return this.GenerateLayoutWithTextEditor(inputs, errorHandler, textEditor);
     }
 
     GenerateLayoutWithoutTextEditor = (inputs, errorHandler) =>
     {
         return(
-        <Form onSubmit={this.handleSubmit}>
+        <Form>
             <FormError errorHandler={errorHandler} />
             {this.GenerateFormInputs(inputs)}
-            <SubmitBtn btnText="Ajouter" btnClassStyle="btn btn-outline-primary" />
         </Form>)
     }
 
-    GenerateLayoutWithTextEditor = (inputs, textEditor, errorHandler) =>
+    GenerateLayoutWithTextEditor = (inputs, errorHandler, textEditor) =>
     {
         return(
-        <Form onSubmit={this.handleSubmit}>
+        <Form>
             <Grid>
                 <Grid.Column width={8}>
                     <FormError errorHandler={errorHandler} />
                     {this.GenerateFormInputs(inputs)}
-                    <SubmitBtn btnText="Ajouter" btnClassStyle="btn btn-outline-primary" />
                 </Grid.Column>
                 <Grid.Column width={8}>
                     <TextEditor input={textEditor} handleChange={this.handleChangeInTextEditor}/>
@@ -246,12 +277,12 @@ class MenuCreate extends Component
                 if(groups[input.group] === undefined)
                     groups[input.group] = [];
 
-                groups[input.group].push(input);
+                return groups[input.group].push(input);
             });
 
             return  Object.keys(groups).map((key, index) =>{
                     return(
-                        <Form.Group widths="equal">
+                        <Form.Group widths="equal" key={index}>
                             {this.GenerateFormFields(groups[key])}
                         </Form.Group>
                     )
@@ -265,11 +296,11 @@ class MenuCreate extends Component
         if(inputs !== null){
             return inputs.map((input, index) => {
                 switch(input.type){
-                    case "text": return <TextInput input={input} handleChange={this.handleChange}/>;
-                    case "toggle": return <ToggleInput input={input} handleChange={this.handleChange}/>;
-                    case "uploader": return <FileInput input={input} updateStateInputs={this.updateStateInputs} />;
-                    case "select": return <SelectInput input={input} handleChange={this.handleChange}/>;
-                    case "texteditor" : return <TextEditor input={input} handleChange={this.handleChangeInTextEditor}/>;
+                    case "text": return <TextInput key={index} input={input} handleChange={this.handleChange}/>;
+                    case "toggle": return <ToggleInput key={index} input={input} handleChange={this.handleChange}/>;
+                    case "uploader": return <FileInput key={index} input={input} updateStateInputs={this.updateStateInputs} />;
+                    case "select": return <SelectInput key={index} input={input} handleChange={this.handleChange}/>;
+                    case "texteditor" : return <TextEditor key={index} input={input} handleChange={this.handleChangeInTextEditor}/>;
                     default: throw new Error("Input Type must be specified.");
                 }
             });
@@ -282,8 +313,10 @@ class MenuCreate extends Component
     return(
     <Modal
     size="small"
+    open={this.state.FormStatus.open}
+    onClose={this.handleClose}
     trigger={
-    <div className="cardContainer">
+    <div onClick={this.handleOpen} className="cardContainer">
         <div className="cardOverlay">
             <div className="cardOverlayBtn">
                 <i className="icon plus"></i>
@@ -291,14 +324,21 @@ class MenuCreate extends Component
             </div>
         </div>
     </div>
-    }
-    closeIcon>
+    }>
     <Modal.Header>Ajouter un Menu</Modal.Header>
         <Modal.Content>
-            <Modal.Description>
-                {this.GenerateForm(this.state)}
-            </Modal.Description>
+            <div ref={this.FormAnchor}>
+            </div>
+            {this.GenerateForm(this.state)}
         </Modal.Content>
+        <Modal.Actions>
+            <button style={{float: "left"}} onClick={this.handleClose} className="btn btn-outline-danger">
+                Annuler
+            </button>
+            <button onClick={this.handleSubmit} className="btn btn-outline-primary">
+                Ajouter
+            </button>
+        </Modal.Actions>
     </Modal>)}
 }
 

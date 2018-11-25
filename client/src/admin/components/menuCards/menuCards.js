@@ -26,12 +26,13 @@ class MenuCards extends FormComponent{
         let MenuOptions = [];
         if(this.props.menus !== undefined)
         {
-            this.props.menus.map((menu, index) => {
+            this.props.menus.map(function(menu, index){
                 if(menu.Principal)
                 {
                     let MenuObject = {text: menu.Title, value: menu._id};
-                    return MenuOptions.push(MenuObject);
+                    MenuOptions.push(MenuObject);
                 }
+                return MenuOptions;
             });
         }
         return MenuOptions;

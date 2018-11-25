@@ -1,7 +1,7 @@
 /*global fetch*/
 import {Utility} from './utility.js';
 
-let Ajax = new Object();
+let Ajax = {};
 
 //Ajax Get request. Needs a url passed as a parameter otherwise it throws an error
 Ajax.GetData = async function(url)
@@ -66,9 +66,9 @@ Ajax.PutData = async function (url, newData)
                             headers: {"Content-Type" : "application/json"},
                             body: JSON.stringify(newData)};
 
-        let fullUrl= (newData["_id"] === undefined)? url : url + newData["_id"];
+        // let fullUrl= (newData["_id"] === undefined)? url : url + newData["_id"];
 
-        await   fetch(fullUrl, ajaxContent)
+        await   fetch(url, ajaxContent)
                 .then((res) =>{
                     return res.json();
                 })
@@ -87,14 +87,14 @@ Ajax.PutData = async function (url, newData)
 }
 
 //Ajax Delete Request. Needs a url and an id since the server uses this.
-Ajax.DeleteData = async function(url, id)
+Ajax.DeleteData = async function(url)
 {
     try{
-        Utility.IsValuesUndefinedOrNull(url, id);
+        Utility.IsValuesUndefinedOrNull(url);
 
         let ajaxContent = {method:"DELETE"};
 
-        await   fetch(url +  id, ajaxContent)
+        await   fetch(url, ajaxContent)
                 .then((res) =>{
                     return res.json();
                 })
@@ -108,19 +108,19 @@ Ajax.DeleteData = async function(url, id)
 }
 
 //Ajax function used to check the response status from the request. Throws an error if the status is not 200(success)
-function CheckRequestStatus(res)
-{
-    try{
-        // console.log(res.json());
-        Utility.IsValuesUndefinedOrNull(res);
-        if(!res.ok)
-            throw new Error(`The request failed with a status code of : ${res.status}`);
-        else
-            return res.json();
-    }
-    catch(err){
-        console.error(err);
-    }
-}
+// function CheckRequestStatus(res)
+// {
+//     try{
+//         // console.log(res.json());
+//         Utility.IsValuesUndefinedOrNull(res);
+//         if(!res.ok)
+//             throw new Error(`The request failed with a status code of : ${res.status}`);
+//         else
+//             return res.json();
+//     }
+//     catch(err){
+//         console.error(err);
+//     }
+// }
 
 export default Ajax;
