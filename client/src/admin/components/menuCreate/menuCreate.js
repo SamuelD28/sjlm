@@ -25,32 +25,36 @@ class MenuCreate extends Component
                 },
                 {
                     name: "Title",
+                    group: 1,
                     type: "text",
                     label: "Titre du menu",
                     value : ""
                 },
                 {
                     name : "Icon",
+                    group: 1,
                     type: "select",
                     label: "Icon du menu",
                     value : "",
-                    list : [],
-                    generator : this.GenererateIconOptions
+                    list : [{text: "Exemple", key: "Icon"}],
                 },
                 {
-                    name: "Images",
-                    type: "uploader",
-                    value: [],
-                    label: "Choisir des images"
+                    name : "LinkTo",
+                    type: "select",
+                    group: 2,
+                    label: "Lien de navigation",
+                    value : "",
+                    list : [{text: "Exemple", key: "LinkTo"}],
+                },
+                {
+                    name : "ParentMenu",
+                    type: "select",
+                    group: 2,
+                    label: "Menu parent",
+                    value : "",
+                    list : [{text: "Exemple", key: "ParentMenu"}],
                 },
             ],
-            TextEditor : {
-                name: "Description",
-                type: "texteditor",
-                label: "Contenu de la page",
-                value: "",
-                html : ""
-            },
             FormStatus : {
                 open: false,
                 status : ["completed", "submitting", "ongoing"],
@@ -60,7 +64,8 @@ class MenuCreate extends Component
             FormConfig : {
                 url : "/api/menus/",
                 httpRequest : "POST",
-                elementId : ""
+                elementId : "",
+                size : "small"
             }
         };
     }
@@ -156,7 +161,6 @@ class MenuCreate extends Component
         this.setState({[stateKey.valueOf()] : Object.assign({}, this.state.FormStatus, stateObj)});
     }
 
-    //Improvement could be made to avoid passing all the inputs to the new state
     updateStateInputs = (inputName, inputValueObj) =>
     {
         let index = this.state.Inputs.findIndex(input => input.name === inputName);
@@ -165,63 +169,65 @@ class MenuCreate extends Component
         this.setState({Inputs : Inputs});
     }
 
-    //-----------------//
-    GenererateMenuOptions = () =>
-    {
-        let MenuOptions = [];
-        if(this.props.menus !== undefined)
-        {
-            this.props.menus.map((menu, index) => {
-                if(menu.Principal)
-                {
-                    let MenuObject = {text: menu.Title, value: menu._id};
-                    MenuOptions.push(MenuObject);
-                }
-                return MenuOptions;
-            });
-        }
-        return MenuOptions;
-    }
+    // //-----------------//
+    // GenererateMenuOptions = () =>
+    // {
+    //     let MenuOptions = [];
+    //     if(this.props.menus !== undefined)
+    //     {
+    //         this.props.menus.map((menu, index) => {
+    //             if(menu.Principal)
+    //             {
+    //                 let MenuObject = {text: menu.Title, value: menu._id};
+    //                 MenuOptions.push(MenuObject);
+    //             }
+    //             return MenuOptions;
+    //         });
+    //     }
+    //     return MenuOptions;
+    // }
 
-    GenererateIconOptions = () =>
-    {
-        let IconsArray = [
-        "compass",
-        "balance",
-        "newspaper",
-        "home",
-        "mail",
-        "futbol",
-        "book",
-        "users",
-        "user"
-        ];
-        let IconsOptions = [];
-        if(this.props.menus !== undefined)
-        {
-            IconsArray.map((icon, index) => {
-                let IconsObject = {text: icon, value: icon, icon: icon};
-                return IconsOptions.push(IconsObject);
-            });
-        }
-        return IconsOptions;
-    }
+    // GenererateIconOptions = () =>
+    // {
+    //     let IconsArray = [
+    //     "compass",
+    //     "balance",
+    //     "newspaper",
+    //     "home",
+    //     "mail",
+    //     "futbol",
+    //     "book",
+    //     "users",
+    //     "user"
+    //     ];
+    //     let IconsOptions = [];
+    //     if(this.props.menus !== undefined)
+    //     {
+    //         IconsArray.map((icon, index) => {
+    //             let IconsObject = {text: icon, value: icon, icon: icon};
+    //             return IconsOptions.push(IconsObject);
+    //         });
+    //     }
+    //     return IconsOptions;
+    // }
 
-    GenerateLinksOptions = () =>
-    {
-        let NavigationOptions = [];
-        if(this.state.navLinks !== undefined)
-        {
-            this.state.navLinks.map((navlink, index) => {
-                let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
-                return NavigationOptions.push(NavigationObject);
-            });
-        }
-        return NavigationOptions;
-    }
-    //---------------//
+    // GenerateLinksOptions = async() =>
+    // {
+    //     let navigationlinks = await Ajax.GetData("/api/navigationlinks");
+    //     let NavigationOptions = [];
+    //     if(navigationlinks.data !== undefined)
+    //     {
+    //         navigationlinks.data.map((navlink, index) => {
+    //             console.log(navlink);
+    //             let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
+    //             return NavigationOptions.push(NavigationObject);
+    //         });
+    //     }
+    //     return NavigationOptions;
+    // }
+    // //---------------//
 
-    //Need to find a way to generate it only one time when the node is beeing mount
+    //Need to find a way to generate it only one time when the node is beeing mount.
     GenerateForm = (FormSchema) =>
     {
         if(FormSchema.Inputs === undefined)
@@ -231,7 +237,7 @@ class MenuCreate extends Component
         let inputs = FormSchema.Inputs;
         let errorHandler = (FormSchema.FormStatus !== undefined)? FormSchema.FormStatus: {errors: [], errorsHeader: "Des erreurs sont survenues"};
 
-        if(textEditor === null)
+        if(textEditor === undefined)
             return this.GenerateLayoutWithoutTextEditor(inputs, errorHandler);
         else
             return this.GenerateLayoutWithTextEditor(inputs, errorHandler, textEditor);
@@ -312,7 +318,7 @@ class MenuCreate extends Component
     if(this.state !== undefined)
     return(
     <Modal
-    size="small"
+    size={this.state.FormConfig.size}
     open={this.state.FormStatus.open}
     onClose={this.handleClose}
     trigger={

@@ -14,7 +14,7 @@ const SelectInput = (props) =>
             selection
             value={props.input.value}
             onChange={(e, data) =>  {props.handleChange(data)}}
-            options={props.input.generator()} />
+            options={(props.input.generator !== undefined)?props.input.generator(): props.input.list} />
     </Form.Field>
     )
 }

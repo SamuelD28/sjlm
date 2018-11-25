@@ -57,8 +57,9 @@ Translate.ModelError = function(modelError, modelProperties){
         case "required": translatedContent = "est requis"; break;
         case "minlength": translatedContent = "est inférieur à la limite " + modelProperties.minlength; break;
         case "maxlength": translatedContent = "est supérieur à la limite " + modelProperties.maxlength; break;
-        case "casterror": translatedContent = "problème de transformation"; break;
-        default : throw new Error("You need to provide a model error");
+        case "ObjectID": translatedContent = " ne correspond pas à un Id existant"; break;
+        case "CastError": translatedContent = " ne correspond pas au bon type de valeur"; break;
+        default : translatedContent = "Une erreur inconnue est survenue";
     }
     return translatedContent;
 }

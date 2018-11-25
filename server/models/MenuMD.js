@@ -8,7 +8,7 @@ let menuSchema = new Schema({
        type: String,
        required: true,
        minlength: 5,
-       maxlength: 30,
+       maxlength: 100,
    },
    Principal:{
         type: Boolean,
