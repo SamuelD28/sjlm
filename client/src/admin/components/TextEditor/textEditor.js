@@ -32,7 +32,7 @@ class TextEditor extends Component
     render(){
     return(
         <Form.Field
-            disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(): false}>
+            disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
             <ReactQuill
             modules={modules}
             formats={formats}

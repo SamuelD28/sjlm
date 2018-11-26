@@ -131,7 +131,7 @@ class FormGenerator extends Component
     {
         let inputName = target.name;
         let inputValue = (target.value != null) ? target.value: target.checked;
-        this.updateStateInputs(inputName, {value : inputValue});
+        this.UpdateStateInputs(inputName, {value : inputValue});
     }
 
     /**
@@ -284,18 +284,49 @@ class FormGenerator extends Component
     }
 
     /**
-     * Method that generate the appropriate input type based on their key type attribute
+     * Method that generate the appropriate input type based on their key type attribute. Add your own component here
      */
-    GenerateFormFields = (inputs) =>
+    GenerateFormFields = (groupedInputs) =>
     {
-        return inputs.map((input, index) => {
+        return groupedInputs.map((input, index) => {
             switch(input.type){
-                case "text": return <TextInput key={index} input={input} handleChange={this.HandleChange}/>;
-                case "toggle": return <ToggleInput key={index} input={input} handleChange={this.HandleChange}/>;
-                case "uploader": return <FileInput key={index} input={input} updateStateInputs={this.UpdateStateInputs} />;
-                case "select": return <SelectInput key={index} input={input} handleChange={this.HandleChange}/>;
-                case "texteditor" : return <TextEditor key={index} input={input} handleChange={this.HandleChangeInTextEditor}/>;
-                default: throw new Error("Input Type must be specified.");
+                case "text": return(
+                                    <TextInput
+                                    key={index}
+                                    inputs={this.state.Inputs}
+                                    input={input}
+                                    handleChange={this.HandleChange}/>
+                                    )
+                case "toggle": return (
+                                    <ToggleInput
+                                    key={index}
+                                    inputs={this.state.Inputs}
+                                    input={input}
+                                    handleChange={this.HandleChange}/>
+                                    )
+                case "uploader": return(
+                                    <FileInput
+                                    key={index}
+                                    inputs={this.state.Inputs}
+                                    input={input}
+                                    updateStateInputs={this.UpdateStateInputs} />
+                                    )
+                case "select": return(
+                                    <SelectInput
+                                    key={index}
+                                    inputs={this.state.Inputs}
+                                    input={input}
+                                    handleChange={this.HandleChange}/>
+                                    )
+                case "texteditor" : return(
+                                    <TextEditor
+                                    key={index}
+                                    inputs={this.state.Inputs}
+                                    input={input}
+                                    handleChange={this.HandleChangeInTextEditor}/>
+                                    )
+                default:
+                    throw new Error("Input Type must be specified.");
             }
         });
     }

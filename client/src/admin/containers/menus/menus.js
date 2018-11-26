@@ -8,6 +8,17 @@ import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
 import adminStyles from '../index.module.css';
 
+// Skeleton
+// name : string (must match the schema name used in database),
+// group: number > 0,
+// width: number > 0 < 16,
+// type: string [select/text/uploader/texteditor/toggle],
+// label: string,
+// disabled: anonymous function that return true/false needs a inputs parameter,
+// value : string/bool/array,
+// list : array
+// generator : function that returns an array
+
 let FormSchema = {
     Inputs : [
         {
@@ -30,7 +41,9 @@ let FormSchema = {
             width: 6,
             type: "select",
             label: "Icon du menu",
-            disabled: () => { return !FormSchema.Inputs[0].value },
+            disabled: (inputs) => {
+                        return !inputs[0].value;
+            },
             value : "",
             list : [{text: "Exemple", key: "Icon"}],
         },
