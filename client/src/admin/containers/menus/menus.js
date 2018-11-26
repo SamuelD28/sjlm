@@ -2,13 +2,76 @@ import React from 'react';
 import CrudComponent from '../../components/CrudComponent.js';
 
 import MenuCards from '../../components/menuCards/menuCards.js';
-import MenuCreate from '../../components/menuCreate/menuCreate.js';
+import FormGenerator from '../../components/FormGenerator/formGenerator.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
 import adminStyles from '../index.module.css';
 
+let FormSchema = {
+    Inputs : [
+        {
+            name: "Principal",
+            type: "toggle",
+            label : "Menu principal",
+            value: false
+        },
+        {
+            name: "Title",
+            group: 1,
+            width: 10,
+            type: "text",
+            label: "Titre du menu",
+            value : "",
+        },
+        {
+            name : "Icon",
+            group: 1,
+            width: 6,
+            type: "select",
+            label: "Icon du menu",
+            disabled: () => { return !FormSchema.Inputs[0].value },
+            value : "",
+            list : [{text: "Exemple", key: "Icon"}],
+        },
+        {
+            name : "LinkTo",
+            type: "select",
+            group: 2,
+            label: "Lien de navigation",
+            value : "",
+            list : [{text: "Exemple", key: "LinkTo"}],
+        },
+        {
+            name : "ParentMenu",
+            type: "select",
+            group: 2,
+            label: "Menu parent",
+            value : "",
+            list : [{text: "Exemple", key: "ParentMenu"}],
+        },
+    ],
+    FormStatus : {
+        open: false,
+        loading : false,
+        errors : [],
+        errorsHeader : "La vérification à échoué pour les raisons suivantes : "
+    },
+    FormConfig : {
+        title : "Ajouter un menu",
+        url : "/api/menus/",
+        httpRequest : "POST",
+        elementId : "",
+        size : "small"
+    }
+};
+
 class Menus extends CrudComponent {
+
+    // constructor(props){
+    //     super(props);
+    // }
+
     componentDidMount() {
         this.ReadInTempState("/api/menus");
     }
@@ -21,6 +84,64 @@ class Menus extends CrudComponent {
                 )))
         }
     }
+
+    // //-----------------//
+    // GenererateMenuOptions = () =>
+    // {
+    //     let MenuOptions = [];
+    //     if(this.props.menus !== undefined)
+    //     {
+    //         this.props.menus.map((menu, index) => {
+    //             if(menu.Principal)
+    //             {
+    //                 let MenuObject = {text: menu.Title, value: menu._id};
+    //                 MenuOptions.push(MenuObject);
+    //             }
+    //             return MenuOptions;
+    //         });
+    //     }
+    //     return MenuOptions;
+    // }
+
+    // GenererateIconOptions = () =>
+    // {
+    //     let IconsArray = [
+    //     "compass",
+    //     "balance",
+    //     "newspaper",
+    //     "home",
+    //     "mail",
+    //     "futbol",
+    //     "book",
+    //     "users",
+    //     "user"
+    //     ];
+    //     let IconsOptions = [];
+    //     if(this.props.menus !== undefined)
+    //     {
+    //         IconsArray.map((icon, index) => {
+    //             let IconsObject = {text: icon, value: icon, icon: icon};
+    //             return IconsOptions.push(IconsObject);
+    //         });
+    //     }
+    //     return IconsOptions;
+    // }
+
+    // GenerateLinksOptions = async() =>
+    // {
+    //     let navigationlinks = await Ajax.GetData("/api/navigationlinks");
+    //     let NavigationOptions = [];
+    //     if(navigationlinks.data !== undefined)
+    //     {
+    //         navigationlinks.data.map((navlink, index) => {
+    //             console.log(navlink);
+    //             let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
+    //             return NavigationOptions.push(NavigationObject);
+    //         });
+    //     }
+    //     return NavigationOptions;
+    // }
+    // //---------------//
 
     DisplayMenuPrincipal = (menu, index) => {
         if (menu.Principal)
@@ -49,9 +170,7 @@ class Menus extends CrudComponent {
             <div className={adminStyles.adminPage}>
         <section className="section-row">
             <div styleName="leftColumn">
-                <MenuCreate
-                menus={this.state.db}
-                CreateInTempState={this.CreateInTempState}/>
+                <FormGenerator FormSchema={FormSchema}/>
             </div>
             <div styleName="columnContainer rightColumn">
                 {this.DisplayMenusCard()}
