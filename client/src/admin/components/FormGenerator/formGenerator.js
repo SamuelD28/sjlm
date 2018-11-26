@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {Form, Modal, Grid} from 'semantic-ui-react';
 
+//Library used by the generator
 import Ajax from '../../../shared/ajax.js';
 import Translate from '../../../shared/translate.js';
 
+//Components used for the form generation
+import {Form, Modal, Grid} from 'semantic-ui-react';
 import FormError from '../FormError/formError.js';
 import TextEditor from '../TextEditor/textEditor.js';
 import TextInput from '../TextInput/textInput.js';
@@ -13,13 +15,19 @@ import FileInput from '../FileInput/fileInput.js';
 
 class FormGenerator extends Component
 {
-    constructor(props){
+    constructor(props)
+    {
         super(props);
         this.state = Object.assign({}, this.props.FormSchema);
         console.log(this.state);
     }
 
-    handleSubmit = async(inputs, formConfig) =>
+    /**
+     * Method that handle the submission of the form based on the inputs and configuration
+     * inputs : Inputs used in the form
+     * formConfig : Configuration used to determine wich action to take for submitting the form
+     */
+    HandleSubmit = async(inputs, formConfig) =>
     {
         if(inputs === null || inputs === undefined)
             throw new Error("Inputs must be specified in order to process the form");
@@ -27,15 +35,19 @@ class FormGenerator extends Component
         if(formConfig === null || formConfig === null)
             throw new Error("Form Configuration must be specified in order to process the form");
 
-        await this.updateStateKey("FormStatus", {loading: true});
+        await this.UpdateStateKey("FormStatus", {loading: true});
 
-        let formData = await this.handleFormData(inputs);
-        let request = await this.handleRequest(formData, formConfig);
+        let formData = await this.HandleFormData(inputs);
+        let request = await this.HandleRequest(formData, formConfig);
 
-        this.handleRequestResponse(request);
+        this.HandleRequestResponse(request);
     }
 
-    handleFormData = (inputs) =>
+    /**
+     * Method that extract the value out of the inputs in order to process the information in a database
+     * inputs : Inputs to retrieve the data form
+    */
+    HandleFormData = (inputs) =>
     {
         let formData = {};
         inputs.map((input, index) => {
@@ -44,7 +56,12 @@ class FormGenerator extends Component
         return formData;
     }
 
-    handleRequest = async(formData, formConfig) =>
+    /**
+     * Method responsible for making the request to a database
+     * formData : Data to trough the request
+     * fomConfig : Used to determine wich type of request to send
+    */
+    HandleRequest = async(formData, formConfig) =>
     {
         let request;
         let url = formConfig.url;
@@ -58,7 +75,11 @@ class FormGenerator extends Component
         return request;
     }
 
-    handleRequestResponse = async(request) =>
+    /**
+     * Method that handle the response from the server.
+     * request : Request that was sent back from the server
+     */
+    HandleRequestResponse = async(request) =>
     {
         if(!request.success){
             let errors = [];
@@ -72,15 +93,20 @@ class FormGenerator extends Component
                 );
             });
 
-            this.updateStateKey("FormStatus" , {loading : false, errors : errors});
+            this.UpdateStateKey("FormStatus" , {loading : false, errors : errors});
         }
         else{
-            await this.updateStateKey("FormStatus" , {loading: false});
+            await this.UpdateStateKey("FormStatus" , {loading: false});
             this.HandeClose();
         }
     }
 
-    handleChangeInTextEditor = (TextEditor, inputName) =>
+    /**
+     * Method used to handle the change in a quill text editor
+     * textEditor : React ref to the text editor. Mendatory in order to retrieve the information
+     * inputName : Name of the text editor that triggered the change
+     */
+    HandleChangeInTextEditor = (TextEditor, inputName) =>
     {
         if(TextEditor.current === null)
             throw new TypeError("Null, Reference to a text editor must be passed as a parameter");
@@ -94,31 +120,44 @@ class FormGenerator extends Component
             html: editorFull.getHTML()
         }
 
-        this.handleChange(targetObject);
+        this.HandleChange(targetObject);
     }
 
-    handleChange = async(target) =>
+    /**
+     * Method used to handle the change made in a form input
+     * target : The input object that triggered the event
+     */
+    HandleChange = async(target) =>
     {
         let inputName = target.name;
         let inputValue = (target.value != null) ? target.value: target.checked;
         this.updateStateInputs(inputName, {value : inputValue});
     }
 
-    handleOpen = () =>
+    /**
+     * Method used to handle the opening of the modal
+     */
+    HandleOpen = () =>
     {
-        this.updateStateKey("FormStatus" , {open : true});
+        this.UpdateStateKey("FormStatus" , {open : true});
     }
 
+    /**
+     * Method used to handle the closing of the modal
+     */
     HandeClose = async() =>
     {
-        await this.updateStateKey("FormStatus" , {open : false});
+        await this.UpdateStateKey("FormStatus" , {open : false});
         this.ClearForm();
     }
 
+    /**
+     * Method that clears all the data inside the inputs of the form
+     */
     ClearForm = async() =>
     {
         if(this.state.TextEditor !== undefined)
-            await this.updateStateKey("TextEditor", {value : "" , html : ""});
+            await this.UpdateStateKey("TextEditor", {value : "" , html : ""});
 
         let Inputs = Array.from(this.state.Inputs);
         if(Inputs.length !== 0){
@@ -127,20 +166,30 @@ class FormGenerator extends Component
                 input.value =   (input.type === "toggle")? false:
                                 (input.type === "uploader")? []: "";
 
-                return this.handleChange(input);
+                return this.HandleChange(input);
             });
         }
 
         if(this.state.FormStatus !== undefined)
-            await this.updateStateKey("FormStatus" , {errors : []});
+            await this.UpdateStateKey("FormStatus" , {errors : []});
     }
 
-    updateStateKey = (stateKey, stateObj) =>
+    /**
+     * Method that update a key inside the state Object
+     * stateKey: Name of the key to update
+     * stateObj : New state value for the specified key
+     */
+    UpdateStateKey = (stateKey, stateObj) =>
     {
         this.setState({[stateKey.valueOf()] : Object.assign({}, this.state[stateKey.valueOf()], stateObj)});
     }
 
-    updateStateInputs = (inputName, inputValueObj) =>
+    /**
+     * Method that update the inputs inside the state object
+     * inputName : Name of the input to update
+     * inputValueObj : New state value for the specified input name
+     */
+    UpdateStateInputs = (inputName, inputValueObj) =>
     {
         let index = this.state.Inputs.findIndex(input => input.name === inputName);
         let Inputs = Array.from(this.state.Inputs);
@@ -148,14 +197,17 @@ class FormGenerator extends Component
         this.setState({Inputs : Inputs});
     }
 
-    //Need to find a way to generate it only one time when the node is beeing mount.
-    GenerateForm = (FormSchema) =>
+    /**
+     * Method that generate the form components
+     * formSchema : Schema used to generate the form. See the documentation for more information.
+     */
+    GenerateForm = (formSchema) =>
     {
-        if(FormSchema.Inputs === undefined)
+        if(formSchema.Inputs === undefined)
             throw new TypeError("The Form Schema must contain a definition for the inputs to display");
 
-        let textEditor = FormSchema.TextEditor;
-        let inputs = FormSchema.Inputs;
+        let textEditor = formSchema.TextEditor;
+        let inputs = formSchema.Inputs;
 
         if(textEditor === undefined)
             return this.GenerateLayoutWithoutTextEditor(inputs);
@@ -163,6 +215,9 @@ class FormGenerator extends Component
             return this.GenerateLayoutWithTextEditor(inputs, textEditor);
     }
 
+    /**
+     * Method that generate a layout without a text editor
+     */
     GenerateLayoutWithoutTextEditor = (inputs) =>
     {
         return(
@@ -174,6 +229,9 @@ class FormGenerator extends Component
         </Grid>)
     }
 
+    /**
+     * Method that generate a layout with a text editor
+     */
     GenerateLayoutWithTextEditor = (inputs, textEditor) =>
     {
         return(
@@ -183,11 +241,14 @@ class FormGenerator extends Component
                 {this.GenerateFormInputs(inputs)}
             </Grid.Column>
             <Grid.Column width={8}>
-                <TextEditor input={textEditor} handleChange={this.handleChangeInTextEditor}/>
+                <TextEditor input={textEditor} handleChange={this.HandleChangeInTextEditor}/>
             </Grid.Column>
         </Grid>)
     }
 
+    /**
+     * Method that generate the form inputs
+     */
     GenerateFormInputs = (inputs) =>
     {
         let groups = this.GenerateFormGroups(inputs);
@@ -200,6 +261,9 @@ class FormGenerator extends Component
         });
     }
 
+    /**
+     * Method that grouped all the inputs together based on their group key attribute.
+     */
     GenerateFormGroups = (inputs) =>
     {
         let groups = {};
@@ -219,15 +283,18 @@ class FormGenerator extends Component
         return groups;
     }
 
+    /**
+     * Method that generate the appropriate input type based on their key type attribute
+     */
     GenerateFormFields = (inputs) =>
     {
         return inputs.map((input, index) => {
             switch(input.type){
-                case "text": return <TextInput key={index} input={input} handleChange={this.handleChange}/>;
-                case "toggle": return <ToggleInput key={index} input={input} handleChange={this.handleChange}/>;
-                case "uploader": return <FileInput key={index} input={input} updateStateInputs={this.updateStateInputs} />;
-                case "select": return <SelectInput key={index} input={input} handleChange={this.handleChange}/>;
-                case "texteditor" : return <TextEditor key={index} input={input} handleChange={this.handleChangeInTextEditor}/>;
+                case "text": return <TextInput key={index} input={input} handleChange={this.HandleChange}/>;
+                case "toggle": return <ToggleInput key={index} input={input} handleChange={this.HandleChange}/>;
+                case "uploader": return <FileInput key={index} input={input} updateStateInputs={this.UpdateStateInputs} />;
+                case "select": return <SelectInput key={index} input={input} handleChange={this.HandleChange}/>;
+                case "texteditor" : return <TextEditor key={index} input={input} handleChange={this.HandleChangeInTextEditor}/>;
                 default: throw new Error("Input Type must be specified.");
             }
         });
@@ -242,7 +309,7 @@ class FormGenerator extends Component
     open={this.state.FormStatus.open}
     onClose={this.HandeClose}
     trigger={
-    <div onClick={this.handleOpen} className="cardContainer">
+    <div onClick={this.HandleOpen} className="cardContainer">
         <div className="cardOverlay">
             <div className="cardOverlayBtn">
                 <i className="icon plus"></i>
@@ -261,7 +328,7 @@ class FormGenerator extends Component
             <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
                 Annuler
             </button>
-            <button onClick={() => {this.handleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
+            <button onClick={() => {this.HandleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
                 Ajouter
             </button>
         </Modal.Actions>
