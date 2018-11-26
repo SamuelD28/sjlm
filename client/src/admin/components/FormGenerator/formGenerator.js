@@ -19,7 +19,6 @@ class FormGenerator extends Component
     {
         super(props);
         this.state = Object.assign({}, this.props.FormSchema);
-        console.log(this.state);
     }
 
     /**
@@ -51,7 +50,10 @@ class FormGenerator extends Component
     {
         let formData = {};
         inputs.map((input, index) => {
-            return formData = Object.assign({}, formData, {[input.name] : input.value});
+            if(input.value !== "")
+                formData = Object.assign({}, formData, {[input.name] : input.value});
+
+            return formData;
         });
         return formData;
     }
@@ -139,6 +141,7 @@ class FormGenerator extends Component
      */
     HandleOpen = () =>
     {
+        console.log(this.state.FormStatus)
         this.UpdateStateKey("FormStatus" , {open : true});
     }
 

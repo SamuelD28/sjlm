@@ -86,10 +86,6 @@ class Menus extends CrudComponent {
         }
     };
 
-    constructor(props){
-        super(props);
-    }
-
     async componentDidMount() {
         this.ReadInTempState("/api/menus");
         this.links = await this.GenerateLinksOptions();

@@ -9747,3 +9747,170 @@
         '$isValidatorError': true } },
   _message: 'Menu validation failed',
   name: 'ValidationError' }
+[2018-11-26T04:03:39.452] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:68:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:63:21)
+[2018-11-26T13:48:12.977] [ERROR] error - { ValidationError: Menu validation failed: ParentMenu: Cast to ObjectID failed for value "" at path "ParentMenu"
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { ParentMenu: 
+      { CastError: Cast to ObjectID failed for value "" at path "ParentMenu"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to ObjectID failed for value "" at path "ParentMenu"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'ObjectID',
+        value: '',
+        path: 'ParentMenu',
+        reason: [Object] } },
+  _message: 'Menu validation failed',
+  name: 'ValidationError' }
+[2018-11-26T13:52:28.524] [ERROR] error - { ValidationError: Menu validation failed: ParentMenu: Cast to ObjectID failed for value "" at path "ParentMenu"
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { ParentMenu: 
+      { CastError: Cast to ObjectID failed for value "" at path "ParentMenu"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to ObjectID failed for value "" at path "ParentMenu"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'ObjectID',
+        value: '',
+        path: 'ParentMenu',
+        reason: [Object] } },
+  _message: 'Menu validation failed',
+  name: 'ValidationError' }
+[2018-11-26T14:01:04.044] [ERROR] error - { ValidationError: Menu validation failed: ParentMenu: Cast to ObjectID failed for value "" at path "ParentMenu"
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { ParentMenu: 
+      { CastError: Cast to ObjectID failed for value "" at path "ParentMenu"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to ObjectID failed for value "" at path "ParentMenu"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'ObjectID',
+        value: '',
+        path: 'ParentMenu',
+        reason: [Object] } },
+  _message: 'Menu validation failed',
+  name: 'ValidationError' }
+[2018-11-26T14:01:45.546] [ERROR] error - { ValidationError: Menu validation failed: Title: Path `Title` (`Ouverture de la saison de la chasse`) is longer than the maximum allowed length (30).
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` (`Ouverture de la saison de la chasse`) is longer than the maximum allowed length (30).
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` (`Ouverture de la saison de la chasse`) is longer than the maximum allowed length (30).',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'maxlength',
+        path: 'Title',
+        value: 'Ouverture de la saison de la chasse',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Menu validation failed',
+  name: 'ValidationError' }
