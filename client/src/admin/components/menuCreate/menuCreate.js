@@ -26,15 +26,18 @@ class MenuCreate extends Component
                 {
                     name: "Title",
                     group: 1,
+                    width: 10,
                     type: "text",
                     label: "Titre du menu",
-                    value : ""
+                    value : "",
                 },
                 {
                     name : "Icon",
                     group: 1,
+                    width: 6,
                     type: "select",
                     label: "Icon du menu",
+                    disabled: () => { return !this.state.Inputs[0].value },
                     value : "",
                     list : [{text: "Exemple", key: "Icon"}],
                 },
@@ -57,11 +60,12 @@ class MenuCreate extends Component
             ],
             FormStatus : {
                 open: false,
-                status : ["completed", "submitting", "ongoing"],
+                loading : false,
                 errors : [],
                 errorsHeader : "La vérification à échoué pour les raisons suivantes : "
             },
             FormConfig : {
+                title : "Ajouter un menu",
                 url : "/api/menus/",
                 httpRequest : "POST",
                 elementId : "",
@@ -72,6 +76,8 @@ class MenuCreate extends Component
 
     handleSubmit = async() =>
     {
+        this.updateStateKey("FormStatus", {loading: true});
+
         let formData = {};
         this.state.Inputs.map((input, index) => {
             console.log(input.value);
@@ -99,9 +105,12 @@ class MenuCreate extends Component
                 );
             });
 
-            this.updateStateKey("FormStatus" , {errors : errors});
+            this.updateStateKey("FormStatus" , {loading : false, errors : errors});
         }
-
+        else{
+            this.updateStateKey("FormStatus" , {loading: false});
+            this.handleClose();
+        }
     }
 
     handleChangeInTextEditor = (TextEditor, inputName) =>
@@ -133,16 +142,16 @@ class MenuCreate extends Component
         this.updateStateKey("FormStatus" , {open : true});
     }
 
-    handleClose = () =>
+    handleClose = async() =>
     {
-        this.updateStateKey("FormStatus" , {open : false});
-        this.clearFormInputs();
+        await this.updateStateKey("FormStatus" , {open : false});
+        this.clearForm();
     }
 
-    clearFormInputs = () =>
+    clearForm = async() =>
     {
         if(this.TextEditor !== undefined)
-            this.updateStateKey("TextEditor", {value : "" , html : ""});
+            await this.updateStateKey("TextEditor", {value : "" , html : ""});
 
         let Inputs = Array.from(this.state.Inputs);
         if(Inputs.length !== 0){
@@ -154,11 +163,14 @@ class MenuCreate extends Component
                 return this.handleChange(input);
             });
         }
+
+        if(this.state.FormStatus.errors !== undefined)
+            await this.updateStateKey("FormStatus" , {errors : []});
     }
 
     updateStateKey = (stateKey, stateObj) =>
     {
-        this.setState({[stateKey.valueOf()] : Object.assign({}, this.state.FormStatus, stateObj)});
+        this.setState({[stateKey.valueOf()] : Object.assign({}, this.state[stateKey.valueOf()], stateObj)});
     }
 
     updateStateInputs = (inputName, inputValueObj) =>
@@ -237,6 +249,7 @@ class MenuCreate extends Component
         let inputs = FormSchema.Inputs;
         let errorHandler = (FormSchema.FormStatus !== undefined)? FormSchema.FormStatus: {errors: [], errorsHeader: "Des erreurs sont survenues"};
 
+
         if(textEditor === undefined)
             return this.GenerateLayoutWithoutTextEditor(inputs, errorHandler);
         else
@@ -246,26 +259,26 @@ class MenuCreate extends Component
     GenerateLayoutWithoutTextEditor = (inputs, errorHandler) =>
     {
         return(
-        <Form>
-            <FormError errorHandler={errorHandler} />
-            {this.GenerateFormInputs(inputs)}
-        </Form>)
+        <Grid>
+            <Grid.Column width={16}>
+                <FormError errorHandler={errorHandler} />
+                {this.GenerateFormInputs(inputs)}
+            </Grid.Column>
+        </Grid>)
     }
 
     GenerateLayoutWithTextEditor = (inputs, errorHandler, textEditor) =>
     {
         return(
-        <Form>
-            <Grid>
-                <Grid.Column width={8}>
-                    <FormError errorHandler={errorHandler} />
-                    {this.GenerateFormInputs(inputs)}
-                </Grid.Column>
-                <Grid.Column width={8}>
-                    <TextEditor input={textEditor} handleChange={this.handleChangeInTextEditor}/>
-                </Grid.Column>
-            </Grid>
-        </Form>)
+        <Grid>
+            <Grid.Column width={8}>
+                <FormError errorHandler={errorHandler} />
+                {this.GenerateFormInputs(inputs)}
+            </Grid.Column>
+            <Grid.Column width={8}>
+                <TextEditor input={textEditor} handleChange={this.handleChangeInTextEditor}/>
+            </Grid.Column>
+        </Grid>)
     }
 
     GenerateFormInputs = (inputs) =>
@@ -288,7 +301,7 @@ class MenuCreate extends Component
 
             return  Object.keys(groups).map((key, index) =>{
                     return(
-                        <Form.Group widths="equal" key={index}>
+                        <Form.Group key={index}>
                             {this.GenerateFormFields(groups[key])}
                         </Form.Group>
                     )
@@ -331,11 +344,11 @@ class MenuCreate extends Component
         </div>
     </div>
     }>
-    <Modal.Header>Ajouter un Menu</Modal.Header>
+    <Modal.Header>{this.state.FormConfig.title}</Modal.Header>
         <Modal.Content>
-            <div ref={this.FormAnchor}>
-            </div>
-            {this.GenerateForm(this.state)}
+            <Form loading={this.state.FormStatus.loading}>
+                {this.GenerateForm(this.state)}
+            </Form>
         </Modal.Content>
         <Modal.Actions>
             <button style={{float: "left"}} onClick={this.handleClose} className="btn btn-outline-danger">

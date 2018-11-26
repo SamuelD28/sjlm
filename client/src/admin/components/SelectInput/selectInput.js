@@ -4,8 +4,11 @@ import Translate from '../../../shared/translate.js';
 
 const SelectInput = (props) =>
 {
+    console.log(props);
     return(
-    <Form.Field>
+    <Form.Field
+        width={props.input.width}
+        disabled={(props.input.disabled !== undefined)? props.input.disabled(): false}>
         <label>{props.input.label}</label>
         <Select
             name={props.input.name}

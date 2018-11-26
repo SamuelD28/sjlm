@@ -6,7 +6,9 @@ const FileInput = (props) =>
 {
     if(props.input !== undefined)
     return(
-     <Form.Field>
+     <Form.Field
+        width={props.input.width}
+        disabled={(props.input.disabled !== undefined)? props.input.disabled(): false}>
         <CloudinaryUpload
             input={props.input}
             updateStateInputs={props.updateStateInputs}
