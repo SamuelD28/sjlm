@@ -4,6 +4,11 @@ import React, {Component} from 'react';
 import Ajax from '../../../shared/ajax.js';
 import Translate from '../../../shared/translate.js';
 
+//Helper Object
+import FormConfig from './formConfig.js';
+import FormStatus from './formStatus.js';
+import InputSchema from './inputSchema.js';
+
 //Components used for the form generation
 import {Form, Modal, Grid} from 'semantic-ui-react';
 import FormError from '../FormError/formError.js';
@@ -18,7 +23,11 @@ class FormGenerator extends Component
     constructor(props)
     {
         super(props);
-        this.state = Object.assign({}, this.props.FormSchema);
+        this.state = {
+            FormConfig : Object.assign({}, this.props.FormConfig),
+            FormStatus : Object.assign({}, this.props.FormStatus),
+            Inputs : this.props.Inputs
+        };
     }
 
     /**
@@ -83,6 +92,8 @@ class FormGenerator extends Component
      */
     HandleRequestResponse = async(request) =>
     {
+        //ERROR WITH UNDEFINED REQUEST OBJECT
+
         if(!request.success){
             let errors = [];
 
@@ -200,61 +211,111 @@ class FormGenerator extends Component
         this.setState({Inputs : Inputs});
     }
 
+    /***************************************************************/
+    /******************Generator Methods for the Form***************/
+    /***************************************************************/
+
+    Generate = () =>
+    {
+        if(this.state.FormConfig.modal){
+            console.log(true);
+            return this.CreateModalForm();
+        }
+        else
+            return this.CreatePlainForm();
+    }
+
+    CreatePlainForm = () =>
+    {
+        return(
+            <Form loading={this.state.FormStatus.loading}>
+                {this.GenerateForm()}
+                <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
+                    Annuler
+                </button>
+                <button onClick={() => {this.HandleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
+                    Ajouter
+                </button>
+            </Form>
+        )
+    }
+
+    CreateModalForm = () =>
+    {
+        return(
+        <Modal
+        size={this.state.FormConfig.size}
+        open={this.state.FormStatus.open}
+        onClose={this.HandeClose}
+        trigger={
+        <div onClick={this.HandleOpen} className="cardContainer">
+            <div className="cardOverlay">
+                <div className="cardOverlayBtn">
+                    <i className="icon plus"></i>
+                    <h4>Ajouter</h4>
+                </div>
+            </div>
+        </div>
+        }>
+        <Modal.Header>{this.state.FormConfig.title}</Modal.Header>
+            <Modal.Content>
+                <Form loading={this.state.FormStatus.loading}>
+                    {this.GenerateForm()}
+                </Form>
+            </Modal.Content>
+            <Modal.Actions>
+                <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
+                    Annuler
+                </button>
+                <button onClick={() => {this.HandleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
+                    Ajouter
+                </button>
+            </Modal.Actions>
+        </Modal>
+        )
+    }
+
     /**
      * Method that generate the form components
      * formSchema : Schema used to generate the form. See the documentation for more information.
      */
-    GenerateForm = (formSchema) =>
+    GenerateForm = () =>
     {
-        if(formSchema.Inputs === undefined)
+        if(this.state.Inputs === undefined)
             throw new TypeError("The Form Schema must contain a definition for the inputs to display");
 
-        let textEditor = formSchema.TextEditor;
-        let inputs = formSchema.Inputs;
 
-        if(textEditor === undefined)
-            return this.GenerateLayoutWithoutTextEditor(inputs);
-        else
-            return this.GenerateLayoutWithTextEditor(inputs, textEditor);
-    }
-
-    /**
-     * Method that generate a layout without a text editor
-     */
-    GenerateLayoutWithoutTextEditor = (inputs) =>
-    {
-        return(
-        <Grid>
-            <Grid.Column width={16}>
-                <FormError errorHandler={this.state.FormStatus} />
-                {this.GenerateFormInputs(inputs)}
-            </Grid.Column>
-        </Grid>)
-    }
-
-    /**
-     * Method that generate a layout with a text editor
-     */
-    GenerateLayoutWithTextEditor = (inputs, textEditor) =>
-    {
-        return(
-        <Grid>
-            <Grid.Column width={8}>
-                <FormError errorHandler={this.state.FormStatus} />
-                {this.GenerateFormInputs(inputs)}
-            </Grid.Column>
-            <Grid.Column width={8}>
-                <TextEditor input={textEditor} handleChange={this.HandleChangeInTextEditor}/>
-            </Grid.Column>
-        </Grid>)
+        //Generate a from without a text edtior
+        if(this.state.TextEditor === undefined){
+            return(
+            <Grid>
+                <Grid.Column width={16}>
+                    <FormError errorHandler={this.state.FormStatus} />
+                    {this.GenerateFormInputs()}
+                </Grid.Column>
+            </Grid>)
+        }
+        //Generate a form with a text editor
+        else{
+            return(
+            <Grid>
+                <Grid.Column width={8}>
+                    <FormError errorHandler={this.state.FormStatus} />
+                    {this.GenerateFormInputs()}
+                </Grid.Column>
+                <Grid.Column width={8}>
+                    <TextEditor input={this.state.TextEditor} handleChange={this.HandleChangeInTextEditor}/>
+                </Grid.Column>
+            </Grid>)
+        }
     }
 
     /**
      * Method that generate the form inputs
      */
-    GenerateFormInputs = (inputs) =>
+    GenerateFormInputs = () =>
     {
-        let groups = this.GenerateFormGroups(inputs);
+        let groups = this.GenerateFormGroups(this.state.FormInputs);
         return  Object.keys(groups).map((key, index) =>{
                 return(
                     <Form.Group key={index}>
@@ -267,11 +328,12 @@ class FormGenerator extends Component
     /**
      * Method that grouped all the inputs together based on their group key attribute.
      */
-    GenerateFormGroups = (inputs) =>
+    GenerateFormGroups = () =>
     {
+        console.log(this.state);
         let groups = {};
         let negativeCount = 0;
-        inputs.map((input, index) =>{
+        this.state.Inputs.map((input, index) =>{
 
             if(input.group === undefined){
                 input.group = negativeCount;
@@ -337,36 +399,8 @@ class FormGenerator extends Component
     render()
     {
     if(this.state !== undefined)
-    return(
-    <Modal
-    size={(this.state.FormConfig !== undefined)? this.state.FormConfig.size: "small"}
-    open={this.state.FormStatus.open}
-    onClose={this.HandeClose}
-    trigger={
-    <div onClick={this.HandleOpen} className="cardContainer">
-        <div className="cardOverlay">
-            <div className="cardOverlayBtn">
-                <i className="icon plus"></i>
-                <h4>Ajouter</h4>
-            </div>
-        </div>
-    </div>
-    }>
-    <Modal.Header>{(this.state.FormConfig !== undefined)? this.state.FormConfig.title : "Formulaire"}</Modal.Header>
-        <Modal.Content>
-            <Form loading={this.state.FormStatus.loading}>
-                {this.GenerateForm(this.state)}
-            </Form>
-        </Modal.Content>
-        <Modal.Actions>
-            <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
-                Annuler
-            </button>
-            <button onClick={() => {this.HandleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
-                Ajouter
-            </button>
-        </Modal.Actions>
-    </Modal>)}
+        return this.Generate();
+    }
 }
 
-export default FormGenerator;
+export {FormGenerator, FormConfig, FormStatus, InputSchema};

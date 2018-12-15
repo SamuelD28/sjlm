@@ -1,24 +1,86 @@
 import React from 'react';
-import {Modal, Form, Select, Checkbox} from 'semantic-ui-react';
+import {Modal} from 'semantic-ui-react';
 
 import FormComponent from '../FormComponent.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import Ajax from '../../../shared/ajax.js';
-
+import {FormGenerator} from '../FormGenerator/formGenerator.js';
 
 class MenuCards extends FormComponent{
 
     constructor(props)
     {
         super(props);
-        this.state = {};
-        this.formData =Object.create(this.props.menu);
+        this.FormSchema = {
+            Inputs : [
+                {
+                    name: "Principal",
+                    type: "toggle",
+                    label : "Menu principal",
+                    value: this.props.menu.Principal
+                },
+                {
+                    name: "Title",
+                    group: 1,
+                    width: 10,
+                    type: "text",
+                    label: "Titre du menu",
+                    value : this.props.menu.Title,
+                },
+                {
+                    name : "Icon",
+                    group: 1,
+                    width: 6,
+                    type: "select",
+                    label: "Icon du menu",
+                    disabled: (inputs) => {
+                                return !inputs[0].value;
+                    },
+                    value : this.props.menu.Icon,
+                    list : [],
+                    generator : () =>  { return this.GenererateIconOptions() }
+                },
+                {
+                    name : "LinkTo",
+                    type: "select",
+                    group: 2,
+                    label: "Lien de navigation",
+                    value : this.props.menu.LinkTo,
+                    list : [],
+                    generator : () =>  { return this.links }
+                },
+                {
+                    name : "ParentMenu",
+                    type: "select",
+                    group: 2,
+                    label: "Menu parent",
+                    value : this.props.menu.ParentMenu,
+                    list : [],
+                    generator : () =>  { return this.GenererateMenuOptions() }
+                },
+            ],
+            FormStatus : {
+                open: false,
+                loading : false,
+                errors : [],
+                errorsHeader : "La vérification à échoué pour les raisons suivantes : "
+            },
+            FormConfig : {
+                title : "Ajouter un menu",
+                url : "/api/menus/",
+                httpRequest : "PUT",
+                elementId : this.props.menu._id,
+                size : "small",
+                modal: false
+            }
+        };
     }
 
     componentDidMount = async() =>
     {
         let request = await Ajax.GetData("/api/navigationlinks");
         this.setState({navLinks : request.data.slice()});
+        this.links = await this.GenerateLinksOptions();
     }
 
     GenererateMenuOptions = () =>
@@ -36,6 +98,20 @@ class MenuCards extends FormComponent{
             });
         }
         return MenuOptions;
+    }
+
+    GenerateLinksOptions = async() =>
+    {
+        let navigationlinks =  await Ajax.GetData("/api/navigationlinks");
+        let NavigationOptions = [];
+        if(navigationlinks.data !== undefined)
+        {
+            navigationlinks.data.map((navlink, index) => {
+                let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
+                return NavigationOptions.push(NavigationObject);
+            });
+        }
+        return NavigationOptions;
     }
 
     GenererateIconOptions = () =>
@@ -88,64 +164,7 @@ class MenuCards extends FormComponent{
     <Modal.Header>Modifier un Menu</Modal.Header>
         <Modal.Content>
             <Modal.Description>
-                <Form onSubmit={() => {this.UpdateInDb("/api/menus/")}}>
-                    <Form.Field width={4}>
-                        <label>Menu Principal</label>
-                        <Checkbox
-                        name="Principal"
-                        onChange={this.HandleChange}
-                        defaultChecked={this.formData.Principal}
-                        toggle />
-                    </Form.Field>
-                    <Form.Group widths="equal">
-                        <Form.Field>
-                            <label>Menu Parent</label>
-                            <Select
-                                name="ParentMenu"
-                                disabled={this.formData.Principal}
-                                placeholder="Choisir un Menu"
-                                options={this.GenererateMenuOptions()}
-                                defaultValue={this.formData.ParentMenu}
-                                clearable
-                                onChange={this.HandleChange}
-                                selection />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Icon du Menu</label>
-                            <Select
-                                name="Icon"
-                                placeholder='Choisir une icon'
-                                clearable
-                                selection
-                                defaultValue={this.formData.Icon}
-                                onChange={this.HandleChange}
-                                options={this.GenererateIconOptions()} />
-                        </Form.Field>
-                    </Form.Group>
-                    <Form.Field required>
-                        <label>Titre du Menu</label>
-                        <input
-                            name="Title"
-                            placeholder="Titre..."
-                            defaultValue={this.formData.Title}
-                            onChange={this.HandleChange}
-                            type="text"/>
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Lien de Navigation</label>
-                        <Select
-                        name="LinkTo"
-                        placeholder='Lien de navigation'
-                        clearable
-                        selection
-                        defaultValue={this.formData.LinkTo}
-                        options={this.GenerateLinksOptions()} />
-                    </Form.Field>
-                    <Form.Field>
-                        <button onClick={() => {this.DeleteInDb("/api/menus/")}}  className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>
-                        <button style={{marginLeft: '.5vw'}} disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Sauvegarder</button>
-                    </Form.Field>
-                </Form>
+                <FormGenerator FormSchema={this.FormSchema}/>
             </Modal.Description>
             <LoaderComponent action={this.state.action} />
         </Modal.Content>

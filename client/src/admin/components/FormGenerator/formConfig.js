@@ -1,53 +1,14 @@
 class FormConfig
 {
-    defaultFormConfig =
+    constructor({title, url, httpRequest, elementId, size, modal})
     {
-        title : "Formulaire",
-        url : null,
-        httpRequest : null,
-        elementId : null,
-        size : "small"
-    };
-
-    constructor(formConfig)
-    {
-        if(formConfig !== undefined && formConfig !== null)
-            this.FormConfig = formConfig;
-        else
-            this.FormConfig = this.defaultFormConfig;
-
+        this.title = title;
+        this.url = url;
+        this.httpRequest = httpRequest;
+        this.elementId = elementId;
+        this.size = size;
+        this.modal = modal;
     }
-
-    GetConfig = () =>
-    {
-        return this.FormConfig;
-    }
-
-    SetTitle = (title) =>
-    {
-        this.FormConfig.title = title;
-    }
-
-    SetUrl = (url) =>
-    {
-        this.FormConfig.url = url;
-    }
-
-    SetHttpRequest = (httpRequest) =>
-    {
-        this.FormConfig.httpRequest = httpRequest;
-    }
-
-    SetElementId = (id) =>
-    {
-        this.FormConfig.elementId = id;
-    }
-
-    SetSize = (size) =>
-    {
-        this.FormConfig.size = size;
-    }
-
 }
 
 export default FormConfig;

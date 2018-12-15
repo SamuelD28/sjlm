@@ -4,87 +4,75 @@ import CrudComponent from '../../components/CrudComponent.js';
 import Ajax from '../../../shared/ajax.js';
 
 import MenuCards from '../../components/menuCards/menuCards.js';
-import FormGenerator from '../../components/FormGenerator/formGenerator.js';
+import {FormGenerator, FormConfig, FormStatus, InputSchema} from '../../components/FormGenerator/formGenerator.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
 import adminStyles from '../index.module.css';
 
-// Skeleton
-// name : string (must match the schema name used in database),
-// group: number > 0,
-// width: number > 0 < 16,
-// type: string [select/text/uploader/texteditor/toggle],
-// label: string,
-// disabled: anonymous function that return true/false needs a inputs parameter,
-// value : string/bool/array,
-// list : array
-// generator : function that returns an array
-
-
 class Menus extends CrudComponent {
-    FormSchema = {
-        Inputs : [
-            {
-                name: "Principal",
-                type: "toggle",
-                label : "Menu principal",
-                value: false
-            },
-            {
-                name: "Title",
-                group: 1,
-                width: 10,
-                type: "text",
-                label: "Titre du menu",
-                value : "",
-            },
-            {
-                name : "Icon",
-                group: 1,
-                width: 6,
-                type: "select",
-                label: "Icon du menu",
-                disabled: (inputs) => {
-                            return !inputs[0].value;
-                },
-                value : "",
-                list : [],
-                generator : () =>  { return this.GenererateIconOptions() }
-            },
-            {
-                name : "LinkTo",
-                type: "select",
-                group: 2,
-                label: "Lien de navigation",
-                value : "",
-                list : [],
-                generator : () =>  { return this.links }
-            },
-            {
-                name : "ParentMenu",
-                type: "select",
-                group: 2,
-                label: "Menu parent",
-                value : "",
-                list : [],
-                generator : () =>  { return this.GenererateMenuOptions() }
-            },
-        ],
-        FormStatus : {
-            open: false,
-            loading : false,
-            errors : [],
-            errorsHeader : "La vérification à échoué pour les raisons suivantes : "
-        },
-        FormConfig : {
-            title : "Ajouter un menu",
-            url : "/api/menus/",
-            httpRequest : "POST",
-            elementId : "",
-            size : "small"
-        }
-    };
+    constructor(props)
+    {
+        super(props);
+
+        let config = new FormConfig({
+                                    title : "Formulaire",
+                                    url:  "/api/menus/",
+                                    httpRequest : "POST",
+                                    elementId : "adfa23-121",
+                                    size : "small",
+                                    modal : true});
+
+        let status  = new FormStatus({
+                                    open :false,
+                                    loading:  false,
+                                    errors:  [],
+                                    errorsHeader: "Les erreurs sont survenues"});
+
+        let principalInput = new InputSchema({name: "Principal",
+                                        type: "toggle",
+                                        label : "Menu principal",
+                                        value: false});
+        let titleInput = new InputSchema({
+                                        name: "Title",
+                                        group: 1,
+                                        width: 10,
+                                        type: "text",
+                                        label: "Titre du menu",
+                                        value : ""});
+        let iconInput = new InputSchema({
+                                        name : "Icon",
+                                        group: 1,
+                                        width: 6,
+                                        type: "select",
+                                        label: "Icon du menu",
+                                        disabled: (inputs) => {
+                                                    return !inputs[0].value;
+                                        },
+                                        value : "",
+                                        list : [],
+                                        generator : () =>  { return this.GenererateIconOptions() }});
+        let linktoInput = new InputSchema({
+                                        name : "LinkTo",
+                                        type: "select",
+                                        group: 2,
+                                        label: "Lien de navigation",
+                                        value : "",
+                                        list : [],
+                                        generator : () =>  { return this.links }});
+        let parentmenuInput = new InputSchema({
+                                        name : "ParentMenu",
+                                        type: "select",
+                                        group: 2,
+                                        label: "Menu parent",
+                                        value : "",
+                                        list : [],
+                                        generator : () =>  { return this.GenererateMenuOptions() }});
+
+        this.FormConfig = config;
+        this.FormStatus = status;
+        this.Inputs = [principalInput, titleInput, iconInput, linktoInput, parentmenuInput];
+    }
 
     async componentDidMount() {
         this.ReadInTempState("/api/menus");
@@ -178,13 +166,13 @@ class Menus extends CrudComponent {
     render() {
         return (
             <div className={adminStyles.adminPage}>
-        <section className="section-row">
-            <div styleName="leftColumn">
-                <FormGenerator FormSchema={this.FormSchema}/>
-            </div>
-            <div styleName="columnContainer rightColumn">
-                {this.DisplayMenusCard()}
-            </div>
+            <section className="section-row">
+                <div styleName="leftColumn">
+                    <FormGenerator Inputs={this.Inputs} FormConfig={this.FormConfig} FormStatus={this.FormStatus}/>
+                </div>
+                <div styleName="columnContainer rightColumn">
+                    {this.DisplayMenusCard()}
+                </div>
         </section>
     </div>
         )
