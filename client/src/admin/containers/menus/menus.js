@@ -15,21 +15,13 @@ class Menus extends CrudComponent {
     {
         super(props);
 
-        let config = new FormConfig({
-                                    title : "Formulaire",
-                                    url:  "/api/menus/",
-                                    httpRequest : "POST",
-                                    elementId : "adfa23-121",
-                                    size : "small",
-                                    modal : true});
+        //Configuration and form status for the form generator
+        let config = new FormConfig({url: "/api/menus/",httpRequest : "POST", modal: true});
+        let status  = new FormStatus();
 
-        let status  = new FormStatus({
-                                    open :false,
-                                    loading:  false,
-                                    errors:  [],
-                                    errorsHeader: "Les erreurs sont survenues"});
-
-        let principalInput = new InputSchema({name: "Principal",
+        //Inputs schema for the form generator
+        let principalInput = new InputSchema({
+                                        name: "Principal",
                                         type: "toggle",
                                         label : "Menu principal",
                                         value: false});

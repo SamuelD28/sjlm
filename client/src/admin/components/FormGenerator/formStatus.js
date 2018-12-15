@@ -1,6 +1,10 @@
 class FormStatus
 {
-    constructor({open, loading, errors, errorsHeader})
+    constructor({
+        open = false,
+        loading = false,
+        errors = [],
+        errorsHeader = "Les erreurs suivantes sont survenues"} = {})
     {
         this.open = open;
         this.loading = loading;

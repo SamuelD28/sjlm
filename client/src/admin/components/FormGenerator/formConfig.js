@@ -1,6 +1,12 @@
 class FormConfig
 {
-    constructor({title, url, httpRequest, elementId, size, modal})
+    constructor({
+                title = "Formulaire",
+                url = "",
+                httpRequest = "",
+                elementId= "",
+                size = "small",
+                modal = false} ={})
     {
         this.title = title;
         this.url = url;

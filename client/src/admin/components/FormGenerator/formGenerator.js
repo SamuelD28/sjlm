@@ -218,7 +218,6 @@ class FormGenerator extends Component
     Generate = () =>
     {
         if(this.state.FormConfig.modal){
-            console.log(true);
             return this.CreateModalForm();
         }
         else
@@ -330,7 +329,6 @@ class FormGenerator extends Component
      */
     GenerateFormGroups = () =>
     {
-        console.log(this.state);
         let groups = {};
         let negativeCount = 0;
         this.state.Inputs.map((input, index) =>{
