@@ -162,6 +162,57 @@ Utility.IsValuesUndefinedOrNull = function()
     }
 }
 
+//Function for verifying that a property inside a construtor comply to to the type and verfication function
+Utility.VerifyProperty = function(input, type, verificationFuntion, functionArguments){
+    if(input !== undefined)
+    {
+        if(input.constructor !== type)
+            throw new TypeError("Input" + input + " does not match the type : " + type);
+
+        if(verificationFuntion !== undefined && verificationFuntion instanceof Function)
+        {
+            if(!verificationFuntion(input, functionArguments))
+                throw new TypeError("Verification failed for input : " + input);
+        }
+    }
+}
+
+//Verify that a number is between a range.
+Utility.BetweenMinMaxNumber = function(num, {min = 0, max = 10})
+{
+    if(num > max || num < min)
+        return false;
+
+    return true;
+}
+
+//Verify that a string length is between a range
+Utility.BetweenMaxMinLength = function(str, {min = 5, max = 10} ={})
+{
+    if(!this.MinimumLength(str, {min : min}) || !this.MaximumLength(str, {max : max}))
+        return false;
+
+    return true;
+}
+
+//Verify that a string length is of a minimum length
+Utility.MinimumLength = function(str, {min = 5} = {})
+{
+    if(str.length < min)
+        return false;
+
+    return true;
+}
+
+//Verify that a string length is of a maximum lenght
+Utility.MaximumLength = function(str , {max = 10} = {})
+{
+    if(str.length > max)
+        return false;
+
+    return true;
+}
+
 // Function that gatters all the required inputs inside a form and verify that they have information in them
 Forms.ValidateFormInput = function(inputs)
 {

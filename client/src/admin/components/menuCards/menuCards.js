@@ -4,7 +4,7 @@ import {Modal} from 'semantic-ui-react';
 import FormComponent from '../FormComponent.js';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import Ajax from '../../../shared/ajax.js';
-import {FormGenerator} from '../FormGenerator/formGenerator.js';
+import {FormGenerator} from '../../../shared/FormGenerator/formGenerator.js';
 
 class MenuCards extends FormComponent{
 

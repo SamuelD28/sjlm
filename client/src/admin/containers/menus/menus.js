@@ -4,7 +4,7 @@ import CrudComponent from '../../components/CrudComponent.js';
 import Ajax from '../../../shared/ajax.js';
 
 import MenuCards from '../../components/menuCards/menuCards.js';
-import {FormGenerator, FormConfig, FormStatus, InputSchema} from '../../components/FormGenerator/formGenerator.js';
+import {FormGenerator, FormConfig, FormStatus, InputSchema} from '../../../shared/FormGenerator/formGenerator.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
