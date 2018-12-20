@@ -26,7 +26,8 @@ class FormGenerator extends Component
         this.state = {
             FormConfig : Object.assign({}, this.props.FormConfig),
             FormStatus : Object.assign({}, this.props.FormStatus),
-            Inputs : this.props.Inputs
+            Inputs : this.props.Inputs,
+            TextEditor : (this.props.TextEditor !== undefined)? this.props.TextEditor: undefined
         };
     }
 
@@ -35,18 +36,15 @@ class FormGenerator extends Component
      * inputs : Inputs used in the form
      * formConfig : Configuration used to determine wich action to take for submitting the form
      */
-    HandleSubmit = async(inputs, formConfig) =>
+    HandleSubmit = async() =>
     {
-        if(inputs === null || inputs === undefined)
-            throw new Error("Inputs must be specified in order to process the form");
-
-        if(formConfig === null || formConfig === null)
-            throw new Error("Form Configuration must be specified in order to process the form");
+        //debugging purpose
 
         await this.UpdateStateKey("FormStatus", {loading: true});
 
-        let formData = await this.HandleFormData(inputs);
-        let request = await this.HandleRequest(formData, formConfig);
+        let formData = await this.HandleFormData();
+        console.log(formData);
+        let request = await this.HandleRequest(formData);
 
         this.HandleRequestResponse(request);
     }
@@ -55,15 +53,30 @@ class FormGenerator extends Component
      * Method that extract the value out of the inputs in order to process the information in a database
      * inputs : Inputs to retrieve the data form
     */
-    HandleFormData = (inputs) =>
+    HandleFormData = () =>
     {
         let formData = {};
-        inputs.map((input, index) => {
+        //Extracts all the inputs data from the form
+        this.state.Inputs.map((input, index) => {
             if(input.value !== "")
                 formData = Object.assign({}, formData, {[input.name] : input.value});
 
             return formData;
         });
+        //Extract the data from the form editor. We dont verify that the html key has
+        //a value because it is linked to the value key. if value key has a value then
+        //we can assume html key has a value haswell
+        let textEditor = this.state.TextEditor;
+        if(textEditor !== undefined)
+        {
+            if(textEditor.value !== "")
+                formData = Object.assign({},
+                    formData,
+                    {
+                        [textEditor.name] : textEditor.value,
+                        [textEditor.name + "Html"] : textEditor.html
+                    });
+        }
         return formData;
     }
 
@@ -72,12 +85,12 @@ class FormGenerator extends Component
      * formData : Data to trough the request
      * fomConfig : Used to determine wich type of request to send
     */
-    HandleRequest = async(formData, formConfig) =>
+    HandleRequest = async(formData) =>
     {
         let request;
-        let url = formConfig.url;
-        let id = formConfig.elementId;
-        switch (formConfig.httpRequest.toUpperCase()){
+        let url = this.state.FormConfig.url;
+        let id = this.state.FormConfig.elementId;
+        switch (this.state.FormConfig.httpRequest.toUpperCase()){
             case "POST" : request = await Ajax.PostData(url, formData); break;
             case "PUT"  : request = await Ajax.PutData(url + id , formData); break;
             case "DELETE" : request = await Ajax.DeleteData(url + id); break;
@@ -121,6 +134,7 @@ class FormGenerator extends Component
      */
     HandleChangeInTextEditor = (TextEditor, inputName) =>
     {
+
         if(TextEditor.current === null)
             throw new TypeError("Null, Reference to a text editor must be passed as a parameter");
 
@@ -133,7 +147,7 @@ class FormGenerator extends Component
             html: editorFull.getHTML()
         }
 
-        this.HandleChange(targetObject);
+        this.UpdateStateKey("TextEditor" , targetObject);
     }
 
     /**
@@ -204,6 +218,9 @@ class FormGenerator extends Component
      */
     UpdateStateInputs = (inputName, inputValueObj) =>
     {
+        console.log(inputName);
+        console.log(inputValueObj);
+
         let index = this.state.Inputs.findIndex(input => input.name === inputName);
         let Inputs = Array.from(this.state.Inputs);
         Inputs[index] = Object.assign({}, Inputs[index], inputValueObj);
@@ -231,7 +248,7 @@ class FormGenerator extends Component
                 <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
                     Annuler
                 </button>
-                <button onClick={() => {this.HandleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
+                <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
                     Ajouter
                 </button>
             </Form>
@@ -265,7 +282,7 @@ class FormGenerator extends Component
                 <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
                     Annuler
                 </button>
-                <button onClick={() => {this.HandleSubmit(this.state.Inputs, this.state.FormConfig)}} className="btn btn-primary">
+                <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
                     Ajouter
                 </button>
             </Modal.Actions>
@@ -351,7 +368,7 @@ class FormGenerator extends Component
     GenerateFormFields = (groupedInputs) =>
     {
         return groupedInputs.map((input, index) => {
-            switch(input.type){
+            switch(input.type.toLowerCase()){
                 case "text": return(
                                     <TextInput
                                     key={index}

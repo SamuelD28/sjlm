@@ -9,6 +9,8 @@
 // list : array
 // generator : function that returns an array
 
+import {Utility} from '../utility.js';
+
 class InputSchema
 {
     constructor({
@@ -28,9 +30,28 @@ class InputSchema
         this.width = width;
         this.type = type;
         this.disabled = disabled;
-        this.vaue = value;
+        this.value = value;
         this.list = list;
         this.generator = generator;
+
+        //Verify that all the properties match a corresponding type
+        //and that they meet a certain constrait trough functions
+        Utility.VerifyProperty(this.name, String);
+        Utility.VerifyProperty(this.label, String);
+        Utility.VerifyProperty(this.list, Array);
+        Utility.VerifyProperty(this.generator, Function);
+        Utility.VerifyProperty(this.group,
+                               Number,
+                               Utility.BetweenMinMaxNumber,
+                               {min: 0, max: 16});
+        Utility.VerifyProperty(this.width,
+                               Number,
+                               Utility.BetweenMinMaxNumber,
+                               {min: 0, max: 16});
+        Utility.VerifyProperty(this.type,
+                               String,
+                               Utility.IsWithinEnumeration,
+                               {enumeration : ['SELECT','TEXT','UPLOADER','TEXTEDITOR','TOGGLE']});
     }
 }
 export default InputSchema;

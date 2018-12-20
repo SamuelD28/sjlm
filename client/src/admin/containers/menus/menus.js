@@ -16,23 +16,22 @@ class Menus extends CrudComponent {
         super(props);
 
         //Configuration and form status for the form generator
-        let config = new FormConfig({url: "/api/menus/",httpRequest : "POST", modal: true});
-        let status  = new FormStatus();
-
+        this.FormConfig = new FormConfig({url: "/api/menus/",httpRequest : "POST", modal: true, size: "large"});
+        this.FormStatus  = new FormStatus();
         //Inputs schema for the form generator
-        let principalInput = new InputSchema({
+        this.Inputs =   [new InputSchema({
                                         name: "Principal",
                                         type: "toggle",
                                         label : "Menu principal",
-                                        value: false});
-        let titleInput = new InputSchema({
+                                        value: false}),
+                        new InputSchema({
                                         name: "Title",
                                         group: 1,
                                         width: 10,
                                         type: "text",
                                         label: "Titre du menu",
-                                        value : ""});
-        let iconInput = new InputSchema({
+                                        value : ""}),
+                        new InputSchema({
                                         name : "Icon",
                                         group: 1,
                                         width: 6,
@@ -43,27 +42,30 @@ class Menus extends CrudComponent {
                                         },
                                         value : "",
                                         list : [],
-                                        generator : () =>  { return this.GenererateIconOptions() }});
-        let linktoInput = new InputSchema({
+                                        generator : () =>  { return this.GenererateIconOptions() }}),
+                        new InputSchema({
                                         name : "LinkTo",
                                         type: "select",
                                         group: 2,
                                         label: "Lien de navigation",
                                         value : "",
                                         list : [],
-                                        generator : () =>  { return this.links }});
-        let parentmenuInput = new InputSchema({
+                                        generator : () =>  { return this.links }}),
+                        new InputSchema({
                                         name : "ParentMenu",
                                         type: "select",
                                         group: 2,
                                         label: "Menu parent",
                                         value : "",
                                         list : [],
-                                        generator : () =>  { return this.GenererateMenuOptions() }});
+                                        generator : () =>  { return this.GenererateMenuOptions() }})
+        ];
 
-        this.FormConfig = config;
-        this.FormStatus = status;
-        this.Inputs = [principalInput, titleInput, iconInput, linktoInput, parentmenuInput];
+        this.TextEditor = {
+            name : "Peanut",
+            value: "",
+            html: ""
+        }
     }
 
     async componentDidMount() {
@@ -149,7 +151,7 @@ class Menus extends CrudComponent {
     DisplaySubmenu = (submenu) => {
         if (submenu.length > 0)
             return submenu.map((menu, index) => (
-                <div styleName="menuTitle">
+                <div styleName="menuTitle" key={index}>
                     <MenuCards menus={this.state.db} menu={menu} />
                 </div>
             ));
@@ -160,7 +162,11 @@ class Menus extends CrudComponent {
             <div className={adminStyles.adminPage}>
             <section className="section-row">
                 <div styleName="leftColumn">
-                    <FormGenerator Inputs={this.Inputs} FormConfig={this.FormConfig} FormStatus={this.FormStatus}/>
+                    <FormGenerator
+                    Inputs={this.Inputs}
+                    FormConfig={this.FormConfig}
+                    FormStatus={this.FormStatus}
+                    TextEditor={this.TextEditor}/>
                 </div>
                 <div styleName="columnContainer rightColumn">
                     {this.DisplayMenusCard()}

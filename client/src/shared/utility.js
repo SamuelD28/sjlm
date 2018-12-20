@@ -189,7 +189,7 @@ Utility.BetweenMinMaxNumber = function(num, {min = 0, max = 10})
 //Verify that a string length is between a range
 Utility.BetweenMaxMinLength = function(str, {min = 5, max = 10} ={})
 {
-    if(!this.MinimumLength(str, {min : min}) || !this.MaximumLength(str, {max : max}))
+    if(!Utility.MinimumLength(str, {min : min}) || !Utility.MaximumLength(str, {max : max}))
         return false;
 
     return true;
@@ -208,6 +208,18 @@ Utility.MinimumLength = function(str, {min = 5} = {})
 Utility.MaximumLength = function(str , {max = 10} = {})
 {
     if(str.length > max)
+        return false;
+
+    return true;
+}
+
+//Function that verify that a value is within a specified enumerations
+Utility.IsWithinEnumeration = function(val, {enumeration = []} = {})
+{
+    if(!(enumeration instanceof Array))
+        throw new TypeError("Enumration must be an array with values");
+
+    if(enumeration.indexOf(val.toUpperCase()) === -1)
         return false;
 
     return true;
