@@ -29,6 +29,10 @@ class FormGenerator extends Component
             Inputs : this.props.Inputs,
             TextEditor : (this.props.TextEditor !== undefined)? this.props.TextEditor: undefined
         };
+
+        //Creates a clone of the initial inputs value used by the form.
+        this.InitialData = Array.from(this.props.Inputs);
+
     }
 
     /**
@@ -38,12 +42,9 @@ class FormGenerator extends Component
      */
     HandleSubmit = async() =>
     {
-        //debugging purpose
-
         await this.UpdateStateKey("FormStatus", {loading: true});
 
-        let formData = await this.HandleFormData();
-        console.log(formData);
+        let formData = await this.ParseFormData();
         let request = await this.HandleRequest(formData);
 
         this.HandleRequestResponse(request);
@@ -52,15 +53,14 @@ class FormGenerator extends Component
     /**
      * Method that extract the value out of the inputs in order to process the information in a database
      * inputs : Inputs to retrieve the data form
+     * return : Raw form data used by the backend server. JSON format.
     */
-    HandleFormData = () =>
+    ParseFormData = () =>
     {
         let formData = {};
         //Extracts all the inputs data from the form
         this.state.Inputs.map((input, index) => {
-            if(input.value !== "")
-                formData = Object.assign({}, formData, {[input.name] : input.value});
-
+            formData = Object.assign({}, formData, {[input.name] : input.value});
             return formData;
         });
         //Extract the data from the form editor. We dont verify that the html key has
@@ -69,13 +69,12 @@ class FormGenerator extends Component
         let textEditor = this.state.TextEditor;
         if(textEditor !== undefined)
         {
-            if(textEditor.value !== "")
-                formData = Object.assign({},
-                    formData,
-                    {
-                        [textEditor.name] : textEditor.value,
-                        [textEditor.name + "Html"] : textEditor.html
-                    });
+            formData = Object.assign({},
+                formData,
+                {
+                    [textEditor.name] : textEditor.value,
+                    [textEditor.name + "Html"] : textEditor.html
+                });
         }
         return formData;
     }
@@ -123,7 +122,7 @@ class FormGenerator extends Component
         }
         else{
             await this.UpdateStateKey("FormStatus" , {loading: false});
-            this.HandeClose();
+            this.CloseModal();
         }
     }
 
@@ -156,9 +155,19 @@ class FormGenerator extends Component
      */
     HandleChange = async(target) =>
     {
+        // console.log(target);
         let inputName = target.name;
         let inputValue = (target.value != null) ? target.value: target.checked;
         this.UpdateStateInputs(inputName, {value : inputValue});
+    }
+
+    /**
+     * Method used to handle the cancel click
+     */
+    HandleCancel = () =>
+    {
+        this.setState({"Inputs" : this.InitialData});
+        this.CloseModal();
     }
 
     /**
@@ -172,10 +181,9 @@ class FormGenerator extends Component
     /**
      * Method used to handle the closing of the modal
      */
-    HandeClose = async() =>
+    CloseModal = () =>
     {
-        await this.UpdateStateKey("FormStatus" , {open : false});
-        this.ClearForm();
+        this.UpdateStateKey("FormStatus" , {open : false});
     }
 
     /**
@@ -186,16 +194,13 @@ class FormGenerator extends Component
         if(this.state.TextEditor !== undefined)
             await this.UpdateStateKey("TextEditor", {value : "" , html : ""});
 
-        let Inputs = Array.from(this.state.Inputs);
-        if(Inputs.length !== 0){
-            Inputs.map((input, index) => {
+        this.state.Inputs.map((input, index) => {
 
-                input.value =   (input.type === "toggle")? false:
-                                (input.type === "uploader")? []: "";
+            input.value =   (input.type === "toggle")? false:
+                            (input.type === "uploader")? []: "";
 
-                return this.HandleChange(input);
-            });
-        }
+            return this.HandleChange(input);
+        });
 
         if(this.state.FormStatus !== undefined)
             await this.UpdateStateKey("FormStatus" , {errors : []});
@@ -216,15 +221,15 @@ class FormGenerator extends Component
      * inputName : Name of the input to update
      * inputValueObj : New state value for the specified input name
      */
-    UpdateStateInputs = (inputName, inputValueObj) =>
+    UpdateStateInputs = async(inputName, inputValueObj) =>
     {
-        console.log(inputName);
-        console.log(inputValueObj);
-
+        // console.log(inputName);
+        // console.log(inputValueObj);
+        // console.log(index);
         let index = this.state.Inputs.findIndex(input => input.name === inputName);
         let Inputs = Array.from(this.state.Inputs);
         Inputs[index] = Object.assign({}, Inputs[index], inputValueObj);
-        this.setState({Inputs : Inputs});
+        await this.setState({Inputs : Inputs});
     }
 
     /***************************************************************/
@@ -245,7 +250,7 @@ class FormGenerator extends Component
         return(
             <Form loading={this.state.FormStatus.loading}>
                 {this.GenerateForm()}
-                <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
+                <button style={{float: "left"}} onClick={this.HandleCancel} className="btn btn-danger">
                     Annuler
                 </button>
                 <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
@@ -261,15 +266,10 @@ class FormGenerator extends Component
         <Modal
         size={this.state.FormConfig.size}
         open={this.state.FormStatus.open}
-        onClose={this.HandeClose}
+        onClose={this.HandleCancel}
         trigger={
         <div onClick={this.HandleOpen} className="cardContainer">
-            <div className="cardOverlay">
-                <div className="cardOverlayBtn">
-                    <i className="icon plus"></i>
-                    <h4>Ajouter</h4>
-                </div>
-            </div>
+            {this.state.FormConfig.modalOpener()}
         </div>
         }>
         <Modal.Header>{this.state.FormConfig.title}</Modal.Header>
@@ -279,7 +279,7 @@ class FormGenerator extends Component
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <button style={{float: "left"}} onClick={this.HandeClose} className="btn btn-danger">
+                <button style={{float: "left"}} onClick={this.HandleCancel} className="btn btn-danger">
                     Annuler
                 </button>
                 <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">

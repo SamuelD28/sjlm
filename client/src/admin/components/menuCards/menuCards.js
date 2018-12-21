@@ -1,79 +1,63 @@
 import React from 'react';
-import {Modal} from 'semantic-ui-react';
 
 import FormComponent from '../FormComponent.js';
-import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import Ajax from '../../../shared/ajax.js';
-import {FormGenerator} from '../../../shared/FormGenerator/formGenerator.js';
+import {FormGenerator, FormConfig, FormStatus, InputSchema} from '../../../shared/FormGenerator/formGenerator.js';
 
 class MenuCards extends FormComponent{
 
     constructor(props)
     {
         super(props);
-        this.FormSchema = {
-            Inputs : [
-                {
-                    name: "Principal",
-                    type: "toggle",
-                    label : "Menu principal",
-                    value: this.props.menu.Principal
-                },
-                {
-                    name: "Title",
-                    group: 1,
-                    width: 10,
-                    type: "text",
-                    label: "Titre du menu",
-                    value : this.props.menu.Title,
-                },
-                {
-                    name : "Icon",
-                    group: 1,
-                    width: 6,
-                    type: "select",
-                    label: "Icon du menu",
-                    disabled: (inputs) => {
-                                return !inputs[0].value;
-                    },
-                    value : this.props.menu.Icon,
-                    list : [],
-                    generator : () =>  { return this.GenererateIconOptions() }
-                },
-                {
-                    name : "LinkTo",
-                    type: "select",
-                    group: 2,
-                    label: "Lien de navigation",
-                    value : this.props.menu.LinkTo,
-                    list : [],
-                    generator : () =>  { return this.links }
-                },
-                {
-                    name : "ParentMenu",
-                    type: "select",
-                    group: 2,
-                    label: "Menu parent",
-                    value : this.props.menu.ParentMenu,
-                    list : [],
-                    generator : () =>  { return this.GenererateMenuOptions() }
-                },
-            ],
-            FormStatus : {
-                open: false,
-                loading : false,
-                errors : [],
-                errorsHeader : "La vérification à échoué pour les raisons suivantes : "
-            },
-            FormConfig : {
-                title : "Ajouter un menu",
-                url : "/api/menus/",
-                httpRequest : "PUT",
-                elementId : this.props.menu._id,
-                size : "small",
-                modal: false
-            }
-        };
+        this.FormConfig = new FormConfig({url: "/api/menus/",
+                                          elementId: props.menu._id,
+                                          httpRequest : "PUT",
+                                          modal: true,
+                                          size: "large",
+                                          modalOpener : this.ModalOpener});
+        this.FormStatus  = new FormStatus();
+        //Inputs schema for the form generator
+        this.Inputs =   [new InputSchema({
+                                        name: "Principal",
+                                        type: "toggle",
+                                        label : "Menu principal",
+                                        value: props.menu.Principal}),
+                        new InputSchema({
+                                        name: "Title",
+                                        group: 1,
+                                        width: 10,
+                                        type: "text",
+                                        label: "Titre du menu",
+                                        value : props.menu.Title}),
+                        new InputSchema({
+                                        name : "Icon",
+                                        group: 1,
+                                        width: 6,
+                                        type: "select",
+                                        label: "Icon du menu",
+                                        disabled: (inputs) => {
+                                                    return !inputs[0].value;
+                                        },
+                                        value : props.menu.Icon,
+                                        list : [],
+                                        generator : () =>  { return this.GenererateIconOptions() }}),
+                        new InputSchema({
+                                        name : "LinkTo",
+                                        type: "select",
+                                        group: 2,
+                                        label: "Lien de navigation",
+                                        value : props.menu.LinkTo,
+                                        list : [],
+                                        generator : () =>  { return this.links }}),
+                        new InputSchema({
+                                        name : "ParentMenu",
+                                        type: "select",
+                                        group: 2,
+                                        label: "Menu parent",
+                                        value : props.menu.ParentMenu,
+                                        list : [],
+                                        generator : () =>  { return this.GenererateMenuOptions() }})
+        ];
     }
 
     componentDidMount = async() =>
@@ -151,24 +135,21 @@ class MenuCards extends FormComponent{
         return NavigationOptions;
     }
 
+    ModalOpener = () =>
+    {
+        return(
+            <div>
+                <i className={`icon ${this.props.menu.Icon}`}></i>  {this.props.menu.Title.toUpperCase()}
+            </div>)
+    }
+
     render(){
     return(
-    <Modal
-    size="small"
-    trigger={
-    <div>
-        <i className={`icon ${this.props.menu.Icon}`}></i>  {this.props.menu.Title.toUpperCase()}
-    </div>
-    }
-    closeIcon>
-    <Modal.Header>Modifier un Menu</Modal.Header>
-        <Modal.Content>
-            <Modal.Description>
-                <FormGenerator FormSchema={this.FormSchema}/>
-            </Modal.Description>
-            <LoaderComponent action={this.state.action} />
-        </Modal.Content>
-    </Modal>
+        <FormGenerator
+        Inputs={this.Inputs}
+        TextEditor={this.TextEditor}
+        FormStatus={this.FormStatus}
+        FormConfig={this.FormConfig}/>
     )}
 }
 

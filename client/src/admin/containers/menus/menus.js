@@ -16,7 +16,11 @@ class Menus extends CrudComponent {
         super(props);
 
         //Configuration and form status for the form generator
-        this.FormConfig = new FormConfig({url: "/api/menus/",httpRequest : "POST", modal: true, size: "large"});
+        this.FormConfig = new FormConfig({url: "/api/menus/",
+                                          httpRequest : "POST",
+                                          modal: true,
+                                          size: "small",
+                                          modalOpener : this.ModalOpener});
         this.FormStatus  = new FormStatus();
         //Inputs schema for the form generator
         this.Inputs =   [new InputSchema({
@@ -60,12 +64,6 @@ class Menus extends CrudComponent {
                                         list : [],
                                         generator : () =>  { return this.GenererateMenuOptions() }})
         ];
-
-        this.TextEditor = {
-            name : "Peanut",
-            value: "",
-            html: ""
-        }
     }
 
     async componentDidMount() {
@@ -155,6 +153,17 @@ class Menus extends CrudComponent {
                     <MenuCards menus={this.state.db} menu={menu} />
                 </div>
             ));
+    }
+
+    ModalOpener = () =>
+    {
+        return(
+        <div className="cardOverlay">
+            <div className="cardOverlayBtn">
+                <i className="icon plus"></i>
+                <h4>Ajouter</h4>
+            </div>
+        </div>)
     }
 
     render() {

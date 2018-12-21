@@ -13,7 +13,8 @@ class FormConfig
                 httpRequest = "",
                 elementId= "",
                 size = "small",
-                modal = false} ={})
+                modal = false,
+                modalOpener} ={})
     {
         this.title = title;
         this.url = url;
@@ -21,8 +22,10 @@ class FormConfig
         this.elementId = elementId;
         this.size = size;
         this.modal = modal;
+        this.modalOpener = modalOpener;
 
         //Verify that the properties correspond to the expected.
+        Utility.VerifyProperty(this.modalOpener, Function);
         Utility.VerifyProperty(this.url, String);
         Utility.VerifyProperty(this.title, String);
         Utility.VerifyProperty(this.modal,Boolean);
