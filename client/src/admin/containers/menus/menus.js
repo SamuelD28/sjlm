@@ -1,10 +1,10 @@
 import React from 'react';
 import CrudComponent from '../../components/CrudComponent.js';
 
-import Ajax from '../../../shared/ajax.js';
 
 import MenuCards from '../../components/menuCards/menuCards.js';
-import {FormGenerator, FormConfig, FormStatus, InputSchema} from '../../../shared/FormGenerator/formGenerator.js';
+import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
+import MenuSchema from '../../formSchema/menuSchema.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
@@ -14,67 +14,12 @@ class Menus extends CrudComponent {
     constructor(props)
     {
         super(props);
-
-        //Configuration and form status for the form generator
-        this.FormConfig = new FormConfig({url: "/api/menus/",
-                                          httpRequest : "POST",
-                                          modal: true,
-                                          size: "small",
-                                          title: "Ajouter un Menu",
-                                          modalOpener : this.ModalOpener});
-        this.FormStatus  = new FormStatus();
-        //Inputs schema for the form generator
-        this.Inputs =   [new InputSchema({
-                                        name: "Principal",
-                                        type: "toggle",
-                                        label : "Menu principal",
-                                        value: false}),
-                        new InputSchema({
-                                        name: "Title",
-                                        group: 1,
-                                        width: 10,
-                                        type: "text",
-                                        label: "Titre du menu",
-                                        value : ""}),
-                        new InputSchema({
-                                        name : "Icon",
-                                        group: 1,
-                                        width: 6,
-                                        type: "select",
-                                        label: "Icon du menu",
-                                        disabled: (inputs) => {
-                                                    return !inputs[0].value;
-                                        },
-                                        value : "",
-                                        list : [],
-                                        generator : () =>  { return this.GenererateIconOptions() }}),
-                        new InputSchema({
-                                        name : "LinkTo",
-                                        type: "select",
-                                        group: 2,
-                                        label: "Lien de navigation",
-                                        value : "",
-                                        list : [],
-                                        generator : () =>  { return this.links }}),
-                        new InputSchema({
-                                        name : "ParentMenu",
-                                        disabled: (inputs) => {
-                                            return inputs[0].value;
-                                        },
-                                        type: "select",
-                                        group: 2,
-                                        label: "Menu parent",
-                                        value : "",
-                                        list : [],
-                                        generator : () =>  { return this.menus }})
-        ];
-
+        this.MenuSchema =  new MenuSchema();
     }
 
+    //Need to remove this
     async componentDidMount() {
         this.ReadInTempState("/api/menus");
-        this.links = await this.GenerateLinksOptions();
-        this.menus = await this.GenererateMenuOptions();
     }
 
     DisplayMenusCard = () => {
@@ -84,62 +29,6 @@ class Menus extends CrudComponent {
                     this.DisplayMenuPrincipal(menu, index)
                 )))
         }
-    }
-
-    GenererateMenuOptions = async() =>
-    {
-        let menus = await Ajax.GetData("/api/menus");
-        let menusOptions = [];
-        if(menus.data !== undefined)
-        {
-            menus.data.map((menu, index) => {
-                if(menu.Principal)
-                {
-                    let menuObject = {text: menu.Title, value: menu._id};
-                    menusOptions.push(menuObject);
-                }
-
-                return menusOptions;
-            });
-        }
-        console.log(menusOptions);
-        return menusOptions;
-    }
-
-    GenererateIconOptions = () =>
-    {
-        let IconsArray = [
-        "compass",
-        "balance",
-        "newspaper",
-        "home",
-        "mail",
-        "futbol",
-        "book",
-        "users",
-        "user"
-        ];
-        let IconsOptions = [];
-        IconsArray.map((icon, index) => {
-            let IconsObject = {text: icon, value: icon, icon: icon};
-            return IconsOptions.push(IconsObject);
-        });
-        return IconsOptions;
-    }
-
-    GenerateLinksOptions = async() =>
-    {
-        let navigationlinks =  await Ajax.GetData("/api/navigationlinks");
-        let NavigationOptions = [];
-        if(navigationlinks.data !== undefined)
-        {
-            navigationlinks.data.map((navlink, index) => {
-                let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
-                return NavigationOptions.push(NavigationObject);
-            });
-        }
-        console.log(NavigationOptions);
-        return NavigationOptions;
     }
 
     DisplayMenuPrincipal = (menu, index) => {
@@ -164,27 +53,15 @@ class Menus extends CrudComponent {
             ));
     }
 
-    ModalOpener = () =>
-    {
-        return(
-        <div className="cardOverlay">
-            <div className="cardOverlayBtn">
-                <i className="icon plus"></i>
-                <h4>Ajouter</h4>
-            </div>
-        </div>)
-    }
-
     render() {
         return (
             <div className={adminStyles.adminPage}>
             <section className="section-row">
                 <div styleName="leftColumn">
                     <FormGenerator
-                    Inputs={this.Inputs}
-                    FormConfig={this.FormConfig}
-                    FormStatus={this.FormStatus}
-                    TextEditor={this.TextEditor}/>
+                    Inputs={this.MenuSchema.menuInputs}
+                    FormConfig={this.MenuSchema.postConfig}
+                    FormStatus={new FormStatus()}/>
                 </div>
                 <div styleName="columnContainer rightColumn">
                     {this.DisplayMenusCard()}
