@@ -66,13 +66,15 @@ class Menus extends CrudComponent {
                                         label: "Menu parent",
                                         value : "",
                                         list : [],
-                                        generator : () =>  { return this.GenererateMenuOptions() }})
+                                        generator : () =>  { return this.menus }})
         ];
+
     }
 
     async componentDidMount() {
         this.ReadInTempState("/api/menus");
         this.links = await this.GenerateLinksOptions();
+        this.menus = await this.GenererateMenuOptions();
     }
 
     DisplayMenusCard = () => {
@@ -84,22 +86,24 @@ class Menus extends CrudComponent {
         }
     }
 
-    GenererateMenuOptions = () =>
+    GenererateMenuOptions = async() =>
     {
-        let MenuOptions = [];
-        if(this.state.db !== undefined)
+        let menus = await Ajax.GetData("/api/menus");
+        let menusOptions = [];
+        if(menus.data !== undefined)
         {
-            this.state.db.map((menu, index) => {
+            menus.data.map((menu, index) => {
                 if(menu.Principal)
                 {
-                    let MenuObject = {text: menu.Title, value: menu._id};
-                    MenuOptions.push(MenuObject);
+                    let menuObject = {text: menu.Title, value: menu._id};
+                    menusOptions.push(menuObject);
                 }
 
-                return MenuOptions;
+                return menusOptions;
             });
         }
-        return MenuOptions;
+        console.log(menusOptions);
+        return menusOptions;
     }
 
     GenererateIconOptions = () =>
@@ -134,6 +138,7 @@ class Menus extends CrudComponent {
                 return NavigationOptions.push(NavigationObject);
             });
         }
+        console.log(NavigationOptions);
         return NavigationOptions;
     }
 
