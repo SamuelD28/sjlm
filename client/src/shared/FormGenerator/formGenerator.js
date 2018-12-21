@@ -204,7 +204,7 @@ class FormGenerator extends Component
      */
     CloseModal = () =>
     {
-        this.UpdateStateKey("FormStatus" , {open : false});
+        this.UpdateStateKey("FormStatus" , {open : false, errors: []});
     }
 
     /**

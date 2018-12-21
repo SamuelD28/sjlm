@@ -8,7 +8,7 @@ let menuSchema = new Schema({
        type: String,
        required: true,
        minlength: 5,
-       maxlength: 100,
+       maxlength: 100
    },
    Principal:{
         type: Boolean,
@@ -21,7 +21,7 @@ let menuSchema = new Schema({
    },
    Icon:{
        type: String,
-       required: false,
+       required: false
    },
    SubMenu: [{
         type : Schema.Types.ObjectId,

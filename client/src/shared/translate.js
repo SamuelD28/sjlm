@@ -59,7 +59,7 @@ Translate.ModelError = function(modelError, modelProperties){
         case "maxlength": translatedContent = "est supérieur à la limite " + modelProperties.maxlength; break;
         case "ObjectId": translatedContent = " ne correspond pas à un Id existant"; break;
         case "CastError": translatedContent = " ne correspond pas au bon type de valeur"; break;
-        default : translatedContent = "Une erreur inconnue est survenue";
+        default : translatedContent = "la validation à échoué";
     }
     return translatedContent;
 }

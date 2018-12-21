@@ -1,7 +1,7 @@
 let User        = require("../models/UserMD.js"),
     Api         = new Object(),
     Utility     = require("../utils/utility.js");
-    
+
 //Method that needs to be implemented
 Api.Auth = function(req ,res){
    res.json(req.user);
@@ -21,11 +21,11 @@ Api.GetAllUser = function(req, res){
 
 Api.UpdateUser = function(req, res)
 {
-    let Query = User.findByIdAndUpdate(req.params.id, req.body, {new : true});
+    let Query = User.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true});
     Query.exec()
          .then((user) =>{
             Utility.CheckIfObjectIsEmpty(req.body);
-            Utility.GenerateResponse(true, res, user); 
+            Utility.GenerateResponse(true, res, user);
          })
          .catch((err) =>{
             Utility.GenerateResponse(false, res, err);
@@ -39,7 +39,7 @@ Api.RegisterUser = function(req, res)
 {
     User.create(req.body)
          .then((user)=>{
-            Utility.GenerateResponse(true, res, user); 
+            Utility.GenerateResponse(true, res, user);
          })
          .catch((err)=>{
             Utility.GenerateResponse(false, res, err);
@@ -51,7 +51,7 @@ Api.DeleteUser = function(req, res)
 {
     User.findByIdAndRemove(req.params.id)
         .then((user)=>{
-            Utility.GenerateResponse(true, res, user); 
+            Utility.GenerateResponse(true, res, user);
         })
         .catch((err)=>{
             Utility.GenerateResponse(false, res, err);
@@ -61,24 +61,24 @@ Api.DeleteUser = function(req, res)
 
 //Method to login a new user. Create a new cookie with a token in it
 Api.LoginUser = function(req, res){
-    
+
     User.findOne({'email':req.body.email}, (err, user)=> {
-        if(!user) 
+        if(!user)
             return res.json({success: false, message: "No email found"});
-            
+
         user.comparePassword(req.body.password, function(err, isMatch){
             if(!isMatch)
                 return res.json({success: false, message: "Wrong Password"});
-                
+
             user.generateToken((err, user) =>{
                 if(err)
                     return res.status(400);
-                
+
                 res.cookie("w_auth", user.token).status(200).json({
                     success: true
                 });
             });
-        });   
+        });
     });
 }
 
@@ -87,7 +87,7 @@ Api.LogoutUser = function(req, res)
     //Temporary because it should not reach this function if the user is not connected
     if(req.user === null)
         throw new Error("~No user currently log in");
-        
+
     User.findOne({token : req.user.token}, (err, user) => {
         if(err)
             Utility.GenerateResponse(false, res, err);

@@ -29,7 +29,7 @@ Api.CreateMenu = function(req, res)
 
 Api.UpdateMenu = function(req, res)
 {
-    let Query = Menu.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    let Query = Menu.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
     Query.exec()
          .then((menu) =>{
             Utility.CheckIfObjectIsEmpty(req.body);

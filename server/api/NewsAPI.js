@@ -31,7 +31,7 @@ Api.FindNewsById =function(req, res)
             Utility.GenerateResponse(false, res, err);
             Utility.WriteInLog("error", err);
         });
-        
+
 }
 
 Api.FindNewsByCategory = function(req, res)
@@ -60,7 +60,7 @@ Api.CreateNews = function(req, res)
 
 Api.UpdateNews = function(req, res)
 {
-    News.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    News.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true})
         .then((news) =>{
             Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, news);

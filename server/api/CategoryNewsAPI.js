@@ -37,7 +37,7 @@ Api.CreateCategoryNews = function(req, res)
 
 Api.UpdateCategoryNews = function(req, res)
 {
-    CategoryNews.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    CategoryNews.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true})
         .then((categories) =>{
             Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, categories);

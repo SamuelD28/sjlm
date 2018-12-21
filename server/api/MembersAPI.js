@@ -32,7 +32,7 @@ Api.CreateMembers = function(req, res)
 
 Api.UpdateMembers = function(req, res)
 {
-    let Query = Members.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    let Query = Members.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
     Query.exec()
          .then((members) =>{
             Utility.CheckIfObjectIsEmpty(req.body);

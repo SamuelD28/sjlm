@@ -32,7 +32,7 @@ Api.CreateNavigationLinks = function(req, res)
 
 Api.UpdateNavigationLinks = function(req, res)
 {
-    NavigationLinks.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    NavigationLinks.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true})
         .then((navigationLinks) =>{
             Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, navigationLinks);

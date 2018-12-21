@@ -47,7 +47,7 @@ Api.CreatePages = function(req, res)
 
 Api.UpdatePages = function(req, res)
 {
-    let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true});
+    let Query = Pages.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true});
     Query.exec()
          .then((page) =>{
             Utility.CheckIfObjectIsEmpty(req.body);
