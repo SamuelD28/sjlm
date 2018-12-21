@@ -14,7 +14,7 @@ class Menus extends CrudComponent {
     constructor(props)
     {
         super(props);
-        this.MenuSchema =  new MenuSchema();
+        this.MenuSchema = new MenuSchema();
     }
 
     //Need to remove this

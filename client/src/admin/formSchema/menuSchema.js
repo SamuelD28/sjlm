@@ -2,7 +2,7 @@
  *  Script that holds all the data used by the form generatro to generate
  *  multiple type of forms based on the data type.
  */
-import React from 'react';
+import React from 'react'; //React is needed here because we use jsx in the methods
 import Ajax from '../../shared/ajax.js';
 import {FormConfig, InputSchema} from '../../shared/FormGenerator/formGenerator.js';
 
@@ -93,6 +93,10 @@ class MenuSchema
     //a putconfig with the menu id.
     InsertValuesInInputs = (menu) =>
     {
+        Object.entries(menu).forEach(
+            ([key, value]) =>{
+
+            })
         //bind the menu values to the inputs. Return a populated inputs arrays
     }
 
