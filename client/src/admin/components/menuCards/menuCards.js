@@ -13,7 +13,8 @@ class MenuCards extends FormComponent{
                                           elementId: props.menu._id,
                                           httpRequest : "PUT",
                                           modal: true,
-                                          size: "large",
+                                          title: "Modifier un menu",
+                                          size: "small",
                                           modalOpener : this.ModalOpener});
         this.FormStatus  = new FormStatus();
         //Inputs schema for the form generator
@@ -53,6 +54,9 @@ class MenuCards extends FormComponent{
                                         name : "ParentMenu",
                                         type: "select",
                                         group: 2,
+                                        disabled: (inputs) => {
+                                            return inputs[0].value;
+                                        },
                                         label: "Menu parent",
                                         value : props.menu.ParentMenu,
                                         list : [],

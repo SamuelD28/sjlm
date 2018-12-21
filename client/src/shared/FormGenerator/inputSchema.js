@@ -14,14 +14,14 @@ import {Utility} from '../utility.js';
 class InputSchema
 {
     constructor({
-                name,
-                label,
+                name = "Unnamed Input",
+                label = "Unnamed Input...",
                 group,
                 width,
-                type,
-                disabled,
-                value,
-                list,
+                type = "text",
+                disabled = () => false,
+                value = "",
+                list = [],
                 generator})
     {
         this.name = name;
@@ -51,7 +51,7 @@ class InputSchema
         Utility.VerifyProperty(this.type,
                                String,
                                Utility.IsWithinEnumeration,
-                               {enumeration : ['SELECT','TEXT','UPLOADER','TEXTEDITOR','TOGGLE']});
+                               {enumeration : ['SELECT','TEXT','UPLOADER','TEXTEDITOR','TOGGLE','PASSWORD']});
     }
 }
 export default InputSchema;

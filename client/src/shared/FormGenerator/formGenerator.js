@@ -20,18 +20,24 @@ import FileInput from './FileInput/fileInput.js';
 
 class FormGenerator extends Component
 {
+    /**
+     * Constructor for the form generator. The constructor
+     * needs a form config, form status and at least one
+     * input in order to work. Otherwise the component
+     * will throw an error. The text editor is optionnal.
+     */
     constructor(props)
     {
         super(props);
         this.state = {
-            FormConfig : Object.assign({}, this.props.FormConfig),
-            FormStatus : Object.assign({}, this.props.FormStatus),
-            Inputs : this.props.Inputs,
-            TextEditor : (this.props.TextEditor !== undefined)? this.props.TextEditor: undefined
+            FormConfig : Object.assign({}, props.FormConfig),
+            FormStatus : Object.assign({}, props.FormStatus),
+            Inputs : props.Inputs,
+            TextEditor : (props.TextEditor !== undefined)? props.TextEditor: undefined
         };
 
         //Creates a clone of the initial inputs value used by the form.
-        this.InitialData = Array.from(this.props.Inputs);
+        this.InitialData = Array.from(props.Inputs);
 
     }
 
@@ -47,6 +53,8 @@ class FormGenerator extends Component
         let formData = await this.ParseFormData();
         let request = await this.HandleRequest(formData);
 
+        console.log(request);
+
         this.HandleRequestResponse(request);
     }
 
@@ -60,7 +68,8 @@ class FormGenerator extends Component
         let formData = {};
         //Extracts all the inputs data from the form
         this.state.Inputs.map((input, index) => {
-            formData = Object.assign({}, formData, {[input.name] : input.value});
+            if(!input.disabled(this.state.Inputs))
+                formData = Object.assign({}, formData, {[input.name] : input.value});
             return formData;
         });
         //Extract the data from the form editor. We dont verify that the html key has
@@ -104,19 +113,31 @@ class FormGenerator extends Component
      */
     HandleRequestResponse = async(request) =>
     {
-        //ERROR WITH UNDEFINED REQUEST OBJECT
-
         if(!request.success){
             let errors = [];
 
-            Object.keys(request.data.errors).map((key, index) =>
-            {
-                let requestAlias = request.data.errors[key];
-                return  errors.push(
-                            Translate.ModelKey(requestAlias.path) + " " +
-                            Translate.ModelError(requestAlias.kind, requestAlias.properties)
-                );
-            });
+            //If multiple errors occured in the backend validation
+            if(request.data.errors !== undefined){
+                Object.keys(request.data.errors).map((key, index) =>
+                {
+                    let requestAlias = request.data.errors[key];
+                    return  errors.push(
+                                Translate.ModelKey(requestAlias.path) + " " +
+                                Translate.ModelError(requestAlias.kind, requestAlias.properties)
+                    );
+                });
+            }
+            //If only one error occured in the backend validation
+            else if(request.data.kind !== undefined){
+                errors.push(
+                        Translate.ModelKey(request.data.path) + " " +
+                        Translate.ModelError(request.data.kind, request.data.properties)
+                    )
+            }
+            //Default display if an unknown error occured in the backend validation
+            else{
+                errors.push("Une erreur est survenue dans le transmission du formulaire");
+            }
 
             this.UpdateStateKey("FormStatus" , {loading : false, errors : errors});
         }
@@ -206,6 +227,8 @@ class FormGenerator extends Component
             await this.UpdateStateKey("FormStatus" , {errors : []});
     }
 
+    /*-----Method that handle the updating of the state object-----*/
+
     /**
      * Method that update a key inside the state Object
      * stateKey: Name of the key to update
@@ -232,10 +255,12 @@ class FormGenerator extends Component
         await this.setState({Inputs : Inputs});
     }
 
-    /***************************************************************/
-    /******************Generator Methods for the Form***************/
-    /***************************************************************/
+    /*-----Generator Methods for the Form. Responsible for the UI creation------*/
 
+    /**
+     * Method that initiate the generation of the entire form generator component
+     * Acts as the entry point.
+     */
     Generate = () =>
     {
         if(this.state.FormConfig.modal){
@@ -245,6 +270,9 @@ class FormGenerator extends Component
             return this.CreatePlainForm();
     }
 
+    /**
+     * Method that generate a plain form.
+     */
     CreatePlainForm = () =>
     {
         return(
@@ -260,6 +288,9 @@ class FormGenerator extends Component
         )
     }
 
+    /**
+     * Method that generate a form that uses a modal to display its content
+     */
     CreateModalForm = () =>
     {
         return(
@@ -280,10 +311,10 @@ class FormGenerator extends Component
             </Modal.Content>
             <Modal.Actions>
                 <button style={{float: "left"}} onClick={this.HandleCancel} className="btn btn-danger">
-                    Annuler
+                    {this.state.FormConfig.httpRequest === "PUT"? 'Supprimer': 'Annuler'}
                 </button>
                 <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
-                    Ajouter
+                    {this.state.FormConfig.httpRequest === "PUT"? 'Modifier': 'Ajouter'}
                 </button>
             </Modal.Actions>
         </Modal>

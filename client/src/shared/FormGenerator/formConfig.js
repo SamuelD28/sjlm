@@ -36,7 +36,7 @@ class FormConfig
         Utility.VerifyProperty(this.httpRequest,
                                 String,
                                 Utility.IsWithinEnumeration,
-                                {enumeration : ['POST', 'GET', 'PUT', 'DELETE']});
+                                {enumeration : ['POST', 'PUT', 'DELETE']});
         Utility.VerifyProperty(this.size,
                                 String,
                                 Utility.IsWithinEnumeration,

@@ -20,6 +20,7 @@ class Menus extends CrudComponent {
                                           httpRequest : "POST",
                                           modal: true,
                                           size: "small",
+                                          title: "Ajouter un Menu",
                                           modalOpener : this.ModalOpener});
         this.FormStatus  = new FormStatus();
         //Inputs schema for the form generator
@@ -57,6 +58,9 @@ class Menus extends CrudComponent {
                                         generator : () =>  { return this.links }}),
                         new InputSchema({
                                         name : "ParentMenu",
+                                        disabled: (inputs) => {
+                                            return inputs[0].value;
+                                        },
                                         type: "select",
                                         group: 2,
                                         label: "Menu parent",
