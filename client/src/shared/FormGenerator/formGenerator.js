@@ -191,6 +191,22 @@ class FormGenerator extends Component
         this.CloseModal();
     }
 
+    HandleNegativeAction = () =>
+    {
+        if(this.state.FormConfig.httpRequest === "POST"){
+            this.HandleCancel();
+        }
+        else if(this.state.FormConfig.httpRequest === "PUT"){
+            this.HandleDelete();
+        }
+    }
+
+    HandleDelete = () =>
+    {
+        let url  = this.state.FormConfig.url + this.state.FormConfig.elementId;
+        Ajax.DeleteData(url);
+    }
+
     /**
      * Method used to handle the opening of the modal
      */
@@ -312,7 +328,7 @@ class FormGenerator extends Component
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <button style={{float: "left"}} onClick={this.HandleCancel} className="btn btn-danger">
+                <button style={{float: "left"}} onClick={this.HandleNegativeAction} className="btn btn-danger">
                     {this.state.FormConfig.httpRequest === "PUT"? 'Supprimer': 'Annuler'}
                 </button>
                 <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">

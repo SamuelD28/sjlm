@@ -91,9 +91,18 @@ class MenuSchema
     BindInputs = (menu) =>
     {
         this.menuInputs.forEach((input) =>{
-            if(menu[input.name] !== undefined)
-                return input.value = menu[input.name];
+            if(menu[input.name] !== undefined){
+                input.value = menu[input.name];
+                this.ApplyCustomConstraints(input);
+            }
         });
+    }
+
+    ApplyCustomConstraints = (input) =>
+    {
+        //Custom constaints
+        if(input.name === "Principal" && input.value)
+            input.disabled = () => true;
     }
 
     BindFormId = (id) =>
