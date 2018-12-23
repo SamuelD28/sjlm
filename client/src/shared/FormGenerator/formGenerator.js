@@ -288,6 +288,8 @@ class FormGenerator extends Component
         )
     }
 
+
+
     /**
      * Method that generate a form that uses a modal to display its content
      */

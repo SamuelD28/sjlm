@@ -15,6 +15,7 @@ class Menus extends CrudComponent {
     {
         super(props);
         this.MenuSchema = new MenuSchema();
+        this.MenuSchema.postConfig.modalOpener = this.ModalOpener;
     }
 
     //Need to remove this
@@ -36,7 +37,7 @@ class Menus extends CrudComponent {
             return(
             <div key={index}>
                 <div styleName="menuTitle">
-                    <MenuCards menus={this.state.db} menu={menu}/>
+                    <MenuCards menu={menu}/>
                 </div>
                 <div styleName="submenuContainer">
                     {this.DisplaySubmenu(menu.SubMenu)}
@@ -48,9 +49,20 @@ class Menus extends CrudComponent {
         if (submenu.length > 0)
             return submenu.map((menu, index) => (
                 <div styleName="menuTitle" key={index}>
-                    <MenuCards menus={this.state.db} menu={menu} />
+                    <MenuCards menu={menu} />
                 </div>
             ));
+    }
+
+    ModalOpener = () =>
+    {
+        return(
+        <div className="cardOverlay">
+            <div className="cardOverlayBtn">
+                <i className="icon plus"></i>
+                <h4>Ajouter</h4>
+            </div>
+        </div>)
     }
 
     render() {
