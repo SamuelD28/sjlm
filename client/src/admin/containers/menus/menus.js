@@ -1,7 +1,6 @@
-import React from 'react';
-import CrudComponent from '../../components/CrudComponent.js';
+import React, {Component} from 'react';
 
-
+import Ajax from '../../../shared/ajax.js';
 import MenuCards from '../../components/menuCards/menuCards.js';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
 import MenuSchema from '../../formSchema/menuSchema.js';
@@ -10,24 +9,31 @@ import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
 import adminStyles from '../index.module.css';
 
-class Menus extends CrudComponent {
+class Menus extends Component {
     constructor(props)
     {
         super(props);
         this.Inputs = MenuSchema.GetEmptyInputs();
         this.PostConfig = MenuSchema.GetPostConfig();
         this.PostConfig.modalOpener = this.ModalOpener;
+        this.state = {};
     }
 
     //Need to remove this
-    async componentDidMount() {
-        this.ReadInTempState("/api/menus");
+    componentDidMount() {
+        this.GetMenus();
+    }
+
+    GetMenus = async() =>
+    {
+        let request = await Ajax.GetData("/api/menus/");
+        this.setState({menus : request.data});
     }
 
     DisplayMenusCard = () => {
-        if (this.state.db !== undefined) {
+        if (this.state.menus !== undefined) {
             return (
-                this.state.db.map((menu, index) => (
+                this.state.menus.map((menu, index) => (
                     this.DisplayMenuPrincipal(menu, index)
                 )))
         }
@@ -38,7 +44,7 @@ class Menus extends CrudComponent {
             return(
             <div key={index}>
                 <div styleName="menuTitle">
-                    <MenuCards menu={menu}/>
+                    <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
                 <div styleName="submenuContainer">
                     {this.DisplaySubmenu(menu.SubMenu)}
@@ -50,7 +56,7 @@ class Menus extends CrudComponent {
         if (submenu.length > 0)
             return submenu.map((menu, index) => (
                 <div styleName="menuTitle" key={index}>
-                    <MenuCards menu={menu} />
+                    <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
             ));
     }
@@ -74,7 +80,8 @@ class Menus extends CrudComponent {
                     <FormGenerator
                     Inputs={this.Inputs}
                     FormConfig={this.PostConfig}
-                    FormStatus={new FormStatus()}/>
+                    FormStatus={new FormStatus()}
+                    RefreshDataSet={this.GetMenus}/>
                 </div>
                 <div styleName="columnContainer rightColumn">
                     {this.DisplayMenusCard()}

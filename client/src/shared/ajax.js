@@ -92,15 +92,21 @@ Ajax.DeleteData = async function(url)
     try{
         Utility.IsValuesUndefinedOrNull(url);
 
+        let deletedData;
         let ajaxContent = {method:"DELETE"};
 
         await   fetch(url, ajaxContent)
                 .then((res) =>{
                     return res.json();
                 })
+                .then((data) => {
+                    deletedData = data;
+                })
                 .catch((err) =>{
                     console.log(err.message);
                 });
+
+        return deletedData;
     }
     catch(err){
         console.log(err.message);

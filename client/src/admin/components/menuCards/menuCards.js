@@ -1,7 +1,6 @@
 import React from 'react';
 
 import FormComponent from '../FormComponent.js';
-import Ajax from '../../../shared/ajax.js';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
 import MenuSchema from '../../formSchema/menuSchema.js';
 
@@ -31,7 +30,9 @@ class MenuCards extends FormComponent{
         <FormGenerator
         Inputs={this.Inputs}
         FormStatus={new FormStatus()}
-        FormConfig={this.PutConfig}/>
+        FormConfig={this.PutConfig}
+        RefreshDataSet={this.props.RefreshDataSet}
+        />
     )}
 }
 

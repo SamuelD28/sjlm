@@ -33,7 +33,7 @@ class FormGenerator extends Component
             FormConfig : Object.assign({}, props.FormConfig),
             FormStatus : Object.assign({}, props.FormStatus),
             Inputs : props.Inputs,
-            TextEditor : (props.TextEditor !== undefined)? props.TextEditor: undefined
+            TextEditor :  props.TextEditor
         };
 
         //Creates a clone of the initial inputs value used by the form.
@@ -49,12 +49,8 @@ class FormGenerator extends Component
     HandleSubmit = async() =>
     {
         await this.UpdateStateKey("FormStatus", {loading: true});
-
         let formData = await this.ParseFormData();
         let request = await this.HandleRequest(formData);
-
-        console.log(request);
-
         this.HandleRequestResponse(request);
     }
 
@@ -91,14 +87,16 @@ class FormGenerator extends Component
     /**
      * Method responsible for making the request to a database
      * formData : Data to trough the request
-     * fomConfig : Used to determine wich type of request to send
     */
-    HandleRequest = async(formData) =>
+    HandleRequest = async(formData, p_httpRequest) =>
     {
+        let httpRequest = (p_httpRequest !== undefined)?
+                            p_httpRequest:
+                            this.state.FormConfig.httpRequest.toUpperCase();
         let request;
         let url = this.state.FormConfig.url;
-        let id = this.state.FormConfig.elementId;
-        switch (this.state.FormConfig.httpRequest.toUpperCase()){
+        let id  = this.state.FormConfig.elementId;
+        switch (httpRequest){
             case "POST" : request = await Ajax.PostData(url, formData); break;
             case "PUT"  : request = await Ajax.PutData(url + id , formData); break;
             case "DELETE" : request = await Ajax.DeleteData(url + id); break;
@@ -138,12 +136,13 @@ class FormGenerator extends Component
             else{
                 errors.push("Une erreur est survenue dans le transmission du formulaire");
             }
-
             this.UpdateStateKey("FormStatus" , {loading : false, errors : errors});
         }
         else{
             await this.UpdateStateKey("FormStatus" , {loading: false});
+            this.props.RefreshDataSet();
             this.CloseModal();
+            this.ClearForm();
         }
     }
 
@@ -191,6 +190,11 @@ class FormGenerator extends Component
         this.CloseModal();
     }
 
+    /**
+     *  Method that handle the negative button click.
+     *  Close the modal or delete the current dataset
+     * from the database.
+     */
     HandleNegativeAction = () =>
     {
         if(this.state.FormConfig.httpRequest === "POST"){
@@ -201,10 +205,13 @@ class FormGenerator extends Component
         }
     }
 
-    HandleDelete = () =>
+    /**
+     * Delete the current dataset from the database.
+     */
+    HandleDelete = async() =>
     {
-        let url  = this.state.FormConfig.url + this.state.FormConfig.elementId;
-        Ajax.DeleteData(url);
+        let request  = await this.HandleRequest(null, "DELETE");
+        this.HandleRequestResponse(request);
     }
 
     /**
