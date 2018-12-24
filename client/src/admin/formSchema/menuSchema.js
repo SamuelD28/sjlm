@@ -148,16 +148,27 @@ let m_menuInputs =   [new InputSchema({
                     })
     ];
 
+//-----Menu Schema functions for accessing the data outside this script-----//
+
+/**
+ * Methods that returns a new array with empty inputs
+ */
 MenuSchema.GetEmptyInputs = () =>
 {
     return CloneMenuInputs();
 }
 
+/**
+ * Method that return a new object based on the put config
+ */
 MenuSchema.GetPutConfig = () =>
 {
     return Object.assign({}, m_putConfig);
 }
 
+/**
+ * Method that return a new object based on the post config
+ */
 MenuSchema.GetPostConfig = () =>
 {
     return Object.assign({}, m_postConfig);
@@ -167,6 +178,8 @@ MenuSchema.GetPostConfig = () =>
  * Method that populate the inputs with an existing menu.
  * return a set of inputs with value in them and modify returns
  * a putconfig with the menu id.
+ * menu : menu object to bind the inputs to
+ * return : array of all the binded inputs
  */
 MenuSchema.GetBindedInputs = (menu) =>
 {
@@ -180,6 +193,12 @@ MenuSchema.GetBindedInputs = (menu) =>
     return bindedInputs;
 }
 
+/**
+ * Method that return a new object based on the put config and
+ * assign the elementid property to the parameter id
+ * id : id to assign the config to
+ * return : the binded put configuration
+ */
 MenuSchema.GetBindedPutConfig = (id) =>
 {
     let bindedPutConfig = MenuSchema.GetPutConfig();
@@ -187,6 +206,10 @@ MenuSchema.GetBindedPutConfig = (id) =>
     return bindedPutConfig;
 }
 
+/**
+ * Method that apply a custom constraits to the inputs.
+ * Can be left empty
+ */
 MenuSchema.ApplyCustomConstraints = (input) =>
 {
     //Custom constaints
