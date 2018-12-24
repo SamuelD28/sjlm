@@ -142,7 +142,10 @@ class FormGenerator extends Component
             await this.UpdateStateKey("FormStatus" , {loading: false});
             this.props.RefreshDataSet();
             this.CloseModal();
-            this.ClearForm();
+
+
+            if(this.state.FormConfig.httpRequest === "POST")
+                this.ClearForm();
         }
     }
 
@@ -310,8 +313,6 @@ class FormGenerator extends Component
             </Form>
         )
     }
-
-
 
     /**
      * Method that generate a form that uses a modal to display its content
