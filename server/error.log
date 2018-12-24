@@ -10665,3 +10665,7 @@
         '$isValidatorError': true } },
   _message: 'Menu validation failed',
   name: 'ValidationError' }
+[2018-12-24T04:52:02.823] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:68:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:63:21)
