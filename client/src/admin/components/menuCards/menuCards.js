@@ -10,14 +10,9 @@ class MenuCards extends FormComponent{
     constructor(props)
     {
         super(props);
-        //Creates a new menu Schema used by the form generator
-        this.menuSchema = new MenuSchema();
-        //Sets the ui that will be displayed to open up the modal form
-        this.menuSchema.putConfig.modalOpener = this.ModalOpener;
-        //Bind the inputs to the current menu
-        this.menuSchema.BindInputs(props.menu);
-        //Bind the menu id to the form id. Used by the form generator for put request
-        this.menuSchema.BindFormId(props.menu._id);
+        this.PutConfig = MenuSchema.GetBindedPutConfig(props.menu._id);
+        this.PutConfig.modalOpener = this.ModalOpener;
+        this.Inputs = MenuSchema.GetBindedInputs(props.menu);
     }
 
     /**
@@ -34,9 +29,9 @@ class MenuCards extends FormComponent{
     render(){
     return(
         <FormGenerator
-        Inputs={this.menuSchema.menuInputs}
+        Inputs={this.Inputs}
         FormStatus={new FormStatus()}
-        FormConfig={this.menuSchema.putConfig}/>
+        FormConfig={this.PutConfig}/>
     )}
 }
 

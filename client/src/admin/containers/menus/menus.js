@@ -14,8 +14,9 @@ class Menus extends CrudComponent {
     constructor(props)
     {
         super(props);
-        this.MenuSchema = new MenuSchema();
-        this.MenuSchema.postConfig.modalOpener = this.ModalOpener;
+        this.Inputs = MenuSchema.GetEmptyInputs();
+        this.PostConfig = MenuSchema.GetPostConfig();
+        this.PostConfig.modalOpener = this.ModalOpener;
     }
 
     //Need to remove this
@@ -71,8 +72,8 @@ class Menus extends CrudComponent {
             <section className="section-row">
                 <div styleName="leftColumn">
                     <FormGenerator
-                    Inputs={this.MenuSchema.menuInputs}
-                    FormConfig={this.MenuSchema.postConfig}
+                    Inputs={this.Inputs}
+                    FormConfig={this.PostConfig}
                     FormStatus={new FormStatus()}/>
                 </div>
                 <div styleName="columnContainer rightColumn">
