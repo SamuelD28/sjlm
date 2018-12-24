@@ -7,103 +7,22 @@
 import Ajax from '../../shared/ajax.js';
 import {FormConfig, InputSchema} from '../../shared/FormGenerator/formGenerator.js';
 
-//Variables
+//Variables and object declaration that is going to be used by the form
 let MenuSchema = {},
     m_menuOptions,
     m_linkOptions,
-    m_iconOptions;
-
-Init();
-
-async function Init()
-{
-    m_menuOptions = await GenererateMenuOptions();
-    m_linkOptions = await GenerateLinksOptions();
-    m_iconOptions = await GenererateIconOptions();
-}
-
-async function GenererateMenuOptions()
-{
-    let menus = await Ajax.GetData("/api/menus");
-    let menusOptions = [];
-    if(menus.data !== undefined)
-    {
-        menus.data.map((menu, index) => {
-            if(menu.Principal)
-            {
-                let menuObject = {text: menu.Title, value: menu._id};
-                menusOptions.push(menuObject);
-            }
-
-            return menusOptions;
-        });
-    }
-    return menusOptions;
-}
-
-async function GenererateIconOptions()
-{
-    let IconsArray = [
-    "compass",
-    "balance",
-    "newspaper",
-    "home",
-    "mail",
-    "futbol",
-    "book",
-    "users",
-    "user"
-    ];
-    let IconsOptions = [];
-    IconsArray.map((icon, index) => {
-        let IconsObject = {text: icon, value: icon, icon: icon};
-        return IconsOptions.push(IconsObject);
-    });
-    return IconsOptions;
-}
-
-async function GenerateLinksOptions()
-{
-    let navigationlinks =  await Ajax.GetData("/api/navigationlinks");
-    let NavigationOptions = [];
-    if(navigationlinks.data !== undefined)
-    {
-        navigationlinks.data.map((navlink, index) => {
-            let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
-            return NavigationOptions.push(NavigationObject);
-        });
-    }
-    return NavigationOptions;
-}
-
-function CloneMenuInputs()
-{
-    let newArray = [];
-    m_menuInputs.forEach((input) =>
-    {
-        newArray.push(Object.assign({}, input));
-    });
-    return newArray;
-}
-
-//Contains the form configuration for creating a post request
-let m_postConfig = new FormConfig({url: "/api/menus/",
+    m_iconOptions,
+    m_postConfig = new FormConfig({url: "/api/menus/",
                                  httpRequest : "POST",
                                  modal: true,
                                  size: "small",
-                                 title: "Ajouter un Menu"});
-
-//Contains the form configuration for creating a put request
-//Must assign the key element id outside this file in order to use it.
-let m_putConfig = new FormConfig({url: "/api/menus/",
+                                 title: "Ajouter un Menu"}),
+    m_putConfig = new FormConfig({url: "/api/menus/",
                                 httpRequest : "PUT",
                                 modal: true,
                                 title: "Modifier un menu",
-                                size: "small"});
-
-//Contains all the definition for the inputs to display
-//The form generator need at least one input
-let m_menuInputs =   [new InputSchema({
+                                size: "small"}),
+    m_menuInputs =   [new InputSchema({
                                     name: "Principal",
                                     type: "toggle",
                                     label : "Menu principal",
@@ -147,6 +66,104 @@ let m_menuInputs =   [new InputSchema({
                                     generator : () =>  { return m_menuOptions; }
                     })
     ];
+
+Init();
+
+/**
+ * Function that assign all the select inputs
+ * that their respective data set.
+ * **this function was necessary in order
+ * to make use of the async keyword. Could
+ * find a workaround later on but for right
+ * now it works fine.
+ */
+async function Init()
+{
+    m_menuOptions = await GenererateMenuOptions();
+    m_linkOptions = await GenerateLinksOptions();
+    m_iconOptions = await GenererateIconOptions();
+}
+
+/**
+ * Function that generate all the menu options
+ * used by the select input ParentMenu
+ */
+async function GenererateMenuOptions()
+{
+    let menus = await Ajax.GetData("/api/menus");
+    let menusOptions = [];
+    if(menus.data !== undefined)
+    {
+        menus.data.map((menu, index) => {
+            if(menu.Principal)
+            {
+                let menuObject = {text: menu.Title, value: menu._id};
+                menusOptions.push(menuObject);
+            }
+
+            return menusOptions;
+        });
+    }
+    return menusOptions;
+}
+
+/**
+ * Function that generate all the icon options
+ * used by the select input Icon
+ */
+async function GenererateIconOptions()
+{
+    let IconsArray = [
+    "compass",
+    "balance",
+    "newspaper",
+    "home",
+    "mail",
+    "futbol",
+    "book",
+    "users",
+    "user"
+    ];
+    let IconsOptions = [];
+    IconsArray.map((icon, index) => {
+        let IconsObject = {text: icon, value: icon, icon: icon};
+        return IconsOptions.push(IconsObject);
+    });
+    return IconsOptions;
+}
+
+/**
+ * Function that generate all the link options
+ * used by the select input LinkTo
+ */
+async function GenerateLinksOptions()
+{
+    let navigationlinks =  await Ajax.GetData("/api/navigationlinks");
+    let NavigationOptions = [];
+    if(navigationlinks.data !== undefined)
+    {
+        navigationlinks.data.map((navlink, index) => {
+            let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
+            return NavigationOptions.push(NavigationObject);
+        });
+    }
+    return NavigationOptions;
+}
+
+/**
+ * Function that creates a deep copy of the menu inputs and
+ * returns the copy in the form of an array. Necessary in order
+ * to avoid having collision betweens inputs and different forms.
+ */
+function CloneMenuInputs()
+{
+    let newArray = [];
+    m_menuInputs.forEach((input) =>
+    {
+        newArray.push(Object.assign({}, input));
+    });
+    return newArray;
+}
 
 //-----Menu Schema functions for accessing the data outside this script-----//
 
