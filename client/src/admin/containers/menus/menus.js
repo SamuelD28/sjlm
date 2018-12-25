@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Ajax from '../../../shared/ajax.js';
 import MenuCards from '../../components/menuCards/menuCards.js';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
-import MenuSchema from '../../formSchema/menuSchema.js';
+import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';

@@ -2,7 +2,7 @@ import React from 'react';
 
 import FormComponent from '../FormComponent.js';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
-import MenuSchema from '../../formSchema/menuSchema.js';
+import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 
 class MenuCards extends FormComponent{
 
