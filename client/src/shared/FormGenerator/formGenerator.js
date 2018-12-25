@@ -8,6 +8,7 @@ import Translate from '../translate.js';
 import FormConfig from './formConfig.js';
 import FormStatus from './formStatus.js';
 import InputSchema from './inputSchema.js';
+import EditorSchema from './editorSchema.js';
 
 //Components used for the form generation
 import {Form, Modal, Grid} from 'semantic-ui-react';
@@ -90,6 +91,7 @@ class FormGenerator extends Component
     */
     HandleRequest = async(formData, p_httpRequest) =>
     {
+        //Quick fix for using a delete request. Need to be reworked
         let httpRequest = (p_httpRequest !== undefined)?
                             p_httpRequest:
                             this.state.FormConfig.httpRequest.toUpperCase();
@@ -213,6 +215,7 @@ class FormGenerator extends Component
      */
     HandleDelete = async() =>
     {
+        //Need to be reworked
         let request  = await this.HandleRequest(null, "DELETE");
         this.HandleRequestResponse(request);
     }
@@ -376,7 +379,7 @@ class FormGenerator extends Component
                     {this.GenerateFormInputs()}
                 </Grid.Column>
                 <Grid.Column width={8}>
-                    <TextEditor input={this.state.TextEditor} handleChange={this.HandleChangeInTextEditor}/>
+                    <TextEditor input={this.state.TextEditor} HandleChangeInTextEditor={this.HandleChangeInTextEditor}/>
                 </Grid.Column>
             </Grid>)
         }
@@ -425,44 +428,40 @@ class FormGenerator extends Component
     GenerateFormFields = (groupedInputs) =>
     {
         return groupedInputs.map((input, index) => {
-            switch(input.type.toLowerCase()){
-                case "text": return(
+            switch(input.type){
+                case "EMAIL":
+                case "PASSWORD":
+                case "TEL":
+                case "TEXT": return(
                                     <TextInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     handleChange={this.HandleChange}/>
-                                    )
-                case "toggle": return (
+                                    );
+                case "TOGGLE": return (
                                     <ToggleInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     handleChange={this.HandleChange}/>
-                                    )
-                case "uploader": return(
+                                    );
+                case "UPLOADER": return(
                                     <FileInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     updateStateInputs={this.UpdateStateInputs} />
-                                    )
-                case "select": return(
+                                    );
+                case "SELECT": return(
                                     <SelectInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     handleChange={this.HandleChange}/>
-                                    )
-                case "texteditor" : return(
-                                    <TextEditor
-                                    key={index}
-                                    inputs={this.state.Inputs}
-                                    input={input}
-                                    handleChange={this.HandleChangeInTextEditor}/>
-                                    )
+                                    );
                 default:
-                    throw new Error("Input Type must be specified.");
+                    throw new Error("No input correspond to the specified type.");
             }
         });
     }
@@ -474,4 +473,4 @@ class FormGenerator extends Component
     }
 }
 
-export {FormGenerator, FormConfig, FormStatus, InputSchema};
+export {FormGenerator, FormConfig, FormStatus, InputSchema, EditorSchema};

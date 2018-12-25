@@ -18,7 +18,7 @@ class FormConfig
     {
         this.title = title;
         this.url = url;
-        this.httpRequest = httpRequest;
+        this.httpRequest = httpRequest.toUpperCase();
         this.elementId = elementId;
         this.size = size;
         this.modal = modal;

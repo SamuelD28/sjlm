@@ -26,21 +26,27 @@ class TextEditor extends Component
     constructor(props){
         super(props);
         this.TextEditor = React.createRef();
-        this.handleChange = props.handleChange;
+        this.HandleChangeInTextEditor = props.handleChange;
     }
 
     render(){
+    if(this.props.input.type === "FULL")
     return(
         <Form.Field
             disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
             <ReactQuill
             modules={modules}
             formats={formats}
-            onChange={() => {this.handleChange(this.TextEditor, this.props.input.name)}}
+            onChange={() => {this.HandleChangeInTextEditor(this.TextEditor, this.props.input.name)}}
             ref={this.TextEditor}
             />
         </Form.Field>
-    )}
+    )
+    else
+    return(
+        <h1>Simple Text Editor</h1>
+    )
+    }
 }
 
 export default TextEditor;

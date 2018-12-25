@@ -11,47 +11,30 @@
 
 import {Utility} from '../utility.js';
 
-class InputSchema
+class EditorSchema
 {
     constructor({
                 name = "Unnamed Input",
                 label = "Unnamed Input...",
-                group,
-                width,
-                type = "text",
+                type = "simple",
                 disabled = () => false,
-                value = "",
-                list = [],
-                generator})
+                value = ""})
     {
         this.name = name;
         this.label = label;
-        this.group = group;
-        this.width = width;
         this.type = type.toUpperCase();
         this.disabled = disabled;
         this.value = value;
-        this.list = list;
-        this.generator = generator;
 
         //Verify that all the properties match a corresponding type
         //and that they meet a certain constrait trough functions
         Utility.VerifyProperty(this.name, String);
         Utility.VerifyProperty(this.label, String);
-        Utility.VerifyProperty(this.list, Array);
-        Utility.VerifyProperty(this.generator, Function);
-        Utility.VerifyProperty(this.group,
-                               Number,
-                               Utility.BetweenMinMaxNumber,
-                               {min: 0, max: 16});
-        Utility.VerifyProperty(this.width,
-                               Number,
-                               Utility.BetweenMinMaxNumber,
-                               {min: 0, max: 16});
+        Utility.VerifyProperty(this.value, String);
         Utility.VerifyProperty(this.type,
                                String,
                                Utility.IsWithinEnumeration,
-                               {enumeration : ['SELECT','TEXT','UPLOADER','TEXTEDITOR','TOGGLE','PASSWORD','TEL','EMAIL']});
+                               {enumeration : ['SIMPLE', 'FULL']});
     }
 }
-export default InputSchema;
+export default EditorSchema;

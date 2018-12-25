@@ -12,17 +12,34 @@ import MembersCard from '../../components/membersCard/membersCard.js';
 import MembersCreate from '../../components/membersCreate/membersCreate.js';
 import MembersEdit from '../../components/membersEdit/membersEdit.js';
 
+import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
+import {default as MemberSchema} from '../../formSchema/memberSchema.js';
+
 class Members extends CrudComponent{
-    
+
+    constructor(props)
+    {
+        super(props);
+        this.TextEditor = MemberSchema.GetEmptyEditor();
+        this.Inputs = MemberSchema.GetEmptyInputs();
+        this.PostConfig = MemberSchema.GetPostConfig();
+        this.PostConfig.modalOpener = this.ModalOpener;
+        this.state = {};
+    }
+
     async componentDidMount()
     {
-        this.ReadInTempState("/api/members");
+        await this.GetMembers();
     }
-    
+
+    GetMembers = async() =>
+    {
+        await this.ReadInTempState("/api/members");
+    }
+
     DisplayMembers()
     {
         if(this.tempState.db !== undefined){
-            //BUG WITH SORTING OF THE ARRAY. IT BREAKS PAST 10 ELEMENTS
             let array = this.tempState.db.slice();
             return array.map((item,index)=> (
                 <div className="cardContainer"  key={item._id}>
@@ -32,13 +49,23 @@ class Members extends CrudComponent{
             ));
         }
     }
-    
+
+    ModalOpener = () =>
+    {
+        return <h1>Open Me</h1>
+    }
+
     render(){
     return(
-    <div id={styles.membersPage} className={adminStyles.adminPage}> 
+    <div id={styles.membersPage} className={adminStyles.adminPage}>
         <section>
             <div styleName="membersContent">
-                <MembersCreate CreateInTempState={this.CreateInTempState}/>
+                <FormGenerator
+                    Inputs={this.Inputs}
+                    FormConfig={this.PostConfig}
+                    FormStatus={new FormStatus()}
+                    TextEditor={this.TextEditor}
+                    RefreshDataSet={this.GetMembers}/>
                 {this.DisplayMembers()}
             </div>
         </section>

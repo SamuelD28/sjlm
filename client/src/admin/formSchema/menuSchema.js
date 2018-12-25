@@ -232,7 +232,7 @@ class MenuSchema
     ApplyCustomConstraints = (input) =>
     {
         //Custom constaints
-        if(input.name === "Principal" && input.value)
+        if(input.name === "Principal")
             input.disabled = () => true;
     }
 }

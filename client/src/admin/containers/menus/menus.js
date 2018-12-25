@@ -19,7 +19,6 @@ class Menus extends Component {
         this.state = {};
     }
 
-    //Need to remove this
     componentDidMount() {
         this.GetMenus();
     }

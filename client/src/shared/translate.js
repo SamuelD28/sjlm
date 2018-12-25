@@ -46,6 +46,13 @@ Translate.ModelKey = function(modelKey){
         case "SubMenu": translatedContent = "Sous menu"; break;
         case "ParentMenu": translatedContent = "Menu parent"; break;
         case "Title": translatedContent = "Titre"; break;
+        case "FirstName" : translatedContent = "Nom"; break;
+        case "LastName" : translatedContent = "Prénom"; break;
+        case "Email" : translatedContent = "Email"; break;
+        case "Phone" : translatedContent = "Téléphone"; break;
+        case "Occupation" : translatedContent = "Occupation"; break;
+        case "PersonnalNote": translatedContent = "Note Personnel"; break;
+        case "Photo" : translatedContent = "Photo"; break;
         default: throw new Error("The key name can't be translated. Verify that a translation exists");
     }
     return translatedContent;
