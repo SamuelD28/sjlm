@@ -94,14 +94,14 @@ class FormGenerator extends Component
         //Quick fix for using a delete request. Need to be reworked
         let httpRequest = (p_httpRequest !== undefined)?
                             p_httpRequest:
-                            this.state.FormConfig.httpRequest.toUpperCase();
+                            this.state.FormConfig.httpRequest;
         let request;
         let url = this.state.FormConfig.url;
         let id  = this.state.FormConfig.elementId;
         switch (httpRequest){
-            case "POST" : request = await Ajax.PostData(url, formData); break;
-            case "PUT"  : request = await Ajax.PutData(url + id , formData); break;
-            case "DELETE" : request = await Ajax.DeleteData(url + id); break;
+            case "post" : request = await Ajax.PostData(url, formData); break;
+            case "put"  : request = await Ajax.PutData(url + id , formData); break;
+            case "delete" : request = await Ajax.DeleteData(url + id); break;
             default: throw new Error("The http request type must be specified under the FormConfig Object");
         }
         return request;
@@ -146,7 +146,7 @@ class FormGenerator extends Component
             this.CloseModal();
 
 
-            if(this.state.FormConfig.httpRequest === "POST")
+            if(this.state.FormConfig.httpRequest === "post")
                 this.ClearForm();
         }
     }
@@ -202,10 +202,10 @@ class FormGenerator extends Component
      */
     HandleNegativeAction = () =>
     {
-        if(this.state.FormConfig.httpRequest === "POST"){
+        if(this.state.FormConfig.httpRequest === "post"){
             this.HandleCancel();
         }
-        else if(this.state.FormConfig.httpRequest === "PUT"){
+        else if(this.state.FormConfig.httpRequest === "put"){
             this.HandleDelete();
         }
     }
@@ -216,7 +216,7 @@ class FormGenerator extends Component
     HandleDelete = async() =>
     {
         //Need to be reworked
-        let request  = await this.HandleRequest(null, "DELETE");
+        let request  = await this.HandleRequest(null, "delete");
         this.HandleRequestResponse(request);
     }
 
@@ -340,10 +340,10 @@ class FormGenerator extends Component
             </Modal.Content>
             <Modal.Actions>
                 <button style={{float: "left"}} onClick={this.HandleNegativeAction} className="btn btn-danger">
-                    {this.state.FormConfig.httpRequest === "PUT"? 'Supprimer': 'Annuler'}
+                    {this.state.FormConfig.httpRequest === "put"? 'Supprimer': 'Annuler'}
                 </button>
                 <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
-                    {this.state.FormConfig.httpRequest === "PUT"? 'Modifier': 'Ajouter'}
+                    {this.state.FormConfig.httpRequest === "put"? 'Modifier': 'Ajouter'}
                 </button>
             </Modal.Actions>
         </Modal>
@@ -429,31 +429,31 @@ class FormGenerator extends Component
     {
         return groupedInputs.map((input, index) => {
             switch(input.type){
-                case "EMAIL":
-                case "PASSWORD":
-                case "TEL":
-                case "TEXT": return(
+                case "email":
+                case "password":
+                case "tel":
+                case "text": return(
                                     <TextInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     handleChange={this.HandleChange}/>
                                     );
-                case "TOGGLE": return (
+                case "toggle": return (
                                     <ToggleInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     handleChange={this.HandleChange}/>
                                     );
-                case "UPLOADER": return(
+                case "uploader": return(
                                     <FileInput
                                     key={index}
                                     inputs={this.state.Inputs}
                                     input={input}
                                     updateStateInputs={this.UpdateStateInputs} />
                                     );
-                case "SELECT": return(
+                case "select": return(
                                     <SelectInput
                                     key={index}
                                     inputs={this.state.Inputs}

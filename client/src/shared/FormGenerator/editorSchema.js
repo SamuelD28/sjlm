@@ -22,7 +22,7 @@ class EditorSchema
     {
         this.name = name;
         this.label = label;
-        this.type = type.toUpperCase();
+        this.type = type.toLowerCase();
         this.disabled = disabled;
         this.value = value;
 
@@ -34,7 +34,7 @@ class EditorSchema
         Utility.VerifyProperty(this.type,
                                String,
                                Utility.IsWithinEnumeration,
-                               {enumeration : ['SIMPLE', 'FULL']});
+                               {enumeration : ['simple', 'full']});
     }
 }
 export default EditorSchema;

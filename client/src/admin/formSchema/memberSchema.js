@@ -11,7 +11,7 @@ import {FormConfig, InputSchema, EditorSchema} from '../../shared/FormGenerator/
 let m_postConfig    = new FormConfig({url: "/api/members/",
                                  httpRequest : "POST",
                                  modal: true,
-                                 size: "small",
+                                 size: "large",
                                  title: "Ajouter un Membre"}),
     m_putConfig     = new FormConfig({url: "/api/members/",
                                 httpRequest : "PUT",
@@ -65,7 +65,7 @@ let m_postConfig    = new FormConfig({url: "/api/members/",
     m_textEditor    = new EditorSchema({
                                     name: "PersonnalNote",
                                     label: "Note Personnel",
-                                    type: "full"
+                                    type: "simple"
     })
 
 class MemberSchema

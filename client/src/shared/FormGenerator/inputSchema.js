@@ -28,7 +28,7 @@ class InputSchema
         this.label = label;
         this.group = group;
         this.width = width;
-        this.type = type.toUpperCase();
+        this.type = type.toLowerCase();
         this.disabled = disabled;
         this.value = value;
         this.list = list;
@@ -51,7 +51,7 @@ class InputSchema
         Utility.VerifyProperty(this.type,
                                String,
                                Utility.IsWithinEnumeration,
-                               {enumeration : ['SELECT','TEXT','UPLOADER','TEXTEDITOR','TOGGLE','PASSWORD','TEL','EMAIL']});
+                               {enumeration : ['select','text','uploader','texteditor','toggle','password','tel','email']});
     }
 }
 export default InputSchema;

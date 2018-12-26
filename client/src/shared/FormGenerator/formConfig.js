@@ -18,7 +18,7 @@ class FormConfig
     {
         this.title = title;
         this.url = url;
-        this.httpRequest = httpRequest.toUpperCase();
+        this.httpRequest = httpRequest.toLowerCase();
         this.elementId = elementId;
         this.size = size;
         this.modal = modal;
@@ -36,11 +36,11 @@ class FormConfig
         Utility.VerifyProperty(this.httpRequest,
                                 String,
                                 Utility.IsWithinEnumeration,
-                                {enumeration : ['POST', 'PUT', 'DELETE']});
+                                {enumeration : ['post', 'put', 'delete']});
         Utility.VerifyProperty(this.size,
                                 String,
                                 Utility.IsWithinEnumeration,
-                                {enumeration : ['MINI','TINY','SMALL','LARGE','FULLSCREEN']});
+                                {enumeration : ['mini','tiny','small','large','fullscreen']});
     }
 }
 

@@ -219,7 +219,7 @@ Utility.IsWithinEnumeration = function(val, {enumeration = []} = {})
     if(!(enumeration instanceof Array))
         throw new TypeError("Enumration must be an array with values");
 
-    if(enumeration.indexOf(val.toUpperCase()) === -1)
+    if(enumeration.indexOf(val) === -1)
         return false;
 
     return true;

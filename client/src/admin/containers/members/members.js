@@ -44,7 +44,10 @@ class Members extends CrudComponent{
             return array.map((item,index)=> (
                 <div className="cardContainer"  key={item._id}>
                     <MembersCard members={item}/>
-                    <MembersEdit members={item} UpdateTempState={this.UpdateTempState} RemoveFromTempState={this.RemoveFromTempState}/>
+                    <MembersEdit
+                        members={item}
+                        UpdateTempState={this.UpdateTempState}
+                        RemoveFromTempState={this.RemoveFromTempState}/>
                 </div>
             ));
         }
