@@ -4,7 +4,6 @@ import {Modal, Form, Grid, Select, Radio, Divider} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
 import moment from 'moment';
-import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 import Translate from '../../../shared/translate.js';
 
 //Css module import
@@ -112,13 +111,6 @@ class NewsEdit extends FormComponent{
                                             />
                                     </Form.Field>
                                     <Divider horizontal>Images</Divider>
-                                    <CloudinaryUpload
-                                    multiple={true}
-                                    cropping={false}
-                                    formData={this.formData}
-                                    buttonText="Ajouter une image"
-                                    linkedInput="Images"
-                                    enableSubmit={this.EnableSubmit}/>
                                     <Form.Group style={{position: "absolute", bottom: "0"}}>
                                         <Form.Field>
                                             <button onClick={() => {this.DeleteInDb("/api/news/")}}  className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>

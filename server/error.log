@@ -11495,3 +11495,103 @@
         '$isValidatorError': true } },
   _message: 'Members validation failed',
   name: 'ValidationError' }
+[2018-12-26T22:27:15.085] [ERROR] error - { ValidationError: Members validation failed: FirstName: Path `FirstName` is required., LastName: Path `LastName` is required., Email: Path `Email` is required., Occupation: Path `Occupation` is required., Photo: Path `Photo` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { FirstName: 
+      { ValidatorError: Path `FirstName` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `FirstName` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'FirstName',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     LastName: 
+      { ValidatorError: Path `LastName` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `LastName` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'LastName',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Email: 
+      { ValidatorError: Path `Email` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Email` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Email',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Occupation: 
+      { ValidatorError: Path `Occupation` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Occupation` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Occupation',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Photo: 
+      { ValidatorError: Path `Photo` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Photo` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Photo',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Members validation failed',
+  name: 'ValidationError' }

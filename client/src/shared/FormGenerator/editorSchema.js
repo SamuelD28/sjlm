@@ -15,13 +15,13 @@ class EditorSchema
 {
     constructor({
                 name = "Unnamed Input",
-                label = "Unnamed Input...",
+                placeholder = "Unnamed Input",
                 type = "simple",
                 disabled = () => false,
                 value = ""})
     {
         this.name = name;
-        this.label = label;
+        this.placeholder = placeholder;
         this.type = type.toLowerCase();
         this.disabled = disabled;
         this.value = value;
@@ -29,7 +29,7 @@ class EditorSchema
         //Verify that all the properties match a corresponding type
         //and that they meet a certain constrait trough functions
         Utility.VerifyProperty(this.name, String);
-        Utility.VerifyProperty(this.label, String);
+        Utility.VerifyProperty(this.placeholder, String);
         Utility.VerifyProperty(this.value, String);
         Utility.VerifyProperty(this.type,
                                String,

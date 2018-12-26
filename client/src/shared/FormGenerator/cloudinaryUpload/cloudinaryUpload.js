@@ -74,10 +74,15 @@ class CloudinaryUpload extends Component{
 
     DisplayThumbnailImages(){
 
-        if(this.state.value.length > 0)
+        if(this.state.value instanceof Array)
             return this.state.value.map((element, index) => (
                 <img alt="" key={index} className="uploads-thumbnails" src={element} onClick={() => {this.RemoveImage(element)}} />
-        ));
+        ))
+        else{
+            return(
+                <img alt="" className="uploads-thumbnails" src={this.state.value} onClick={() => {this.RemoveImage(this.state.value)}} />
+            )
+        }
     }
 
     RemoveImage = async(thumbnailUrl) => {

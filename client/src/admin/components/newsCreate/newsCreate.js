@@ -2,7 +2,6 @@ import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Form, Modal} from 'semantic-ui-react';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
-import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 import ReactQuill from 'react-quill';
 
 // Css module import
@@ -94,13 +93,6 @@ class NewsCreate extends FormComponent{
                     ref={this.TextEditor}
                     />
                     </Form.Field>
-                    <CloudinaryUpload
-                        multiple={true}
-                        cropping={false}
-                        formData={this.formData}
-                        buttonText="Choisir une gallerie"
-                        enableSubmit={this.EnableSubmit}
-                        linkedInput="Images"/>
                     <Form.Field>
                         <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary"><i className="icon save"></i> Publier</button>
                     </Form.Field>

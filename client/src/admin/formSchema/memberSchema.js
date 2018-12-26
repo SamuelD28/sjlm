@@ -8,7 +8,8 @@ import Ajax from '../../shared/ajax.js';
 import {FormConfig, InputSchema, EditorSchema} from '../../shared/FormGenerator/formGenerator.js';
 
 //Variables and object declaration that is going to be used by the form
-let m_postConfig    = new FormConfig({url: "/api/members/",
+let m_occupationsOptions,
+    m_postConfig    = new FormConfig({url: "/api/members/",
                                  httpRequest : "POST",
                                  modal: true,
                                  size: "large",
@@ -18,18 +19,18 @@ let m_postConfig    = new FormConfig({url: "/api/members/",
                                 modal: true,
                                 title: "Modifier un Membre",
                                 size: "small"}),
-    m_memberInputs  =   [new InputSchema({
+    m_memberInputs  = [new InputSchema({
                                     name: "FirstName",
                                     type: "text",
                                     label : "Nom",
-                                    width: 16,
                                     group: 1,
+                                    width: 8,
                                     value: ""}),
                     new InputSchema({
                                     name: "LastName",
                                     type: "text",
-                                    width: 16,
                                     group: 1,
+                                    width: 8,
                                     label: "Prénom",
                                     value : ""}),
                     new InputSchema({
@@ -52,24 +53,46 @@ let m_postConfig    = new FormConfig({url: "/api/members/",
                                     name : "Occupation",
                                     type: "select",
                                     label: "Occupation",
+                                    group: 3,
+                                    width: 10,
                                     value : "",
-                                    generator : () =>  { return [{text: "Test", value: "Test"}]; }
+                                    generator : () =>  m_occupationsOptions
                     }),
                     new InputSchema({
                                     name : "Photo",
                                     type: "uploader",
                                     label: "Photo de Profil",
+                                    group: 4,
                                     value : [],
                     })
     ],
     m_textEditor    = new EditorSchema({
                                     name: "PersonnalNote",
-                                    label: "Note Personnel",
+                                    placeholder: "Note Personnel...",
                                     type: "simple"
     })
 
 class MemberSchema
 {
+    constructor()
+    {
+        m_occupationsOptions = this.GenerateOccupationOptions();
+    }
+
+    GenerateOccupationOptions = () =>
+    {
+        return [
+        {text: "Maire", value : "mayor"},
+        {text: "Mairesse", value : "mayorf"},
+        {text: "Conseiller", value : "advisor"},
+        {text: "Conseillère", value : "advisorf"},
+        {text: "Employé", value : "employe"},
+        {text: "Employée", value : "employef"},
+        {text: "Directeur générale", value : "director"},
+        {text: "Directrice générale", value : "directorf"}
+        ];
+    }
+
     /**
      * Function that creates a deep copy of the menu inputs and
      * returns the copy in the form of an array. Necessary in order
@@ -112,6 +135,11 @@ class MemberSchema
     GetPostConfig = () =>
     {
         return Object.assign({}, m_postConfig);
+    }
+
+    GetBindedEditor = (editorValue) =>
+    {
+        return Object.assign({}, m_textEditor, {value : editorValue});
     }
 
     /**

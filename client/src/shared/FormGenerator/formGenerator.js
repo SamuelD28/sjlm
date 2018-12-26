@@ -40,6 +40,9 @@ class FormGenerator extends Component
         //Creates a clone of the initial inputs value used by the form.
         this.InitialData = Array.from(props.Inputs);
 
+        if(this.state.Inputs === undefined)
+            throw new TypeError("The Form Schema must contain a definition for the inputs to display");
+
     }
 
     /**
@@ -158,10 +161,6 @@ class FormGenerator extends Component
      */
     HandleChangeInTextEditor = (TextEditor, inputName) =>
     {
-
-        if(TextEditor.current === null)
-            throw new TypeError("Null, Reference to a text editor must be passed as a parameter");
-
         const editor = TextEditor.current.getEditor();
         const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
 
@@ -356,10 +355,6 @@ class FormGenerator extends Component
      */
     GenerateForm = () =>
     {
-        if(this.state.Inputs === undefined)
-            throw new TypeError("The Form Schema must contain a definition for the inputs to display");
-
-
         //Generate a from without a text edtior
         if(this.state.TextEditor === undefined){
             return(
@@ -379,7 +374,15 @@ class FormGenerator extends Component
                     {this.GenerateFormInputs()}
                 </Grid.Column>
                 <Grid.Column width={8}>
-                    <TextEditor input={this.state.TextEditor} HandleChangeInTextEditor={this.HandleChangeInTextEditor}/>
+                    <TextEditor
+                        input={this.state.TextEditor}
+                        handleChange=
+                        {
+                            (this.state.TextEditor.type === "full")
+                            ?this.HandleChangeInTextEditor
+                            :this.HandleChange
+                        }
+                        />
                 </Grid.Column>
             </Grid>)
         }

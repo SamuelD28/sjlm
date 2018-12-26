@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form} from 'semantic-ui-react';
+import {Form, TextArea} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 
 const modules = {
@@ -26,27 +26,31 @@ class TextEditor extends Component
     constructor(props){
         super(props);
         this.TextEditor = React.createRef();
-        this.HandleChangeInTextEditor = props.handleChange;
     }
 
     render(){
-    if(this.props.input.type === "FULL")
+    if(this.props.input.type === "full")
     return(
         <Form.Field
             disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
             <ReactQuill
             modules={modules}
             formats={formats}
-            onChange={() => {this.HandleChangeInTextEditor(this.TextEditor, this.props.input.name)}}
+            onChange={() => {this.props.handleChange(this.TextEditor, this.props.input.name)}}
             ref={this.TextEditor}
             />
         </Form.Field>
     )
     else
     return(
-        <h1>Simple Text Editor</h1>
-    )
-    }
+        <TextArea
+            style={{height: "100%"}}
+            name={this.props.input.name}
+            placeholder={this.props.input.placeholder}
+            onChange={() => {this.props.handleChange(this.TextEditor, this.props.input.name)}}
+            ref={this.TextEditor}
+            />
+    )}
 }
 
 export default TextEditor;
