@@ -9,6 +9,7 @@ class FormStatus
     constructor({
         open = false,
         loading = false,
+        modified = false,
         errors = [],
         errorsHeader = "Les erreurs suivantes sont survenues"} = {})
     {
@@ -16,8 +17,10 @@ class FormStatus
         this.loading = loading;
         this.errors = errors;
         this.errorsHeader = errorsHeader;
+        this.modified = modified;
 
         //Veirfy that the properties match a corresponding type
+        Utility.VerifyProperty(this.modified, Boolean);
         Utility.VerifyProperty(this.open, Boolean);
         Utility.VerifyProperty(this.loading, Boolean);
         Utility.VerifyProperty(this.errors, Array);

@@ -87,13 +87,18 @@ class CloudinaryUpload extends Component{
 
     RemoveImage = async(thumbnailUrl) => {
 
-        let index = this.state.value.indexOf(thumbnailUrl);
+        if(thumbnailUrl instanceof Array)
+        {
+            let index = this.state.value.indexOf(thumbnailUrl);
 
-        if(index !== -1){
-            let imagesArray = Array.from(this.state.value);
-            imagesArray.splice(index, 1);
-            await this.setState(Object.assign({}, this.state, {value: imagesArray}));
+            if(index !== -1){
+                let imagesArray = Array.from(this.state.value);
+                imagesArray.splice(index, 1);
+                await this.setState(Object.assign({}, this.state, {value: imagesArray}));
+            }
         }
+        else
+            await this.setState(Object.assign({}, this.state, {value: ""}));
 
         this.updateStateInputs(this.state.name, {value:  this.state.value});
     }

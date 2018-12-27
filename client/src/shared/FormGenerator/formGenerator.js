@@ -30,6 +30,13 @@ class FormGenerator extends Component
     constructor(props)
     {
         super(props);
+
+        //Verification that all the required props are there
+        if(props.Inputs === undefined || props.FormConfig === undefined || props.FormStatus === undefined)
+            throw new TypeError("The Form Schema must contain a definition for the inputs to display");
+
+        this.RefreshDataSet = props.RefreshDataSet;
+
         this.state = {
             FormConfig : Object.assign({}, props.FormConfig),
             FormStatus : Object.assign({}, props.FormStatus),
@@ -37,12 +44,16 @@ class FormGenerator extends Component
             TextEditor :  props.TextEditor
         };
 
-        //Creates a clone of the initial inputs value used by the form.
-        this.InitialData = Array.from(props.Inputs);
+        this.CloneInputs();
+    }
 
-        if(this.state.Inputs === undefined)
-            throw new TypeError("The Form Schema must contain a definition for the inputs to display");
-
+    /**
+     * Method that clones all the inputs inside the form and place them
+     * in a property called initial data.
+     */
+    CloneInputs = () =>
+    {
+        this.InitialInputs = Array.from(this.state.Inputs);
     }
 
     /**
@@ -146,9 +157,10 @@ class FormGenerator extends Component
         }
         else{
             await this.UpdateStateKey("FormStatus" , {loading: false});
-            this.props.RefreshDataSet();
-            this.CloseModal();
 
+            this.CloneInputs();
+            this.RefreshDataSet();
+            this.CloseModal();
 
             if(this.state.FormConfig.httpRequest === "post")
                 this.ClearForm();
@@ -193,10 +205,11 @@ class FormGenerator extends Component
      */
     HandleChange = (target) =>
     {
-        // console.log(target);
+        console.log(this.state.FormStatus);
         let inputName = target.name;
         let inputValue = (target.value != null) ? target.value: target.checked;
         this.UpdateStateInputs(inputName, {value : inputValue});
+        this.UpdateStateKey("FormStatus", {modified : true});
     }
 
     /**
@@ -204,7 +217,8 @@ class FormGenerator extends Component
      */
     HandleCancel = () =>
     {
-        this.setState({"Inputs" : this.InitialData});
+        this.setState({"Inputs" : this.InitialInputs});
+        this.UpdateStateKey("FormStatus", {modified: false});
         this.CloseModal();
     }
 
@@ -352,10 +366,20 @@ class FormGenerator extends Component
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <button style={{float: "left"}} onClick={this.HandleNegativeAction} className="btn btn-danger">
+                <button
+                    style={{float: "left"}}
+                    onClick={this.HandleNegativeAction}
+                    className="btn btn-danger">
                     {this.state.FormConfig.httpRequest === "put"? 'Supprimer': 'Annuler'}
                 </button>
-                <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
+                <button
+                    disabled={!this.state.FormStatus.modified}
+                    onClick={() => {this.HandleSubmit()}}
+                    className=
+                    {
+                    (!this.state.FormStatus.modified)
+                    ? "btn"
+                    : "btn btn-primary"}>
                     {this.state.FormConfig.httpRequest === "put"? 'Modifier': 'Ajouter'}
                 </button>
             </Modal.Actions>
