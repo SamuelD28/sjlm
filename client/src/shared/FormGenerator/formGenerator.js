@@ -54,6 +54,7 @@ class FormGenerator extends Component
     {
         await this.UpdateStateKey("FormStatus", {loading: true});
         let formData = await this.ParseFormData();
+        console.log(formData);
         let request = await this.HandleRequest(formData);
         this.HandleRequestResponse(request);
     }
@@ -158,26 +159,39 @@ class FormGenerator extends Component
      * Method used to handle the change in a quill text editor
      * textEditor : React ref to the text editor. Mendatory in order to retrieve the information
      * inputName : Name of the text editor that triggered the change
+     * target : Optionnal parameter, represents an already made target object. Used
+     * when using simple texte edtior that his based on the the textarea
      */
-    HandleChangeInTextEditor = (TextEditor, inputName) =>
+    HandleChangeEditor = ({TextEditor, inputName, target}) =>
     {
-        const editor = TextEditor.current.getEditor();
-        const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
-
-        let targetObject ={
-            name: inputName,
-            value: editorFull.getText(),
-            html: editorFull.getHTML()
+        if(this.state.TextEditor.type === "full")
+        {
+            const editor = TextEditor.current.getEditor();
+            const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
+            let targetObject =
+            {
+                name: inputName,
+                value: editorFull.getText(),
+                html: editorFull.getHTML()
+            }
+            this.UpdateStateKey("TextEditor" , targetObject);
         }
-
-        this.UpdateStateKey("TextEditor" , targetObject);
+        else
+        {
+            let targetObject =
+            {
+                name: target.name,
+                value: target.value
+            }
+            this.UpdateStateKey("TextEditor" , targetObject);
+        }
     }
 
     /**
      * Method used to handle the change made in a form input
      * target : The input object that triggered the event
      */
-    HandleChange = async(target) =>
+    HandleChange = (target) =>
     {
         // console.log(target);
         let inputName = target.name;
@@ -356,7 +370,8 @@ class FormGenerator extends Component
     GenerateForm = () =>
     {
         //Generate a from without a text edtior
-        if(this.state.TextEditor === undefined){
+        if(this.state.TextEditor === undefined)
+        {
             return(
             <Grid>
                 <Grid.Column width={16}>
@@ -376,12 +391,7 @@ class FormGenerator extends Component
                 <Grid.Column width={8}>
                     <TextEditor
                         input={this.state.TextEditor}
-                        handleChange=
-                        {
-                            (this.state.TextEditor.type === "full")
-                            ?this.HandleChangeInTextEditor
-                            :this.HandleChange
-                        }
+                        handleChangeEditor={this.HandleChangeEditor}
                         />
                 </Grid.Column>
             </Grid>)

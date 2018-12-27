@@ -1,5 +1,4 @@
 import React from 'react';
-import {Utility} from '../../../shared/utility.js';
 
 // Css Module Import
 import CSSModules from 'react-css-modules';

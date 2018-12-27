@@ -30,27 +30,27 @@ class TextEditor extends Component
 
     render(){
     if(this.props.input.type === "full")
-    return(
-        <Form.Field
-            disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
-            <ReactQuill
-            modules={modules}
-            formats={formats}
-            onChange={() => {this.props.handleChange(this.TextEditor, this.props.input.name)}}
-            ref={this.TextEditor}
-            />
-        </Form.Field>
-    )
+        return(
+            <Form.Field
+                disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
+                <ReactQuill
+                value={this.props.input.value}
+                modules={modules}
+                formats={formats}
+                onChange={() => {this.props.handleChangeEditor({TextEditor : this.TextEditor, inputName: this.props.input.name})}}
+                ref={this.TextEditor}
+                />
+            </Form.Field>)
     else
-    return(
-        <TextArea
-            style={{height: "100%"}}
-            name={this.props.input.name}
-            placeholder={this.props.input.placeholder}
-            onChange={() => {this.props.handleChange(this.TextEditor, this.props.input.name)}}
-            ref={this.TextEditor}
-            />
-    )}
+        return(
+            <TextArea
+                style={{height: "100%"}}
+                name={this.props.input.name}
+                placeholder={this.props.input.placeholder}
+                value={this.props.input.value}
+                onChange={(e, data) => {this.props.handleChangeEditor({target : data})}}
+                />)
+    }
 }
 
 export default TextEditor;

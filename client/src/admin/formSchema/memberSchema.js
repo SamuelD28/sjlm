@@ -4,7 +4,6 @@
  */
 
 //Import statements
-import Ajax from '../../shared/ajax.js';
 import {FormConfig, InputSchema, EditorSchema} from '../../shared/FormGenerator/formGenerator.js';
 
 //Variables and object declaration that is going to be used by the form
@@ -18,7 +17,7 @@ let m_occupationsOptions,
                                 httpRequest : "PUT",
                                 modal: true,
                                 title: "Modifier un Membre",
-                                size: "small"}),
+                                size: "large"}),
     m_memberInputs  = [new InputSchema({
                                     name: "FirstName",
                                     type: "text",

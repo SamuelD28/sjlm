@@ -4,7 +4,6 @@ import FormComponent from '../FormComponent.js';
 import {Modal, Form, Grid} from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 import LoaderComponent from '../loaderComponent/loaderComponent.js';
-import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 
 //Css Module import
 import CSSModules from 'react-css-modules';
@@ -69,13 +68,6 @@ class PagesCard extends FormComponent{
                                             <option disabled value="3"> 3 | Bannière sur côté</option>
                                         </select>
                                     </Form.Field>
-                                    <CloudinaryUpload
-                                    multiple={true}
-                                    cropping={false}
-                                    formData={this.formData}
-                                    buttonText="Choisir une gallerie"
-                                    linkedInput="PageGallery"
-                                    enableSubmit={this.EnableSubmit}/>
                                     <Form.Group style={{position: "absolute", bottom: "0"}}>
                                         <Form.Field>
                                             <button onClick={() => {this.DeleteInDb("/api/pages/")}} className="btn btn-danger"><i className="icon trash"></i> Supprimer</button>

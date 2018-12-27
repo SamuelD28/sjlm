@@ -7,7 +7,6 @@ import styles from './members.module.css';
 import adminStyles from '../index.module.css';
 
 // Component Import
-import MembersCard from '../../components/membersCard/membersCard.js';
 import MembersEdit from '../../components/membersEdit/membersEdit.js';
 
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
@@ -38,15 +37,10 @@ class Members extends Component{
     {
         if(this.state.members !== undefined){
             return this.state.members.map((member,index)=> (
-                <div className="cardContainer"  key={member._id}>
-                    <MembersCard
-                        members={member}
-                        />
-                    <MembersEdit
-                        member={member}
-                        RefreshDataSet={this.GetMembers}
-                        />
-                </div>
+                <MembersEdit
+                    member={member}
+                    RefreshDataSet={this.GetMembers}
+                    />
             ));
         }
     }
@@ -54,12 +48,10 @@ class Members extends Component{
     ModalOpener = () =>
     {
         return(
-        <div className="membersCreate">
-            <div className="cardOverlay">
-                <div className="cardOverlayBtn">
-                    <i className="icon plus"></i>
-                    <h4>Ajouter</h4>
-                </div>
+        <div className="cardContainer cardOverlay">
+            <div className="cardOverlayBtn">
+                <i className="icon plus"></i>
+                <h4>Ajouter</h4>
             </div>
         </div>
         )
