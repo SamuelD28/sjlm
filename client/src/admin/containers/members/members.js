@@ -30,7 +30,7 @@ class Members extends Component{
     GetMembers = async() =>
     {
         let request = await Ajax.GetData("/api/members");
-        this.setState({members : request.data});
+        await this.setState({members : request.data});
     }
 
     DisplayMembers()
@@ -38,6 +38,7 @@ class Members extends Component{
         if(this.state.members !== undefined){
             return this.state.members.map((member,index)=> (
                 <MembersEdit
+                    key={member._id}
                     member={member}
                     RefreshDataSet={this.GetMembers}
                     />

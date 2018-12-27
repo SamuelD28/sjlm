@@ -11700,3 +11700,41 @@
     at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:13)
     at Query.exec.then (/home/ubuntu/workspace/project/server/api/MembersAPI.js:52:21)
     at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-12-27T00:53:22.565] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:68:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:49:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-12-27T01:02:51.625] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:68:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:49:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-12-27T18:25:16.618] [ERROR] error - { ValidationError: Members validation failed: Occupation: Path `Occupation` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Occupation: 
+      { ValidatorError: Path `Occupation` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Occupation` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Occupation',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Members validation failed',
+  name: 'ValidationError' }

@@ -26,7 +26,7 @@ class Menus extends Component {
     GetMenus = async() =>
     {
         let request = await Ajax.GetData("/api/menus/");
-        this.setState({menus : request.data});
+        await this.setState({menus : request.data});
     }
 
     DisplayMenusCard = () => {
@@ -41,7 +41,7 @@ class Menus extends Component {
     DisplayMenuPrincipal = (menu, index) => {
         if (menu.Principal)
             return(
-            <div key={index}>
+            <div key={menu._id}>
                 <div styleName="menuTitle">
                     <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
@@ -54,7 +54,7 @@ class Menus extends Component {
     DisplaySubmenu = (submenu) => {
         if (submenu.length > 0)
             return submenu.map((menu, index) => (
-                <div styleName="menuTitle" key={index}>
+                <div styleName="menuTitle" key={menu._id}>
                     <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
             ));
