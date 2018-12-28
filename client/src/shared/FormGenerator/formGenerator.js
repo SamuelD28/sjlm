@@ -11,7 +11,7 @@ import InputSchema from './inputSchema.js';
 import EditorSchema from './editorSchema.js';
 
 //Components used for the form generation
-import {Form, Modal, Grid} from 'semantic-ui-react';
+import {Form, Modal, Grid, Confirm, Header, Button, Icon} from 'semantic-ui-react';
 import FormError from './FormError/formError.js';
 import TextEditor from './TextEditor/textEditor.js';
 import TextInput from './TextInput/textInput.js';
@@ -205,7 +205,7 @@ class FormGenerator extends Component
      */
     HandleChange = (target) =>
     {
-        console.log(this.state.FormStatus);
+        // console.log(this.state.FormStatus);
         let inputName = target.name;
         let inputValue = (target.value != null) ? target.value: target.checked;
         this.UpdateStateInputs(inputName, {value : inputValue});
@@ -229,12 +229,10 @@ class FormGenerator extends Component
      */
     HandleNegativeAction = () =>
     {
-        if(this.state.FormConfig.httpRequest === "post"){
+        if(this.state.FormConfig.httpRequest === "post")
             this.HandleCancel();
-        }
-        else if(this.state.FormConfig.httpRequest === "put"){
-            this.HandleDelete();
-        }
+        else if(this.state.FormConfig.httpRequest === "put")
+            this.UpdateStateKey("FormStatus", {openConfirm: true});
     }
 
     /**
@@ -261,6 +259,11 @@ class FormGenerator extends Component
     CloseModal = () =>
     {
         this.UpdateStateKey("FormStatus" , {open : false, errors: []});
+    }
+
+    CloseConfirm = () =>
+    {
+        this.UpdateStateKey("FormStatus", {openConfirm: false});
     }
 
     /**
@@ -366,12 +369,38 @@ class FormGenerator extends Component
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <button
-                    style={{float: "left"}}
-                    onClick={this.HandleNegativeAction}
-                    className="btn btn-danger">
-                    {this.state.FormConfig.httpRequest === "put"? 'Supprimer': 'Annuler'}
-                </button>
+                <Modal
+                    open={this.state.FormStatus.openConfirm}
+                    size='mini'
+                    trigger=
+                    {
+                    <button
+                        style={{float: "left"}}
+                        onClick={this.HandleNegativeAction}
+                        className="btn btn-danger">
+                        {(this.state.FormConfig.httpRequest === "put")
+                        ?'Supprimer'
+                        :'Annuler'}
+                    </button>
+                    }>
+                    <Header icon='trash alternate outline' content='Supprimer le Contenu' />
+                    <Modal.Content>
+                        <p>Êtes-vous sûr de vouloir supprimer le contenu suivant?</p>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <button
+                            style={{float: "left"}}
+                            onClick={this.CloseConfirm}
+                            className="btn btn-sm btn-outline-danger">
+                            <i className="icon remove"></i> Non
+                        </button>
+                        <button
+                            onClick={this.HandleDelete}
+                            className="btn btn-sm btn-outline-success">
+                            <i className="icon check"></i> Oui
+                        </button>
+                    </Modal.Actions>
+                </Modal>
                 <button
                     disabled={!this.state.FormStatus.modified}
                     onClick={() => {this.HandleSubmit()}}

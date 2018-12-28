@@ -8,6 +8,7 @@ class FormStatus
     //in order to assign the right value to the properties
     constructor({
         open = false,
+        openConfirm = false,
         loading = false,
         modified = false,
         errors = [],
@@ -18,6 +19,7 @@ class FormStatus
         this.errors = errors;
         this.errorsHeader = errorsHeader;
         this.modified = modified;
+        this.openConfirm = openConfirm;
 
         //Veirfy that the properties match a corresponding type
         Utility.VerifyProperty(this.modified, Boolean);
