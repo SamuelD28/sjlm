@@ -1,20 +1,34 @@
-//------------Usage Guide---------//
-// name : string (must match the schema name used in database),
-// label: string,
-// group: number > 0,
-// width: number > 0 < 16,
-// type: string [select/text/uploader/texteditor/toggle],
-// disabled: anonymous function that return true/false needs a inputs parameter,
-// value : string/bool/array,
-// list : array
-// generator : function that returns an array
-// multiple : Used by the uploader to determine if multiple files are allowed
-
 import { Utility } from '../utility.js';
 
 //List of all the input types handled by the form generator
 const inputTypes = ['select', 'text', 'uploader', 'texteditor', 'toggle', 'password', 'tel', 'email'];
 
+/**
+ * Class that represents the structure of an input inside
+ * the form generator. All the propeties are initialised
+ * to a default value to limit the verification needed by the
+ * form generator.
+ *
+ * name : name of the input. Must match(case sensitive) the name of the backend
+ * schema key it is linked to
+ * label : label displayed on top of the input
+ * group : number that represents the group the input belongs to.
+ * Used this to group multiple input together and rearragne the order
+ * they are displayed in the form.
+ * width : number used to represent the width of the input. Based
+ * on the semantic ui system for sizing up inputs. 0-16
+ * type : type of the desired inputs. Based on the const inputTypes.
+ * disaled : function used to determine wether this input shoudl be
+ * disabled
+ * value : initial value of the input. Can be string/number/array.
+ * Always use an array if you use an uploader type input even if you
+ * only need one data.
+ * list : list of options used by the select type inputs
+ * generator : function that lazy load a list of option
+ * for the select type inputs
+ * multiple : used to tell that multiple file are allowed
+ * inside an uploader type input
+ */
 class InputSchema {
     constructor({
         name = "Unnamed Input",

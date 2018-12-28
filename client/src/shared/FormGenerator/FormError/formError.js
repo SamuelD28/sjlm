@@ -1,9 +1,13 @@
 import React from 'react';
-import {Form , Message} from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 
+/**
+ * Component responsible for displaying error message that occured in the
+ * backend validation of the submitted form
+ */
 const FormError = (props) => {
-    return(
-    <Form.Field>
+    return (
+        <Form.Field>
         <Message
             negative
             hidden={(props.errorHandler.errors.length === 0)}

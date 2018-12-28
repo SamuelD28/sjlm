@@ -1,19 +1,26 @@
-import {Utility} from '../utility.js';
+import { Utility } from '../utility.js';
 
-class FormStatus
-{
-    //Constructor with optionnal arguments. Initialised all
-    //the value that havent received a value to a default one.
-    //You need to pass an object with corresponding keyname
-    //in order to assign the right value to the properties
+/**
+ * Class used to give the user feedback on the interaction
+ * happening inside the form.
+ *
+ * open : used to open the form if its a modal form
+ * openConfirm : used to open the confirm dialog when
+ * deleting a dataset
+ * loading : used to display that the form is beeing proccessed
+ * modified : used to tell the user that the form has been modified
+ * errors : list of all the errors that occured when the form was
+ * send to the backend server
+ */
+class FormStatus {
     constructor({
         open = false,
         openConfirm = false,
         loading = false,
         modified = false,
         errors = [],
-        errorsHeader = "Les erreurs suivantes sont survenues"} = {})
-    {
+        errorsHeader = "Les erreurs suivantes sont survenues"
+    } = {}) {
         this.open = open;
         this.loading = loading;
         this.errors = errors;

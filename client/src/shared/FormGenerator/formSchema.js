@@ -1,19 +1,22 @@
 /**
- *  Script that holds all the data used by the form generatro to generate
- *  multiple type of forms based on the data type.
+ * Abstract class use to create new form Schema
+ * that are going to be used by the form generator.
+ * This class creates the basic method for manipulating
+ * the form. It required that the child class define the properties :
+ * this.inputs : required
+ * this.putConfig : required
+ * this.postConfig : required
+ * this.textEditior : required if the form uses one
  */
-class FormSchema
-{
+class FormSchema {
     /**
      * Function that creates a deep copy of the menu inputs and
      * returns the copy in the form of an array. Necessary in order
      * to avoid having collision betweens inputs and different forms.
-    */
-    Clone = () =>
-    {
+     */
+    Clone = () => {
         let inputsCopy = [];
-        this.inputs.forEach((input) =>
-        {
+        this.inputs.forEach((input) => {
             inputsCopy.push(Object.assign({}, input));
         });
         return inputsCopy;
@@ -22,24 +25,21 @@ class FormSchema
     /**
      * Methods that returns a new array with empty inputs
      */
-    GetEmptyInputs = () =>
-    {
+    GetEmptyInputs = () => {
         return this.Clone();
     }
 
     /**
      * Method that return a new object based on the put config
      */
-    GetPutConfig = () =>
-    {
+    GetPutConfig = () => {
         return Object.assign({}, this.putConfig);
     }
 
     /**
      * Method that return a new object based on the post config
      */
-    GetPostConfig = () =>
-    {
+    GetPostConfig = () => {
         return Object.assign({}, this.postConfig);
     }
 
@@ -50,14 +50,13 @@ class FormSchema
      * menu : menu object to bind the inputs to
      * return : array of all the binded inputs
      */
-    GetBindedInputs = (data) =>
-    {
+    GetBindedInputs = (data) => {
         let bindedInputs = this.Clone();
-        bindedInputs.forEach((input) =>{
-            if(data[input.name] !== undefined){
+        bindedInputs.forEach((input) => {
+            if (data[input.name] !== undefined) {
                 input.value = data[input.name];
 
-                if(this.ApplyCustomConstraints !== undefined)
+                if (this.ApplyCustomConstraints !== undefined)
                     this.ApplyCustomConstraints(input);
             }
         });
@@ -70,21 +69,18 @@ class FormSchema
      * id : id to assign the config to
      * return : the binded put configuration
      */
-    GetBindedPutConfig = (id) =>
-    {
+    GetBindedPutConfig = (id) => {
         let bindedPutConfig = this.GetPutConfig();
         bindedPutConfig.elementId = id;
         return bindedPutConfig;
     }
 
-    GetEmptyEditor = () =>
-    {
+    GetEmptyEditor = () => {
         return Object.assign({}, this.textEditor);
     }
 
-    GetBindedEditor = (editorValue) =>
-    {
-        return Object.assign({}, this.textEditor, {value : editorValue});
+    GetBindedEditor = (editorValue) => {
+        return Object.assign({}, this.textEditor, { value: editorValue });
     }
 }
 export default FormSchema;

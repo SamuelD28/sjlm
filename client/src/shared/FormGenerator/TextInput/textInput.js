@@ -1,11 +1,14 @@
 import React from 'react';
-import {Form, Input} from 'semantic-ui-react';
+import { Form, Input } from 'semantic-ui-react';
 import Translate from '../../../shared/translate.js';
 
-const TextInput = (props) =>
-{
-    return(
-    <Form.Field
+/**
+ * Component for creating a new text input
+ * inside the form generator.
+ */
+const TextInput = (props) => {
+    return (
+        <Form.Field
         width={props.input.width}
         disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}
         >

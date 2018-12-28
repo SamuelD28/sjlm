@@ -1,10 +1,13 @@
 import React from 'react';
-import {Form, Checkbox} from 'semantic-ui-react';
+import { Form, Checkbox } from 'semantic-ui-react';
 
-const ToggleInput = (props) =>
-{
-    return(
-    <Form.Field
+/**
+ * Component that create a new toggle input
+ * inside the form generator.
+ */
+const ToggleInput = (props) => {
+    return (
+        <Form.Field
         width={props.input.width}
         disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}>
         <label>{props.input.label}</label>

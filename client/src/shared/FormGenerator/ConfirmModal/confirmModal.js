@@ -1,10 +1,13 @@
 import React from 'react';
-import {Modal, Header} from 'semantic-ui-react';
+import { Modal, Header } from 'semantic-ui-react';
 
-const ConfirmModal = (props) =>
-{
-    return(
-    <Modal
+/**
+ * Component for creating a confirm dialog when
+ * requesting the suppresion of a data set
+ */
+const ConfirmModal = (props) => {
+    return (
+        <Modal
         open={props.open}
         size='mini'
         trigger={props.trigger()}>
