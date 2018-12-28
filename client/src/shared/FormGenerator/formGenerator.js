@@ -5,13 +5,14 @@ import Ajax from '../ajax.js';
 import Translate from '../translate.js';
 
 //Helper Object
+import FormSchema from './formSchema.js';
 import FormConfig from './formConfig.js';
 import FormStatus from './formStatus.js';
 import InputSchema from './inputSchema.js';
 import EditorSchema from './editorSchema.js';
 
 //Components used for the form generation
-import {Form, Modal, Grid, Header} from 'semantic-ui-react';
+import {Form, Modal, Grid} from 'semantic-ui-react';
 import FormError from './FormError/formError.js';
 import TextEditor from './TextEditor/textEditor.js';
 import TextInput from './TextInput/textInput.js';
@@ -341,11 +342,14 @@ class FormGenerator extends Component
         return(
         <button
             disabled={!this.state.FormStatus.modified}
-            onClick={() => {this.HandleSubmit()}}
-            className={(!this.state.FormStatus.modified)
-                        ? "btn"
-                        : "btn btn-primary"}>
-            {this.state.FormConfig.httpRequest === "put"? 'Modifier': 'Ajouter'}
+            onClick={this.HandleSubmit}
+            className=
+                {(!this.state.FormStatus.modified)
+                ? "btn"
+                : "btn btn-primary"}>
+            {(this.state.FormConfig.httpRequest === "put")
+            ? 'Modifier'
+            : 'Ajouter'}
         </button>
         )
     }
@@ -538,4 +542,4 @@ class FormGenerator extends Component
     }
 }
 
-export {FormGenerator, FormConfig, FormStatus, InputSchema, EditorSchema};
+export {FormGenerator, FormConfig, FormStatus, InputSchema, EditorSchema, FormSchema};
