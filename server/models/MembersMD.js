@@ -2,7 +2,7 @@ let mongoose = require("mongoose");
 
 //----------------Model-------------//
 
-let Schema =  mongoose.Schema;
+let Schema = mongoose.Schema;
 let membersSchema = new Schema({
     FirstName: {
         type: String,
@@ -13,8 +13,13 @@ let membersSchema = new Schema({
         required: true
     },
     Photo: {
-        type: String,
-        required: true
+        type: Array,
+        required: true,
+        validate: {
+            validator: function (array) {
+                return array.length === 1;
+            }
+        }
     },
     Occupation: {
         type: String,
@@ -23,7 +28,7 @@ let membersSchema = new Schema({
     PersonnalNote: {
         type: String
     },
-    Email:{
+    Email: {
         type: String,
         required: true
     },
@@ -32,6 +37,6 @@ let membersSchema = new Schema({
         default: "450-347-5446"
     }
 });
-let Members = mongoose.model("Members" , membersSchema);
+let Members = mongoose.model("Members", membersSchema);
 
 module.exports = Members;
