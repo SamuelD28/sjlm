@@ -33,7 +33,7 @@ class FormGenerator extends Component {
 
         //Verification that all the required props are there
         if (props.Inputs === undefined || props.FormConfig === undefined || props.FormStatus === undefined)
-            throw new TypeError("The Form Schema must contain a definition for the inputs to display");
+            throw new TypeError("Missing required props for the form generator");
 
         this.RefreshDataSet = props.RefreshDataSet;
 
@@ -100,12 +100,16 @@ class FormGenerator extends Component {
     /**
      * Method responsible for making the request to a database
      * formData : Data to trough the request
+     * p_httpRequest : Optionnal argument used to explicitly specified the
+     * type of request to make
      */
     HandleRequest = async(formData, p_httpRequest) => {
         //Quick fix for using a delete request. Need to be reworked
-        let httpRequest = (p_httpRequest !== undefined) ?
+        let httpRequest =
+            (p_httpRequest !== undefined) ?
             p_httpRequest :
             this.state.FormConfig.httpRequest;
+
         let request;
         let url = this.state.FormConfig.url;
         let id = this.state.FormConfig.elementId;
@@ -130,35 +134,18 @@ class FormGenerator extends Component {
      * request : Request that was sent back from the server
      */
     HandleRequestResponse = async(request) => {
-        if (!request.success) {
-            let errors = [];
 
-            //If multiple errors occured in the backend validation
-            if (request.data.errors !== undefined) {
-                Object.keys(request.data.errors).map((key, index) => {
-                    let requestAlias = request.data.errors[key];
-                    return errors.push(
-                        Translate.ModelKey(requestAlias.path) + " " +
-                        Translate.ModelError(requestAlias.kind, requestAlias.properties)
-                    );
-                });
-            }
-            //If only one error occured in the backend validation
-            else if (request.data.kind !== undefined) {
-                errors.push(
-                    Translate.ModelKey(request.data.path) + " " +
-                    Translate.ModelError(request.data.kind, request.data.properties)
-                )
-            }
-            //Default display if an unknown error occured in the backend validation
-            else {
-                errors.push("Une erreur est survenue dans le transmission du formulaire");
-            }
-            this.UpdateStateKey("FormStatus", { loading: false, errors: errors });
+        if (!request.success) {
+
+            if (request.data.errors !== undefined)
+                this.PushErrorsToFormStatus(request.data.errors);
+            else if (request.data.kind !== undefined)
+                this.PushErrorsToFormStatus({ 0: request.data });
+            else
+                this.UpdateStateKey("FormStatus", { errors: ["Une erreur c'est produite."] });
+
         }
         else {
-            await this.UpdateStateKey("FormStatus", { loading: false });
-
             this.CloneInputs();
             this.RefreshDataSet();
             this.CloseModal();
@@ -166,6 +153,22 @@ class FormGenerator extends Component {
             if (this.state.FormConfig.httpRequest === "post")
                 this.ClearForm();
         }
+
+        this.UpdateStateKey("FormStatus", { loading: false });
+    }
+
+    /**
+     * Method that push the errors send from the server to the
+     * form status errors key and update the state.
+     */
+    PushErrorsToFormStatus = (errors) => {
+        let errorList = [];
+        for (var key in errors) {
+            errorList.push(
+                Translate.ModelKey(errors[key].path) + " " + Translate.ModelError(errors[key].kind, errors[key].properties)
+            )
+        }
+        this.UpdateStateKey("FormStatus", { errors: errorList });
     }
 
     /**

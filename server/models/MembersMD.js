@@ -15,6 +15,7 @@ let membersSchema = new Schema({
     Photo: {
         type: Array,
         required: true,
+        test: true,
         validate: {
             validator: function (array) {
                 return array.length === 1;
@@ -37,6 +38,7 @@ let membersSchema = new Schema({
         default: "450-347-5446"
     }
 });
+console.log(membersSchema);
 let Members = mongoose.model("Members", membersSchema);
 
 module.exports = Members;
