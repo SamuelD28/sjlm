@@ -11,13 +11,14 @@ import InputSchema from './inputSchema.js';
 import EditorSchema from './editorSchema.js';
 
 //Components used for the form generation
-import {Form, Modal, Grid, Confirm, Header, Button, Icon} from 'semantic-ui-react';
+import {Form, Modal, Grid, Header} from 'semantic-ui-react';
 import FormError from './FormError/formError.js';
 import TextEditor from './TextEditor/textEditor.js';
 import TextInput from './TextInput/textInput.js';
 import ToggleInput from './ToggleInput/toggleInput.js';
 import SelectInput from './SelectInput/selectInput.js';
 import FileInput from './FileInput/fileInput.js';
+import ConfirmModal from './ConfirmModal/confirmModal.js';
 
 class FormGenerator extends Component
 {
@@ -317,6 +318,39 @@ class FormGenerator extends Component
     /*-----Generator Methods for the Form. Responsible for the UI creation------*/
 
     /**
+     * Method that generates the negative button for the modal form
+     */
+    GenerateNegativeButton = () =>
+    {
+        return(
+        <button
+            style={{float: "left"}}
+            onClick={this.HandleNegativeAction}
+            className="btn btn-danger">
+            {(this.state.FormConfig.httpRequest === "put")
+            ?'Supprimer'
+            :'Annuler'}
+        </button>)
+    }
+
+    /**
+     * Method that generates the postive button for the modal form
+     */
+    GeneratePositiveButton = () =>
+    {
+        return(
+        <button
+            disabled={!this.state.FormStatus.modified}
+            onClick={() => {this.HandleSubmit()}}
+            className={(!this.state.FormStatus.modified)
+                        ? "btn"
+                        : "btn btn-primary"}>
+            {this.state.FormConfig.httpRequest === "put"? 'Modifier': 'Ajouter'}
+        </button>
+        )
+    }
+
+    /**
      * Method that initiate the generation of the entire form generator component
      * Acts as the entry point.
      */
@@ -369,48 +403,13 @@ class FormGenerator extends Component
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Modal
+                <ConfirmModal
                     open={this.state.FormStatus.openConfirm}
-                    size='mini'
-                    trigger=
-                    {
-                    <button
-                        style={{float: "left"}}
-                        onClick={this.HandleNegativeAction}
-                        className="btn btn-danger">
-                        {(this.state.FormConfig.httpRequest === "put")
-                        ?'Supprimer'
-                        :'Annuler'}
-                    </button>
-                    }>
-                    <Header icon='trash alternate outline' content='Supprimer le Contenu' />
-                    <Modal.Content>
-                        <p>Êtes-vous sûr de vouloir supprimer le contenu suivant?</p>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <button
-                            style={{float: "left"}}
-                            onClick={this.CloseConfirm}
-                            className="btn btn-sm btn-outline-danger">
-                            <i className="icon remove"></i> Non
-                        </button>
-                        <button
-                            onClick={this.HandleDelete}
-                            className="btn btn-sm btn-outline-success">
-                            <i className="icon check"></i> Oui
-                        </button>
-                    </Modal.Actions>
-                </Modal>
-                <button
-                    disabled={!this.state.FormStatus.modified}
-                    onClick={() => {this.HandleSubmit()}}
-                    className=
-                    {
-                    (!this.state.FormStatus.modified)
-                    ? "btn"
-                    : "btn btn-primary"}>
-                    {this.state.FormConfig.httpRequest === "put"? 'Modifier': 'Ajouter'}
-                </button>
+                    trigger={this.GenerateNegativeButton}
+                    NegativeAction={this.CloseConfirm}
+                    PositiveAction={this.HandleDelete}
+                />
+                {this.GeneratePositiveButton()}
             </Modal.Actions>
         </Modal>
         )
