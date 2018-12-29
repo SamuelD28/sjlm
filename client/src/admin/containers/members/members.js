@@ -28,7 +28,7 @@ class Members extends Component {
 
     DisplayMembers() {
         if (this.state.members !== undefined) {
-            return this.state.members.map((member, index) => (
+            return this.state.members.map((member) => (
                 <MembersEdit
                     key={member._id}
                     member={member}
@@ -43,9 +43,7 @@ class Members extends Component {
             <div id={styles.membersPage} className={adminStyles.adminPage}>
         <section>
             <div styleName="membersContent">
-                <MembersCreate
-                    RefreshDataSet={this.GetMembers}
-                    />
+                <MembersCreate RefreshDataSet={this.GetMembers}/>
                 {this.DisplayMembers()}
             </div>
         </section>

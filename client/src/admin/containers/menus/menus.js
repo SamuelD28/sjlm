@@ -1,21 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Ajax from '../../../shared/ajax.js';
 import MenuCards from '../../components/menuCards/menuCards.js';
-import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
-import {default as MenuSchema} from '../../formSchema/menuSchema.js';
+import MenuCreate from '../../components/menuCreate/menuCreate.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
 import adminStyles from '../index.module.css';
 
 class Menus extends Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
-        this.Inputs = MenuSchema.GetEmptyInputs();
-        this.PostConfig = MenuSchema.GetPostConfig();
-        this.PostConfig.modalOpener = this.ModalOpener;
         this.state = {};
     }
 
@@ -23,10 +18,9 @@ class Menus extends Component {
         this.GetMenus();
     }
 
-    GetMenus = async() =>
-    {
+    GetMenus = async() => {
         let request = await Ajax.GetData("/api/menus/");
-        await this.setState({menus : request.data});
+        await this.setState({ menus: request.data });
     }
 
     DisplayMenusCard = () => {
@@ -40,8 +34,8 @@ class Menus extends Component {
 
     DisplayMenuPrincipal = (menu, index) => {
         if (menu.Principal)
-            return(
-            <div key={menu._id}>
+            return (
+                <div key={menu._id}>
                 <div styleName="menuTitle">
                     <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
@@ -60,27 +54,12 @@ class Menus extends Component {
             ));
     }
 
-    ModalOpener = () =>
-    {
-        return(
-        <div className="cardOverlay">
-            <div className="cardOverlayBtn">
-                <i className="icon plus"></i>
-                <h4>Ajouter</h4>
-            </div>
-        </div>)
-    }
-
     render() {
         return (
             <div className={adminStyles.adminPage}>
             <section className="section-row">
                 <div styleName="leftColumn">
-                    <FormGenerator
-                    Inputs={this.Inputs}
-                    FormConfig={this.PostConfig}
-                    FormStatus={new FormStatus()}
-                    RefreshDataSet={this.GetMenus}/>
+                    <MenuCreate RefreshDataSet={this.GetMenus} />
                 </div>
                 <div styleName="columnContainer rightColumn">
                     {this.DisplayMenusCard()}
