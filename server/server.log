@@ -4654,3 +4654,16 @@
 [2018-12-29T17:49:32.009] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 995 "" "PostmanRuntime/7.4.0"
 [2018-12-29T17:50:46.777] [INFO] server - SERVER PROCESS STARTED
 [2018-12-29T17:50:50.994] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 734 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:10:47.568] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:11:00.489] [INFO] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 200 269 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:11:18.393] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:11:22.461] [INFO] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 200 267 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:17:03.210] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:17:20.454] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 946 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:17:38.271] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 455 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:17:45.054] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 455 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:17:51.140] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 455 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:21:09.190] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:21:12.595] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 455 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:21:35.527] [INFO] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 200 396 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:21:53.844] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 589 "" "PostmanRuntime/7.4.0"
