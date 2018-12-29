@@ -4667,3 +4667,19 @@
 [2018-12-29T18:21:12.595] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 455 "" "PostmanRuntime/7.4.0"
 [2018-12-29T18:21:35.527] [INFO] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 200 396 "" "PostmanRuntime/7.4.0"
 [2018-12-29T18:21:53.844] [ERROR] server - 127.0.0.1 - "POST /api/news HTTP/1.1" 400 589 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:50:30.486] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:51:45.372] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 1844 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:52:03.714] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:52:06.646] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 1393 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:52:15.112] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 909 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:53:51.758] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:53:53.773] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 909 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:54:03.199] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 907 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:54:21.781] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 909 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:56:18.382] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:56:20.815] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 909 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:56:59.069] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T18:57:02.464] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 533 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:57:15.874] [INFO] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 200 260 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:57:23.857] [ERROR] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 400 533 "" "PostmanRuntime/7.4.0"
+[2018-12-29T18:57:28.690] [INFO] server - 127.0.0.1 - "POST /api/members HTTP/1.1" 200 262 "" "PostmanRuntime/7.4.0"
