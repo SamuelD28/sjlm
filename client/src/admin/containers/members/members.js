@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 
 // Css Module Import
@@ -8,35 +8,27 @@ import adminStyles from '../index.module.css';
 
 // Component Import
 import MembersEdit from '../../components/membersEdit/membersEdit.js';
+import MembersCreate from '../../components/membersCreate/membersCreate.js';
 
-import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
-import {default as MemberSchema} from '../../formSchema/memberSchema.js';
+class Members extends Component {
 
-class Members extends Component{
-
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {};
-        this.PostConfig = MemberSchema.GetPostConfig();
-        this.PostConfig.modalOpener = this.ModalOpener;
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this.GetMembers();
     }
 
-    GetMembers = async() =>
-    {
+    GetMembers = async() => {
         let request = await Ajax.GetData("/api/members");
-        await this.setState({members : request.data});
+        await this.setState({ members: request.data });
     }
 
-    DisplayMembers()
-    {
-        if(this.state.members !== undefined){
-            return this.state.members.map((member,index)=> (
+    DisplayMembers() {
+        if (this.state.members !== undefined) {
+            return this.state.members.map((member, index) => (
                 <MembersEdit
                     key={member._id}
                     member={member}
@@ -46,36 +38,20 @@ class Members extends Component{
         }
     }
 
-    ModalOpener = () =>
-    {
-        return(
-        <div className="cardContainer cardOverlay">
-            <div className="cardOverlayBtn">
-                <i className="icon plus"></i>
-                <h4>Ajouter</h4>
-            </div>
-        </div>
-        )
-    }
-
-    render(){
-    return(
-    <div id={styles.membersPage} className={adminStyles.adminPage}>
+    render() {
+        return (
+            <div id={styles.membersPage} className={adminStyles.adminPage}>
         <section>
             <div styleName="membersContent">
-                <FormGenerator
-                    Inputs={MemberSchema.GetEmptyInputs()}
-                    FormConfig={this.PostConfig}
-                    FormStatus={new FormStatus()}
-                    TextEditor={MemberSchema.GetEmptyEditor()}
+                <MembersCreate
                     RefreshDataSet={this.GetMembers}
                     />
                 {this.DisplayMembers()}
             </div>
         </section>
     </div>
-    )
+        )
     }
 }
 
-export default CSSModules(Members, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default CSSModules(Members, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });

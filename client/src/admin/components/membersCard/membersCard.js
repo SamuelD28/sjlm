@@ -4,9 +4,9 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './membersCard.module.css';
 
-const MembersCard = (props) =>{
-    return(
-    <div styleName="membersCard">
+const MembersCard = (props) => {
+    return (
+        <div styleName="membersCard">
         <div styleName="membersPhoto" className="img-bg" style={{backgroundImage: `url('${props.members.Photo}')`}}></div>
         <h1 styleName="membersName">{props.members.FirstName} {props.members.LastName}</h1>
         <h3 styleName="membersTitle">{props.members.Occupation}</h3>
@@ -15,4 +15,4 @@ const MembersCard = (props) =>{
     )
 }
 
-export default CSSModules(MembersCard, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default CSSModules(MembersCard, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
