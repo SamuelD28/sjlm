@@ -442,12 +442,12 @@ class FormGenerator extends Component {
         //Generate a form with a text editor
         else {
             return (
-                <Grid>
-                <Grid.Column width={6}>
+                <Grid columns='equal'>
+                <Grid.Column>
                     <FormError errorHandler={this.state.FormStatus} />
                     {this.GenerateFormInputs()}
                 </Grid.Column>
-                <Grid.Column width={10}>
+                <Grid.Column width={this.state.TextEditor.width}>
                     <TextEditor
                         input={this.state.TextEditor}
                         handleChangeEditor={this.HandleChangeEditor}

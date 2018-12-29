@@ -38,7 +38,6 @@ let membersSchema = new Schema({
         default: "450-347-5446"
     }
 });
-console.log(membersSchema);
 let Members = mongoose.model("Members", membersSchema);
 
 module.exports = Members;

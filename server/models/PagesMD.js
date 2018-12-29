@@ -7,7 +7,7 @@ let pagesSchema = new Schema({
     Template: {
         type: Number,
         required: true,
-        default: 1
+        default: 0
     },
     PageTitle: {
         type: String,

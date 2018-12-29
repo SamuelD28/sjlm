@@ -13,17 +13,20 @@ class EditorSchema {
         placeholder = "Unnamed Input",
         type = "simple",
         disabled = () => false,
-        value = ""
+        value = "",
+        width = 8
     }) {
         this.name = name;
         this.placeholder = placeholder;
         this.type = type.toLowerCase();
         this.disabled = disabled;
         this.value = value;
+        this.width = width;
 
         //Verify that all the properties match a corresponding type
         //and that they meet a certain constrait trough functions
         Utility.VerifyProperty(this.name, String);
+        Utility.VerifyProperty(this.width, Number, Utility.BetweenMinMaxNumber, { min: 0, max: 14 });
         Utility.VerifyProperty(this.placeholder, String);
         Utility.VerifyProperty(this.value, String);
         Utility.VerifyProperty(this.type, String, Utility.IsWithinEnumeration, { enumeration: ['simple', 'full'] });

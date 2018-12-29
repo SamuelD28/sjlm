@@ -27,21 +27,39 @@ class PagesSchema extends FormSchema {
                 name: "PageTitle",
                 type: "text",
                 label: "Titre de la page",
-                value: ""
+                value: "",
+                width: 16
             }),
                         new InputSchema({
                 name: "Template",
                 type: "select",
                 label: "Template de la page",
                 value: "",
-                generator: () => [{ text: "Test", value: "Test" }]
+                width: 16,
+                generator: () => this.GenerateTemplateOptions()
             }),
+            new InputSchema({
+                name: "PageGallery",
+                type: "uploader",
+                label: "Gallerie",
+                value: [],
+            })
         ];
         this.textEditor = new EditorSchema({
             name: "PageContent",
             placeholder: "Contenu de la page",
-            type: "full"
+            type: "full",
+            width: 10
         })
+    }
+
+    GenerateTemplateOptions = () => {
+        return [
+            { text: "Defaut", value: 0 },
+            { text: "Sans bannière", value: 1 },
+            { text: "Bannière sur côté", value: 2 }
+            ];
+
     }
 
     /**
