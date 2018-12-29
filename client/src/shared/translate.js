@@ -123,8 +123,23 @@ Translate.ModelKey = function (modelKey) {
     case "PageGallery":
         translatedContent = "Gallerie";
         break;
+    case "Important":
+        translatedContent = "Importante";
+        break;
+    case "Category":
+        translatedContent = "Categorie";
+        break;
+    case "DatePublished":
+        translatedContent = "Date de publication";
+        break;
+    case "File":
+        translatedContent = "Fichier";
+        break;
+    case "Description":
+        translatedContent = "Description";
+        break;
     default:
-        throw new Error("The key name can't be translated. Verify that a translation exists"); //remove when going in production
+        translatedContent = modelKey + "**" //remove when going in production
     }
     return translatedContent;
 }

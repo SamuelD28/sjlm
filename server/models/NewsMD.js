@@ -1,44 +1,39 @@
-let mongoose        = require("mongoose");
+let mongoose = require("mongoose");
 
 //--------------Model-------------//
 
 let newsSchema = new mongoose.Schema({
-    Title:{
+    Title: {
         type: String,
         required: true
     },
-    Important:{
+    Important: {
         type: Boolean,
         default: false
     },
-    Category:{
+    Category: {
         type: String,
         default: "Autres"
     },
-    DatePublished:{
+    DatePublished: {
         type: Date,
         default: new Date(),
     },
-    Images:{
-        type:  Array,
+    Images: {
+        type: Array,
         required: true,
     },
-    File:{
-        type: String, 
+    File: {
+        type: String,
         required: false,
         default: 'sjlm.mp4'
     },
-    Description:{
+    Description: {
         type: String,
         required: true
-    },
-    DescriptionHtml: {
-        type: String,
-        required: false,
-        default: "Default text need to be inserted"
     }
 });
 
-let News = mongoose.model("News" , newsSchema);
+let News = mongoose.model("News", newsSchema);
 
 module.exports = News;
