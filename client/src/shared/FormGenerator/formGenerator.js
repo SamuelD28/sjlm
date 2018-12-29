@@ -178,38 +178,29 @@ class FormGenerator extends Component {
      * target : Optionnal parameter, represents an already made target object. Used
      * when using simple texte edtior that his based on the the textarea
      */
-    HandleChangeEditor = ({ TextEditor, inputName, target }) => {
+    HandleChangeEditor = (TextEditor, inputName) => {
 
         let targetObject;
-        if (this.state.TextEditor.type === "full") {
-            if (TextEditor.current !== null) {
-                const editor = TextEditor.current.getEditor();
-                const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
-                targetObject = {
-                    name: inputName,
-                    value: editorFull.getHTML(),
-                }
-            }
-        }
-        else {
+        if (TextEditor.current !== null) {
+            const editor = TextEditor.current.getEditor();
+            const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
             targetObject = {
-                name: target.name,
-                value: target.value
+                name: inputName,
+                value: editorFull.getHTML(),
             }
         }
         this.UpdateStateKey("TextEditor", targetObject);
         this.MarkFormAsModified();
     }
 
-    // HandleChangeTextArea = () =>
-    // {
-    //     targetObject = {
-    //         name: target.name,
-    //         value: target.value
-    //     }
-    //     this.UpdateStateKey("TextEditor", targetObject);
-    //     this.MarkFormAsModified();
-    // }
+    HandleChangeTextArea = (target) => {
+        let targetObject = {
+            name: target.name,
+            value: target.value
+        }
+        this.UpdateStateKey("TextEditor", targetObject);
+        this.MarkFormAsModified();
+    }
 
     /**
      * Method used to handle the change made in a form input
@@ -451,6 +442,7 @@ class FormGenerator extends Component {
                     <TextEditor
                         input={this.state.TextEditor}
                         handleChangeEditor={this.HandleChangeEditor}
+                        handleChangeTextArea={this.HandleChangeTextArea}
                         />
                 </Grid.Column>
             </Grid>)

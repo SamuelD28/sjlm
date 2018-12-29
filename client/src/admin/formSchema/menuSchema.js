@@ -5,66 +5,70 @@
 
 //Import statements
 import Ajax from '../../shared/ajax.js';
-import {FormConfig, InputSchema, FormSchema} from '../../shared/FormGenerator/formGenerator.js';
+import { FormConfig, InputSchema, FormSchema } from '../../shared/FormGenerator/formGenerator.js';
 
-class MenuSchema extends FormSchema
-{
-    constructor()
-    {
+class MenuSchema extends FormSchema {
+    constructor() {
         super();
-        this.postConfig   = new FormConfig({url: "/api/menus/",
-                                     httpRequest : "POST",
-                                     modal: true,
-                                     size: "small",
-                                     title: "Ajouter un Menu"});
-        this.putConfig    = new FormConfig({url: "/api/menus/",
-                                    httpRequest : "PUT",
-                                    modal: true,
-                                    title: "Modifier un menu",
-                                    size: "small"});
-        this.inputs   =   [new InputSchema({
-                                        name: "Principal",
-                                        type: "toggle",
-                                        label : "Menu principal",
-                                        value: false}),
+        this.postConfig = new FormConfig({
+            url: "/api/menus/",
+            httpRequest: "POST",
+            modal: true,
+            size: "small",
+            title: "Ajouter un Menu"
+        });
+        this.putConfig = new FormConfig({
+            url: "/api/menus/",
+            httpRequest: "PUT",
+            modal: true,
+            title: "Modifier un menu",
+            size: "small"
+        });
+        this.inputs = [new InputSchema({
+                name: "Principal",
+                type: "toggle",
+                label: "Menu principal",
+                value: false
+            }),
                         new InputSchema({
-                                        name: "Title",
-                                        group: 1,
-                                        width: 10,
-                                        type: "text",
-                                        label: "Titre du menu",
-                                        value : ""}),
+                name: "Title",
+                group: 1,
+                width: 10,
+                type: "text",
+                label: "Titre du menu",
+                value: ""
+            }),
                         new InputSchema({
-                                        name : "Icon",
-                                        group: 1,
-                                        width: 6,
-                                        type: "select",
-                                        label: "Icon du menu",
-                                        disabled: (inputs) => {
-                                                    return !inputs[0].value;
-                                        },
-                                        value : "",
-                                        generator : () =>  { return this.iconOptions;  }
-                        }),
+                name: "Icon",
+                group: 1,
+                width: 6,
+                type: "select",
+                label: "Icon du menu",
+                disabled: (inputs) => {
+                    return !inputs[0].value;
+                },
+                value: "",
+                generator: () => { return this.iconOptions; }
+            }),
                         new InputSchema({
-                                        name : "LinkTo",
-                                        type: "select",
-                                        group: 2,
-                                        label: "Lien de navigation",
-                                        value : "",
-                                        generator : () =>  { return this.linkOptions; }
-                        }),
+                name: "LinkTo",
+                type: "select",
+                group: 2,
+                label: "Lien de navigation",
+                value: "",
+                generator: () => { return this.linkOptions; }
+            }),
                         new InputSchema({
-                                        name : "ParentMenu",
-                                        disabled: (inputs) => {
-                                            return inputs[0].value;
-                                        },
-                                        type: "select",
-                                        group: 2,
-                                        label: "Menu parent",
-                                        value : "",
-                                        generator : () =>  { return this.menuOptions; }
-                        })
+                name: "ParentMenu",
+                disabled: (inputs) => {
+                    return inputs[0].value;
+                },
+                type: "select",
+                group: 2,
+                label: "Menu parent",
+                value: "",
+                generator: () => { return this.menuOptions; }
+            })
         ];
         this.Init();
     }
@@ -76,8 +80,7 @@ class MenuSchema extends FormSchema
      * find a workaround later on but for right
      * now it works fine.
      */
-    Init = async() =>
-    {
+    Init = async() => {
         this.menuOptions = await this.GenererateMenuOptions();
         this.linkOptions = await this.GenerateLinksOptions();
         this.iconOptions = await this.GenererateIconOptions();
@@ -87,16 +90,13 @@ class MenuSchema extends FormSchema
      * Function that generate all the menu options
      * used by the select input ParentMenu
      */
-    GenererateMenuOptions = async () =>
-    {
+    GenererateMenuOptions = async() => {
         let menus = await Ajax.GetData("/api/menus");
         let menusOptions = [];
-        if(menus.data !== undefined)
-        {
+        if (menus.data !== undefined) {
             menus.data.map((menu, index) => {
-                if(menu.Principal)
-                {
-                    let menuObject = {text: menu.Title, value: menu._id};
+                if (menu.Principal) {
+                    let menuObject = { text: menu.Title, value: menu._id };
                     menusOptions.push(menuObject);
                 }
 
@@ -110,8 +110,7 @@ class MenuSchema extends FormSchema
      * Function that generate all the icon options
      * used by the select input Icon
      */
-    GenererateIconOptions = async () =>
-    {
+    GenererateIconOptions = async() => {
         let IconsArray = [
         "compass",
         "balance",
@@ -125,7 +124,7 @@ class MenuSchema extends FormSchema
         ];
         let IconsOptions = [];
         IconsArray.map((icon, index) => {
-            let IconsObject = {text: icon, value: icon, icon: icon};
+            let IconsObject = { text: icon, value: icon, icon: icon };
             return IconsOptions.push(IconsObject);
         });
         return IconsOptions;
@@ -135,14 +134,12 @@ class MenuSchema extends FormSchema
      * Function that generate all the link options
      * used by the select input LinkTo
      */
-    GenerateLinksOptions = async() =>
-    {
-        let navigationlinks =  await Ajax.GetData("/api/navigationlinks");
+    GenerateLinksOptions = async() => {
+        let navigationlinks = await Ajax.GetData("/api/navigationlinks");
         let NavigationOptions = [];
-        if(navigationlinks.data !== undefined)
-        {
+        if (navigationlinks.data !== undefined) {
             navigationlinks.data.map((navlink, index) => {
-                let NavigationObject = {text: navlink.Category + " | " +  navlink.Title, value: navlink.Link};
+                let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink.Link };
                 return NavigationOptions.push(NavigationObject);
             });
         }
@@ -153,10 +150,9 @@ class MenuSchema extends FormSchema
      * Method that apply a custom constraits to the inputs.
      * Can be left empty
      */
-    ApplyCustomConstraints = (input) =>
-    {
+    ApplyCustomConstraints = (input) => {
         //Custom constaints
-        if(input.name === "Principal")
+        if (input.name === "Principal")
             input.disabled = () => true;
     }
 }

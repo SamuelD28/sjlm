@@ -4,7 +4,7 @@ import Translate from '../../../shared/translate.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
-import styles     from './newsCard.module.css';
+import styles from './newsCard.module.css';
 
 //Function that displa an important tag if the news important property is set to true.
 function DisplayImportantTag(item)

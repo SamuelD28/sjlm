@@ -46,22 +46,25 @@ class TextEditor extends Component {
                 <Form.Field
                 disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
                 <ReactQuill
-                modules={this.modules}
-                defaultValue={this.props.input.value}
-                formats={this.formats}
-                onChange={() => {this.props.handleChangeEditor({TextEditor : this.TextEditor, inputName: this.props.input.name})}}
-                ref={this.TextEditor}
+                    modules = { this.modules }
+                    defaultValue = { this.props.input.value }
+                    formats = { this.formats }
+                    onChange = {
+                        () => this.props.handleChangeEditor(this.TextEditor, this.props.input.name)
+                    }
+                    ref = {this.TextEditor}
                 />
             </Form.Field>)
         else
             return (
                 <TextArea
-                style={{height: "100%"}}
-                name={this.props.input.name}
-                placeholder={this.props.input.placeholder}
-                value={this.props.input.value}
-                onChange={(e, data) => {this.props.handleChangeEditor({target : data})}}
-                />)
+                    style={{height: "100%"}}
+                    name={this.props.input.name}
+                    placeholder={this.props.input.placeholder}
+                    value={this.props.input.value}
+                    onChange={ (e, data) => this.props.handleChangeTextArea(data)}
+                />
+            )
     }
 }
 

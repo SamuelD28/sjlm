@@ -43,6 +43,7 @@ class PagesSchema extends FormSchema {
                 type: "uploader",
                 label: "Gallerie",
                 value: [],
+                multiple: true
             })
         ];
         this.textEditor = new EditorSchema({
