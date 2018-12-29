@@ -4615,3 +4615,42 @@
 [2018-12-29T03:49:32.520] [WARN] server - 127.0.0.1,10.240.1.60 - "GET /api/menus/ HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin/menus" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 [2018-12-29T03:49:41.064] [WARN] server - 127.0.0.1,10.240.1.78 - "GET /api/members HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin/members" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 [2018-12-29T03:49:43.555] [WARN] server - 127.0.0.1,10.240.0.171 - "GET /api/news/limit/15 HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin/news" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:00.137] [INFO] server - 127.0.0.1,10.240.1.60 - "GET /api/user/auth HTTP/1.1" 200 16 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin/menus" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:00.141] [WARN] server - 127.0.0.1,10.240.1.78 - "GET /api/menus HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin/menus" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:00.539] [WARN] server - 127.0.0.1,10.240.1.10 - "GET /api/navigationlinks HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:03.145] [WARN] server - 127.0.0.1,10.240.1.78 - "GET /api/pages HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:03.149] [INFO] server - 127.0.0.1,10.240.0.233 - "GET /api/news/limit/3 HTTP/1.1" 200 13037 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:11.162] [INFO] server - 127.0.0.1,10.240.0.233 - "GET /api/news/5bc55c526ea64b67ae67c57e HTTP/1.1" 200 4512 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/news/5bc55c526ea64b67ae67c57e" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:11.164] [WARN] server - 127.0.0.1,10.240.0.249 - "GET /api/news/limit/3 HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/news/5bc55c526ea64b67ae67c57e" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:11.778] [WARN] server - 127.0.0.1,10.240.2.147 - "GET /api/news/5bc55c526ea64b67ae67c57e HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/news/5bc55c526ea64b67ae67c57e" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:47.438] [INFO] server - 127.0.0.1,10.240.1.78 - "GET /api/news/5bc55c526ea64b67ae67c57a HTTP/1.1" 200 4307 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/news/5bc55c526ea64b67ae67c57a" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:59.859] [INFO] server - 127.0.0.1,10.240.1.21 - "GET /api/pages/5bc55c526ea64b67ae67c584 HTTP/1.1" 200 3521 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/static/5bc55c526ea64b67ae67c584" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T04:05:59.947] [WARN] server - 127.0.0.1,10.240.1.10 - "GET /api/pages/5bc55c526ea64b67ae67c584 HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/static/5bc55c526ea64b67ae67c584" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T16:23:54.235] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T16:24:35.994] [WARN] server - 127.0.0.1,10.240.2.147 - "GET /api/menus HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T16:24:36.008] [WARN] server - 127.0.0.1,10.240.0.68 - "GET /api/user/auth HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T16:24:36.097] [WARN] server - 127.0.0.1,10.240.1.60 - "GET /api/navigationlinks HTTP/1.1" 304 - "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T16:24:40.662] [INFO] server - 127.0.0.1,10.240.2.147 - "POST /api/user/login HTTP/1.1" 200 16 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T16:24:40.736] [INFO] server - 127.0.0.1,10.240.0.231 - "GET /api/user/auth HTTP/1.1" 200 230 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T16:24:42.607] [INFO] server - 127.0.0.1,10.240.1.78 - "GET /api/news/limit/15 HTTP/1.1" 200 64237 "https://saint-jacque-le-mineur-samueld28.c9users.io:8081/admin/news" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+[2018-12-29T17:37:52.258] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:38:21.440] [INFO] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 200 202 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:38:46.750] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 603 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:39:15.491] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 594 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:39:50.895] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 598 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:40:06.772] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 589 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:40:57.617] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:41:05.033] [INFO] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 200 200 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:41:10.709] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 594 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:45:15.027] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:45:32.790] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 594 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:45:49.536] [INFO] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 200 200 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:46:16.949] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 995 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:47:03.805] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:47:09.027] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 995 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:47:41.709] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:47:47.888] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 995 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:49:28.095] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:49:32.009] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 995 "" "PostmanRuntime/7.4.0"
+[2018-12-29T17:50:46.777] [INFO] server - SERVER PROCESS STARTED
+[2018-12-29T17:50:50.994] [ERROR] server - 127.0.0.1 - "POST /api/pages HTTP/1.1" 400 734 "" "PostmanRuntime/7.4.0"

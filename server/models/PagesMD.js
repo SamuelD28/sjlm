@@ -6,24 +6,34 @@ let Schema = mongoose.Schema;
 let pagesSchema = new Schema({
     Template: {
         type: Number,
-        required: true,
-        default: 0
+        default: 0,
+        min: 0,
+        max: 2
     },
     PageTitle: {
         type: String,
-        required: true
+        required: true,
+        minlength: 6,
+        maxlength: 60,
+        validate: {
+            validator: (value) => !(/[\@\#\$\%\?\&\*\(\)]/g.test(value)),
+            kind: 'invalid characters',
+        },
     },
     PageContent: {
         type: String,
         required: true
     },
     PageGallery: {
-        type: Array,
-        required: true,
-        default: ['https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg']
+        type: [String],
+        default: ['https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg'],
+        validate: {
+            validator: (value) => value.length <= 8,
+            message: "The value exceeds the number of images allowed",
+            kind: "maximages"
+        }
     }
 });
 
 let Pages = mongoose.model("Pages", pagesSchema);
-
 module.exports = Pages;

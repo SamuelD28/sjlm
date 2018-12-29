@@ -12927,3 +12927,311 @@
         '$isValidatorError': true } },
   _message: 'Pages validation failed',
   name: 'ValidationError' }
+[2018-12-29T17:38:46.748] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Path `PageTitle` (`Hie`) is shorter than the minimum allowed length (6).
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` (`Hie`) is shorter than the minimum allowed length (6).
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` (`Hie`) is shorter than the minimum allowed length (6).',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'minlength',
+        path: 'PageTitle',
+        value: 'Hie',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:39:15.490] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `Hieaaaaa`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `Hieaaaaa`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `Hieaaaaa`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'Hieaaaaa',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:39:50.892] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Path `PageTitle` (`aa`) is shorter than the minimum allowed length (6).
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` (`aa`) is shorter than the minimum allowed length (6).
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` (`aa`) is shorter than the minimum allowed length (6).',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'minlength',
+        path: 'PageTitle',
+        value: 'aa',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:40:06.771] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `aasssss`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `aasssss`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `aasssss`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'aasssss',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:41:10.707] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `aass@sss`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `aass@sss`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `aass@sss`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'aass@sss',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:45:32.786] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `aass@sss`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `aass@sss`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `aass@sss`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'aass@sss',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:46:16.947] [ERROR] error - { ValidationError: Pages validation failed: PageGallery: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageGallery: 
+      { ValidatorError: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageGallery',
+        value: ["miaw.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:47:09.021] [ERROR] error - { ValidationError: Pages validation failed: PageGallery: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageGallery: 
+      { ValidatorError: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageGallery',
+        value: ["miaw.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:47:47.883] [ERROR] error - { ValidationError: Pages validation failed: PageGallery: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageGallery: 
+      { ValidatorError: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageGallery',
+        value: ["miaw.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:49:32.004] [ERROR] error - { ValidationError: Pages validation failed: PageGallery: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageGallery: 
+      { ValidatorError: Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageGallery` with value `miaw.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg,woof.jpg`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageGallery',
+        value: ["miaw.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T17:50:50.989] [ERROR] error - { ValidationError: Pages validation failed: PageGallery: The value exceeds the number of images allowed
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageGallery: 
+      { ValidatorError: The value exceeds the number of images allowed
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'The value exceeds the number of images allowed',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageGallery',
+        value: ["miaw.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg","woof.jpg"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
