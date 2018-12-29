@@ -12794,3 +12794,136 @@
         '$isValidatorError': true } },
   _message: 'Pages validation failed',
   name: 'ValidationError' }
+[2018-12-29T01:04:19.676] [ERROR] error - { ValidationError: Validation failed: PageTitle: Path `PageTitle` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:178:19
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:39:9
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/once.js:12:16
+    at iteratorCallback (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:60:13)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/onlyOnce.js:12:16
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:36:13
+    at schemaPath.doValidate.updateValidator (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:122:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:115:22
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:176:5
+          at Query._findAndModify (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2993:7)
+          at Query._findOneAndUpdate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2578:8)
+          at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+        message: 'Path `PageTitle` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageTitle',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2018-12-29T01:10:03.196] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Path `PageTitle` is required., Template: Path `Template` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageTitle',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Template: 
+      { ValidatorError: Path `Template` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaNumber.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Template` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Template',
+        value: null,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2018-12-29T01:10:52.398] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Path `PageTitle` is required., Template: Path `Template` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageTitle',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Template: 
+      { ValidatorError: Path `Template` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaNumber.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Template` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Template',
+        value: null,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }

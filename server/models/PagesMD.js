@@ -17,10 +17,6 @@ let pagesSchema = new Schema({
         type: String,
         required: true
     },
-    PageContentHtml: {
-        type: String,
-        required: true
-    },
     PageGallery: {
         type: Array,
         required: true,

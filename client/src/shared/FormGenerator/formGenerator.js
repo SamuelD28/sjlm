@@ -53,6 +53,7 @@ class FormGenerator extends Component {
      */
     CloneInputs = () => {
         this.InitialInputs = Array.from(this.state.Inputs);
+        this.InitialEditor = Object.assign({}, this.state.TextEditor);
     }
 
     /**
@@ -91,7 +92,6 @@ class FormGenerator extends Component {
             formData = Object.assign({},
                 formData, {
                     [textEditor.name]: textEditor.value,
-                    [textEditor.name + "Html"]: textEditor.html
                 });
         }
         return formData;
@@ -187,8 +187,7 @@ class FormGenerator extends Component {
                 const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
                 targetObject = {
                     name: inputName,
-                    value: editorFull.getText(),
-                    html: editorFull.getHTML()
+                    value: editorFull.getHTML(),
                 }
             }
         }
@@ -228,6 +227,7 @@ class FormGenerator extends Component {
      */
     HandleCancel = () => {
         this.setState({ "Inputs": this.InitialInputs });
+        this.setState({ "TextEditor": this.InitialEditor });
         this.UpdateStateKey("FormStatus", { modified: false });
         this.CloseModal();
     }

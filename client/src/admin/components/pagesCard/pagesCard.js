@@ -30,10 +30,10 @@ class PagesCard extends Component {
         return (
             <FormGenerator
                 Inputs={PagesSchema.GetBindedInputs(this.props.page)}
-                    FormConfig={this.PutConfig}
-                    FormStatus={new FormStatus()}
-                    TextEditor={PagesSchema.GetBindedEditor(this.props.page.PageContent)}
-                    RefreshDataSet={this.props.RefreshDataSet}
+                FormConfig = { this.PutConfig }
+                FormStatus = { new FormStatus() }
+                TextEditor = { PagesSchema.GetBindedEditor(this.props.page.PageContent) }
+                RefreshDataSet = { this.props.RefreshDataSet }
                 />
         )
     }
