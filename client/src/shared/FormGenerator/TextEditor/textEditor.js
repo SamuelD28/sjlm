@@ -35,6 +35,9 @@ class TextEditor extends Component {
         //the editor since it doesnt create an event target object
         //when we modify the value inside
         this.TextEditor = React.createRef();
+        this.modules = modules;
+        this.formats = formats;
+        this.state = { text: props.input.value };
     }
 
     render() {
@@ -43,9 +46,9 @@ class TextEditor extends Component {
                 <Form.Field
                 disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
                 <ReactQuill
-                value={this.props.input.value}
-                modules={modules}
-                formats={formats}
+                modules={this.modules}
+                defaultValue={this.props.input.value}
+                formats={this.formats}
                 onChange={() => {this.props.handleChangeEditor({TextEditor : this.TextEditor, inputName: this.props.input.name})}}
                 ref={this.TextEditor}
                 />

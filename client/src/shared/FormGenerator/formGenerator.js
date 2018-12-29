@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Ajax from '../ajax.js';
 import Translate from '../translate.js';
 
-//Helper Object
+//Helper Objects and Classes
 import FormSchema from './formSchema.js';
 import FormConfig from './formConfig.js';
 import FormStatus from './formStatus.js';
@@ -182,12 +182,14 @@ class FormGenerator extends Component {
 
         let targetObject;
         if (this.state.TextEditor.type === "full") {
-            const editor = TextEditor.current.getEditor();
-            const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
-            targetObject = {
-                name: inputName,
-                value: editorFull.getText(),
-                html: editorFull.getHTML()
+            if (TextEditor.current !== null) {
+                const editor = TextEditor.current.getEditor();
+                const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
+                targetObject = {
+                    name: inputName,
+                    value: editorFull.getText(),
+                    html: editorFull.getHTML()
+                }
             }
         }
         else {
@@ -199,6 +201,16 @@ class FormGenerator extends Component {
         this.UpdateStateKey("TextEditor", targetObject);
         this.MarkFormAsModified();
     }
+
+    // HandleChangeTextArea = () =>
+    // {
+    //     targetObject = {
+    //         name: target.name,
+    //         value: target.value
+    //     }
+    //     this.UpdateStateKey("TextEditor", targetObject);
+    //     this.MarkFormAsModified();
+    // }
 
     /**
      * Method used to handle the change made in a form input
@@ -288,8 +300,6 @@ class FormGenerator extends Component {
         if (!this.state.FormStatus.modified)
             this.UpdateStateKey("FormStatus", { modified: true });
     }
-
-    /*-----Method that handle the updating of the state object-----*/
 
     /**
      * Method that update a key inside the state Object
@@ -433,11 +443,11 @@ class FormGenerator extends Component {
         else {
             return (
                 <Grid>
-                <Grid.Column width={8}>
+                <Grid.Column width={6}>
                     <FormError errorHandler={this.state.FormStatus} />
                     {this.GenerateFormInputs()}
                 </Grid.Column>
-                <Grid.Column width={8}>
+                <Grid.Column width={10}>
                     <TextEditor
                         input={this.state.TextEditor}
                         handleChangeEditor={this.HandleChangeEditor}

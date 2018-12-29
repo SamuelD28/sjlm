@@ -1,6 +1,6 @@
 //Initial Declaration and importation
-import React from 'react';
-import CrudComponent from '../../components/CrudComponent.js';
+import React, { Component } from 'react';
+import Ajax from '../../../shared/ajax.js';
 
 //Css Module
 import CssModules from 'react-css-modules';
@@ -12,41 +12,51 @@ import PagesCard from '../../components/pagesCard/pagesCard.js';
 import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 
 //This Component is responsible for holding the state that will be modified by its crud components
-class Pages extends CrudComponent{
+class Pages extends Component {
 
-    componentDidMount()
-    {
-        this.ReadInTempState("/api/pages");
+    constructor(props) {
+        super(props);
+        this.state = {};
     }
 
-    DisplayPagesCard = () =>
-    {
-        if(this.state.db !== undefined){
-            return(
-            this.state.db.map((item ,index)=> (
-                <PagesCard
-                    pages={item}
-                    key={item._id}
-                    UpdateTempState={this.UpdateTempState}
-                    RemoveFromTempState={this.RemoveFromTempState}/>
-            )))
+    componentDidMount() {
+        this.GetPages();
+    }
+
+    GetPages = async() => {
+        let request = await Ajax.GetData("/api/pages/");
+        this.setState({ pages: request.data });
+    }
+
+    DisplayPagesCard = () => {
+        if (this.state.pages !== undefined) {
+            return (
+                this.state.pages.map((page, index) => (
+                    <PagesCard
+                    page={page}
+                    key={page._id}
+                    RefreshDataSet={this.GetPages}
+                    />
+                )))
         }
     }
 
-    render(){
-    return(
-    <div className={adminStyles.adminPage}>
+    render() {
+        return (
+            <div className={adminStyles.adminPage}>
         <section className="section-row">
             <div styleName="pagesLeftColumn columnContainer">
-                <PagesCreate CreateInTempState={this.CreateInTempState}/>
+                <PagesCreate
+                    RefreshDataSet={this.GetPages}
+                    />
             </div>
             <div styleName="pagesRightColumn columnContainer">
                 {this.DisplayPagesCard()}
             </div>
         </section>
     </div>
-    )
+        )
     }
 }
 
-export default CssModules(Pages , styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default CssModules(Pages, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
