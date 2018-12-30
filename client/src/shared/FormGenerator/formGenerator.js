@@ -12,7 +12,7 @@ import InputSchema from './inputSchema.js';
 import EditorSchema from './editorSchema.js';
 
 //Components used for the form generation
-import { Form, Modal, Grid } from 'semantic-ui-react';
+import { Form, Modal, Grid, Button } from 'semantic-ui-react';
 import FormError from './FormError/formError.js';
 import TextEditor from './TextEditor/textEditor.js';
 import TextInput from './TextInput/textInput.js';
@@ -53,7 +53,9 @@ class FormGenerator extends Component {
      */
     CloneInputs = () => {
         this.InitialInputs = Array.from(this.state.Inputs);
-        this.InitialEditor = Object.assign({}, this.state.TextEditor);
+
+        if (this.state.TextEditor !== undefined)
+            this.InitialEditor = Object.assign({}, this.state.TextEditor);
     }
 
     /**
@@ -324,14 +326,24 @@ class FormGenerator extends Component {
      */
     GenerateNegativeButton = () => {
         return (
-            <button
+            <Button
             style={{float: "left"}}
             onClick={this.HandleNegativeAction}
-            className="btn btn-danger">
-            {(this.state.FormConfig.httpRequest === "put")
-            ?'Supprimer'
-            :'Annuler'}
-        </button>)
+            color="red"
+            inverted
+            size="large"
+            >
+            <i  className={
+                (this.state.FormConfig.httpRequest === "put")
+                ? 'icon trash'
+                : 'icon close'}>
+            </i>
+            {
+                (this.state.FormConfig.httpRequest === "put") ?
+                'Supprimer' :
+                'Annuler'
+            }
+        </Button>)
     }
 
     /**
@@ -339,17 +351,22 @@ class FormGenerator extends Component {
      */
     GeneratePositiveButton = () => {
         return (
-            <button
+            <Button
             disabled={!this.state.FormStatus.modified}
             onClick={this.HandleSubmit}
-            className=
-                {(!this.state.FormStatus.modified)
-                ? "btn"
-                : "btn btn-primary"}>
+            inverted
+            color="blue"
+            size="large"
+            >
+            <i  className={
+                (this.state.FormConfig.httpRequest === "put")
+                ? 'icon save'
+                : 'icon add'}>
+            </i>
             {(this.state.FormConfig.httpRequest === "put")
             ? 'Modifier'
             : 'Ajouter'}
-        </button>
+        </Button>
         )
     }
 
@@ -388,6 +405,7 @@ class FormGenerator extends Component {
     CreateModalForm = () => {
         return (
             <Modal
+            closeIcon
         size={this.state.FormConfig.size}
         open={this.state.FormStatus.open}
         onClose={this.HandleCancel}
@@ -435,8 +453,7 @@ class FormGenerator extends Component {
             return (
                 <Grid columns='equal'>
                 <Grid.Column>
-                    <FormError errorHandler={this.state.FormStatus} />
-                    {this.GenerateFormInputs()}
+                    <FormError errorHandler={this.state.FormStatus} /> { this.GenerateFormInputs() }
                 </Grid.Column>
                 <Grid.Column width={this.state.TextEditor.width}>
                     <TextEditor

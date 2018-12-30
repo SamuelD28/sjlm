@@ -1,6 +1,6 @@
 /*global cloudinary*/
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 //Widget options used for initiating a cloudinary upload widget
 const defaultOptions = {
@@ -142,14 +142,15 @@ class CloudinaryUpload extends Component {
         if (this.state !== undefined)
             return (
                 <div>
-                    <Form.Field>
-                        <div className="container-thumbnails" ref={this.uploadsThumbnails}>
-                            <span className="uploads-thumbnails button-thumbnails" onClick={this.OpenCloudinaryWidget}>
-                                <i className="icon add"></i>
-                            </span>
-                            {this.DisplayThumbnailImages()}
-                        </div>
-                    </Form.Field>
+                    <label>{this.props.input.label}</label>
+                    <Button
+                        style={{float: "right"}}
+                        circular
+                        icon="add"
+                        onClick={this.OpenCloudinaryWidget}/>
+                    <div className="container-thumbnails" ref={this.uploadsThumbnails}>
+                        {this.DisplayThumbnailImages()}
+                    </div>
                 </div>
             )
     }

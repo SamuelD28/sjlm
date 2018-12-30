@@ -30,7 +30,6 @@ let menuSchema = new Schema({
     }
 });
 
-//!!!!!Needs to be reworked for actual model validation. Right now it only logs that the validation didnt passed.!!!!
 menuSchema.pre("save", function (next) {
     if (this.ParentMenu !== undefined) {
         Menu.findById(this.ParentMenu)

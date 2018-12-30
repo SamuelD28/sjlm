@@ -68,6 +68,7 @@ class MemberSchema extends FormSchema {
                 name: "Photo",
                 type: "uploader",
                 label: "Photo de Profil",
+                width: 16,
                 group: 4,
                 multiple: false,
                 value: []

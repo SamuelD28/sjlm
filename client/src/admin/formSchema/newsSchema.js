@@ -37,10 +37,10 @@ class NewsSchema extends FormSchema {
                         new InputSchema({
                 name: "Important",
                 type: "toggle",
-                label: "Actualitée Prioritaire",
-                group: 3,
+                label: "Prioritaire",
+                group: 2,
                 width: 8,
-                value: ""
+                value: false
             }),
             new InputSchema({
                 name: "Title",
@@ -55,7 +55,17 @@ class NewsSchema extends FormSchema {
                 type: "uploader",
                 label: "Gallerie",
                 value: [],
+                group: 3,
+                width: 16,
+                multiple: true
+            }),
+            new InputSchema({
+                name: "Files",
+                type: "uploader",
+                label: "Fichiers",
+                value: [],
                 group: 4,
+                width: 16,
                 multiple: true
             })
         ];

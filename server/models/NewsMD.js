@@ -11,16 +11,17 @@ let newsSchema = new mongoose.Schema({
         validate: {
             validator: (value) => !(/[\@\#\$\%\?\&\*\(\)]/g.test(value)),
             kind: 'invalid characters',
-        },
+        }
     },
     Important: {
         type: Boolean,
+        required: false,
         default: false
     },
     Category: {
         type: String,
         lowercase: true,
-        enum: ['events', 'activity', 'communicate', 'roadwork', 'jobs', 'public', 'council', 'verbal', 'other']
+        enum: ['events', 'activity', 'communicate', 'roadwork', 'jobs', 'public', 'council', 'verbal', 'other'] //should pull from the database instead
     },
     Images: {
         type: [String],
@@ -33,7 +34,7 @@ let newsSchema = new mongoose.Schema({
     Files: {
         type: [String],
         validate: {
-            validator: (value) => (/^.*\.pdf$/g.test(value)),
+            validator: (value) => (/^.*\.(pdf|pptx|word)$/g.test(value)) || value.length === 0,
             message: "Invalid file type provided",
             kind: "invalid file"
         }

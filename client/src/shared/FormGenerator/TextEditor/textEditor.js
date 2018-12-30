@@ -43,8 +43,6 @@ class TextEditor extends Component {
     render() {
         if (this.props.input.type === "full")
             return (
-                <Form.Field
-                disabled={(this.props.input.disabled !== undefined)? this.props.input.disabled(this.props.inputs): false}>
                 <ReactQuill
                     modules = { this.modules }
                     defaultValue = { this.props.input.value }
@@ -53,8 +51,7 @@ class TextEditor extends Component {
                         () => this.props.handleChangeEditor(this.TextEditor, this.props.input.name)
                     }
                     ref = {this.TextEditor}
-                />
-            </Form.Field>)
+                />)
         else
             return (
                 <TextArea

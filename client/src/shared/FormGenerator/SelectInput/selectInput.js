@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Select } from 'semantic-ui-react';
+import { Form, Dropdown, Segment } from 'semantic-ui-react';
 import Translate from '../../../shared/translate.js';
 
 /**
@@ -12,15 +12,17 @@ const SelectInput = (props) => {
         <Form.Field
         width={props.input.width}
         disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}>
-        <label>{props.input.label}</label>
-        <Select
-            name={props.input.name}
-            clearable
-            placeholder={Translate.ModelKey(props.input.name) + "..."}
-            selection
-            value={props.input.value}
-            onChange={(e, data) =>  {props.handleChange(data)}}
-            options={(props.input.generator !== undefined)? props.input.generator(): props.input.list} />
+        <Segment>
+            <label>{props.input.label}</label>
+            <Dropdown
+                transparent
+                name={props.input.name}
+                clearable
+                placeholder={Translate.ModelKey(props.input.name) + "..."}
+                value={props.input.value}
+                onChange={(e, data) =>  {props.handleChange(data)}}
+                options={(props.input.generator !== undefined)? props.input.generator(): props.input.list} />
+        </Segment>
     </Form.Field>
     )
 }

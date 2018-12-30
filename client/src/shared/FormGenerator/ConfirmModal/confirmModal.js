@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Header } from 'semantic-ui-react';
+import { Modal, Header, Button } from 'semantic-ui-react';
 
 /**
  * Component for creating a confirm dialog when
@@ -16,17 +16,21 @@ const ConfirmModal = (props) => {
             <p>Êtes-vous sûr de vouloir supprimer le contenu suivant?</p>
         </Modal.Content>
         <Modal.Actions>
-            <button
+            <Button
                 style={{float: "left"}}
                 onClick={props.NegativeAction}
-                className="btn btn-sm btn-outline-danger">
+                color="red"
+                inverted
+                >
                 <i className="icon remove"></i> Non
-            </button>
-            <button
+            </Button>
+            <Button
                 onClick={props.PositiveAction}
-                className="btn btn-sm btn-outline-success">
+                color="blue"
+                inverted
+                >
                 <i className="icon check"></i> Oui
-            </button>
+            </Button>
         </Modal.Actions>
     </Modal>
     )

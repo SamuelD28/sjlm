@@ -138,6 +138,9 @@ Translate.ModelKey = function (modelKey) {
     case "Description":
         translatedContent = "Description";
         break;
+    case "Files":
+        translatedContent = "Fichiers";
+        break;
     default:
         translatedContent = modelKey + "**" //remove when going in production
     }

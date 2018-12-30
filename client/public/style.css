@@ -31,6 +31,24 @@ body {
     margin: 0;
 }
 
+label {
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: .9rem !important;
+    color: #4C4C4C !important;
+    letter-spacing: .1rem !important;
+}
+
+.ui.dropdown,
+.ui.checkbox,
+.ui.input {
+    align-items: center;
+    margin-top: .5rem !important;
+    font-size: 1.1rem !important;
+    display: flex;
+    justify-content: space-between;
+}
+
 img {
     max-width: 100%;
 }
@@ -348,46 +366,6 @@ h6 {
 
 .img-modal {}
 
-.float-right {
-    float: right;
-}
-
-.float-left {
-    float: left;
-}
-
-.cancel {
-    grid-area: cancel;
-}
-
-.confirm {
-    grid-area: confirm;
-}
-
-.blue {
-    color: #2196f3 !important;
-}
-
-.brown {
-    color: #795548 !important;
-}
-
-.orange {
-    color: #ff5722 !important;
-}
-
-.red {
-    color: #e91e63 !important;
-}
-
-.yellow {
-    color: #ff9800 !important;
-}
-
-.green {
-    color: #009688 !important;
-}
-
 .fileLabel:hover {
     cursor: pointer;
 }
@@ -415,16 +393,6 @@ input[type=file] {
     position: absolute;
     z-index: -1;
 }
-
-input[type=date] {
-    /*margin: 0 0.5vw !important;*/
-}
-
-/*.icon{*/
-
-/*    margin: 0 !important;*/
-
-/*}*/
 
 /*Quill Text editor*/
 
@@ -471,8 +439,8 @@ blockquote {
 }
 
 .uploads-thumbnails {
-    width: 6vw;
-    height: 6vw;
+    width: 100%;
+    height: 100%;
 }
 
 .uploads-thumbnails:hover {
@@ -490,9 +458,11 @@ blockquote {
 }
 
 .container-thumbnails {
-    display: flex;
-    flex-wrap: wrap;
-    margin: .5vw 0;
+    display: grid;
+    grid-auto-rows: 5rem;
+    grid-template-columns: repeat(4, .25fr);
+    margin-top: 2rem;
+    width: 100%;
 }
 
 #backgroundOverlay {

@@ -13853,3 +13853,739 @@
         '$isValidatorError': true } },
   _message: 'Members validation failed',
   name: 'ValidationError' }
+[2018-12-29T19:02:01.536] [ERROR] error - { ValidationError: News validation failed: Important: Cast to Boolean failed for value "" at path "Important", Category: `` is not a valid enum value for path `Category`., Description: Path `Description` is required., Files: Invalid file type provided
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Important: 
+      { CastError: Cast to Boolean failed for value "" at path "Important"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to Boolean failed for value "" at path "Important"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'Boolean',
+        value: '',
+        path: 'Important',
+        reason: [Object] },
+     Category: 
+      { ValidatorError: `` is not a valid enum value for path `Category`.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: '`` is not a valid enum value for path `Category`.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'enum',
+        path: 'Category',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Files: 
+      { ValidatorError: Invalid file type provided
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Invalid file type provided',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Files',
+        value: [],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:04:12.947] [ERROR] error - { ValidationError: News validation failed: Important: Cast to Boolean failed for value "" at path "Important", Category: `` is not a valid enum value for path `Category`., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Important: 
+      { CastError: Cast to Boolean failed for value "" at path "Important"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to Boolean failed for value "" at path "Important"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'Boolean',
+        value: '',
+        path: 'Important',
+        reason: [Object] },
+     Category: 
+      { ValidatorError: `` is not a valid enum value for path `Category`.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: '`` is not a valid enum value for path `Category`.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'enum',
+        path: 'Category',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:07:18.524] [ERROR] error - { ValidationError: News validation failed: Important: Cast to Boolean failed for value "" at path "Important", Files: Invalid file type provided, Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Important: 
+      { CastError: Cast to Boolean failed for value "" at path "Important"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to Boolean failed for value "" at path "Important"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'Boolean',
+        value: '',
+        path: 'Important',
+        reason: [Object] },
+     Files: 
+      { ValidatorError: Invalid file type provided
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Invalid file type provided',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Files',
+        value: ["https://res.cloudinary.com/dohwohspb/raw/upload/v1546110415/sjlm/TP4.1_-_Mot_de_passe_2_aa5tol.pptx"],
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:08:14.157] [ERROR] error - { ValidationError: News validation failed: Important: Cast to Boolean failed for value "" at path "Important", Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Important: 
+      { CastError: Cast to Boolean failed for value "" at path "Important"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to Boolean failed for value "" at path "Important"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'Boolean',
+        value: '',
+        path: 'Important',
+        reason: [Object] },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:08:21.827] [ERROR] error - { ValidationError: News validation failed: Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:08:24.142] [ERROR] error - { ValidationError: News validation failed: Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:08:33.820] [ERROR] error - { ValidationError: News validation failed: Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:11:09.925] [ERROR] error - { ValidationError: News validation failed: Important: Cast to Boolean failed for value "" at path "Important"
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Important: 
+      { CastError: Cast to Boolean failed for value "" at path "Important"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to Boolean failed for value "" at path "Important"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'Boolean',
+        value: '',
+        path: 'Important',
+        reason: [Object] } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-29T19:12:17.731] [ERROR] error - { ValidationError: News validation failed: Category: `` is not a valid enum value for path `Category`., Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Category: 
+      { ValidatorError: `` is not a valid enum value for path `Category`.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: '`` is not a valid enum value for path `Category`.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'enum',
+        path: 'Category',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-30T18:03:59.784] [ERROR] error - { ValidationError: News validation failed: Important: Cast to Boolean failed for value "" at path "Important", Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Important: 
+      { CastError: Cast to Boolean failed for value "" at path "Important"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to Boolean failed for value "" at path "Important"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'Boolean',
+        value: '',
+        path: 'Important',
+        reason: [Object] },
+     Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-30T18:04:26.925] [ERROR] error - { ValidationError: News validation failed: Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-30T18:48:18.452] [ERROR] error - { ValidationError: News validation failed: Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2018-12-30T18:49:33.293] [ERROR] error - { ValidationError: News validation failed: Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
