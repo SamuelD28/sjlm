@@ -40,6 +40,8 @@ class InputSchema {
         value = "",
         list = [],
         generator,
+        search = false,
+        clearable = true,
         multiple = false
     }) {
         this.name = name;
@@ -52,12 +54,16 @@ class InputSchema {
         this.list = list;
         this.generator = generator;
         this.multiple = multiple;
+        this.search = search;
+        this.clearable = clearable;
 
         //Verify that all the properties match a corresponding type
         //and that they meet a certain constrait trough functions
         Utility.VerifyProperty(this.name, String);
         Utility.VerifyProperty(this.label, String);
         Utility.VerifyProperty(this.multiple, Boolean);
+        Utility.VerifyProperty(this.search, Boolean);
+        Utility.VerifyProperty(this.clearable, Boolean);
         Utility.VerifyProperty(this.list, Array);
         Utility.VerifyProperty(this.generator, Function);
         Utility.VerifyProperty(this.group, Number, Utility.BetweenMinMaxNumber, { min: 0, max: 16 });

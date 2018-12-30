@@ -15,9 +15,11 @@ const SelectInput = (props) => {
         <Segment>
             <label>{props.input.label}</label>
             <Dropdown
-                transparent
+                fluid
+                scrolling
+                search={props.input.search}
                 name={props.input.name}
-                clearable
+                clearable={props.input.clearable}
                 placeholder={Translate.ModelKey(props.input.name) + "..."}
                 value={props.input.value}
                 onChange={(e, data) =>  {props.handleChange(data)}}
