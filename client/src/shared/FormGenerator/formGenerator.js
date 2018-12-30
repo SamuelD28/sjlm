@@ -473,6 +473,7 @@ class FormGenerator extends Component {
         let groups = this.GenerateFormGroups(this.state.FormInputs);
         return Object.keys(groups).map((key, index) => {
             return (
+
                 <Form.Group key={index}>
                         {this.GenerateFormFields(groups[key])}
                     </Form.Group>

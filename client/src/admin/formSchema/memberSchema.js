@@ -56,23 +56,23 @@ class MemberSchema extends FormSchema {
                 value: "",
             }),
                         new InputSchema({
+                name: "Photo",
+                type: "uploader",
+                label: "Photo",
+                width: 10,
+                group: 3,
+                multiple: false,
+                value: []
+            }),
+                        new InputSchema({
                 name: "Occupation",
                 type: "select",
                 label: "Occupation",
                 group: 3,
-                width: 10,
+                width: 6,
                 value: "",
                 generator: () => this.occupationsOptions
             }),
-                        new InputSchema({
-                name: "Photo",
-                type: "uploader",
-                label: "Photo de Profil",
-                width: 16,
-                group: 4,
-                multiple: false,
-                value: []
-            })
         ];
         this.textEditor = new EditorSchema({
             name: "PersonnalNote",
