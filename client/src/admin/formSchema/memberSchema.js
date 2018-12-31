@@ -58,6 +58,7 @@ class MemberSchema extends FormSchema {
                         new InputSchema({
                 name: "Photo",
                 type: "uploader",
+                allowedExt : ["jpg" , "png", "gif"],
                 label: "Photo",
                 width: 10,
                 group: 3,

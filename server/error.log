@@ -14927,3 +14927,149 @@
     at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:49:13)
     at Query.exec.then (/home/ubuntu/workspace/project/server/api/MembersAPI.js:52:21)
     at process._tickCallback (internal/process/next_tick.js:109:7)
+[2018-12-31T01:49:40.789] [ERROR] error - { ValidationError: Validation failed: Files: Invalid file type provided
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:178:19
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:39:9
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/once.js:12:16
+    at iteratorCallback (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:60:13)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/onlyOnce.js:12:16
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:36:13
+    at schemaPath.doValidate.updateValidator (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:122:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:800:11
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Files: 
+      { ValidatorError: Invalid file type provided
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:115:22
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:176:5
+          at Query._findAndModify (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2993:7)
+          at Query._findOneAndUpdate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2578:8)
+          at /home/ubuntu/workspace/project/server/node_modules/kareem/index.js:278:20
+          at _next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:102:16)
+        message: 'Invalid file type provided',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Files',
+        value: ["https://res.cloudinary.com/dohwohspb/raw/upload/v1546203197/sjlm/TP4.2_-_Huit_Reines_2_cmtfk2_1_gsnkh0.pptx","https://res.cloudinary.com/dohwohspb/image/upload/v1546220929/sjlm/TP2-064-A18_1_vdumyt.pdf","https://res.cloudinary.com/dohwohspb/raw/upload/v1546220965/sjlm/Classeur1_xhlfbf.xlsx","https://res.cloudinary.com/dohwohspb/raw/upload/v1546220976/sjlm/Offre_Service_-_Carte_%C3%89motion_uxvwht.docx"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2018-12-31T01:50:56.282] [ERROR] error - { ValidationError: Validation failed: Files: Invalid file type provided
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:178:19
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:39:9
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/once.js:12:16
+    at iteratorCallback (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:60:13)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/onlyOnce.js:12:16
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:36:13
+    at schemaPath.doValidate.updateValidator (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:122:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:800:11
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Files: 
+      { ValidatorError: Invalid file type provided
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:115:22
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/updateValidators.js:176:5
+          at Query._findAndModify (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2993:7)
+          at Query._findOneAndUpdate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2578:8)
+          at /home/ubuntu/workspace/project/server/node_modules/kareem/index.js:278:20
+          at _next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:102:16)
+        message: 'Invalid file type provided',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Files',
+        value: ["https://res.cloudinary.com/dohwohspb/raw/upload/v1546203197/sjlm/TP4.2_-_Huit_Reines_2_cmtfk2_1_gsnkh0.pptx","https://res.cloudinary.com/dohwohspb/image/upload/v1546220929/sjlm/TP2-064-A18_1_vdumyt.pdf","https://res.cloudinary.com/dohwohspb/raw/upload/v1546220965/sjlm/Classeur1_xhlfbf.xlsx","https://res.cloudinary.com/dohwohspb/raw/upload/v1546220976/sjlm/Offre_Service_-_Carte_%C3%89motion_uxvwht.docx"],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2018-12-31T01:57:57.001] [ERROR] error - { ValidationError: News validation failed: Category: `` is not a valid enum value for path `Category`., Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Category: 
+      { ValidatorError: `` is not a valid enum value for path `Category`.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: '`` is not a valid enum value for path `Category`.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'enum',
+        path: 'Category',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }

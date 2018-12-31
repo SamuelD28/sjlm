@@ -30,7 +30,7 @@ class PagesSchema extends FormSchema {
                 value: "",
                 width: 16
             }),
-                        new InputSchema({
+            new InputSchema({
                 name: "Template",
                 type: "select",
                 label: "Template de la page",
@@ -41,6 +41,7 @@ class PagesSchema extends FormSchema {
             new InputSchema({
                 name: "PageGallery",
                 type: "uploader",
+                allowedExt : ["jpg" , "png", "gif"],
                 label: "Gallerie",
                 width: 16,
                 value: [],

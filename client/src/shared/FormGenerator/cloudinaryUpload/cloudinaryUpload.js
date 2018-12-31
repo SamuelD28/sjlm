@@ -11,12 +11,13 @@ const defaultOptions = {
         "url",
         "image_search"
     ],
+    maxFileSize : 10000000,
+    maxFiles: 8,
+    autoMinimize : true,
+    language: "fr",
     googleApiKey: 'AIzaSyB_WKZp9us_1a_hNgUMR27fyiGtBkFdV4Y',
     searchByRights: true,
-    showAdvancedOptions: false,
-    cropping: false,
     defaultSource: "local",
-    folder: "members_photos",
     styles: {
         palette: {
             window: "#FFFFFF",
@@ -61,7 +62,12 @@ class CloudinaryUpload extends Component {
         this.updateStateInputs = this.props.updateStateInputs;
 
         //Specify if multiple images are allowed to be uploaded
-        this.widgetOptions = Object.assign({}, defaultOptions, { multiple: this.state.multiple });
+        this.widgetOptions = Object.assign({},
+                            defaultOptions,
+                            {
+                                multiple: this.state.multiple ,
+                                clientAllowedFormats : this.state.allowedExt
+                            });
 
         //Creates a new cloudinary upload widgets
         this.widget = new cloudinary.createUploadWidget(this.widgetOptions, (error, result) => {
@@ -99,38 +105,53 @@ class CloudinaryUpload extends Component {
      * images.
      */
     DisplayThumbnailImages() {
-        return this.state.value.map((url, index) =>
-            ((/^.*\.(jpg|png|gif)$/g.test(url))
-            ?
-            <Popup
-                key={url}
-                hoverable={true}
-                trigger={
-                    <img
-                        alt={"thumbnail " + index}
-                        key={url}
-                        className="uploads-thumbnails"
-                        src={url}
-                        onClick={
-                            () => this.RemoveImage(url)
-                        }
-                    />}
-                content = {
-                    <a target="_blank" href={url}>{url}
-                    </a>}
-            />
-            :
-            <Popup
-                hoverable
-                key = { url }
-                trigger ={
-                    <Button >F
-                    </Button>}
-                content = {
-                    <a href={url}>{url}
-                    </a>}
-            />
-        ))
+        return this.state.value.map((url) =>(
+            this.GenerateThumbnail(url)
+        ));
+}
+
+GenerateThumbnail = (url) =>
+{
+    let fileSrc;
+    let isImage = false;
+
+    if(url.endsWith("jpg") || url.endsWith("png") || url.endsWith("gif")){
+        fileSrc = url
+        isImage = true;
+    }
+    else if(url.endsWith("pdf"))
+        fileSrc = "/tumb_pdf.svg"
+    else if(url.endsWith("docx"))
+        fileSrc = "/tumb_word.svg"
+    else if(url.endsWith(".xlsx"))
+        fileSrc = "/tumb_excel.svg"
+    else if(url.endsWith("pptx"))
+        fileSrc = "/tumb_pptx.svg"
+    else
+        fileSrc ="/tumb_unknow.svg";
+
+    return(
+    <Popup
+        key={url}
+        hoverable
+        trigger={
+            isImage
+            ?<img
+                className="uploads-thumbnails"
+                alt={url}
+                src={fileSrc}
+                onClick={() => this.RemoveImage(url)}/>
+            :<div
+                className="uploads-thumbnails fileExtension"
+                alt={url}
+                style={{backgroundImage : `url('${fileSrc}')`}}
+                onClick={() => this.RemoveImage(url)}>
+            </div>}
+        content={
+            <a target="_blank" href={url}>{url}
+            </a>}
+    />
+    )
 }
 
 /**

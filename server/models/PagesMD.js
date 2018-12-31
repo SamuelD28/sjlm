@@ -28,7 +28,7 @@ let pagesSchema = new Schema({
         type: [String],
         default: ['https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg'],
         validate: {
-            validator: (value) => value.length <= 6,
+            validator: (value) => value.length <= 8,
             message: "The value exceeds the number of images allowed",
             kind: "maximages"
         }

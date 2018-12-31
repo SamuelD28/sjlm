@@ -26,7 +26,7 @@ let newsSchema = new mongoose.Schema({
     Images: {
         type: [String],
         validate: {
-            validator: (value) => value.length <= 6,
+            validator: (value) => value.length <= 8,
             message: "The value exceeds the number of images allowed",
             kind: "maximages"
         }
@@ -34,7 +34,7 @@ let newsSchema = new mongoose.Schema({
     Files: {
         type: [String],
         validate: {
-            validator: (value) => (/^.*\.(pdf|pptx|word)$/g.test(value)) || value.length === 0,
+            validator: (value) => (/^.*\.(pdf|pptx|docx|xlsx)$/g.test(value)) || value.length === 0,
             message: "Invalid file type provided",
             kind: "invalid file"
         }

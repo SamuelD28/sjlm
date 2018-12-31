@@ -53,6 +53,7 @@ class NewsSchema extends FormSchema {
                         new InputSchema({
                 name: "Images",
                 type: "uploader",
+                allowedExt : ["jpg", "png" , "gif"],
                 label: "Gallerie",
                 value: [],
                 group: 3,
@@ -62,6 +63,7 @@ class NewsSchema extends FormSchema {
             new InputSchema({
                 name: "Files",
                 type: "uploader",
+                allowedExt : ["docx", "pdf" , "pptx", "xlsx"],
                 label: "Fichiers",
                 value: [],
                 group: 4,

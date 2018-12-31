@@ -28,6 +28,8 @@ const inputTypes = ['select', 'text', 'uploader', 'texteditor', 'toggle', 'passw
  * for the select type inputs
  * multiple : used to tell that multiple file are allowed
  * inside an uploader type input
+ * allowedExt : property used when creating an uploader.
+ * Specifies the file extensions allowed for uploading
  */
 class InputSchema {
     constructor({
@@ -42,7 +44,8 @@ class InputSchema {
         generator,
         search = false,
         clearable = true,
-        multiple = false
+        multiple = false,
+        allowedExt = []
     }) {
         this.name = name;
         this.label = label;
@@ -56,10 +59,12 @@ class InputSchema {
         this.multiple = multiple;
         this.search = search;
         this.clearable = clearable;
+        this.allowedExt = allowedExt;
 
         //Verify that all the properties match a corresponding type
         //and that they meet a certain constrait trough functions
         Utility.VerifyProperty(this.name, String);
+        Utility.VerifyProperty(this.allowedExt, Array);
         Utility.VerifyProperty(this.label, String);
         Utility.VerifyProperty(this.multiple, Boolean);
         Utility.VerifyProperty(this.search, Boolean);
