@@ -10,11 +10,11 @@ import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
 const FileInput = (props) => {
     if (props.input !== undefined)
         return (
-            <Form.Field
+        <Form.Field
             width={props.input.width}
             disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}>
             <Segment>
-                            <CloudinaryUpload
+                <CloudinaryUpload
                     input={props.input}
                     updateStateInputs={props.updateStateInputs}
                     />

@@ -46,6 +46,20 @@ Api.DeleteMenu = function(req, res)
     let Query = Menu.findByIdAndRemove(req.params.id);
     Query.exec()
          .then((menu) =>{
+
+            if(menu.SubMenu.length > 0)
+            {
+                menu.SubMenu.forEach((id) =>
+                {
+                    console.log(id);
+                    Menu.findByIdAndRemove(id)
+                        .exec()
+                        .catch((err) => {
+                            Utility.GenerateResponse(false, res, err);
+                        });
+                });
+            }
+
             Utility.GenerateResponse(true, res, menu);
          })
          .catch((err) =>{
