@@ -329,25 +329,28 @@ class FormGenerator extends Component {
      * Method that generates the negative button for the modal form
      */
     GenerateNegativeButton = () => {
-        return (
-            <Button
-            style={{float: "left"}}
-            onClick={this.HandleNegativeAction}
-            color="red"
-            inverted
-            size="large"
-            >
-            <i  className={
-                (this.state.FormConfig.httpRequest === "put")
-                ? 'icon trash'
-                : 'icon close'}>
-            </i>
-            {
-                (this.state.FormConfig.httpRequest === "put") ?
-                'Supprimer' :
-                'Annuler'
-            }
-        </Button>)
+        if(this.state.FormConfig.modal)
+        {
+            return (
+                <Button
+                style={{float: "left"}}
+                onClick={this.HandleNegativeAction}
+                color="red"
+                inverted
+                size="large"
+                >
+                <i  className={
+                    (this.state.FormConfig.httpRequest === "put")
+                    ? 'icon trash'
+                    : 'icon close'}>
+                </i>
+                {
+                    (this.state.FormConfig.httpRequest === "put") ?
+                    'Supprimer' :
+                    'Annuler'
+                }
+            </Button>)
+        }
     }
 
     /**
@@ -356,17 +359,13 @@ class FormGenerator extends Component {
     GeneratePositiveButton = () => {
         return (
             <Button
+            style={{marginLeft: "auto"}}
             disabled={!this.state.FormStatus.modified}
             onClick={this.HandleSubmit}
             inverted
-            color="blue"
+            color="orange"
             size="large"
             >
-            <i  className={
-                (this.state.FormConfig.httpRequest === "put")
-                ? 'icon save'
-                : 'icon add'}>
-            </i>
             {(this.state.FormConfig.httpRequest === "put")
             ? 'Modifier'
             : 'Ajouter'}
@@ -391,14 +390,12 @@ class FormGenerator extends Component {
      */
     CreatePlainForm = () => {
         return (
-            <Form loading={this.state.FormStatus.loading}>
+            <Form
+                style={{display : "flex", flexDirection: "column"}}
+                loading={this.state.FormStatus.loading}>
                 {this.GenerateForm()}
-                <button style={{float: "left"}} onClick={this.HandleCancel} className="btn btn-danger">
-                    Annuler
-                </button>
-                <button onClick={() => {this.HandleSubmit()}} className="btn btn-primary">
-                    Ajouter
-                </button>
+                {this.GenerateNegativeButton()}
+                {this.GeneratePositiveButton()}
             </Form>
         )
     }

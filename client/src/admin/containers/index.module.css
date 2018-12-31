@@ -1,12 +1,13 @@
-.adminPage{
+.adminPage {
     background-color: whitesmoke;
     margin-top: 5vw;
     margin-left: 15vw;
     padding: 3vw;
     position: relative;
+    height: -webkit-fill-available;
 }
 
-.sectionContainer{
+.sectionContainer {
     align-items: center;
     background-color: white;
     box-sizing: border-box;
@@ -15,12 +16,11 @@
     display: grid;
     grid-template-columns: 3fr auto;
     grid-template-rows: auto 3fr;
-    grid-template-areas: "sectionTitle sectionBtn"
-                         "sectionContent sectionContent";
+    grid-template-areas: "sectionTitle sectionBtn" "sectionContent sectionContent";
     grid-gap: 1vw 2.5vw;
 }
 
-.sectionTitle{
+.sectionTitle {
     border-bottom: 2px solid #ececec;
     font-size: 1.25vw;
     padding-bottom: 1vw;
@@ -28,21 +28,21 @@
     grid-area: sectionTitle;
 }
 
-.sectionBtn{
+.sectionBtn {
     grid-area: sectionBtn;
 }
 
-.sectionContent{
+.sectionContent {
     grid-area: sectionContent;
 }
 
-.sectionCard{
+.sectionCard {
     background-color: white;
     box-shadow: .2vw .2vw .5vw #D4D4D4;
     padding: .5vw;
 }
 
-.sectionWrapper{
+.sectionWrapper {
     align-items: flex-start;
     display: flex;
     justify-content: space-between;

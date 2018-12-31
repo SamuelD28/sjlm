@@ -15685,3 +15685,115 @@
         '$isValidatorError': true } },
   _message: 'Menu validation failed',
   name: 'ValidationError' }
+[2018-12-31T17:39:42.628] [ERROR] error - { MongoError: Topology was destroyed
+    at nextFunction (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/cursor.js:603:27)
+    at Cursor.next (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/cursor.js:824:3)
+    at Cursor._next (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/cursor.js:211:36)
+    at fetchDocs (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/cursor_ops.js:211:12)
+    at toArray (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/cursor_ops.js:241:3)
+    at executeOperation (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:420:24)
+    at Cursor.toArray (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/cursor.js:818:10)
+    at /home/ubuntu/workspace/project/server/node_modules/mquery/lib/collection/node.js:30:14
+    at handleCallback (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:128:55)
+    at Collection.find (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/collection.js:431:43)
+    at NativeCollection.(anonymous function) [as find] (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:142:28)
+    at NodeCollection.find (/home/ubuntu/workspace/project/server/node_modules/mquery/lib/collection/node.js:26:19)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1617:20)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9) name: 'MongoError', message: 'Topology was destroyed' }
+[2018-12-31T18:12:01.961] [ERROR] error - { ValidationError: CategoryNews validation failed: Title: Path `Title` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'CategoryNews validation failed',
+  name: 'ValidationError' }
+[2018-12-31T19:07:53.696] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/recolte_agricole" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/recolte_agricole" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/recolte_agricole" }' }
+[2018-12-31T19:33:07.529] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/recolte_agricole" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/recolte_agricole" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/recolte_agricole" }' }
+[2018-12-31T19:38:55.278] [ERROR] error - { ValidationError: CategoryNews validation failed: Title: Path `Title` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'CategoryNews validation failed',
+  name: 'ValidationError' }
+[2018-12-31T20:18:11.651] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/test" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/test" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/news/category/test" }' }

@@ -15,6 +15,7 @@ const TextInput = (props) => {
         <Segment>
             <label>{props.input.label}</label>
             <Input
+            size = {props.input.size}
             transparent
             name = { props.input.name }
             placeholder = { Translate.ModelKey(props.input.name) + "..." }

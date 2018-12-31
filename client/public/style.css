@@ -37,8 +37,6 @@ label {
 .ui.checkbox,
 .ui.input {
     align-items: center;
-    margin-top: .5rem !important;
-    font-size: 1.1rem !important;
     display: flex;
     justify-content: space-between;
 }
@@ -305,10 +303,19 @@ h6 {
     padding: 1vw;
 }
 
+.plainForm {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: .5vw;
+}
+
 .section-row {
-    align-items: flex-start;
-    display: flex !important;
-    width: 100% !important;
+    display: grid;
+    grid-template-columns: .20fr .8fr;
+    grid-template-rows: 12vw auto auto;
+    grid-gap: 1rem;
+    width: 100%;
 }
 
 .section-form {
@@ -357,20 +364,6 @@ h6 {
 }
 
 .img-modal {}
-
-.fileLabel:hover {
-    cursor: pointer;
-}
-
-.fileLabel {
-    border: 1px solid #2196f3 !important;
-    color: #2196f3 !important;
-    font-weight: normal !important;
-    font-size: 1em !important;
-    display: inline-block !important;
-    font-size: 1vw !important;
-    padding: .5vw !important;
-}
 
 /*Quill Text editor*/
 

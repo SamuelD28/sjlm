@@ -13,6 +13,7 @@ const ToggleInput = (props) => {
         <Segment>
             <label>{props.input.label}</label>
             <Checkbox
+            size={props.input.size}
             name={props.input.name}
             onChange={(e, data) => {props.handleChange(data)}}
             checked={props.input.value}

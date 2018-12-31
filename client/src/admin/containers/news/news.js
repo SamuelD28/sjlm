@@ -11,6 +11,7 @@ import adminStyles from "../index.module.css";
 //Components
 import NewsCreate from '../../components/newsCreate/newsCreate.js';
 import NewsEdit from '../../components/newsEdit/newsEdit.js';
+import CategoryNews from '../categoryNews/categoryNews.js';
 
 let MonthOptions = [
     {
@@ -95,12 +96,20 @@ class News extends Component {
     //Function that display an array for every news card hold in the tempstate array.
     DisplayNewsCard() {
         if (this.state.news !== undefined) {
-            return this.state.news.map((item) => (
-                <NewsEdit
-                    key={item._id}
-                    news={item}
-                    RefreshDataSet={this.GetNews}/>
-            ));
+            if(this.state.news.length > 0){
+                return this.state.news.map((item) => (
+                    <NewsEdit
+                        key={item._id}
+                        news={item}
+                        RefreshDataSet={this.GetNews}/>
+                ));
+            }
+            else
+            {
+                return(
+                    <h2>Aucun résultat trouvé</h2>
+                )
+            }
         }
     }
 
@@ -108,11 +117,11 @@ class News extends Component {
         return (
             <div className={adminStyles.adminPage}>
                 <section className="section-row">
-                    <div styleName="pagesLeftColumn columnContainer">
+                    <div styleName="columnContainer">
                         <NewsCreate RefreshDataSet={this.GetNews}/>
                     </div>
-                    <div styleName="pagesRightColumn columnContainer">
-                        <div style={{marginBottom: '1.5vw'}}>
+                    <div styleName="columnContainer">
+                        <div style={{padding: '1vw'}}>
                             <Dropdown style={{marginRight: "1.5vw"}} selection placeholder="Mois" defaultValue="Novembre" options={MonthOptions} />
                             <Dropdown selection placeholder="Annee" defaultValue={2018} options={YearOptions} />
                         </div>
@@ -120,6 +129,7 @@ class News extends Component {
                             {this.DisplayNewsCard()}
                         </div>
                     </div>
+                    <CategoryNews />
                 </section>
             </div>
         )

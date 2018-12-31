@@ -13,12 +13,19 @@ function DisplayImportantTag(item)
         return <span styleName="newsImportant">Prioritaire</span>;
 }
 
+
 const NewsCard = (props) =>{
 
     if(props.news !== undefined)
     return(
     <div styleName="news">
-        <div styleName="newsImg" className="img-bg" style={{backgroundImage: `url('${props.news.Images[0]}')`}}></div>
+        <div styleName="newsImg"
+            className="img-bg"
+            style={
+                (props.news.Images[0] !== undefined)
+                ?{backgroundImage: `url('${props.news.Images[0]}')`}
+                :{background: "#d4d4d5"}}>
+        </div>
         <div styleName="newsInfo">
             <h2>{props.news.Title}</h2>
             {DisplayImportantTag(props.news)}

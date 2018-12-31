@@ -15,6 +15,7 @@ const SelectInput = (props) => {
         <Segment>
             <label>{props.input.label}</label>
             <Dropdown
+                size={props.input.size}
                 fluid
                 scrolling
                 search={props.input.search}

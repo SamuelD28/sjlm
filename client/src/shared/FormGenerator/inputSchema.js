@@ -34,10 +34,11 @@ const inputTypes = ['select', 'text', 'uploader', 'texteditor', 'toggle', 'passw
 class InputSchema {
     constructor({
         name = "Unnamed Input",
-        label = "Unnamed Input...",
+        label = "",
         group,
         width,
         type = "text",
+        size = "large",
         disabled = () => false,
         value = "",
         list = [],
@@ -60,6 +61,7 @@ class InputSchema {
         this.search = search;
         this.clearable = clearable;
         this.allowedExt = allowedExt;
+        this.size = size;
 
         //Verify that all the properties match a corresponding type
         //and that they meet a certain constrait trough functions
