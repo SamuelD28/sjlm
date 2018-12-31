@@ -14,7 +14,7 @@ const FileInput = (props) => {
             width={props.input.width}
             disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}>
             <Segment>
-                <CloudinaryUpload
+                            <CloudinaryUpload
                     input={props.input}
                     updateStateInputs={props.updateStateInputs}
                     />

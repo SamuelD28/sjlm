@@ -42,6 +42,7 @@ class PagesSchema extends FormSchema {
                 name: "PageGallery",
                 type: "uploader",
                 label: "Gallerie",
+                width: 16,
                 value: [],
                 multiple: true
             })

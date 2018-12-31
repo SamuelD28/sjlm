@@ -1,6 +1,6 @@
 /*global cloudinary*/
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Popup } from 'semantic-ui-react';
 
 //Widget options used for initiating a cloudinary upload widget
 const defaultOptions = {
@@ -99,49 +99,70 @@ class CloudinaryUpload extends Component {
      * images.
      */
     DisplayThumbnailImages() {
-        return this.state.value.map((element, index) => (
-            <img
-                alt={"thumbnail " + index}
-                key={index * Math.PI}
-                className="uploads-thumbnails"
-                src={element}
-                onClick={
-                    () => this.RemoveImage(element)
-                }
+        return this.state.value.map((url, index) =>
+            ((/^.*\.(jpg|png|gif)$/g.test(url))
+            ?
+            <Popup
+                key={url}
+                hoverable={true}
+                trigger={
+                    <img
+                        alt={"thumbnail " + index}
+                        key={url}
+                        className="uploads-thumbnails"
+                        src={url}
+                        onClick={
+                            () => this.RemoveImage(url)
+                        }
+                    />}
+                content = {
+                    <a target="_blank" href={url}>{url}
+                    </a>}
+            />
+            :
+            <Popup
+                hoverable
+                key = { url }
+                trigger ={
+                    <Button >F
+                    </Button>}
+                content = {
+                    <a href={url}>{url}
+                    </a>}
             />
         ))
+}
+
+/**
+ * Method for removing images from the state. The action
+ * is send to the database only if the user submits
+ * the form.
+ */
+RemoveImage = async(thumbnailUrl) => {
+
+    let imagesArray = Array.from(this.state.value);
+    let index = imagesArray.indexOf(thumbnailUrl);
+
+    if (index !== -1) {
+        imagesArray.splice(index, 1);
     }
 
-    /**
-     * Method for removing images from the state. The action
-     * is send to the database only if the user submits
-     * the form.
-     */
-    RemoveImage = async(thumbnailUrl) => {
+    await this.setState(Object.assign({}, this.state, { value: imagesArray }));
+    this.updateStateInputs(this.state.name, { value: this.state.value });
+}
 
-        let imagesArray = Array.from(this.state.value);
-        let index = imagesArray.indexOf(thumbnailUrl);
+/**
+ * Method to opens up the created cloudinary widget in the cconstructor.
+ */
+OpenCloudinaryWidget = (e) => {
+    e.preventDefault();
+    this.widget.open();
+}
 
-        if (index !== -1) {
-            imagesArray.splice(index, 1);
-        }
-
-        await this.setState(Object.assign({}, this.state, { value: imagesArray }));
-        this.updateStateInputs(this.state.name, { value: this.state.value });
-    }
-
-    /**
-     * Method to opens up the created cloudinary widget in the cconstructor.
-     */
-    OpenCloudinaryWidget = (e) => {
-        e.preventDefault();
-        this.widget.open();
-    }
-
-    render() {
-        if (this.state !== undefined)
-            return (
-                <div>
+render() {
+    if (this.state !== undefined)
+        return (
+            <div>
                     <label>{this.props.input.label}</label>
                     <Button
                         style={{float: "right"}}
@@ -152,8 +173,8 @@ class CloudinaryUpload extends Component {
                         {this.DisplayThumbnailImages()}
                     </div>
                 </div>
-            )
-    }
+        )
+}
 }
 
 export default CloudinaryUpload;

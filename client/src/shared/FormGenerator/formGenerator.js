@@ -12,7 +12,7 @@ import InputSchema from './inputSchema.js';
 import EditorSchema from './editorSchema.js';
 
 //Components used for the form generation
-import { Form, Modal, Grid, Button } from 'semantic-ui-react';
+import { Form, Modal, Grid, Button, Popup } from 'semantic-ui-react';
 import FormError from './FormError/formError.js';
 import TextEditor from './TextEditor/textEditor.js';
 import TextInput from './TextInput/textInput.js';
@@ -195,6 +195,10 @@ class FormGenerator extends Component {
         this.MarkFormAsModified();
     }
 
+    /**
+     * Method used to handle change in text area input.
+     * target : event object triggered by the on change listener
+     */
     HandleChangeTextArea = (target) => {
         let targetObject = {
             name: target.name,
