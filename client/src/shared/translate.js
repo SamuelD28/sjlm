@@ -159,11 +159,32 @@ Translate.ModelError = function (modelError, modelProperties) {
     case "maxlength":
         translatedContent = "est supérieur à la limite " + modelProperties.maxlength;
         break;
-    case "ObjectId":
-        translatedContent = " ne correspond pas à un Id existant";
+    case "ObjectID":
+        translatedContent = " ne correspond pas à une donnée existante";
         break;
     case "CastError":
         translatedContent = " ne correspond pas au bon type de valeur";
+        break;
+    case "invalid characters":
+        translatedContent = " contient des caractères interdits";
+        break;
+    case "maximages":
+        translatedContent = " dépasse le nombre d'images permis";
+        break;
+    case "invalid file":
+        translatedContent = " contient des fichiers non-permis";
+        break;
+     case "oneimage":
+        translatedContent = " ne doit contenir qu'une seule image";
+        break;
+    case "invalid email":
+        translatedContent = " n'est pas un email valide";
+        break;
+    case "invalid phone":
+        translatedContent = " n'est pas une numéro de téléphone valide";
+        break;
+    case "enum":
+        translatedContent = " n'est pas dans la plage attendue";
         break;
     default:
         translatedContent = "la validation à échoué";

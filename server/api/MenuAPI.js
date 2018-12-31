@@ -19,6 +19,17 @@ Api.CreateMenu = function(req, res)
 {
     Menu.create(req.body)
          .then((menu) =>{
+            if(menu.ParentMenu !== null)
+            {
+                Menu.findById(menu.ParentMenu)
+                    .then((parentMenu) => {
+                        parentMenu.SubMenu.push(menu._id);
+                        parentMenu.save();
+                    })
+                    .catch((err) => {
+                        Utility.GenerateResponse(false, res, err);
+                    });
+            }
             Utility.GenerateResponse(true, res, menu);
          })
          .catch((err) => {

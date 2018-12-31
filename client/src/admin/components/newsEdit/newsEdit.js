@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 import { default as NewsSchema } from '../../formSchema/newsSchema.js';
 

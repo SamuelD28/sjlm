@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 
 /**
  * Component responsible for displaying error message that occured in the

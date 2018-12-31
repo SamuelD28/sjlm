@@ -8,7 +8,7 @@ let menuSchema = new Schema({
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 100
+        maxlength: 50
     },
     Principal: {
         type: Boolean,
@@ -30,21 +30,5 @@ let menuSchema = new Schema({
     }
 });
 
-menuSchema.pre("save", function (next) {
-    if (this.ParentMenu !== undefined) {
-        Menu.findById(this.ParentMenu)
-            .then((menu) => {
-                menu.SubMenu.push(this._id);
-                menu.save();
-            })
-            .catch((err) => {
-                Utility.WriteInLog("error", err);
-                console.log(err);
-            });
-    }
-    next();
-});
-
 let Menu = mongoose.model("Menu", menuSchema);
-
 module.exports = Menu;

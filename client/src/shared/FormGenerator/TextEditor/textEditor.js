@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, TextArea } from 'semantic-ui-react';
+import { TextArea } from 'semantic-ui-react';
 import ReactQuill from 'react-quill';
 
 //Default declaration used by the quill text edtior

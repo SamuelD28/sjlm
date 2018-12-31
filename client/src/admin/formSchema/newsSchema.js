@@ -4,7 +4,6 @@
  */
 
 //Import statements
-import Ajax from '../../shared/ajax.js';
 import { FormConfig, InputSchema, FormSchema, EditorSchema } from '../../shared/FormGenerator/formGenerator.js';
 
 class NewsSchema extends FormSchema {
