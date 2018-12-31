@@ -88,20 +88,26 @@ class MenuSchema extends FormSchema {
      * now it works fine.
      */
     Init = async() => {
-        this.menuOptions = await this.GenererateMenuOptions();
-        this.linkOptions = await this.GenerateLinksOptions();
-        this.iconOptions = await this.GenererateIconOptions();
+        await this.GenererateMenuOptions();
+        await this.GenerateLinksOptions();
+        await this.GenererateIconOptions();
     }
 
     /**
      * Function that generate all the menu options
      * used by the select input ParentMenu
      */
-    GenererateMenuOptions = async() => {
-        let menus = await Ajax.GetData("/api/menus");
+    GenererateMenuOptions = async(p_menus) => {
+
+        let menus;
+        if(p_menus === undefined)
+            menus = await Ajax.GetData("/api/menus").data;
+        else
+            menus = p_menus;
+
         let menusOptions = [];
-        if (menus.data !== undefined) {
-            menus.data.map((menu, index) => {
+        if (menus !== undefined) {
+            menus.map((menu, index) => {
                 if (menu.Principal) {
                     let menuObject = { text: menu.Title, value: menu._id };
                     menusOptions.push(menuObject);
@@ -110,7 +116,7 @@ class MenuSchema extends FormSchema {
                 return menusOptions;
             });
         }
-        return menusOptions;
+        this.menuOptions = menusOptions;
     }
 
     /**
@@ -134,7 +140,7 @@ class MenuSchema extends FormSchema {
             let IconsObject = { text: icon, value: icon, icon: icon };
             return IconsOptions.push(IconsObject);
         });
-        return IconsOptions;
+        this.iconOptions =  IconsOptions;
     }
 
     /**
@@ -150,7 +156,7 @@ class MenuSchema extends FormSchema {
                 return NavigationOptions.push(NavigationObject);
             });
         }
-        return NavigationOptions;
+        this.linkOptions = NavigationOptions;
     }
 
     /**

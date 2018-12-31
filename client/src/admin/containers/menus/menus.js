@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import MenuCards from '../../components/menuCards/menuCards.js';
 import MenuCreate from '../../components/menuCreate/menuCreate.js';
+import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
@@ -20,6 +21,7 @@ class Menus extends Component {
 
     GetMenus = async() => {
         let request = await Ajax.GetData("/api/menus/");
+        MenuSchema.GenererateMenuOptions(request.data);
         await this.setState({ menus: request.data });
     }
 
