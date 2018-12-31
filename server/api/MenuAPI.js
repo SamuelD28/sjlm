@@ -29,9 +29,34 @@ Api.CreateMenu = function(req, res)
 
 Api.UpdateMenu = function(req, res)
 {
-    let Query = Menu.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+    let Query = Menu.findByIdAndUpdate(req.params.id, req.body, {runValidators: true});
     Query.exec()
          .then((menu) =>{
+
+            if(menu.ParentMenu !== req.body.Parent)
+            {
+                Menu.findById(menu.ParentMenu)
+                    .then((originalParent) =>{
+                        let index = originalParent.SubMenu.indexOf(menu._id);
+                        originalParent.SubMenu.splice(index, 1);
+                        originalParent.save();
+                    })
+                    .catch((err) =>
+                    {
+                        Utility.GenerateResponse(false, res, err);
+                    });
+
+                Menu.findById(req.body.ParentMenu)
+                    .then((newParent) =>{
+                        newParent.SubMenu.push(menu);
+                        newParent.save();
+                    })
+                    .catch((err) =>
+                    {
+                        Utility.GenerateResponse(false, res, err);
+                    });
+            }
+
             Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, menu);
          })
@@ -59,6 +84,19 @@ Api.DeleteMenu = function(req, res)
                         });
                 });
             }
+            else{
+                 Menu.findById(menu.ParentMenu)
+                    .then((originalParent) =>{
+                        let index = originalParent.SubMenu.indexOf(menu._id);
+                        originalParent.SubMenu.splice(index, 1);
+                        originalParent.save();
+                    })
+                    .catch((err) =>
+                    {
+                        Utility.GenerateResponse(false, res, err);
+                    });
+            }
+
 
             Utility.GenerateResponse(true, res, menu);
          })
