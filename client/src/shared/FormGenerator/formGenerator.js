@@ -404,6 +404,7 @@ class FormGenerator extends Component {
     CreateModalForm = () => {
         return (
             <Modal
+            centered={true}
             closeIcon
         size={this.state.FormConfig.size}
         open={this.state.FormStatus.open}

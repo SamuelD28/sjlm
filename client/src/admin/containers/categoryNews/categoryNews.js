@@ -50,7 +50,7 @@ class CategoryNews extends Component
     render()
     {
         return(
-        <div className="adminCard">
+        <div className="section-style">
             <h2>Les Catégories</h2>
             <FormGenerator
                 Inputs={CategoryNewsSchema.GetEmptyInputs()}

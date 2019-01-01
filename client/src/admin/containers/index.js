@@ -32,8 +32,6 @@ const Index = (props) => {
         </Switch>
     </div>)
 }
-// <Route exact path="/admin/menus" component={Menus} />
-// <Route exact path="/admin/administrator" render={()=><Administrator user={props.user}/>}/>
 
 export default Index;
 

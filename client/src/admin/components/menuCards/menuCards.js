@@ -21,23 +21,23 @@ class MenuCards extends FormComponent{
     {
         if(this.props.menu.Icon !== undefined){
             return(
-                <span style={{fontSize: "1rem"}}>
+                <span>
                     {this.props.menu.Title.toUpperCase()} <i style={{float: "right"}}className={`icon ${this.props.menu.Icon}`}></i>
                 </span>)
         }
         else{
-            return <span>{this.props.menu.Title.toUpperCase()}</span>
+            return <span>{this.props.menu.Title}</span>
         }
     }
 
     render(){
     return(
         <FormGenerator
-        Inputs={this.Inputs}
-        FormStatus={new FormStatus()}
-        FormConfig={this.PutConfig}
-        RefreshDataSet={this.props.RefreshDataSet}
-        />
+            Inputs={this.Inputs}
+            FormStatus={new FormStatus()}
+            FormConfig={this.PutConfig}
+            RefreshDataSet={this.props.RefreshDataSet}
+            />
     )}
 }
 

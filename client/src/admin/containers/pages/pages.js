@@ -32,6 +32,7 @@ class Pages extends Component {
             return (
                 this.state.pages.map((page, index) => (
                     <PagesCard
+                    index={index}
                     page={page}
                     key={page._id}
                     RefreshDataSet={this.GetPages}
@@ -45,14 +46,14 @@ class Pages extends Component {
         <div className={adminStyles.adminPage}>
             <section className="section-row">
                 <div className="left-column">
-                    <div style={{height: "15vw", marginBottom: "2rem"}} className="adminCard">
+                    <div className="section-style section-btn">
                         <PagesCreate RefreshDataSet={this.GetPages}/>
                     </div>
                     <Menus />
                 </div>
-                <div className="right-column adminCard">
+                <div className="right-column section-style">
                     <h2>Les Pages</h2>
-                    <div className="pagesContainer">
+                    <div styleName="pagesContainer">
                         {this.DisplayPagesCard()}
                     </div>
                 </div>

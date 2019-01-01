@@ -118,18 +118,18 @@ class News extends Component {
             <div className={adminStyles.adminPage}>
                 <section className="section-row">
                     <div className="left-column">
-                        <div style={{height: "15vw", marginBottom: "2rem"}}>
+                        <div className="section-style section-btn">
                             <NewsCreate RefreshDataSet={this.GetNews}/>
                         </div>
                         <CategoryNews/>
                     </div>
-                    <div className="right-column adminCard">
+                    <div className="right-column section-style">
                         <h2>Les Actualités</h2>
                         <div style={{marginBottom: "2rem"}}>
                             <Dropdown style={{marginRight: "1.5vw"}} selection placeholder="Mois" defaultValue="Novembre" options={MonthOptions} />
                             <Dropdown selection placeholder="Annee" defaultValue={2018} options={YearOptions} />
                         </div>
-                        <div className={adminStyles.sectionContent} styleName="newsContainer">
+                        <div styleName="newsContainer">
                             {this.DisplayNewsCard()}
                         </div>
                     </div>

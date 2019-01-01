@@ -17,7 +17,7 @@ class PagesCard extends Component {
     ModalOpener = () => {
         return (
             <div className="pagesCard">
-                <h4>{this.props.page.PageTitle.toUpperCase()}</h4>
+                <h4>{this.props.index + 1} . {this.props.page.PageTitle.toUpperCase()}</h4>
             </div>
         )
     }

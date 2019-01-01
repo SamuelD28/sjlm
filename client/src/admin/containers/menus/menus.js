@@ -13,17 +13,15 @@ class Menus extends Component {
 
     state = {}
 
-    handleClick = (e, titleProps) => {
+    componentDidMount() {
+        this.GetMenus();
+    }
+
+    handleAccordionClick = (e, titleProps) => {
         const { index } = titleProps
         const { activeIndex } = this.state
         const newIndex = activeIndex === index ? -1 : index
-
         this.setState({ activeIndex: newIndex })
-    }
-
-
-    componentDidMount() {
-        this.GetMenus();
     }
 
     GetMenus = async() => {
@@ -42,15 +40,18 @@ class Menus extends Component {
     }
 
     DisplayMenuPrincipal = (menu, index) => {
-        const { activeIndex } = this.state
+        const { activeIndex } = this.state;
         if (menu.Principal)
             return (
             <Accordion
                 styled
                 fluid
                 key={menu._id}>
-                <Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
-                    <div style={{display: "flex", alignItems: "center"}}>
+                <Accordion.Title
+                    active={activeIndex === index}
+                    index={index}
+                    onClick={this.handleAccordionClick}>
+                    <div styleName="accordionTitle">
                         <Icon name='dropdown' />
                         <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                     </div>
@@ -63,7 +64,7 @@ class Menus extends Component {
 
     DisplaySubmenu = (submenu) => {
         if (submenu.length > 0)
-            return submenu.map((menu, index) => (
+            return submenu.map((menu) => (
                 <div styleName="menuTitle" key={menu._id}>
                     <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
@@ -78,8 +79,8 @@ class Menus extends Component {
 
     render() {
         return (
-        <div className="adminCard">
-            <h2 >Le Menu</h2>
+        <div className="section-style">
+            <h2>Le Menu</h2>
             <MenuCreate RefreshDataSet={this.GetMenus} />
             <Divider />
             {this.DisplayMenusCard()}

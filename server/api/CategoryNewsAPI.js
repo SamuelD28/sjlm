@@ -10,8 +10,8 @@ Api.GetCategoryNews = function(req, res)
 {
     let Query = CategoryNews.find({});
     Query.exec()
-         .then((categories) => {
-            Utility.GenerateResponse(true, res, categories);
+         .then((category) => {
+            Utility.GenerateResponse(true, res, category);
          })
          .catch((err) => {
             Utility.GenerateResponse(false, res, err);
@@ -22,9 +22,9 @@ Api.GetCategoryNews = function(req, res)
 Api.CreateCategoryNews = function(req, res)
 {
     CategoryNews.create(req.body)
-        .then((categories) => {
-            Utility.GenerateResponse(true, res, categories);
-            NavigationLinks.create({Title: categories.Title, Category: "Actualités", Link : "/news/category/" + categories.UrlValue})
+        .then((category) => {
+            Utility.GenerateResponse(true, res, category);
+            NavigationLinks.create({Title: category.Title, Category: "Actualités", Link : "/news/category/" + category._id})
                             .catch((err) => {
                                 Utility.WriteInLog("error", err);
                             });
@@ -38,9 +38,9 @@ Api.CreateCategoryNews = function(req, res)
 Api.UpdateCategoryNews = function(req, res)
 {
     CategoryNews.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true})
-        .then((categories) =>{
+        .then((category) =>{
             Utility.CheckIfObjectIsEmpty(req.body);
-            Utility.GenerateResponse(true, res, categories);
+            Utility.GenerateResponse(true, res, category);
         })
         .catch((err) => {
             Utility.GenerateResponse(false, res, err);
@@ -51,8 +51,8 @@ Api.UpdateCategoryNews = function(req, res)
 Api.DeleteCategoryNews = function(req , res)
 {
     CategoryNews.findByIdAndRemove(req.params.id)
-        .then((categories) =>{
-            Utility.GenerateResponse(true, res, categories);
+        .then((category) =>{
+            Utility.GenerateResponse(true, res, category);
         })
         .catch((err) => {
             Utility.GenerateResponse(false, res, err);

@@ -13,7 +13,7 @@ class PagesSchema extends FormSchema {
             url: "/api/pages/",
             httpRequest: "POST",
             modal: true,
-            size: "large",
+            size: "fullscreen",
             title: "Ajouter une page"
         });
         this.putConfig = new FormConfig({
@@ -21,21 +21,23 @@ class PagesSchema extends FormSchema {
             httpRequest: "PUT",
             modal: true,
             title: "Modifier une page",
-            size: "large"
+            size: "fullscreen"
         });
         this.inputs = [new InputSchema({
                 name: "PageTitle",
                 type: "text",
                 label: "Titre de la page",
                 value: "",
-                width: 16
+                width: 8,
+                group: 1
             }),
             new InputSchema({
                 name: "Template",
                 type: "select",
                 label: "Template de la page",
                 value: "",
-                width: 16,
+                width: 8,
+                group: 1,
                 generator: () => this.GenerateTemplateOptions()
             }),
             new InputSchema({
@@ -44,6 +46,7 @@ class PagesSchema extends FormSchema {
                 allowedExt : ["jpg" , "png", "gif"],
                 label: "Gallerie",
                 width: 16,
+                group: 2,
                 value: [],
                 multiple: true
             })

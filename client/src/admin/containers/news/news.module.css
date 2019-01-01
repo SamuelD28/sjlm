@@ -6,8 +6,3 @@
     grid-gap: .25vw;
     position: relative;
 }
-
-.columnContainer {
-    background-color: white;
-    box-shadow: .2vw .2vw .5vw #D4D4D4;
-}
