@@ -9,11 +9,11 @@ let CategoryNewsSchema = new Schema({
         unique: 1,
         required: true,
         trim: true,
-        maxLength: 50
+        maxLength: 25
     },
     UrlValue : {
         type: String,
-        trim: true,  
+        trim: true,
         maxLength: 50
     }
 });

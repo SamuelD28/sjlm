@@ -11,13 +11,12 @@ import adminStyles from '../index.module.css';
 import PagesCard from '../../components/pagesCard/pagesCard.js';
 import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 
+import Menus from '../menus/menus.js';
+
 //This Component is responsible for holding the state that will be modified by its crud components
 class Pages extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+    state={}
 
     componentDidMount() {
         this.GetPages();
@@ -43,19 +42,22 @@ class Pages extends Component {
 
     render() {
         return (
-            <div className={adminStyles.adminPage}>
-        <section className="section-row">
-            <div styleName="pagesLeftColumn columnContainer">
-                <PagesCreate
-                    RefreshDataSet={this.GetPages}
-                    />
-            </div>
-            <div styleName="pagesRightColumn columnContainer">
-                {this.DisplayPagesCard()}
-            </div>
-        </section>
-    </div>
-        )
+        <div className={adminStyles.adminPage}>
+            <section className="section-row">
+                <div className="left-column">
+                    <div style={{height: "15vw", marginBottom: "2rem"}} className="adminCard">
+                        <PagesCreate RefreshDataSet={this.GetPages}/>
+                    </div>
+                    <Menus />
+                </div>
+                <div className="right-column adminCard">
+                    <h2>Les Pages</h2>
+                    <div className="pagesContainer">
+                        {this.DisplayPagesCard()}
+                    </div>
+                </div>
+            </section>
+        </div>)
     }
 }
 

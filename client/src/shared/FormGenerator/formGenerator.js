@@ -156,7 +156,7 @@ class FormGenerator extends Component {
                 this.ClearForm();
         }
 
-        this.UpdateStateKey("FormStatus", { loading: false });
+        this.UpdateStateKey("FormStatus", { loading: false});
     }
 
     /**
@@ -336,7 +336,6 @@ class FormGenerator extends Component {
                 style={{float: "left"}}
                 onClick={this.HandleNegativeAction}
                 color="red"
-                inverted
                 size="large"
                 >
                 <i  className={
@@ -362,7 +361,6 @@ class FormGenerator extends Component {
             style={{marginLeft: "auto"}}
             disabled={!this.state.FormStatus.modified}
             onClick={this.HandleSubmit}
-            inverted
             color="orange"
             size="large"
             >

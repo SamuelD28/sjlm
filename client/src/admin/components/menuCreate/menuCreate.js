@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 import { default as MenuSchema } from '../../formSchema/menuSchema.js';
+import {Button} from 'semantic-ui-react';
 
 //Component responsible for creating new page
 class MenuCreate extends Component {
@@ -15,12 +16,8 @@ class MenuCreate extends Component {
 
     ModalOpener = () => {
         return (
-            <div className="cardOverlay">
-            <div className="cardOverlayBtn">
-                <i className="icon plus"></i>
-                <h4>Ajouter</h4>
-            </div>
-        </div>)
+        <Button color="orange" inverted>Ajouter un menu</Button>
+        )
     }
 
     render() {

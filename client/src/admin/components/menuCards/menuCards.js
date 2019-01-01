@@ -19,10 +19,15 @@ class MenuCards extends FormComponent{
      */
     ModalOpener = () =>
     {
-    return(
-        <div>
-            <i className={`icon ${this.props.menu.Icon}`}></i>  {this.props.menu.Title.toUpperCase()}
-        </div>)
+        if(this.props.menu.Icon !== undefined){
+            return(
+                <span style={{fontSize: "1rem"}}>
+                    {this.props.menu.Title.toUpperCase()} <i style={{float: "right"}}className={`icon ${this.props.menu.Icon}`}></i>
+                </span>)
+        }
+        else{
+            return <span>{this.props.menu.Title.toUpperCase()}</span>
+        }
     }
 
     render(){

@@ -7,13 +7,20 @@ import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 
 import CSSModules from 'react-css-modules';
 import styles from './menus.module.css';
-import adminStyles from '../index.module.css';
+import {Divider, Accordion, Icon} from 'semantic-ui-react';
 
 class Menus extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+
+    state = {}
+
+    handleClick = (e, titleProps) => {
+        const { index } = titleProps
+        const { activeIndex } = this.state
+        const newIndex = activeIndex === index ? -1 : index
+
+        this.setState({ activeIndex: newIndex })
     }
+
 
     componentDidMount() {
         this.GetMenus();
@@ -35,16 +42,23 @@ class Menus extends Component {
     }
 
     DisplayMenuPrincipal = (menu, index) => {
+        const { activeIndex } = this.state
         if (menu.Principal)
             return (
-                <div key={menu._id}>
-                <div styleName="menuTitle">
-                    <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
-                </div>
-                <div styleName="submenuContainer">
-                    {this.DisplaySubmenu(menu.SubMenu)}
-                </div>
-            </div>)
+            <Accordion
+                styled
+                fluid
+                key={menu._id}>
+                <Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                        <Icon name='dropdown' />
+                        <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
+                    </div>
+                </Accordion.Title>
+                <Accordion.Content active={activeIndex === index}>
+                        {this.DisplaySubmenu(menu.SubMenu)}
+                </Accordion.Content>
+            </Accordion>)
     }
 
     DisplaySubmenu = (submenu) => {
@@ -54,20 +68,22 @@ class Menus extends Component {
                     <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
                 </div>
             ));
+        else
+            return(
+                <div styleName="menuTitle">
+                    Aucun menu présent
+                </div>
+            )
     }
 
     render() {
         return (
-            <div className={adminStyles.adminPage}>
-            <section className="section-row">
-                <div styleName="leftColumn">
-                    <MenuCreate RefreshDataSet={this.GetMenus} />
-                </div>
-                <div styleName="columnContainer rightColumn">
-                    {this.DisplayMenusCard()}
-                </div>
-        </section>
-    </div>
+        <div className="adminCard">
+            <h2 >Le Menu</h2>
+            <MenuCreate RefreshDataSet={this.GetMenus} />
+            <Divider />
+            {this.DisplayMenusCard()}
+        </div>
         )
     }
 }

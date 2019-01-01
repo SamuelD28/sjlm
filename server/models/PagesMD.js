@@ -16,7 +16,7 @@ let pagesSchema = new Schema({
         minlength: 6,
         maxlength: 60,
         validate: {
-            validator: (value) => !(/[\@\#\$\%\?\&\*\(\)]/g.test(value)),
+            validator: (value) => !(/[\@\#\$\%\?\*\(\)]/g.test(value)),
             kind: 'invalid characters',
         },
     },

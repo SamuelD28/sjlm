@@ -117,11 +117,15 @@ class News extends Component {
         return (
             <div className={adminStyles.adminPage}>
                 <section className="section-row">
-                    <div styleName="columnContainer">
-                        <NewsCreate RefreshDataSet={this.GetNews}/>
+                    <div className="left-column">
+                        <div style={{height: "15vw", marginBottom: "2rem"}}>
+                            <NewsCreate RefreshDataSet={this.GetNews}/>
+                        </div>
+                        <CategoryNews/>
                     </div>
-                    <div styleName="columnContainer">
-                        <div style={{padding: '1vw'}}>
+                    <div className="right-column adminCard">
+                        <h2>Les Actualités</h2>
+                        <div style={{marginBottom: "2rem"}}>
                             <Dropdown style={{marginRight: "1.5vw"}} selection placeholder="Mois" defaultValue="Novembre" options={MonthOptions} />
                             <Dropdown selection placeholder="Annee" defaultValue={2018} options={YearOptions} />
                         </div>
@@ -129,7 +133,6 @@ class News extends Component {
                             {this.DisplayNewsCard()}
                         </div>
                     </div>
-                    <CategoryNews />
                 </section>
             </div>
         )

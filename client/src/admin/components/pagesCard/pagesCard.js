@@ -16,13 +16,13 @@ class PagesCard extends Component {
 
     ModalOpener = () => {
         return (
-            <div className="pagesCard ">
+            <div className="pagesCard">
                 <h4>{this.props.page.PageTitle.toUpperCase()}</h4>
             </div>
         )
     }
 
-    render() {
+    render(){
         return (
             <FormGenerator
                 Inputs={PagesSchema.GetBindedInputs(this.props.page)}

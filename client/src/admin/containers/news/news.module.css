@@ -5,7 +5,6 @@
     grid-auto-rows: 7vw;
     grid-gap: .25vw;
     position: relative;
-    padding: 1vw;
 }
 
 .columnContainer {

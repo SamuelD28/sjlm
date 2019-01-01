@@ -50,9 +50,8 @@ class CategoryNews extends Component
     render()
     {
         return(
-        <div className="plainForm">
-            <h2 style={{textAlign: "center"}}>Catégories</h2>
-            <Divider />
+        <div className="adminCard">
+            <h2>Les Catégories</h2>
             <FormGenerator
                 Inputs={CategoryNewsSchema.GetEmptyInputs()}
                 FormConfig={CategoryNewsSchema.GetPostConfig()}

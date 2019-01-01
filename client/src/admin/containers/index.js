@@ -25,7 +25,6 @@ const Index = (props) => {
             <Route exact path="/admin/news" component={News} />
             <Route exact path="/admin/pages" component={Pages} />
             <Route exact path="/admin/members" component={Members} />
-            <Route exact path="/admin/menus" component={Menus} />
             <Route exact path="/admin/mails" component={Mails} />
             <Route path="/">
                 <Redirect to="/admin" />
@@ -33,6 +32,7 @@ const Index = (props) => {
         </Switch>
     </div>)
 }
+// <Route exact path="/admin/menus" component={Menus} />
 // <Route exact path="/admin/administrator" render={()=><Administrator user={props.user}/>}/>
 
 export default Index;
