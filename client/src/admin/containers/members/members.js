@@ -42,9 +42,18 @@ class Members extends Component {
         return (
             <div id={styles.membersPage} className={adminStyles.adminPage}>
         <section>
-            <div styleName="membersContent">
-                <MembersCreate RefreshDataSet={this.GetMembers}/>
-                {this.DisplayMembers()}
+            <div className="section-row">
+                <div className="left-column">
+                    <div className="section-style section-btn">
+                        <MembersCreate RefreshDataSet={this.GetMembers}/>
+                    </div>
+                </div>
+                <div className="right-column section-style">
+                    <h2>Les Membres</h2>
+                    <div styleName="membersContent">
+                        {this.DisplayMembers()}
+                    </div>
+                </div>
             </div>
         </section>
     </div>

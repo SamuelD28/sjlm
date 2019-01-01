@@ -1,45 +1,30 @@
-.membersCard{
-    align-items: space-between;
+.membersCard {
     background-color: white;
-    justify-content: center;
-    display: grid;
     height: 100%;
+    display: flex;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "membersPhoto membersName"
-                         "membersPhoto membersTitle"
-                         "membersPhoto membersMail"
-                         "membersPhoto membersPhone"
-                         "membersPhoto membersDesc";
-    grid-gap: .5vw 0;
-    padding: 1vw;
     position: relative;
 }
 
-.membersPhoto{
-    width: 100%;
+.membersPhoto {
+    width: 40%;
     height: 100%;
     grid-area: membersPhoto;
 }
 
-.membersName{
-    margin: 0 1vw;
+.membersInfo {
+    border: 1px solid rgba(34, 36, 38, .15);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    width: 60%;
+}
+
+.membersName {
     border-bottom: 2px solid whitesmoke;
-    grid-area: membersName;
 }
-.membersTitle{
-    margin: 0 1vw;
-    grid-area: membersTitle;
-}
-.membersMail{
-    margin: 0 1vw;
-    grid-area: membersMail;
-}
-.membersPhone{
-    margin: 0 1vw;
-    grid-area: membersPhone;
-}
-.membersDesc{
+
+.membersTitle {
     margin: 0;
-    margin: 0 1vw;
-    grid-area: membersDesc;
 }
