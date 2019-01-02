@@ -11,6 +11,12 @@ let CategoryNewsSchema = new Schema({
         trim: true,
         maxLength: 25
     },
+    Template : {
+        type: String,
+        required: true,
+        lowercase: true,
+        enum : ['timeline', 'stacked', 'portrait']
+    },
     UrlValue : {
         type: String,
         trim: true,

@@ -2,15 +2,27 @@ import React, {Component} from 'react';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
 import Ajax from '../../../shared/ajax.js';
 import {default as CategoryNewsSchema} from '../../formSchema/categoryNewsSchema.js';
-import {Divider} from 'semantic-ui-react';
+import {Divider, Button} from 'semantic-ui-react';
 
 class CategoryNews extends Component
 {
-    state = {}
+    constructor(props)
+    {
+        super(props);
+        this.state = {};
+        this.PostConfig = CategoryNewsSchema.GetPostConfig();
+        this.PostConfig.modalOpener = this.PostModalOpener;
+    }
 
-    async componentDidMount()
+    componentDidMount()
     {
         this.GetCategoryNews();
+
+    }
+
+    PostModalOpener = () =>
+    {
+        return (<Button color="orange" inverted>Ajouter une catégorie</Button>)
     }
 
     GetCategoryNews = async() =>
@@ -24,26 +36,34 @@ class CategoryNews extends Component
         if(this.state.categoryNews !== undefined)
         {
             return this.state.categoryNews.map((category) =>(
-                <div className="pagesCard">
-                    <h4>{category.Title}
-                        <i
-                            onClick={() => this.DeleteCategory(category._id)}
-                            style={{float: "right"}}
-                            className="icon remove"></i>
-                    </h4>
-                </div>
+                this.CategoryCard(category)
             ));
         }
     }
 
-    //Retirer cette methode sinon quelqun pourrait briser le systeme en supprimant une categorie utilise
-    DeleteCategory = async(id) =>
+    Test = () =>
     {
-        let request = await Ajax.DeleteData("/api/categorynews/" +  id);
+        return <h1>Testing</h1>
+    }
 
-        if(request.success){
-            this.GetCategoryNews();
-        }
+    CategoryCard = (category) =>
+    {
+        let PutConfig = CategoryNewsSchema.GetBindedPutConfig(category._id);
+        PutConfig.modalOpener = () => this.PutModalOpener(category.Title);
+        return  <FormGenerator
+                    Inputs={CategoryNewsSchema.GetBindedInputs(category)}
+                    FormConfig={PutConfig}
+                    FormStatus={new FormStatus()}
+                    RefreshDataSet={this.GetCategoryNews}
+                    />
+    }
+
+    PutModalOpener = (title) =>
+    {
+        return  <div className="pagesCard">
+                    <h4>{title}
+                    </h4>
+                </div>
     }
 
     render()
@@ -53,7 +73,7 @@ class CategoryNews extends Component
             <h2>Les Catégories</h2>
             <FormGenerator
                 Inputs={CategoryNewsSchema.GetEmptyInputs()}
-                FormConfig={CategoryNewsSchema.GetPostConfig()}
+                FormConfig={this.PostConfig}
                 FormStatus={new FormStatus()}
                 RefreshDataSet={this.GetCategoryNews}
             />
