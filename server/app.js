@@ -11,7 +11,7 @@ let express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     methodOverride  = require("method-override"),
-    dataSeed        = require("./utils/dataseed.js"), 
+    dataSeed        = require("./utils/dataseed.js"),
     cookieParser    = require("cookie-parser"),
     cloudinary      = require("cloudinary"),
     log4js          = require("log4js"),
@@ -51,10 +51,10 @@ app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
 app.use(express.static(__dirname + "/media"));
 app.use(cookieParser());
 require("dotenv").config();
-cloudinary.config({ 
-  cloud_name: process.env.CLOUD_NAME, 
-  api_key: process.env.CLOUD_API_KEY, 
-  api_secret: process.env.CLOUD_API_SECRET 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
 });
 
 //Connection to the database
@@ -64,7 +64,7 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a
 //----------------Routing-------------//
 
 /*
-    Heres a basic list of http request status and their meaning. Use this list to give the 
+    Heres a basic list of http request status and their meaning. Use this list to give the
     client meaningfull information concerning about the server status on the request made
     (102) : Processing request
     (200) : Success
@@ -78,19 +78,23 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a
     (501) : Not Implemented
 */
 
+//Logs request to the server inside server.log
+app.use(log4js.connectLogger(server,{
+  level: 'auto',
+  format: (req, res, format) => format(`:remote-addr - ":method :url HTTP/:http-version" :status :content-length ":referrer" ":user-agent"`)
+}));
+
+
+//Declaration and importation of all the required files for the routing
 let NewsRT              = require(__dirname + "/routes/NewsRT.js"),
     MembersRT           = require(__dirname + "/routes/MembersRT.js"),
     PagesRt             = require(__dirname + "/routes/PagesRT.js"),
     UserRT              = require(__dirname + "/routes/UserRT.js"),
     CategoryNewsRT      = require(__dirname + "/routes/CategoryNewsRT.js"),
     MenuRT              = require(__dirname + "/routes/MenuRT.js"),
-    NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js");
+    NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js"),
+    OccupationRT        = require(__dirname + "/routes/OccupationsRT.js");
 
-//Logs request to the server inside server.log
-app.use(log4js.connectLogger(server,{
-  level: 'auto',
-  format: (req, res, format) => format(`:remote-addr - ":method :url HTTP/:http-version" :status :content-length ":referrer" ":user-agent"`)
-}));
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
 app.use("/api/news" , NewsRT);
@@ -98,6 +102,7 @@ app.use("/api/user" , UserRT);
 app.use("/api/menus", MenuRT);
 app.use("/api/categorynews", CategoryNewsRT);
 app.use("/api/navigationlinks", NavigationLinksRT);
+app.use("/api/occupations", OccupationRT);
 
 //----------------Listener-------------//
 

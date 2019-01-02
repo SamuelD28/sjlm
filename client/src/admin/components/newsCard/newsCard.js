@@ -29,7 +29,7 @@ const NewsCard = (props) =>{
         <div styleName="newsInfo">
             <h2>{props.news.Title}</h2>
             {DisplayImportantTag(props.news)}
-            <p styleName="newsCategory">{Translate.NewsCategory(props.news.Category)}</p>
+            <p styleName="newsCategory">{props.news.Category.Title}</p>
             <p styleName="newsDate"><i className="clock outline icon"></i> {moment(props.DatePublished).format("dddd, Do MMMM")}</p>
         </div>
     </div>

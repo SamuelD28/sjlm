@@ -1,5 +1,4 @@
-let mongoose = require("mongoose"),
-    Utility = require("../utils/utility.js");
+let mongoose = require("mongoose");
 
 
 let Schema = mongoose.Schema;
