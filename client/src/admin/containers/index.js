@@ -10,8 +10,7 @@ import News from './news/news.js';
 import Members from './members/members.js';
 import Pages from './pages/pages.js';
 import Mails from './mails/mails.js';
-import Administrator from './administrator/administrator.js';
-import Menus from './menus/menus.js';
+import Resources from './resources/resources.js';
 
 //----------Core Code-------//
 //Could add authentification here as well for better security. To review
@@ -25,6 +24,7 @@ const Index = (props) => {
             <Route exact path="/admin/news" component={News} />
             <Route exact path="/admin/pages" component={Pages} />
             <Route exact path="/admin/members" component={Members} />
+            <Route exact path="/admin/resources" component={Resources} />
             <Route exact path="/admin/mails" component={Mails} />
             <Route path="/">
                 <Redirect to="/admin" />

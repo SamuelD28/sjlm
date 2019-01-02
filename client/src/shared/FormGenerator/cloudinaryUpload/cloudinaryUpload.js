@@ -4,20 +4,13 @@ import { Button, Popup } from 'semantic-ui-react';
 
 //Widget options used for initiating a cloudinary upload widget
 const defaultOptions = {
-    cloudName: "dohwohspb",
-    uploadPreset: "sjlm_upload",
-    sources: [
-        "local",
-        "url",
-        "image_search"
-    ],
-    maxFileSize : 10000000,
+    cloud_name: "dohwohspb",
+    api_key: 378365725116554,
     maxFiles: 8,
-    autoMinimize : true,
+    remove_header: true,
     language: "fr",
     googleApiKey: 'AIzaSyB_WKZp9us_1a_hNgUMR27fyiGtBkFdV4Y',
     searchByRights: true,
-    defaultSource: "local",
     styles: {
         palette: {
             window: "#FFFFFF",
@@ -69,10 +62,12 @@ class CloudinaryUpload extends Component {
                                 clientAllowedFormats : this.state.allowedExt
                             });
 
-        //Creates a new cloudinary upload widgets
-        this.widget = new cloudinary.createUploadWidget(this.widgetOptions, (error, result) => {
-            if (result && result.event === "success") {
-                this.AddImageUrl(result.info.secure_url);
+        this.widget = new cloudinary.createMediaLibrary(
+            this.widgetOptions,{
+                insertHandler: (data) => {
+                data.assets.forEach(asset => {
+                    this.AddImageUrl(asset.secure_url);
+                })
             }
         });
     }
@@ -177,7 +172,7 @@ RemoveImage = async(thumbnailUrl) => {
  */
 OpenCloudinaryWidget = (e) => {
     e.preventDefault();
-    this.widget.open();
+    this.widget.show();
 }
 
 render() {

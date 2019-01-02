@@ -1,4 +1,3 @@
-/*global fetch*/
 /*  Auteur: Samuel Dube
     Date de creation: 2018/07/09
     Description: Fichie Utilitaire permettant de simplifier les operations repetitives

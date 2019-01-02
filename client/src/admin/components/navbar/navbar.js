@@ -41,16 +41,16 @@ const Navbar = (props) =>{
             </NavLink>
         </li>
         <li>
-            <NavLink styleName="navbarItem" to="/admin/mails">
-                <span styleName="navbarIcon"><i className="icon envelope"></i></span>
-                <span styleName="navbarLink">Mail</span>
+            <NavLink styleName="navbarItem" to="/admin/resources">
+                <span styleName="navbarIcon"><i className="icon server"></i></span>
+                <span href="#" styleName="navbarLink">Ressources</span>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
         <li>
-            <NavLink styleName="navbarItem" to="/admin/administrator">
-                <span styleName="navbarIcon"><i className="icon chess queen"></i></span>
-                <span styleName="navbarLink">Administrateur</span>
+            <NavLink styleName="navbarItem" to="/admin/mails">
+                <span styleName="navbarIcon"><i className="icon envelope"></i></span>
+                <span styleName="navbarLink">Mail</span>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>

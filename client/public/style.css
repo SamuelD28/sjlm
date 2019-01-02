@@ -382,6 +382,7 @@ blockquote {
 
 .section-row {
     display: flex;
+    height: inherit;
     width: 100%;
 }
 
@@ -396,6 +397,10 @@ blockquote {
     width: 80%;
     display: flex;
     flex-direction: column;
+}
+
+.media-widget {
+    width: 100%;
 }
 
 .cardContainer {
