@@ -1,3 +1,4 @@
+
 let Translate = {};
 
 Translate.PageCategory = function (pageCategory) {
@@ -33,39 +34,7 @@ Translate.PageCategory = function (pageCategory) {
 
 Translate.NewsCategory = function (newsCategory) {
     let translatedContent;
-    switch (newsCategory) {
-    case "events":
-        translatedContent = "Évènements";
-        break;
-    case "activity":
-        translatedContent = "Activitées";
-        break;
-    case "communicate":
-        translatedContent = "Communiqués";
-        break;
-    case "roadwork":
-        translatedContent = "Travaux Routiers";
-        break;
-    case "jobs":
-        translatedContent = "Emploi";
-        break;
-    case "public":
-        translatedContent = "Avis public";
-        break;
-    case "council":
-        translatedContent = "Séances du conseil";
-        break;
-    case "verbal":
-        translatedContent = "Procès-verbaux";
-        break;
-    case "other":
-        translatedContent = "Autres";
-        break;
-    default:
-        translatedContent = "Oops, erreur";
-        break;
-    }
-    return translatedContent;
+    return "ok";
 }
 
 Translate.ModelKey = function (modelKey) {

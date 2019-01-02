@@ -51,6 +51,7 @@ class CategoryNews extends Component
         let PutConfig = CategoryNewsSchema.GetBindedPutConfig(category._id);
         PutConfig.modalOpener = () => this.PutModalOpener(category.Title);
         return  <FormGenerator
+                    key={category._id}
                     Inputs={CategoryNewsSchema.GetBindedInputs(category)}
                     FormConfig={PutConfig}
                     FormStatus={new FormStatus()}

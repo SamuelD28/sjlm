@@ -16140,3 +16140,508 @@
         '$isValidatorError': true } },
   _message: 'Members validation failed',
   name: 'ValidationError' }
+[2019-01-02T18:12:37.047] [ERROR] error - { CastError: Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1052:18
+    at Array.map (native)
+    at ObjectId.handle$in (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1048:14)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1100:20)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1077:17)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:284:39)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1564:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+  message: 'Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"',
+  name: 'CastError',
+  stringValue: '"activite"',
+  kind: 'ObjectId',
+  value: 'activite',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'CategoryNews',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'categorynews',
+        collectionName: 'categorynews',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-02T18:12:49.159] [ERROR] error - { CastError: Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1052:18
+    at Array.map (native)
+    at ObjectId.handle$in (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1048:14)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1100:20)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1077:17)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:284:39)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1564:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+  message: 'Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"',
+  name: 'CastError',
+  stringValue: '"activite"',
+  kind: 'ObjectId',
+  value: 'activite',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'CategoryNews',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'categorynews',
+        collectionName: 'categorynews',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-02T18:12:54.904] [ERROR] error - { CastError: Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1052:18
+    at Array.map (native)
+    at ObjectId.handle$in (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1048:14)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1100:20)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1077:17)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:284:39)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1564:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+  message: 'Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"',
+  name: 'CastError',
+  stringValue: '"activite"',
+  kind: 'ObjectId',
+  value: 'activite',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'CategoryNews',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'categorynews',
+        collectionName: 'categorynews',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-02T18:13:37.044] [ERROR] error - { CastError: Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1052:18
+    at Array.map (native)
+    at ObjectId.handle$in (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1048:14)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1100:20)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1077:17)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:284:39)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1564:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+  message: 'Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"',
+  name: 'CastError',
+  stringValue: '"activite"',
+  kind: 'ObjectId',
+  value: 'activite',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'CategoryNews',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'categorynews',
+        collectionName: 'categorynews',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-02T18:13:49.601] [ERROR] error - { CastError: Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1052:18
+    at Array.map (native)
+    at ObjectId.handle$in (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1048:14)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1100:20)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1077:17)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:284:39)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1564:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+  message: 'Cast to ObjectId failed for value "activite" at path "_id" for model "CategoryNews"',
+  name: 'CastError',
+  stringValue: '"activite"',
+  kind: 'ObjectId',
+  value: 'activite',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'CategoryNews',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'categorynews',
+        collectionName: 'categorynews',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }

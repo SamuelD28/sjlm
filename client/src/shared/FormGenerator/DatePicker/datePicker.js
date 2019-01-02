@@ -14,8 +14,7 @@ const DatePicker = (props) => {
     return (
         <Form.Field
         width={props.input.width}
-        disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}
-        >
+        disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}>
         <Segment>
             <label>{props.input.label}</label>
             <DayPickerInput
@@ -24,7 +23,7 @@ const DatePicker = (props) => {
                     todayButton: "Aujourdh'ui"
                 }}
                 placeholder= "JJ/MM/AAAA"
-                value={(props.input.value !== "" && props.input.value !== null && props.input.value !== undefined)? formatDate(props.input.value) : null}
+                value={(props.input.value !== "" && props.input.value !== null && props.input.value !== undefined)? formatDate(props.input.value) : ""}
                 onDayChange={(date) => props.handleDateChange(date, props.input.name)}
                 />
         </Segment>

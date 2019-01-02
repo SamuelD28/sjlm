@@ -8,7 +8,7 @@ let News        = require("../models/NewsMD.js"),
 Api.FindNews = function(req, res)
 {
     let newsLimit = (req.params.number === undefined)? 24: req.params.number;
-    let Query = News.find({}).sort('-DatePublished').limit(Number(newsLimit));
+    let Query = News.find({}).sort('-DatePublished').populate('Category').limit(Number(newsLimit));
     Query.exec()
          .then((news) => {
             Utility.GenerateResponse(true, res, news);
@@ -23,7 +23,7 @@ Api.FindNews = function(req, res)
 
 Api.FindNewsById =function(req, res)
 {
-    News.findById(req.params.id)
+    News.findById(req.params.id).populate('Category')
         .then((news) => {
             Utility.GenerateResponse(true, res, news);
         })

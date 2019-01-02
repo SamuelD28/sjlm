@@ -5,6 +5,7 @@
 
 //Import statements
 import { FormConfig, InputSchema, FormSchema, EditorSchema } from '../../shared/FormGenerator/formGenerator.js';
+import Ajax from '../../shared/ajax.js';
 
 class NewsSchema extends FormSchema {
     constructor() {
@@ -28,10 +29,11 @@ class NewsSchema extends FormSchema {
                 name: "Category",
                 type: "select",
                 label: "Catégorie",
+                id: true,
                 value: "",
                 group: 2,
                 width: 8,
-                generator: () => this.GenerateCategoryOptions()
+                generator: () => this.categoryOptions
             }),
             new InputSchema({
                 name: "Important",
@@ -92,20 +94,23 @@ class NewsSchema extends FormSchema {
             type: "full",
             width: 10
         })
+        this.Init();
     }
 
-    GenerateCategoryOptions = () => {
-        return [
-            { text: "Évenement", value: "events" },
-            { text: "Activité", value: "activity" },
-            { text: "Communiqué", value: "communicate" },
-            { text: "Travaux Routiers", value: "roadwork" },
-            { text: "Offre Emploi", value: "jobs" },
-            { text: "Avis Public", value: "public" },
-            { text: "Séance du Conseil", value: "council" },
-            { text: "Procès-Verbaux", value: "verbal" },
-            { text: "Autres", value: "other" },
-            ];
+    Init = async() => {
+        await this.GenerateCategoryOptions();
+    }
+
+    GenerateCategoryOptions = async() => {
+        let categoryNews = await Ajax.GetData("/api/categorynews");
+        let CategoryOptions = [];
+        if (categoryNews.data !== undefined) {
+            categoryNews.data.map((category) => {
+                let item = { text: category.Title, value: category._id, key: category._id};
+                return CategoryOptions.push(item);
+            });
+        }
+        this.categoryOptions = CategoryOptions;
     }
 
     /**

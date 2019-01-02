@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
+let mongoose        = require("mongoose"),
+    CategoryNews    = require("./CategoryNewsMD.js");
 
 //--------------Model-------------//
-
 let newsSchema = new mongoose.Schema({
     Title: {
         type: String,
@@ -19,9 +19,9 @@ let newsSchema = new mongoose.Schema({
         default: false
     },
     Category: {
-        type: String,
-        lowercase: true,
-        enum: ['events', 'activity', 'communicate', 'roadwork', 'jobs', 'public', 'council', 'verbal', 'other'] //should pull from the database instead
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CategoryNews',
+        required: true
     },
     Images: {
         type: [String],
