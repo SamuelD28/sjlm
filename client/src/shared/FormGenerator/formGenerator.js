@@ -216,7 +216,7 @@ class FormGenerator extends Component {
     {
         const target = {
             name : inputName,
-            value : date
+            value :  date
         };
 
         this.HandleChange(target);

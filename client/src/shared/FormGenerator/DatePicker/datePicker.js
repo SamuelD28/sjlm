@@ -2,12 +2,7 @@ import React from 'react';
 import { Form, Segment } from 'semantic-ui-react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-
-import MomentLocaleUtils, {
-  formatDate,
-  parseDate,
-} from 'react-day-picker/moment';
-
+import {formatDate} from 'react-day-picker/moment';
 import 'moment/locale/it';
 
 /**
@@ -15,7 +10,6 @@ import 'moment/locale/it';
  * inside the form generator.
  */
 const DatePicker = (props) => {
-
 
     return (
         <Form.Field
@@ -27,9 +21,10 @@ const DatePicker = (props) => {
             <DayPickerInput
                 formatDate={formatDate}
                 dayPickerProps={{
-                    todayButton: 'Today'
+                    todayButton: "Aujourdh'ui"
                 }}
-                value={(props.input.value === "")? "JJ/MM/AAAA" : formatDate(props.input.value)}
+                placeholder= "JJ/MM/AAAA"
+                value={(props.input.value !== "" && props.input.value !== null && props.input.value !== undefined)? formatDate(props.input.value) : null}
                 onDayChange={(date) => props.handleDateChange(date, props.input.name)}
                 />
         </Segment>
