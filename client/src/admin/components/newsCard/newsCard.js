@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import Translate from '../../../shared/translate.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';

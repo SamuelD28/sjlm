@@ -9,6 +9,7 @@ import adminStyles from '../index.module.css';
 // Component Import
 import MembersEdit from '../../components/membersEdit/membersEdit.js';
 import MembersCreate from '../../components/membersCreate/membersCreate.js';
+import Occupations from '../occupations/occupations.js';
 
 class Members extends Component {
 
@@ -50,6 +51,7 @@ class Members extends Component {
                     <div className="section-style section-btn">
                         <MembersCreate RefreshDataSet={this.GetMembers}/>
                     </div>
+                    <Occupations />
                 </div>
                 <div className="right-column section-style">
                     <h2>Les Membres</h2>

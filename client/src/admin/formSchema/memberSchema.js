@@ -5,6 +5,7 @@
 
 //Import statements
 import { FormConfig, InputSchema, EditorSchema, FormSchema } from '../../shared/FormGenerator/formGenerator.js';
+import Ajax from '../../shared/ajax.js';
 
 class MemberSchema extends FormSchema {
     constructor() {
@@ -65,11 +66,12 @@ class MemberSchema extends FormSchema {
                 multiple: false,
                 value: []
             }),
-                        new InputSchema({
+            new InputSchema({
                 name: "Occupation",
                 type: "select",
-                label: "Occupation",
+                label: "Poste",
                 group: 3,
+                id: true,
                 width: 6,
                 value: "",
                 generator: () => this.occupationsOptions
@@ -80,20 +82,25 @@ class MemberSchema extends FormSchema {
             placeholder: "Note Personnel...",
             type: "simple"
         })
-        this.occupationsOptions = this.GenerateOccupationOptions();
+        this.Init();
     }
 
-    GenerateOccupationOptions = () => {
-        return [
-            { text: "Maire", value: "mayor" },
-            { text: "Mairesse", value: "mayorf" },
-            { text: "Conseiller", value: "advisor" },
-            { text: "Conseillère", value: "advisorf" },
-            { text: "Employé", value: "employe" },
-            { text: "Employée", value: "employef" },
-            { text: "Directeur générale", value: "director" },
-            { text: "Directrice générale", value: "directorf" }
-        ];
+    Init = async() =>
+    {
+        await this.GenerateOccupationOptions();
+    }
+
+    GenerateOccupationOptions = async() => {
+
+        let occupations = await Ajax.GetData("/api/occupations");
+        let OccupationsOptions = [];
+        if (occupations.data !== undefined) {
+            occupations.data.map((occupation) => {
+                let item = { text: occupation.Title, value: occupation._id, key: occupation._id};
+                return OccupationsOptions.push(item);
+            });
+        }
+        this.occupationsOptions = OccupationsOptions;
     }
 }
 const Instance = new MemberSchema();

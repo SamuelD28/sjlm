@@ -33,7 +33,6 @@ Translate.PageCategory = function (pageCategory) {
 }
 
 Translate.NewsCategory = function (newsCategory) {
-    let translatedContent;
     return "ok";
 }
 

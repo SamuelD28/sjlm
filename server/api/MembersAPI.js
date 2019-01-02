@@ -7,7 +7,7 @@ let mongoose    = require("mongoose"),
 
 Api.GetMembers = function(req, res)
 {
-    let Query = Members.find();
+    let Query = Members.find().populate("Occupation");
     Query.exec()
          .then((members) =>{
             Utility.GenerateResponse(true, res, members);

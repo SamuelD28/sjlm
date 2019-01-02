@@ -1,4 +1,5 @@
-let mongoose = require("mongoose");
+let mongoose        = require("mongoose"),
+    Occupations     = require("./OccupationsMD.js");
 
 //----------------Model-------------//
 
@@ -31,10 +32,10 @@ let membersSchema = new Schema({
         }
     },
     Occupation: {
-        type: String,
+        ref: "Occupations",
+        type: Schema.Types.ObjectId,
         required: true,
-        lowercase: true,
-        enum: ['mayor', 'mayore', 'advisor', 'advisore', 'employe', 'employee', 'director', 'directore']
+        lowercase: true
     },
     PersonnalNote: {
         type: String,
