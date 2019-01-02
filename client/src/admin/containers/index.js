@@ -12,8 +12,6 @@ import Pages from './pages/pages.js';
 import Mails from './mails/mails.js';
 import Resources from './resources/resources.js';
 
-//----------Core Code-------//
-//Could add authentification here as well for better security. To review
 const Index = (props) => {
     return(
     <div>

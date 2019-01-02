@@ -24,7 +24,7 @@ class NewsSchema extends FormSchema {
             size: "large"
         });
         this.inputs = [
-                        new InputSchema({
+            new InputSchema({
                 name: "Category",
                 type: "select",
                 label: "Catégorie",
@@ -33,7 +33,7 @@ class NewsSchema extends FormSchema {
                 width: 8,
                 generator: () => this.GenerateCategoryOptions()
             }),
-                        new InputSchema({
+            new InputSchema({
                 name: "Important",
                 type: "toggle",
                 label: "Prioritaire",
@@ -49,13 +49,29 @@ class NewsSchema extends FormSchema {
                 group: 1,
                 value: ""
             }),
-                        new InputSchema({
+            new InputSchema({
+                name: "DateFrom",
+                type: "date",
+                label: "À partir de",
+                width: 8,
+                group: 3,
+                value: ""
+            }),
+            new InputSchema({
+                name: "DateTo",
+                type: "date",
+                label: "Jusqu'à",
+                width: 8,
+                group: 3,
+                value: ""
+            }),
+            new InputSchema({
                 name: "Images",
                 type: "uploader",
                 allowedExt : ["jpg", "png" , "gif"],
                 label: "Gallerie",
                 value: [],
-                group: 3,
+                group: 4,
                 width: 16,
                 multiple: true
             }),
@@ -65,7 +81,7 @@ class NewsSchema extends FormSchema {
                 allowedExt : ["docx", "pdf" , "pptx", "xlsx"],
                 label: "Fichiers",
                 value: [],
-                group: 4,
+                group: 5,
                 width: 16,
                 multiple: true
             })

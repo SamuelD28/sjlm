@@ -31,6 +31,12 @@ let newsSchema = new mongoose.Schema({
             kind: "maximages"
         }
     },
+    DateFrom : {
+        type : Date
+    },
+    DateTo : {
+        type: Date
+    },
     Files: {
         type: [String],
         validate: {

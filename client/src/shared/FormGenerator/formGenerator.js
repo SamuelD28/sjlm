@@ -20,6 +20,7 @@ import ToggleInput from './ToggleInput/toggleInput.js';
 import SelectInput from './SelectInput/selectInput.js';
 import FileInput from './FileInput/fileInput.js';
 import ConfirmModal from './ConfirmModal/confirmModal.js';
+import DatePicker from './DatePicker/datePicker.js';
 
 class FormGenerator extends Component {
     /**
@@ -206,6 +207,19 @@ class FormGenerator extends Component {
         }
         this.UpdateStateKey("TextEditor", targetObject);
         this.MarkFormAsModified();
+    }
+
+    /**
+     * Method for handling changes in a datepicker input
+     */
+    HandleDateChange = (date, inputName) =>
+    {
+        const target = {
+            name : inputName,
+            value : date
+        };
+
+        this.HandleChange(target);
     }
 
     /**
@@ -526,6 +540,14 @@ class FormGenerator extends Component {
                                     inputs={this.state.Inputs}
                                     input={input}
                                     handleChange={this.HandleChange}/>
+                );
+            case "date":
+                return (
+                    <DatePicker
+                                    key={index}
+                                    inputs={this.state.Inputs}
+                                    input={input}
+                                    handleDateChange={this.HandleDateChange} />
                 );
             case "uploader":
                 return (

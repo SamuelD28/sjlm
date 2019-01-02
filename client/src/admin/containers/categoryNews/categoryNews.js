@@ -16,7 +16,6 @@ class CategoryNews extends Component
     GetCategoryNews = async() =>
     {
         let request = await Ajax.GetData("/api/categorynews/");
-        console.log(request);
         this.setState({categoryNews : request.data});
     }
 

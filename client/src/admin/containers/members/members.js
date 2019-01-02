@@ -28,13 +28,16 @@ class Members extends Component {
 
     DisplayMembers() {
         if (this.state.members !== undefined) {
+            if(this.state.members.length > 0)
             return this.state.members.map((member) => (
                 <MembersEdit
                     key={member._id}
                     member={member}
                     RefreshDataSet={this.GetMembers}
                     />
-            ));
+            ))
+            else
+                return <h2>Aucun membre sauvegardé</h2>
         }
     }
 

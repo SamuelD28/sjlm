@@ -29,15 +29,18 @@ class Pages extends Component {
 
     DisplayPagesCard = () => {
         if (this.state.pages !== undefined) {
-            return (
-                this.state.pages.map((page, index) => (
-                    <PagesCard
-                    index={index}
-                    page={page}
-                    key={page._id}
-                    RefreshDataSet={this.GetPages}
-                    />
-                )))
+            if(this.state.pages.length > 0)
+                return (
+                    this.state.pages.map((page, index) => (
+                        <PagesCard
+                        index={index}
+                        page={page}
+                        key={page._id}
+                        RefreshDataSet={this.GetPages}
+                        />
+                    )))
+            else
+                return <h2>Aucune page disponible</h2>
         }
     }
 
