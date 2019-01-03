@@ -22,7 +22,7 @@ class CategoryNews extends Component
 
     PostModalOpener = () =>
     {
-        return (<Button color="orange" inverted>Ajouter une catégorie</Button>)
+        return <Button color="orange" inverted>Ajouter une catégorie</Button>
     }
 
     GetCategoryNews = async() =>
@@ -45,7 +45,7 @@ class CategoryNews extends Component
     CategoryCard = (category) =>
     {
         let PutConfig = CategoryNewsSchema.GetBindedPutConfig(category._id);
-        PutConfig.modalOpener = () => this.PutModalOpener(category.Title);
+        PutConfig.modalOpener = () => this.PutModalOpener(category);
         return  <FormGenerator
                     key={category._id}
                     Inputs={CategoryNewsSchema.GetBindedInputs(category)}
@@ -55,29 +55,27 @@ class CategoryNews extends Component
                     />
     }
 
-    PutModalOpener = (title) =>
+    PutModalOpener = (category) =>
     {
-        return  <div className="pagesCard">
-                    <h4>{title}
+        return  <div className="pagesCard" key={category._id}>
+                    <h4>{category.Title}
                     </h4>
                 </div>
     }
 
     render()
     {
-        return(
-        <div className="section-style">
-            <h2>Les Catégories</h2>
-            <FormGenerator
-                Inputs={CategoryNewsSchema.GetEmptyInputs()}
-                FormConfig={this.PostConfig}
-                FormStatus={new FormStatus()}
-                RefreshDataSet={this.GetCategoryNews}
-            />
-            <Divider />
-            {this.DisplayCategoryNews()}
-        </div>
-        )
+        return  <div className="section-style">
+                    <h2>Les Catégories</h2>
+                    <FormGenerator
+                        Inputs={CategoryNewsSchema.GetEmptyInputs()}
+                        FormConfig={this.PostConfig}
+                        FormStatus={new FormStatus()}
+                        RefreshDataSet={this.GetCategoryNews}
+                    />
+                    <Divider />
+                    {this.DisplayCategoryNews()}
+                </div>
     }
 }
 

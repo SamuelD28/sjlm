@@ -44,7 +44,7 @@ Utility.WriteInLog = function(type, content)
 
 Utility.ConvertToUrlSafe = function(str)
 {
-    return str.toLocaleLowerCase().replace(/[\s-]/g, "_").replace(/[éêëè]/g, "e").replace(/[àäâ]/g, "a");
+    return str.toLocaleLowerCase().replace(/[\s-'&]/g, "_").replace(/[éêëè]/g, "e").replace(/[àäâ]/g, "a");
 }
 
 Utility.GenerateResponse = function(success, res, data)

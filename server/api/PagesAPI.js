@@ -34,11 +34,13 @@ Api.CreatePages = function(req, res)
     Pages.create(req.body)
          .then((page) =>{
 
-            let urlValue = Utility.ConvertToUrlSafe(page.PageTitle);
-            NavigationLinks.create({Title: page.PageTitle, Category: "Pages", Link : "/pages/static/" + urlValue})
-                           .catch((err) => {
-                                Utility.WriteInLog("error", err);
-                           });
+            req.body.map((_page) =>{
+                let urlValue = Utility.ConvertToUrlSafe(_page.PageTitle);
+                NavigationLinks.create({Title: _page.PageTitle, Category: "Pages", Link : "/pages/static/" + urlValue})
+                               .catch((err) => {
+                                    Utility.WriteInLog("error", err);
+                               });
+            })
 
             Utility.GenerateResponse(true, res, page);
          })

@@ -16739,3 +16739,30 @@
     at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:66:45)
 [2019-01-03T01:56:58.205] [ERROR] error - TypeError: Cannot set property 'Link' of null
     at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:66:45)
+[2019-01-03T02:14:39.082] [ERROR] error - TypeError: Cannot set property 'Link' of null
+    at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:52:45)
+[2019-01-03T02:18:37.940] [ERROR] error - TypeError: Cannot set property 'Link' of null
+    at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:52:45)
+[2019-01-03T02:23:50.754] [ERROR] error - TypeError: Cannot set property 'Link' of null
+    at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:52:45)
+[2019-01-03T02:33:23.480] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Permis" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Permis" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Permis" }' }
+[2019-01-03T02:37:16.639] [ERROR] error - TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+    at Object.Utility.ConvertToUrlSafe (/home/ubuntu/workspace/project/server/utils/utility.js:47:15)
+    at Pages.create.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:37:36)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-03T02:38:52.687] [ERROR] error - TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+    at Object.Utility.ConvertToUrlSafe (/home/ubuntu/workspace/project/server/utils/utility.js:47:15)
+    at Pages.create.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:38:36)
+    at process._tickCallback (internal/process/next_tick.js:109:7)

@@ -32,7 +32,7 @@ class Resources extends Component {
     render() {
         return (
         <div className={adminStyles.adminPage}>
-            <section className="section-row section-style">
+            <section className="section-row section-style" style={{height: "-webkit-fill-available"}}>
                 <div className="media-widget">
                 </div>
             </section>
