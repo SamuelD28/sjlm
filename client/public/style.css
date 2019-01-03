@@ -382,7 +382,7 @@ blockquote {
 
 .section-row {
     display: flex;
-    height: inherit;
+    height: auto;
     width: 100%;
 }
 

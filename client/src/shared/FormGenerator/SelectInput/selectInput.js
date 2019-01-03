@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Dropdown, Segment } from 'semantic-ui-react';
 import Translate from '../../../shared/translate.js';
 
+
+
 /**
  * Component for creating a select input inside
  * the form generator. Uses a list or a generator
@@ -24,7 +26,7 @@ const SelectInput = (props) => {
                 placeholder={Translate.ModelKey(props.input.name) + "..."}
                 value={(props.input.id)?props.input.value._id:props.input.value}
                 onChange={(e, data) =>  {props.handleChange(data)}}
-                options={(props.input.generator !== undefined)? props.input.generator(): props.input.list} />
+                options={(props.input.generator !== undefined && props.input.generator !== null)? props.input.generator(): props.input.list} />
         </Segment>
     </Form.Field>
     )

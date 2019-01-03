@@ -17,6 +17,7 @@ let CategoryNewsSchema = new Schema({
         lowercase: true,
         enum : ['timeline', 'stacked', 'portrait']
     },
+    //Might remove this since its useless
     UrlValue : {
         type: String,
         trim: true,
@@ -27,8 +28,8 @@ let CategoryNewsSchema = new Schema({
 CategoryNewsSchema.pre("save", function(next){
     if(this.Title !== undefined)
     {
-        this.UrlValue = this.Title.toLocaleLowerCase().replace(/[\s-]/g, "_").replace(/[éêëè]/g, "e").replace(/[àäâ]/g, "a");
         //Regex pour retirer les caracteres posant probleme dans un url
+        this.UrlValue = Utility.ConvertToUrlSafe(this.Title);
     }
     next();
 });

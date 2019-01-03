@@ -29,7 +29,6 @@ class NewsSchema extends FormSchema {
                 name: "Category",
                 type: "select",
                 label: "Catégorie",
-                id: true,
                 value: "",
                 group: 2,
                 width: 8,
@@ -106,7 +105,7 @@ class NewsSchema extends FormSchema {
         let CategoryOptions = [];
         if (categoryNews.data !== undefined) {
             categoryNews.data.map((category) => {
-                let item = { text: category.Title, value: category._id, key: category._id};
+                let item = { text: category.Title, value: category.UrlValue, key: category._id};
                 return CategoryOptions.push(item);
             });
         }

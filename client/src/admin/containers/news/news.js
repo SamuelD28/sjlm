@@ -96,20 +96,15 @@ class News extends Component {
     //Function that display an array for every news card hold in the tempstate array.
     DisplayNewsCard() {
         if (this.state.news !== undefined) {
-            if(this.state.news.length > 0){
+            if(this.state.news.length > 0)
                 return this.state.news.map((item) => (
                     <NewsEdit
                         key={item._id}
                         news={item}
                         RefreshDataSet={this.GetNews}/>
                 ));
-            }
             else
-            {
-                return(
-                    <h2>Aucun résultat trouvé</h2>
-                )
-            }
+                return <h2>Aucun résultat trouvé</h2>
         }
     }
 

@@ -13,8 +13,8 @@ let pagesSchema = new Schema({
     PageTitle: {
         type: String,
         required: true,
-        minlength: 6,
         maxlength: 60,
+        unique: 1,
         validate: {
             validator: (value) => !(/[\@\#\$\%\?\*\(\)]/g.test(value)),
             kind: 'invalid characters',
@@ -26,7 +26,6 @@ let pagesSchema = new Schema({
     },
     PageGallery: {
         type: [String],
-        default: ['https://res.cloudinary.com/dohwohspb/image/upload/v1539711446/sjlm/6872080-canada-landscape.jpg'],
         validate: {
             validator: (value) => value.length <= 8,
             message: "The value exceeds the number of images allowed",

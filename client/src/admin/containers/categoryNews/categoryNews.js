@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
 import Ajax from '../../../shared/ajax.js';
 import {default as CategoryNewsSchema} from '../../formSchema/categoryNewsSchema.js';
+import {default as NewsSchema} from '../../formSchema/newsSchema.js';
 import {Divider, Button} from 'semantic-ui-react';
 
 class CategoryNews extends Component
@@ -17,7 +18,6 @@ class CategoryNews extends Component
     componentDidMount()
     {
         this.GetCategoryNews();
-
     }
 
     PostModalOpener = () =>
@@ -27,6 +27,7 @@ class CategoryNews extends Component
 
     GetCategoryNews = async() =>
     {
+        NewsSchema.Init(); //Reloads the category for the news form.
         let request = await Ajax.GetData("/api/categorynews/");
         this.setState({categoryNews : request.data});
     }
@@ -39,11 +40,6 @@ class CategoryNews extends Component
                 this.CategoryCard(category)
             ));
         }
-    }
-
-    Test = () =>
-    {
-        return <h1>Testing</h1>
     }
 
     CategoryCard = (category) =>

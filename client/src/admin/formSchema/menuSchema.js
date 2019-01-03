@@ -74,7 +74,7 @@ class MenuSchema extends FormSchema {
                     return !inputs[2].value;
                 },
                 value: "",
-                generator: () => { return this.iconOptions; }
+                list : this.GenererateIconOptions()
             }),
         ];
         this.Init();
@@ -89,7 +89,6 @@ class MenuSchema extends FormSchema {
      */
     Init = async() => {
         await this.GenererateMenuOptions();
-        await this.GenerateLinksOptions();
         await this.GenererateIconOptions();
     }
 
@@ -123,7 +122,7 @@ class MenuSchema extends FormSchema {
      * Function that generate all the icon options
      * used by the select input Icon
      */
-    GenererateIconOptions = async() => {
+    GenererateIconOptions = () => {
         let IconsArray = [
         "compass",
         "balance",
@@ -140,7 +139,7 @@ class MenuSchema extends FormSchema {
             let IconsObject = { text: icon, value: icon, icon: icon };
             return IconsOptions.push(IconsObject);
         });
-        this.iconOptions =  IconsOptions;
+        return  IconsOptions;
     }
 
     /**
@@ -152,7 +151,7 @@ class MenuSchema extends FormSchema {
         let NavigationOptions = [];
         if (navigationlinks.data !== undefined) {
             navigationlinks.data.map((navlink, index) => {
-                let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink.Link };
+                let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink.Link, key : navlink._id };
                 return NavigationOptions.push(NavigationObject);
             });
         }

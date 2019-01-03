@@ -16645,3 +16645,97 @@
      Query: { [Function] base: [Object] },
      '$__insertMany': [Function],
      '$init': Promise { null, catch: [Function] } } }
+[2019-01-02T23:20:21.056] [ERROR] error - { ValidationError: NavigationLinks validation failed: Title: Path `Title` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'NavigationLinks validation failed',
+  name: 'ValidationError' }
+[2019-01-03T01:42:10.168] [ERROR] error - TypeError: navlink.save is not a function
+    at NavigationLinks.find.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:64:40)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-03T01:44:01.292] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Path `PageTitle` (`hey`) is shorter than the minimum allowed length (6).
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` (`hey`) is shorter than the minimum allowed length (6).
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` (`hey`) is shorter than the minimum allowed length (6).',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'minlength',
+        path: 'PageTitle',
+        value: 'hey',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-03T01:44:06.521] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Path `PageTitle` (`heyya`) is shorter than the minimum allowed length (6).
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Path `PageTitle` (`heyya`) is shorter than the minimum allowed length (6).
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` (`heyya`) is shorter than the minimum allowed length (6).',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'minlength',
+        path: 'PageTitle',
+        value: 'heyya',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-03T01:45:43.044] [ERROR] error - TypeError: navlink.save is not a function
+    at NavigationLinks.find.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:68:40)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-03T01:55:21.062] [ERROR] error - TypeError: Cannot set property 'Link' of null
+    at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:66:45)
+[2019-01-03T01:56:58.205] [ERROR] error - TypeError: Cannot set property 'Link' of null
+    at NavigationLinks.findOne.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:66:45)

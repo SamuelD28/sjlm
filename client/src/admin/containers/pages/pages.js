@@ -11,6 +11,7 @@ import adminStyles from '../index.module.css';
 import PagesCard from '../../components/pagesCard/pagesCard.js';
 import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 
+import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 import Menus from '../menus/menus.js';
 
 //This Component is responsible for holding the state that will be modified by its crud components
@@ -23,6 +24,7 @@ class Pages extends Component {
     }
 
     GetPages = async() => {
+        MenuSchema.GenerateLinksOptions();
         let request = await Ajax.GetData("/api/pages/");
         this.setState({ pages: request.data });
     }
