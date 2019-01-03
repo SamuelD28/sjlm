@@ -4,6 +4,7 @@ import Ajax from '../../../shared/ajax.js';
 import {default as CategoryNewsSchema} from '../../formSchema/categoryNewsSchema.js';
 import {default as NewsSchema} from '../../formSchema/newsSchema.js';
 import {Divider, Button} from 'semantic-ui-react';
+import CategoryNewsCard from '../../components/categoryNewsCard/categoryNewsCard.js';
 
 class CategoryNews extends Component
 {
@@ -12,7 +13,7 @@ class CategoryNews extends Component
         super(props);
         this.state = {};
         this.PostConfig = CategoryNewsSchema.GetPostConfig();
-        this.PostConfig.modalOpener = this.PostModalOpener;
+        this.PostConfig.modalOpener = this.ModalOpener;
     }
 
     componentDidMount()
@@ -20,7 +21,7 @@ class CategoryNews extends Component
         this.GetCategoryNews();
     }
 
-    PostModalOpener = () =>
+    ModalOpener = () =>
     {
         return <Button color="orange" inverted>Ajouter une catégorie</Button>
     }
@@ -37,30 +38,13 @@ class CategoryNews extends Component
         if(this.state.categoryNews !== undefined)
         {
             return this.state.categoryNews.map((category) =>(
-                this.CategoryCard(category)
+                <CategoryNewsCard
+                    key={category._id}
+                    RefreshDataSet={this.GetCategoryNews}
+                    category={category}
+                    />
             ));
         }
-    }
-
-    CategoryCard = (category) =>
-    {
-        let PutConfig = CategoryNewsSchema.GetBindedPutConfig(category._id);
-        PutConfig.modalOpener = () => this.PutModalOpener(category);
-        return  <FormGenerator
-                    key={category._id}
-                    Inputs={CategoryNewsSchema.GetBindedInputs(category)}
-                    FormConfig={PutConfig}
-                    FormStatus={new FormStatus()}
-                    RefreshDataSet={this.GetCategoryNews}
-                    />
-    }
-
-    PutModalOpener = (category) =>
-    {
-        return  <div className="pagesCard" key={category._id}>
-                    <h4>{category.Title}
-                    </h4>
-                </div>
     }
 
     render()
