@@ -6,6 +6,8 @@ import ReactQuill from 'react-quill';
 const modules = {
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, 6] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ 'color': [] }, { 'background': [] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }, { 'align': [] }],
       ['clean']
@@ -16,6 +18,8 @@ const modules = {
 };
 const formats = [
     'header',
+    'size',
+    'color', 'background',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet',
     'indent', 'link',
@@ -48,7 +52,9 @@ class TextEditor extends Component {
                     defaultValue = { this.props.input.value }
                     formats = { this.formats }
                     onChange = {
-                        () => this.props.handleChangeEditor(this.TextEditor, this.props.input.name)
+                        () => {
+                            this.props.handleChangeEditor(this.TextEditor, this.props.input.name)
+                        }
                     }
                     ref = {this.TextEditor}
                 />)

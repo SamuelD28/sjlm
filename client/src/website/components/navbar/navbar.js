@@ -2,114 +2,67 @@
 import React, {Component} from "react";
 import Translate from '../../../shared/translate.js';
 import {NavLink} from 'react-router-dom';
+import Ajax from '../../../shared/ajax.js';
 
 //Css module import
 import CSSModules from 'react-css-modules';
-// eslint-disable-next-line
 import styles from './navbar.module.css';
 
-//This needs to be extracted in a separate api
-let categoryNews = [
-    "events",
-    "activity",
-    "communicate",
-    "roadwork",
-    "jobs",
-    "public",
-    "council",
-    "verbal",
-    "other"
-    ];
-
-//Optimisation is neccesary here****
-//----------Core Code-------//
 class Navbar extends Component{
 
     constructor(props)
     {
         super(props);
-        this.menus = this.ExtractMenus(props.pages);
-        this.pages = Object.create(props.pages);
+        this.state = {SelectedMenuTitle : "",SelectedSubmenu : []};
         this.navbarSecondary = React.createRef();
     }
 
-    //Method tha extract the menus from the pages. Will be extracted later on in his own api
-    ExtractMenus = (pages) => {
-        let menus = new Set([]);
-        if(pages !== undefined){
-            pages.map((item, index)=>(
-                menus.add(item.PageCategory)));
+    componentDidMount()
+    {
+        this.GetMenus();
+    }
+
+    GetMenus = async()=>
+    {
+        let request = await Ajax.GetData("/api/menus");
+        this.setState({menus : request.data});
+    }
+
+    DisplayMenus = () =>
+    {
+        if(this.state.menus !== undefined)
+        {
+            return  this.state.menus.map((menu) => (
+                        <li styleName="navbarItem"
+                            onMouseEnter={() => this.setState({SelectedMenuTitle: menu.Title,SelectedSubmenu: menu.SubMenu})}
+                            key={menu._id}>
+                            <i styleName="navIcon" className={`icon large ${menu.Icon}`}></i>
+                        </li>));
         }
-        menus.add("news");
-        menus.add("contact");
-        return Array.from(menus);
     }
 
-    //Method that groups the pages in a UL based on the menu they belong
-    GroupPagesByMenu = () => {
-        return this.menus.map((menu, i)=> (this.IsTherePagesForThisMenu(menu)))
-    }
-
-    IsTherePagesForThisMenu = (menu) => {
-        let page = this.pages.find((page)=>{return page.PageCategory === menu});
-        if(page !== undefined || menu === "news") //Hardcoded for the news section. Not Ideal
-        return (
-        <ul styleName="secondaryContent" id={menu} key={menu}>
-            <li styleName="navbarContentTitle">{Translate.PageCategory(menu)}
-            </li>
-            {this.FindPagesByMenu(menu)}
-        </ul>
-        )
-    }
-
-    //Method that find the pages based on the menu
-    FindPagesByMenu = (menu)  => {
-        if(menu !== "news")
-            return this.pages.filter((page)=> page.PageCategory === menu).map((page, index) =>(
-                this.CreatePageLink(`/static/${page._id}`, page.PageTitle, index)
-            ));
+    //Method that display the pages link based on the menu choosen
+    DisplaySubmenu = () =>{
+        if(this.state.SelectedSubmenu.length > 0)
+        {
+            document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
+            this.navbarSecondary.current.style.transform = "translateX(100px)";
+            return  this.state.SelectedSubmenu.map((submenu) =>(
+                            this.CreatePageLink(submenu)
+                    ))
+        }
         else
-            return categoryNews.map((category, index)=>(
-                this.CreatePageLink(`/category/${category}`, Translate.NewsCategory(category), index)
-            ));
+            this.HideMenuPages();
     }
 
     //Method that create the page link that will be inserted in the menu
-    CreatePageLink = (urlPath, title, id) => {
-        return (
-        <NavLink to={urlPath} styleName="secondaryLink" key={id} onClick={this.HideMenuPages}>
-            {title}
-            <div styleName="cubeContainer">
-                <span styleName="secondaryCube"></span>
-            </div>
-        </NavLink>
-        )
-    }
-
-    //Method that insert the menu LI
-    InsertMenus = (menus) => {
-        return this.menus.map((menu, index) => (
-        <li styleName="navbarItem"
-            onMouseEnter={this.DisplayMenuPages}
-            menu={menu}
-            key={index}>
-            <i styleName="navIcon" className={`icon large ${this.InsertMenuIcon(menu)}`}></i>
-        </li>
-        ))
-    }
-
-    //Method used to display the right icon for the right menu. Will be extracted with the api later on
-    InsertMenuIcon = (menu) => {
-        switch(menu){
-            case "city": return "compass";
-            case "administration": return "users";
-            case "services": return "book";
-            case "cultures": return "futbol";
-            case "finances": return "balance scale";
-            case "news": return "newspaper";
-            case "contact": return "mail";
-            default: return "question";
-        }
+    CreatePageLink = (menu) => {
+        return  <NavLink to={menu.LinkTo} styleName="secondaryLink" key={menu._id} onClick={this.HideMenuPages}>
+                    {menu.Title}
+                    <div styleName="cubeContainer">
+                        <span styleName="secondaryCube"></span>
+                    </div>
+                </NavLink>
     }
 
     //Ui effect when the mouse leaves the menu
@@ -124,51 +77,36 @@ class Navbar extends Component{
         menu.style.color = "whitesmoke";
     }
 
-    //Method that display the pages link based on the menu choosen
-    DisplayMenuPages = (e) => {
-        document.querySelectorAll("." + styles.navbarItem).forEach((element)=>{this.MenusOut(element)});
-        this.navbarSecondary.current.querySelectorAll("ul").forEach((element)=>{element.style.display = "none";})
-
-        this.MenusOver(e.target);
-        let menuPages = document.getElementById(e.target.getAttribute("menu"));
-        if(menuPages !== null)
-        {
-            document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
-            this.navbarSecondary.current.style.transform = "translateX(100px)";
-            menuPages.style.display = "flex";
-        }
-        else{
-            this.HideMenuPages();
-            this.MenusOver(e.target);
-        }
-    }
 
     //Method that hides the menu when the mouse leaves it
     HideMenuPages = () => {
         document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
         document.querySelectorAll("." + styles.navbarItem).forEach((element)=>{this.MenusOut(element)});
-        this.navbarSecondary.current.style.transform = "translateX(-200px)";
+
+        if(this.navbarSecondary.current !== null)
+            this.navbarSecondary.current.style.transform = "translateX(-200px)";
     }
 
     render(){
-    return(
-    <div
-        id={styles.navbar}
-        onMouseLeave={this.HideMenuPages}>
-        <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
-            {this.GroupPagesByMenu()}
-        </div>
-        <div id={styles.navbarPrimary} ref="navbarPrimary">
-            <NavLink to="/" styleName="navbarLogo" onClick={this.HideMenuPages}>
-                <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
-            </NavLink>
-            <ul styleName="navbarContent">
-                {this.InsertMenus()}
-            </ul>
-        </div>
-    </div>
-    )
-    }
+    if(this.state.menus !== undefined)
+        return  <div
+                    id={styles.navbar}
+                    onMouseLeave={this.HideMenuPages}>
+                    <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
+                        <div styleName="navbarContentTitle">
+                            {this.state.SelectedMenuTitle}
+                        </div>
+                        {this.DisplaySubmenu()}
+                    </div>
+                    <div id={styles.navbarPrimary} ref="navbarPrimary">
+                        <NavLink to="/" styleName="navbarLogo" onClick={this.HideMenuPages}>
+                            <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
+                        </NavLink>
+                        <ul styleName="navbarContent">
+                            {this.DisplayMenus()}
+                        </ul>
+                    </div>
+                </div>}
 }
 
 export default CSSModules(Navbar, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
