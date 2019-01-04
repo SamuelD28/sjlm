@@ -15,6 +15,7 @@ class Navbar extends Component{
         super(props);
         this.state = {SelectedMenuTitle : "",SelectedSubmenu : []};
         this.navbarSecondary = React.createRef();
+        this.navbarPrimary = React.createRef();
     }
 
     componentDidMount()
@@ -33,11 +34,18 @@ class Navbar extends Component{
         if(this.state.menus !== undefined)
         {
             return  this.state.menus.map((menu) => (
-                        <li styleName="navbarItem"
-                            onMouseEnter={() => this.setState({SelectedMenuTitle: menu.Title,SelectedSubmenu: menu.SubMenu})}
-                            key={menu._id}>
-                            <i styleName="navIcon" className={`icon large ${menu.Icon}`}></i>
-                        </li>));
+                    <NavLink
+                        to={(menu.LinkTo !== undefined)?menu.LinkTo: "#"}
+                        styleName="navbarItem primaryLink"
+                        onMouseEnter={
+                            (e) => {
+                                this.MenusOver(e);
+                                this.setState({SelectedMenuTitle: menu.Title,SelectedSubmenu: menu.SubMenu})
+                            }
+                        }
+                        key={menu._id}>
+                        <i styleName="navIcon" className={`icon large ${menu.Icon}`}></i>
+                    </NavLink>));
         }
     }
 
@@ -48,16 +56,17 @@ class Navbar extends Component{
             document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
             this.navbarSecondary.current.style.transform = "translateX(100px)";
             return  this.state.SelectedSubmenu.map((submenu) =>(
-                            this.CreatePageLink(submenu)
+                        this.CreatePageLink(submenu)
                     ))
         }
-        else
-            this.HideMenuPages();
     }
 
     //Method that create the page link that will be inserted in the menu
     CreatePageLink = (menu) => {
-        return  <NavLink to={menu.LinkTo} styleName="secondaryLink" key={menu._id} onClick={this.HideMenuPages}>
+        return  <NavLink to={menu.LinkTo}
+                    styleName="secondaryLink"
+                    key={menu._id}
+                    onClick={this.HideMenuPages}>
                     {menu.Title}
                     <div styleName="cubeContainer">
                         <span styleName="secondaryCube"></span>
@@ -66,25 +75,29 @@ class Navbar extends Component{
     }
 
     //Ui effect when the mouse leaves the menu
-    MenusOut = (menu) => {
-        menu.style.backgroundColor = "#f0eeed";
-        menu.style.color = "#37474F";
+    MenusOut = (e) => {
+        Array.from(this.navbarPrimary.current.childNodes).forEach((child) =>{
+            child.style.backgroundColor = "#f0eeed";
+            child.style.color = "#37474F";
+        });
     }
 
     //UI effect when the mouse enters the menu
-    MenusOver = (menu) => {
-        menu.style.backgroundColor = "#37474F";
-        menu.style.color = "whitesmoke";
+    MenusOver = (e) => {
+        this.MenusOut();
+        e.target.style.backgroundColor = "#37474F";
+        e.target.style.color = "whitesmoke";
     }
 
 
     //Method that hides the menu when the mouse leaves it
     HideMenuPages = () => {
-        document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
-        document.querySelectorAll("." + styles.navbarItem).forEach((element)=>{this.MenusOut(element)});
-
-        if(this.navbarSecondary.current !== null)
+        this.MenusOut();
+        if(this.navbarSecondary.current !== null){
+            document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
             this.navbarSecondary.current.style.transform = "translateX(-200px)";
+            this.setState({SelectedMenuTitle : "",SelectedSubmenu : []});
+        }
     }
 
     render(){
@@ -102,7 +115,7 @@ class Navbar extends Component{
                         <NavLink to="/" styleName="navbarLogo" onClick={this.HideMenuPages}>
                             <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
                         </NavLink>
-                        <ul styleName="navbarContent">
+                        <ul styleName="navbarContent" ref={this.navbarPrimary}>
                             {this.DisplayMenus()}
                         </ul>
                     </div>

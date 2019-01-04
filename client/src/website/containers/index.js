@@ -30,26 +30,19 @@ class Index extends Component{
     //Method that initialise the data that will be passed down to the child component
     componentDidMount = async() =>
     {
-        this.ReadRequest("/api/pages", "pages");
         this.ReadRequest("/api/news/limit/3", "news");
-    }
-
-    //Method that render the navbar only when the ajax request are finished
-    RenderNavbar = () =>
-    {
-        if(this.state.pages !== undefined)
-            return(<Navbar pages={this.state.pages} navbarLite={true}/>);
     }
 
     render(){
     return(
     <div>
-        {this.RenderNavbar()}
+        <Navbar navbarLite={true}/>
         <Switch>
             <Route exact path="/" component={() => {return(<Home news={this.state.news} />)}} />
             <Route exact path="/pages/static/:id" component={StaticPage} />
             <Route exact path="/news/:id" component={NewsPage} />
             <Route exact path="/news/category/:category" component={NewsCategory} />
+            <Route exact path="/contact" component={() => {return(<h1>Contact</h1>)}} />
             <Route path="/">
                 <Redirect to="/" />
             </Route>

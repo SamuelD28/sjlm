@@ -21,30 +21,24 @@ class StaticPage extends Component{
     {
         super(props);
         this.state = {};
-        this.page = {};
     }
-
-    ReadRequest = async(url, name) =>
-    {
-        let request  = await Ajax.GetData(url);
-        let stateObject = {};
-        stateObject[name.valueOf()] = request.data
-        this.page=stateObject[name.valueOf()];
-        this.ComparePageWithState();
-    }
-
     componentDidMount() {
-        this.ReadRequest(`/api/pages/${this.props.match.params.id}`, "page");
+        this.GetPage();
+    }
+
+    GetPage = async() =>
+    {
+        let request = await Ajax.GetData(`/api/pages/pageurl/${this.props.match.params.id}`);
+        this.setState({page : request.data, pageurl: this.props.match.params.id});
     }
 
     ComparePageWithState = () =>
     {
-        if(this.page.PageTitle !== this.state.PageTitle)
-            this.setState(this.page);
+        if(this.props.match.params.id !== this.state.pageurl)
+            this.GetPage();
     }
 
     componentDidUpdate() {
-        this.ReadRequest(`/api/pages/${this.props.match.params.id}`, "page");
         this.ComparePageWithState();
     }
 
@@ -60,20 +54,19 @@ class StaticPage extends Component{
 
     render()
     {
-    if(this.state.PageTitle !== undefined){
+    if(this.state.page !== undefined){
     return(
     <div styleName="staticPage">
-        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.PageGallery[0]}')`}}></div>
+        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
         <div styleName="pageLeftColumn">
             <SocialIconColumn />
-            {this.DisplayImageGallery(this.state.PageGallery)}
+            {this.DisplayImageGallery(this.state.page.PageGallery)}
         </div>
         <div styleName="pageContainer">
             <PageHeader
-                title={this.state.PageTitle}
-                category={Translate.PageCategory(this.state.PageCategory)}
+                title={this.state.page.PageTitle}
                 />
-            <PageContent content={this.state.PageContent} />
+            <PageContent content={this.state.page.PageContent} />
             <FileGallery files={null} />
         </div>
         <PageFooter />
