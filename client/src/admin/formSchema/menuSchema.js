@@ -89,7 +89,7 @@ class MenuSchema extends FormSchema {
      */
     Init = async() => {
         await this.GenererateMenuOptions();
-        await this.GenererateIconOptions();
+        await this.GenerateLinksOptions();
     }
 
     /**

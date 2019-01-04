@@ -11,20 +11,25 @@ import adminStyles from '../index.module.css';
 import PagesCard from '../../components/pagesCard/pagesCard.js';
 import PagesCreate from '../../components/pagesCreate/pagesCreate.js';
 
-import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 import Menus from '../menus/menus.js';
 
 //This Component is responsible for holding the state that will be modified by its crud components
 class Pages extends Component {
 
-    state={}
+
+    constructor(props)
+    {
+        super(props);
+        this.state= {}
+        this.Menus = React.createRef();
+    }
 
     componentDidMount() {
         this.GetPages();
     }
 
     GetPages = async() => {
-        MenuSchema.GenerateLinksOptions();
+        this.Menus.current.GetMenus();
         let request = await Ajax.GetData("/api/pages/");
         this.setState({ pages: request.data });
     }
@@ -52,7 +57,7 @@ class Pages extends Component {
                     <div className="section-style section-btn">
                         <PagesCreate RefreshDataSet={this.GetPages}/>
                     </div>
-                    <Menus />
+                    <Menus ref={this.Menus}/>
                 </div>
                 <div className="right-column section-style">
                     <h2>Les Pages</h2>

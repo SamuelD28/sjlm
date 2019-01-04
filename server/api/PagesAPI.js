@@ -1,7 +1,8 @@
 const   Pages           = require("../models/PagesMD.js"),
         Api             = new Object(),
         Utility         = require("../utils/utility.js"),
-        NavigationLinks = require("../models/NavigationLinksMD.js");
+        NavigationLinks = require("../models/NavigationLinksMD.js"),
+        Menus           = require("../models/MenuMD.js");
 
 Api.GetOnePage = function(req, res)
 {
@@ -34,13 +35,21 @@ Api.CreatePages = function(req, res)
     Pages.create(req.body)
          .then((page) =>{
 
-            req.body.map((_page) =>{
-                let urlValue = Utility.ConvertToUrlSafe(_page.PageTitle);
-                NavigationLinks.create({Title: _page.PageTitle, Category: "Pages", Link : "/pages/static/" + urlValue})
+            if(page instanceof Array)
+                req.body.map((_page) =>{
+                    let urlValue = Utility.ConvertToUrlSafe(_page.PageTitle);
+                    NavigationLinks.create({Title: _page.PageTitle, Category: "Pages", Link : "/pages/static/" + urlValue})
+                                   .catch((err) => {
+                                        Utility.WriteInLog("error", err);
+                                   });
+                })
+            else{
+                let urlValue = Utility.ConvertToUrlSafe(page.PageTitle);
+                NavigationLinks.create({Title: page.PageTitle, Category: "Pages", Link : "/pages/static/" + urlValue})
                                .catch((err) => {
                                     Utility.WriteInLog("error", err);
                                });
-            })
+            }
 
             Utility.GenerateResponse(true, res, page);
          })
@@ -71,6 +80,17 @@ Api.UpdatePages = function(req, res)
                            .catch((err) => {
                                 Utility.WriteInLog("error", err);
                            });
+                Menus.find({LinkTo : "/pages/static/" + oldUrlValue})
+                     .exec()
+                     .then((menus) =>{
+                        menus.forEach((menu) =>{
+                            menu.LinkTo = "/pages/static/" + newUrlValue;
+                            menu.save();
+                        });
+                     })
+                     .catch((err) =>{
+                        Utility.WriteInLog("error", err);
+                     });
             }
 
             Utility.GenerateResponse(true , res , page);
@@ -92,6 +112,17 @@ Api.DeletePages = function(req, res)
                            .catch((err) => {
                                 Utility.WriteInLog("error", err);
                            });
+            Menus.find({LinkTo : "/pages/static/" + urlValue})
+                     .exec()
+                     .then((menus) =>{
+                        menus.forEach((menu) =>{
+                            menu.LinkTo = null;
+                            menu.save();
+                        });
+                     })
+                     .catch((err) =>{
+                        Utility.WriteInLog("error", err);
+                     });
 
             Utility.GenerateResponse(true, res, page);
          })

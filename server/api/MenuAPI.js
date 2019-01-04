@@ -19,12 +19,14 @@ Api.CreateMenu = function(req, res)
 {
     Menu.create(req.body)
          .then((menu) =>{
-            if(menu.ParentMenu !== null)
+            if(menu.ParentMenu !== undefined)
             {
                 Menu.findById(menu.ParentMenu)
                     .then((parentMenu) => {
-                        parentMenu.SubMenu.push(menu._id);
-                        parentMenu.save();
+                        if(parentMenu !== {}){
+                            parentMenu.SubMenu.push(menu._id);
+                            parentMenu.save();
+                        }
                     })
                     .catch((err) => {
                         Utility.GenerateResponse(false, res, err);
@@ -87,7 +89,6 @@ Api.DeleteMenu = function(req, res)
             {
                 menu.SubMenu.forEach((id) =>
                 {
-                    console.log(id);
                     Menu.findByIdAndRemove(id)
                         .exec()
                         .catch((err) => {
@@ -95,7 +96,8 @@ Api.DeleteMenu = function(req, res)
                         });
                 });
             }
-            else{
+
+            if(menu.ParentMenu !== undefined){
                  Menu.findById(menu.ParentMenu)
                     .then((originalParent) =>{
                         let index = originalParent.SubMenu.indexOf(menu._id);
@@ -108,22 +110,7 @@ Api.DeleteMenu = function(req, res)
                     });
             }
 
-
             Utility.GenerateResponse(true, res, menu);
-         })
-         .catch((err) =>{
-            Utility.GenerateResponse(false, res, err);
-            Utility.WriteInLog("error", err);
-         });
-}
-
-
-Api.DeleteAllMenu = function(req, res)
-{
-    let Query = Menu.remove({});
-    Query.exec()
-         .then(() =>{
-            Utility.GenerateResponse(true, res);
          })
          .catch((err) =>{
             Utility.GenerateResponse(false, res, err);

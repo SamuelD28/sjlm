@@ -44,7 +44,6 @@ class FormGenerator extends Component {
             Inputs: props.Inputs,
             TextEditor: props.TextEditor
         };
-
         this.CloneInputs();
     }
 
@@ -484,7 +483,7 @@ class FormGenerator extends Component {
      * Method that generate the form inputs
      */
     GenerateFormInputs = () => {
-        let groups = this.GenerateFormGroups(this.state.FormInputs);
+        let groups = this.GenerateFormGroups();
         return Object.keys(groups).map((key, index) => {
             return (
 
@@ -571,9 +570,19 @@ class FormGenerator extends Component {
         });
     }
 
+    /**
+     * This is a temporary workaround to fix a bug. This
+     * is performance heavy and needs to be improved
+     */
+    componentWillReceiveProps(props)
+    {
+        this.setState({Inputs : props.Inputs});
+    }
+
     render() {
-        if (this.state !== undefined)
+        if (this.state !== undefined){
             return this.Generate();
+        }
     }
 }
 

@@ -5,78 +5,39 @@ import MenuCards from '../../components/menuCards/menuCards.js';
 import MenuCreate from '../../components/menuCreate/menuCreate.js';
 import {default as MenuSchema} from '../../formSchema/menuSchema.js';
 
-import CSSModules from 'react-css-modules';
-import styles from './menus.module.css';
-import {Divider, Accordion, Icon} from 'semantic-ui-react';
+import {Divider} from 'semantic-ui-react';
 
 class Menus extends Component {
 
-    state = {}
+    constructor(props)
+    {
+        super(props);
+        this.state= {};
+        this.MenuCards = React.createRef();
+    }
 
     componentDidMount() {
         this.GetMenus();
     }
 
-    handleAccordionClick = (e, titleProps) => {
-        const { index } = titleProps
-        const { activeIndex } = this.state
-        const newIndex = activeIndex === index ? -1 : index
-        this.setState({ activeIndex: newIndex })
-    }
-
     GetMenus = async() => {
+        await MenuSchema.Init();
         let request = await Ajax.GetData("/api/menus/");
-        MenuSchema.GenererateMenuOptions(request.data);
         await this.setState({ menus: request.data });
     }
 
     DisplayMenusCard = () => {
         if (this.state.menus !== undefined) {
-            return (
-                this.state.menus.map((menu, index) => (
-                    this.DisplayMenuPrincipal(menu, index)
-                )))
+            return  this.state.menus.map((menu, index) => (
+                        <MenuCards
+                            ref={this.MenuCards}
+                            key={menu._id}
+                            menu={menu}
+                            index={index}
+                            RefreshDataSet={this.GetMenus}
+                            />))
         }
     }
-
-    DisplayMenuPrincipal = (menu, index) => {
-        const { activeIndex } = this.state;
-        if (menu.Principal)
-            return (
-            <Accordion
-                styled
-                fluid
-                key={menu._id}>
-                <Accordion.Title
-                    active={activeIndex === index}
-                    index={index}
-                    onClick={this.handleAccordionClick}>
-                    <div styleName="accordionTitle">
-                        <Icon name='dropdown' />
-                        <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
-                    </div>
-                </Accordion.Title>
-                <Accordion.Content active={activeIndex === index}>
-                        {this.DisplaySubmenu(menu.SubMenu)}
-                </Accordion.Content>
-            </Accordion>)
-    }
-
-    DisplaySubmenu = (submenu) => {
-        if (submenu.length > 0)
-            return submenu.map((menu) => (
-                <div styleName="menuTitle" key={menu._id}>
-                    <MenuCards menu={menu} RefreshDataSet={this.GetMenus}/>
-                </div>
-            ));
-        else
-            return(
-                <div styleName="menuTitle">
-                    Aucun menu présent
-                </div>
-            )
-    }
-
     render() {
         return (
         <div className="section-style">
@@ -89,4 +50,4 @@ class Menus extends Component {
     }
 }
 
-export default CSSModules(Menus, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
+export default Menus;
