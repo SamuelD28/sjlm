@@ -17377,3 +17377,196 @@ Use mongoose.model(name, schema)
     at _endSession (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/cursor.js:898:37)
   message: 'Schema hasn\'t been registered for model "Occupations".\nUse mongoose.model(name, schema)',
   name: 'MissingSchemaError' }
+[2019-01-04T18:06:56.523] [ERROR] error - { ValidationError: Members validation failed: Photo: Only one image is accepted
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Photo: 
+      { ValidatorError: Only one image is accepted
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Only one image is accepted',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Photo',
+        value: [],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Members validation failed',
+  name: 'ValidationError' }
+[2019-01-04T18:15:52.769] [ERROR] error - Error: Can't set headers after they are sent.
+    at ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:356:11)
+    at ServerResponse.header (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:170:12)
+    at ServerResponse.json (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:267:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:61:35)
+    at Members.find.then (/home/ubuntu/workspace/project/server/api/OccupationsAPI.js:55:37)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-04T18:50:32.288] [ERROR] error - Error: Can't set headers after they are sent.
+    at ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:356:11)
+    at ServerResponse.header (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:170:12)
+    at ServerResponse.json (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:267:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:61:35)
+    at Members.find.then (/home/ubuntu/workspace/project/server/api/OccupationsAPI.js:55:37)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-04T18:52:32.188] [ERROR] error - Error: Can't set headers after they are sent.
+    at ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:356:11)
+    at ServerResponse.header (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:170:12)
+    at ServerResponse.json (/home/ubuntu/workspace/project/server/node_modules/express/lib/response.js:267:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:61:35)
+    at Members.find.then (/home/ubuntu/workspace/project/server/api/OccupationsAPI.js:56:37)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-04T19:28:53.064] [ERROR] error - { ValidationError: Members validation failed: Occupation: Cast to ObjectID failed for value "" at path "Occupation", LastName: Path `LastName` is required., Email: Path `Email` is required., Phone: The format of the phone number is invalid, Photo: Only one image is accepted
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Occupation: 
+      { CastError: Cast to ObjectID failed for value "" at path "Occupation"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to ObjectID failed for value "" at path "Occupation"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'ObjectID',
+        value: '',
+        path: 'Occupation',
+        reason: [Object] },
+     LastName: 
+      { ValidatorError: Path `LastName` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `LastName` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'LastName',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Email: 
+      { ValidatorError: Path `Email` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Email` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Email',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Phone: 
+      { ValidatorError: The format of the phone number is invalid
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'The format of the phone number is invalid',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Phone',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Photo: 
+      { ValidatorError: Only one image is accepted
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaArray.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Only one image is accepted',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Photo',
+        value: [],
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Members validation failed',
+  name: 'ValidationError' }
+[2019-01-04T19:38:23.270] [ERROR] error - { CastError: Cast to ObjectId failed for value "" at path "Occupation"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1082:15)
+    at castUpdateVal (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:382:19)
+    at walkUpdatePath (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:252:22)
+    at castUpdate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:77:18)
+    at Query._castUpdate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3616:10)
+    at castDoc (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3643:18)
+    at Query._findAndModify (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2869:19)
+    at Query._findOneAndUpdate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:2578:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  message: 'Cast to ObjectId failed for value "" at path "Occupation"',
+  name: 'CastError',
+  stringValue: '""',
+  kind: 'ObjectId',
+  value: '',
+  path: 'Occupation',
+  reason: undefined }

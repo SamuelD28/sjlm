@@ -109,6 +109,9 @@ Translate.ModelKey = function (modelKey) {
     case "Files":
         translatedContent = "Fichiers";
         break;
+     case "Poste":
+        translatedContent = "Poste";
+        break;
     default:
         translatedContent = modelKey + "**" //remove when going in production
     }
@@ -150,6 +153,9 @@ Translate.ModelError = function (modelError, modelProperties) {
         break;
     case "invalid phone":
         translatedContent = " n'est pas une numéro de téléphone valide";
+        break;
+    case "dependencies":
+        translatedContent = " est utilisé par une ressource";
         break;
     case "enum":
         translatedContent = " n'est pas dans la plage attendue";

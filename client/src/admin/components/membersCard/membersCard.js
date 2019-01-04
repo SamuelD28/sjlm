@@ -10,7 +10,7 @@ const MembersCard = (props) => {
         <div styleName="membersPhoto" className="img-bg" style={{backgroundImage: `url('${props.members.Photo}')`}}></div>
         <div styleName="membersInfo">
             <h1 styleName="membersName">{props.members.FirstName} {props.members.LastName}</h1>
-            <h3 styleName="membersTitle">{props.members.Occupation}</h3>
+            <h3 styleName="membersTitle">{(props.members.Occupation !== null)?props.members.Occupation.Title: "Aucun poste assigné"}</h3>
             <h5 styleName="membersTitle">{props.members.Phone}</h5>
             <h5 styleName="membersTitle">{props.members.Email}</h5>
         </div>

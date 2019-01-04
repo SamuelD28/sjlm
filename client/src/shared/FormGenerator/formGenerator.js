@@ -64,9 +64,7 @@ class FormGenerator extends Component {
      * formConfig : Configuration used to determine wich action to take for submitting the form
      */
     HandleSubmit = async() => {
-        await this.UpdateStateKey("FormStatus", { loading: true });
         let formData = await this.ParseFormData();
-        console.log(formData);
         let request = await this.HandleRequest(formData);
         this.HandleRequestResponse(request);
     }
@@ -106,6 +104,9 @@ class FormGenerator extends Component {
      * type of request to make
      */
     HandleRequest = async(formData, p_httpRequest) => {
+
+        await this.UpdateStateKey("FormStatus", { loading: true });
+
         //Quick fix for using a delete request. Need to be reworked
         let httpRequest =
             (p_httpRequest !== undefined) ?
@@ -258,6 +259,8 @@ class FormGenerator extends Component {
      * Delete the current dataset from the database.
      */
     HandleDelete = async() => {
+
+        await this.UpdateStateKey("FormStatus", {openConfirm : false});
         //Need to be reworked
         let request = await this.HandleRequest(null, "delete");
         this.HandleRequestResponse(request);
