@@ -47,9 +47,9 @@ class Index extends Component{
         {this.RenderNavbar()}
         <Switch>
             <Route exact path="/" component={() => {return(<Home news={this.state.news} />)}} />
-            <Route exact path="/static/:id" component={StaticPage} />
+            <Route exact path="/pages/static/:id" component={StaticPage} />
             <Route exact path="/news/:id" component={NewsPage} />
-            <Route exact path="/category/:category" component={NewsCategory} />
+            <Route exact path="/news/category/:category" component={NewsCategory} />
             <Route path="/">
                 <Redirect to="/" />
             </Route>

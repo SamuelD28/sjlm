@@ -17,6 +17,18 @@ Api.GetOnePage = function(req, res)
          });
 }
 
+Api.GetPageByPageUrl = function(req, res)
+{
+    let Query = Pages.findOne({PageTitleUrl : req.params.pageurl});
+    Query.exec()
+         .then((page) =>{
+            Utility.GenerateResponse(true, res, page);
+         })
+         .catch((err) =>{
+            Utility.WriteInLog("error" , err);
+         });
+}
+
 Api.GetPages = function(req, res)
 {
     let Query = Pages.find();
@@ -37,8 +49,7 @@ Api.CreatePages = function(req, res)
 
             if(page instanceof Array)
                 req.body.map((_page) =>{
-                    let urlValue = Utility.ConvertToUrlSafe(_page.PageTitle);
-                    NavigationLinks.create({Title: _page.PageTitle, Category: "Pages", Link : "/pages/static/" + urlValue})
+                    NavigationLinks.create({Title: _page.PageTitle, Category: "Pages", Link : "/pages/static/" + _page.PageTitleUrl})
                                    .catch((err) => {
                                         Utility.WriteInLog("error", err);
                                    });

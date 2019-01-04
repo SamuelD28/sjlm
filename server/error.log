@@ -17570,3 +17570,847 @@ Use mongoose.model(name, schema)
   value: '',
   path: 'Occupation',
   reason: undefined }
+[2019-01-04T21:43:31.450] [ERROR] error - { CastError: Cast to ObjectId failed for value "logo___armoirie" at path "_id" for model "Pages"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1082:15)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:303:32)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._findOne (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1781:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  message: 'Cast to ObjectId failed for value "logo___armoirie" at path "_id" for model "Pages"',
+  name: 'CastError',
+  stringValue: '"logo___armoirie"',
+  kind: 'ObjectId',
+  value: 'logo___armoirie',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'Pages',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: [Object],
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: [Object],
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object],
+        _indexedpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'pages',
+        collectionName: 'pages',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-04T21:43:34.150] [ERROR] error - { CastError: Cast to ObjectId failed for value "logo___armoirie" at path "_id" for model "Pages"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1082:15)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:303:32)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._findOne (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1781:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  message: 'Cast to ObjectId failed for value "logo___armoirie" at path "_id" for model "Pages"',
+  name: 'CastError',
+  stringValue: '"logo___armoirie"',
+  kind: 'ObjectId',
+  value: 'logo___armoirie',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'Pages',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: [Object],
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: [Object],
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object],
+        _indexedpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'pages',
+        collectionName: 'pages',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-04T21:43:35.118] [ERROR] error - { CastError: Cast to ObjectId failed for value "histoire" at path "_id" for model "Pages"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1082:15)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:303:32)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._findOne (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1781:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  message: 'Cast to ObjectId failed for value "histoire" at path "_id" for model "Pages"',
+  name: 'CastError',
+  stringValue: '"histoire"',
+  kind: 'ObjectId',
+  value: 'histoire',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'Pages',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: [Object],
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: [Object],
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object],
+        _indexedpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'pages',
+        collectionName: 'pages',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-04T21:43:36.142] [ERROR] error - { CastError: Cast to ObjectId failed for value "une_ville_verte" at path "_id" for model "Pages"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1082:15)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:303:32)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._findOne (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1781:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  message: 'Cast to ObjectId failed for value "une_ville_verte" at path "_id" for model "Pages"',
+  name: 'CastError',
+  stringValue: '"une_ville_verte"',
+  kind: 'ObjectId',
+  value: 'une_ville_verte',
+  path: '_id',
+  reason: undefined,
+  model: 
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base: 
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'Pages',
+     model: [Function: model],
+     db: 
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     '$appliedHooks': true,
+     schema: 
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: [Object],
+        methodOptions: {},
+        statics: {},
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: [Object],
+        options: [Object],
+        '$globalPluginsApplied': true,
+        _requiredpaths: [Object],
+        _indexedpaths: [Object] },
+     collection: 
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'pages',
+        collectionName: 'pages',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-04T22:02:27.020] [ERROR] error - { ValidationError: Pages validation failed: PageContent: Path `PageContent` is required., PageTitle: Path `PageTitle` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageContent: 
+      { ValidatorError: Path `PageContent` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageContent` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageContent',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true },
+     PageTitle: 
+      { ValidatorError: Path `PageTitle` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageTitle` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageTitle',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-04T22:03:54.650] [ERROR] error - TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+    at Object.Utility.ConvertToUrlSafe (/home/ubuntu/workspace/project/server/utils/utility.js:47:15)
+    at model.pagesSchema.pre (/home/ubuntu/workspace/project/server/models/PagesMD.js:44:33)
+    at callMiddlewareFunction (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:427:23)
+    at model.next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:58:7)
+    at _next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:106:10)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:452:38)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2019-01-04T22:04:42.689] [ERROR] error - TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+    at Object.Utility.ConvertToUrlSafe (/home/ubuntu/workspace/project/server/utils/utility.js:47:15)
+    at model.pagesSchema.pre (/home/ubuntu/workspace/project/server/models/PagesMD.js:44:33)
+    at callMiddlewareFunction (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:427:23)
+    at model.next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:58:7)
+    at _next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:106:10)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:452:38)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2019-01-04T22:06:10.970] [ERROR] error - TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+    at Object.Utility.ConvertToUrlSafe (/home/ubuntu/workspace/project/server/utils/utility.js:47:15)
+    at model.pagesSchema.pre (/home/ubuntu/workspace/project/server/models/PagesMD.js:44:33)
+    at callMiddlewareFunction (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:427:23)
+    at model.next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:58:7)
+    at _next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:106:10)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:452:38)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2019-01-04T22:06:50.773] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `Hist@oire`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `Hist@oire`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `Hist@oire`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'Hist@oire',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-04T22:08:45.448] [ERROR] error - TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+    at Object.Utility.ConvertToUrlSafe (/home/ubuntu/workspace/project/server/utils/utility.js:47:15)
+    at model.pagesSchema.pre (/home/ubuntu/workspace/project/server/models/PagesMD.js:44:33)
+    at callMiddlewareFunction (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:427:23)
+    at model.next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:58:7)
+    at _next (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:106:10)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:452:38)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2019-01-04T22:12:33.007] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Permis" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Permis" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Permis" }' }
+[2019-01-04T22:13:13.170] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.171] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.176] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.176] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.176] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.177] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.177] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.179] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.180] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.180] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.181] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.181] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.182] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.182] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.183] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.183] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.184] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.185] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.185] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.185] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.186] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.186] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.187] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.187] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }
+[2019-01-04T22:13:13.188] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/undefined" }' }

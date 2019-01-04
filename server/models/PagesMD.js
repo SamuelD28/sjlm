@@ -1,4 +1,5 @@
-let mongoose = require("mongoose");
+let mongoose    = require("mongoose"),
+    Utility     = require("../utils/utility.js");
 
 //----------------Model-------------//
 
@@ -20,6 +21,10 @@ let pagesSchema = new Schema({
             kind: 'invalid characters',
         },
     },
+    PageTitleUrl : {
+        type : String,
+        unique : 1
+    },
     PageContent: {
         type: String,
         required: true
@@ -34,6 +39,11 @@ let pagesSchema = new Schema({
     }
 }, {
     timestamps: true
+});
+
+pagesSchema.pre("save" , function(next){
+    this.PageTitleUrl = Utility.ConvertToUrlSafe(this.PageTitle);
+    next();
 });
 
 let Pages = mongoose.model("Pages", pagesSchema);
