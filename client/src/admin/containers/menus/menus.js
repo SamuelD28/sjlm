@@ -23,7 +23,7 @@ class Menus extends Component {
     GetMenus = async() => {
         await MenuSchema.Init();
         let request = await Ajax.GetData("/api/menus/");
-        await this.setState({ menus: request.data });
+        this.setState({ menus: request.data });
     }
 
     DisplayMenusCard = () => {

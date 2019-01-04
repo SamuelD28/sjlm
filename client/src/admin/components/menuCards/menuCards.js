@@ -26,26 +26,31 @@ class MenuCards extends FormComponent{
     }
 
     DisplaySubmenu = (submenu) => {
+
         if (submenu.length > 0)
-            return submenu.map((menu) => (
-                <div styleName="menuTitle" key={menu._id}>
-                    <FormGenerator
-                        Inputs={this.Inputs}
-                        FormStatus={new FormStatus()}
-                        FormConfig={this.PutConfig}
-                        RefreshDataSet={this.props.RefreshDataSet}
-                        />
-                </div>
-            ));
+            return submenu.map((menu) => {
+
+                let PutConfig = MenuSchema.GetBindedPutConfig(menu._id);
+                PutConfig.modalOpener = () => this.PutModalOpener(menu);
+
+                return <div styleName="menuTitle" key={menu._id}>
+                            <FormGenerator
+                                Inputs={MenuSchema.GetBindedInputs(menu)}
+                                FormStatus={new FormStatus()}
+                                FormConfig={PutConfig}
+                                RefreshDataSet={this.props.RefreshDataSet}
+                                />
+                        </div>
+            });
         else
             return  <div styleName="menuTitle">
                         Aucun menu présent
                     </div>
     }
 
-    RefreshInputs = () =>
+    PutModalOpener = (menu) =>
     {
-        this.Inputs = MenuSchema.GetBindedInputs(this.props.menu);
+        return  <span>{menu.Title}</span>
     }
 
     /**
@@ -55,18 +60,13 @@ class MenuCards extends FormComponent{
     {
         if(this.props.menu.Icon !== undefined)
             return  <span>
-                        {this.props.menu.Title.toUpperCase()} <i style={{float: "right"}}className={`icon ${this.props.menu.Icon}`}></i>
+                        {this.props.menu.Title.toUpperCase()} <i style={{float: "right"}} className={`icon ${this.props.menu.Icon}`}></i>
                     </span>
         else
             return <span>{this.props.menu.Title}</span>
     }
 
     render(){
-    this.RefreshInputs();
-
-    console.log("Rendering Menu Cards");
-    console.log(this.Inputs);
-
     const { activeIndex } = this.state;
     if (this.props.menu.Principal)
         return  <Accordion
@@ -79,14 +79,16 @@ class MenuCards extends FormComponent{
                         <div styleName="accordionTitle">
                             <Icon name='dropdown' />
                             <FormGenerator
-                                Inputs={this.Inputs}
+                                Inputs={MenuSchema.GetBindedInputs(this.props.menu)}
                                 FormStatus={new FormStatus()}
                                 FormConfig={this.PutConfig}
                                 RefreshDataSet={this.props.RefreshDataSet}
                                 />
                         </div>
                     </Accordion.Title>
-                    <Accordion.Content active={activeIndex === this.props.index}>
+                    <Accordion.Content
+                            styleName="accordionTitle"
+                            active={activeIndex === this.props.index}>
                             {this.DisplaySubmenu(this.props.menu.SubMenu)}
                     </Accordion.Content>
                 </Accordion>

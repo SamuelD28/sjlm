@@ -10,5 +10,5 @@ let occupationSchema = new Schema({
     }
 });
 
-let Occupation = mongoose.model("Occupation", occupationSchema);
-module.exports = Occupation;
+let Occupations = mongoose.model("Occupations", occupationSchema);
+module.exports = Occupations;

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
 import Ajax from '../../../shared/ajax.js';
 import {default as OccupationsSchema} from '../../formSchema/occupationsSchema.js';
+import {default as MemberSchema} from '../../formSchema/memberSchema.js';
 import {Divider, Button} from 'semantic-ui-react';
 
 class Occupations extends Component
@@ -27,6 +28,7 @@ class Occupations extends Component
 
     GetOccupations = async() =>
     {
+        MemberSchema.Init();
         let request = await Ajax.GetData("/api/occupations/");
         this.setState({occupations : request.data});
     }

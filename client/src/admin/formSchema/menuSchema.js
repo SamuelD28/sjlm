@@ -62,7 +62,7 @@ class MenuSchema extends FormSchema {
                 width: 6,
                 label: "Menu parent",
                 value: "",
-                generator: () => { return this.menuOptions; }
+                generator: () =>  this.menuOptions
             }),
             new InputSchema({
                 name: "Icon",
@@ -98,23 +98,22 @@ class MenuSchema extends FormSchema {
      */
     GenererateMenuOptions = async(p_menus) => {
 
-        let menus;
-        if(p_menus === undefined)
-            menus = await Ajax.GetData("/api/menus").data;
-        else
-            menus = p_menus;
+        if(p_menus !== undefined){
+            this.menuOptions = p_menus;
+            return;
+        }
 
+        let menus;
         let menusOptions = [];
+        menus = await Ajax.GetData("/api/menus");
         if (menus !== undefined) {
-            menus.map((menu, index) => {
+            menus.data.map((menu, index) => {
                 if (menu.Principal) {
                     let menuObject = { text: menu.Title, value: menu._id };
                     menusOptions.push(menuObject);
                 }
-
                 return menusOptions;
-            });
-        }
+            })}
         this.menuOptions = menusOptions;
     }
 
@@ -132,7 +131,13 @@ class MenuSchema extends FormSchema {
         "futbol",
         "book",
         "users",
-        "user"
+        "user",
+        "envelope",
+        "envelope outline",
+        "suitcase",
+        "calendar alternate outline",
+        "university",
+        "map"
         ];
         let IconsOptions = [];
         IconsArray.map((icon, index) => {
@@ -149,6 +154,7 @@ class MenuSchema extends FormSchema {
     GenerateLinksOptions = async() => {
         let navigationlinks = await Ajax.GetData("/api/navigationlinks");
         let NavigationOptions = [];
+        NavigationOptions.push({text: "Aucun", value: null});
         if (navigationlinks.data !== undefined) {
             navigationlinks.data.map((navlink, index) => {
                 let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink.Link, key : navlink._id };

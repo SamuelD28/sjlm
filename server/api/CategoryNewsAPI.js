@@ -2,7 +2,8 @@
 let CategoryNews    = require("../models/CategoryNewsMD.js"),
     Api             = new Object(),
     Utility         = require("../utils/utility.js"),
-    NavigationLinks = require("../models/NavigationLinksMD.js");
+    NavigationLinks = require("../models/NavigationLinksMD.js"),
+    Menus           = require("../models/MenuMD.js");
 
 //--------------Model-------------//
 
@@ -56,6 +57,17 @@ Api.UpdateCategoryNews = function(req, res)
                            .catch((err) => {
                                 Utility.WriteInLog("error", err);
                            });
+                Menus.find({LinkTo : "/news/category/" + oldUrlValue})
+                     .exec()
+                     .then((menus) =>{
+                        menus.forEach((menu) =>{
+                            menu.LinkTo = "/news/category/" + newUrlValue;
+                            menu.save();
+                        });
+                     })
+                     .catch((err) =>{
+                        Utility.WriteInLog("error", err);
+                     });
             }
 
             Utility.GenerateResponse(true, res, category);
@@ -76,6 +88,17 @@ Api.DeleteCategoryNews = function(req , res)
                            .catch((err) => {
                                 Utility.WriteInLog("error", err);
                            });
+            Menus.find({LinkTo : "/news/category/" + urlValue})
+                     .exec()
+                     .then((menus) =>{
+                        menus.forEach((menu) =>{
+                            menu.LinkTo = null;
+                            menu.save();
+                        });
+                     })
+                     .catch((err) =>{
+                        Utility.WriteInLog("error", err);
+                     });
 
             Utility.GenerateResponse(true, res, category);
         })

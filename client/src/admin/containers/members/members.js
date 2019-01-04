@@ -24,46 +24,43 @@ class Members extends Component {
 
     GetMembers = async() => {
         let request = await Ajax.GetData("/api/members");
-        await this.setState({ members: request.data });
+        this.setState({ members: request.data });
     }
 
     DisplayMembers() {
         if (this.state.members !== undefined) {
+            console.log(this.state.members);
             if(this.state.members.length > 0)
-            return this.state.members.map((member) => (
-                <MembersEdit
-                    key={member._id}
-                    member={member}
-                    RefreshDataSet={this.GetMembers}
-                    />
-            ))
+                return this.state.members.map((member) => (
+                    <MembersEdit
+                        key={member._id}
+                        member={member}
+                        RefreshDataSet={this.GetMembers}
+                        />))
             else
                 return <h2>Aucun membre sauvegardé</h2>
         }
     }
 
     render() {
-        return (
-            <div id={styles.membersPage} className={adminStyles.adminPage}>
-        <section>
-            <div className="section-row">
-                <div className="left-column">
-                    <div className="section-style section-btn">
-                        <MembersCreate RefreshDataSet={this.GetMembers}/>
-                    </div>
-                    <Occupations />
-                </div>
-                <div className="right-column section-style">
-                    <h2>Les Membres</h2>
-                    <div styleName="membersContent">
-                        {this.DisplayMembers()}
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-        )
-    }
+        return  <div id={styles.membersPage} className={adminStyles.adminPage}>
+                    <section>
+                        <div className="section-row">
+                            <div className="left-column">
+                                <div className="section-style section-btn">
+                                    <MembersCreate RefreshDataSet={this.GetMembers}/>
+                                </div>
+                                <Occupations />
+                            </div>
+                            <div className="right-column section-style">
+                                <h2>Les Membres</h2>
+                                <div styleName="membersContent">
+                                    {this.DisplayMembers()}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>}
 }
 
 export default CSSModules(Members, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
