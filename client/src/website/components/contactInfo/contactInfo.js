@@ -4,14 +4,14 @@ const ContactInfo = (props) =>
 {
     return(
     <div>
-        <div styleName='sectionTitle'>
+        <div>
             <h1>Nos Coordonnées</h1>
         </div>
-        <div styleName="contactInfo">
+        <div>
             <div>
                 <h2>Hôtel de Ville</h2>
                 <p>91 Rue Principale, <br />
-                Saint-Jacques-le-Mineur, <br /> 
+                Saint-Jacques-le-Mineur, <br />
                 QC J0J 1Z0 <br />
                 tél: (450) 347-5446
                 </p>

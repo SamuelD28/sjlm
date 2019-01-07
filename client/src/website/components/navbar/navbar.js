@@ -59,6 +59,8 @@ class Navbar extends Component{
                         this.CreatePageLink(submenu)
                     ))
         }
+        else
+            this.HideMenuPages();
     }
 
     //Method that create the page link that will be inserted in the menu
@@ -89,14 +91,14 @@ class Navbar extends Component{
         e.target.style.color = "whitesmoke";
     }
 
-
     //Method that hides the menu when the mouse leaves it
     HideMenuPages = () => {
-        this.MenusOut();
         if(this.navbarSecondary.current !== null){
             document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
             this.navbarSecondary.current.style.transform = "translateX(-200px)";
-            this.setState({SelectedMenuTitle : "",SelectedSubmenu : []});
+
+            if(this.state.SelectedSubmenu.length > 0)
+                this.setState({SelectedMenuTitle : "",SelectedSubmenu : []});
         }
     }
 
@@ -104,7 +106,10 @@ class Navbar extends Component{
     if(this.state.menus !== undefined)
         return  <div
                     id={styles.navbar}
-                    onMouseLeave={this.HideMenuPages}>
+                    onMouseLeave={() =>{
+                        this.HideMenuPages();
+                        this.MenusOut();
+                    }}>
                     <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
                         <div styleName="navbarContentTitle">
                             {this.state.SelectedMenuTitle}

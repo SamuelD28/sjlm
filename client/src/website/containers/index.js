@@ -9,6 +9,8 @@ import Home from './home/home.js';
 import StaticPage from './staticPage/staticPage.js';
 import NewsPage from './newsPage/newsPage.js';
 import NewsCategory from './newsCategory/newsCategory.js';
+import Council from './council/council.js';
+import Contact from './contact/contact.js';
 
 //----------Core Code-------//
 class Index extends Component{
@@ -42,7 +44,8 @@ class Index extends Component{
             <Route exact path="/pages/static/:id" component={StaticPage} />
             <Route exact path="/news/:id" component={NewsPage} />
             <Route exact path="/news/category/:category" component={NewsCategory} />
-            <Route exact path="/contact" component={() => {return(<h1>Contact</h1>)}} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/conseil" component={Council} />
             <Route path="/">
                 <Redirect to="/" />
             </Route>
