@@ -2,51 +2,30 @@ import React, {Component} from 'react';
 import {Form, Label, Input} from 'semantic-ui-react';
 
 import CSSModules from 'react-css-modules';
+import style from './contactForm.module.css';
+import PageHeader from '../pageHeader/pageHeader.js';
+import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
+import {default as MailSchema} from '../../formSchema/mailSchema.js';
 
 class ContactForm extends Component{
-    
+
+    constructor(props){
+        super(props);
+    }
+
     render(){
-    return(
-    <Form styleName="contactForm">
-        <Form.Group>
-            <Form.Field width={8}>
-                <input type="text" placeholder="Nom"/>
-            </Form.Field>
-            <Form.Field width={8}>
-                <input type="text" placeholder="Prénom"/>
-            </Form.Field>
-        </Form.Group>
-        <Form.Group>
-            <Form.Field width={8}>
-                <Input labelPosition='left' type='email' placeholder='Adresse Courriel'>
-                    <Label basic><i className="icon at"></i></Label>
-                    <input/>
-                </Input>
-            </Form.Field>
-            <Form.Field width={8}>
-                <Input labelPosition='left' type='tel' placeholder='Téléphone'>
-                    <Label basic><i className="icon phone"></i></Label>
-                    <input />
-                </Input>
-            </Form.Field>
-        </Form.Group>
-        <Form.Field>
-            <select defaultValue="default">
-                <option value="default">Sujet*</option>
-                <option value="information">Demande d'information</option>
-                <option value="comment">Commentaire et suggestion</option>
-                <option value="maintenance">Entretiens des rues</option>
-                <option value="sewer">Aqueduc et egout</option>
-                <option value="complaint">Plainte</option>
-                <option value="other">Autre</option>
-            </select>
-        </Form.Field>
-        <Form.Field>
-            <textarea placeholder="Description"></textarea>
-        </Form.Field>
-        <button className="btn btn-primary"><i className="icon send"></i> Envoyer</button>
-    </Form>
-    )}
+    return  <div style={{padding: "2vw"}}>
+                <PageHeader title="Joindre" category="Contact"/>
+                <div style={{marginTop: "2vw"}}>
+                    <FormGenerator
+                        Inputs={MailSchema.GetEmptyInputs()}
+                        FormConfig={MailSchema.GetPostConfig()}
+                        FormStatus={new FormStatus()}
+                        TextEditor={MailSchema.GetEmptyEditor()}
+                        />
+                </div>
+            </div>
+    }
 }
 
-export default ContactForm;
+export default CSSModules(ContactForm, style, {handleNotFoundStyleName: "log", allowMultiple: true});

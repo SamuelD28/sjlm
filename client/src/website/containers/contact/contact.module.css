@@ -1,0 +1,32 @@
+.contactBody {
+    background: whitesmoke;
+    margin-left: 100px;
+    display: grid;
+    grid-template-rows: 25vw auto;
+    grid-template-columns: .5fr .5fr;
+    grid-template-areas: "map map " "info form" "footer footer ";
+    grid-gap: 1.5vw;
+}
+
+.map {
+    position: relative;
+    grid-area: map;
+}
+
+
+.info {
+    background: white;
+    margin-left: 4vw;
+    grid-area: info;
+    transform: translateY(-7.5vw);
+}
+
+.form {
+    background: white;
+    margin-right: 4vw;
+    grid-area: form;
+}
+
+.footer {
+    grid-area: footer;
+}

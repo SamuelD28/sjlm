@@ -457,7 +457,7 @@ class FormGenerator extends Component {
         //Generate a from without a text edtior
         if (this.state.TextEditor === undefined) {
             return (
-                <Grid>
+            <Grid>
                 <Grid.Column width={16}>
                     <FormError errorHandler={this.state.FormStatus} />
                     {this.GenerateFormInputs()}
@@ -465,20 +465,32 @@ class FormGenerator extends Component {
             </Grid>)
         }
         //Generate a form with a text editor
-        else {
-            return (
-                <Grid columns='equal'>
-                <Grid.Column>
-                    <FormError errorHandler={this.state.FormStatus} /> { this.GenerateFormInputs() }
-                </Grid.Column>
-                <Grid.Column width={this.state.TextEditor.width}>
-                    <TextEditor
-                        input={this.state.TextEditor}
-                        handleChangeEditor={this.HandleChangeEditor}
-                        handleChangeTextArea={this.HandleChangeTextArea}
-                        />
-                </Grid.Column>
-            </Grid>)
+        else if(!this.state.TextEditor.inline){
+            return  <Grid columns='equal'>
+                        <Grid.Column>
+                            <FormError errorHandler={this.state.FormStatus} /> { this.GenerateFormInputs() }
+                        </Grid.Column>
+                        <Grid.Column width={this.state.TextEditor.width}>
+                            <TextEditor
+                                input={this.state.TextEditor}
+                                handleChangeEditor={this.HandleChangeEditor}
+                                handleChangeTextArea={this.HandleChangeTextArea}
+                                />
+                        </Grid.Column>
+                    </Grid>
+        }
+        else{
+            return <Grid>
+                        <Grid.Column width={16}>
+                            <FormError errorHandler={this.state.FormStatus} />
+                            { this.GenerateFormInputs() }
+                            <TextEditor
+                                input={this.state.TextEditor}
+                                handleChangeEditor={this.HandleChangeEditor}
+                                handleChangeTextArea={this.HandleChangeTextArea}
+                                />
+                        </Grid.Column>
+                    </Grid>
         }
     }
 

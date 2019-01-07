@@ -61,7 +61,7 @@ class TextEditor extends Component {
         else
             return (
                 <TextArea
-                    style={{height: "100%"}}
+                    style={(!this.props.input.inline)? {height: "100%"}: {height: "auto"}}
                     name={this.props.input.name}
                     placeholder={this.props.input.placeholder}
                     value={this.props.input.value}
