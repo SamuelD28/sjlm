@@ -1,7 +1,7 @@
 import { Utility } from '../utility.js';
 
 //List of all the input types handled by the form generator
-const inputTypes = ['select', 'text', 'uploader', 'texteditor', 'toggle', 'password', 'tel', 'email', 'date'];
+const inputTypes = ['select', 'text', 'uploader', 'texteditor', 'toggle', 'password', 'tel', 'email', 'date', 'number'];
 
 /**
  * Class that represents the structure of an input inside

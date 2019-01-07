@@ -109,8 +109,11 @@ Translate.ModelKey = function (modelKey) {
     case "Files":
         translatedContent = "Fichiers";
         break;
-     case "Poste":
+    case "Poste":
         translatedContent = "Poste";
+        break;
+    case "Seat":
+        translatedContent = "Siège";
         break;
     default:
         translatedContent = modelKey + "**" //remove when going in production

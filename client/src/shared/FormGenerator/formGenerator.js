@@ -527,6 +527,7 @@ class FormGenerator extends Component {
             case "email":
             case "password":
             case "tel":
+            case "number":
             case "text":
                 return (
                     <TextInput

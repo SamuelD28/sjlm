@@ -38,12 +38,7 @@ let newsSchema = new mongoose.Schema({
         type: Date
     },
     Files: {
-        type: [String],
-        validate: {
-            validator: (value) => (/^.*\.(pdf|pptx|docx|xlsx)$/g.test(value)) || value.length === 0,
-            message: "Invalid file type provided",
-            kind: "invalid file"
-        }
+        type: [String]
     },
     Description: {
         type: String,

@@ -48,7 +48,7 @@ class MemberSchema extends FormSchema {
                 label: "Email",
                 value: "",
             }),
-                        new InputSchema({
+            new InputSchema({
                 name: "Phone",
                 group: 2,
                 width: 16,
@@ -56,25 +56,33 @@ class MemberSchema extends FormSchema {
                 label: "Téléphone",
                 value: "",
             }),
-                        new InputSchema({
-                name: "Photo",
-                type: "uploader",
-                allowedExt : ["jpg" , "png", "gif"],
-                label: "Photo",
-                width: 10,
-                group: 3,
-                multiple: false,
-                value: []
-            }),
             new InputSchema({
                 name: "Occupation",
                 type: "select",
                 label: "Poste",
                 group: 3,
                 id: true,
-                width: 6,
+                width: 10,
                 value: "",
                 generator: () => this.occupationsOptions
+            }),
+            new InputSchema({
+                name: "Seat",
+                type: "number",
+                label: "Siège",
+                group: 3,
+                width: 6,
+                value: "",
+            }),
+            new InputSchema({
+                name: "Photo",
+                type: "uploader",
+                allowedExt : ["jpg" , "png", "gif"],
+                label: "Photo",
+                width: 16,
+                group: 4,
+                multiple: false,
+                value: []
             }),
         ];
         this.textEditor = new EditorSchema({

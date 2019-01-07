@@ -37,6 +37,9 @@ let membersSchema = new Schema({
         required: true,
         lowercase: true
     },
+    Seat : {
+        type : Number
+    },
     PersonnalNote: {
         type: String,
         maxlength: 1000
@@ -60,5 +63,4 @@ let membersSchema = new Schema({
     }
 });
 let Members = mongoose.model("Members", membersSchema);
-
 module.exports = Members;
