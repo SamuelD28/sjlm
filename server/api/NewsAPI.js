@@ -1,7 +1,8 @@
 //----------------Dependencies-------------//
-let News        = require("../models/NewsMD.js"),
-    Api         = new Object(),
-    Utility     = require("../utils/utility.js");
+let News            = require("../models/NewsMD.js"),
+    CategoryNews    = require("../models/CategoryNewsMD.js"),
+    Api             = new Object(),
+    Utility         = require("../utils/utility.js");
 
 //--------------Model-------------//
 
@@ -19,7 +20,6 @@ Api.FindNews = function(req, res)
          });
 }
 
-//Do the api call to sort news by specified data and year
 
 Api.FindNewsById =function(req, res)
 {
@@ -36,14 +36,23 @@ Api.FindNewsById =function(req, res)
 
 Api.FindNewsByCategory = function(req, res)
 {
-    News.find({Category: req.params.category})
-        .then((news) => {
-            Utility.GenerateResponse(true, res, news);
-        })
-        .catch((err) => {
-            Utility.GenerateResponse(false, res, err);
-            Utility.WriteInLog("error", err);
-        });
+    CategoryNews.findOne({UrlValue : req.params.category})
+                .exec()
+                .then((category) =>{
+                    News.find({Category: category._id})
+                        .then((news) => {
+                            Utility.GenerateResponse(true, res, news);
+                        })
+                        .catch((err) => {
+                            Utility.GenerateResponse(false, res, err);
+                            Utility.WriteInLog("error", err);
+                        });
+                })
+                .catch((err) =>{
+                    Utility.GenerateResponse(false, res, err);
+                    Utility.WriteInLog("error", err);
+                });
+
 }
 
 Api.CreateNews = function(req, res)

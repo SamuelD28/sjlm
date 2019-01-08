@@ -16,37 +16,38 @@ class NewsCategory extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {};
-        this.news = {};
+        this.state = {currentCategory : ""};
         this.newsContainer = React.createRef();
     }
 
-    async componentDidMount()
+    componentDidMount()
     {
         Utility.AdjustFullHeight(this.newsContainer.current);
-        this.news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
-        this.setState({news : this.news});
     }
 
     async componentDidUpdate()
     {
-        let categoryHistory = this.props.match.params.category;
-        if(this.news.data !== undefined && this.news.data.length !== 0){
-            if(this.news.data[0].Category !== categoryHistory){
-                console.log(true);
-                this.news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
-                this.setState({news : this.news});
-            }
+        if(this.state.currentCategory.UrlValue !== this.props.match.params.category){
+            let news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
+            let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`)
+            this.setState({news : news.data, currentCategory: category.data});
         }
     }
 
     GenerateNewsGrid = () =>
     {
-        if(this.state.news !== undefined)
-        {
-        return this.state.news.data.map((item, index)=>(
-        this.AppendCardToGrid(item, index)
-        ))
+        if(this.state.news !== undefined && this.state.currentCategory !== ""){
+
+            let template = this.state.currentCategory.Template;
+            console.log(this.state);
+            if(template === "timeline")
+                return this.state.news.map((item, index)=>(
+                    this.AppendCardToGrid(item, index)
+                ))
+            else if(template === "stacked")
+                return <h1>Stacked Layout</h1>
+            else
+                return <h1>Default layout</h1>
         }
     }
 
@@ -61,7 +62,7 @@ class NewsCategory extends Component{
                 </div>
                 <div styleName="newsDate">
                     <div styleName="arrowDown"></div>
-                    <h2><i className="icon clock outline"></i> Le {moment(item.DatePublished).format("dddd, Do MMMM")}</h2>
+                    <h2><i className="icon clock outline"></i> Le {moment(item.createdAt).format("dddd, Do MMMM")}</h2>
                 </div>
                 <div styleName="newsGrid lowerGrid">
                 </div>
@@ -75,7 +76,7 @@ class NewsCategory extends Component{
                 <div styleName="newsGrid upperGrid">
                 </div>
                 <div styleName="newsDate">
-                    <h2><i className="icon clock outline"></i> Le {moment(item.DatePublished).format("dddd, Do MMMM")}</h2>
+                    <h2><i className="icon clock outline"></i> Le {moment(item.createdAt).format("dddd, Do MMMM")}</h2>
                     <div styleName="arrowUp"></div>
                 </div>
                 <div styleName="newsGrid lowerGrid">

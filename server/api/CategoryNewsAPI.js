@@ -20,6 +20,19 @@ Api.GetCategoryNews = function(req, res)
          });
 }
 
+Api.GetCategoryByUrl = function(req, res)
+{
+    let Query = CategoryNews.findOne({UrlValue : req.params.urlvalue});
+    Query.exec()
+         .then((category) =>{
+            Utility.GenerateResponse(true, res, category);
+         })
+         .catch((err) =>{
+            Utility.WriteInLog("error", err);
+            Utility.GenerateResponse(false, res ,err);
+         });
+}
+
 Api.CreateCategoryNews = function(req, res)
 {
     CategoryNews.create(req.body)
