@@ -1,41 +1,49 @@
-.membersCard{
+.membersCard {
     background-color: white;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 25vw;
+    grid-template-columns: .35fr .65fr;
     position: relative;
+    text-align: justify;
+    width: 65%;
 }
 
-.membersCard::after{
-    content: " ";
-    background-color: #90A4AE;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    transition: opacity .2s ease;
-    height: 100%;
+.membersCardInverse {
+    background-color: white;
+    display: grid;
+    grid-template-rows: 25vw;
+    grid-template-columns: .65fr .35fr;
+    text-align: justify;
+    position: relative;
+    width: 65%;
+    margin-left: auto;
+    /*transform: translateY(-2vw);*/
 }
 
-.membersCard:hover::after{
-    opacity: .1;
-    transition: opacity .2s ease;
+.membersPhone,
+.membersEmail {
+    display: flex;
+    justify-content: space-between;
+    padding: .5vw 0;
 }
 
-.membersPhoto{
-    height: 20vw;
+.membersContact {
+    align-self: flex-end;
 }
 
-.membersTitle{
-    font-size: 1em;
+.membersTitle {
+    font-size: 1.5vw;
 }
 
-.membersName{
-    font-size: 2em;
+.membersName {
+    font-size: 2vw;
+    font-weight: bold;
     margin: .5vw 0;
 }
 
-.membersInfo{
-    padding: .75vw .5vw;
+.membersInfo {
+    padding: 1.5vw;
+    display: grid;
+    flex-direction: column;
+    justify-content: space-evenly;
 }

@@ -1,6 +1,5 @@
 //---------Declaration-------//
 import React, {Component} from "react";
-import Translate from '../../../shared/translate.js';
 import {NavLink} from 'react-router-dom';
 import Ajax from '../../../shared/ajax.js';
 

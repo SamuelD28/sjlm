@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Form, Label, Input} from 'semantic-ui-react';
 
 import CSSModules from 'react-css-modules';
 import style from './contactForm.module.css';
@@ -8,10 +7,6 @@ import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGener
 import {default as MailSchema} from '../../formSchema/mailSchema.js';
 
 class ContactForm extends Component{
-
-    constructor(props){
-        super(props);
-    }
 
     render(){
     return  <div style={{padding: "2vw"}}>

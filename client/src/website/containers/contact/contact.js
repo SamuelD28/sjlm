@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Ajax from '../../../shared/ajax.js';
-import {Grid} from 'semantic-ui-react';
 import CSSModules from 'react-css-modules';
 import style from './contact.module.css';
 
@@ -13,7 +11,7 @@ class Contact extends Component{
 
 
     renderMarkers(map, maps) {
-    let marker = new maps.Marker({
+    new maps.Marker({
         position: {lat: 45.277068, lng: -73.417819},
         map,
         title: 'Hôtel de ville'
@@ -23,7 +21,7 @@ class Contact extends Component{
     render()
     {
         return  <div styleName="contactBody">
-                    <div  styleName="map">
+                    <div styleName="map">
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: "AIzaSyDc2GOcungZQS8Cm2DzH2L3BllBqMy8nOk" }}
                             defaultCenter={ {lat: 45.277068, lng: -73.417819}}
