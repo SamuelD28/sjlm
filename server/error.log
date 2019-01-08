@@ -24992,3 +24992,84 @@ Use mongoose.model(name, schema)
      Query: { [Function] base: [Object] },
      '$__insertMany': [Function],
      '$init': Promise { null, catch: [Function] } } }
+[2019-01-08T18:54:06.407] [ERROR] error - { ValidationError: News validation failed: Category: Cast to ObjectID failed for value "" at path "Category", Title: Path `Title` is required., Description: Path `Description` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors: 
+   { Category: 
+      { CastError: Cast to ObjectID failed for value "" at path "Category"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to ObjectID failed for value "" at path "Category"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'ObjectID',
+        value: '',
+        path: 'Category',
+        reason: [Object] },
+     Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true },
+     Description: 
+      { ValidatorError: Path `Description` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Description` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Description',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }

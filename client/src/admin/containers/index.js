@@ -16,7 +16,6 @@ const Index = (props) => {
     return(
     <div>
         <Navbar/>
-        <Headbar user={props.user}/>
         <Switch>
             <Route exact path="/admin" component={Home} something="foo"/>
             <Route exact path="/admin/news" component={News} />

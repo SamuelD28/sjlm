@@ -15,11 +15,7 @@ import Contact from './contact/contact.js';
 //----------Core Code-------//
 class Index extends Component{
 
-    constructor(props)
-    {
-        super(props);
-        this.state = {};
-    }
+    state = {}
 
     ReadRequest = async(url, name) =>
     {

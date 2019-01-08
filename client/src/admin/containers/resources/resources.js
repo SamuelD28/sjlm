@@ -31,7 +31,7 @@ class Resources extends Component {
 
     render() {
         return (
-        <div className={adminStyles.adminPage}>
+        <div className={adminStyles.adminPage} style={{padding: "0"}}>
             <section className="section-row section-style" style={{height: "-webkit-fill-available"}}>
                 <div className="media-widget">
                 </div>

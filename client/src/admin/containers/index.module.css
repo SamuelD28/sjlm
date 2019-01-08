@@ -1,8 +1,8 @@
 .adminPage {
     background-color: whitesmoke;
-    margin-top: 5vw;
     margin-left: 15vw;
     padding: 3vw;
+    min-height: stretch;
     position: relative;
 }
 

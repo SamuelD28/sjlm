@@ -1,0 +1,55 @@
+.news {
+    background-color: whitesmoke;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-left: 100px;
+}
+
+.newsWrapper {
+    width: 450px;
+    height: 100%;
+    display: inline-block;
+    white-space: normal;
+}
+
+.newsContainer {
+    display: grid;
+    height: 100%;
+    grid-template-areas: "upperGrid" "newsDate" "lowerGrid";
+    grid-template-rows: 1fr .4fr 1fr;
+    padding: 1vw;
+}
+
+.newsGrid {}
+
+.newsDate {
+    grid-area: newsDate;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.arrowUp {
+    align-self: center;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    transform: rotateZ(45deg) translateX(15px) translateY(15px);
+}
+
+.arrowDown {
+    align-self: center;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    transform: rotateZ(45deg) translateX(-15px) translateY(-15px);
+}
+
+.upperGrid {
+    grid-area: upperGrid;
+}
+
+.lowerGrid {
+    grid-area: lowerGrid;
+}
