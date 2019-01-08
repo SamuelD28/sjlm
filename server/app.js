@@ -93,7 +93,8 @@ let NewsRT              = require(__dirname + "/routes/NewsRT.js"),
     CategoryNewsRT      = require(__dirname + "/routes/CategoryNewsRT.js"),
     MenuRT              = require(__dirname + "/routes/MenuRT.js"),
     NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js"),
-    OccupationRT        = require(__dirname + "/routes/OccupationsRT.js");
+    OccupationRT        = require(__dirname + "/routes/OccupationsRT.js"),
+    VerbalTrialRT       = require(__dirname + "/routes/VerbalTrialRT.js");
 
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
@@ -103,6 +104,7 @@ app.use("/api/menus", MenuRT);
 app.use("/api/categorynews", CategoryNewsRT);
 app.use("/api/navigationlinks", NavigationLinksRT);
 app.use("/api/occupations", OccupationRT);
+app.use("/api/verbal", VerbalTrialRT);
 
 //----------------Listener-------------//
 

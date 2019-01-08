@@ -41,8 +41,7 @@ let newsSchema = new mongoose.Schema({
         type: [String]
     },
     Description: {
-        type: String,
-        required: true
+        type: String
     }
 }, {
     timestamps: true
