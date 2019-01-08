@@ -11,6 +11,7 @@ import Members from './members/members.js';
 import Pages from './pages/pages.js';
 import Mails from './mails/mails.js';
 import Resources from './resources/resources.js';
+import VerbalTrial from './verbalTrial/verbalTrial.js';
 
 const Index = (props) => {
     return(
@@ -19,6 +20,7 @@ const Index = (props) => {
         <Switch>
             <Route exact path="/admin" component={Home} something="foo"/>
             <Route exact path="/admin/news" component={News} />
+            <Route exact path="/admin/verbal" component={VerbalTrial} />
             <Route exact path="/admin/pages" component={Pages} />
             <Route exact path="/admin/members" component={Members} />
             <Route exact path="/admin/resources" component={Resources} />

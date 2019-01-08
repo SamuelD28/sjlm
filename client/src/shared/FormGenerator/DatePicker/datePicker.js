@@ -17,15 +17,17 @@ const DatePicker = (props) => {
         disabled={(props.input.disabled !== undefined)? props.input.disabled(props.inputs): false}>
         <Segment>
             <label>{props.input.label}</label>
-            <DayPickerInput
-                formatDate={formatDate}
-                dayPickerProps={{
-                    todayButton: "Aujourdh'ui"
-                }}
-                placeholder= "JJ/MM/AAAA"
-                value={(props.input.value !== "" && props.input.value !== null && props.input.value !== undefined)? formatDate(props.input.value) : ""}
-                onDayChange={(date) => props.handleDateChange(date, props.input.name)}
-                />
+            <div>
+                <DayPickerInput
+                    formatDate={formatDate}
+                    dayPickerProps={{
+                        todayButton: "Aujourdh'ui"
+                    }}
+                    placeholder= "JJ/MM/AAAA"
+                    value={(props.input.value !== "" && props.input.value !== null && props.input.value !== undefined)? formatDate(props.input.value) : ""}
+                    onDayChange={(date) => props.handleDateChange(date, props.input.name)}
+                    />
+            </div>
         </Segment>
     </Form.Field>
     )

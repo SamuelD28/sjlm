@@ -16,42 +16,49 @@ const Navbar = (props) =>{
         <li>
             <NavLink styleName="navbarItem" to="/admin">
                 <span styleName="navbarIcon"><i className="icon home"></i></span>
-                <span href="#" styleName="navbarLink">Accueil</span>
+                <div styleName="navbarLink">Accueil</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
         <li>
             <NavLink styleName="navbarItem" to="/admin/news">
                 <span styleName="navbarIcon"><i className="icon newspaper"></i></span>
-                <span href="#" styleName="navbarLink">Actualitées</span>
+                <div styleName="navbarLink">Actualitées</div>
+                <div styleName="navbarBorder"></div>
+            </NavLink>
+        </li>
+        <li>
+            <NavLink styleName="navbarItem" to="/admin/verbal">
+                <span styleName="navbarIcon"><i className="icon pencil"></i></span>
+                <div styleName="navbarLink">Procès-Verbaux</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
         <li>
             <NavLink styleName="navbarItem" to="/admin/pages">
                 <span styleName="navbarIcon"><i className="icon copy"></i></span>
-                <span href="#" styleName="navbarLink">Pages</span>
+                <div styleName="navbarLink">Pages</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
         <li>
             <NavLink styleName="navbarItem" to="/admin/members">
                 <span styleName="navbarIcon"><i className="icon users"></i></span>
-                <span href="#" styleName="navbarLink">Membres</span>
+                <div styleName="navbarLink">Membres</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
         <li>
             <NavLink styleName="navbarItem" to="/admin/resources">
                 <span styleName="navbarIcon"><i className="icon server"></i></span>
-                <span href="#" styleName="navbarLink">Ressources</span>
+                <div styleName="navbarLink">Ressources</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
         <li>
             <NavLink styleName="navbarItem" to="/admin/mails">
                 <span styleName="navbarIcon"><i className="icon envelope"></i></span>
-                <span styleName="navbarLink">Mail</span>
+                <div styleName="navbarLink">Mail</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>

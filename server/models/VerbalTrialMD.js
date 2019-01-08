@@ -3,20 +3,17 @@ let mongoose    = require("mongoose"),
 
 
 let verbalTrialSchema = new Schema({
-    OrdinaryFiles : {
+    Title : {
+        type: String,
+        required : true
+    },
+    File : {
         type: [String],
         required: true
     },
-    OrdinaryDate : {
+    Date : {
         type: Date,
         required: true
-    },
-    ExtraordinaryFiles : {
-        type: [String]
-    },
-    ExtraordinaryDate :{
-        type: Date,
-        required: function() { return this.ExtraordinaryFiles.length > 0; }
     }
 });
 
