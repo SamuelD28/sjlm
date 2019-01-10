@@ -4,6 +4,10 @@
 
 /*Html Tag Overrides*/
 
+::-webkit-scrollbar {
+    display: none !important;
+}
+
 html>div {
     display: none !important;
 }
@@ -450,4 +454,20 @@ blockquote {
 
 .cardEdit:hover {
     opacity: .9;
+}
+
+
+.fade-enter,
+.fade-exit {
+    transition: 0.6s ease opacity;
+}
+
+.fade-enter,
+.fade-exit-active {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    z-index: 1;
 }

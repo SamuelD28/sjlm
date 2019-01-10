@@ -1,6 +1,6 @@
 /*Css for the banner section*/
 
-.bannerVideo{
+.bannerVideo {
     object-fit: fill;
     filter: blur(5px) brightness(60%);
     position: fixed;
@@ -11,27 +11,28 @@
     z-index: -1;
 }
 
-.bannerContent{
+.bannerContent {
     display: flex;
     flex-direction: column;
     margin-right: 400px;
 }
 
-.bannerSlogan, .bannerKeyword{
+.bannerSlogan,
+.bannerKeyword {
     color: white !important;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    font-weight:lighter;
+    font-weight: lighter;
 }
 
-.bannerSlogan{
+.bannerSlogan {
     align-self: flex-start;
     font-size: 1.5em;
     margin: 0;
     letter-spacing: .5em;
 }
 
-.bannerKeyword{
+.bannerKeyword {
     border: 1px solid white;
     font-size: 3.5em;
     letter-spacing: .5em;
@@ -39,7 +40,7 @@
     margin: 1.5vw 0;
 }
 
-.bannerSearch{
+.bannerSearch {
     align-self: flex-end;
     border-bottom: 1px solid #f1efee;
     color: white;
@@ -50,16 +51,16 @@
     width: 50%;
 }
 
-.bannerInput{
+.bannerInput {
     background-color: transparent;
     border: none;
     color: white;
 }
 
-.bannerInput::placeholder{
+.bannerInput::placeholder {
     color: white;
 }
 
-.bannerInput:focus{
+.bannerInput:focus {
     outline: none;
 }

@@ -1,40 +1,55 @@
 //---------Declaration-------//
-import React, {Component} from "react";
-import {NavLink} from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from 'react-router-dom';
 import Ajax from '../../../shared/ajax.js';
 
-//Css module import
+import { Transition } from 'semantic-ui-react';
+
+//Css module import.
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
 
-class Navbar extends Component{
+class Navbar extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
-        this.state = {SelectedMenuTitle : "",SelectedSubmenu : []};
+        this.state = { SelectedMenuTitle: "", SelectedSubmenu: [], animationDelay: 25 };
         this.navbarSecondary = React.createRef();
         this.navbarPrimary = React.createRef();
     }
 
-    componentDidMount()
-    {
-        this.GetMenus();
-    }
-
-    GetMenus = async()=>
-    {
+    componentDidMount = async() => {
         let request = await Ajax.GetData("/api/menus");
-        this.setState({menus : request.data});
+        let itemsVisible = [];
+        request.data.map(() => {
+            itemsVisible.push(false);
+        });
+        this.setState({ menus: request.data, itemsVisible: itemsVisible });
+        this.StartNextAnimation(0);
     }
 
-    DisplayMenus = () =>
-    {
-        if(this.state.menus !== undefined)
-        {
-            return  this.state.menus.map((menu) => (
+    StartNextAnimation = (index) => {
+        if (index < this.state.itemsVisible.length) {
+            setTimeout(() => {
+                let temp = Array.from(this.state.itemsVisible);
+                temp[index] = true;
+                this.setState({ itemsVisible: temp })
+            }, this.state.animationDelay);
+        }
+    }
+
+    DisplayMenus = () => {
+        if (this.state.menus !== undefined) {
+            return this.state.menus.map((menu, index) => (
+                <Transition
+                    key={menu._id}
+                    onComplete={() => this.StartNextAnimation(index + 1)}
+                    duration={200}
+                    visible={this.state.itemsVisible[index]}
+                    animation="fade right"
+                    >
                     <NavLink
-                        to={(menu.LinkTo !== undefined)?menu.LinkTo: "#"}
+                        to={(menu.LinkTo !== undefined)?menu.LinkTo: ""}
                         styleName="navbarItem primaryLink"
                         onMouseEnter={
                             (e) => {
@@ -42,21 +57,23 @@ class Navbar extends Component{
                                 this.setState({SelectedMenuTitle: menu.Title,SelectedSubmenu: menu.SubMenu})
                             }
                         }
-                        key={menu._id}>
+                        onClick={this.ScrollToTop}
+                        >
                         <i styleName="navIcon" className={`icon large ${menu.Icon}`}></i>
-                    </NavLink>));
+                    </NavLink>
+                </Transition>
+            ));
         }
     }
 
     //Method that display the pages link based on the menu choosen
-    DisplaySubmenu = () =>{
-        if(this.state.SelectedSubmenu.length > 0)
-        {
+    DisplaySubmenu = () => {
+        if (this.state.SelectedSubmenu.length > 0) {
             document.getElementById("backgroundOverlay").style.transform = "translateX(0%)";
             this.navbarSecondary.current.style.transform = "translateX(100px)";
-            return  this.state.SelectedSubmenu.map((submenu) =>(
-                        this.CreatePageLink(submenu)
-                    ))
+            return this.state.SelectedSubmenu.map((submenu) => (
+                this.CreatePageLink(submenu)
+            ))
         }
         else
             this.HideMenuPages();
@@ -64,10 +81,13 @@ class Navbar extends Component{
 
     //Method that create the page link that will be inserted in the menu
     CreatePageLink = (menu) => {
-        return  <NavLink to={menu.LinkTo}
-                    styleName="secondaryLink"
-                    key={menu._id}
-                    onClick={this.HideMenuPages}>
+        return <NavLink to={menu.LinkTo}
+                        styleName="secondaryLink"
+                        key={menu._id}
+                        onClick={(e) =>{
+                        this.HideMenuPages(e);
+                        this.ScrollToTop();
+                        }}>
                     {menu.Title}
                     <div styleName="cubeContainer">
                         <span styleName="secondaryCube"></span>
@@ -77,7 +97,7 @@ class Navbar extends Component{
 
     //Ui effect when the mouse leaves the menu
     MenusOut = (e) => {
-        Array.from(this.navbarPrimary.current.childNodes).forEach((child) =>{
+        Array.from(this.navbarPrimary.current.childNodes).forEach((child) => {
             child.style.backgroundColor = "#f0eeed";
             child.style.color = "#37474F";
         });
@@ -92,38 +112,54 @@ class Navbar extends Component{
 
     //Method that hides the menu when the mouse leaves it
     HideMenuPages = () => {
-        if(this.navbarSecondary.current !== null){
+        if (this.navbarSecondary.current !== null) {
             document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
             this.navbarSecondary.current.style.transform = "translateX(-200px)";
 
-            if(this.state.SelectedSubmenu.length > 0)
-                this.setState({SelectedMenuTitle : "",SelectedSubmenu : []});
+            if (this.state.SelectedSubmenu.length > 0)
+                this.setState({ SelectedMenuTitle: "", SelectedSubmenu: [] });
         }
     }
 
-    render(){
-    if(this.state.menus !== undefined)
-        return  <div
-                    id={styles.navbar}
-                    onMouseLeave={() =>{
-                        this.HideMenuPages();
-                        this.MenusOut();
-                    }}>
-                    <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
-                        <div styleName="navbarContentTitle">
-                            {this.state.SelectedMenuTitle}
-                        </div>
-                        {this.DisplaySubmenu()}
-                    </div>
-                    <div id={styles.navbarPrimary} ref="navbarPrimary">
-                        <NavLink to="/" styleName="navbarLogo" onClick={this.HideMenuPages}>
-                            <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
-                        </NavLink>
-                        <ul styleName="navbarContent" ref={this.navbarPrimary}>
-                            {this.DisplayMenus()}
-                        </ul>
-                    </div>
-                </div>}
+    ScrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
+    render() {
+        if (this.state.menus !== undefined)
+            return <Transition
+                        transitionOnMount={true}
+                        duration={1000}
+                        animation="fade right">
+                            <div
+                                id={styles.navbar}
+                                onMouseLeave={() =>{
+                                    this.HideMenuPages();
+                                    this.MenusOut();
+                                }}>
+                                <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
+                                    <div styleName="navbarContentTitle">
+                                        {this.state.SelectedMenuTitle}
+                                    </div>
+                                    {this.DisplaySubmenu()}
+                                </div>
+                                <div id={styles.navbarPrimary} ref="navbarPrimary">
+                                    <NavLink
+                                        to="/"
+                                        styleName="navbarLogo"
+                                        onClick={(e) =>{
+                                        this.HideMenuPages(e);
+                                        this.ScrollToTop();
+                                        }}>
+                                        <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
+                                    </NavLink>
+                                    <ul styleName="navbarContent" ref={this.navbarPrimary}>
+                                        {this.DisplayMenus()}
+                                    </ul>
+                                </div>
+                            </div>
+                        </Transition>
+    }
 }
 
-export default CSSModules(Navbar, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default CSSModules(Navbar, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });

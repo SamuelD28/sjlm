@@ -1,5 +1,6 @@
 //---------Declaration-------//
-import React from 'react';
+import React, { Component } from 'react';
+import { Transition } from 'semantic-ui-react';
 
 // Component Import
 import BannerHome from '../../components/bannerHome/bannerHome.js';
@@ -14,24 +15,30 @@ const homeStyle = {
     justifyContent: "center",
     textAlign: "center"
 };
-
-const newsSectionStyle=
-{
-    background: 'whitesmoke',
+//Need to extract this
+const newsSectionStyle = {
     position: 'fixed',
-    right:'0',
+    right: '0',
     width: '400px'
 }
 
-const Home = (props) =>
-{
-    return( 
-    <div style={homeStyle}>
-        <BannerHome />
-        <div style={newsSectionStyle}>
-            <NewsColumn news={props.news}/>
-        </div>
-    </div>
-    );
+class Home extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillAppear() {
+        console.log("Component  appeared");
+    }
+
+    render() {
+        return <div style={homeStyle}>
+                <BannerHome/>
+                <div style={newsSectionStyle}>
+                    <NewsColumn/>
+                </div>
+            </div>
+    }
 }
+
 export default Home;
