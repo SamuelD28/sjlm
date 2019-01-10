@@ -8,6 +8,7 @@ import CloudinaryUpload from '../cloudinaryUpload/cloudinaryUpload.js';
  * the cloudinary server
  */
 const FileInput = (props) => {
+    // console.log(props.input.value);
     if (props.input !== undefined)
         return (
         <Form.Field

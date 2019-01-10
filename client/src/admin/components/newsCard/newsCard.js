@@ -29,7 +29,11 @@ const NewsCard = (props) =>{
             <h2>{props.news.Title}</h2>
             {DisplayImportantTag(props.news)}
             <p styleName="newsCategory">{props.news.Category.Title}</p>
-            <p styleName="newsDate"><i className="clock outline icon"></i> {moment(props.DatePublished).format("dddd, Do MMMM")}</p>
+            <p styleName="newsDate"><i className="clock outline icon"></i> {
+            (props.news.DateFrom !== null)
+            ?moment(props.news.DateFrom).format("dddd, Do MMMM")
+            :moment(props.news.createdAt).format("dddd, Do MMMM")
+            }</p>
         </div>
     </div>
     )

@@ -72,6 +72,12 @@ class CloudinaryUpload extends Component {
         });
     }
 
+    componentDidUpdate(next)
+    {
+        // console.log("updating");
+        // console.log(next);
+    }
+
     /**
      * Method for adding the uploaded images in the state. The actual
      * uploading is handled by the cloudinary widget.
@@ -103,7 +109,7 @@ class CloudinaryUpload extends Component {
         return this.state.value.map((url) =>(
             this.GenerateThumbnail(url)
         ));
-}
+    }
 
 GenerateThumbnail = (url) =>
 {
