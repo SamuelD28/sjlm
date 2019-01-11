@@ -28,7 +28,7 @@ class PagesSchema extends FormSchema {
                 type: "text",
                 label: "Titre de la page",
                 value: "",
-                width: 8,
+                width: 16,
                 group: 1
             }),
             new InputSchema({
@@ -37,16 +37,33 @@ class PagesSchema extends FormSchema {
                 label: "Template de la page",
                 value: "",
                 width: 8,
-                group: 1,
+                group: 2,
                 generator: () => this.GenerateTemplateOptions()
+            }),
+            new InputSchema({
+                name: "DisplaySocials",
+                type: "toggle",
+                label: "Réseaux sociaux",
+                value: false,
+                width: 8,
+                group: 2,
             }),
             new InputSchema({
                 name: "PageGallery",
                 type: "uploader",
-                allowedExt : ["jpg" , "png", "gif"],
+                allowedExt: ["jpg", "png", "gif"],
                 label: "Gallerie",
                 width: 16,
-                group: 2,
+                group: 3,
+                value: [],
+                multiple: true
+            }),
+            new InputSchema({
+                name: "PageFiles",
+                type: "uploader",
+                label: "Fichiers",
+                width: 16,
+                group: 4,
                 value: [],
                 multiple: true
             })
@@ -55,7 +72,7 @@ class PagesSchema extends FormSchema {
             name: "PageContent",
             placeholder: "Contenu de la page",
             type: "full",
-            width: 10
+            width: 12
         })
     }
 

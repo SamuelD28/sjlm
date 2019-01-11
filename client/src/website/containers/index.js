@@ -11,25 +11,30 @@ import NewsPage from './newsPage/newsPage.js';
 import NewsCategory from './newsCategory/newsCategory.js';
 import Council from './council/council.js';
 import Contact from './contact/contact.js';
-
+import LoadingScreen from './loadingScreen/loadingScreen.js';
 
 //----------Core Code-------//
 class Index extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { loading: true };
+        this.state = { loading: true, swipeUp: false };
     }
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({ loading: false });
+            this.setState({ swipeUp: true });
+
+            setTimeout(() => {
+                this.setState({ loading: false });
+            }, 250);
+
         }, 1000);
     }
 
     render() {
         if (this.state.loading)
-            return <LoadingScreen />
+            return <LoadingScreen swipeUp={this.state.swipeUp} loading={this.state.loading}/>
         else
             return <div>
                         <Navbar navbarLite={true}/>
@@ -42,11 +47,11 @@ class Index extends Component {
                                     timeout={600}>
                                     <Switch location={location}>
                                         <Route exact path="/" component={Home} />
-                                        <Route exact path="/pages/static/:id" component={StaticPage} />
-                                        <Route exact path="/news/:id" component={NewsPage} />
-                                        <Route exact path="/news/category/:category" component={NewsCategory} />
                                         <Route exact path="/contact" component={Contact} />
                                         <Route exact path="/conseil" component={Council} />
+                                        <Route exact path="/news/:id" component={NewsPage} />
+                                        <Route exact path="/pages/static/:id" component={StaticPage} />
+                                        <Route exact path="/news/category/:category" component={NewsCategory} />
                                         <Route path="/">
                                             <Redirect to="/" />
                                         </Route>

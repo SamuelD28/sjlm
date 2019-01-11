@@ -1,5 +1,5 @@
 //Initial Declaratinon and importation
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Translate from '../../../shared/translate.js';
 import Ajax from '../../../shared/ajax.js';
 
@@ -15,77 +15,66 @@ import PageContent from '../../components/pageContent/pageContent.js';
 import FileGallery from '../../components/fileGallery/fileGallery.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js';
 
-class NewsPage extends Component{
+class NewsPage extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
-        this.state = {};
-        this.previousLocation = "";
-        this.news = {};
-    }
-
-    ReadRequest = async(url, keyName, cb) =>
-    {
-        let request  = await Ajax.GetData(url);
-        let tempState = {};
-        tempState[keyName.valueOf()] = request.data;
-        cb(tempState, keyName);
+        this.state = { previousLocation: "" };
     }
 
     componentDidMount() {
-        this.ReadRequest(`/api/news/${this.props.match.params.id}`, "news", this.CompareTempStateWithState);
-        this.ReadRequest("/api/news/limit/3", "latestNews", this.UpdateState);
+        this.GetNews();
     }
 
-    UpdateState = (tempState, keyName) =>
-    {
-        this.setState(tempState);
-    }
-
-    CompareTempStateWithState = (tempState, keyName) =>
-    {
-        this.news=tempState[keyName.valueOf()];
-        if(this.news.Title !== this.state.Title)
-            this.setState(this.news);
-    }
-
-    componentDidUpdate() {
-        if(this.previousLocation !== this.props.location.pathname){
-            this.previousLocation = this.props.location.pathname;
-            this.ReadRequest(`/api/news/${this.props.match.params.id}`, "news", this.CompareTempStateWithState);
+    GetNews = async() => {
+        if (this.state.previousLocation !== this.props.location.pathname) {
+            let request = await Ajax.GetData(`/api/news/${this.props.match.params.id}`);
+            await this.setState({ news: request.data, previousLocation: this.props.location.pathname });
         }
     }
 
-    render()
-    {
-    if(this.state.Title !== undefined){
-    return(
-    <div styleName="news">
-        <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.Images[0]}')`}}></div>
-        <div styleName="newsBody">
-            <div styleName="newsContent">
-                <PageHeader
-                    category={Translate.NewsCategory(this.state.Category)}
-                    title={this.state.Title}
-                    date={this.state.DatePublished}
-                    />
-                <PageContent content={this.state.DescriptionHtml} />
-            </div>
-            <div styleName="newsFile">
-                <FileGallery files={null} />
-            </div>
-            <div styleName="newsImgGallery">
-                <ImgGalleryColumn images={this.state.Images}/>
-            </div>
-            <div styleName="latestNews">
-                <NewsColumn news={this.state.latestNews}/>
-            </div>
-        </div>
-        <PageFooter />
-    </div>
-    )}
+    componentDidUpdate() {
+        this.GetNews();
+    }
+
+    DisplayFiles = () => {
+        if (this.state.news.Files.length > 0)
+            return <div styleName="newsFile">
+                        <FileGallery files={null} />
+                     </div>
+    }
+
+    DisplayGallery = () => {
+
+        if (this.state.news.Images.length > 1)
+            return <div styleName="newsImgGallery">
+                    <ImgGalleryColumn images={this.state.news.Images}/>
+                </div>
+    }
+
+    render() {
+        if (this.state.news !== undefined) {
+            return <div styleName="news">
+                        <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.news.Images[0]}')`}}></div>
+                        <div styleName="newsBody">
+                            <div styleName="newsContent">
+                                <PageHeader
+                                    category={(this.state.news.Category.Title)}
+                                    title={this.state.news.Title}
+                                    date={this.state.news.DatePublished}
+                                    />
+                                <PageContent content={this.state.news.Description} />
+                            </div>
+                            {this.DisplayFiles()}
+                            {this.DisplayGallery()}
+                            <div styleName="latestNews">
+                                <NewsColumn news={this.state.news.latestNews}/>
+                            </div>
+                        </div>
+                        <PageFooter />
+                    </div>
+        }
     }
 }
 
-export default CSSModules(NewsPage, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default CSSModules(NewsPage, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });

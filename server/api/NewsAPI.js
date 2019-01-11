@@ -1,76 +1,81 @@
 //----------------Dependencies-------------//
-let News            = require("../models/NewsMD.js"),
-    CategoryNews    = require("../models/CategoryNewsMD.js"),
-    Api             = new Object(),
-    Utility         = require("../utils/utility.js");
+let News = require("../models/NewsMD.js"),
+    CategoryNews = require("../models/CategoryNewsMD.js"),
+    Api = new Object(),
+    Utility = require("../utils/utility.js");
 
 //--------------Model-------------//
 
-Api.FindNews = function(req, res)
-{
-    let newsLimit = (req.params.number === undefined)? 24: req.params.number;
-    let Query = News.find({}).sort('-createdAt').populate('Category').limit(Number(newsLimit));
+Api.FindNews = function (req, res) {
+    let newsLimit = (req.params.number === undefined) ? 256 : req.params.number;
+    let Query = News.find({}).sort('-DateFrom').populate('Category').limit(Number(newsLimit));
     Query.exec()
-         .then((news) => {
+        .then((news) => {
             Utility.GenerateResponse(true, res, news);
-         })
-         .catch((err) => {
+        })
+        .catch((err) => {
             Utility.GenerateResponse(false, res, err);
             Utility.WriteInLog("error", err);
-         });
+        });
 }
 
+Api.FindImportantNews = function (req, res) {
+    let Query = News.find({ Important: true });
+    Query.exec()
+        .then((news) => {
+            Utility.GenerateResponse(true, res, news);
+        })
+        .catch((err) => {
+            Utility.GenerateResponse(false, res, err);
+        });
+}
 
-Api.FindNewsById =function(req, res)
-{
+Api.FindNewsById = function (req, res) {
     News.findById(req.params.id).populate('Category')
         .then((news) => {
             Utility.GenerateResponse(true, res, news);
         })
-        .catch((err)=>{
+        .catch((err) => {
             Utility.GenerateResponse(false, res, err);
             Utility.WriteInLog("error", err);
         });
 
 }
 
-Api.FindNewsByCategory = function(req, res)
-{
-    CategoryNews.findOne({UrlValue : req.params.category})
-                .exec()
-                .then((category) =>{
-                    News.find({Category: category._id})
-                        .then((news) => {
-                            Utility.GenerateResponse(true, res, news);
-                        })
-                        .catch((err) => {
-                            Utility.GenerateResponse(false, res, err);
-                            Utility.WriteInLog("error", err);
-                        });
+Api.FindNewsByCategory = function (req, res) {
+    CategoryNews.findOne({ UrlValue: req.params.category })
+        .exec()
+        .then((category) => {
+            News.find({ Category: category._id })
+                .then((news) => {
+                    Utility.GenerateResponse(true, res, news);
                 })
-                .catch((err) =>{
+                .catch((err) => {
                     Utility.GenerateResponse(false, res, err);
                     Utility.WriteInLog("error", err);
                 });
+        })
+        .catch((err) => {
+            Utility.GenerateResponse(false, res, err);
+            Utility.WriteInLog("error", err);
+        });
 
 }
 
-Api.CreateNews = function(req, res)
-{
+Api.CreateNews = function (req, res) {
     News.create(req.body)
         .then((news) => {
             Utility.GenerateResponse(true, res, news);
         })
-        .catch((err) =>{
+        .catch((err) => {
             Utility.GenerateResponse(false, res, err);
             Utility.WriteInLog("error", err);
         });
 }
 
-Api.UpdateNews = function(req, res)
-{
-    News.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true})
-        .then((news) =>{
+Api.UpdateNews = function (req, res) {
+    News.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        .then((news) => {
             Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, news);
         })
@@ -80,10 +85,9 @@ Api.UpdateNews = function(req, res)
         });
 }
 
-Api.DeleteNews = function(req , res)
-{
+Api.DeleteNews = function (req, res) {
     News.findByIdAndRemove(req.params.id)
-        .then((news) =>{
+        .then((news) => {
             Utility.GenerateResponse(true, res, news);
         })
         .catch((err) => {
@@ -93,4 +97,4 @@ Api.DeleteNews = function(req , res)
 }
 
 //----------------Module Exports-------------//
-module.exports  = Api;
+module.exports = Api;

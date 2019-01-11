@@ -1,6 +1,6 @@
 .news {
     background-color: whitesmoke;
-    overflow-x: scroll;
+    overflow-x: scroll !important;
     white-space: nowrap;
     margin-left: 100px;
 }

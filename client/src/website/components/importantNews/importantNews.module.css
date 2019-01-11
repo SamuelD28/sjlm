@@ -1,0 +1,13 @@
+.importantNews {
+    background: #e91e63;
+    color: white;
+    padding: .5vw 1vw;
+    font-size: 1em;
+    position: fixed;
+    top: 0;
+    left: 100px;
+}
+
+.importantLink {
+    color: white !important;
+}

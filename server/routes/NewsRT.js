@@ -1,25 +1,26 @@
 //----------------Dependencies-------------//
 
 let express = require("express"),
-    router  = express.Router(),
-    Api     = require(__dirname + "/../api/NewsAPI.js"),
-    Mdw     = require(__dirname  +"/../middleware/UserMW.js");
+    router = express.Router(),
+    Api = require(__dirname + "/../api/NewsAPI.js"),
+    Mdw = require(__dirname + "/../middleware/UserMW.js");
 
-//----------------Routing--------------------//    
+//----------------Routing--------------------//
 
 // GET ADMIN
 router.route("/")
-      .get(Api.FindNews)
-      .post(Mdw.IsAuth, Api.CreateNews);
+    .get(Api.FindNews)
+    .post(Mdw.IsAuth, Api.CreateNews);
 
+router.get("/important", Api.FindImportantNews);
 router.get("/category/:category", Api.FindNewsByCategory);
 router.get("/limit/:number", Api.FindNews);
-     
+
 router.route("/:id")
-      .get(Api.FindNewsById)
-      .put(Mdw.IsAuth, Api.UpdateNews)
-      .delete(Mdw.IsAuth, Api.DeleteNews);
-      
-//----------------Module Exports-------------//    
+    .get(Api.FindNewsById)
+    .put(Mdw.IsAuth, Api.UpdateNews)
+    .delete(Mdw.IsAuth, Api.DeleteNews);
+
+//----------------Module Exports-------------//
 
 module.exports = router;

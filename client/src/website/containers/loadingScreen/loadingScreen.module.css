@@ -1,0 +1,31 @@
+.loadingBody {
+    background: whitesmoke;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 250ms ease-in;
+}
+
+.loadingLogo {
+    animation-name: logo;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    width: 15vw;
+    height: 15vw;
+}
+
+@keyframes logo {
+    0% {
+        transform: translateY(-1.5vw);
+    }
+    100% {
+        transform: translateY(0vw);
+    }
+}

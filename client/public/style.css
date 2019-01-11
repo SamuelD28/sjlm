@@ -5,7 +5,7 @@
 /*Html Tag Overrides*/
 
 ::-webkit-scrollbar {
-    display: none !important;
+    width: 0px;
 }
 
 html>div {

@@ -1,5 +1,5 @@
-let mongoose        = require("mongoose"),
-    CategoryNews    = require("./CategoryNewsMD.js");
+let mongoose = require("mongoose"),
+    CategoryNews = require("./CategoryNewsMD.js");
 
 //--------------Model-------------//
 let newsSchema = new mongoose.Schema({
@@ -31,10 +31,10 @@ let newsSchema = new mongoose.Schema({
             kind: "maximages"
         }
     },
-    DateFrom : {
-        type : Date
+    DateFrom: {
+        type: Date
     },
-    DateTo : {
+    DateTo: {
         type: Date
     },
     Files: {
@@ -48,5 +48,14 @@ let newsSchema = new mongoose.Schema({
 });
 
 let News = mongoose.model("News", newsSchema);
+
+newsSchema.pre("save", function (next) {
+
+    if (this.DateFrom === null) {
+        this.DateFrom = this.createdAt;
+    }
+
+    next();
+});
 
 module.exports = News;

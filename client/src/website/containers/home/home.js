@@ -5,6 +5,7 @@ import { Transition } from 'semantic-ui-react';
 // Component Import
 import BannerHome from '../../components/bannerHome/bannerHome.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js'
+import ImportantNews from '../../components/importantNews/importantNews.js';
 
 //Basic style for the main div of this component
 const homeStyle = {
@@ -33,6 +34,7 @@ class Home extends Component {
 
     render() {
         return <div style={homeStyle}>
+                <ImportantNews />
                 <BannerHome/>
                 <div style={newsSectionStyle}>
                     <NewsColumn/>
