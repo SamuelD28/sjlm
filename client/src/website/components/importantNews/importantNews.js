@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
-import { Message, Transition } from 'semantic-ui-react';
+import { Transition } from 'semantic-ui-react';
 
 import CSSModules from 'react-css-modules';
 import styles from './importantNews.module.css';
@@ -22,7 +22,7 @@ class ImportantNews extends Component {
                         transitionOnMount>
                         <div styleName="importantNews">
                         {this.state.news.map((news)=>(
-                            <span>Important : {news.Title}   <b><a styleName="importantLink" href="#">En savoir plus</a></b></span>
+                            <span>Important : {news.Title}   <b><a styleName="importantLink" href="">En savoir plus</a></b></span>
                         ))}
                         </div>
                     </Transition>

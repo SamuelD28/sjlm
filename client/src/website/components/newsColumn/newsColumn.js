@@ -15,7 +15,7 @@ class NewsColumn extends Component {
         let request = await Ajax.GetData("/api/news/limit/3");
         let itemsVisible = [];
         request.data.map(() => {
-            itemsVisible.push(false);
+            return itemsVisible.push(false);
         });
         this.setState({ news: request.data, itemsVisible: itemsVisible });
         this.StartNextAnimation(0);

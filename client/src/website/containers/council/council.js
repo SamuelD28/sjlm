@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import MembersCard from '../../components/membersCard/membersCard.js';
 import PageHeader from '../../components/pageHeader/pageHeader.js';
@@ -8,47 +8,45 @@ import PageFooter from '../../components/pageFooter/pageFooter.js';
 import CSSModules from 'react-css-modules';
 import styles from './council.module.css';
 
-class Council extends Component{
+class Council extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {};
     }
 
-    componentDidMount = async () =>
-    {
+    componentDidMount = async() => {
         let request = await Ajax.GetData("/api/members/");
 
         let council = [];
 
-        request.data.map((member) =>{
+        request.data.map((member) => {
             let alias = member.Occupation.Title.toLowerCase();
-            if( alias === "mairesse" ||
+            if (alias === "mairesse" ||
                 alias === "maire" ||
                 alias === "conseiller municipal" ||
                 alias === "conseillère municipale")
-            council.push(member);
+                return council.push(member);
+            else
+                return null;
         });
 
-        this.setState({members : council});
+        this.setState({ members: council });
     }
 
-    DisplayMembers = () =>
-    {
-        if(this.state.members !== undefined)
-        return this.state.members.map((member, index) =>(
-            <MembersCard
+    DisplayMembers = () => {
+        if (this.state.members !== undefined)
+            return this.state.members.map((member, index) => (
+                <MembersCard
                 index={index}
                 key={member._id}
                 member={member}
                 />
-        ));
+            ));
     }
 
-    render()
-    {
-        return  <div styleName="membersBody">
+    render() {
+        return <div styleName="membersBody">
                     <div styleName="membersBanner" style={{backgroundImage: `url('https://res.cloudinary.com/dohwohspb/image/upload/v1546923475/images/members/Bandeau_Conseil.jpg')`}}>
                     </div>
                     <div styleName="membersTop">
@@ -71,4 +69,4 @@ class Council extends Component{
     }
 }
 
-export default CSSModules(Council, styles, {handleNotFoundStyleName: "log", allowMultiple: true});
+export default CSSModules(Council, styles, { handleNotFoundStyleName: "log", allowMultiple: true });

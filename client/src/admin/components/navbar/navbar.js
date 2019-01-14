@@ -1,13 +1,12 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
-import {Image} from 'semantic-ui-react';
 
-const Navbar = (props) =>{
+const Navbar = (props) => {
 
-    return(
-     <ul styleName="navbar" >
+    return (
+        <ul styleName="navbar" >
         <li styleName="logoContainer">
             <NavLink styleName="logo" to="/">
                 <img  src="/logo2.png" alt="Logo" />
@@ -66,4 +65,4 @@ const Navbar = (props) =>{
     )
 }
 
-export default CSSModules(Navbar, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
+export default CSSModules(Navbar, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });

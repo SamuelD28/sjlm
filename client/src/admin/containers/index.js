@@ -1,10 +1,10 @@
 //---------Declaration-----------//
 import React from 'react';
 import Navbar from '../components/navbar/navbar.js';
-import Headbar from '../components/headbar/headbar.js';
+// import Headbar from '../components/headbar/headbar.js';
 
 //Navigation component
-import {Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './home/home.js';
 import News from './news/news.js';
 import Members from './members/members.js';
@@ -14,8 +14,8 @@ import Resources from './resources/resources.js';
 import VerbalTrial from './verbalTrial/verbalTrial.js';
 
 const Index = (props) => {
-    return(
-    <div>
+    return (
+        <div>
         <Navbar/>
         <Switch>
             <Route exact path="/admin" component={Home} something="foo"/>
@@ -33,4 +33,3 @@ const Index = (props) => {
 }
 
 export default Index;
-

@@ -157,7 +157,7 @@ class FormGenerator extends Component {
                 this.ClearForm();
         }
 
-        this.UpdateStateKey("FormStatus", { loading: false});
+        this.UpdateStateKey("FormStatus", { loading: false });
     }
 
     /**
@@ -181,18 +181,8 @@ class FormGenerator extends Component {
      * target : Optionnal parameter, represents an already made target object. Used
      * when using simple texte edtior that his based on the the textarea
      */
-    HandleChangeEditor = (TextEditor, inputName) => {
-
-        let targetObject;
-        if (TextEditor.current !== null) {
-            const editor = TextEditor.current.getEditor();
-            const editorFull = TextEditor.current.makeUnprivilegedEditor(editor);
-            targetObject = {
-                name: inputName,
-                value: editorFull.getHTML(),
-            }
-        }
-        this.UpdateStateKey("TextEditor", targetObject);
+    HandleChangeEditor = (target) => {
+        this.UpdateStateKey("TextEditor", target);
         this.MarkFormAsModified();
     }
 
@@ -212,11 +202,10 @@ class FormGenerator extends Component {
     /**
      * Method for handling changes in a datepicker input
      */
-    HandleDateChange = (date, inputName) =>
-    {
+    HandleDateChange = (date, inputName) => {
         const target = {
-            name : inputName,
-            value :  date
+            name: inputName,
+            value: date
         };
 
         this.HandleChange(target);
@@ -260,7 +249,7 @@ class FormGenerator extends Component {
      */
     HandleDelete = async() => {
 
-        await this.UpdateStateKey("FormStatus", {openConfirm : false});
+        await this.UpdateStateKey("FormStatus", { openConfirm: false });
         //Need to be reworked
         let request = await this.HandleRequest(null, "delete");
         this.HandleRequestResponse(request);
@@ -345,8 +334,7 @@ class FormGenerator extends Component {
      * Method that generates the negative button for the modal form
      */
     GenerateNegativeButton = () => {
-        if(this.state.FormConfig.modal)
-        {
+        if (this.state.FormConfig.modal) {
             return (
                 <Button
                 style={{float: "left"}}
@@ -457,7 +445,7 @@ class FormGenerator extends Component {
         //Generate a from without a text edtior
         if (this.state.TextEditor === undefined) {
             return (
-            <Grid>
+                <Grid>
                 <Grid.Column width={16}>
                     <FormError errorHandler={this.state.FormStatus} />
                     {this.GenerateFormInputs()}
@@ -465,8 +453,8 @@ class FormGenerator extends Component {
             </Grid>)
         }
         //Generate a form with a text editor
-        else if(!this.state.TextEditor.inline){
-            return  <Grid columns='equal'>
+        else if (!this.state.TextEditor.inline) {
+            return <Grid columns='equal'>
                         <Grid.Column>
                             <FormError errorHandler={this.state.FormStatus} /> { this.GenerateFormInputs() }
                         </Grid.Column>
@@ -479,7 +467,7 @@ class FormGenerator extends Component {
                         </Grid.Column>
                     </Grid>
         }
-        else{
+        else {
             return <Grid>
                         <Grid.Column width={16}>
                             <FormError errorHandler={this.state.FormStatus} />
@@ -590,13 +578,12 @@ class FormGenerator extends Component {
      * This is a temporary workaround to fix a bug. This
      * is performance heavy and needs to be improved
      */
-    componentWillReceiveProps(props)
-    {
-        this.setState({Inputs : props.Inputs});
+    componentWillReceiveProps(props) {
+        this.setState({ Inputs: props.Inputs });
     }
 
     render() {
-        if (this.state !== undefined){
+        if (this.state !== undefined) {
             return this.Generate();
         }
     }

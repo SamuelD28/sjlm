@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import CSSModules from 'react-css-modules';
 import styles from './loadingScreen.module.css';
-import { Transition } from 'semantic-ui-react';
 
 class LoadingScreen extends Component {
 
@@ -18,7 +17,7 @@ class LoadingScreen extends Component {
 
     render() {
         return <div ref={this.loading} styleName="loadingBody">
-                    <img styleName="loadingLogo" src="/logo2.png"/>
+                    <img styleName="loadingLogo" alt="logo" src="/logo2.png"/>
                 </div>
     }
 }

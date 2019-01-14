@@ -1,6 +1,5 @@
 //---------Declaration-------//
 import React, { Component } from 'react';
-import { Transition } from 'semantic-ui-react';
 
 // Component Import
 import BannerHome from '../../components/bannerHome/bannerHome.js';
@@ -24,13 +23,6 @@ const newsSectionStyle = {
 }
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillAppear() {
-        console.log("Component  appeared");
-    }
 
     render() {
         return <div style={homeStyle}>

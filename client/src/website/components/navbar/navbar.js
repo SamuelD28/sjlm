@@ -22,7 +22,7 @@ class Navbar extends Component {
         let request = await Ajax.GetData("/api/menus");
         let itemsVisible = [];
         request.data.map(() => {
-            itemsVisible.push(false);
+            return itemsVisible.push(false);
         });
         this.setState({ menus: request.data, itemsVisible: itemsVisible });
         this.StartNextAnimation(0);

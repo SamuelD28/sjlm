@@ -1,6 +1,5 @@
 //Initial Declaratinon and importation
 import React, { Component } from 'react';
-import Translate from '../../../shared/translate.js';
 import Ajax from '../../../shared/ajax.js';
 
 //Css Modules Importation
