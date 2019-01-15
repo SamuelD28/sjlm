@@ -43,7 +43,8 @@ Api.UpdateMenu = function (req, res) {
     Query.exec()
         .then((menu) => {
 
-            if (menu.ParentMenu !== req.body.ParentMenu) {
+            if (menu.ParentMenu.toString() !== req.body.ParentMenu.toString()) {
+
                 Menu.findById(menu.ParentMenu)
                     .then((originalParent) => {
                         let index = originalParent.SubMenu.indexOf(menu._id);
@@ -64,7 +65,6 @@ Api.UpdateMenu = function (req, res) {
                     });
             }
 
-            Utility.CheckIfObjectIsEmpty(req.body);
             Utility.GenerateResponse(true, res, menu);
         })
         .catch((err) => {

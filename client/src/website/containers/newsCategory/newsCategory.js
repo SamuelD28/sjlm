@@ -34,7 +34,9 @@ class NewsCategory extends Component {
         if (this.state.currentCategory.UrlValue !== this.props.match.params.category) {
             let news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
             let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`)
-            this.setState({ news: news.data, currentCategory: category.data });
+
+            if (news.success && category.success)
+                this.setState({ news: news.data, currentCategory: category.data });
         }
     }
 
@@ -42,6 +44,7 @@ class NewsCategory extends Component {
         if (this.state.news !== undefined && this.state.currentCategory !== "") {
 
             let template = this.state.currentCategory.Template;
+            console.log(this.state.currentCategory);
 
             if (template === "timeline")
                 return <NewsTimeline news={this.state.news} />

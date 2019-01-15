@@ -24,7 +24,7 @@ const SelectInput = (props) => {
                 name={props.input.name}
                 clearable={props.input.clearable}
                 placeholder={Translate.ModelKey(props.input.name) + "..."}
-                value={(props.input.id)?props.input.value._id:props.input.value}
+                value={(props.input.id && props.input.value !== null)?props.input.value._id:props.input.value}
                 onChange={(e, data) =>  {props.handleChange(data)}}
                 options={(props.input.generator !== undefined && props.input.generator !== null)? props.input.generator(): props.input.list} />
         </Segment>

@@ -31,6 +31,9 @@ let newsSchema = new mongoose.Schema({
             kind: "maximages"
         }
     },
+    Location: {
+        type: String
+    },
     DateFrom: {
         type: Date
     },

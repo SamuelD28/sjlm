@@ -3,6 +3,7 @@
     overflow-x: scroll !important;
     white-space: nowrap;
     margin-left: 100px;
+    padding: 1vw;
 }
 
 .newsWrapper {
@@ -16,35 +17,54 @@
     display: grid;
     height: 100%;
     grid-template-areas: "upperGrid" "newsDate" "lowerGrid";
-    grid-template-rows: 1fr .4fr 1fr;
-    padding: 1vw;
+    grid-template-rows: 1fr .5fr 1fr;
 }
 
-.newsGrid {}
+.arrowLeft {
+    width: 25px;
+    height: 25px;
+    border-right: 3px solid #DEDEDE;
+    border-top: 3px solid #DEDEDE;
+    transform: rotate(45deg);
+}
+
+.dateContainer {
+    display: flex;
+    flex-direction: column;
+    width: stretch;
+    margin: 0;
+    width: 60%;
+    color: #37474F;
+}
+
+.date {
+    font-size: 1.1vw;
+    font-weight: bold;
+}
+
+.location {
+    padding-top: .5vw;
+    font-size: .9vw;
+}
+
+.dateBorder {
+    height: 3px;
+    background: #DEDEDE;
+    width: 20%;
+}
 
 .newsDate {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
     grid-area: newsDate;
     justify-self: center;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
 }
 
-.arrowUp {
-    align-self: center;
-    background-color: white;
-    width: 40px;
-    height: 40px;
-    transform: rotateZ(45deg) translateX(15px) translateY(15px);
-}
-
-.arrowDown {
-    align-self: center;
-    background-color: white;
-    width: 40px;
-    height: 40px;
-    transform: rotateZ(45deg) translateX(-15px) translateY(-15px);
-}
 
 .upperGrid {
     grid-area: upperGrid;

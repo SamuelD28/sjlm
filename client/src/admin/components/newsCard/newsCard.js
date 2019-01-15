@@ -27,7 +27,7 @@ const NewsCard = (props) => {
         <div styleName="newsInfo">
             <h2>{props.news.Title}</h2>
             {DisplayImportantTag(props.news)}
-            <p styleName="newsCategory">{props.news.Category.Title}</p>
+            <p styleName="newsCategory">{(props.news.Category !== null)?props.news.Category.Title:"Aucune categorie"}</p>
             <p styleName="newsDate"><i className="clock outline icon"></i> {
             (props.news.DateFrom !== null)
             ?moment(props.news.DateFrom).format("dddd, Do MMMM, YYYY")

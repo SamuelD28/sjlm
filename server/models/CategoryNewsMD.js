@@ -1,5 +1,5 @@
-let mongoose    = require("mongoose"),
-    Utility     = require("../utils/utility.js");
+let mongoose = require("mongoose"),
+    Utility = require("../utils/utility.js");
 
 
 let Schema = mongoose.Schema;
@@ -11,26 +11,31 @@ let CategoryNewsSchema = new Schema({
         trim: true,
         maxLength: 25
     },
-    Template : {
+    Template: {
         type: String,
         required: true,
         lowercase: true,
-        enum : ['timeline', 'stacked', 'portrait']
+        enum: ['timeline', 'stacked', 'portrait']
     },
     //Might remove this since its useless
-    UrlValue : {
+    UrlValue: {
         type: String,
         trim: true,
         maxLength: 50
     }
 });
 
-CategoryNewsSchema.pre("save", function(next){
-    if(this.Title !== undefined)
-    {
+CategoryNewsSchema.pre("save", function (next) {
+    if (this.Title !== undefined) {
         //Regex pour retirer les caracteres posant probleme dans un url
         this.UrlValue = Utility.ConvertToUrlSafe(this.Title);
     }
+    next();
+});
+
+CategoryNewsSchema.pre("update", function (next) {
+    this.UrlValue = Utility.ConvertToUrlSafe(this.Title);
+    console.log(this.UrlValue);
     next();
 });
 

@@ -1,4 +1,3 @@
-
 let Translate = {};
 
 Translate.PageCategory = function (pageCategory) {
@@ -115,6 +114,9 @@ Translate.ModelKey = function (modelKey) {
     case "Seat":
         translatedContent = "Siège";
         break;
+    case "Location":
+        translatedContent = "Location";
+        break;
     default:
         translatedContent = modelKey + "**" //remove when going in production
     }
@@ -148,7 +150,7 @@ Translate.ModelError = function (modelError, modelProperties) {
     case "invalid file":
         translatedContent = " contient des fichiers non-permis";
         break;
-     case "oneimage":
+    case "oneimage":
         translatedContent = " ne doit contenir qu'une seule image";
         break;
     case "invalid email":

@@ -1,14 +1,15 @@
-.newsCard{
-    background-color:white;
+.newsCard {
+    background-color: white;
     cursor: pointer;
-    display: flex;
+    display: flex !important;
     position: relative;
     height: 100%;
+    transition: transform .15s ease-in-out;
 }
 
-.newsCard::after{
+.newsCard::after {
     content: " ";
-    background-color:#273746;
+    background-color: #273746;
     position: absolute;
     top: 0;
     left: 0;
@@ -19,12 +20,17 @@
     z-index: 100;
 }
 
-.newsCard:hover::after{
-    opacity: .1;
-    transition: opacity .2s ease;
+.newsCard:hover {
+    transform: translateX(1%);
+    transition: transform .15s ease-in-out;
 }
 
-.newsImg{
+.newsCard:hover::after {
+    opacity: .1;
+    transition: all .2s ease;
+}
+
+.newsImg {
     background-size: cover;
     background-position: center;
     filter: brightness(80%);
@@ -33,7 +39,7 @@
     position: relative;
 }
 
-.newsCategory{
+.newsCategory {
     background-color: white;
     position: absolute;
     padding: .5vw;
@@ -42,47 +48,42 @@
     z-index: 1;
 }
 
-.newsTitle{
+.newsTitle {
     font-weight: bold;
 }
 
-.newsDesc{
+.newsDesc {
     text-align: justify;
-    color:#808080;
+    color: #808080;
     margin: .5vw 0;
 }
 
-.newsDate{
+.newsDate {
     font-weight: bolder;
 }
 
-.newsInfo{
+.newsInfo {
     padding: 1vw;
     width: 60%;
+    z-index: 1;
 }
 
-.arrowContainer{
-    box-sizing: border-box;
+.arrowUp {
     position: absolute;
-    top: 40%;
-    right: 0;
-    height: 2.5vw;
-    width: 2.5vw;
-    transform: translateX(100%);
-    padding: .5vw;
-    overflow: hidden;
+    top: 0;
+    left: 45%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    transform: rotateZ(45deg) translateX(-10px) translateY(-10px);
 }
 
-.newsCard:hover > .arrowContainer > .newsArrow{
-    transform: translateX(0%) rotate(45deg);
-    transition: transform .25s ease;
-}
-
-.newsArrow{
-    height: 100%;
-    width: 100%;
-    border-top: 2px solid #263238;
-    border-right: 2px solid #263238;
-    transform: translateX(-175%) rotate(45deg);
-    transition: transform .25s ease;
+.arrowDown {
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    transform: rotateZ(45deg) translateX(10px) translateY(10px);
 }

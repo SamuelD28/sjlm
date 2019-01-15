@@ -68,22 +68,30 @@ class NewsSchema extends FormSchema {
                 value: ""
             }),
             new InputSchema({
+                name: "Location",
+                type: "text",
+                label: "Location",
+                width: 16,
+                group: 4,
+                value: ""
+            }),
+            new InputSchema({
                 name: "Images",
                 type: "uploader",
-                allowedExt : ["jpg", "png" , "gif"],
+                allowedExt: ["jpg", "png", "gif"],
                 label: "Gallerie",
                 value: [],
-                group: 4,
+                group: 5,
                 width: 16,
                 multiple: true
             }),
             new InputSchema({
                 name: "Files",
                 type: "uploader",
-                allowedExt : ["docx", "pdf" , "pptx", "xlsx"],
+                allowedExt: ["docx", "pdf", "pptx", "xlsx"],
                 label: "Fichiers",
                 value: [],
-                group: 5,
+                group: 6,
                 width: 16,
                 multiple: true
             })
@@ -106,7 +114,7 @@ class NewsSchema extends FormSchema {
         let CategoryOptions = [];
         if (categoryNews.data !== undefined) {
             categoryNews.data.map((category) => {
-                let item = { text: category.Title, value: category._id, key: category._id};
+                let item = { text: category.Title, value: category._id, key: category._id };
                 return CategoryOptions.push(item);
             });
         }
