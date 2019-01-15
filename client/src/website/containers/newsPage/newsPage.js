@@ -62,7 +62,7 @@ class NewsPage extends Component {
                                 <PageHeader
                                     category={(this.state.news.Category.Title)}
                                     title={this.state.news.Title}
-                                    date={this.state.news.DatePublished}
+                                    date={this.state.news.DateFrom}
                                     />
                                 <PageContent content={this.state.news.Description} />
                             </div>

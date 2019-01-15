@@ -89,14 +89,14 @@ class News extends Component {
     }
 
     GetNews = async() => {
-        let request = await Ajax.GetData("/api/news/limit/15");
+        let request = await Ajax.GetData("/api/news");
         this.setState({ news: request.data });
     }
 
     //Function that display an array for every news card hold in the tempstate array.
     DisplayNewsCard() {
         if (this.state.news !== undefined) {
-            if(this.state.news.length > 0)
+            if (this.state.news.length > 0)
                 return this.state.news.map((item) => (
                     <NewsEdit
                         key={item._id}

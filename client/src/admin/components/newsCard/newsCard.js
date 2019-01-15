@@ -6,18 +6,17 @@ import CSSModules from 'react-css-modules';
 import styles from './newsCard.module.css';
 
 //Function that displa an important tag if the news important property is set to true.
-function DisplayImportantTag(item)
-{
-    if(item.Important)
+function DisplayImportantTag(item) {
+    if (item.Important)
         return <span styleName="newsImportant">Prioritaire</span>;
 }
 
 
-const NewsCard = (props) =>{
+const NewsCard = (props) => {
 
-    if(props.news !== undefined)
-    return(
-    <div styleName="news">
+    if (props.news !== undefined)
+        return (
+            <div styleName="news">
         <div styleName="newsImg"
             className="img-bg"
             style={
@@ -31,14 +30,12 @@ const NewsCard = (props) =>{
             <p styleName="newsCategory">{props.news.Category.Title}</p>
             <p styleName="newsDate"><i className="clock outline icon"></i> {
             (props.news.DateFrom !== null)
-            ?moment(props.news.DateFrom).format("dddd, Do MMMM")
-            :moment(props.news.createdAt).format("dddd, Do MMMM")
+            ?moment(props.news.DateFrom).format("dddd, Do MMMM, YYYY")
+            :moment(props.news.createdAt).format("dddd, Do MMMM, YYYY")
             }</p>
         </div>
     </div>
-    )
+        )
 }
 
-export default CSSModules(NewsCard, styles, {allowMultiple: true, handleNotFoundStyleName: "log"});
-
-
+export default CSSModules(NewsCard, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
