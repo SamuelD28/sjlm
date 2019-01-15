@@ -1,0 +1,345 @@
+{
+    "success": true,
+    "statusCode": 200,
+    "data": [
+        {
+            "Principal": true,
+            "SubMenu": [
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5778b8b991f231f3307",
+                    "Title": "Logo et armoirie",
+                    "LinkTo": "/pages/static/logo___armoirie",
+                    "ParentMenu": "5c3cb48b8b8b991f231f32ce",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5878b8b991f231f3308",
+                    "Title": "Histoire",
+                    "LinkTo": "/pages/static/histoire",
+                    "ParentMenu": "5c3cb48b8b8b991f231f32ce",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5a78b8b991f231f330a",
+                    "Title": "Développement commercial",
+                    "LinkTo": "/pages/static/developpement_commercial_",
+                    "ParentMenu": "5c3cb48b8b8b991f231f32ce",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5b48b8b991f231f330b",
+                    "Title": "Artisans et entreprises",
+                    "LinkTo": "/pages/static/artisans_et_entreprises",
+                    "ParentMenu": "5c3cb48b8b8b991f231f32ce",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5c28b8b991f231f330c",
+                    "Title": "Organisme de la région",
+                    "LinkTo": "/pages/static/organismes_de_la_region",
+                    "ParentMenu": "5c3cb48b8b8b991f231f32ce",
+                    "__v": 0
+                }
+            ],
+            "_id": "5c3cb48b8b8b991f231f32ce",
+            "Title": "Découvrir la municipalité",
+            "LinkTo": "",
+            "Icon": "home",
+            "__v": 7
+        },
+        {
+            "Principal": true,
+            "SubMenu": [
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5d18b8b991f231f330d",
+                    "Title": "Accès à l'information",
+                    "LinkTo": "/pages/static/acces_a_l_information",
+                    "ParentMenu": "5c3cb5138b8b991f231f3301",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5de8b8b991f231f330e",
+                    "Title": "Règlement municipaux",
+                    "LinkTo": "/pages/static/reglement_municipaux",
+                    "ParentMenu": "5c3cb5138b8b991f231f3301",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5f88b8b991f231f3310",
+                    "Title": "Bottins des employés",
+                    "LinkTo": "/pages/static/bottins_des_employes",
+                    "ParentMenu": "5c3cb5138b8b991f231f3301",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5ea8b8b991f231f330f",
+                    "Title": "Conseil municipal",
+                    "LinkTo": "/conseil",
+                    "ParentMenu": "5c3cb5138b8b991f231f3301",
+                    "__v": 0
+                }
+            ],
+            "_id": "5c3cb5138b8b991f231f3301",
+            "Title": "Administration",
+            "LinkTo": "",
+            "Icon": "users",
+            "__v": 6
+        },
+        {
+            "Principal": true,
+            "SubMenu": [
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb60b8b8b991f231f3311",
+                    "Title": "Permis",
+                    "LinkTo": "/pages/static/permis",
+                    "ParentMenu": "5c3cb5238b8b991f231f3302",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb61d8b8b991f231f3312",
+                    "Title": "Éducation",
+                    "LinkTo": "/pages/static/education",
+                    "ParentMenu": "5c3cb5238b8b991f231f3302",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb6458b8b991f231f3313",
+                    "Title": "Prévention et sécurité",
+                    "LinkTo": "/pages/static/prevention_et_securite",
+                    "ParentMenu": "5c3cb5238b8b991f231f3302",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb6778b8b991f231f3316",
+                    "Title": "Collecte de branches",
+                    "LinkTo": "/pages/static/collecte_de_branche",
+                    "ParentMenu": "5c3cb5238b8b991f231f3302",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb69e8b8b991f231f3318",
+                    "Title": "Matières résiduelles",
+                    "LinkTo": "/pages/static/matieres_residuelles",
+                    "ParentMenu": "5c3cb5238b8b991f231f3302",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb68f8b8b991f231f3317",
+                    "Title": "Vieux électroniques, Circulations et Eau potable",
+                    "LinkTo": "/pages/static/vieux_electroniques,_circulations_et_eau_potable",
+                    "ParentMenu": "5c3cb5238b8b991f231f3302",
+                    "__v": 0
+                }
+            ],
+            "_id": "5c3cb5238b8b991f231f3302",
+            "Title": "Les Services",
+            "LinkTo": "",
+            "Icon": "book",
+            "__v": 15
+        },
+        {
+            "Principal": true,
+            "SubMenu": [
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb6c08b8b991f231f331a",
+                    "Title": "Bibliothèque",
+                    "LinkTo": "/pages/static/bibliotheque_",
+                    "ParentMenu": "5c3cb52e8b8b991f231f3303",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3d553ef3805e3da53dbc44",
+                    "Title": "Équipements & Infratructure",
+                    "LinkTo": "/pages/static/equipements___infrastructures",
+                    "ParentMenu": "5c3cb52e8b8b991f231f3303",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3d5990f3805e3da53dbc47",
+                    "Title": "Virez vert!",
+                    "LinkTo": "/pages/static/virez_vert!",
+                    "ParentMenu": "5c3cb52e8b8b991f231f3303",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb5948b8b991f231f3309",
+                    "Title": "Une ville verte",
+                    "LinkTo": "/pages/static/une_ville_verte",
+                    "ParentMenu": "5c3cb52e8b8b991f231f3303",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3d5dc7f3805e3da53dbc4a",
+                    "Title": "Écocentre",
+                    "LinkTo": "/pages/static/ecocentre",
+                    "ParentMenu": "5c3cb52e8b8b991f231f3303",
+                    "__v": 0
+                }
+            ],
+            "_id": "5c3cb52e8b8b991f231f3303",
+            "Title": "Cultures, Loisirs & Environnement ",
+            "LinkTo": "",
+            "Icon": "futbol",
+            "__v": 12
+        },
+        {
+            "Principal": true,
+            "SubMenu": [
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb6f68b8b991f231f331d",
+                    "Title": "Budget annuel",
+                    "LinkTo": "/pages/static/budget_annuel_",
+                    "ParentMenu": "5c3cb5418b8b991f231f3304",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb70b8b8b991f231f331e",
+                    "Title": "Taxes et évaluations foncières",
+                    "LinkTo": "/pages/static/taxes___evaluations_foncieres",
+                    "ParentMenu": "5c3cb5418b8b991f231f3304",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb7198b8b991f231f331f",
+                    "Title": "Contrats",
+                    "LinkTo": "/pages/static/contrats",
+                    "ParentMenu": "5c3cb5418b8b991f231f3304",
+                    "__v": 0
+                }
+            ],
+            "_id": "5c3cb5418b8b991f231f3304",
+            "Title": "Finances",
+            "LinkTo": "",
+            "Icon": "balance",
+            "__v": 3
+        },
+        {
+            "Principal": true,
+            "SubMenu": [
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb7a68b8b991f231f332e",
+                    "Title": "Séances du conseil",
+                    "LinkTo": "/news/category/seances_du_conseil",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb7b78b8b991f231f332f",
+                    "Title": "Avis public",
+                    "LinkTo": "/news/category/avis_public",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb7c68b8b991f231f3330",
+                    "Title": "Offres d'emplois",
+                    "LinkTo": "/news/category/offres_d_emplois",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb7d68b8b991f231f3331",
+                    "Title": "Évènements",
+                    "LinkTo": "/news/category/evenements",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb7e48b8b991f231f3332",
+                    "Title": "Travaux routiers",
+                    "LinkTo": "/news/category/travaux_routiers",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb8018b8b991f231f3333",
+                    "Title": "Informations",
+                    "LinkTo": "/news/category/informations",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                },
+                {
+                    "Principal": false,
+                    "SubMenu": [],
+                    "_id": "5c3cb8128b8b991f231f3334",
+                    "Title": "Communiqués",
+                    "LinkTo": "/news/category/communiques",
+                    "ParentMenu": "5c3cb5528b8b991f231f3305",
+                    "__v": 0
+                }
+            ],
+            "_id": "5c3cb5528b8b991f231f3305",
+            "Title": "Actualités",
+            "LinkTo": "",
+            "Icon": "newspaper",
+            "__v": 7
+        },
+        {
+            "Principal": true,
+            "SubMenu": [],
+            "_id": "5c3cb5658b8b991f231f3306",
+            "Title": "Contact",
+            "LinkTo": "/contact",
+            "Icon": "envelope",
+            "__v": 0
+        }
+    ]
+}

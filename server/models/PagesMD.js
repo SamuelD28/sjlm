@@ -58,5 +58,10 @@ pagesSchema.pre("save", function (next) {
     next();
 });
 
+pagesSchema.pre("update", function (next) {
+    this.PageTitleUrl = Utility.ConvertToUrlSafe(this.PageTitle);
+    next();
+});
+
 let Pages = mongoose.model("Pages", pagesSchema);
 module.exports = Pages;

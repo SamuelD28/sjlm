@@ -26,7 +26,9 @@ class StaticPage extends Component {
 
     GetPage = async() => {
         let request = await Ajax.GetData(`/api/pages/pageurl/${this.props.match.params.id}`);
-        this.setState({ page: request.data, pageurl: this.props.match.params.id });
+
+        if (request.data !== undefined)
+            this.setState({ page: request.data, pageurl: this.props.match.params.id });
     }
 
     ComparePageWithState = () => {

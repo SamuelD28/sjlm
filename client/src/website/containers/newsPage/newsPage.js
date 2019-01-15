@@ -28,7 +28,9 @@ class NewsPage extends Component {
     GetNews = async() => {
         if (this.state.previousLocation !== this.props.location.pathname) {
             let request = await Ajax.GetData(`/api/news/${this.props.match.params.id}`);
-            await this.setState({ news: request.data, previousLocation: this.props.location.pathname });
+
+            if (request.data !== undefined)
+                await this.setState({ news: request.data, previousLocation: this.props.location.pathname });
         }
     }
 

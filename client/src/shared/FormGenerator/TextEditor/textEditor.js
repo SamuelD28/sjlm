@@ -20,49 +20,47 @@ const modules = {
 class TextEditor extends Component {
     constructor(props) {
         super(props);
-        //This reference is needed for accessing the content of
-        //the editor since it doesnt create an event target object
-        //when we modify the value inside
-        this.TextEditor = React.createRef();
         this.state = { text: props.input.value };
     }
 
     componentDidMount() {
 
-        var snow = new Quill('#editor', {
-            theme: 'snow',
-            modules: modules
-        });
-        const table = snow.getModule('table');
-        snow.clipboard.dangerouslyPasteHTML(0, this.props.input.value);
-        snow.on('text-change', (delta, oldDelta, source) => {
-            this.props.handleChangeEditor({ name: this.props.input.name, value: snow.root.innerHTML });
-        });
+        if (this.props.input.type === "full") {
+            var snow = new Quill('#editor', {
+                theme: 'snow',
+                modules: modules
+            });
+            const table = snow.getModule('table');
+            snow.clipboard.dangerouslyPasteHTML(0, this.props.input.value);
+            snow.on('text-change', (delta, oldDelta, source) => {
+                this.props.handleChangeEditor({ name: this.props.input.name, value: snow.root.innerHTML });
+            });
 
-        document.querySelector('#insert-table').addEventListener('click', function () {
-            table.insertTable(2, 2);
-        });
-        document.querySelector('#insert-row-above').addEventListener('click', function () {
-            table.insertRowAbove();
-        });
-        document.querySelector('#insert-row-below').addEventListener('click', function () {
-            table.insertRowBelow();
-        });
-        document.querySelector('#insert-column-left').addEventListener('click', function () {
-            table.insertColumnLeft();
-        });
-        document.querySelector('#insert-column-right').addEventListener('click', function () {
-            table.insertColumnRight();
-        });
-        document.querySelector('#delete-row').addEventListener('click', function () {
-            table.deleteRow();
-        });
-        document.querySelector('#delete-column').addEventListener('click', function () {
-            table.deleteColumn();
-        });
-        document.querySelector('#delete-table').addEventListener('click', function () {
-            table.deleteTable();
-        });
+            document.querySelector('#insert-table').addEventListener('click', function () {
+                table.insertTable(2, 2);
+            });
+            document.querySelector('#insert-row-above').addEventListener('click', function () {
+                table.insertRowAbove();
+            });
+            document.querySelector('#insert-row-below').addEventListener('click', function () {
+                table.insertRowBelow();
+            });
+            document.querySelector('#insert-column-left').addEventListener('click', function () {
+                table.insertColumnLeft();
+            });
+            document.querySelector('#insert-column-right').addEventListener('click', function () {
+                table.insertColumnRight();
+            });
+            document.querySelector('#delete-row').addEventListener('click', function () {
+                table.deleteRow();
+            });
+            document.querySelector('#delete-column').addEventListener('click', function () {
+                table.deleteColumn();
+            });
+            document.querySelector('#delete-table').addEventListener('click', function () {
+                table.deleteTable();
+            });
+        }
     }
 
     render() {
@@ -133,17 +131,3 @@ class TextEditor extends Component {
 }
 
 export default TextEditor;
-
-
-// return (
-//                 <ReactQuill
-//                     modules = { this.modules }
-//                     defaultValue = { this.props.input.value }
-//                     formats = { this.formats }
-//                     onChange = {
-//                         () => {
-//                             this.props.handleChangeEditor(this.TextEditor, this.props.input.name)
-//                         }
-//                     }
-//                     ref = {this.TextEditor}
-//                 />)
