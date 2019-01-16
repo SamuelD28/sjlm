@@ -33,7 +33,7 @@ class NewsColumn extends Component {
     render() {
 
         if (this.state.news !== undefined)
-            return this.state.news.reverse().map((item, index) => (
+            return this.state.news.map((item, index) => (
                 <Transition
                         key={item._id}
                         transitionOnMount={true}

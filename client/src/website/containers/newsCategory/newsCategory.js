@@ -44,14 +44,12 @@ class NewsCategory extends Component {
         if (this.state.news !== undefined && this.state.currentCategory !== "") {
 
             let template = this.state.currentCategory.Template;
-            console.log(this.state.currentCategory);
-
             if (template === "timeline")
                 return <NewsTimeline news={this.state.news} />
             else if (template === "stacked")
                 return <NewsStacked category={this.state.currentCategory} news={this.state.news} />
             else
-                return <NewsPortrait news={this.state.news} />
+                return <NewsPortrait category={this.state.currentCategory} news={this.state.news} />
         }
     }
 

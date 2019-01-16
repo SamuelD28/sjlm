@@ -5,7 +5,6 @@ import ScrollTop from '../scrollTop/scrollTop.js';
 import { Transition } from 'semantic-ui-react';
 import CSSModules from 'react-css-modules';
 import styles from './newsStacked.module.css';
-
 import moment from 'moment';
 import 'moment/locale/fr'; // without this line it didn't work
 moment.locale('fr');
