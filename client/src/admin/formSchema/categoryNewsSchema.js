@@ -4,7 +4,7 @@
  */
 
 //Import statements
-import { FormConfig, InputSchema, FormSchema } from '../../shared/FormGenerator/formGenerator.js';
+import { FormConfig, InputSchema, FormSchema, EditorSchema } from '../../shared/FormGenerator/formGenerator.js';
 
 class CategoryNewsSchema extends FormSchema {
     constructor() {
@@ -12,13 +12,13 @@ class CategoryNewsSchema extends FormSchema {
         this.postConfig = new FormConfig({
             url: "/api/categorynews/",
             httpRequest: "POST",
-            modal : true,
+            modal: true,
             size: "small"
         });
         this.putConfig = new FormConfig({
             url: "/api/categorynews/",
             httpRequest: "PUT",
-            modal : true,
+            modal: true,
             size: "small"
         });
         this.inputs = [
@@ -37,13 +37,19 @@ class CategoryNewsSchema extends FormSchema {
                 value: "",
                 width: 8,
                 group: 1,
-                list : [
-                    {text: "Empilé", value : "stacked", key: 0},
-                    {text : "Ligne du temps", value : "timeline", key: 1},
-                    {text: "Portrait", value: "portrait", key: 2}
+                list: [
+                    { text: "Empilé", value: "stacked", key: 0 },
+                    { text: "Ligne du temps", value: "timeline", key: 1 },
+                    { text: "Portrait", value: "portrait", key: 2 }
                 ]
             })
             ];
+        this.textEditor = new EditorSchema({
+            name: "Description",
+            placeholder: "Description...",
+            type: "simple",
+            inline: true
+        })
     }
 }
 

@@ -17,7 +17,10 @@ let CategoryNewsSchema = new Schema({
         lowercase: true,
         enum: ['timeline', 'stacked', 'portrait']
     },
-    //Might remove this since its useless
+    Description: {
+        type: String,
+        maxLength: 500
+    },
     UrlValue: {
         type: String,
         trim: true,

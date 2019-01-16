@@ -1,0 +1,96 @@
+.newsBody {
+    margin-left: 100px;
+    width: 100%;
+}
+
+.newsContainer {
+    display: grid;
+    grid-template-areas: ". description news navigation .";
+    grid-template-columns: .075fr .2fr .55fr .1fr .075fr;
+    transform: translateY(-7vw);
+}
+
+.newsYear {
+    padding: 1vw;
+    background: white;
+    margin-bottom: 2.5vw;
+}
+
+.newsYearsContainer {
+    grid-area: news;
+}
+
+.newsCard {
+    padding: 1vw;
+    background: white;
+    box-shadow: .2vw .2vw 9px whitesmoke;
+    border-top: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    margin: .5vw 0;
+    position: relative;
+    transition: transform .2s ease-in-out;
+}
+
+.newsCard:hover {
+    transform: translateX(.5vw);
+    transition: transform .2s ease-in-out;
+}
+
+.navigation,
+.description {
+    align-self: flex-start;
+    background: white;
+    margin-top: 5vw;
+    padding: 1.5vw;
+}
+
+.navigation {
+    grid-area: navigation;
+    font-size: 1.1vw;
+    border-left: 2px solid whitesmoke;
+}
+
+.newsLink {
+    position: absolute;
+    top: .5vw;
+    right: .5vw;
+}
+
+.description {
+    grid-area: description;
+    border-right: 2px solid whitesmoke;
+}
+
+.categoryTitle {
+    padding-bottom: 1vw;
+    border-bottom: 3px solid whitesmoke;
+}
+
+.yearLinks {
+    display: flex;
+    flex-direction: column;
+}
+
+.yearlink {
+    margin-bottom: 1vw;
+}
+
+.categoryDesc {
+    text-align: justify;
+}
+
+.newsBackground {
+    height: 20vw;
+    width: 100%;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.newsFile {
+    color: #4183c4;
+    display: inline;
+}
+
+.newsFile:hover {
+    color: #a2b5bf;
+}

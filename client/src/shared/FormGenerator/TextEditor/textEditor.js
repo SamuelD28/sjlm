@@ -123,7 +123,7 @@ class TextEditor extends Component {
                     style={(!this.props.input.inline)? {height: "100%"}: {height: "auto"}}
                     name={this.props.input.name}
                     placeholder={this.props.input.placeholder}
-                    value={this.props.input.value}
+                    value={(this.props.input.value !== undefined)?this.props.input.value: ""}
                     onChange={ (e, data) => this.props.handleChangeTextArea(data)}
                 />
             )

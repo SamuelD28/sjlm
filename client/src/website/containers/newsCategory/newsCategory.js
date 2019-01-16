@@ -49,7 +49,7 @@ class NewsCategory extends Component {
             if (template === "timeline")
                 return <NewsTimeline news={this.state.news} />
             else if (template === "stacked")
-                return <NewsStacked  news={this.state.news} />
+                return <NewsStacked category={this.state.currentCategory} news={this.state.news} />
             else
                 return <NewsPortrait news={this.state.news} />
         }
