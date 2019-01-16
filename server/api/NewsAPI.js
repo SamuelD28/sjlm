@@ -19,6 +19,48 @@ Api.FindNews = function (req, res) {
         });
 }
 
+Api.FindLatestNews = function (req, res) {
+
+    const today = new Date();
+
+    let Query = News.find({
+        DateFrom: {
+            $gte: today
+        }
+    }).sort("DateFrom").populate("Category").limit(3);
+
+    Query.exec()
+        .then((news) => {
+            Utility.GenerateResponse(true, res, news);
+        })
+        .catch((err) => {
+            Utility.GenerateResponse(false, res, err);
+        });
+}
+
+Api.FindNewsByDate = function (req, res) {
+
+    //We substract one to the month because javascript date range from 0 to 11
+    //and not 01 to 12.
+    const today = new Date(req.params.year, req.params.month - 1, 1);
+    const target = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+    let Query = News.find({
+        DateFrom: {
+            $gte: today,
+            $lte: target
+        }
+    }).populate("Category");
+
+    Query.exec()
+        .then((news) => {
+            Utility.GenerateResponse(true, res, news);
+        })
+        .catch((err) => {
+            Utility.GenerateResponse(false, res, err);
+        });
+}
+
 Api.FindImportantNews = function (req, res) {
     let Query = News.find({ Important: true });
     Query.exec()

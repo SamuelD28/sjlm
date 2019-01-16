@@ -1,6 +1,7 @@
 //Initial Declaratinon and importation
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
+import ScrollTop from '../../components/scrollTop/scrollTop.js';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';
@@ -64,6 +65,7 @@ class StaticPage extends Component {
     render() {
         if (this.state.page !== undefined) {
             return <div styleName="staticPage">
+                        <ScrollTop />
                         <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
                         <div styleName="pageLeftColumn">
                             {this.DisplaySocials()}

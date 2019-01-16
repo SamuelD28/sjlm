@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import ScrollTop from '../scrollTop/scrollTop.js';
 
 import { Transition } from 'semantic-ui-react';
 import CSSModules from 'react-css-modules';
@@ -77,11 +78,20 @@ class NewsStacked extends Component {
                             <h1 styleName="categoryTitle">Naviguez</h1>
                             <div styleName="yearLinks">
                             { Object.keys(this.state.years).reverse().map((year) => (
-                                <a key={year} styleName="yearlink" href={`#${year}`}><i className="icon chevron down"></i>{year}</a>
+                                <a onClick={(e) =>this.ScrollToSection(e, year)} styleName="yearlink" href={`#${year}`}><i className="icon chevron down"></i>{year}</a>
                             ))}
                             </div>
                         </div>
                     </Transition>
+    }
+
+    ScrollToSection = (e, id) => {
+        e.preventDefault();
+        document.getElementById(id).scrollIntoView({
+            behavior: 'smooth',
+            block: "start",
+            inline: 'start'
+        });
     }
 
     DisplayDescription = () => {
@@ -99,6 +109,7 @@ class NewsStacked extends Component {
     render() {
         if (this.state.years !== undefined)
             return <div styleName="newsBody">
+                    <ScrollTop />
                     <div className="img-bg" styleName="newsBackground" style={{backgroundImage: `url('${this.state.backgroundImage}')`}}></div>
                     <div styleName="newsContainer">
                         {this.DisplayDescription()}

@@ -1,0 +1,26 @@
+.btnTop {
+    animation: '';
+    position: fixed;
+    text-align: center;
+    padding: .5vw;
+    border-radius: 50%;
+    bottom: 2vw;
+    border: 1px solid #37474F;
+    font-size: 1vw;
+    right: 2vw;
+    z-index: 1;
+    animation-name: bounce;
+    animation-duration: 400ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(-.2vw);
+    }
+    100% {
+        transform: translateY(0vw);
+    }
+}

@@ -12,6 +12,8 @@ router.route("/")
     .get(Api.FindNews)
     .post(Mdw.IsAuth, Api.CreateNews);
 
+router.get("/latest", Api.FindLatestNews);
+router.get("/date/:year/:month", Api.FindNewsByDate);
 router.get("/important", Api.FindImportantNews);
 router.get("/category/:category", Api.FindNewsByCategory);
 router.get("/limit/:number", Api.FindNews);

@@ -1,31 +1,31 @@
-.staticPage{
+.staticPage {
     background: whitesmoke;
     position: relative;
     margin-left: 100px;
 }
 
-.bannerPhoto{
+.bannerPhoto {
     background-size: cover;
     background-attachment: fixed;
-    filter:sepia(40%) brightness(70%);
+    filter: sepia(40%) brightness(70%);
     height: 30em;
     padding: 2.5vw 10vw;
     width: 100%;
     z-index: -1;
 }
 
-.pageLeftColumn{
+.pageLeftColumn {
     align-items: flex-end;
     border-right: 2px solid whitesmoke;
     display: flex;
     flex-direction: column;
     float: left;
-    margin-left:1.5vw;
+    margin-left: 1.5vw;
     transform: translateY(-5%);
     width: 20%;
 }
 
-.pageGallery{
+.pageGallery {
     background: white;
     display: grid;
     grid-template-columns: 1fr;
@@ -34,14 +34,11 @@
     padding: 1vw;
 }
 
-.pageContainer{
+.pageContainer {
     background: white;
     display: inline-block;
     float: left;
     padding: 2.5vw;
-    width: 75%;
+    width: 70%;
     transform: translateY(-10vw);
 }
-
-
-

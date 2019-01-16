@@ -12,13 +12,12 @@ class NewsColumn extends Component {
     state = { animationDelay: 100 }
 
     componentDidMount = async() => {
-        let request = await Ajax.GetData("/api/news/limit/3");
+        let request = await Ajax.GetData("/api/news/latest");
         let itemsVisible = [];
         request.data.map(() => {
             return itemsVisible.push(false);
         });
         this.setState({ news: request.data, itemsVisible: itemsVisible });
-        this.StartNextAnimation(0);
     }
 
     StartNextAnimation = (index) => {
@@ -34,7 +33,7 @@ class NewsColumn extends Component {
     render() {
 
         if (this.state.news !== undefined)
-            return this.state.news.map((item, index) => (
+            return this.state.news.reverse().map((item, index) => (
                 <Transition
                         key={item._id}
                         transitionOnMount={true}
