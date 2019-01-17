@@ -21,10 +21,10 @@
   value: 'testing',
   path: 'LinkTo',
   reason: undefined,
-  model: 
+  model:
    { [Function: model]
      hooks: Kareem { _pres: [Object], _posts: [Object] },
-     base: 
+     base:
       Mongoose {
         connections: [Object],
         models: [Object],
@@ -34,7 +34,7 @@
         plugins: [Object] },
      modelName: 'Menu',
      model: [Function: model],
-     db: 
+     db:
       NativeConnection {
         base: [Object],
         collections: [Object],
@@ -61,7 +61,7 @@
      discriminators: undefined,
      '$appliedMethods': true,
      '$appliedHooks': true,
-     schema: 
+     schema:
       Schema {
         obj: [Object],
         paths: [Object],
@@ -86,7 +86,7 @@
         '$globalPluginsApplied': true,
         _requiredpaths: [Object],
         _indexedpaths: [] },
-     collection: 
+     collection:
       NativeCollection {
         collection: [Object],
         opts: [Object],
@@ -120,10 +120,10 @@
   value: 'avis_public',
   path: 'LinkTo',
   reason: undefined,
-  model: 
+  model:
    { [Function: model]
      hooks: Kareem { _pres: [Object], _posts: [Object] },
-     base: 
+     base:
       Mongoose {
         connections: [Object],
         models: [Object],
@@ -133,7 +133,7 @@
         plugins: [Object] },
      modelName: 'Menu',
      model: [Function: model],
-     db: 
+     db:
       NativeConnection {
         base: [Object],
         collections: [Object],
@@ -160,7 +160,7 @@
      discriminators: undefined,
      '$appliedMethods': true,
      '$appliedHooks': true,
-     schema: 
+     schema:
       Schema {
         obj: [Object],
         paths: [Object],
@@ -185,7 +185,7 @@
         '$globalPluginsApplied': true,
         _requiredpaths: [Object],
         _indexedpaths: [] },
-     collection: 
+     collection:
       NativeCollection {
         collection: [Object],
         opts: [Object],
@@ -219,10 +219,10 @@
   value: 'avis_public',
   path: 'LinkTo',
   reason: undefined,
-  model: 
+  model:
    { [Function: model]
      hooks: Kareem { _pres: [Object], _posts: [Object] },
-     base: 
+     base:
       Mongoose {
         connections: [Object],
         models: [Object],
@@ -232,7 +232,7 @@
         plugins: [Object] },
      modelName: 'Menu',
      model: [Function: model],
-     db: 
+     db:
       NativeConnection {
         base: [Object],
         collections: [Object],
@@ -259,7 +259,7 @@
      discriminators: undefined,
      '$appliedMethods': true,
      '$appliedHooks': true,
-     schema: 
+     schema:
       Schema {
         obj: [Object],
         paths: [Object],
@@ -284,7 +284,7 @@
         '$globalPluginsApplied': true,
         _requiredpaths: [Object],
         _indexedpaths: [] },
-     collection: 
+     collection:
       NativeCollection {
         collection: [Object],
         opts: [Object],
@@ -297,3 +297,104 @@
      Query: { [Function] base: [Object] },
      '$__insertMany': [Function],
      '$init': Promise { null, catch: [Function] } } }
+[2019-01-17T22:24:56.262] [ERROR] error - { ValidationError: Menu validation failed: ParentMenu: Cast to ObjectID failed for value "" at path "ParentMenu"
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:878:10)
+    at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+    at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+    at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+    at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+    at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+    at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+    at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+    at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+    at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+  errors:
+   { ParentMenu:
+      { CastError: Cast to ObjectID failed for value "" at path "ParentMenu"
+          at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:879:7)
+          at model._handleIndex (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:688:14)
+          at model.$set (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:645:22)
+          at model.Document (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:112:12)
+          at model.Model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:65:12)
+          at new model (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:4298:13)
+          at toExecute.push.error (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2464:22)
+          at /home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:31:39
+          at eachOfArrayLike (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:65:9)
+          at exports.default (/home/ubuntu/workspace/project/server/node_modules/async/eachOf.js:9:5)
+          at _parallel (/home/ubuntu/workspace/project/server/node_modules/async/internal/parallel.js:30:5)
+          at parallelLimit (/home/ubuntu/workspace/project/server/node_modules/async/parallel.js:88:26)
+          at utils.promiseOrCallback.cb (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/model.js:2474:5)
+          at Promise (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:234:5)
+          at Object.promiseOrCallback (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/utils.js:233:10)
+        message: 'Cast to ObjectID failed for value "" at path "ParentMenu"',
+        name: 'CastError',
+        stringValue: '""',
+        kind: 'ObjectID',
+        value: '',
+        path: 'ParentMenu',
+        reason: [Object] } },
+  _message: 'Menu validation failed',
+  name: 'ValidationError' }
+[2019-01-17T22:26:28.866] [ERROR] error - { ValidationError: Pages validation failed: PageContent: Path `PageContent` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors:
+   { PageContent:
+      { ValidatorError: Path `PageContent` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageContent` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageContent',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-17T22:33:22.661] [ERROR] error - { ValidationError: CategoryNews validation failed: Template: Path `Template` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Template: 
+      { ValidatorError: Path `Template` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Template` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Template',
+        value: '',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'CategoryNews validation failed',
+  name: 'ValidationError' }

@@ -42,7 +42,7 @@ Translate.ModelKey = function (modelKey) {
     case "Principal":
         translatedContent = "Menu principal";
         break;
-    case "LinkTo":
+    case "Link":
         translatedContent = "Lien de navigation";
         break;
     case "Icon":

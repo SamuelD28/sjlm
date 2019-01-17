@@ -34,7 +34,7 @@ class MenuSchema extends FormSchema {
                 value: ""
             }),
             new InputSchema({
-                name: "LinkTo",
+                name: "Link",
                 type: "select",
                 group: 1,
                 width: 6,

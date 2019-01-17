@@ -1,8 +1,8 @@
 let mongoose = require("mongoose"),
-    Utility = require("../utils/utility.js");
+    Utility = require("../utils/utility.js"),
+    NavigationLinks = require("./NavigationLinksMD.js");
 
 //----------------Model-------------//
-
 let Schema = mongoose.Schema;
 let pagesSchema = new Schema({
     Template: {
@@ -20,10 +20,6 @@ let pagesSchema = new Schema({
             validator: (value) => !(/[\@\#\$\%\?\*\(\)]/g.test(value)),
             kind: 'invalid characters',
         },
-    },
-    PageTitleUrl: {
-        type: String,
-        unique: 1
     },
     PageContent: {
         type: String,
@@ -48,6 +44,10 @@ let pagesSchema = new Schema({
             message: "The value exceeds the number of images allowed",
             kind: "maximages"
         }
+    },
+    Link: {
+        type: Schema.Types.ObjectId,
+        ref: "NavigationLinks"
     }
 }, {
     timestamps: true
