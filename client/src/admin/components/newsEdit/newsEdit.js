@@ -32,12 +32,12 @@ class NewsEdit extends Component {
     render() {
         return (
             <FormGenerator
-                Inputs = { NewsSchema.GetBindedInputs(this.props.news)}
-                FormConfig = { this.PutConfig }
-                FormStatus = { new FormStatus() }
-                TextEditor = { NewsSchema.GetBindedEditor(this.props.news.Description) }
-                RefreshDataSet = { this.props.RefreshDataSet }
-                />
+            Inputs = { NewsSchema.GetBindedInputs(this.props.news) }
+            FormConfig = { this.PutConfig }
+            FormStatus = { new FormStatus() }
+            TextEditor = { NewsSchema.GetBindedEditor(this.props.news.Description) }
+            RefreshDataSet = { this.props.RefreshDataSet }
+            />
         )
     }
 }

@@ -1,0 +1,10 @@
+.navigation {
+    background: white;
+    box-shadow: 0.2vw 0.2vw 0.5vw #D4D4D4;
+    padding: 1vw;
+}
+
+.navigationCards {
+    display: grid;
+    grid-template-columns: .5fr .5fr;
+}

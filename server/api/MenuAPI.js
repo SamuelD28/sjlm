@@ -43,26 +43,28 @@ Api.UpdateMenu = function (req, res) {
     Query.exec()
         .then((menu) => {
 
-            if (menu.ParentMenu.toString() !== req.body.ParentMenu.toString()) {
+            if (!menu.Principal) {
+                if (menu.ParentMenu.toString() !== req.body.ParentMenu.toString()) {
 
-                Menu.findById(menu.ParentMenu)
-                    .then((originalParent) => {
-                        let index = originalParent.SubMenu.indexOf(menu._id);
-                        originalParent.SubMenu.splice(index, 1);
-                        originalParent.save();
-                    })
-                    .catch((err) => {
-                        Utility.GenerateResponse(false, res, err);
-                    });
+                    Menu.findById(menu.ParentMenu)
+                        .then((originalParent) => {
+                            let index = originalParent.SubMenu.indexOf(menu._id);
+                            originalParent.SubMenu.splice(index, 1);
+                            originalParent.save();
+                        })
+                        .catch((err) => {
+                            Utility.GenerateResponse(false, res, err);
+                        });
 
-                Menu.findById(req.body.ParentMenu)
-                    .then((newParent) => {
-                        newParent.SubMenu.push(menu);
-                        newParent.save();
-                    })
-                    .catch((err) => {
-                        Utility.GenerateResponse(false, res, err);
-                    });
+                    Menu.findById(req.body.ParentMenu)
+                        .then((newParent) => {
+                            newParent.SubMenu.push(menu);
+                            newParent.save();
+                        })
+                        .catch((err) => {
+                            Utility.GenerateResponse(false, res, err);
+                        });
+                }
             }
 
             Utility.GenerateResponse(true, res, menu);

@@ -105,3 +105,429 @@
     at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
     at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
     at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-16T19:59:03.806] [ERROR] error - TypeError: Cannot read property 'toString' of undefined
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:46:32)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-16T19:59:17.306] [ERROR] error - TypeError: Cannot read property 'toString' of undefined
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:46:32)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-16T19:59:23.536] [ERROR] error - TypeError: Cannot read property 'toString' of undefined
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:46:32)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-16T20:00:59.927] [ERROR] error - TypeError: Cannot read property 'toString' of undefined
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/MenuAPI.js:47:32)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-17T18:16:54.541] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:16:54.611] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:16:54.614] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:16:54.739] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:16:55.143] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:16:55.203] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:16:55.213] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:16:55.279] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:22:59.524] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:22:59.652] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:22:59.678] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:22:59.714] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:22:59.737] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:22:59.804] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:29:42.774] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:29:42.842] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:29:42.913] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:29:42.962] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:29:42.987] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:29:43.025] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:29:43.057] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:29:43.129] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:42:08.401] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:42:08.466] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:42:37.404] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:42:37.471] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:44:38.697] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:44:38.897] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:46:02.403] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:46:02.468] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:46:20.420] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:46:20.499] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:51:31.412] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:51:31.481] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:51:49.397] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:51:49.458] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:53:35.404] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:53:35.465] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T18:55:51.399] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T18:55:51.490] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:08:33.409] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:08:33.481] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:09:45.116] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:09:45.171] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:10:43.415] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:10:43.536] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:11:02.404] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:11:02.466] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:12:37.417] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:12:37.480] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:13:49.409] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:13:49.474] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:15:38.407] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:15:38.472] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:16:22.404] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:16:22.468] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:17:58.409] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:17:58.473] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:18:41.424] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:18:41.490] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:19:02.414] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:19:02.508] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:19:16.411] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:19:16.481] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:20:18.446] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:20:18.531] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:20:33.405] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:20:33.471] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:21:32.423] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:21:32.490] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:23:19.517] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:23:19.580] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:23:50.424] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:23:50.516] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:24:04.417] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:24:04.488] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:25:11.416] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:25:11.484] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:28:24.409] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:28:24.477] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:28:56.416] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:28:56.483] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:30:40.415] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:30:40.497] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:31:15.624] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:31:15.689] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:31:31.414] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:31:31.482] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:32:25.416] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:32:25.484] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:33:08.645] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:33:08.719] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:33:43.421] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:33:43.482] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:34:14.415] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:34:14.481] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:34:45.420] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:34:45.491] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:35:27.418] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:35:27.492] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:36:06.417] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:36:06.482] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:36:32.421] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:36:32.487] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:38:48.419] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:38:48.483] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:40:25.410] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:40:25.470] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:41:26.428] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:41:26.503] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:41:34.415] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:41:34.480] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:41:54.410] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:41:54.475] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:42:20.425] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:42:20.549] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:43:13.446] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:43:13.526] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:43:56.415] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:43:56.475] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:44:05.422] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:44:05.492] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:44:15.425] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:44:15.495] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:47:09.423] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:47:09.487] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:47:47.418] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:47:47.571] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:49:04.414] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:49:04.478] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:49:29.420] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:49:29.486] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:51:27.528] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:51:27.591] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:51:46.467] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:51:46.623] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)
+[2019-01-17T19:52:16.635] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-17T19:52:16.746] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:21)

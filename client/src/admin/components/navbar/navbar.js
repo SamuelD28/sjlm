@@ -27,13 +27,6 @@ const Navbar = (props) => {
             </NavLink>
         </li>
         <li>
-            <NavLink styleName="navbarItem" to="/admin/verbal">
-                <span styleName="navbarIcon"><i className="icon pencil"></i></span>
-                <div styleName="navbarLink">Procès-Verbaux</div>
-                <div styleName="navbarBorder"></div>
-            </NavLink>
-        </li>
-        <li>
             <NavLink styleName="navbarItem" to="/admin/pages">
                 <span styleName="navbarIcon"><i className="icon copy"></i></span>
                 <div styleName="navbarLink">Pages</div>
@@ -58,6 +51,13 @@ const Navbar = (props) => {
             <NavLink styleName="navbarItem" to="/admin/mails">
                 <span styleName="navbarIcon"><i className="icon envelope"></i></span>
                 <div styleName="navbarLink">Mail</div>
+                <div styleName="navbarBorder"></div>
+            </NavLink>
+        </li>
+        <li>
+            <NavLink styleName="navbarItem" to="/admin/administrator">
+                <span styleName="navbarIcon"><i className="icon chess"></i></span>
+                <div styleName="navbarLink">Administrateur</div>
                 <div styleName="navbarBorder"></div>
             </NavLink>
         </li>
