@@ -62,7 +62,7 @@ class MenuSchema extends FormSchema {
                 width: 6,
                 label: "Menu parent",
                 value: "",
-                generator: () =>  this.menuOptions
+                generator: () => this.menuOptions
             }),
             new InputSchema({
                 name: "Icon",
@@ -74,7 +74,7 @@ class MenuSchema extends FormSchema {
                     return !inputs[2].value;
                 },
                 value: "",
-                list : this.GenererateIconOptions()
+                list: this.GenererateIconOptions()
             }),
         ];
         this.Init();
@@ -98,7 +98,7 @@ class MenuSchema extends FormSchema {
      */
     GenererateMenuOptions = async(p_menus) => {
 
-        if(p_menus !== undefined){
+        if (p_menus !== undefined) {
             this.menuOptions = p_menus;
             return;
         }
@@ -113,7 +113,8 @@ class MenuSchema extends FormSchema {
                     menusOptions.push(menuObject);
                 }
                 return menusOptions;
-            })}
+            })
+        }
         this.menuOptions = menusOptions;
     }
 
@@ -144,7 +145,7 @@ class MenuSchema extends FormSchema {
             let IconsObject = { text: icon, value: icon, icon: icon };
             return IconsOptions.push(IconsObject);
         });
-        return  IconsOptions;
+        return IconsOptions;
     }
 
     /**
@@ -154,10 +155,10 @@ class MenuSchema extends FormSchema {
     GenerateLinksOptions = async() => {
         let navigationlinks = await Ajax.GetData("/api/navigationlinks");
         let NavigationOptions = [];
-        NavigationOptions.push({text: "Aucun", value: null});
+        NavigationOptions.push({ text: "Aucun", value: null });
         if (navigationlinks.data !== undefined) {
             navigationlinks.data.map((navlink, index) => {
-                let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink.Link, key : navlink._id };
+                let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink._id, key: navlink._id };
                 return NavigationOptions.push(NavigationObject);
             });
         }

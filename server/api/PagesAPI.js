@@ -76,26 +76,7 @@ Api.UpdatePages = function (req, res) {
             if (req.body.PageTitle !== page.PageTitle) {
                 let oldUrlValue = Utility.ConvertToUrlSafe(page.PageTitle);
                 let newUrlValue = Utility.ConvertToUrlSafe(req.body.PageTitle);
-                NavigationLinks.findOne({ Link: "/pages/static/" + oldUrlValue })
-                    .then((navlink) => {
-                        navlink.Link = "/pages/static/" + newUrlValue;
-                        navlink.Title = req.body.PageTitle;
-                        navlink.save();
-                    })
-                    .catch((err) => {
-                        Utility.WriteInLog("error", err);
-                    });
-                Menus.find({ LinkTo: "/pages/static/" + oldUrlValue })
-                    .exec()
-                    .then((menus) => {
-                        menus.forEach((menu) => {
-                            menu.LinkTo = "/pages/static/" + newUrlValue;
-                            menu.save();
-                        });
-                    })
-                    .catch((err) => {
-                        Utility.WriteInLog("error", err);
-                    });
+                NavigationLinks.findByLinkAndUpdate(oldUrlValue, { Link: newUrlValue, Title: req.body.PageTitle, Category: "pages" });
             }
 
             Utility.GenerateResponse(true, res, page);
@@ -110,24 +91,8 @@ Api.DeletePages = function (req, res) {
     let Query = Pages.findByIdAndRemove(req.params.id);
     Query.exec()
         .then((page) => {
-
             let urlValue = Utility.ConvertToUrlSafe(page.PageTitle);
-            NavigationLinks.remove({ Link: "/pages/static/" + urlValue })
-                .catch((err) => {
-                    Utility.WriteInLog("error", err);
-                });
-            Menus.find({ LinkTo: "/pages/static/" + urlValue })
-                .exec()
-                .then((menus) => {
-                    menus.forEach((menu) => {
-                        menu.LinkTo = null;
-                        menu.save();
-                    });
-                })
-                .catch((err) => {
-                    Utility.WriteInLog("error", err);
-                });
-
+            NavigationLinks.findByIdAndRemove(urlValue, "pages");
             Utility.GenerateResponse(true, res, page);
         })
         .catch((err) => {

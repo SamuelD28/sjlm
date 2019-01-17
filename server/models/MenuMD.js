@@ -1,4 +1,5 @@
-let mongoose = require("mongoose");
+let mongoose = require("mongoose"),
+    NavigationLinks = require("./NavigationLinksMD.js");
 
 
 let Schema = mongoose.Schema;
@@ -14,7 +15,8 @@ let menuSchema = new Schema({
         default: false
     },
     LinkTo: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "NavigationLinks"
     },
     Icon: {
         type: String,
