@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import ScrollTop from '../../components/scrollTop/scrollTop.js';
+import { Transition } from 'semantic-ui-react';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';
@@ -42,11 +43,9 @@ class StaticPage extends Component {
 
     DisplayImageGallery = (images) => {
         if (images.length > 1)
-            return (
-                <div styleName="pageGallery">
-            <ImgGalleryColumn images={images} />
-        </div>
-            )
+            return <div styleName="pageGallery">
+                        <ImgGalleryColumn images={images} />
+                    </div>
     }
 
     DisplayFiles = () => {
@@ -61,23 +60,36 @@ class StaticPage extends Component {
             return <span><br/></span>
     }
 
+    DisplayBanner = () => {
+
+        if (this.state.page.Template === 0)
+            return <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
+        else if (this.state.page.Template === 1)
+            return <div styleName="noBanner"></div>
+        else
+            return <div styleName="fullBanner" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
+
+    }
+
     render() {
         if (this.state.page !== undefined) {
             return <div styleName="staticPage">
-                        <ScrollTop />
-                        <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
-                        <div styleName="pageLeftColumn">
-                            {this.DisplaySocials()}
-                            {this.DisplayImageGallery(this.state.page.PageGallery)}
-                        </div>
-                        <div styleName="pageContainer">
-                            <PageHeader
-                                title={this.state.page.PageTitle}
-                                />
-                            <PageContent content={this.state.page.PageContent} />
-                            {this.DisplayFiles()}
-                        </div>
-                        <PageFooter />
+                            {this.DisplayBanner()}
+                            <ScrollTop />
+                            <div style={(this.state.page.Template === 2)?{width :"80%"}:{width: "90%"}}>
+                                <div styleName="pageLeftColumn">
+                                    {this.DisplaySocials()}
+                                    {this.DisplayImageGallery(this.state.page.PageGallery)}
+                                </div>
+                                <div styleName="pageContainer" className={(this.state.page.Template === 0)?"pushTop" : "pushBot"}>
+                                    <PageHeader
+                                        title={this.state.page.PageTitle}
+                                        />
+                                    <PageContent content={this.state.page.PageContent} />
+                                    {this.DisplayFiles()}
+                                </div>
+                            </div>
+                        <PageFooter template={this.state.page.Template} />
                     </div>
         }
     }

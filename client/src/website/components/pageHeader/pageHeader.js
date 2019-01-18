@@ -1,4 +1,5 @@
 import React from 'react';
+import { Transition } from 'semantic-ui-react'
 import moment from 'moment';
 
 const pageCategoryStyle = {
@@ -24,13 +25,16 @@ const DisplayDate = (date) => {
 }
 
 const PageHeader = (props) => {
-    return (
-        <div>
-        <h2 style={pageCategoryStyle}>{props.category}</h2>
-        <h1 style={pageTitleStyle}>{props.title}</h1>
-        {DisplayDate(props.date)}
-    </div>
-    )
+    return <Transition
+                animation="fade right"
+                duration={1000}
+                transitionOnMount={true}>
+                <div>
+                    <h2 style={pageCategoryStyle}>{props.category}</h2>
+                    <h1 style={pageTitleStyle}>{props.title}</h1>
+                    {DisplayDate(props.date)}
+                </div>
+            </Transition>
 }
 
 export default PageHeader;

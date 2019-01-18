@@ -1,11 +1,12 @@
 .btnTop {
-    animation: '';
+    cursor: pointer;
     position: fixed;
     text-align: center;
     padding: .5vw;
     border-radius: 50%;
     bottom: 2vw;
-    border: 1px solid #37474F;
+    background: #37474F;
+    color: whitesmoke;
     font-size: 1vw;
     right: 2vw;
     z-index: 1;
@@ -15,6 +16,8 @@
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
 }
+
+.btnTop:hover {}
 
 @keyframes bounce {
     0% {

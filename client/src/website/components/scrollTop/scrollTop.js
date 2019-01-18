@@ -10,9 +10,9 @@ class ScrollTop extends Component {
     }
 
     render() {
-        return <button onClick={this.ScrollTop} styleName="btnTop" className="btn btn-outline-primary">
+        return <div onClick={this.ScrollTop} styleName="btnTop" className="">
             <i style={{margin: "0"}} className="icon chevron up"></i>
-        </button>
+        </div>
     }
 
 }
