@@ -19,26 +19,25 @@ class StaticPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { history: this.props.match.params.link };
     }
     componentDidMount() {
         this.GetPage();
     }
 
-    GetPage = async() => {
-        let request = await Ajax.GetData(`/api/pages/pageurl/${this.props.match.params.link}`);
-
-        if (request.data !== undefined)
-            this.setState({ page: request.data, pageurl: this.props.match.params.link });
+    componentDidUpdate() {
+        this.CompareHistory();
     }
 
-    ComparePageWithState = () => {
-        if (this.props.match.params.link !== this.state.pageurl)
+    CompareHistory = () => {
+        if (this.props.match.params.link !== this.state.history)
             this.GetPage();
     }
 
-    componentDidUpdate() {
-        this.ComparePageWithState();
+    GetPage = async() => {
+        let request = await Ajax.GetData(`/api/pages/pageurl/${this.props.match.params.link}`);
+        if (request.success)
+            this.setState({ page: request.data, history: this.props.match.params.link });
     }
 
     DisplayImageGallery = (images) => {
