@@ -1,8 +1,7 @@
 const Pages = require("../models/PagesMD.js"),
     Api = new Object(),
     Utility = require("../utils/utility.js"),
-    NavigationLinks = require("../models/NavigationLinksMD.js"),
-    Menu = require("../models/MenuMD.js");
+    NavigationLinks = require("../models/NavigationLinksMD.js");
 
 Api.GetOnePage = function (req, res) {
     let Query = Pages.findById(req.params.id);
