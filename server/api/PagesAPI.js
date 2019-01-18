@@ -16,14 +16,20 @@ Api.GetOnePage = function (req, res) {
 }
 
 Api.GetPageByPageUrl = function (req, res) {
-    let Query = Pages.findOne({ PageTitleUrl: req.params.pageurl });
-    Query.exec()
-        .then((page) => {
-            Utility.GenerateResponse(true, res, page);
-        })
-        .catch((err) => {
-            Utility.WriteInLog("error", err);
+
+    NavigationLinks.findOne({ Link: "/pages/static/" + req.params.pageurl })
+        .then((link) => {
+            if (link) {
+                Pages.findOne({ Link: link._id })
+                    .then((page) => {
+                        Utility.GenerateResponse(true, res, page);
+                    })
+                    .catch((err) => {
+                        Utility.WriteInLog("error", err);
+                    });
+            }
         });
+
 }
 
 Api.GetPages = function (req, res) {

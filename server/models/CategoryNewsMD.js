@@ -1,6 +1,5 @@
 let mongoose = require("mongoose"),
-    Utility = require("../utils/utility.js"),
-    NavigationLinks = require("./NavigationLinksMD.js");
+    Utility = require("../utils/utility.js");
 
 let Schema = mongoose.Schema;
 let CategoryNewsSchema = new Schema({
@@ -20,11 +19,6 @@ let CategoryNewsSchema = new Schema({
     Description: {
         type: String,
         maxLength: 500
-    },
-    UrlValue: {
-        type: String,
-        trim: true,
-        maxLength: 50
     },
     Link: {
         type: Schema.Types.ObjectId,

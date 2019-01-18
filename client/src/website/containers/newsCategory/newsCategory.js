@@ -19,26 +19,38 @@ class NewsCategory extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { currentCategory: "" };
+        this.state = { currentCategory: "", history: this.props.match.params.category };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`);
+        if (category.success)
+            this.setState({ currentCategory: category.data })
+
         this.GetNews();
     }
 
     componentDidUpdate() {
-        this.GetNews();
+        this.CompareCategory();
+    }
+
+    CompareCategory = async() => {
+
+        if (this.state.history !== this.props.match.params.category) {
+            let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`)
+            if (category.success) {
+                await this.setState({ currentCategory: category.data, history: this.props.match.params.category });
+                await this.GetNews();
+            }
+        }
     }
 
     GetNews = async() => {
-        if (this.state.currentCategory.UrlValue !== this.props.match.params.category) {
-            let news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
-            let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`)
-
-            if (news.success && category.success)
-                this.setState({ news: news.data, currentCategory: category.data });
-        }
+        let news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
+        if (news.success)
+            await this.setState({ news: news.data });
     }
+
 
     GenerateNewsGrid = () => {
         if (this.state.news !== undefined && this.state.currentCategory !== "") {

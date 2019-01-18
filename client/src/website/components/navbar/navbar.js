@@ -49,7 +49,7 @@ class Navbar extends Component {
                     animation="fade right"
                     >
                     <NavLink
-                        to={(menu.LinkTo !== undefined)?menu.LinkTo.Link: ""}
+                        to={(menu.Link !== null)?menu.Link.Link: ""}
                         styleName="navbarItem primaryLink"
                         onMouseEnter={
                             (e) => {
@@ -81,7 +81,7 @@ class Navbar extends Component {
 
     //Method that create the page link that will be inserted in the menu
     CreatePageLink = (menu) => {
-        return <NavLink to={menu.LinkTo.Link}
+        return <NavLink to={(menu.Link !== null)?menu.Link.Link:""}
                         styleName="secondaryLink"
                         key={menu._id}
                         onClick={(e) =>{

@@ -50,7 +50,7 @@ class Index extends Component {
                                         <Route exact path="/contact" component={Contact} />
                                         <Route exact path="/conseil" component={Council} />
                                         <Route exact path="/news/:id" component={NewsPage} />
-                                        <Route exact path="/pages/static/:id" component={StaticPage} />
+                                        <Route exact path="/pages/static/:link" component={StaticPage} />
                                         <Route exact path="/news/category/:category" component={NewsCategory} />
                                         <Route path="/">
                                             <Redirect to="/" />

@@ -1,5 +1,4 @@
-let mongoose        = require("mongoose"),
-    Occupations     = require("./OccupationsMD.js");
+let mongoose = require("mongoose");
 
 //----------------Model-------------//
 
@@ -37,8 +36,8 @@ let membersSchema = new Schema({
         required: true,
         lowercase: true
     },
-    Seat : {
-        type : Number
+    Seat: {
+        type: Number
     },
     PersonnalNote: {
         type: String,

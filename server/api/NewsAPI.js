@@ -2,7 +2,8 @@
 let News = require("../models/NewsMD.js"),
     CategoryNews = require("../models/CategoryNewsMD.js"),
     Api = new Object(),
-    Utility = require("../utils/utility.js");
+    Utility = require("../utils/utility.js"),
+    NavigationLinks = require("../models/NavigationLinksMD.js");
 
 //--------------Model-------------//
 
@@ -85,23 +86,30 @@ Api.FindNewsById = function (req, res) {
 }
 
 Api.FindNewsByCategory = function (req, res) {
-    CategoryNews.findOne({ UrlValue: req.params.category })
-        .exec()
-        .then((category) => {
-            News.find({ Category: category._id })
-                .then((news) => {
-                    Utility.GenerateResponse(true, res, news);
-                })
-                .catch((err) => {
-                    Utility.GenerateResponse(false, res, err);
-                    Utility.WriteInLog("error", err);
-                });
+    NavigationLinks.findOne({ Link: "/news/category/" + req.params.category })
+        .then((link) => {
+            if (link) {
+                CategoryNews.findOne({ Link: link._id })
+                    .exec()
+                    .then((category) => {
+                        News.find({ Category: category._id })
+                            .then((news) => {
+                                Utility.GenerateResponse(true, res, news);
+                            })
+                            .catch((err) => {
+                                Utility.GenerateResponse(false, res, err);
+                                Utility.WriteInLog("error", err);
+                            });
+                    })
+                    .catch((err) => {
+                        Utility.GenerateResponse(false, res, err);
+                        Utility.WriteInLog("error", err);
+                    });
+            }
+            else {
+                Utility.GenerateResponse(false, res, [{ message: "No link was found" }]);
+            }
         })
-        .catch((err) => {
-            Utility.GenerateResponse(false, res, err);
-            Utility.WriteInLog("error", err);
-        });
-
 }
 
 Api.CreateNews = function (req, res) {

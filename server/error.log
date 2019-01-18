@@ -488,8 +488,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { PageContent: 
+  errors:
+   { PageContent:
       { ValidatorError: Path `PageContent` is required.
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -516,8 +516,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { PageContent: 
+  errors:
+   { PageContent:
       { ValidatorError: Path `PageContent` is required.
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -583,8 +583,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { PageContent: 
+  errors:
+   { PageContent:
       { ValidatorError: Path `PageContent` is required.
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -819,8 +819,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { PageTitle: 
+  errors:
+   { PageTitle:
       { ValidatorError: Validator failed for path `PageTitle` with value `Accès à l'information`
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -847,8 +847,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { PageTitle: 
+  errors:
+   { PageTitle:
       { ValidatorError: Validator failed for path `PageTitle` with value `Virez Vert!`
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -875,8 +875,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { PageTitle: 
+  errors:
+   { PageTitle:
       { ValidatorError: Validator failed for path `PageTitle` with value `Virez Vert!`
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -935,3 +935,188 @@
   index: 0,
   code: 11000,
   errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }' }
+[2019-01-18T02:56:18.200] [ERROR] error - { CastError: Cast to ObjectId failed for value "/pages/static/budget_annuel_" at path "_id" for model "NavigationLinks"
+    at MongooseError.CastError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schema/objectid.js:155:13)
+    at ObjectId.SchemaType.applySetters (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:724:12)
+    at ObjectId.SchemaType._castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1113:15)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1103:15)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1052:18
+    at Array.map (native)
+    at ObjectId.handle$in (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1048:14)
+    at ObjectId.SchemaType.castForQuery (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1100:20)
+    at ObjectId.SchemaType.castForQueryWrapper (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:1077:17)
+    at cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/cast.js:284:39)
+    at Query.cast (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:3751:12)
+    at Query._castConditions (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1549:10)
+    at Query._find (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/query.js:1564:8)
+    at process.nextTick (/home/ubuntu/workspace/project/server/node_modules/kareem/index.js:333:33)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+  message: 'Cast to ObjectId failed for value "/pages/static/budget_annuel_" at path "_id" for model "NavigationLinks"',
+  name: 'CastError',
+  stringValue: '"/pages/static/budget_annuel_"',
+  kind: 'ObjectId',
+  value: '/pages/static/budget_annuel_',
+  path: '_id',
+  reason: undefined,
+  model:
+   { [Function: model]
+     hooks: Kareem { _pres: [Object], _posts: [Object] },
+     base:
+      Mongoose {
+        connections: [Object],
+        models: [Object],
+        modelSchemas: [Object],
+        options: [Object],
+        _pluralize: [Function: pluralize],
+        plugins: [Object] },
+     modelName: 'NavigationLinks',
+     model: [Function: model],
+     db:
+      NativeConnection {
+        base: [Object],
+        collections: [Object],
+        models: [Object],
+        config: [Object],
+        replica: false,
+        options: null,
+        otherDbs: [],
+        relatedDbs: {},
+        states: [Object],
+        _readyState: 1,
+        _closeCalled: false,
+        _hasOpened: true,
+        _listening: false,
+        _connectionOptions: [Object],
+        name: 'sjlm',
+        host: 'localhost',
+        port: 27017,
+        user: null,
+        pass: null,
+        client: [Object],
+        '$initialConnection': [Object],
+        db: [Object] },
+     discriminators: undefined,
+     '$appliedMethods': true,
+     findByIdAndCleanse: [Function],
+     '$appliedHooks': true,
+     schema:
+      Schema {
+        obj: [Object],
+        paths: [Object],
+        aliases: {},
+        subpaths: {},
+        virtuals: [Object],
+        singleNestedPaths: {},
+        nested: {},
+        inherits: {},
+        callQueue: [],
+        _indexes: [],
+        methods: {},
+        methodOptions: {},
+        statics: [Object],
+        tree: [Object],
+        query: {},
+        childSchemas: [],
+        plugins: [Object],
+        s: [Object],
+        _userProvidedOptions: {},
+        options: [Object],
+        '$globalPluginsApplied': true },
+     collection:
+      NativeCollection {
+        collection: [Object],
+        opts: [Object],
+        name: 'navigationlinks',
+        collectionName: 'navigationlinks',
+        conn: [Object],
+        queue: [],
+        buffer: false,
+        emitter: [Object] },
+     Query: { [Function] base: [Object] },
+     '$__insertMany': [Function],
+     '$init': Promise { null, catch: [Function] } } }
+[2019-01-18T02:57:21.915] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:57:21.916] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:57:21.939] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:57:22.520] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:57:52.137] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:57:52.139] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:57:52.676] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:58:18.611] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:58:39.816] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:58:43.871] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:58:50.882] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T02:59:21.029] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/PagesAPI.js:22:21)
+[2019-01-18T03:05:45.319] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:25:21)
+[2019-01-18T03:25:35.544] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-18T03:25:35.610] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-18T03:25:35.611] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:25:21)
+[2019-01-18T03:25:35.730] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:25:21)
+[2019-01-18T03:25:36.164] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-18T03:25:36.221] [ERROR] error - TypeError: Cannot read property '_id' of null
+    at CategoryNews.findOne.exec.then (/home/ubuntu/workspace/project/server/api/NewsAPI.js:91:43)
+[2019-01-18T03:25:36.229] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:25:21)
+[2019-01-18T03:25:36.288] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:25:21)
+[2019-01-18T03:31:58.632] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at Query.exec.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:26:21)
+[2019-01-18T03:37:18.991] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at CategoryNews.findOne.then (/home/ubuntu/workspace/project/server/api/CategoryNewsAPI.js:28:33)

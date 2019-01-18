@@ -37,6 +37,7 @@ class MenuSchema extends FormSchema {
                 name: "Link",
                 type: "select",
                 group: 1,
+                id: true,
                 width: 6,
                 search: true,
                 clearable: false,

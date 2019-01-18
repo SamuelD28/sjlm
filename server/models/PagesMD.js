@@ -1,6 +1,4 @@
-let mongoose = require("mongoose"),
-    Utility = require("../utils/utility.js"),
-    NavigationLinks = require("./NavigationLinksMD.js");
+let mongoose = require("mongoose");
 
 //----------------Model-------------//
 let Schema = mongoose.Schema;

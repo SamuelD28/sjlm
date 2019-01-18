@@ -1,5 +1,4 @@
-let mongoose = require("mongoose"),
-    CategoryNews = require("./CategoryNewsMD.js");
+let mongoose = require("mongoose");;
 
 //--------------Model-------------//
 let newsSchema = new mongoose.Schema({

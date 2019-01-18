@@ -26,14 +26,14 @@ class StaticPage extends Component {
     }
 
     GetPage = async() => {
-        let request = await Ajax.GetData(`/api/pages/pageurl/${this.props.match.params.id}`);
+        let request = await Ajax.GetData(`/api/pages/pageurl/${this.props.match.params.link}`);
 
         if (request.data !== undefined)
-            this.setState({ page: request.data, pageurl: this.props.match.params.id });
+            this.setState({ page: request.data, pageurl: this.props.match.params.link });
     }
 
     ComparePageWithState = () => {
-        if (this.props.match.params.id !== this.state.pageurl)
+        if (this.props.match.params.link !== this.state.pageurl)
             this.GetPage();
     }
 
