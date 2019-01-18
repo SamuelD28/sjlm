@@ -15,9 +15,9 @@ let pagesSchema = new Schema({
         type: String,
         required: true,
         maxlength: 60,
-        unique: 1,
+        unique: true,
         validate: {
-            validator: (value) => !(/[\@\#\$\%\?\*\(\)]/g.test(value)),
+            validator: (value) => !(/[\<\>\%\{\}\^\~\[\]\(\)]/g.test(value)),
             kind: 'invalid characters',
         },
     },
@@ -51,16 +51,6 @@ let pagesSchema = new Schema({
     }
 }, {
     timestamps: true
-});
-
-pagesSchema.pre("save", function (next) {
-    this.PageTitleUrl = Utility.ConvertToUrlSafe(this.PageTitle);
-    next();
-});
-
-pagesSchema.pre("update", function (next) {
-    this.PageTitleUrl = Utility.ConvertToUrlSafe(this.PageTitle);
-    next();
 });
 
 let Pages = mongoose.model("Pages", pagesSchema);

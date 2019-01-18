@@ -377,8 +377,8 @@
     at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
     at _combinedTickCallback (internal/process/next_tick.js:73:7)
     at process._tickCallback (internal/process/next_tick.js:104:9)
-  errors: 
-   { Template: 
+  errors:
+   { Template:
       { ValidatorError: Path `Template` is required.
           at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
           at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
@@ -398,3 +398,540 @@
         '$isValidatorError': true } },
   _message: 'CategoryNews validation failed',
   name: 'ValidationError' }
+[2019-01-17T22:37:11.570] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/workspace/project/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/workspace/project/server/utils/utility.js:56:13)
+    at NavigationLinks.findByIdAndRemove.then (/home/ubuntu/workspace/project/server/api/NavigationLinksAPI.js:50:21)
+    at process._tickCallback (internal/process/next_tick.js:109:7)
+[2019-01-17T22:42:38.679] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:45:29.772] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:46:19.155] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:49:57.316] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:51:40.520] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:52:00.607] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:53:31.920] [ERROR] error - { ValidationError: Pages validation failed: PageContent: Path `PageContent` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageContent: 
+      { ValidatorError: Path `PageContent` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageContent` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageContent',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-17T22:57:11.490] [ERROR] error - { ValidationError: Pages validation failed: PageContent: Path `PageContent` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageContent: 
+      { ValidatorError: Path `PageContent` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageContent` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageContent',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-17T22:59:11.957] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T22:59:39.635] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:00:41.984] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:02:34.759] [ERROR] error - { ValidationError: Pages validation failed: PageContent: Path `PageContent` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageContent: 
+      { ValidatorError: Path `PageContent` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `PageContent` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageContent',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-17T23:03:52.748] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:04:31.895] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:05:41.329] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:07:14.681] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:07:30.435] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:17:43.793] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:18:51.673] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-17T23:19:20.949] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Histoire" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Histoire" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Histoire" }' }
+[2019-01-17T23:21:23.483] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-18T01:25:18.458] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-18T01:27:02.343] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-18T01:27:58.303] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-18T01:29:57.521] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-18T01:31:50.093] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitleUrl_1 dup key: { : null }' }
+[2019-01-18T01:37:20.033] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Taxes & Évaluations foncières" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Taxes & Évaluations foncières" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Taxes & Évaluations foncières" }' }
+[2019-01-18T01:38:14.168] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Taxes & Évaluations foncières" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Taxes & Évaluations foncières" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Taxes & Évaluations foncières" }' }
+[2019-01-18T01:47:00.119] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `Accès à l'information`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `Accès à l'information`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `Accès à l\'information`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'Accès à l\'information',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-18T01:48:06.759] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `Virez Vert!`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `Virez Vert!`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `Virez Vert!`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'Virez Vert!',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-18T01:48:37.856] [ERROR] error - { ValidationError: Pages validation failed: PageTitle: Validator failed for path `PageTitle` with value `Virez Vert!`
+    at MongooseError.ValidationError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validation.js:27:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1880:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1748:17)
+    at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:808:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { PageTitle: 
+      { ValidatorError: Validator failed for path `PageTitle` with value `Virez Vert!`
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/error/validator.js:27:11)
+          at validate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:805:13)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:854:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/project/server/node_modules/mongoose/lib/schematype.js:814:19)
+          at /home/ubuntu/workspace/project/server/node_modules/mongoose/lib/document.js:1746:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Validator failed for path `PageTitle` with value `Virez Vert!`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'PageTitle',
+        value: 'Virez Vert!',
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-01-18T01:49:03.864] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }' }
+[2019-01-18T01:55:59.737] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/ecocentre" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/ecocentre" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/ecocentre" }' }
+[2019-01-18T01:58:26.550] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }
+    at Function.MongoError.create (/home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/error.js:49:10)
+    at toError (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/ubuntu/workspace/project/server/node_modules/mongodb/lib/operations/collection_ops.js:803:39)
+    at /home/ubuntu/workspace/project/server/node_modules/mongodb-core/lib/connection/pool.js:531:18
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  name: 'MongoError',
+  message: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }',
+  driver: true,
+  index: 0,
+  code: 11000,
+  errmsg: 'E11000 duplicate key error collection: sjlm.navigationlinks index: Link_1 dup key: { : "/pages/static/histoire" }' }

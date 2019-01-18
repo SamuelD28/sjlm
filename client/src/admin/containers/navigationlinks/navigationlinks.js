@@ -18,6 +18,7 @@ class NavigationLinks extends Component {
     }
 
     GetNavigationlinks = async() => {
+        console.log("Refresh");
         let request = await Ajax.GetData("/api/navigationlinks/");
         this.setState({ navigationlinks: request.data });
     }
@@ -37,6 +38,7 @@ class NavigationLinks extends Component {
                 let PutConfig = NavigationSchema.GetBindedPutConfig(link._id);
                 PutConfig.modalOpener = () => this.ModalOpener(link);
                 return <FormGenerator
+                            key={link._id}
                             Inputs = { NavigationSchema.GetBindedInputs(link)}
                             FormConfig = { PutConfig }
                             FormStatus = { new FormStatus() }

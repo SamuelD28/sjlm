@@ -40,38 +40,47 @@ Api.GetPages = function (req, res) {
 }
 
 Api.CreatePages = function (req, res) {
-    Pages.create(req.body)
-        .then((page) => {
 
-            if (page instanceof Array)
-                req.body.map((_page) => {
-                    NavigationLinks.create({ Title: _page.PageTitle, Category: "Pages", Link: "/pages/static/" + _page.PageTitleUrl })
+    if (req.body instanceof Array) {
+        Pages.create(req.body)
+            .then((pages) => {
+                pages.forEach((page) => {
+                    let link = Utility.ConvertToUrlSafe(page.PageTitle);
+                    NavigationLinks.create({ Title: page.PageTitle, Category: "Pages", Link: "/pages/static/" + link })
                         .then((link) => {
-                            page.Link = link;
+                            page.Link = link._id;
                             page.save();
                         })
                         .catch((err) => {
                             Utility.WriteInLog("error", err);
                         });
                 })
-            else {
-                let urlValue = Utility.ConvertToUrlSafe(page.PageTitle);
-                NavigationLinks.create({ Title: page.PageTitle, Category: "Pages", Link: "/pages/static/" + urlValue })
+                Utility.GenerateResponse(true, res, pages);
+            })
+            .catch((err) => {
+                Utility.GenerateResponse(false, res, err);
+                Utility.WriteInLog("error", err);
+            });
+    }
+    else {
+        Pages.create(req.body)
+            .then((page) => {
+                let link = Utility.ConvertToUrlSafe(page.PageTitle);
+                NavigationLinks.create({ Title: page.PageTitle, Category: "Pages", Link: "/pages/static/" + link })
                     .then((link) => {
-                        page.Link = link;
+                        page.Link = link._id;
                         page.save();
                     })
                     .catch((err) => {
                         Utility.WriteInLog("error", err);
                     });
-            }
-
-            Utility.GenerateResponse(true, res, page);
-        })
-        .catch((err) => {
-            Utility.GenerateResponse(false, res, err);
-            Utility.WriteInLog("error", err);
-        });
+                Utility.GenerateResponse(true, res, page);
+            })
+            .catch((err) => {
+                Utility.GenerateResponse(false, res, err);
+                Utility.WriteInLog("error", err);
+            });
+    }
 }
 
 Api.UpdatePages = function (req, res) {
