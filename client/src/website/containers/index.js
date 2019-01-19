@@ -12,6 +12,7 @@ import NewsCategory from './newsCategory/newsCategory.js';
 import Council from './council/council.js';
 import Contact from './contact/contact.js';
 import LoadingScreen from './loadingScreen/loadingScreen.js';
+import ImportantNews from '../components/importantNews/importantNews.js';
 
 //----------Core Code-------//
 class Index extends Component {
@@ -38,6 +39,7 @@ class Index extends Component {
         else
             return <div>
                         <Navbar navbarLite={true}/>
+                        <ImportantNews />
                         <Route
                             render={({ location }) => (
                             <TransitionGroup>

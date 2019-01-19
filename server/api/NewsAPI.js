@@ -86,7 +86,19 @@ Api.FindNewsById = function (req, res) {
 }
 
 Api.FindNewsByCategory = function (req, res) {
-    NavigationLinks.findOne({ Link: "/news/category/" + req.params.category })
+    News.find({ Category: req.params.category })
+        .then((news) => {
+            if (news) {
+                Utility.GenerateResponse(true, res, news);
+            }
+        })
+        .catch((err) => {
+            Utility.GenerateResponse(false, res, err);
+        })
+}
+
+Api.FindNewsByLink = function (req, res) {
+    NavigationLinks.findOne({ Link: "/news/category/" + req.params.link })
         .then((link) => {
             if (link) {
                 CategoryNews.findOne({ Link: link._id })

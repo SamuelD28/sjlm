@@ -2,12 +2,42 @@
     background: #e91e63;
     color: white;
     padding: .5vw 1vw;
+    display: flex;
     font-size: 1em;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 100px;
+    z-index: 1;
+}
+
+.importantTitle {
+    font-weight: bold;
+    color: white;
+}
+
+.important {
+    margin-bottom: .5vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 .importantLink {
     color: white !important;
+    margin-left: 1vw;
+    font-weight: bold;
+}
+
+.closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.importantLink:hover,
+.closeBtn:hover {
+    color: #bababc !important;
 }

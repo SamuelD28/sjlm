@@ -409,7 +409,7 @@ blockquote {
     left: 0;
     opacity: .6;
     transform: translateX(-100%);
-    z-index: 0;
+    z-index: 100;
     transition: all .9s ease;
 }
 

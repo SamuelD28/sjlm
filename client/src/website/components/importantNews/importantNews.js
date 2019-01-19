@@ -1,29 +1,42 @@
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import { Transition } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 import CSSModules from 'react-css-modules';
 import styles from './importantNews.module.css';
 
 class ImportantNews extends Component {
 
-    state = { news: [] }
+    state = { news: [], close: false }
 
     async componentDidMount() {
         let request = await Ajax.GetData("/api/news/important");
         this.setState({ news: request.data });
     }
 
+    CloseImportant = () => {
+        this.setState({ close: true });
+    }
+
     render() {
-        if (this.state.news.length > 0)
+        if (this.state.news.length > 0 && !this.state.close)
             return <Transition
                         duration={1000}
-                        animation="fade down"
-                        transitionOnMount>
-                        <div styleName="importantNews">
-                        {this.state.news.map((news)=>(
-                            <span>Important : {news.Title}   <b><a styleName="importantLink" href="">En savoir plus</a></b></span>
-                        ))}
+                        animation="fly down"
+                        transitionOnMount={true}>
+                        <div>
+                            <div styleName="importantNews">
+                            <h3 styleName="importantTitle">Annonces Importantes</h3>
+                            {this.state.news.map((news)=>(
+                                <span styleName="important" key={news._id}>
+                                    {news.Title}   
+                                    <NavLink to={`/news/${news._id}`} styleName="importantLink">En savoir plus</NavLink>
+                                </span>
+                            ))}
+                            <i className="icon close" styleName="closeBtn" onClick={this.CloseImportant}>
+                            </i>
+                            </div>
                         </div>
                     </Transition>
     }

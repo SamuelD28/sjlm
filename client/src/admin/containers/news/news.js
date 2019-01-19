@@ -142,7 +142,7 @@ class News extends Component {
         let CategoryOptions = [];
         if (categoryNews.data !== undefined) {
             categoryNews.data.map((category) => {
-                let item = { text: category.Title, value: category.UrlValue, key: category._id };
+                let item = { text: category.Title, value: category._id, key: category._id };
                 return CategoryOptions.push(item);
             });
         }
@@ -154,6 +154,7 @@ class News extends Component {
 
         if (this.state.selectedCategory !== "") {
             let request = await Ajax.GetData(`/api/news/category/${this.state.selectedCategory}`);
+            console.log(request);
             this.setState({ news: request.data });
         }
         else {

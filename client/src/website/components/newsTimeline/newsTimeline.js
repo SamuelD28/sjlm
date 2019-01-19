@@ -56,7 +56,7 @@ class NewsTimeline extends Component {
 
     AppendCardToGrid = (news, index) => {
         if (index % 2 === 0)
-            return <div styleName="newsWrapper">
+            return <div key={news._id} styleName="newsWrapper">
                         <div styleName="newsContainer" key={index}>
                             <div styleName="newsGrid upperGrid">
                                 <NewsCard news={news} index={index} />
@@ -67,7 +67,7 @@ class NewsTimeline extends Component {
                         </div>
                     </div>
         else
-            return <div styleName="newsWrapper">
+            return <div key={news._id} styleName="newsWrapper">
                         <div styleName="newsContainer" key={index}>
                             <div styleName="newsGrid upperGrid">
                             </div>

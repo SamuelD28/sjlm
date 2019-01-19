@@ -46,7 +46,7 @@ class NewsCategory extends Component {
     }
 
     GetNews = async() => {
-        let news = await Ajax.GetData(`/api/news/category/${this.props.match.params.category}`);
+        let news = await Ajax.GetData(`/api/news/link/${this.props.match.params.category}`);
         if (news.success)
             await this.setState({ news: news.data });
     }
