@@ -1,4 +1,26 @@
-/*Css for the banner section*/
+.bannerSearch {
+    align-self: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #f1efee;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25em;
+    padding-bottom: .25vw;
+    width: 50%;
+}
+
+.dropdown {
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    width: 80%;
+}
+
+.searchIcon {
+    cursor: pointer;
+    width: 20%;
+}
 
 .bannerVideo {
     object-fit: fill;
@@ -15,6 +37,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 400px;
+    width: 80%;
 }
 
 .bannerSlogan,
@@ -38,29 +61,4 @@
     letter-spacing: .5em;
     padding: 1.5em 2em;
     margin: 1.5vw 0;
-}
-
-.bannerSearch {
-    align-self: flex-end;
-    border-bottom: 1px solid #f1efee;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.25em;
-    padding-bottom: .25vw;
-    width: 50%;
-}
-
-.bannerInput {
-    background-color: transparent;
-    border: none;
-    color: white;
-}
-
-.bannerInput::placeholder {
-    color: white;
-}
-
-.bannerInput:focus {
-    outline: none;
 }

@@ -13,6 +13,11 @@
 
 .importantTitle {
     font-weight: bold;
+    padding-bottom: 1vw;
+    border-bottom: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: white;
 }
 
@@ -29,9 +34,6 @@
 }
 
 .closeBtn {
-    position: absolute;
-    right: 0;
-    top: 0;
     color: white;
     cursor: pointer;
     font-weight: bold;

@@ -399,6 +399,12 @@ blockquote {
     background-size: contain;
 }
 
+
+
+.test {
+    color: white !important;
+}
+
 #backgroundOverlay {
     content: " ";
     background-color: #37474F;

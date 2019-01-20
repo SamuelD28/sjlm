@@ -25,7 +25,7 @@ class Home extends Component {
 
     render() {
         return <div style={homeStyle}>
-                <BannerHome/>
+                <BannerHome history={this.props.history}/>
                 <div style={newsSectionStyle}>
                     <NewsColumn/>
                 </div>

@@ -20,22 +20,24 @@ class ImportantNews extends Component {
     }
 
     render() {
-        if (this.state.news.length > 0 && !this.state.close)
+        if (this.state.news.length > 0)
             return <Transition
                         duration={1000}
                         animation="fly down"
-                        transitionOnMount={true}>
+                        transitionOnMount={true}
+                        visible={!this.state.close}>
                         <div>
                             <div styleName="importantNews">
-                            <h3 styleName="importantTitle">Annonces Importantes</h3>
+                            <h3 styleName="importantTitle">Annonces Importantes
+                            <i className="icon close" styleName="closeBtn" onClick={this.CloseImportant}>
+                            </i>
+                            </h3>
                             {this.state.news.map((news)=>(
                                 <span styleName="important" key={news._id}>
                                     {news.Title}   
                                     <NavLink to={`/news/${news._id}`} styleName="importantLink">En savoir plus</NavLink>
                                 </span>
                             ))}
-                            <i className="icon close" styleName="closeBtn" onClick={this.CloseImportant}>
-                            </i>
                             </div>
                         </div>
                     </Transition>
