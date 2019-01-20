@@ -9,20 +9,21 @@ import styles from './bannerHome.module.css';
 class BannerHome extends Component {
 
     Keywords = ['Accueillante', 'Culturelle', 'Ouverte']
+    Duration = 2000;
 
     constructor(props) {
         super(props);
-        this.state = { searchQuery: "", currentKeyword: 0 };
+        this.state = { searchQuery: "", currentKeyword: 0, lastKeyword: 0 };
         this.GenerateSearchOptions();
-        this.ChangeCurrentKeyword();
     }
 
-    ChangeCurrentKeyword = () => {
-        setInterval(() => {
-            let nextIndex = (this.state.currentKeyword + 1 >= this.Keywords.length) ? 0 : this.state.currentKeyword + 1;
-            this.setState({ currentKeyword: nextIndex })
-        }, 1000);
+    HideCurrentKeyword = (index) => {
+        this.setState({ currentKeyword: -1, lastKeyword: index });
+    }
 
+    ChangeCurrentKeyword = (e) => {
+        let nextIndex = (this.state.lastKeyword + 1 >= this.Keywords.length) ? 0 : this.state.lastKeyword + 1;
+        this.setState({ currentKeyword: nextIndex })
     }
 
     GenerateSearchOptions = async() => {
@@ -57,43 +58,59 @@ class BannerHome extends Component {
 
     render() {
         if (this.state.options !== undefined && this.state.options !== null)
-            return <div>
-                <video styleName="bannerVideo" autoPlay muted loop>
-                    <source src="/sjlm.mp4" type="video/mp4">
-                    </source>
-                </video>
-                <Transition
-                    transitionOnMount={true}
-                    animation="fade up"
-                    duration={1000}
-                    >
-                    <div style={{width: "8"}}>
-                        <div styleName="bannerContent">
-                            <h1 styleName='bannerSlogan'>Bienvenue à Saint-Jacques-le-Mineur</h1>
-                            <span styleName='bannerKeyword'>{this.Keywords[this.state.currentKeyword]}</span>
-                            <div styleName='bannerSearch'>
-                                <Dropdown
-                                    icon={false}
-                                    search
-                                    fluid
-                                    scrolling={false}
-                                    onChange={(e, data) =>this.ChangeSearchQuery(data)}
-                                    searchInput={{ className: 'test' }}
-                                    placeholder="Que recherchez-vous?"
-                                    minCharacters={2}
-                                    noResultsMessage="Aucun résultat"
-                                    styleName="dropdown"
-                                    options={this.state.options}
-                                    selection
-                                    >
-                                </Dropdown>
-                                <i onClick={this.Search} className="icon search" styleName="searchIcon">
-                                </i>
+            return <div styleName="bannerBody">
+                    <video styleName="bannerVideo" autoPlay muted loop>
+                        <source src="/sjlm.mp4" type="video/mp4">
+                        </source>
+                    </video>
+                    <Transition
+                        transitionOnMount={true}
+                        animation="fade up"
+                        duration={1000}
+                        >
+                        <div>
+                            <div styleName="bannerContent">
+                                <h1 styleName='bannerSlogan'>Bienvenue à Saint-Jacques-le-Mineur</h1>
+                                <div styleName='bannerKeyword'>
+                                    {this.Keywords.map((keyword, index)=>{
+                                        let hide = this.Duration/6;
+                                        let show = this.Duration;
+                                        return  <Transition
+                                                    key={keyword}
+                                                    animation="fade up"
+                                                    duration={{ hide, show }}
+                                                    onComplete={() => this.HideCurrentKeyword(index)}
+                                                    onHide={this.ChangeCurrentKeyword}
+                                                    transitionOnMount={true}
+                                                    visible={index === this.state.currentKeyword}
+                                                    >
+                                                    <span>{keyword}</span>
+                                                </Transition>
+                                    })}
+                                </div>
+                                <div styleName='bannerSearch'>
+                                    <Dropdown
+                                        icon={false}
+                                        search
+                                        fluid
+                                        scrolling={false}
+                                        onChange={(e, data) =>this.ChangeSearchQuery(data)}
+                                        searchInput={{ className: 'test' }}
+                                        placeholder="Que recherchez-vous?"
+                                        minCharacters={2}
+                                        noResultsMessage="Aucun résultat"
+                                        styleName="dropdown"
+                                        options={this.state.options}
+                                        selection
+                                        >
+                                    </Dropdown>
+                                    <i onClick={this.Search} className="icon search" styleName="searchIcon">
+                                    </i>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Transition>
-            </div>
+                    </Transition>
+                </div>
     }
 }
 
