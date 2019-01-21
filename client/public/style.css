@@ -405,6 +405,10 @@ blockquote {
     color: white !important;
 }
 
+.dropdown.icon {
+    z-index: 10 !important;
+}
+
 #backgroundOverlay {
     content: " ";
     background-color: #37474F;

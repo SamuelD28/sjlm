@@ -3,7 +3,8 @@ let News = require("../models/NewsMD.js"),
     CategoryNews = require("../models/CategoryNewsMD.js"),
     Api = new Object(),
     Utility = require("../utils/utility.js"),
-    NavigationLinks = require("../models/NavigationLinksMD.js");
+    NavigationLinks = require("../models/NavigationLinksMD.js"),
+    mongoose = require("mongoose");
 
 //--------------Model-------------//
 
@@ -85,8 +86,40 @@ Api.FindNewsById = function (req, res) {
 
 }
 
+Api.GetCalendar = function (req, res) {
+    CategoryNews.find({ Template: "timeline" })
+        .then((categorys) => {
+            if (categorys) {
+                let ids = [];
+                categorys.map((cat) => (
+                    ids.push(mongoose.Types.ObjectId(cat._id))
+                ));
+
+                const today = new Date();
+
+                News.find({
+                        'Category': { $in: ids },
+                        'DateFrom': { $gte: today }
+                    })
+                    .sort('DateFrom').populate('Category')
+                    .then((news) => {
+                        if (news) {
+                            Utility.GenerateResponse(true, res, news);
+                        }
+                    })
+                    .catch((err) => {
+                        Utility.GenerateResponse(false, res, err);
+                    });
+            }
+        })
+        .catch((err) => {
+            Utility.GenerateResponse(false, res, err);
+        });
+}
+
 Api.FindNewsByCategory = function (req, res) {
     News.find({ Category: req.params.category })
+        .sort("-DateFrom")
         .then((news) => {
             if (news) {
                 Utility.GenerateResponse(true, res, news);

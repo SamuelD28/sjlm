@@ -46,7 +46,7 @@ Api.UpdateMenu = function (req, res) {
     Query.exec()
         .then((menu) => {
 
-            if (!menu.Principal) {
+            if (!menu.Principal && req.body.ParentMenu !== null && req.body.ParentMenu !== undefined) {
                 if (menu.ParentMenu.toString() !== req.body.ParentMenu.toString()) {
 
                     Menu.findById(menu.ParentMenu)

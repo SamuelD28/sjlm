@@ -40,7 +40,7 @@ class MenuSchema extends FormSchema {
                 id: true,
                 width: 6,
                 search: true,
-                clearable: false,
+                clearable: true,
                 label: "Lien de navigation",
                 value: "",
                 generator: () => { return this.linkOptions; }
@@ -139,8 +139,10 @@ class MenuSchema extends FormSchema {
         "suitcase",
         "calendar alternate outline",
         "university",
-        "map"
-        ];
+        "map",
+        "leaf",
+        "building",
+        "fire extinguisher"];
         let IconsOptions = [];
         IconsArray.map((icon, index) => {
             let IconsObject = { text: icon, value: icon, icon: icon };
@@ -156,7 +158,6 @@ class MenuSchema extends FormSchema {
     GenerateLinksOptions = async() => {
         let navigationlinks = await Ajax.GetData("/api/navigationlinks");
         let NavigationOptions = [];
-        NavigationOptions.push({ text: "Aucun", value: null });
         if (navigationlinks.data !== undefined) {
             navigationlinks.data.map((navlink, index) => {
                 let NavigationObject = { text: navlink.Category + " | " + navlink.Title, value: navlink._id, key: navlink._id };

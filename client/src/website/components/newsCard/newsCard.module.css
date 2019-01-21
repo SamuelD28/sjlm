@@ -17,7 +17,7 @@
     width: 100%;
     transition: opacity .2s ease;
     height: 100%;
-    z-index: 100;
+    z-index: 1;
 }
 
 .newsCard:hover {

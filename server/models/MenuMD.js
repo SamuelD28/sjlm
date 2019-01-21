@@ -27,6 +27,10 @@ let menuSchema = new Schema({
     ParentMenu: {
         type: Schema.Types.ObjectId,
         ref: 'Menu',
+        validate: {
+            validator: (value) => !(value === null),
+            kind: "ObjectID"
+        }
     }
 });
 

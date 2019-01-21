@@ -8,6 +8,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './home/home.js';
 import StaticPage from './staticPage/staticPage.js';
 import NewsPage from './newsPage/newsPage.js';
+import NewsTimeline from '../components/newsTimeline/newsTimeline.js';
 import NewsCategory from './newsCategory/newsCategory.js';
 import Council from './council/council.js';
 import Contact from './contact/contact.js';
@@ -39,7 +40,7 @@ class Index extends Component {
         else
             return <div>
                         <Navbar navbarLite={true}/>
-                        <ImportantNews />
+                        <ImportantNews {...this.props}/>
                         <Route
                             render={({ location }) => (
                             <TransitionGroup>
@@ -49,6 +50,7 @@ class Index extends Component {
                                     timeout={600}>
                                     <Switch location={location}>
                                         <Route exact path="/" component={Home} />
+                                        <Route exact path="/calendrier" component={() => (<NewsTimeline calendrier={true}/>)} />
                                         <Route exact path="/contact" component={Contact} />
                                         <Route exact path="/conseil" component={Council} />
                                         <Route exact path="/news/:id" component={NewsPage} />

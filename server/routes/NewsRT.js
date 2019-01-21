@@ -13,6 +13,7 @@ router.route("/")
     .post(Mdw.IsAuth, Api.CreateNews);
 
 
+router.get("/calendar", Api.GetCalendar);
 router.get("/latest", Api.FindLatestNews);
 router.get("/date/:year/:month", Api.FindNewsByDate);
 router.get("/important", Api.FindImportantNews);

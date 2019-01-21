@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewsCard from '../newsCard/newsCard.js';
 import { Utility } from '../../../shared/utility.js';
+import Ajax from '../../../shared/ajax.js';
 
 import { Transition } from 'semantic-ui-react';
 import CSSModules from 'react-css-modules';
@@ -20,6 +21,25 @@ class NewsTimeline extends Component {
 
     componentDidMount() {
         Utility.AdjustFullHeight(this.newsContainer.current);
+    }
+
+    GetCalendar = async() => {
+        let news = await Ajax.GetData("/api/news/calendar");
+        if (news.success) {
+            this.setState({ calendar: news.data });
+        }
+    }
+
+    DisplayCalendar = () => {
+        console.log("ok");
+        if (this.state.calendar !== undefined) {
+            return this.state.calendar.map((news, index) => (
+                this.AppendCardToGrid(news, index)
+            ))
+        }
+        else {
+            this.GetCalendar();
+        }
     }
 
     DisplayNews = () => {
@@ -81,7 +101,9 @@ class NewsTimeline extends Component {
 
     render() {
         return <div ref={this.newsContainer} styleName="news">
-                    {this.DisplayNews()}
+                    {(this.props.calendrier)
+                    ?this.DisplayCalendar()
+                    :this.DisplayNews()}
                 </div>
     }
 

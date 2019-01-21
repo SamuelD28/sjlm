@@ -80,7 +80,7 @@ class FormGenerator extends Component {
         this.state.Inputs.map((input, index) => {
             if (!input.disabled(this.state.Inputs))
                 formData = Object.assign({}, formData, {
-                    [input.name]: input.value
+                    [input.name]: (input.value === "") ? null : input.value
                 });
             return formData;
         });
@@ -94,6 +94,7 @@ class FormGenerator extends Component {
                     [textEditor.name]: textEditor.value,
                 });
         }
+        console.log(formData);
         return formData;
     }
 

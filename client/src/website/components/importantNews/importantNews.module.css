@@ -1,14 +1,17 @@
-.importantNews {
-    background: #e91e63;
-    color: white;
-    padding: .5vw 1vw;
-    display: flex;
+.importantTransition {
     font-size: 1em;
-    flex-direction: column;
-    position: fixed;
+    color: white;
     top: 0;
     left: 100px;
-    z-index: 1;
+    position: fixed;
+    z-index: 100;
+}
+
+.importantNews {
+    background: #e91e63;
+    padding: .5vw 1vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .importantTitle {

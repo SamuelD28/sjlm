@@ -1,5 +1,6 @@
 import React from 'react';
 import { Transition } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 const pageSocialStyle = {
     background: 'white',
@@ -30,9 +31,9 @@ const SocialIconColumn = () => {
                     <a href="mailto:info@sjlm.ca">
                         <button className="btn btn-md btn-outline-info" style={pageSocialBtnStyle}><i className="icon mail"></i></button>
                     </a>
-                    <a href="/contact">
+                    <NavLink to="/contact">
                         <button className="btn btn-md btn-outline-info" style={pageSocialBtnStyle}><i className="icon phone"></i></button>
-                    </a>
+                    </NavLink>
                 </div>
                 </div>
             </Transition>

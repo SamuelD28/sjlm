@@ -1,17 +1,16 @@
 import React from 'react';
 
 import FormComponent from '../FormComponent.js';
-import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
-import {default as MenuSchema} from '../../formSchema/menuSchema.js';
-import {Accordion, Icon} from 'semantic-ui-react';
+import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
+import { default as MenuSchema } from '../../formSchema/menuSchema.js';
+import { Accordion, Icon } from 'semantic-ui-react';
 
 import CSSModules from 'react-css-modules';
 import styles from './menuCards.module.css';
 
-class MenuCards extends FormComponent{
+class MenuCards extends FormComponent {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {};
         this.PutConfig = MenuSchema.GetBindedPutConfig(props.menu._id);
@@ -33,7 +32,7 @@ class MenuCards extends FormComponent{
                 let PutConfig = MenuSchema.GetBindedPutConfig(menu._id);
                 PutConfig.modalOpener = () => this.PutModalOpener(menu);
 
-                return <div styleName="menuTitle" key={menu._id}>
+                return <div styleName="menuTitle">
                             <FormGenerator
                                 Inputs={MenuSchema.GetBindedInputs(menu)}
                                 FormStatus={new FormStatus()}
@@ -43,33 +42,31 @@ class MenuCards extends FormComponent{
                         </div>
             });
         else
-            return  <div styleName="menuTitle">
+            return <div styleName="menuTitle">
                         Aucun menu présent
                     </div>
     }
 
-    PutModalOpener = (menu) =>
-    {
-        return  <span>{menu.Title}</span>
+    PutModalOpener = (menu) => {
+        return <span key={menu._id}>{menu.Title}</span>
     }
 
     /**
      * Function that display the ui for opening up the modal form
      */
-    ModalOpener = () =>
-    {
-        if(this.props.menu.Icon !== undefined)
-            return  <span>
+    ModalOpener = () => {
+        if (this.props.menu.Icon !== undefined)
+            return <span>
                         {this.props.menu.Title.toUpperCase()} <i style={{float: "right"}} className={`icon ${this.props.menu.Icon}`}></i>
                     </span>
         else
             return <span>{this.props.menu.Title}</span>
     }
 
-    render(){
-    const { activeIndex } = this.state;
-    if (this.props.menu.Principal)
-        return  <Accordion
+    render() {
+        const { activeIndex } = this.state;
+        if (this.props.menu.Principal)
+            return <Accordion
                     styled
                     fluid>
                     <Accordion.Title
@@ -95,4 +92,4 @@ class MenuCards extends FormComponent{
     }
 }
 
-export default CSSModules(MenuCards, styles, {handleNotFoundStyleName: "log", allowMultiple: true});
+export default CSSModules(MenuCards, styles, { handleNotFoundStyleName: "log", allowMultiple: true });

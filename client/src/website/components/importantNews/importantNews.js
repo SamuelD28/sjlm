@@ -26,7 +26,7 @@ class ImportantNews extends Component {
                         animation="fly down"
                         transitionOnMount={true}
                         visible={!this.state.close}>
-                        <div>
+                        <div styleName="importantTransition">
                             <div styleName="importantNews">
                             <h3 styleName="importantTitle">Annonces Importantes
                             <i className="icon close" styleName="closeBtn" onClick={this.CloseImportant}>
