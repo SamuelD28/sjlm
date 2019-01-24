@@ -4,6 +4,10 @@ let User = require("../models/UserMD.js"),
 Mdw.IsAuth = function (req, res, next) {
     let token = req.cookies.w_auth;
 
+    if(token === null || token === undefined){
+        return res.status(503).json({success : false, error :  "Aucun biscuit envoyé au serveur"});
+    }
+
     User.findByToken(token, (err, user) => {
         if (err)
             throw err;
@@ -17,7 +21,6 @@ Mdw.IsAuth = function (req, res, next) {
             role: user.role,
             isAuth: true,
             token: user.token,
-            _id: user._id
         }
 
         req.user = userSlim;

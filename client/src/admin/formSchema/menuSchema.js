@@ -142,7 +142,8 @@ class MenuSchema extends FormSchema {
         "map",
         "leaf",
         "building",
-        "fire extinguisher"];
+        "fire extinguisher",
+        "paper plane outline"];
         let IconsOptions = [];
         IconsArray.map((icon, index) => {
             let IconsObject = { text: icon, value: icon, icon: icon };

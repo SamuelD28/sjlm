@@ -4,6 +4,9 @@
     font-family: "Roboto", sans-serif;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
@@ -89,6 +92,7 @@
     transition: color .25s ease;
 }
 
-.navbarLogout {
+.logout {
+    cursor: pointer;
     color: #e91e63 !important;
 }

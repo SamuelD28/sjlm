@@ -2,7 +2,6 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Form, Grid} from 'semantic-ui-react';
-import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 class UserUpdate extends FormComponent{
     
@@ -30,7 +29,6 @@ class UserUpdate extends FormComponent{
                 </Grid.Column>
             </Grid.Row>
         </Grid>
-    <LoaderComponent action={this.state.action} />
     </Form>
     )}
 }

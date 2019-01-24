@@ -41,7 +41,7 @@ class NewsPage extends Component {
     DisplayFiles = () => {
         if (this.state.news.Files.length > 0)
             return <div styleName="newsFile">
-                        <FileGallery files={null} />
+                        <FileGallery files={this.state.news.Files} />
                      </div>
     }
 

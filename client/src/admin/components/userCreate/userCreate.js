@@ -2,7 +2,7 @@
 import React from 'react';
 import FormComponent from '../FormComponent.js';
 import {Form, Grid} from 'semantic-ui-react';
-import LoaderComponent from '../loaderComponent/loaderComponent.js';
+// import LoaderComponent from '../loaderComponent/loaderComponent.js';
 
 //Component responsible for creating new page
 class UserCreate extends FormComponent{
@@ -30,7 +30,6 @@ class UserCreate extends FormComponent{
                 </Grid.Column>
             </Grid.Row>
         </Grid>
-    <LoaderComponent action={this.state.action} />
     </Form>
     )}
 }

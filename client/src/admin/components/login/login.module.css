@@ -6,22 +6,17 @@
     width: 40%;
 }
 
-.loginForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: .5vw;
-    width: 65%;
+.loginFormContainer{
+    width: 80%;
+    margin: 0 auto;
 }
 
 .loginImage{
-    background-color: whitesmoke;
-    border-radius: 25% 0 0 0;
-    width: 35%;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .loginLabel{
-    font-size: 1.2em !important;
 }
 
 .loginTitle{
@@ -30,10 +25,46 @@
 
 .loginBack{
     position: fixed;
-    top: 1vw;
+    bottom: 1vw;
     left: 1vw;
 }
 
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .loginBtn{
-    justify-self: flex-end;
+    float: right;
+}
+
+.login{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: stretch;
+    width: 20%;
+}
+
+.login:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content : " ";
+    background: whitesmoke;
+    opacity: .95;
+    z-index: -1;
+}
+
+.loginBg{
+    width: 100%;
+    height: stretch;
+    position: fixed;
+    top: 0;
+    left: 0;
 }

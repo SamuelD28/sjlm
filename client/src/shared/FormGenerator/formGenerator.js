@@ -590,4 +590,4 @@ class FormGenerator extends Component {
     }
 }
 
-export { FormGenerator, FormConfig, FormStatus, InputSchema, EditorSchema, FormSchema };
+export { FormGenerator, FormConfig, FormStatus, InputSchema, EditorSchema, FormSchema, FormError };

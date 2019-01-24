@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { default as CategoryNewsSchema } from '../../formSchema/categoryNewsSchema.js';
 import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 
+/**
+ * Component used for displaying a category for the news and
+ * opening a modal form when clicking on it
+ */
 class CategoryNewsCard extends Component {
 
     constructor(props) {

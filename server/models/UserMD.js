@@ -33,10 +33,6 @@ let userSchema = new Schema({
         required: true,
         trim: true
     },
-    role:{
-        type: Number,
-        default: 0
-    },
     token:{
         type: String,
         default: ""

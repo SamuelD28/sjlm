@@ -61,11 +61,11 @@ Api.LoginUser = function (req, res) {
 
     User.findOne({ 'email': req.body.email }, (err, user) => {
         if (!user)
-            return res.json({ success: false, message: "No email found" });
+            return res.json({ success: false, message: "Aucun email correspondant à celui entré" });
 
         user.comparePassword(req.body.password, function (err, isMatch) {
             if (!isMatch)
-                return res.json({ success: false, message: "Wrong Password" });
+                return res.json({ success: false, message: "Le mot de passe est invalide" });
 
             user.generateToken((err, user) => {
                 if (err)

@@ -6,17 +6,16 @@
 
 //----------------Dependencies-------------//
 
-let express         = require("express"),
-    app             = express(),
-    bodyParser      = require("body-parser"),
-    mongoose        = require("mongoose"),
-    methodOverride  = require("method-override"),
-    dataSeed        = require("./utils/dataseed.js"),
-    cookieParser    = require("cookie-parser"),
-    cloudinary      = require("cloudinary"),
-    log4js          = require("log4js"),
-    server          = log4js.getLogger("server"),
-    Utility         = require("./utils/utility.js");
+let express = require("express"),
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose"),
+    methodOverride = require("method-override"),
+    cookieParser = require("cookie-parser"),
+    cloudinary = require("cloudinary"),
+    log4js = require("log4js"),
+    server = log4js.getLogger("server"),
+    Utility = require("./utils/utility.js");
 
 //------------Logging Initialisation-------------//
 
@@ -31,35 +30,35 @@ let express         = require("express"),
 */
 
 log4js.configure({
- appenders: {
-    console : {type: 'console'},
-    server: { type: 'file', filename: 'server.log' },
-    error: {type: 'file', filename: 'error.log'}
- },
- categories: {
-    error: {appenders: ['error'], level: 'error'},
-    server : {appenders: ['server'], level: 'info' },
-    default: { appenders: ['console'], level: 'all' }
- }
+    appenders: {
+        console: { type: 'console' },
+        server: { type: 'file', filename: 'server.log' },
+        error: { type: 'file', filename: 'error.log' }
+    },
+    categories: {
+        error: { appenders: ['error'], level: 'error' },
+        server: { appenders: ['server'], level: 'info' },
+        default: { appenders: ['console'], level: 'all' }
+    }
 });
 
 //----------------Initialisation-------------//
 
 app.use(methodOverride("_method"))
-app.use(bodyParser.json({limit : '10mb'}));
-app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(__dirname + "/media"));
 app.use(cookieParser());
 require("dotenv").config();
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_API_SECRET
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
 });
 
 //Connection to the database
 mongoose.Promise = Promise;
-mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a deprecatino warning. Must specified mongo db port in the url now
+mongoose.connect(process.env.DATABASE, { useNewUrlParser: true }); //Get rid of a deprecatino warning. Must specified mongo db port in the url now
 
 //----------------Routing-------------//
 
@@ -79,27 +78,27 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser : true}); //Get rid of a
 */
 
 //Logs request to the server inside server.log
-app.use(log4js.connectLogger(server,{
-  level: 'auto',
-  format: (req, res, format) => format(`:remote-addr - ":method :url HTTP/:http-version" :status :content-length ":referrer" ":user-agent"`)
+app.use(log4js.connectLogger(server, {
+    level: 'auto',
+    format: (req, res, format) => format(`:remote-addr - ":method :url HTTP/:http-version" :status :content-length ":referrer" ":user-agent"`)
 }));
 
 
 //Declaration and importation of all the required files for the routing
-let NewsRT              = require(__dirname + "/routes/NewsRT.js"),
-    MembersRT           = require(__dirname + "/routes/MembersRT.js"),
-    PagesRt             = require(__dirname + "/routes/PagesRT.js"),
-    UserRT              = require(__dirname + "/routes/UserRT.js"),
-    CategoryNewsRT      = require(__dirname + "/routes/CategoryNewsRT.js"),
-    MenuRT              = require(__dirname + "/routes/MenuRT.js"),
-    NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js"),
-    OccupationRT        = require(__dirname + "/routes/OccupationsRT.js"),
-    VerbalTrialRT       = require(__dirname + "/routes/VerbalTrialRT.js");
+let NewsRT = require(__dirname + "/routes/NewsRT.js"),
+    MembersRT = require(__dirname + "/routes/MembersRT.js"),
+    PagesRt = require(__dirname + "/routes/PagesRT.js"),
+    UserRT = require(__dirname + "/routes/UserRT.js"),
+    CategoryNewsRT = require(__dirname + "/routes/CategoryNewsRT.js"),
+    MenuRT = require(__dirname + "/routes/MenuRT.js"),
+    NavigationLinksRT = require(__dirname + "/routes/NavigationLinksRT.js"),
+    OccupationRT = require(__dirname + "/routes/OccupationsRT.js"),
+    VerbalTrialRT = require(__dirname + "/routes/VerbalTrialRT.js");
 
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
-app.use("/api/news" , NewsRT);
-app.use("/api/user" , UserRT);
+app.use("/api/news", NewsRT);
+app.use("/api/user", UserRT);
 app.use("/api/menus", MenuRT);
 app.use("/api/categorynews", CategoryNewsRT);
 app.use("/api/navigationlinks", NavigationLinksRT);
@@ -109,13 +108,13 @@ app.use("/api/verbal", VerbalTrialRT);
 //----------------Listener-------------//
 
 app.listen(process.env.PORT, process.env.IP, (err) => {
-    if(err){
+    if (err) {
         console.log("[An Error occured while starting the server.] \n ERROR : " + err);
         Utility.WriteInLog("info", "SERVER PROCESS STOPPED");
         Utility.WriteInLog("error", err);
         //TODO Restart the server when the process fails
     }
-    else{
+    else {
         console.log(`[-Server Started Successfully PORT:${process.env.PORT} -]`);
         Utility.WriteInLog("info", "SERVER PROCESS STARTED");
     }
