@@ -10,5 +10,18 @@
 .accordionTitle {
     display: flex;
     align-items: center;
+    cursor: pointer;
     font-size: .9rem;
+}
+
+.accordionContent{
+    margin-bottom: .75vw;
+    cursor: pointer;
+    font-size: .95rem;
+    transition: color .2s ease;
+}
+
+.accordionContent:hover{
+    color:  #bcbdbd;
+    transition: color .2s ease;
 }

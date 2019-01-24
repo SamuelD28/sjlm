@@ -4,6 +4,11 @@ import { default as MemberSchema } from '../../formSchema/memberSchema.js';
 import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 import MembersCard from '../../components/membersCard/membersCard.js';
 
+/**
+ * Component used to open up a modal form
+ * with information about a council member
+ * with the possibility of modifying the values
+ */
 class MembersEdit extends Component {
 
     constructor(props) {
@@ -12,30 +17,29 @@ class MembersEdit extends Component {
         this.PutConfig.modalOpener = this.ModalOpener;
     }
 
+    /**
+     * Ui used to trigger the opening of the form
+     */
     ModalOpener = () => {
-        return (
-            <div style={{height: "100%"}}>
-            <MembersCard members={this.props.member}/>
-            <div className="cardOverlay cardEdit">
-                <div className="cardOverlayBtn">
-                    <i className="icon edit"></i>
-                    <h4>Modifier</h4>
+        return  <div style={{height: "100%"}}>
+                    <MembersCard members={this.props.member}/>
+                    <div className="cardOverlay cardEdit">
+                        <div className="cardOverlayBtn">
+                            <i className="icon edit"></i>
+                            <h4>Modifier</h4>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        )
     }
 
     render() {
-        return (
-            <FormGenerator
-            Inputs={MemberSchema.GetBindedInputs(this.props.member)}
-            FormConfig={this.PutConfig}
-            FormStatus={new FormStatus()}
-            TextEditor={MemberSchema.GetBindedEditor(this.props.member.PersonnalNote)}
-            RefreshDataSet={this.props.RefreshDataSet}
-            />
-        )
+        return  <FormGenerator
+                    Inputs={MemberSchema.GetBindedInputs(this.props.member)}
+                    FormConfig={this.PutConfig}
+                    FormStatus={new FormStatus()}
+                    TextEditor={MemberSchema.GetBindedEditor(this.props.member.PersonnalNote)}
+                    RefreshDataSet={this.props.RefreshDataSet}
+                    />
     }
 }
 

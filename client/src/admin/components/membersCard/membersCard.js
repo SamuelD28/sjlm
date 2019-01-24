@@ -5,6 +5,10 @@ import {Utility} from '../../../shared/utility.js';
 import CSSModules from 'react-css-modules';
 import styles from './membersCard.module.css';
 
+/**
+ * Component use for displaying information about a 
+ * council member
+ */
 const MembersCard = (props) => {
     return (
     <div styleName="membersCard">
