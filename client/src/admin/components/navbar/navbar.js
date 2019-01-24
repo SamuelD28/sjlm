@@ -11,6 +11,11 @@ async function Logout(history) {
         history.push('/login');
 }
 
+/**
+ * Component responsible for displaying 
+ * a navigation bar alongside links to 
+ * navigate the administration section
+ */
 const Navbar = (props) => {
 
     return (

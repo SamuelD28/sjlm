@@ -1,6 +1,6 @@
 //--------Declaration---------//
 import React, { Component } from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Placeholder } from 'semantic-ui-react';
 import Ajax from '../../../shared/ajax.js';
 
 // Css module improt
@@ -131,6 +131,7 @@ class News extends Component {
         super(props);
         const today = new Date();
         this.state = {
+            loading: true,
             selectedYear: today.getFullYear(),
             selectedMonth: today.getMonth() + 1,
             selectedCategory: ""

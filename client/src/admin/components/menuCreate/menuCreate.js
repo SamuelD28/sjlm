@@ -4,7 +4,10 @@ import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGen
 import { default as MenuSchema } from '../../formSchema/menuSchema.js';
 import {Button} from 'semantic-ui-react';
 
-//Component responsible for creating new page
+/**
+ * Component responsible for creating new
+ * menu for the website
+ */
 class MenuCreate extends Component {
 
     constructor(props) {
@@ -13,11 +16,13 @@ class MenuCreate extends Component {
         this.PostConfig = MenuSchema.GetPostConfig();
         this.PostConfig.modalOpener = this.ModalOpener;
     }
-
+    
+    /**
+     * UI that triggers a modal form used
+     * to add a new menu
+     */
     ModalOpener = () => {
-        return (
-        <Button color="orange" inverted>Ajouter un menu</Button>
-        )
+        return <Button color="orange" inverted>Ajouter un menu</Button>
     }
 
     render() {
