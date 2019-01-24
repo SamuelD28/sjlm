@@ -1,43 +1,51 @@
+//Library
 import React, {Component} from 'react';
-import {Utility, Forms} from '../../../shared/utility.js';
 import Ajax from '../../../shared/ajax.js';
-import {Form, Button, Input} from 'semantic-ui-react';
-import {FormError, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 
-//Css modules
+//Components
+import {Form, Button, Transition, Image} from 'semantic-ui-react';
+import {FormError, FormStatus, TextInput} from '../../../shared/FormGenerator/formGenerator.js';
+
+//CSS modules
 import CSSModules from 'react-css-modules';
 import styles from './login.module.css';
 
+/**
+ * Component used for logging in a new user to access
+ * the administration section of the website.
+ */
 class Login extends Component{
 
     constructor(props)
     {
         super(props);
-        let formStatus = new FormStatus();
-        formStatus.errorsHeader = "Des erreurs sont survenues";
-        this.state = {FormStatus: formStatus}
-        this.formData = {};
+        this.state = {FormStatus: new FormStatus(), email : "", password : ""}
     }
-
-    HandleChange = (e) =>
+    
+    /**
+     * Handle the changes in the input
+     */
+    HandleChange = (data) =>
     {
-        try{
-            let inputValue = Forms.RetrieveValueFromInput(e.target);
-            Utility.IsValuesUndefinedOrNull(inputValue);
-            Forms.AppendValueToObject(e.target.name, this.formData, inputValue);
-        }
-        catch(err)
-        {
-            console.log(err.message);
-        }
+        this.setState({[data.name] : data.value})
     }
-
+    
+    /**
+     * Handle the submission of the form to the server.
+     * Redirect back to the administration section if the
+     * request was successfull.
+     */
     HandleSubmit = async() =>{
-        
+        //Display a loading icon on top of the form to
+        //show user feedback
         let temp = Object.assign({}, this.state.FormStatus, {loading: true});
         await this.setState({FormStatus: temp});
         
-        let user = await Ajax.PostData("/api/user/login", this.formData);
+        //Retrieve the form data and sends it to the server
+        let formData = {email : this.state.email, password : this.state.password};
+        let user = await Ajax.PostData("/api/user/login", formData);
+        
+        //Handles the response receive by the server
         if(user.success){
             this.props.history.push("/admin");
         }
@@ -47,44 +55,68 @@ class Login extends Component{
         }
     }
     
+    /**
+     * Send the user back home
+     */
     GoHome = () =>{
         this.props.history.push("/");
     }
 
     render(){
         return(
-        <div styleName="loginContainer">
-            <div styleName="login">
-                <div styleName="loginBack">
+        <div>
+            <Transition 
+                animation="fly right"
+                duration={1000}
+                transitionOnMount={true}
+                >
+                <div styleName="login">
                     <button 
+                        styleName="loginBack"
                         onClick={this.GoHome}
                         className="btn btn-outline-warning">
                         <i className="icon reply"></i>
                     </button>
-                </div>
-                <div styleName="loginFormContainer">
-                    <div styleName="loginImage">
-                        <img className="img-full" src="/logo2_bga.png" alt="logo" />
+                    <div>
+                        <Image 
+                            size="medium"
+                            centered
+                            styleName="loginImage"
+                            src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355121/images/website/logo2_bga.png" 
+                            alt="logo" 
+                            />
+                        <Form
+                            styleName="loginForm"
+                            loading={this.state.FormStatus.loading}
+                            onSubmit={this.HandleSubmit}>
+                            <FormError errorHandler={this.state.FormStatus} />
+                            <TextInput
+                                input={{name : "email", 
+                                        type : "text", 
+                                        label : "Nom d'utilisateur",
+                                        required: true,
+                                        value: this.state.email}}
+                                handleChange={this.HandleChange}
+                                />
+                            <TextInput
+                                input={{name : "password", 
+                                        type : "password", 
+                                        label : "Mot de passe", 
+                                        required: true,
+                                        value: this.state.password}}
+                                handleChange={this.HandleChange}
+                                />
+                            <Button style={{marginTop: ".5vw"}} type="submit" color="teal">Se Connecter</Button>
+                            <a style={{marginTop: "1vw"}} href="mailto:samuel_personnel@outlook.com">Besoin d'aide?</a>
+                        </Form>
                     </div>
-                    <Form
-                        styleName="loginForm"
-                        loading={this.state.FormStatus.loading}
-                        onSubmit={this.HandleSubmit}>
-                        <FormError errorHandler={this.state.FormStatus} />
-                        <Form.Field>
-                            <label styleName="loginLabel">Nom Utilisateur</label>
-                            <input required name="email" type="text" placeholder="Nom..." onChange={this.HandleChange}/>
-                        </Form.Field>
-                        <Form.Field>
-                            <label styleName="loginLabel">Mot de passe</label>
-                            <input required name="password" type="password" placeholder="Mot de passe..." onChange={this.HandleChange}/>
-                        </Form.Field>
-                        <Button style={{marginTop: ".5vw"}} type="submit" color="teal">Se Connecter</Button>
-                        <a style={{marginTop: "1vw"}} href="mailto:samuel_personnel@outlook.com">Besoin d'aide?</a>
-                    </Form>
                 </div>
+            </Transition>
+            <div 
+                styleName="loginBg" 
+                style={{backgroundImage : `url('https://res.cloudinary.com/dohwohspb/image/upload/v1548351784/images/website/pexels-photo-1668246.jpg')`,
+                }}>
             </div>
-            <div styleName="loginBg" style={{backgroundImage : `url('https://res.cloudinary.com/dohwohspb/image/upload/v1548293527/images/website/fall-autumn-red-season.jpg')`}}></div>
         </div>
         );
     }

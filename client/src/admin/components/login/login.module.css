@@ -1,28 +1,3 @@
-.loginContainer{
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    padding-top: 10vw;
-    width: 40%;
-}
-
-.loginFormContainer{
-    width: 80%;
-    margin: 0 auto;
-}
-
-.loginImage{
-    width: 75%;
-    margin: 0 auto;
-}
-
-.loginLabel{
-}
-
-.loginTitle{
-    margin: .5vw 0;
-}
-
 .loginBack{
     position: fixed;
     bottom: 1vw;
@@ -36,16 +11,13 @@
     width: 100%;
 }
 
-.loginBtn{
-    float: right;
-}
-
 .login{
     z-index: 1000;
     position: fixed;
     top: 0;
     left: 0;
     height: stretch;
+    padding: 0 2.5vw;
     width: 20%;
 }
 
@@ -66,5 +38,6 @@
     height: stretch;
     position: fixed;
     top: 0;
+    filter: brightness(75%);
     left: 0;
 }

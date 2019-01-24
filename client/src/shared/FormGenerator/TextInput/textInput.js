@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input, Segment } from 'semantic-ui-react';
-import Translate from '../../../shared/translate.js';
 
 /**
  * Component for creating a new text input
@@ -15,10 +14,11 @@ const TextInput = (props) => {
         <Segment>
             <label>{props.input.label}</label>
             <Input
+            required={props.input.required}
             size = {props.input.size}
             transparent
             name = { props.input.name }
-            placeholder = { Translate.ModelKey(props.input.name) + "..." }
+            placeholder = { (props.input.name) + "..." }
             onChange = {
                 (e, data) => { props.handleChange(data) } }
             value = { props.input.value }

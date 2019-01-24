@@ -48,6 +48,15 @@ tbody tr:hover {
     transition: all .2s ease;
 }
 
+.ui.transparent.input>input{
+    padding: .25vw !important;
+}
+
+.ui.form .field.field input:-webkit-autofill{
+    border: none !important;
+    background: blue !important;
+}
+
 ::-webkit-scrollbar {
     background: #d6d6d6;
 }
@@ -361,6 +370,8 @@ blockquote {
 .ui.fullscreen.modal {
     left: auto !important;
 }
+
+
 
 /*---------*/
 
