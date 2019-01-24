@@ -224,6 +224,33 @@ Utility.IsWithinEnumeration = function(val, {enumeration = []} = {})
     return true;
 }
 
+Utility.ParseSourceSet = function (imgUrl)
+{
+    let sourceSets =    [
+                        {transform : "f_auto,q_75,w_64", size: "64w"},
+                        {transform : "f_auto,q_75,w_128", size: "128w"},
+                        {transform : "f_auto,q_75,w_256", size: "256w"},
+                        {transform : "f_auto,q_75,w_512", size: "512w"},
+                        {transform : "f_auto,q_75,w_768", size: "768w"},
+                        {transform : "f_auto,q_75,w_1024",size: "1024w"},
+                        {transform : "f_auto,q_75,w_1280",size: "1280w"},
+                        {transform : "f_auto,q_75,w_1920",size: "1920w"}
+                        ];
+                     
+    let firstHalf = imgUrl.substring(0, imgUrl.indexOf("/upload/") + 8);
+    let secondHalf = "/" + imgUrl.substring(imgUrl.indexOf("/upload/") + 8, imgUrl.length);
+    
+    let compiledSourceSet = "";
+    sourceSets.map((sourceSet, index) =>{
+        if(index === sourceSets.length -1 )
+            compiledSourceSet += firstHalf + sourceSet.transform + secondHalf + " " + sourceSet.size;  
+        else
+            compiledSourceSet += firstHalf + sourceSet.transform + secondHalf + " " + sourceSet.size + ",";  
+    });
+    
+    return compiledSourceSet;
+}
+
 // Function that gatters all the required inputs inside a form and verify that they have information in them
 Forms.ValidateFormInput = function(inputs)
 {

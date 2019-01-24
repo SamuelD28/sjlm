@@ -1,4 +1,5 @@
 import React from 'react';
+import {Utility} from '../../../shared/utility.js';
 
 // Css Module Import
 import CSSModules from 'react-css-modules';
@@ -7,7 +8,11 @@ import styles from './membersCard.module.css';
 const MembersCard = (props) => {
     return (
     <div styleName="membersCard">
-        <div styleName="membersPhoto" className="img-bg" style={{backgroundImage: `url('${props.members.Photo}')`}}></div>
+        <img
+        sizes="8vw"
+        srcSet={Utility.ParseSourceSet(props.members.Photo[0])}
+        styleName="membersPhoto"
+        alt="membre" />
         <div styleName="membersInfo">
             <h1 styleName="membersName">{props.members.FirstName} {props.members.LastName}</h1>
             <h3 styleName="membersTitle">{(props.members.Occupation !== null)?props.members.Occupation.Title: "Aucun poste assigné"}</h3>

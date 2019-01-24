@@ -7,9 +7,9 @@
 }
 
 .membersPhoto {
-    width: 40%;
+    object-fit: cover;
+    width: 8vw;
     height: 100%;
-    grid-area: membersPhoto;
 }
 
 .membersInfo {
