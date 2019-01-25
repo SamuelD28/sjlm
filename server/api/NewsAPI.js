@@ -52,7 +52,9 @@ Api.FindNewsByDate = function (req, res) {
             $gte: today,
             $lte: target
         }
-    }).populate("Category");
+    })
+    .sort("-createdAt")
+    .populate("Category");
 
     Query.exec()
         .then((news) => {
@@ -119,7 +121,8 @@ Api.GetCalendar = function (req, res) {
 
 Api.FindNewsByCategory = function (req, res) {
     News.find({ Category: req.params.category })
-        .sort("-DateFrom")
+        .sort("DateFrom")
+        .populate("Category")
         .then((news) => {
             if (news) {
                 Utility.GenerateResponse(true, res, news);

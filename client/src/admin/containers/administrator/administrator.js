@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Accordion } from 'semantic-ui-react';
+import Ajax from '../../../shared/ajax.js';
 
 // Css Module Import
 import adminStyles from '../index.module.css';
@@ -18,29 +18,31 @@ class Administrator extends Component {
         this.state = {};
     }
 
-    handleClick = (e, titleProps) => {
-        const { index } = titleProps
-        const { activeIndex } = this.state
-        const newIndex = activeIndex === index ? -1 : index
-        this.setState({ activeIndex: newIndex })
+    async componentDidMount()
+    {
+        let users = await Ajax.GetData("/api/user/");
+        
+        if(users.success)
+            this.setState({users : users.data});
     }
 
     render() {
-        const { activeIndex } = this.state;
+    if(this.state.users !== undefined)
         return <div className={adminStyles.adminPage}>
                     <div styleName="admin">
                         <section styleName="userSection">
-                            <h1>Gérer les Utilisateurs</h1>
-                            <Accordion fluid styled style={{margin: '1vw 0'}}>
-                                <Accordion.Title active={activeIndex === 0}  index={0} onClick={this.handleClick}>
-                                      <i className="icon dropdown" ></i>
-                                      <h3 style={{display: 'inline'}}>Ajouter un Utilisateur</h3>
-                                </Accordion.Title>
-                                <Accordion.Content active={activeIndex === 0}>
-                                    <UserCreate />
-                                </Accordion.Content>
-                            </Accordion>
                             <div styleName="sectionCard">
+                                <h2>Les utilisateurs</h2>    
+                                {this.state.users.map((user)=>(
+                                    <div className="navigationCard">{user.email}</div>
+                                ))}
+                            </div>
+                            <div styleName="sectionCard">
+                                <h2>Ajouter un utilisateur</h2>
+                                <UserCreate />
+                            </div>
+                            <div styleName="sectionCard">
+                                <h2>Gérer {this.props.user.firstName} {this.props.user.lastName}</h2>
                                 <UserUpdate user={this.props.user}/>
                             </div>
                         </section>

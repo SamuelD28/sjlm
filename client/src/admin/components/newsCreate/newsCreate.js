@@ -1,13 +1,14 @@
+//Library and modules
 import React, { Component } from 'react';
-
-import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 import { default as NewsSchema } from '../../formSchema/newsSchema.js';
 
-// Css module import
-import CSSModules from 'react-css-modules';
-import styles from './newsCreate.module.css';
+//Components
+import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 
-//This components hold the form to and fonctionality to create a new post in the database.
+/**
+ * Component used to open up a modal form
+ * that can add a new news in the database
+ */
 class NewsCreate extends Component {
 
     constructor(props) {
@@ -15,29 +16,29 @@ class NewsCreate extends Component {
         this.PostConfig = NewsSchema.GetPostConfig();
         this.PostConfig.modalOpener = this.ModalOpener;
     }
-
+    
+    /**
+     * UI that triggers the opening of 
+     * the modal form
+     */
     ModalOpener = () => {
-        return (
-            <div className="cardContainer cardOverlay">
-            <div className="cardOverlayBtn">
-                <i className="icon plus"></i>
-                <h4>Ajouter</h4>
-            </div>
-        </div>
-        )
+        return  <div className="cardContainer cardOverlay">
+                    <div className="cardOverlayBtn">
+                        <i className="icon plus"></i>
+                        <h4>Ajouter</h4>
+                    </div>
+                </div>
     }
 
     render() {
-        return (
-            <FormGenerator
+        return  <FormGenerator
                     Inputs={NewsSchema.GetEmptyInputs()}
                     FormConfig={this.PostConfig}
                     FormStatus={new FormStatus()}
                     TextEditor={NewsSchema.GetEmptyEditor()}
                     RefreshDataSet={this.props.RefreshDataSet}
                     />
-        )
     }
 }
 
-export default CSSModules(NewsCreate, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
+export default NewsCreate;

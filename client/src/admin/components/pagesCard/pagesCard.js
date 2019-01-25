@@ -1,10 +1,14 @@
-//Initial Declaration and state initialisation
+//Library and modules
 import React, { Component } from 'react';
-
-import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 import { default as PagesSchema } from '../../formSchema/pagesSchema.js';
 
+//Components
+import { FormGenerator, FormStatus } from '../../../shared/FormGenerator/formGenerator.js';
 
+/**
+ * Component used to open up a modal
+ * form for editing an existing page
+ */
 class PagesCard extends Component {
 
     constructor(props) {
@@ -13,25 +17,24 @@ class PagesCard extends Component {
         this.PutConfig = PagesSchema.GetBindedPutConfig(props.page._id);
         this.PutConfig.modalOpener = this.ModalOpener;
     }
-
+    
+    /**
+     * UI that triggers the opening of the form
+     */
     ModalOpener = () => {
-        return (
-            <div className="navigationCard">
-                <h4>{this.props.page.PageTitle.toUpperCase()}</h4>
-            </div>
-        )
+        return  <div className="navigationCard">
+                    <h4>{this.props.page.PageTitle.toUpperCase()}</h4>
+                </div>
     }
 
     render() {
-        return (
-            <FormGenerator
-                Inputs={PagesSchema.GetBindedInputs(this.props.page)}
+        return  <FormGenerator
+                    Inputs={PagesSchema.GetBindedInputs(this.props.page)}
                     FormConfig={this.PutConfig}
                     FormStatus={new FormStatus()}
                     TextEditor={PagesSchema.GetBindedEditor(this.props.page.PageContent)}
                     RefreshDataSet={this.props.RefreshDataSet}
-                />
-        )
+                    />
     }
 }
 export default PagesCard;

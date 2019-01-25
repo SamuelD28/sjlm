@@ -155,7 +155,6 @@ class News extends Component {
 
         if (this.state.selectedCategory !== "") {
             let request = await Ajax.GetData(`/api/news/category/${this.state.selectedCategory}`);
-            console.log(request);
             this.setState({ news: request.data });
         }
         else {

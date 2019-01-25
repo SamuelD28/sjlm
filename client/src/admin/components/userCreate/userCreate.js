@@ -1,37 +1,15 @@
-//Initial Declaration and importation
 import React from 'react';
-import FormComponent from '../FormComponent.js';
-import {Form, Grid} from 'semantic-ui-react';
-// import LoaderComponent from '../loaderComponent/loaderComponent.js';
+import {default as UserSchema} from '../../formSchema/userSchema.js';
 
-//Component responsible for creating new page
-class UserCreate extends FormComponent{
-    
-    render(){
-    return(
-    <Form onSubmit={() => {this.CreateInDb("/api/user")}}>
-        <Grid divided>
-            <Grid.Row>
-                <Grid.Column>
-                    <Form.Group widths="equal">
-                        <Form.Input required fluid name="firstName" label="Prénom" type="text" placeholder='Prénom' onChange={this.HandleChange}/>
-                        <Form.Input required fluid name="lastName"  label='Nom' type="text" placeholder='Nom' onChange={this.HandleChange}/>
-                    </Form.Group>
-                    <Form.Field>
-                        <Form.Input required fluid name="email"  label='Email' type="email" placeholder='Email' onChange={this.HandleChange}/>
-                    </Form.Field>
-                    <Form.Group widths="equal">
-                        <Form.Input required fluid name="password" label="Mot de passe" type="password" placeholder='Mot de passe' onChange={this.HandleChange}/>
-                        <Form.Input disabled fluid label='Répéter mot de passe' type="password" placeholder='Répéter mot de passe' onChange={this.HandleChange}/>
-                    </Form.Group>
-                    <Form.Field>
-                        <button disabled={this.state.disableSubmit} type="submit" className="btn btn-primary">Ajouter</button>
-                    </Form.Field>
-                </Grid.Column>
-            </Grid.Row>
-        </Grid>
-    </Form>
-    )}
+import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
+
+const UserCreate = () =>{
+    return <FormGenerator
+                Inputs={UserSchema.GetEmptyInputs()}
+                FormConfig={UserSchema.GetPostConfig()}
+                FormStatus={new FormStatus()}
+                RefreshDataSet={() => {}}
+                />
 }
 
 export default UserCreate;
