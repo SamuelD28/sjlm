@@ -11,6 +11,10 @@ import UserCreate from '../../components/userCreate/userCreate.js';
 import UserUpdate from '../../components/userUpdate/userUpdate.js';
 import NavigationLinks from '../navigationlinks/navigationlinks.js';
 
+/**
+ * Component used for the admnistrator section
+ * of the backend section fo the website.
+ */
 class Administrator extends Component {
 
     constructor(props) {

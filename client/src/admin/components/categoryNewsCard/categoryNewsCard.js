@@ -16,7 +16,7 @@ class CategoryNewsCard extends Component {
     }
 
     ModalOpener = () => {
-        return <div className="pagesCard">
+        return <div className="navigationCard">
                     <h4>{this.props.category.Title}
                     </h4>
                 </div>

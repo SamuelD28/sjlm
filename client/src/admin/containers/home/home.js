@@ -1,112 +1,199 @@
-//-----------Declaration-------------//
+/*global gapi*/
 import React, {Component} from 'react';
+import moment from 'moment';
+import {HorizontalBar} from 'react-chartjs-2';
+
 //Css Module import
 import CSSModules from 'react-css-modules';
 import styles from './home.module.css';
 import generalStyle from '../index.module.css';
 
 class Home extends Component{
+    
+    state = {};
+    
+    componentDidMount(){
+        
+        // Replace with your client ID from the developer console.
+        var CLIENT_ID = '776742658802-pbe2o74vfh5b1c1mltpmhabar3cv1scv.apps.googleusercontent.com';
+        
+        // Set authorized scope.
+        var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+        
+        
+        function authorize(event) {
+            // Handles the authorization flow.
+            // `immediate` should be false when invoked from the button click.
+            var useImmdiate = event ? false : true;
+            var authData = {
+              client_id: CLIENT_ID,
+              scope: SCOPES,
+              immediate: useImmdiate
+            };
+        
+            gapi.auth.authorize(authData, function(response) {
+              var authButton = document.getElementById('auth-button');
+              if (response.error) {
+                authButton.hidden = false;
+              }
+              else {
+                authButton.hidden = true;
+                queryAccounts();
+              }
+            });
+        }
+        
+        
+        function queryAccounts() {
+          // Load the Google Analytics client library.
+          gapi.client.load('analytics', 'v3').then(function() {
+        
+            // Get a list of all Google Analytics accounts for this user
+            gapi.client.analytics.management.accounts.list().then(handleAccounts);
+          });
+        }
+        
+        
+        function handleAccounts(response) {
+          // Handles the response from the accounts list method.
+          if (response.result.items && response.result.items.length) {
+            // Get the first Google Analytics account.
+            var firstAccountId = response.result.items[0].id;
+        
+            // Query for properties.
+            queryProperties(firstAccountId);
+          } else {
+            console.log('No accounts found for this user.');
+          }
+        }
+        
+        
+        function queryProperties(accountId) {
+          // Get a list of all the properties for the account.
+          gapi.client.analytics.management.webproperties.list(
+              {'accountId': accountId})
+            .then(handleProperties)
+            .then(null, function(err) {
+              // Log any errors.
+              console.log(err);
+          });
+        }
+        
+        
+        function handleProperties(response) {
+          // Handles the response from the webproperties list method.
+          if (response.result.items && response.result.items.length) {
+        
+            // Get the first Google Analytics account
+            var firstAccountId = response.result.items[0].accountId;
+        
+            // Get the first property ID
+            var firstPropertyId = response.result.items[0].id;
+        
+            // Query for Views (Profiles).
+            queryProfiles(firstAccountId, firstPropertyId);
+          } else {
+            console.log('No properties found for this user.');
+          }
+        }
+        
+        
+        function queryProfiles(accountId, propertyId) {
+            // Get a list of all Views (Profiles) for the first property
+            // of the first Account.
+            gapi.client.analytics.management.profiles.list({
+                'accountId': accountId,
+                'webPropertyId': propertyId
+            })
+            .then(handleProfiles)
+            .then(null, function(err) {
+                // Log any errors.
+                console.log(err);
+            });
+        }
+        
+        
+        function handleProfiles(response) {
+            // Handles the response from the profiles list method.
+            if (response.result.items && response.result.items.length) {
+            // Get the first View (Profile) ID.
+            var firstProfileId = response.result.items[0].id;
+            // Query the Core Reporting API.
+            queryCoreReportingApi(firstProfileId);
+            } else {
+            console.log('No views (profiles) found for this user.');
+            }
+        }
+        
+        var self = this;
+        function queryCoreReportingApi(profileId) {
+            // Query the Core Reporting API for the number sessions for
+            // the past seven days.
+            gapi.client.analytics.data.ga.get({
+                'ids': 'ga:' + profileId,
+                dimensions: 'ga:date',
+                'start-date': '7daysAgo',
+                'end-date': 'yesterday',
+                'metrics': 'ga:users'
+            })
+            .then((response) => {
+                var formattedJson = JSON.stringify(response.result, null, 2);
+
+                var data1 = response.result.rows.map(function(row) { 
+                    return + row[1]; 
+                });
+                
+                console.log(data1);
+                
+                var labels = [ 'Jan','Feb','Mar','Apr','May','Jun','Jul'];
+            
+                var data = {
+                    labels : labels,
+                    datasets : [
+                      {
+                        label: 'This Week',
+                        fillColor : 'rgba(151,187,205,0.5)',
+                        strokeColor : 'rgba(151,187,205,1)',
+                        pointColor : 'rgba(151,187,205,1)',
+                        pointStrokeColor : '#fff',
+                        data : data1
+                      }
+                    ]
+                };
+                
+                self.setState({stats: data});
+                
+                console.log(response);
+                document.getElementById('query-output').value = formattedJson;
+            })
+             .then(null, function(err) {
+                // Log any errors.
+                console.log(err);
+            });
+        }
+        
+          // Add an event listener to the 'auth-button'.
+          document.getElementById('auth-button').addEventListener('click', authorize);
+        
+        
+    }
+    
+    DisplayStats = () =>{
+        if(this.state.stats !== undefined){
+            return  <div>
+                        <h2>Horizontal Bar Example</h2>
+                        <HorizontalBar data={this.state.stats} />
+                    </div>
+        }
+    }
+    
     render(){
-    return(
-    <div id={styles.homePage} className={generalStyle.adminPage}>
-        <section styleName="statistic" className={generalStyle.sectionContainer}>
-            <h4 styleName="statTitle"><i className="fas fa-user"></i> Visiteurs Hebdomadaire</h4>
-            <h1 styleName="statData">168</h1>
-            <span styleName="statPourcentage decrease">-11%</span>
-        </section>
-        <section styleName="statistic" className={generalStyle.sectionContainer}>
-            <h4 styleName="statTitle"><i className="fas fa-user"></i> Nombres D'utilisateurs</h4>
-            <h1 styleName="statData">2500</h1>
-            <span styleName="statPourcentage increase">+22%</span>
-        </section>
-        <section styleName="statistic" className={generalStyle.sectionContainer}>
-            <h4 styleName="statTitle"><i className="fas fa-clock"></i> Temps de Chargement</h4>
-            <h1 styleName="statData">1.82</h1>
-            <span styleName="statPourcentage increase">+17%</span>
-        </section>
-        <section styleName="statistic" className={generalStyle.sectionContainer}>
-            <h4 styleName="statTitle"><i className="fas fa-angry"></i> Nombre de Plainte</h4>
-            <h1 styleName="statData">12</h1>
-            <span styleName="statPourcentage decrease">-9%</span>
-        </section>
-        <section id={styles.maps} className={generalStyle.sectionContainer}>
-            <h4  className={generalStyle.sectionTitle}>Charte du traffic</h4>
-            <div className={generalStyle.sectionContent}></div>
-        </section>
-        <section id={styles.todos} className={generalStyle.sectionContainer}>
-            <h4 className={generalStyle.sectionTitle}>Liste À Faire</h4>
-            <a className={generalStyle.sectionBtn} href="">
-                <button className="btn btn-blue float-right">Ajouter</button>
-            </a>
-            <ul className={generalStyle.sectionContent}>
-                <li styleName="todoItem">
-                    <input type="checkbox" />
-                    <span>Remplir Formulaire Plainte</span>
-                    <div>
-                        <i className="far fa-clock"></i>
-                        <span>6 Juillet</span>
-                    </div>
-                </li>
-                <li styleName="todoItem">
-                    <input type="checkbox" />
-                    <span>Laver mon Chat</span>
-                    <div>
-                        <i className="far fa-clock"></i>
-                        <span>12 Juillet</span>
-                    </div>
-                </li>
-                <li styleName="todoItem">
-                    <input type="checkbox" />
-                    <span>Faire l'epicerie</span>
-                    <div>
-                        <i className="far fa-clock"></i>
-                        <span>7 Juillet</span>
-                    </div>
-                </li>
-                <li styleName="todoItem">
-                    <input type="checkbox" />
-                    <span>Completer le permis</span>
-                    <div>
-                        <i className="far fa-clock"></i>
-                        <span>8 Juillet</span>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section id={styles.mails} className={generalStyle.sectionContainer}>
-            <h4 className={generalStyle.sectionTitle}>Mail</h4>
-            <a className={generalStyle.sectionBtn} href="">
-                <button className="btn btn-blue float-right">Consulter</button>
-            </a>
-            <div className={generalStyle.sectionContent}>
-                <div styleName="mailItem mailUnread">
-                    <img styleName="mailAvatar" src="/avatar.jpg" alt="avatar"/>
-                    <div styleName="mailInfo">
-                        <span>John Doe</span>
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et mauris massa. Maecenas eget velit iaculis...</span>
-                        <span styleName="mailTime"><i className="far fa-clock"></i> 5 minutes</span>
-                    </div>
+        return  <div className={generalStyle.adminPage}>
+                    <button id="auth-button">Authorize</button>
+                    <h1>Hello Analytics</h1>
+                    <textarea cols="80" rows="20" id="query-output"></textarea>
+                    {this.DisplayStats()}
                 </div>
-                 <div styleName="mailItem">
-                    <img styleName="mailAvatar" src="/avatar.jpg" alt="avatar"/>
-                    <div styleName="mailInfo">
-                        <span>John Doe</span>
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et mauris massa. Maecenas eget velit iaculis...</span>
-                        <span styleName="mailTime"><i className="far fa-clock"></i> 8 minutes</span>
-                    </div>
-                </div>
-                 <div styleName="mailItem">
-                    <img styleName="mailAvatar" src="/avatar.jpg" alt="avatar"/>
-                    <div styleName="mailInfo">
-                        <span>John Doe</span>
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et mauris massa. Maecenas eget velit iaculis...</span>
-                        <span styleName="mailTime"><i className="far fa-clock"></i> 18 minutes</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    )
     }
 }
 

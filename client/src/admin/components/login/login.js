@@ -87,7 +87,6 @@ class Login extends Component{
                             />
                         <Form
                             styleName="loginForm"
-                            loading={this.state.FormStatus.loading}
                             onSubmit={this.HandleSubmit}>
                             <FormError errorHandler={this.state.FormStatus} />
                             <TextInput
@@ -106,7 +105,7 @@ class Login extends Component{
                                         value: this.state.password}}
                                 handleChange={this.HandleChange}
                                 />
-                            <Button style={{marginTop: ".5vw"}} type="submit" color="teal">Se Connecter</Button>
+                            <Button loading={this.state.FormStatus.loading} style={{marginTop: ".5vw"}} type="submit" color="teal">Se Connecter</Button>
                             <a style={{marginTop: "1vw"}} href="mailto:samuel_personnel@outlook.com">Besoin d'aide?</a>
                         </Form>
                     </div>

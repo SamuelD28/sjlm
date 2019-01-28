@@ -8,7 +8,6 @@ import Home from './home/home.js';
 import News from './news/news.js';
 import Members from './members/members.js';
 import Pages from './pages/pages.js';
-import Mails from './mails/mails.js';
 import Resources from './resources/resources.js';
 import Administrator from './administrator/administrator.js';
 
@@ -23,7 +22,6 @@ const Index = (props) => {
                     <Route exact path="/admin/pages" component={Pages} />
                     <Route exact path="/admin/members" component={Members} />
                     <Route exact path="/admin/resources" component={Resources} />
-                    <Route exact path="/admin/mails" component={Mails} />
                     <Route path="/">
                         <Redirect to="/admin" />
                     </Route>

@@ -62,13 +62,6 @@ const Navbar = (props) => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink styleName="navbarItem" to="/admin/mails">
-                        <span styleName="navbarIcon"><i className="icon envelope"></i></span>
-                        <div styleName="navbarLink">Mail</div>
-                        <div styleName="navbarBorder"></div>
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink styleName="navbarItem" to="/admin/administrator">
                         <span styleName="navbarIcon"><i className="icon chess"></i></span>
                         <div styleName="navbarLink">Administrateur</div>

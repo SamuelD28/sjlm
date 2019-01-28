@@ -76,27 +76,20 @@
     padding: .25vw 0;
 }
 
-.mailAvatar{
-    grid-area: mailAvatar;
-    height: 100px;
-    width: 100px;
-}
-
-.mailInfo{
-    color: #5A5A5A;
+.view-selector-container{
     display: flex;
-    flex-direction: column;
-    padding: .5vw 0vw;
-    padding-right: 1vw;
-    grid-area: mailInfo;
-    justify-content: space-between;
 }
 
-.mailUnread{
-    background-color: #f3f3f3;
-    font-weight: bold;
+.embed-api-auth-container{
+    border: 2px solid whitesmoke;
+    border-radius: 10%;
+    
+    padding: .5vw;
+    display: inline-block;
+    color: #2C3E50;
 }
 
-.mailTime{
-    font-weight: bold;
+.usersStats{
+    background: white;
+    padding: 1vw;
 }
