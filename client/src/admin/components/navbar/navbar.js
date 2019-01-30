@@ -28,15 +28,15 @@ const Navbar = (props) => {
                 </li>
                 <li>
                     <NavLink styleName="navbarItem" to="/admin">
-                        <span styleName="navbarIcon"><i className="icon home"></i></span>
-                        <div styleName="navbarLink">Accueil</div>
+                        <span styleName="navbarIcon"><i className="icon th"></i></span>
+                        <div styleName="navbarLink">Dashboard</div>
                         <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink styleName="navbarItem" to="/admin/news">
                         <span styleName="navbarIcon"><i className="icon newspaper"></i></span>
-                        <div styleName="navbarLink">Actualitées</div>
+                        <div styleName="navbarLink">Publications</div>
                         <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>

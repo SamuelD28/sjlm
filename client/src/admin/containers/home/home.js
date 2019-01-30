@@ -1,198 +1,238 @@
 /*global gapi*/
 import React, {Component} from 'react';
-import moment from 'moment';
-import {HorizontalBar} from 'react-chartjs-2';
+import {Bar, Pie, Line} from 'react-chartjs-2';
+import {Divider, Placeholder, Segment, Transition} from 'semantic-ui-react';
 
 //Css Module import
 import CSSModules from 'react-css-modules';
 import styles from './home.module.css';
 import generalStyle from '../index.module.css';
 
+import moment from 'moment';
+import 'moment/locale/fr'; // without this line it didn't work
+moment.locale('fr');
+
 class Home extends Component{
     
-    state = {};
+    state = {
+        CLIENT_ID  :'776742658802-pbe2o74vfh5b1c1mltpmhabar3cv1scv.apps.googleusercontent.com',
+        SCOPES : ['https://www.googleapis.com/auth/analytics.readonly'],
+        PROFILE_ID : 'ga:188711212'
+    };
     
-    componentDidMount(){
+    Authorize = async(event) =>{
+        // Handles the authorization flow.
+        // `immediate` should be false when invoked from the button click.
+        var useImmdiate = event ? false : true;
+        var authData = {
+          client_id: this.state.CLIENT_ID,
+          scope: this.state.SCOPES,
+          immediate: useImmdiate
+        };
         
-        // Replace with your client ID from the developer console.
-        var CLIENT_ID = '776742658802-pbe2o74vfh5b1c1mltpmhabar3cv1scv.apps.googleusercontent.com';
-        
-        // Set authorized scope.
-        var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
-        
-        
-        function authorize(event) {
-            // Handles the authorization flow.
-            // `immediate` should be false when invoked from the button click.
-            var useImmdiate = event ? false : true;
-            var authData = {
-              client_id: CLIENT_ID,
-              scope: SCOPES,
-              immediate: useImmdiate
-            };
-        
-            gapi.auth.authorize(authData, function(response) {
-              var authButton = document.getElementById('auth-button');
-              if (response.error) {
-                authButton.hidden = false;
-              }
-              else {
-                authButton.hidden = true;
-                queryAccounts();
-              }
-            });
-        }
-        
-        
-        function queryAccounts() {
-          // Load the Google Analytics client library.
-          gapi.client.load('analytics', 'v3').then(function() {
-        
-            // Get a list of all Google Analytics accounts for this user
-            gapi.client.analytics.management.accounts.list().then(handleAccounts);
-          });
-        }
-        
-        
-        function handleAccounts(response) {
-          // Handles the response from the accounts list method.
-          if (response.result.items && response.result.items.length) {
-            // Get the first Google Analytics account.
-            var firstAccountId = response.result.items[0].id;
-        
-            // Query for properties.
-            queryProperties(firstAccountId);
-          } else {
-            console.log('No accounts found for this user.');
-          }
-        }
-        
-        
-        function queryProperties(accountId) {
-          // Get a list of all the properties for the account.
-          gapi.client.analytics.management.webproperties.list(
-              {'accountId': accountId})
-            .then(handleProperties)
-            .then(null, function(err) {
-              // Log any errors.
-              console.log(err);
-          });
-        }
-        
-        
-        function handleProperties(response) {
-          // Handles the response from the webproperties list method.
-          if (response.result.items && response.result.items.length) {
-        
-            // Get the first Google Analytics account
-            var firstAccountId = response.result.items[0].accountId;
-        
-            // Get the first property ID
-            var firstPropertyId = response.result.items[0].id;
-        
-            // Query for Views (Profiles).
-            queryProfiles(firstAccountId, firstPropertyId);
-          } else {
-            console.log('No properties found for this user.');
-          }
-        }
-        
-        
-        function queryProfiles(accountId, propertyId) {
-            // Get a list of all Views (Profiles) for the first property
-            // of the first Account.
-            gapi.client.analytics.management.profiles.list({
-                'accountId': accountId,
-                'webPropertyId': propertyId
-            })
-            .then(handleProfiles)
-            .then(null, function(err) {
-                // Log any errors.
-                console.log(err);
-            });
-        }
-        
-        
-        function handleProfiles(response) {
-            // Handles the response from the profiles list method.
-            if (response.result.items && response.result.items.length) {
-            // Get the first View (Profile) ID.
-            var firstProfileId = response.result.items[0].id;
-            // Query the Core Reporting API.
-            queryCoreReportingApi(firstProfileId);
-            } else {
-            console.log('No views (profiles) found for this user.');
-            }
-        }
-        
-        var self = this;
-        function queryCoreReportingApi(profileId) {
-            // Query the Core Reporting API for the number sessions for
-            // the past seven days.
-            gapi.client.analytics.data.ga.get({
-                'ids': 'ga:' + profileId,
-                dimensions: 'ga:date',
-                'start-date': '7daysAgo',
-                'end-date': 'yesterday',
-                'metrics': 'ga:users'
-            })
-            .then((response) => {
-                var formattedJson = JSON.stringify(response.result, null, 2);
-
-                var data1 = response.result.rows.map(function(row) { 
-                    return + row[1]; 
+        if(gapi.auth !== undefined){
+            gapi.auth.authorize(authData, () => {
+                gapi.client.load('analytics', 'v3').then(async() => {
+                    
+                    let usersWeekQuery ={
+                        'dimensions': 'ga:date',
+                        'start-date': '7daysAgo',
+                        'end-date': 'today',
+                        'metrics': 'ga:users'
+                    };
+                    
+                    let usersMonthQuery = {
+                        'dimensions': 'ga:month',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    
+                    let usersBrowserQuery = {
+                        'dimensions': 'ga:browser',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    
+                    let usersCityQuery = {
+                        'dimensions': 'ga:city',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    
+                    let usersSourceQuery = {
+                        'dimensions': 'ga:source',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    
+                    let usersWeek =  await this.GetChartData(usersWeekQuery, 'dayweek');
+                    let usersMonth =  await this.GetChartData(usersMonthQuery, 'daymonth');
+                    let usersBrowser =  await this.GetChartData(usersBrowserQuery, 'daymonth');
+                    let usersCity =  await this.GetChartData(usersCityQuery, 'daymonth');
+                    let usersSource =  await this.GetChartData(usersSourceQuery, 'daymonth');
+                    
+                    this.setState({usersWeek : usersWeek, usersMonth: usersMonth, usersBrowser: usersBrowser, usersCity: usersCity, usersSource: usersSource});
                 });
-                
-                console.log(data1);
-                
-                var labels = [ 'Jan','Feb','Mar','Apr','May','Jun','Jul'];
-            
-                var data = {
-                    labels : labels,
-                    datasets : [
-                      {
-                        label: 'This Week',
-                        fillColor : 'rgba(151,187,205,0.5)',
-                        strokeColor : 'rgba(151,187,205,1)',
-                        pointColor : 'rgba(151,187,205,1)',
-                        pointStrokeColor : '#fff',
-                        data : data1
-                      }
-                    ]
-                };
-                
-                self.setState({stats: data});
-                
-                console.log(response);
-                document.getElementById('query-output').value = formattedJson;
-            })
-             .then(null, function(err) {
-                // Log any errors.
-                console.log(err);
             });
         }
-        
-          // Add an event listener to the 'auth-button'.
-          document.getElementById('auth-button').addEventListener('click', authorize);
-        
-        
+        else{
+            setTimeout(() => this.Authorize(), 1000);
+        }
     }
     
-    DisplayStats = () =>{
-        if(this.state.stats !== undefined){
-            return  <div>
-                        <h2>Horizontal Bar Example</h2>
-                        <HorizontalBar data={this.state.stats} />
-                    </div>
+    componentDidMount(){
+        this.Authorize();
+    }
+    
+    GenerateColor = (data, type) =>{
+        
+        let colors = ['rgba(238, 89, 139, 1)','rgba(30, 221, 183, 1)','rgba(84, 119, 153, 1)','rgba(244, 210, 75,1)','rgba(86, 165, 217,1)'];
+        let colorsBg = ['rgba(238, 89, 139, .5)','rgba(30, 221, 183, .5)','rgba(84, 119, 153, .5)','rgba(244, 210, 75,.5)','rgba(86, 165, 217,.5)'];
+        
+        if(type === undefined){
+            if(data.length >= colors.length)
+                return colors;
+            else
+                return colors.splice(0, data.length); 
         }
+        else {
+            if(data.length >= colorsBg.length)
+                return colorsBg;
+            else
+                return colorsBg.splice(0, data.length); 
+        }
+    }
+    
+    GetChartData = (query, format) =>{
+        query.ids = this.state.PROFILE_ID;
+        return  gapi.client.analytics.data.ga.get(query)
+                    .then((response) => {
+                        let data = [];
+                        let labels = [];
+                        response.result.rows.map(function(row) { 
+                            
+                            if(format === "dayweek")
+                                labels.push(moment(row[0]).format('dddd'));
+                            else if(format === 'month')
+                                labels.push(moment(row[0]).format('MMMM'));
+                            else
+                                labels.push(row[0]);
+                                   
+                            data.push(row[1]);
+                        });
+                        var chartData = {
+                            labels : labels,
+                            datasets : [
+                              {
+                                label: 'Utilisateur',
+                                backgroundColor : this.GenerateColor(data, 'background'),
+                                borderColor : this.GenerateColor(data),
+                                data : data
+                              }
+                            ]
+                        };
+                    return chartData;
+                });
+    }
+    
+    DisplayPlaceholder = () =>{
+        return  <Segment raised>
+                        <Placeholder fluid>
+                            <Placeholder.Image rectangular />
+                        </Placeholder>
+                    </Segment>
+    }
+    
+    DisplayStatsHeader = (metrics, dimensions) =>{
+        return <Transition
+                    animation="fade right"
+                    duration={1000}
+                    transitionOnMount={true}>
+                    <div styleName="statsHeader">
+                        <h3 styleName="statsMetrics">{metrics}</h3>
+                        <h2 styleName="statsDimensions">{dimensions}</h2>
+                    </div>
+                </Transition>
+    }
+    
+    DisplayUsersCity = () =>{
+        if(this.state.usersCity !== undefined)
+            return  <div styleName="statsCard"> 
+                        {this.DisplayStatsHeader('Utilisateurs','Par Ville')}
+                        <div styleName="statistic">
+                            <Pie data={this.state.usersCity} />
+                        </div>
+                    </div>
+        else 
+            return  this.DisplayPlaceholder();
+    }
+    
+    DisplayUsersBrowsers = () =>{
+        if(this.state.usersBrowser !== undefined)
+            return  <div styleName="statsCard">
+                        {this.DisplayStatsHeader('Utilisateurs','Par Navigateurs')}
+                        <div styleName="statistic">
+                            <Pie data={this.state.usersBrowser} />
+                        </div>
+                    </div>
+        else 
+            return  this.DisplayPlaceholder();
+    }
+    
+    
+    DisplayUsersWeek = () =>{
+        if(this.state.usersWeek !== undefined)
+            return  <div styleName="statsCard">
+                        {this.DisplayStatsHeader('Utilisateurs','Par Semaine')}
+                        <div styleName="statistic">
+                            <Line data={this.state.usersWeek} />
+                        </div>
+                    </div>
+        else 
+            return  this.DisplayPlaceholder();
+    }
+    
+    DisplayUsersMonth = () =>{
+        if(this.state.usersMonth !== undefined)
+            return  <div styleName="statsCard">
+                        {this.DisplayStatsHeader('Utilisateurs','Par Mois')}
+                        <div styleName="statistic">
+                            <Bar data={this.state.usersMonth} />
+                        </div>
+                    </div>
+        else 
+            return  this.DisplayPlaceholder();
+    }
+    
+    DisplayUsersSource = () =>{
+        if(this.state.usersSource !== undefined)
+            return  <div styleName="statsCard"> 
+                        {this.DisplayStatsHeader('Utilisateurs','Par Source')}
+                        <div styleName="statistic">
+                            <Pie data={this.state.usersSource} />
+                        </div>
+                    </div>
+        else 
+            return  this.DisplayPlaceholder();
     }
     
     render(){
         return  <div className={generalStyle.adminPage}>
-                    <button id="auth-button">Authorize</button>
-                    <h1>Hello Analytics</h1>
-                    <textarea cols="80" rows="20" id="query-output"></textarea>
-                    {this.DisplayStats()}
+                    <section styleName="usersStats">
+                        <section styleName="pieCharts">
+                            {this.DisplayUsersBrowsers()}
+                            {this.DisplayUsersCity()}
+                            {this.DisplayUsersSource()}
+                        </section>
+                        <section styleName="barCharts">
+                            {this.DisplayUsersWeek()}
+                            {this.DisplayUsersMonth()}
+                        </section>
+                    </section>
                 </div>
     }
 }

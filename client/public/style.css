@@ -48,6 +48,10 @@ tbody tr:hover {
     transition: all .2s ease;
 }
 
+.ui.segment{
+    margin: 0 !important;
+}
+
 .ui.transparent.input>input{
     padding: .25vw !important;
 }
