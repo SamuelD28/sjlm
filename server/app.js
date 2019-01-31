@@ -83,17 +83,16 @@ app.use(log4js.connectLogger(server, {
     format: (req, res, format) => format(`:remote-addr - ":method :url HTTP/:http-version" :status :content-length ":referrer" ":user-agent"`)
 }));
 
-
 //Declaration and importation of all the required files for the routing
-let NewsRT = require(__dirname + "/routes/NewsRT.js"),
-    MembersRT = require(__dirname + "/routes/MembersRT.js"),
-    PagesRt = require(__dirname + "/routes/PagesRT.js"),
-    UserRT = require(__dirname + "/routes/UserRT.js"),
-    CategoryNewsRT = require(__dirname + "/routes/CategoryNewsRT.js"),
-    MenuRT = require(__dirname + "/routes/MenuRT.js"),
-    NavigationLinksRT = require(__dirname + "/routes/NavigationLinksRT.js"),
-    OccupationRT = require(__dirname + "/routes/OccupationsRT.js"),
-    VerbalTrialRT = require(__dirname + "/routes/VerbalTrialRT.js");
+let NewsRT              = require(__dirname + "/routes/NewsRT.js"),
+    MembersRT           = require(__dirname + "/routes/MembersRT.js"),
+    PagesRt             = require(__dirname + "/routes/PagesRT.js"),
+    UserRT              = require(__dirname + "/routes/UserRT.js"),
+    CategoryNewsRT      = require(__dirname + "/routes/CategoryNewsRT.js"),
+    MenuRT              = require(__dirname + "/routes/MenuRT.js"),
+    NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js"),
+    OccupationRT        = require(__dirname + "/routes/OccupationsRT.js"),
+    ScheduleRT          = require(__dirname + "/routes/ScheduleRT.js");
 
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
@@ -103,7 +102,7 @@ app.use("/api/menus", MenuRT);
 app.use("/api/categorynews", CategoryNewsRT);
 app.use("/api/navigationlinks", NavigationLinksRT);
 app.use("/api/occupations", OccupationRT);
-app.use("/api/verbal", VerbalTrialRT);
+app.use("/api/schedule", ScheduleRT);
 
 //----------------Listener-------------//
 

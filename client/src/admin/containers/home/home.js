@@ -164,7 +164,7 @@ class Home extends Component{
         if(data !== undefined)
             return  <div styleName="statsCard"> 
                         {this.DisplayStatsHeader(metric,dimension)}
-                        <div styleName="statistic">
+                        <Segment raised>
                             {
                                 (chart === "doughnut")
                                 ?<Doughnut data={data} />
@@ -174,7 +174,7 @@ class Home extends Component{
                                 ?<Bar data={data} />
                                 :<Line data={data} />
                             }
-                        </div>
+                        </Segment>
                     </div>
         else 
             return  this.DisplayPlaceholder();
