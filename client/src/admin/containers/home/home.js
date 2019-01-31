@@ -1,6 +1,6 @@
 /*global gapi*/
 import React, {Component} from 'react';
-import {Bar, Pie, Line} from 'react-chartjs-2';
+import {Bar, Pie, Line, Doughnut} from 'react-chartjs-2';
 import {Divider, Placeholder, Segment, Transition} from 'semantic-ui-react';
 
 //Css Module import
@@ -147,6 +147,7 @@ class Home extends Component{
                     </Segment>
     }
     
+    //Sortir en component
     DisplayStatsHeader = (metrics, dimensions) =>{
         return <Transition
                     animation="fade right"
@@ -159,61 +160,20 @@ class Home extends Component{
                 </Transition>
     }
     
-    DisplayUsersCity = () =>{
-        if(this.state.usersCity !== undefined)
+    DisplayStatistic = (data, metric, dimension, chart) =>{
+        if(data !== undefined)
             return  <div styleName="statsCard"> 
-                        {this.DisplayStatsHeader('Utilisateurs','Par Ville')}
+                        {this.DisplayStatsHeader(metric,dimension)}
                         <div styleName="statistic">
-                            <Pie data={this.state.usersCity} />
-                        </div>
-                    </div>
-        else 
-            return  this.DisplayPlaceholder();
-    }
-    
-    DisplayUsersBrowsers = () =>{
-        if(this.state.usersBrowser !== undefined)
-            return  <div styleName="statsCard">
-                        {this.DisplayStatsHeader('Utilisateurs','Par Navigateurs')}
-                        <div styleName="statistic">
-                            <Pie data={this.state.usersBrowser} />
-                        </div>
-                    </div>
-        else 
-            return  this.DisplayPlaceholder();
-    }
-    
-    
-    DisplayUsersWeek = () =>{
-        if(this.state.usersWeek !== undefined)
-            return  <div styleName="statsCard">
-                        {this.DisplayStatsHeader('Utilisateurs','Par Semaine')}
-                        <div styleName="statistic">
-                            <Line data={this.state.usersWeek} />
-                        </div>
-                    </div>
-        else 
-            return  this.DisplayPlaceholder();
-    }
-    
-    DisplayUsersMonth = () =>{
-        if(this.state.usersMonth !== undefined)
-            return  <div styleName="statsCard">
-                        {this.DisplayStatsHeader('Utilisateurs','Par Mois')}
-                        <div styleName="statistic">
-                            <Bar data={this.state.usersMonth} />
-                        </div>
-                    </div>
-        else 
-            return  this.DisplayPlaceholder();
-    }
-    
-    DisplayUsersSource = () =>{
-        if(this.state.usersSource !== undefined)
-            return  <div styleName="statsCard"> 
-                        {this.DisplayStatsHeader('Utilisateurs','Par Source')}
-                        <div styleName="statistic">
-                            <Pie data={this.state.usersSource} />
+                            {
+                                (chart === "doughnut")
+                                ?<Doughnut data={data} />
+                                :(chart === "pie")
+                                ?<Pie data={data}/>
+                                :(chart === "bar")
+                                ?<Bar data={data} />
+                                :<Line data={data} />
+                            }
                         </div>
                     </div>
         else 
@@ -224,13 +184,13 @@ class Home extends Component{
         return  <div className={generalStyle.adminPage}>
                     <section styleName="usersStats">
                         <section styleName="pieCharts">
-                            {this.DisplayUsersBrowsers()}
-                            {this.DisplayUsersCity()}
-                            {this.DisplayUsersSource()}
+                            {this.DisplayStatistic(this.state.usersBrowser, 'Utilisateurs', 'Par Navigateurs', 'pie')}
+                            {this.DisplayStatistic(this.state.usersCity, 'Utilisateurs', 'Par Ville', 'doughnut')}
+                            {this.DisplayStatistic(this.state.usersSource, 'Utilisateurs', 'Par Source', 'pie')}
                         </section>
                         <section styleName="barCharts">
-                            {this.DisplayUsersWeek()}
-                            {this.DisplayUsersMonth()}
+                            {this.DisplayStatistic(this.state.usersWeek, 'Utilisateurs', 'Par Semaine')}
+                            {this.DisplayStatistic(this.state.usersMonth, 'Utilisateurs', 'Par Mois', 'bar')}
                         </section>
                     </section>
                 </div>
