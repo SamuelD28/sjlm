@@ -37,11 +37,6 @@
 
 .logoContainer {
     border-bottom: 1px solid #ececec;
-    box-sizing: border-box;
-    padding: .5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .logo {

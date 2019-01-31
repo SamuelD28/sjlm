@@ -150,7 +150,7 @@ class Home extends Component{
     //Sortir en component
     DisplayStatsHeader = (metrics, dimensions) =>{
         return <Transition
-                    animation="fade right"
+                    animation="swing up"
                     duration={1000}
                     transitionOnMount={true}>
                     <div styleName="statsHeader">
@@ -182,17 +182,23 @@ class Home extends Component{
     
     render(){
         return  <div className={generalStyle.adminPage}>
-                    <section styleName="usersStats">
-                        <section styleName="pieCharts">
-                            {this.DisplayStatistic(this.state.usersBrowser, 'Utilisateurs', 'Par Navigateurs', 'pie')}
-                            {this.DisplayStatistic(this.state.usersCity, 'Utilisateurs', 'Par Ville', 'doughnut')}
-                            {this.DisplayStatistic(this.state.usersSource, 'Utilisateurs', 'Par Source', 'pie')}
+                    <Segment>
+                        <h1>Tableau de bord</h1>
+                    </Segment>
+                    <br />
+                    <Segment>
+                        <section styleName="usersStats">
+                            <section styleName="pieCharts">
+                                {this.DisplayStatistic(this.state.usersBrowser, 'Utilisateurs', 'Par Navigateurs', 'pie')}
+                                {this.DisplayStatistic(this.state.usersCity, 'Utilisateurs', 'Par Ville', 'doughnut')}
+                                {this.DisplayStatistic(this.state.usersSource, 'Utilisateurs', 'Par Source', 'pie')}
+                            </section>
+                            <section styleName="barCharts">
+                                {this.DisplayStatistic(this.state.usersWeek, 'Utilisateurs', 'Par Semaine')}
+                                {this.DisplayStatistic(this.state.usersMonth, 'Utilisateurs', 'Par Mois', 'bar')}
+                            </section>
                         </section>
-                        <section styleName="barCharts">
-                            {this.DisplayStatistic(this.state.usersWeek, 'Utilisateurs', 'Par Semaine')}
-                            {this.DisplayStatistic(this.state.usersMonth, 'Utilisateurs', 'Par Mois', 'bar')}
-                        </section>
-                    </section>
+                    </Segment>
                 </div>
     }
 }

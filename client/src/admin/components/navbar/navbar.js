@@ -1,8 +1,10 @@
 import React from 'react';
+import Ajax from '../../../shared/ajax.js';
 import { NavLink } from 'react-router-dom';
+import {Image} from 'semantic-ui-react';
+
 import CSSModules from 'react-css-modules';
 import styles from './navbar.module.css';
-import Ajax from '../../../shared/ajax.js';
 
 async function Logout(history) {
     let user = await Ajax.GetData("/api/user/logout");
@@ -22,14 +24,21 @@ const Navbar = (props) => {
         <ul styleName="navbar" >
             <div>
                 <li styleName="logoContainer">
-                    <NavLink styleName="logo" to="/">
-                        <img  src="/logo2.png" alt="Logo" />
+                    <NavLink styleName="navbarItem" to="/">
+                        <Image 
+                            styleName="navbarIcon"
+                            size="mini"
+                            src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png" 
+                            alt="Logo"
+                            />
+                        <div styleName="navbarLink">Sjlm</div>
+                        <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink styleName="navbarItem" to="/admin">
                         <span styleName="navbarIcon"><i className="icon th"></i></span>
-                        <div styleName="navbarLink">Dashboard</div>
+                        <div styleName="navbarLink">Tableau de bord</div>
                         <div styleName="navbarBorder"></div>
                     </NavLink>
                 </li>
