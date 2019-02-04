@@ -1,7 +1,6 @@
 .navbar {
-    border-right: 1px solid #ececec;
-    background-color: white;
-    font-family: "Roboto", sans-serif;
+    box-shadow: 5px 0px 10px rgba(31, 31, 30, .2);
+    background-color: #1f1f1e;
     padding: 0;
     margin: 0;
     display: flex;
@@ -11,32 +10,23 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 15vw;
+    width: 12.5vw;
     z-index: 1000;
     list-style: none;
 }
 
-#headbar {
-    box-sizing: border-box;
-    border-bottom: 1px solid #ececec;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    height: 5vw;
-    width: 100%;
-    grid-area: headbar;
-    padding-left: 1.5vw;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
-
-.headbarIcon {
-    font-size: 1.5vw;
-}
-
 .logoContainer {
     border-bottom: 1px solid #ececec;
+}
+
+.navbarLogo{
+    align-items: center;
+    color: #1f1f1e;
+    text-transform: uppercase;
+    font-size: 1vw;
+    display: flex;
+    padding: 1vw .5vw;
+    background: white;
 }
 
 .logo {
@@ -49,45 +39,31 @@
 }
 
 .navbarItem {
+    box-sizing: border-box;
+    margin: 1vw .5vw;
     align-items: center;
-    color: #B2B2B2;
+    color: whitesmoke;
     display: flex;
-    flex-direction: row;
-    font-size: 1vw;
-    padding: 1vw;
+    padding: .75vw;
+    border-radius: .2vw;
+    transition: background .25s ease;
+}
+
+.navbarItem:hover{
+    color: white;
 }
 
 .navbarLink {
-    transition: color .25s ease;
     margin-right: 2vw;
 }
 
 .navbarIcon {
-    color: #2C3E50;
     margin-right: 2vw;
     width: 10%;
 }
 
-.navbarBorder {
-    height: 1px;
-    width: 100%;
-    background-color: #ececec;
-    transform: scaleX(0);
-    transform-origin: 0 0;
-    transition: transform .25s ease;
-}
-
-.navbarItem:hover>.navbarBorder {
-    transform: scaleX(1);
-    transition: transform .25s ease;
-}
-
-.navbarItem:hover>.navbarLink {
-    color: #373737;
-    transition: color .25s ease;
-}
-
 .logout {
     cursor: pointer;
-    color: #e91e63 !important;
+    background-color: #e91e63;
+    box-shadow: 0 12px 20px -10px rgba(233, 30, 99  ,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(233, 30, 99  ,.2);
 }

@@ -77,6 +77,12 @@ tbody tr:hover {
     margin-top: 5vw;
 }
 
+.activeItem{
+    transition: all 1s ease;
+    background: #00b5ad;
+    box-shadow: 0 12px 20px -10px rgba(0, 181, 173,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0, 181, 173,.2);
+}
+
 html>div {
     display: none !important;
 }
@@ -123,9 +129,9 @@ h4,
 h5,
 h6 {
     color: #37474F;
-    font-weight: normal;
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: 2px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    /*letter-spacing: 2px;*/
 }
 
 /*------------------*/

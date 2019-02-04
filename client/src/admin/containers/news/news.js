@@ -1,6 +1,6 @@
 //--------Declaration---------//
 import React, { Component } from 'react';
-import { Dropdown, Placeholder } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import Ajax from '../../../shared/ajax.js';
 
 // Css module improt

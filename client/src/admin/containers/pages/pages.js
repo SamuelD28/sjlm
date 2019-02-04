@@ -45,6 +45,8 @@ class Pages extends Component {
                                 key={page._id}
                                 RefreshDataSet={this.GetPages}
                                 />
+                    else
+                        return <h2>Aucune page trouvée</h2>
                 })
             else
                 return <h2>Aucune page disponible</h2>

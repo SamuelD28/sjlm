@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import ScrollTop from '../../components/scrollTop/scrollTop.js';
-import { Transition } from 'semantic-ui-react';
 
 //Css Modules Importation
 import CSSModules from 'react-css-modules';

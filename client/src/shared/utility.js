@@ -243,9 +243,9 @@ Utility.ParseSourceSet = function (imgUrl)
     let compiledSourceSet = "";
     sourceSets.map((sourceSet, index) =>{
         if(index === sourceSets.length -1 )
-            compiledSourceSet += firstHalf + sourceSet.transform + secondHalf + " " + sourceSet.size;  
+            return compiledSourceSet += firstHalf + sourceSet.transform + secondHalf + " " + sourceSet.size;  
         else
-            compiledSourceSet += firstHalf + sourceSet.transform + secondHalf + " " + sourceSet.size + ",";  
+            return compiledSourceSet += firstHalf + sourceSet.transform + secondHalf + " " + sourceSet.size + ",";  
     });
     
     return compiledSourceSet;

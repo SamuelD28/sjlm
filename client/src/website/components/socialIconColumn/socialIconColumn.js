@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 const pageSocialStyle = {
     background: 'white',
-    padding: '1vw 0',
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',

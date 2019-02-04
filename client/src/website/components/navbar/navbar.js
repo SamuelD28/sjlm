@@ -151,7 +151,7 @@ class Navbar extends Component {
                                         this.HideMenuPages(e);
                                         this.ScrollToTop();
                                         }}>
-                                        <img src="/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
+                                        <img src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png" styleName="img-logo" alt="sjlm logo"/>
                                     </NavLink>
                                     <ul styleName="navbarContent" ref={this.navbarPrimary}>
                                         {this.DisplayMenus()}

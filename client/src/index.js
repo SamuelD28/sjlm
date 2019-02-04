@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Admin from './admin/containers';
 import Website from './website/containers';
-import Login from './admin/components/login/login.js';
+import Login from './admin/containers/login/login.js';
 import Auth from './admin/hoc/auth.js';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 

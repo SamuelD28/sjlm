@@ -4,7 +4,7 @@ import Navbar from '../components/navbar/navbar.js';
 
 //Navigation component
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Home from './home/home.js';
+import Dashboard from './dashboard/dashboard.js';
 import News from './news/news.js';
 import Members from './members/members.js';
 import Pages from './pages/pages.js';
@@ -16,7 +16,7 @@ const Index = (props) => {
     return  <div>
                 <Navbar history={props.history}/>       
                 <Switch>    
-                    <Route exact path="/admin" component={Home} something="foo"/>
+                    <Route exact path="/admin" component={Dashboard}/>
                     <Route exact path="/admin/news" component={News} />
                     <Route exact path="/admin/administrator" component={() => <Administrator user={props.user}/>} />
                     <Route exact path="/admin/pages" component={Pages} />
