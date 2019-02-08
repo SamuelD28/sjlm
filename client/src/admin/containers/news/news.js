@@ -6,7 +6,6 @@ import Ajax from '../../../shared/ajax.js';
 // Css module improt
 import CSSModules from 'react-css-modules';
 import styles from './news.module.css';
-import adminStyles from "../index.module.css";
 
 //Components
 import NewsCreate from '../../components/newsCreate/newsCreate.js';
@@ -195,16 +194,14 @@ class News extends Component {
     render() {
         if (this.state.categories !== undefined)
             return (
-                <div className={adminStyles.adminPage}>
+                <div className="admin-page">
                 <section className="section-row">
-                    <div className="left-column">
-                        <div className="section-style section-btn">
-                            <NewsCreate RefreshDataSet={this.GetNews}/>
-                        </div>
+                    <div className="section-left-column">
                         <CategoryNews/>
                     </div>
-                    <div className="right-column section-style">
-                        <h2>Les Actualités</h2>
+                    <div className="section-right-column big-gutters rounded component-card">
+                        <NewsCreate RefreshDataSet={this.GetNews}/>
+                        <h2>Les Publications</h2>
                         <div style={{marginBottom: "2rem"}}>
                             <Dropdown
                                 name="month"

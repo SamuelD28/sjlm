@@ -1,8 +1,7 @@
 .newsContainer {
     background-color: white;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: 7vw;
-    grid-gap: .25vw;
+    grid-template-columns: repeat(3, .33fr);
+    grid-gap: 1vw;
     position: relative;
 }

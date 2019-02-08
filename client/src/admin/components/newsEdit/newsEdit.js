@@ -21,12 +21,6 @@ class NewsEdit extends Component {
     ModalOpener = () => {
         return  <div style={{height: "100%"}}>
                     <NewsCard news={this.props.news}/>
-                    <div className="cardOverlay cardEdit">
-                        <div className="cardOverlayBtn">
-                            <i className="icon edit"></i>
-                            <h4>Modifier</h4>
-                        </div>
-                    </div>
                 </div>
     }
 

@@ -143,7 +143,7 @@ GenerateThumbnail = (url) =>
                 src={fileSrc}
                 onClick={() => this.RemoveImage(url)}/>
             :<div
-                className="uploads-thumbnails fileExtension"
+                className="uploads-thumbnails uploads-file-extension"
                 alt={url}
                 style={{backgroundImage : `url('${fileSrc}')`}}
                 onClick={() => this.RemoveImage(url)}>
@@ -191,7 +191,7 @@ render() {
                         circular
                         icon="add"
                         onClick={this.OpenCloudinaryWidget}/>
-                    <div className="container-thumbnails" ref={this.uploadsThumbnails}>
+                    <div className="uploads-container" ref={this.uploadsThumbnails}>
                         {this.DisplayThumbnailImages()}
                     </div>
                 </div>

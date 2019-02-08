@@ -1,13 +1,11 @@
 /*global gapi*/
 import React, {Component} from 'react';
 import Schedule from '../schedule/schedule.js';
-import {Bar, Pie, Line, Doughnut} from 'react-chartjs-2';
-import {Placeholder, Segment, Transition, Button, Divider, Image} from 'semantic-ui-react';
+import StatisticCard from '../../components/statisticCard/statisticCard.js';
 
 //Css Module import
 import CSSModules from 'react-css-modules';
 import styles from './dashboard.module.css';
-import generalStyle from '../index.module.css';
 
 import moment from 'moment';
 import 'moment/locale/fr'; // without this line it didn't work
@@ -21,9 +19,13 @@ class Dashboard extends Component{
         PROFILE_ID : 'ga:188711212'
     };
     
+    componentDidMount(){
+        this.Authorize();
+    }
+    
     Authorize = async(event) =>{
         // Handles the authorization flow.
-        // `immediate` should be false when invoked from the button click.
+        // immediate` should be false when invoked from the button click.
         var useImmdiate = event ? false : true;
         var authData = {
           client_id: this.state.CLIENT_ID,
@@ -31,62 +33,53 @@ class Dashboard extends Component{
           immediate: useImmdiate
         };
         
-        if(gapi.auth !== undefined){
-            gapi.auth.authorize(authData, () => {
-                gapi.client.load('analytics', 'v3').then(async() => {
-                    
-                    let usersWeekQuery ={
-                        'dimensions': 'ga:date',
-                        'start-date': '7daysAgo',
-                        'end-date': 'today',
-                        'metrics': 'ga:users'
-                    };
-                    
-                    let usersMonthQuery = {
-                        'dimensions': 'ga:month',
-                        'start-date': '365daysAgo',
-                        'end-date': 'yesterday',
-                        'metrics': 'ga:users'
-                    }
-                    
-                    let usersBrowserQuery = {
-                        'dimensions': 'ga:browser',
-                        'start-date': '365daysAgo',
-                        'end-date': 'yesterday',
-                        'metrics': 'ga:users'
-                    }
-                    
-                    let usersCityQuery = {
-                        'dimensions': 'ga:city',
-                        'start-date': '365daysAgo',
-                        'end-date': 'yesterday',
-                        'metrics': 'ga:users'
-                    }
-                    
-                    let usersSourceQuery = {
-                        'dimensions': 'ga:source',
-                        'start-date': '365daysAgo',
-                        'end-date': 'yesterday',
-                        'metrics': 'ga:users'
-                    }
-                    
-                    let usersWeek =  await this.GetChartData(usersWeekQuery, 'dayweek');
-                    let usersMonth =  await this.GetChartData(usersMonthQuery, 'daymonth');
-                    let usersBrowser =  await this.GetChartData(usersBrowserQuery, 'daymonth');
-                    let usersCity =  await this.GetChartData(usersCityQuery, 'daymonth');
-                    let usersSource =  await this.GetChartData(usersSourceQuery, 'daymonth');
-                    
-                    this.setState({usersWeek : usersWeek, usersMonth: usersMonth, usersBrowser: usersBrowser, usersCity: usersCity, usersSource: usersSource});
-                });
+        gapi.auth.authorize(authData)
+        .then(() => {
+            gapi.client.load('analytics', 'v3')
+            .then(async() => {
+                let usersWeekQuery ={
+                    'dimensions': 'ga:date',
+                    'start-date': '7daysAgo',
+                    'end-date': 'today',
+                    'metrics': 'ga:users'
+                };
+                let usersMonthQuery = {
+                    'dimensions': 'ga:month',
+                    'start-date': '365daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:users'
+                }
+                let usersBrowserQuery = {
+                    'dimensions': 'ga:browser',
+                    'start-date': '365daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:users'
+                }
+                let usersCityQuery = {
+                    'dimensions': 'ga:city',
+                    'start-date': '365daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:users'
+                }
+                let usersSourceQuery = {
+                    'dimensions': 'ga:source',
+                    'start-date': '365daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:users'
+                }
+                
+                let usersWeek =  await this.GetChartData(usersWeekQuery, 'dayweek');
+                let usersMonth =  await this.GetChartData(usersMonthQuery, 'daymonth');
+                let usersBrowser =  await this.GetChartData(usersBrowserQuery, 'daymonth');
+                let usersCity =  await this.GetChartData(usersCityQuery, 'daymonth');
+                let usersSource =  await this.GetChartData(usersSourceQuery, 'daymonth');
+                
+                this.setState({usersWeek : usersWeek, usersMonth: usersMonth, usersBrowser: usersBrowser, usersCity: usersCity, usersSource: usersSource});
             });
-        }
-        else{
-            setTimeout(() => this.Authorize(), 1000);
-        }
-    }
-    
-    componentDidMount(){
-        this.Authorize();
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
     
     GenerateColor = (data, type) =>{
@@ -140,57 +133,42 @@ class Dashboard extends Component{
                 });
     }
     
-    DisplayPlaceholder = () =>{
-        return  <Segment raised>
-                        <Placeholder fluid>
-                            <Placeholder.Image rectangular />
-                        </Placeholder>
-                    </Segment>
-    }
-    
-    //Sortir en component
-    DisplayStatsHeader = (metrics, dimensions) =>{
-        return  <div styleName="statsHeader">
-                    <h3 styleName="statsMetrics">{metrics}</h3>
-                    <h2 styleName="statsDimensions">{dimensions}</h2>
-                </div>
-    }
-    
-    //Sortir en component
-    DisplayStatistic = (data, metric, dimension, chart) =>{
-        if(data !== undefined)
-            return  <div styleName="statsCard"> 
-                        <Segment>
-                            {
-                                (chart === "doughnut")
-                                ?<Doughnut data={data} />
-                                :(chart === "pie")
-                                ?<Pie data={data}/>
-                                :(chart === "bar")
-                                ?<Bar data={data} />
-                                :<Line data={data} />
-                            }
-                        {this.DisplayStatsHeader(metric,dimension)}
-                        <Divider />
-                        <span><i className="icon clock outline"></i> dernière mise à jour</span>
-                        </Segment>
-                    </div>
-        else 
-            return  this.DisplayPlaceholder();
-    }
-    
     render(){
-        return  <div className={generalStyle.adminPage}>
+        return  <div className="admin-page">
                     <br />
                     <section styleName="usersStats">
                         <section styleName="pieCharts">
-                            {this.DisplayStatistic(this.state.usersBrowser, 'Utilisateurs', 'Par Navigateurs', 'pie')}
-                            {this.DisplayStatistic(this.state.usersCity, 'Utilisateurs', 'Par Ville', 'doughnut')}
-                            {this.DisplayStatistic(this.state.usersSource, 'Utilisateurs', 'Par Source', 'pie')}
+                            <StatisticCard 
+                                data={this.state.usersBrowser} 
+                                metrics='Utilisateurs' 
+                                dimensions='Par Navigateurs'
+                                chart='pie'
+                                />
+                            <StatisticCard 
+                                data={this.state.usersCity}
+                                metrics='Utilisateurs'
+                                dimensions='Par Ville'
+                                chart='doughnut'
+                                />
+                            <StatisticCard 
+                                data={this.state.usersSource}
+                                metrics='Utilisateurs'
+                                dimensions='Par Source'
+                                chart='pie'
+                                />
                         </section>
                         <section styleName="barCharts">
-                            {this.DisplayStatistic(this.state.usersWeek, 'Utilisateurs', 'Par Semaine')}
-                            {this.DisplayStatistic(this.state.usersMonth, 'Utilisateurs', 'Par Mois', 'bar')}
+                            <StatisticCard 
+                                data={this.state.usersWeek} 
+                                metrics='Utilisateurs'
+                                dimensions='Par Semaine'
+                                />
+                            <StatisticCard 
+                                data={this.state.usersMonth} 
+                                metrics='Utilisateurs'
+                                dimensions='Par Mois'
+                                chart='bar'
+                                />
                         </section>
                     </section>
                 </div>

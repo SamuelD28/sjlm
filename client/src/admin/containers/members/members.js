@@ -4,7 +4,6 @@ import Ajax from '../../../shared/ajax.js';
 // Css Module Import
 import CSSModules from 'react-css-modules';
 import styles from './members.module.css';
-import adminStyles from '../index.module.css';
 
 // Component Import
 import MembersEdit from '../../components/membersEdit/membersEdit.js';
@@ -43,16 +42,14 @@ class Members extends Component {
     }
 
     render() {
-        return  <div id={styles.membersPage} className={adminStyles.adminPage}>
+        return  <div id={styles.membersPage} className="admin-page">
                     <section>
                         <div className="section-row">
-                            <div className="left-column">
-                                <div className="section-style section-btn">
-                                    <MembersCreate RefreshDataSet={this.GetMembers}/>
-                                </div>
+                            <div className="section-left-column">
                                 <Occupations />
                             </div>
-                            <div className="right-column section-style">
+                            <div className="section-right-column component-card rounded medium-gutters">
+                                <MembersCreate RefreshDataSet={this.GetMembers}/>
                                 <h2>Les Membres</h2>
                                 <div styleName="membersContent">
                                     {this.DisplayMembers()}

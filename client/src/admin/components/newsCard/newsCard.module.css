@@ -1,11 +1,7 @@
 .news{
-    align-items: left;
-    display: flex;
     height: 100%;
-    overflow: hidden;
-    transition: transform .25s ease;
-    justify-content: space-between;
-    text-align: left;
+    position: relative;
+    cursor: pointer;
 }
 
 .news:hover .newsBtn{
@@ -27,17 +23,8 @@
     left: 0;
 }
 
-.newsInfo{
-    border: 1px solid rgba(34,36,38,.15);
-    border-radius: .2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: .5vw;
-    width: 100%;
-}
-
 .newsImg{
     object-fit: cover;
-    width: 25vw;
+    height: 10vw;
+    width: 100%
 }

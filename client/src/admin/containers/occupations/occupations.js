@@ -23,7 +23,7 @@ class Occupations extends Component
 
     PostModalOpener = () =>
     {
-        return (<Button color="orange" inverted>Ajouter un poste</Button>)
+        return (<Button color="teal" className="rounded-more">Ajouter un poste</Button>)
     }
 
     GetOccupations = async() =>
@@ -58,7 +58,7 @@ class Occupations extends Component
 
     PutModalOpener = (title) =>
     {
-        return  <div className="pagesCard">
+        return  <div className="item-card">
                     <h4>{title}
                     </h4>
                 </div>
@@ -67,7 +67,7 @@ class Occupations extends Component
     render()
     {
         return(
-        <div className="section-style">
+        <div className="component-card medium-gutters">
             <h2>Les Postes</h2>
             <FormGenerator
                 Inputs={OccupationsSchema.GetEmptyInputs()}

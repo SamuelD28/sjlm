@@ -366,7 +366,7 @@ class FormGenerator extends Component {
             style={{marginLeft: "auto"}}
             disabled={!this.state.FormStatus.modified}
             onClick={this.HandleSubmit}
-            color="orange"
+            color="teal"
             size="large"
             >
             {(this.state.FormConfig.httpRequest === "put")
@@ -415,7 +415,7 @@ class FormGenerator extends Component {
         open={this.state.FormStatus.open}
         onClose={this.HandleCancel}
         trigger={
-        <div onClick={this.HandleOpen} className="cardContainer">
+        <div onClick={this.HandleOpen} className="modal-opener">
             {this.state.FormConfig.modalOpener()}
         </div>
         }>

@@ -27,7 +27,7 @@ class CategoryNews extends Component {
      * for adding a new category news
      */
     ModalOpener = () => {
-        return <Button color="orange" inverted>Ajouter une catégorie</Button>
+        return <Button color="teal" className="rounded-more">Ajouter une catégorie</Button>
     }
 
     /**
@@ -64,7 +64,7 @@ class CategoryNews extends Component {
     }
 
     render() {
-        return <div className="section-style">
+        return <div className="component-card rounded medium-gutters">
                     <h2>Les Catégories</h2>
                     <FormGenerator
                         Inputs={CategoryNewsSchema.GetEmptyInputs()}

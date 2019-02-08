@@ -1,5 +1,6 @@
 //Library and modules
 import React from 'react';
+import {Divider} from 'semantic-ui-react';
 import {Utility} from '../../../shared/utility.js';
 import moment from 'moment';
 
@@ -14,8 +15,9 @@ function DisplayImportantTag(item) {
 }
 
 const NewsCard = (props) => {
-    return <div styleName="news">
+    return <div styleName="news" className="component-card rounded anim-bounce-up">
                 <img
+                    className="rounded"
                     srcSet={(props.news.Images[0] !== undefined) 
                     ?Utility.ParseSourceSet(props.news.Images[0])
                     :Utility.ParseSourceSet("https://res.cloudinary.com/dohwohspb/image/upload/v1548082844/pexels-photo-688660.jpg")}
@@ -24,15 +26,10 @@ const NewsCard = (props) => {
                     styleName="newsImg"
                     />
                 <div styleName="newsInfo">
-                    <h2>{props.news.Title}</h2>
+                    <h3>{props.news.Title}</h3>
                     {DisplayImportantTag(props.news)}
-                    <p>
-                        <b>
-                        {(props.news.Category !== null)
-                        ?props.news.Category.Title
-                        :"Aucune categorie"}
-                        </b>
-                    </p>
+                    <span className="tag-card rounded">{props.news.Category.Title}</span>
+                    <Divider />
                     <p>
                         <i className="clock outline icon"></i> 
                         {(props.news.DateFrom !== null)

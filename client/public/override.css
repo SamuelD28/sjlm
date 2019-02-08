@@ -1,0 +1,59 @@
+.ui.segment{
+    margin: 0 !important;
+}
+
+.ui.transparent.input>input{
+    padding: .25vw !important;
+}
+
+.ui.form .field.field input:-webkit-autofill{
+    border: none !important;
+    background: blue !important;
+}
+
+.dropdown.icon {
+    z-index: 10 !important;
+}
+
+.ui.dropdown,
+.ui.checkbox,
+.ui.input {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ui.fullscreen.modal {
+    left: auto !important;
+}
+
+
+/*Quill Text editor*/
+
+.ql-editor {
+    height: 500px !important;
+}
+
+.ql-size-huge {
+    font-size: 2.5em;
+}
+
+.ql-size-large {
+    font-size: 1.5em;
+}
+
+.ql-size-small {
+    font-size: 0.75em;
+}
+
+.ql-align-justify {
+    text-align: justify;
+}
+
+.ql-align-center {
+    text-align: center;
+}
+
+.ql-align-right {
+    text-align: right;
+}

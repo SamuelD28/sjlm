@@ -2,8 +2,6 @@
 //Initial Declaration and importation
 import React, { Component } from 'react';
 
-//Css Module
-import adminStyles from '../index.module.css';
 const mediaOptions =
 {
     cloud_name: "dohwohspb",
@@ -31,7 +29,7 @@ class Resources extends Component {
 
     render() {
         return (
-        <div className={adminStyles.adminPage} style={{padding: "0"}}>
+        <div className="admin-page" style={{padding: "0"}}>
             <section className="section-row section-style" style={{height: "-webkit-fill-available"}}>
                 <div className="media-widget">
                 </div>

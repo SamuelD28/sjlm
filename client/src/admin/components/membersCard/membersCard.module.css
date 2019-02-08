@@ -1,8 +1,8 @@
 .membersCard {
-    background-color: white;
     height: 100%;
     display: flex;
     grid-template-columns: 1fr 1fr;
+    cursor: pointer;
     position: relative;
 }
 
@@ -13,18 +13,12 @@
 }
 
 .membersInfo {
-    border: 1px solid rgba(34, 36, 38, .15);
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     justify-content: center;
-    width: 60%;
 }
 
-.membersName {
-    border-bottom: 2px solid whitesmoke;
-}
-
-.membersTitle {
-    margin: 0;
+.membersTitle{
+    font-size: .9em;
 }

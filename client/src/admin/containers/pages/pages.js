@@ -5,7 +5,6 @@ import Ajax from '../../../shared/ajax.js';
 //Css Module
 import CssModules from 'react-css-modules';
 import styles from './pages.module.css';
-import adminStyles from '../index.module.css';
 
 //Components
 import PagesCard from '../../components/pagesCard/pagesCard.js';
@@ -59,15 +58,13 @@ class Pages extends Component {
 
     render() {
         return (
-            <div className={adminStyles.adminPage}>
+            <div className="admin-page">
             <section className="section-row">
-                <div className="left-column">
-                    <div className="section-style section-btn">
-                        <PagesCreate RefreshDataSet={this.GetPages}/>
-                    </div>
+                <div className="section-left-column">
                     <Menus ref={this.Menus}/>
                 </div>
-                <div className="right-column section-style">
+                <div className="section-right-column component-card rounded medium-gutters">
+                    <PagesCreate RefreshDataSet={this.GetPages}/>
                     <h1>Les Pages</h1>
                     <Input
                         style={{width: "30%", marginBottom: "1vw"}}

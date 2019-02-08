@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 
 // Css Module Import
-import adminStyles from '../index.module.css';
 import CSSModules from 'react-css-modules';
 import styles from './administrator.module.css';
 
@@ -32,13 +31,13 @@ class Administrator extends Component {
 
     render() {
     if(this.state.users !== undefined)
-        return <div className={adminStyles.adminPage}>
+        return <div className="admin-page">
                     <div styleName="admin">
                         <section styleName="userSection">
                             <div styleName="sectionCard">
                                 <h2>Les utilisateurs</h2>    
                                 {this.state.users.map((user)=>(
-                                    <div className="navigationCard">{user.email}</div>
+                                    <div className="item-card">{user.email}</div>
                                 ))}
                             </div>
                             <div styleName="sectionCard">

@@ -40,7 +40,7 @@ class Menus extends Component {
     }
     render() {
         return (
-        <div className="section-style">
+        <div className="component-card medium-gutters rounded">
             <h2>Le Menu</h2>
             <MenuCreate RefreshDataSet={this.GetMenus} />
             <Divider />

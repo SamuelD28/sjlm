@@ -22,11 +22,8 @@ class NewsCreate extends Component {
      * the modal form
      */
     ModalOpener = () => {
-        return  <div className="cardContainer cardOverlay">
-                    <div className="cardOverlayBtn">
-                        <i className="icon plus"></i>
-                        <h4>Ajouter</h4>
-                    </div>
+        return  <div className="rounded new-dataset-btn anim-bounce-up medium-gutters">
+                    <i style={{margin: "0"}} className="icon plus"></i>
                 </div>
     }
 

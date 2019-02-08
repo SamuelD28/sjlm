@@ -21,15 +21,7 @@ class MembersEdit extends Component {
      * Ui used to trigger the opening of the form
      */
     ModalOpener = () => {
-        return  <div style={{height: "100%"}}>
-                    <MembersCard members={this.props.member}/>
-                    <div className="cardOverlay cardEdit">
-                        <div className="cardOverlayBtn">
-                            <i className="icon edit"></i>
-                            <h4>Modifier</h4>
-                        </div>
-                    </div>
-                </div>
+        return  <MembersCard members={this.props.member}/>
     }
 
     render() {

@@ -22,7 +22,7 @@ class PagesCard extends Component {
      * UI that triggers the opening of the form
      */
     ModalOpener = () => {
-        return  <div className="navigationCard">
+        return  <div className="item-card">
                     <h4>{this.props.page.PageTitle.toUpperCase()}</h4>
                 </div>
     }

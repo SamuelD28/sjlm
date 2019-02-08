@@ -34,7 +34,9 @@ class MenuCards extends Component{
      * Function that display the ui for opening up the modal form
      */
     ModalOpener = () => {
-        return <span>{this.props.menu.Title.toUpperCase()} <i style={{float: "right"}} className={`icon ${this.props.menu.Icon}`}></i></span>
+        return <span style={{width: "100%"}}className="space-between">
+                    {this.props.menu.Title.toUpperCase()} <i className={`icon ${this.props.menu.Icon}`}></i>
+                </span>
     }
     
     /**

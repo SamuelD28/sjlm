@@ -22,7 +22,7 @@ class MenuCreate extends Component {
      * to add a new menu
      */
     ModalOpener = () => {
-        return <Button color="orange" inverted>Ajouter un menu</Button>
+        return <Button color="teal" className="rounded-more">Ajouter un menu</Button>
     }
 
     render() {
