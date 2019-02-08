@@ -4,30 +4,26 @@ import {Divider} from 'semantic-ui-react';
 import {Utility} from '../../../shared/utility.js';
 import moment from 'moment';
 
-//Css module import
-import CSSModules from 'react-css-modules';
-import styles from './newsCard.module.css';
-
 //Function that displa an important tag if the news important property is set to true.
 function DisplayImportantTag(item) {
     if (item.Important)
-        return <span styleName="newsImportant">Prioritaire</span>;
+        return <span className="rounded-right tag-important">Prioritaire</span>;
 }
 
 const NewsCard = (props) => {
-    return <div styleName="news" className="component-card rounded anim-bounce-up">
+    return <div className="rounded anim-bounce-up">
                 <img
-                    className="rounded"
+                    className="rounded img-fit"
+                    style={{height: "10vw"}}
                     srcSet={(props.news.Images[0] !== undefined) 
                     ?Utility.ParseSourceSet(props.news.Images[0])
                     :Utility.ParseSourceSet("https://res.cloudinary.com/dohwohspb/image/upload/v1548082844/pexels-photo-688660.jpg")}
-                    sizes="25vw"
+                    sizes="15vw"
                     alt="news"
-                    styleName="newsImg"
                     />
-                <div styleName="newsInfo">
+                {DisplayImportantTag(props.news)}
+                <div className="component-card ">
                     <h3>{props.news.Title}</h3>
-                    {DisplayImportantTag(props.news)}
                     <span className="tag-card rounded">{props.news.Category.Title}</span>
                     <Divider />
                     <p>
@@ -40,4 +36,4 @@ const NewsCard = (props) => {
             </div>
 }
 
-export default CSSModules(NewsCard, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
+export default NewsCard;

@@ -27,7 +27,7 @@ class CategoryNews extends Component {
      * for adding a new category news
      */
     ModalOpener = () => {
-        return <Button color="teal" className="rounded-more">Ajouter une catégorie</Button>
+        return <Button color="teal" className="rounded-right">Ajouter une catégorie</Button>
     }
 
     /**

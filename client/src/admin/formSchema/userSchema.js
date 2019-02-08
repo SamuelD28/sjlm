@@ -12,12 +12,14 @@ class PagesSchema extends FormSchema {
         this.postConfig = new FormConfig({
             url: "/api/user/",
             httpRequest: "POST",
-            title: "Ajouter un utilisateur"
+            title: "Ajouter un utilisateur",
+            modal: true
         });
         this.putConfig = new FormConfig({
             url: "/api/user/",
             httpRequest: "PUT",
             title: "Modifier un utilisateur",
+            modal : true,
         });
         this.inputs = [new InputSchema({
                 name: "firstName",

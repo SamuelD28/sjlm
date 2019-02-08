@@ -18,14 +18,13 @@ class NavigationLinks extends Component {
     }
 
     GetNavigationlinks = async() => {
-        console.log("Refresh");
         let request = await Ajax.GetData("/api/navigationlinks/");
         this.setState({ navigationlinks: request.data });
     }
 
     ModalOpener = (link) => {
 
-        return <div className="navigationCard">
+        return <div className="item-card">
                     <h3 style={{margin: "0"}}>{link.Title}</h3>
                     <h4 style={{margin: "0"}}>{link.Link}</h4>
                 </div>
@@ -48,11 +47,11 @@ class NavigationLinks extends Component {
     }
 
     render() {
-        return <section styleName="navigation">
-                <h1>Les liens de navigation</h1>
-                <div styleName="navigationCards">
-                    {this.DisplayNavigationCards()}
-                </div>
+        return <section className="component-card rounded medium-gutters">
+                    <h1>Les liens de navigation</h1>
+                    <div styleName="navigationCards">
+                        {this.DisplayNavigationCards()}
+                    </div>
                 </section>
     }
 }

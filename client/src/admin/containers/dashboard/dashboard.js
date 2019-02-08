@@ -33,53 +33,58 @@ class Dashboard extends Component{
           immediate: useImmdiate
         };
         
-        gapi.auth.authorize(authData)
-        .then(() => {
-            gapi.client.load('analytics', 'v3')
-            .then(async() => {
-                let usersWeekQuery ={
-                    'dimensions': 'ga:date',
-                    'start-date': '7daysAgo',
-                    'end-date': 'today',
-                    'metrics': 'ga:users'
-                };
-                let usersMonthQuery = {
-                    'dimensions': 'ga:month',
-                    'start-date': '365daysAgo',
-                    'end-date': 'yesterday',
-                    'metrics': 'ga:users'
-                }
-                let usersBrowserQuery = {
-                    'dimensions': 'ga:browser',
-                    'start-date': '365daysAgo',
-                    'end-date': 'yesterday',
-                    'metrics': 'ga:users'
-                }
-                let usersCityQuery = {
-                    'dimensions': 'ga:city',
-                    'start-date': '365daysAgo',
-                    'end-date': 'yesterday',
-                    'metrics': 'ga:users'
-                }
-                let usersSourceQuery = {
-                    'dimensions': 'ga:source',
-                    'start-date': '365daysAgo',
-                    'end-date': 'yesterday',
-                    'metrics': 'ga:users'
-                }
-                
-                let usersWeek =  await this.GetChartData(usersWeekQuery, 'dayweek');
-                let usersMonth =  await this.GetChartData(usersMonthQuery, 'daymonth');
-                let usersBrowser =  await this.GetChartData(usersBrowserQuery, 'daymonth');
-                let usersCity =  await this.GetChartData(usersCityQuery, 'daymonth');
-                let usersSource =  await this.GetChartData(usersSourceQuery, 'daymonth');
-                
-                this.setState({usersWeek : usersWeek, usersMonth: usersMonth, usersBrowser: usersBrowser, usersCity: usersCity, usersSource: usersSource});
+        if(gapi.auth !== undefined){
+            gapi.auth.authorize(authData)
+            .then(() => {
+                gapi.client.load('analytics', 'v3')
+                .then(async() => {
+                    let usersWeekQuery ={
+                        'dimensions': 'ga:date',
+                        'start-date': '7daysAgo',
+                        'end-date': 'today',
+                        'metrics': 'ga:users'
+                    };
+                    let usersMonthQuery = {
+                        'dimensions': 'ga:month',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    let usersBrowserQuery = {
+                        'dimensions': 'ga:browser',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    let usersCityQuery = {
+                        'dimensions': 'ga:city',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    let usersSourceQuery = {
+                        'dimensions': 'ga:source',
+                        'start-date': '365daysAgo',
+                        'end-date': 'yesterday',
+                        'metrics': 'ga:users'
+                    }
+                    
+                    let usersWeek =  await this.GetChartData(usersWeekQuery, 'dayweek');
+                    let usersMonth =  await this.GetChartData(usersMonthQuery, 'daymonth');
+                    let usersBrowser =  await this.GetChartData(usersBrowserQuery, 'daymonth');
+                    let usersCity =  await this.GetChartData(usersCityQuery, 'daymonth');
+                    let usersSource =  await this.GetChartData(usersSourceQuery, 'daymonth');
+                    
+                    this.setState({usersWeek : usersWeek, usersMonth: usersMonth, usersBrowser: usersBrowser, usersCity: usersCity, usersSource: usersSource});
+                });
+            })
+            .catch((error) => {
+                console.log(error);
             });
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        }
+        else{
+            console.log("Google analytic not available");
+        }
     }
     
     GenerateColor = (data, type) =>{
@@ -136,7 +141,7 @@ class Dashboard extends Component{
     render(){
         return  <div className="admin-page">
                     <br />
-                    <section styleName="usersStats">
+                    <section>
                         <section styleName="pieCharts">
                             <StatisticCard 
                                 data={this.state.usersBrowser} 

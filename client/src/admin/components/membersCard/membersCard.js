@@ -13,16 +13,15 @@ const MembersCard = (props) => {
     return (
     <div styleName="membersCard" className="anim-bounce-up">
         <img
-        className="rounded-left"
-        sizes="8vw"
-        srcSet={Utility.ParseSourceSet(props.members.Photo[0])}
-        styleName="membersPhoto"
-        alt="membre" />
+            className="rounded-left img-fit"
+            sizes="8vw"
+            srcSet={Utility.ParseSourceSet(props.members.Photo[0])}
+            alt="membre" />
         <div styleName="membersInfo" className="component-card rounded-right">
-            <h1 styleName="membersName">{props.members.FirstName} {props.members.LastName}</h1>
-            <h3 styleName="membersTitle" className="tag-card rounded">{(props.members.Occupation !== null)?props.members.Occupation.Title: "Aucun poste assigné"}</h3>
-            <h5 styleName="membersTitle">{props.members.Phone}</h5>
-            <h5 styleName="membersTitle">{props.members.Email}</h5>
+            <h1>{props.members.FirstName} {props.members.LastName}</h1>
+            <h4 className="tag-card rounded">{(props.members.Occupation !== null)?props.members.Occupation.Title: "Aucun poste assigné"}</h4>
+            <h5>{props.members.Phone}</h5>
+            <h5>{props.members.Email}</h5>
         </div>
     </div>
     )

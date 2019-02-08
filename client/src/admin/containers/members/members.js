@@ -28,7 +28,6 @@ class Members extends Component {
 
     DisplayMembers() {
         if (this.state.members !== undefined) {
-            console.log(this.state.members);
             if(this.state.members.length > 0)
                 return this.state.members.map((member) => (
                     <MembersEdit

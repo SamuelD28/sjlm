@@ -19,9 +19,8 @@ class NewsEdit extends Component {
      * a modal form
      */
     ModalOpener = () => {
-        return  <div style={{height: "100%"}}>
-                    <NewsCard news={this.props.news}/>
-                </div>
+        return  <NewsCard news={this.props.news}/>
+                
     }
 
     render() {

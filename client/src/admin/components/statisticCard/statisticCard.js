@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Segment, Placeholder, Divider, Loader} from 'semantic-ui-react';
+import {Divider, Loader} from 'semantic-ui-react';
 import {Bar, Pie, Line, Doughnut} from 'react-chartjs-2';
 
 import styles from './statisticCard.module.css';

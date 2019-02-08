@@ -23,7 +23,7 @@ class Occupations extends Component
 
     PostModalOpener = () =>
     {
-        return (<Button color="teal" className="rounded-more">Ajouter un poste</Button>)
+        return (<Button color="teal" className="rounded-right">Ajouter un poste</Button>)
     }
 
     GetOccupations = async() =>

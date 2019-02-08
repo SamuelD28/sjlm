@@ -34,7 +34,7 @@ class MenuCards extends Component{
      * Function that display the ui for opening up the modal form
      */
     ModalOpener = () => {
-        return <span style={{width: "100%"}}className="space-between">
+        return <span className="space-between">
                     {this.props.menu.Title.toUpperCase()} <i className={`icon ${this.props.menu.Icon}`}></i>
                 </span>
     }
@@ -45,9 +45,7 @@ class MenuCards extends Component{
      */
     DisplaySubmenu = () =>{
         return  this.props.menu.SubMenu.map((submenu, index) =>(
-                    <div 
-                        styleName="accordionContent"
-                        key={submenu._id}>
+                    <div styleName="accordionContent" key={submenu._id}>
                         <MenuEdits 
                             menu={submenu} 
                             RefreshDataSet={this.props.RefreshDataSet}
@@ -74,8 +72,7 @@ class MenuCards extends Component{
                                 />
                         </div>
                     </Accordion.Title>
-                    <Accordion.Content 
-                        active={activeIndex === this.props.index}>
+                    <Accordion.Content active={activeIndex === this.props.index}>
                         {this.DisplaySubmenu()}
                     </Accordion.Content>
                 </Accordion>

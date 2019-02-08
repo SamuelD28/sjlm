@@ -15,10 +15,6 @@
     list-style: none;
 }
 
-.logoContainer {
-    border-bottom: 1px solid #ececec;
-}
-
 .navbarLogo{
     align-items: center;
     color: #1f1f1e;
@@ -27,11 +23,6 @@
     display: flex;
     padding: 1vw .5vw;
     background: white;
-}
-
-.logo {
-    width: 75%;
-    height: 75%;
 }
 
 .navbarContainer {
