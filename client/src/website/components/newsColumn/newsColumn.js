@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Ajax from '../../../shared/ajax.js';
 import { NavLink } from 'react-router-dom';
+
+import { Transition, Button} from 'semantic-ui-react';
+
 import styles from './newsColumn.module.css';
 import CSSModules from 'react-css-modules';
-import { Transition } from 'semantic-ui-react';
-import Ajax from '../../../shared/ajax.js';
+
 import moment from 'moment';
 import 'moment/locale/fr'; // without this line it didn't work
 moment.locale('fr');
@@ -49,7 +52,7 @@ class NewsColumn extends Component {
                                 </span>
                             <h1 styleName="newsTitle">{item.Title}</h1>
                             <NavLink to={`/news/${item._id}`} >
-                                <button className="btn btn-sm btn-outline-primary">Lire la suite</button>
+                                <Button content='Lire la suite' basic></Button>
                             </NavLink>
                     </div>
                 </Transition>

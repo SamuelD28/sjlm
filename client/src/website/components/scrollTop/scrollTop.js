@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import CSSModules from 'react-css-modules';
-import styles from './scrollTop.module.css';
+import {Button} from 'semantic-ui-react';
 
 class ScrollTop extends Component {
 
@@ -10,11 +8,11 @@ class ScrollTop extends Component {
     }
 
     render() {
-        return <div onClick={this.ScrollTop} styleName="btnTop" className="">
-            <i style={{margin: "0"}} className="icon chevron up"></i>
-        </div>
+        return <Button color="blue" circular inverted onClick={this.ScrollTop} className="btnTop">
+                    <i style={{margin: "0"}} className="icon chevron up"></i>
+                </Button>
     }
 
 }
 
-export default CSSModules(ScrollTop, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
+export default ScrollTop;

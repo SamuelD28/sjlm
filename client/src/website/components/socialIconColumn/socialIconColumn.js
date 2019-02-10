@@ -1,5 +1,5 @@
 import React from 'react';
-import { Transition } from 'semantic-ui-react';
+import { Transition, Button} from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 const pageSocialStyle = {
@@ -25,13 +25,13 @@ const SocialIconColumn = () => {
                 <div >
                 <div style={pageSocialStyle}>
                     <a href="https://www.facebook.com/pages/Saint-Jacques-le-Mineur/109329122419446">
-                        <button className="btn btn-md btn-outline-info" style={pageSocialBtnStyle}><i className="icon facebook f"></i></button>
+                        <Button color="blue" style={pageSocialBtnStyle}><i style={{margin: "0"}} className="icon facebook f"></i></Button>
                     </a>
                     <a href="mailto:info@sjlm.ca">
-                        <button className="btn btn-md btn-outline-info" style={pageSocialBtnStyle}><i className="icon mail"></i></button>
+                        <Button color="blue" style={pageSocialBtnStyle}><i style={{margin: "0"}} className="icon mail"></i></Button>
                     </a>
                     <NavLink to="/contact">
-                        <button className="btn btn-md btn-outline-info" style={pageSocialBtnStyle}><i className="icon phone"></i></button>
+                        <Button color="blue" style={pageSocialBtnStyle}><i style={{margin: "0"}} className="icon phone"></i></Button>
                     </NavLink>
                 </div>
                 </div>

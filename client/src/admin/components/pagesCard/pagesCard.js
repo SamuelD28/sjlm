@@ -22,8 +22,10 @@ class PagesCard extends Component {
      * UI that triggers the opening of the form
      */
     ModalOpener = () => {
-        return  <div className="item-card">
-                    <h4>{this.props.page.PageTitle.toUpperCase()}</h4>
+        return  <div className="item-card-shadow img-fit anim-bounce-up">
+                    <i className="icon file text"></i>
+                    <br />
+                    <span>{this.props.page.PageTitle.toUpperCase()}</span>
                 </div>
     }
 

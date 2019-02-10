@@ -7,7 +7,8 @@ Api.GetMenus = function (req, res) {
     let Query = Menu.find({ Principal: true }).populate({
         path: 'SubMenu',
         populate: { path: 'Link' }
-    }).populate("Link");
+    })
+    .populate("Link")
     Query.exec()
         .then((menus) => {
             Utility.GenerateResponse(true, res, menus);

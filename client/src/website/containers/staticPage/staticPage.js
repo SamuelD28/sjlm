@@ -80,7 +80,7 @@ class StaticPage extends Component {
                                     {this.DisplaySocials()}
                                     {this.DisplayImageGallery(this.state.page.PageGallery)}
                                 </div>
-                                <div styleName="pageContainer" className={(this.state.page.Template === 0)?"pushTop" : "pushBot"}>
+                                <div styleName="pageContainer" className={(this.state.page.Template === 0)?"push-top" : "push-bot"}>
                                     <PageHeader
                                         title={this.state.page.PageTitle}
                                         />

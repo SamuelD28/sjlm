@@ -1,11 +1,12 @@
 import React from 'react';
 
-import CSSModules from 'react-css-modules';
-import style from './contactInfo.module.css';
 import PageHeader from '../pageHeader/pageHeader.js';
 
-
-const ContactInfo = (props) =>
+/**
+ * Component used to display the contact information
+ * of the city.
+ */ 
+const ContactInfo = () =>
 {
     return(
     <div style={{padding: "2vw"}}>
@@ -36,4 +37,4 @@ const ContactInfo = (props) =>
     )
 }
 
-export default CSSModules(ContactInfo, style,{handleNotFoundStyleName: "log", allowMultiple: true});
+export default ContactInfo;

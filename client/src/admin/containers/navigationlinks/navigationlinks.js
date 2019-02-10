@@ -24,7 +24,7 @@ class NavigationLinks extends Component {
 
     ModalOpener = (link) => {
 
-        return <div className="item-card">
+        return <div className="item-card-shadow anim-bounce-up">
                     <h3 style={{margin: "0"}}>{link.Title}</h3>
                     <h4 style={{margin: "0"}}>{link.Link}</h4>
                 </div>

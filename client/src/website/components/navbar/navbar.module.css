@@ -25,18 +25,23 @@
     position: fixed;
     color: whitesmoke;
     height: 100%;
-    width: 300px;
+    width: 325px;
     transition: all .5s ease;
-    transform: translateX(-200px);
+    transform: translateX(-225px);
+    overflow-y: auto;
+}
+
+#navbarSecondary::-webkit-scrollbar {
+    background: #37474F;
+}
+
+#navbarSecondary::-webkit-scrollbar-thumb {
+    background: whitesmoke;
+    border-radius: 0;
 }
 
 .primaryLink {
     color: #37474F;
-}
-
-.navbarSpacer {
-    height: 10%;
-    width: 100%;
 }
 
 .navbarLogo {
@@ -46,10 +51,6 @@
     height: 20%;
     width: 100%;
     padding: 1vw;
-}
-
-.img-logo {
-    height: 50%;
 }
 
 .navIcon {
@@ -83,40 +84,8 @@
     transition: all .2s ease;
 }
 
-.navbarSocial {
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    margin-top: auto;
-    justify-content: center;
-}
-
-.navbarSocialItems {
-    margin-top: .5vw;
-}
-
-.navbarSocialItem {
-    cursor: pointer;
-    font-size: 2.75em !important;
-    margin: 0 .1em;
-    transition: color .1s linear;
-}
-
-.navbarSocialItem:hover {
-    color: #526975;
-    transition: color .1s linear;
-}
-
-.menuTitle {
-    padding-bottom: .5vw;
-    border-bottom: 2px solid #e3dcd8;
-}
-
 .navbarContentTitle {
     box-sizing: border-box;
-    border-bottom: 2px solid #4D646F;
     font-size: 1.50em;
     padding: 3vw 1vw;
 }
@@ -130,35 +99,31 @@
 }
 
 .secondaryLink {
-    align-self: flex-start;
+    vertical-align: center;
     box-sizing: border-box;
+    display: inline-block;
     color: inherit;
-    letter-spacing: .05vw;
-    display: flex;
     font-weight: 100;
-    padding: 1.4vw 1vw;
+    margin: 1.4vw 1vw;
     transition: all .5s ease;
+    position: relative;    
 }
 
-.cubeContainer {
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    padding: .2em;
+.secondaryLink::after{
+    content: " ";
+    height: 2px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform-origin: right center;
+    transform: scaleX(0);
+	transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
 }
 
-.secondaryCube {
-    padding: .4em;
-    border-top: 1px solid white;
-    border-right: 1px solid white;
-    transform: rotate(45deg) translate(-125%, 125%);
-    transition: transform .25s ease;
-}
-
-.secondaryLink:hover>.cubeContainer>.secondaryCube {
-    transition: transform .25s ease;
-    transform: rotate(45deg) translate(0%, 0%);
-    ;
+.secondaryLink:hover::after{
+    transition: transform .35s ease;
+    transform-origin: left center;
+    transform: scaleX(1);
 }

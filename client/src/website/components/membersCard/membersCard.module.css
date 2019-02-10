@@ -29,6 +29,7 @@
 
 .membersContact {
     align-self: flex-end;
+    width: 100%;
 }
 
 .membersTitle {
@@ -44,6 +45,7 @@
 .membersInfo {
     padding: 1.5vw;
     display: grid;
+    grid-template-columns: 1fr;
     flex-direction: column;
     justify-content: space-evenly;
 }

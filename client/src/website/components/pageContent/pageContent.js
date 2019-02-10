@@ -2,7 +2,8 @@ import React from 'react';
 import { Transition } from 'semantic-ui-react';
 
 const pageContentStyle = {
-    margin: '3vw 0'
+    margin: '3vw 0',
+    textAlign: "justify"
 }
 
 const CreateMarkup = (content) => {

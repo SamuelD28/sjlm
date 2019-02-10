@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import CSSModules from 'react-css-modules';
-import style from './contactForm.module.css';
 import PageHeader from '../pageHeader/pageHeader.js';
 import {FormGenerator, FormStatus} from '../../../shared/FormGenerator/formGenerator.js';
 import {default as MailSchema} from '../../formSchema/mailSchema.js';
@@ -23,4 +21,4 @@ class ContactForm extends Component{
     }
 }
 
-export default CSSModules(ContactForm, style, {handleNotFoundStyleName: "log", allowMultiple: true});
+export default ContactForm;

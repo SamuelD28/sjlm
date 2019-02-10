@@ -7,7 +7,8 @@ import CSSModules from 'react-css-modules';
 import styles from './bannerHome.module.css';
 
 class BannerHome extends Component {
-
+    
+    //Should extract these into the website config api
     Keywords = ['Accueillante', 'Culturelle', 'Ouverte']
     Duration = 2000;
 
@@ -17,15 +18,27 @@ class BannerHome extends Component {
         this.GenerateSearchOptions();
     }
 
+    /**
+     * Method that hides all the keywords that are
+     * not currently beeing picked
+     */
     HideCurrentKeyword = (index) => {
         this.setState({ currentKeyword: -1, lastKeyword: index });
     }
-
+    
+    /**
+     * Method that change the keyword to display inside
+     * the banner
+     */
     ChangeCurrentKeyword = (e) => {
         let nextIndex = (this.state.lastKeyword + 1 >= this.Keywords.length) ? 0 : this.state.lastKeyword + 1;
         this.setState({ currentKeyword: nextIndex })
     }
-
+    
+    /**
+     * Method that generate all the search options for the search input.
+     * Filters trough all the value.
+     */
     GenerateSearchOptions = async() => {
         let links = await Ajax.GetData("/api/navigationlinks/");
         let news = await Ajax.GetData("/api/news/");
@@ -45,11 +58,19 @@ class BannerHome extends Component {
         }
         this.setState({ options: options })
     }
-
+    
+    /**
+     * Method that refhesh the search values
+     * based on the input value.
+     */
     ChangeSearchQuery = async(data) => {
         this.setState({ searchQuery: data.value });
     }
-
+    
+    /**
+     * Method that send the user to the selected
+     * search input.
+     */
     Search = () => {
         if (this.state.searchQuery !== "") {
             this.props.history.push(this.state.searchQuery);

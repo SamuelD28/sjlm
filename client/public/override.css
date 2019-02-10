@@ -1,3 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+/*Html Tag Overrides*/
+table {
+    color: #666;
+    margin: .5vw 0;
+    background: white;
+    border-collapse: collapse;
+    font-size: .9vw;
+    max-width: 100%;
+    box-shadow: .1vw .1vw 9px whitesmoke;
+}
+
+table td {
+    padding: 1vw 1.5vw;
+}
+
+table tr {
+    vertical-align: top;
+    text-align: left;
+    transition: all .2s ease;
+    border-bottom: 2px solid whitesmoke;
+    border-top: 2px solid whitesmoke;
+}
+
+tbody tr:first-child {
+    font-size: 0.8vw;
+    border: none;
+    font-weight: bold;
+    border-radius: 10% 0%;
+    background: white;
+    color: #37474F;
+}
+
+tbody tr:first-child:hover {
+    background: white;
+    transform: translateX(0vw);
+}
+
+tbody tr:hover {
+    transform: translateX(.5%);
+    background: whitesmoke;
+    transition: all .2s ease;
+}
+
+::-webkit-scrollbar {
+    background: #d6d6d6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+
+a:hover {
+    color: #a2b5bf;
+    transition: color .15s ease-in;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #37474F;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2em;
+    margin: 0;
+    background: whitesmoke;
+}
+
+label {
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: .9rem !important;
+    color: #4C4C4C !important;
+    letter-spacing: .1rem !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    margin-bottom: 0;
+    font-size: .85vw;
+}
+
+
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: .5vw;
+    margin: .3vw 0;
+}
+
 .ui.segment{
     margin: 0 !important;
 }
@@ -10,6 +117,50 @@
     border: none !important;
     background: blue !important;
 }
+
+.blue{
+}
+
+.red{
+    
+}
+.orange{
+    
+}
+.yellow{
+    
+}
+.olive{
+    
+}
+.green{
+    
+}
+.teal{
+    
+}
+.blue{
+    
+}
+.violet{
+    
+}
+.purple{
+    
+}
+.pink{
+    
+}
+.brown{
+    
+}
+.grey{
+    
+}
+.black{
+    
+}
+
 
 .dropdown.icon {
     z-index: 10 !important;
@@ -25,6 +176,10 @@
 
 .ui.fullscreen.modal {
     left: auto !important;
+}
+
+.ui.segment{
+    height: 100%;
 }
 
 

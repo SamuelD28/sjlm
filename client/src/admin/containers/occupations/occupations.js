@@ -59,8 +59,8 @@ class Occupations extends Component
     PutModalOpener = (title) =>
     {
         return  <div className="item-card">
-                    <h4>{title}
-                    </h4>
+                    <span>{title}
+                    </span>
                 </div>
     }
 
