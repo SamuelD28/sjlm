@@ -1,88 +1,65 @@
 .newsBody {
     margin-left: 100px;
-    width: 100%;
+    margin-top: 3vw;
+    overflow: auto;
+    overflow-x: scroll;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    display: flex;
+    box-sizing: border-box;
+    min-height: stretch;
 }
 
-.newsContainer {
-    display: grid;
-    grid-template-areas: ". description news navigation .";
-    grid-template-columns: .075fr .2fr .55fr .1fr .075fr;
-    transform: translateY(-7vw);
+.newsDescription{
+    margin-left: 3vw;    
 }
 
-.newsYear {
-    padding: 1vw;
-    background: white;
-    margin-bottom: 2.5vw;
+.newsWrapper {
+    box-sizing: border-box;
+    flex: 0 0 33%;
+    width: 450px;
+    height: 100%;
+    white-space: normal;
+    margin-right:1vw;
 }
 
-.newsYearsContainer {
-    grid-area: news;
+.leftColumn {
+    grid-area: left;
+}
+
+.rightColumn {
+    grid-area: right;
 }
 
 .newsCard {
-    padding: 1vw;
-    background: white;
-    box-shadow: .2vw .2vw 9px whitesmoke;
-    border-top: 1px solid whitesmoke;
-    border-left: 1px solid whitesmoke;
-    margin: .5vw 0;
-    position: relative;
-    transition: transform .2s ease-in-out;
-}
-
-.newsCard:hover {
-    transform: translateX(.5vw);
-    transition: transform .2s ease-in-out;
-}
-
-.navigation,
-.description {
-    align-self: flex-start;
-    background: white;
-    margin-top: 5vw;
-    padding: 1.5vw;
-}
-
-.navigation {
-    grid-area: navigation;
-    font-size: 1.1vw;
-    border-left: 2px solid whitesmoke;
-}
-
-.newsLink {
-    position: absolute;
-    top: .5vw;
-    right: .5vw;
-}
-
-.description {
-    grid-area: description;
-    border-right: 2px solid whitesmoke;
-}
-
-.categoryTitle {
-    padding-bottom: 1vw;
-    border-bottom: 3px solid whitesmoke;
-}
-
-.yearLinks {
+    cursor: pointer;
+    height: 100%;
     display: flex;
-    flex-direction: column;
 }
 
-.yearlink {
-    margin-bottom: 1vw;
+.newsDate{
+    align-items: center;
+    background: #37474f;
+    color: white;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
 }
 
-.categoryDesc {
-    text-align: justify;
+.newsCardInfo{
+    width: 80%;
+    display: inline-block;
 }
 
 .newsBackground {
     height: 20vw;
     width: 100%;
     background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    filter: sepia(20%) brightness(80%);
     z-index: -1;
 }
 

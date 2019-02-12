@@ -27,7 +27,7 @@
 }
 
 .anim-bounce-up:hover{
-    transform: translateY(-5%);
+    transform: translateY(-.5vw);
     transition: transform .15s;
     transition-timing-function: cubic-bezier(.36,.51,.28,1.55);
 }
@@ -102,9 +102,9 @@
     z-index: -1;
 }
 .component-card{
+    align-self: flex-start;
     position: relative;
     background: white;
-    padding: .7vw .5vw;
     box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
 
@@ -139,12 +139,20 @@
     box-shadow: 0 12px 20px -10px rgba(0, 181, 173,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0, 181, 173,.2);
 }
 
-.rounded-left{
+.rounded-tl{
     border-radius: 0  12px 0 12px!important;
 }
 
-.rounded-right{
+.rounded-tr{
     border-radius: 12px 0 12px 0 !important;
+}
+
+.rounded-left{
+    border-radius: 12px 0 0 12px !important;
+}
+
+.rounded-right{
+    border-radius: 0 12px 12px 0 !important;
 }
 
 .rounded{
@@ -155,8 +163,12 @@
     border-radius: 24px !important;
 }
 
+.large-gutters{
+    padding: 2.25vw;
+}
+
 .big-gutters{
-    padding: 1.5vw;
+    padding: 1.75vw;
 }
 
 .medium-gutters{
@@ -167,6 +179,17 @@
     padding: .75vw;
 }
 
+.small-spacing-bot{
+    margin-bottom: .5vw;
+}
+
+.medium-spacing-bot{
+    margin-bottom: .75vw;
+}
+
+.big-spacing-bot{
+    margin-bottom: 1vw;
+}
 
 .img-fit{
     object-fit: cover;

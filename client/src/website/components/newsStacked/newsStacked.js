@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import ScrollTop from '../scrollTop/scrollTop.js';
 
+import NewsDescription from '../newsDescription/newsDescription.js';
+import NewsNavigation from '../newsNavigation/newsNavigation.js';
+import ScrollTop from '../scrollTop/scrollTop.js';
 import { Transition } from 'semantic-ui-react';
+
 import CSSModules from 'react-css-modules';
 import styles from './newsStacked.module.css';
+
 import moment from 'moment';
 import 'moment/locale/fr'; // without this line it didn't work
 moment.locale('fr');
 
 class NewsStacked extends Component {
 
+    state = {};
 
-    constructor(props) {
-        super(props);
-        this.state = { backgroundImage: this.ChooseRandomBackground() };
-    }
-
-    componentDidMount() {
+    async componentDidMount() {
         let yearSet = {};
         this.props.news.map((news, index) => {
 
@@ -26,38 +26,58 @@ class NewsStacked extends Component {
 
             return yearSet[(moment(news.DateFrom).year())].push(news);
         })
+        
+        let itemsVisible = [];
+        Object.keys(yearSet).map(() => {
+            return itemsVisible.push(false);
+        });
+        await this.setState({ years: yearSet, itemsVisible: itemsVisible });
+        
+        this.StartNextAnimation(0);
+    }
 
-        this.setState({ years: yearSet });
+    /**
+     * Method that waits for an animation to end before
+     * starting a new one
+     */
+    StartNextAnimation = (index) => {
+        if (index < this.state.itemsVisible.length) {
+            setTimeout(() => {
+                let temp = Array.from(this.state.itemsVisible);
+                temp[index] = true;
+                this.setState({ itemsVisible: temp })
+            }, this.state.animationDelay);
+        }
     }
 
     DisplayNewsCard = () => {
         if (this.state.years !== undefined)
             return Object.keys(this.state.years).reverse().map((year, index) => (
-                <div styleName="newsYear" key={year} id={year}>
-                <h1>Année {year}</h1>
-                {this.MapNews(this.state.years[year])}
-            </div>
+                <Transition
+                    key={year} 
+                    onComplete={() => this.StartNextAnimation(index + 1)}
+                    duration={750}
+                    visible={this.state.itemsVisible[index]}
+                    animation="fade right"
+                    >
+                    <div 
+                        styleName="newsWrapper"
+                        className="component-card medium-gutters rounded" 
+                        id={year}>
+                        <h1>Année {year}</h1>
+                        {this.MapNews(this.state.years[year])} 
+                    </div>
+                </Transition>
             ))
     }
 
-    ChooseRandomBackground = () => {
-
-        let backgroundImage = [
-            "https://res.cloudinary.com/dohwohspb/image/upload/v1547598512/images/website/St_Jacques_le_Mineur_avril_2011_094.jpg",
-            "https://res.cloudinary.com/dohwohspb/image/upload/v1547598518/images/website/St_Jacques_le_Mineur_avril_2011_032.jpg",
-            "https://res.cloudinary.com/dohwohspb/image/upload/v1547598536/images/website/fevrier2008_476.jpg",
-            "https://res.cloudinary.com/dohwohspb/image/upload/v1547598536/images/website/fevrier2008_547.jpg"
-            ]
-
-        return backgroundImage[Math.floor((Math.random() * backgroundImage.length))];
-    }
-
     MapNews = (news) => {
-        return news.map((news, index) => (
-            <div styleName="newsCard" key={news._id}>
-                <NavLink styleName="newsLink" to={`/news/${news._id}`}><i className="icon external"></i></NavLink>
-                <div>
-                    <h4>{moment(news.DateFrom).format("dddd, Do MMMM")} </h4>
+        return news.map((news) => (
+            <NavLink to={`/news/${news._id}`} styleName="newsCard" className="component-card rounded medium-spacing-bot anim-bounce-up" key={news._id}>
+                <div styleName="newsDate" className="rounded-left">
+                    <h4 style={{color: "white"}}>{moment(news.DateFrom).format("Do MMMM")} </h4>
+                </div>
+                <div styleName="newsCardInfo" className="medium-gutters">
                     <h3>{news.Title}</h3>
                     <div>
                     {news.Files.map((file, index)=>(
@@ -65,63 +85,25 @@ class NewsStacked extends Component {
                     ))}
                     </div>
                 </div>
-            </div>));
-    }
-
-    GenerateNavigation = () => {
-        return <Transition
-                        animation="fade left"
-                        duration={1000}
-                        transitionOnMount={true}>
-                        <div styleName="navigation">
-                            <h1 styleName="categoryTitle">Naviguez</h1>
-                            <div styleName="yearLinks">
-                            { Object.keys(this.state.years).reverse().map((year) => (
-                                <a onClick={(e) =>this.ScrollToSection(e, year)} styleName="yearlink" href={`#${year}`}><i className="icon chevron down"></i>{year}</a>
-                            ))}
-                            </div>
-                        </div>
-                    </Transition>
-    }
-
-    ScrollToSection = (e, id) => {
-        e.preventDefault();
-        document.getElementById(id).scrollIntoView({
-            behavior: 'smooth',
-            block: "start",
-            inline: 'start'
-        });
-    }
-
-    DisplayDescription = () => {
-        return <Transition
-                    animation="fade right"
-                    duration={1000}
-                    transitionOnMount={true}>
-                    <div styleName="description">
-                        <h1 styleName="categoryTitle">{this.props.category.Title}</h1>
-                        <p styleName="categoryDesc">{this.props.category.Description}</p>
-                    </div>
-                </Transition>
+            </NavLink>))
     }
 
     render() {
         if (this.state.years !== undefined)
             return <div styleName="newsBody">
-                    <ScrollTop />
-                    <div className="img-bg" styleName="newsBackground" style={{backgroundImage: `url('${this.state.backgroundImage}')`}}></div>
-                    <div styleName="newsContainer">
-                        {this.DisplayDescription()}
-                        <Transition
-                            animation="fade up"
-                            duration={1000}
-                            transitionOnMount={true}>
-                            <div styleName="newsYearsContainer">
-                                {this.DisplayNewsCard()}
-                            </div>
-                        </Transition>
-                        {this.GenerateNavigation()}
+                    <ScrollTop 
+                        anchor={document.getElementById("description")}
+                        direction="left"
+                        position="left"
+                        />
+                    <div styleName="newsWrapper newsDescription"  id="description"> 
+                        <NewsDescription 
+                            Description={this.props.category.Description}  
+                            Title={this.props.category.Title}
+                            />
+                        <NewsNavigation targets={this.state.years}/>
                     </div>
+                    {this.DisplayNewsCard()}
                 </div>
     }
 }

@@ -1,8 +1,7 @@
 .btnTop {
     position: fixed;
     text-align: center;
-    bottom: 2vw;
-    right: 2vw;
+    bottom: 20px;
     z-index: 1;
     animation-name: bounce;
     animation-duration: 400ms;
@@ -105,3 +104,10 @@
     transform: translateY(-10vw);
 }
 
+.news-column-card{
+    background: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid whitesmoke;
+}

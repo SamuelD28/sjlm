@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Transition, Dropdown } from 'semantic-ui-react';
-
 import Ajax from '../../../shared/ajax.js';
+import {NavLink} from 'react-router-dom';
+
+import { Transition, Dropdown } from 'semantic-ui-react';
 
 import CSSModules from 'react-css-modules';
 import styles from './bannerHome.module.css';

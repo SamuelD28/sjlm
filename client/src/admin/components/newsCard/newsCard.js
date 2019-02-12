@@ -22,7 +22,7 @@ const NewsCard = (props) => {
                     alt="news"
                     />
                 {DisplayImportantTag(props.news)}
-                <div className="component-card ">
+                <div className="component-card rounded small-gutters">
                     <h3>{props.news.Title}</h3>
                     <span className="tag-card rounded">{props.news.Category.Title}</span>
                     <Divider />

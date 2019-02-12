@@ -5,6 +5,10 @@ import styles from './newsCard.module.css';
 import { Transition } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
+/**
+ * Component used in the news timeline to display information about the
+ * news.
+ */
 class NewsCard extends Component {
 
     constructor(props) {
@@ -28,9 +32,13 @@ class NewsCard extends Component {
                         animation={(this.props.index % 2 ===0)?"fade down":"fade up"}>
                         <NavLink
                             to={`/news/${this.props.news._id}`}
-                            styleName='newsCard'>
-                            <div styleName='newsCard'>
-                                <div styleName='newsImg' style={{backgroundImage: `url('${this.props.news.Images[0]}')`}}>
+                            styleName='wrapper'>
+                            <div styleName='newsCard' className="rounded">
+                                <div styleName='newsImg' className="rounded-l" style={{backgroundImage: `url('${this.props.news.Images[0]}')`}}>
+                                    <div styleName="newsOverlay" className="rounded-l">
+                                        <h2 styleName="newsLink">Consulter</h2>
+                                        <i className="icon search"></i>
+                                    </div>
                                 </div>
                                 <div styleName='newsInfo'>
                                     <h2 styleName="newsTitle">{this.props.news.Title}</h2>

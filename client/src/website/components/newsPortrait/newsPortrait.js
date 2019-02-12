@@ -17,14 +17,14 @@ class NewsPortrait extends Component {
     }
 
     DisplayNewsCard = () => {
-        return this.props.news.map((news, index) => (
+        return this.props.news.map((news) => (
             <Transition
                 animation="fade left"
                 duration={1000}
                 transitionOnMount={true}>
-                <NavLink to={`/news/${news._id}`} styleName="newsCard">
-                    <div styleName="newsImg" className="img-bg" style={{backgroundImage : `url('${news.Images[0]}')`}}></div>
-                    <div styleName="newsInfo">
+                <NavLink to={`/news/${news._id}`} className="component-card rounded anim-bounce-up">
+                    <div styleName="newsImg" className="img-bg rounded" style={{backgroundImage : `url('${news.Images[0]}')`}}></div>
+                    <div styleName="newsInfo" className="medium-gutters ">
                         <h2>{news.Title}</h2>
                         <h3>{moment(news.DateFrom).format("Do MMMM YYYY")}</h3>
                         <p styleName="newsDesc">{this.StripHtml(news.Description).substring(0, 300)}...</p>

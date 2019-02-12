@@ -20,14 +20,6 @@
     grid-template-rows: 1fr .5fr 1fr;
 }
 
-.arrowLeft {
-    width: 25px;
-    height: 25px;
-    border-right: 3px solid #DEDEDE;
-    border-top: 3px solid #DEDEDE;
-    transform: rotate(45deg);
-}
-
 .dateContainer {
     display: flex;
     flex-direction: column;

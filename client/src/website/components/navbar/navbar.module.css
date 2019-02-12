@@ -1,6 +1,7 @@
 #navbar {
     position: fixed;
     top: 0;
+    box-shadow: 5px 0 15px #37474f24;
     height: stretch;
     font-family: 'Oswald', sans-serif;
     left: 0;
@@ -20,7 +21,7 @@
 }
 
 #navbarSecondary {
-    background-color: #37474F;
+    background-image: linear-gradient(to right, #37474f, #394950, #3b4b52, #3e4d53, #404f55);
     box-sizing: border-box;
     position: fixed;
     color: whitesmoke;

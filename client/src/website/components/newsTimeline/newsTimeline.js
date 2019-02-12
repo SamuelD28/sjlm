@@ -49,10 +49,6 @@ class NewsTimeline extends Component {
     }
 
     DisplayDate = (news) => {
-
-        // "rocket "
-        // <i style = { { margin: "0", color: "#bcbdbd" } } className = "icon rocket large" > < /i>
-
         return <Transition
                     animation="fade right"
                     duration={1000}

@@ -24,6 +24,27 @@
 .searchIcon {
     cursor: pointer;
     width: 20%;
+    transition: color .15s ease-in;
+}
+
+.searchIcon:hover{
+    color: rgba(191,191,191,.87);
+    transition: color .15s ease-in;
+}
+
+.bannerLinks{
+    align-self: flex-end;
+    align-items: space-between;
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.bannerLink{
+    color: white;
+    margin-top: 1vw;
+    padding-bottom: .25vw;
+    border-bottom: 1px solid white;
 }
 
 .bannerVideo {

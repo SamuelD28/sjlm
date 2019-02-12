@@ -1,3 +1,9 @@
+.wrapper{
+    display: flex !important;
+    position: relative;
+    height: 100%;
+}
+
 .newsCard {
     background-color: white;
     cursor: pointer;
@@ -5,38 +11,48 @@
     position: relative;
     height: 100%;
     transition: transform .15s ease-in-out;
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
 
-.newsCard::after {
-    content: " ";
-    background-color: #273746;
+.newsOverlay{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    flex-direction :column;
+    color: white;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
-    width: 100%;
-    transition: opacity .2s ease;
-    height: 100%;
+    background: #37474F;
     z-index: 1;
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
+}
+
+.newsLink{
+    color: white;
+    letter-spacing: 2px;
+}
+
+.newsCard:hover > .newsImg > .newsOverlay{
+    transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    transform: translateX(0%);
 }
 
 .newsCard:hover {
-    transform: translateX(1%);
+    transform: translateY(-1%);
     transition: transform .15s ease-in-out;
-}
-
-.newsCard:hover::after {
-    opacity: .1;
-    transition: all .2s ease;
 }
 
 .newsImg {
     background-size: cover;
     background-position: center;
-    filter: brightness(80%);
     height: 100%;
     width: 40%;
     position: relative;
+    overflow: hidden;
 }
 
 .newsCategory {
@@ -86,4 +102,5 @@
     width: 40px;
     height: 40px;
     transform: rotateZ(45deg) translateX(10px) translateY(10px);
+    box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
 }

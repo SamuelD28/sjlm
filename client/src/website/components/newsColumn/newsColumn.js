@@ -4,35 +4,23 @@ import { NavLink } from 'react-router-dom';
 
 import { Transition, Button} from 'semantic-ui-react';
 
-import styles from './newsColumn.module.css';
-import CSSModules from 'react-css-modules';
-
 import moment from 'moment';
-import 'moment/locale/fr'; // without this line it didn't work
+import 'moment/locale/fr';
 moment.locale('fr');
 
+/**
+ * Component used to display the 3 latest news
+ * inside a column
+ */
 class NewsColumn extends Component {
-    state = { animationDelay: 100 }
+    
+    state = {}
 
     componentDidMount = async() => {
         let request = await Ajax.GetData("/api/news/latest");
-        let itemsVisible = [];
-        request.data.map(() => {
-            return itemsVisible.push(false);
-        });
-        this.setState({ news: request.data, itemsVisible: itemsVisible });
+        this.setState({ news: request.data});
     }
-
-    StartNextAnimation = (index) => {
-        if (index < this.state.itemsVisible.length) {
-            setTimeout(() => {
-                let temp = Array.from(this.state.itemsVisible);
-                temp[index] = true;
-                this.setState({ itemsVisible: temp })
-            }, this.state.animationDelay);
-        }
-    }
-
+    
     render() {
 
         if (this.state.news !== undefined)
@@ -42,29 +30,21 @@ class NewsColumn extends Component {
                         transitionOnMount={true}
                         duration={1000}
                         animation="fade left">
-                    <div styleName="newsCard" key={index}>
-                            <span styleName="newsDate">
+                    <div className="large-gutters news-column-card" key={index}>
+                            <h4 style={{margin: "0"}}>
                                 <i className="icon clock outline"></i>
-                                Le {(item.DateFrom !== null)
-                                ?moment(item.DateFrom).format("dddd, Do MMMM")
-                                :moment(item.createdAt).format("dddd, Do MMMM")
-                                }
-                                </span>
-                            <h1 styleName="newsTitle">{item.Title}</h1>
+                                Le {moment(item.DateFrom).format("dddd, Do MMMM")}
+                            </h4>
+                            <h1 style={{margin: "1.5vw 0"}}>{item.Title}</h1>
                             <NavLink to={`/news/${item._id}`} >
                                 <Button content='Lire la suite' basic></Button>
                             </NavLink>
                     </div>
                 </Transition>
             ))
+        else
+            return <span></span>
     }
 }
 
-export default CSSModules(NewsColumn, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
-
-//  <Transition
-//                     onComplete={() =>this.StartNextAnimation(index + 1 )}
-//                     key={item._id}
-//                     visible={this.state.itemsVisible[index]}
-//                     duration={300}
-//                     animation="fade left">
+export default NewsColumn;

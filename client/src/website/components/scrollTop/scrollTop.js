@@ -4,12 +4,25 @@ import {Button} from 'semantic-ui-react';
 class ScrollTop extends Component {
 
     ScrollTop = () => {
-        document.querySelector("body").scrollIntoView({ behavior: "smooth", block: "start" });
+        this.props.anchor.scrollIntoView({
+            behavior: 'smooth',
+            block: "start",
+            inline: 'start'});
     }
 
     render() {
-        return <Button color="blue" circular inverted onClick={this.ScrollTop} className="btnTop">
-                    <i style={{margin: "0"}} className="icon chevron up"></i>
+        return <Button  
+                    style={(this.props.position == "left")?{left : "120px"}:{right:"20px"}}
+                    color="blue" 
+                    circular 
+                    inverted 
+                    onClick={this.ScrollTop} 
+                    className="btnTop">
+                    <i 
+                        style={{margin: "0"}} 
+                        className={(this.props.direction === "left")? "icon chevron left" : "icon chevron up"}
+                        >
+                    </i>
                 </Button>
     }
 

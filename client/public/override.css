@@ -25,7 +25,6 @@ table tr {
 }
 
 tbody tr:first-child {
-    font-size: 0.8vw;
     border: none;
     font-weight: bold;
     border-radius: 10% 0%;
@@ -39,17 +38,7 @@ tbody tr:first-child:hover {
 }
 
 tbody tr:hover {
-    transform: translateX(.5%);
-    background: whitesmoke;
-    transition: all .2s ease;
-}
-
-::-webkit-scrollbar {
-    background: #d6d6d6;
-}
-
-::-webkit-scrollbar-thumb {
-    background: white;
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
 
 a {
@@ -103,6 +92,10 @@ blockquote {
     border-left: 4px solid #ccc;
     padding-left: .5vw;
     margin: .3vw 0;
+}
+
+input[type=text]{
+    color: white;
 }
 
 .ui.segment{
