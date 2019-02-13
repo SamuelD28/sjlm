@@ -14,6 +14,9 @@ import PageContent from '../../components/pageContent/pageContent.js';
 import FileGallery from '../../components/fileGallery/fileGallery.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js';
 
+/**
+ * Component that display a page for a selected news
+ */
 class NewsPage extends Component {
 
     constructor(props) {
@@ -25,6 +28,9 @@ class NewsPage extends Component {
         this.GetNews();
     }
 
+    /**
+     * Method that gets all the news from the database.
+     */
     GetNews = async() => {
         if (this.state.previousLocation !== this.props.location.pathname) {
             let request = await Ajax.GetData(`/api/news/${this.props.match.params.id}`);
@@ -37,14 +43,21 @@ class NewsPage extends Component {
     componentDidUpdate() {
         this.GetNews();
     }
-
+    
+    /**
+     * Method that diplay all the files if there are files associated with the selected news.
+     */
     DisplayFiles = () => {
         if (this.state.news.Files.length > 0)
             return <div styleName="newsFile">
                         <FileGallery files={this.state.news.Files} />
                      </div>
     }
-
+    
+    /**
+     * Method that diplay the gallery of images if the selected news
+     * has more than one image associated with it.
+     */
     DisplayGallery = () => {
 
         if (this.state.news.Images.length > 1)
@@ -53,8 +66,11 @@ class NewsPage extends Component {
                 </div>
     }
     
+    /**
+     * Method that display the banner background if the selected news
+     * has one image associated with it.
+     */ 
     DisplayBackground = () =>{
-        
         if(this.state.news.Images[0] !== undefined)
             return <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.news.Images[0]}')`}}></div>
         else 

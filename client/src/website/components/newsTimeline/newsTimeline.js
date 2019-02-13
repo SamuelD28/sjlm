@@ -79,7 +79,12 @@ class NewsTimeline extends Component {
                     </div>
                 </Transition>
     }
-
+    
+    /**
+     * Method used to append the news card at either the
+     * top or the bottom of the grid. Based on the index
+     * of the news inside the array
+     */
     AppendCardToGrid = (news, index) => {
         if (index % 2 === 0)
             return <div key={news._id} styleName="newsWrapper">

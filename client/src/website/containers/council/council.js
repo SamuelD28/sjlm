@@ -8,40 +8,36 @@ import PageFooter from '../../components/pageFooter/pageFooter.js';
 import CSSModules from 'react-css-modules';
 import styles from './council.module.css';
 
+/**
+ * Component used to display council page
+ */
 class Council extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
+    state = {}
+    
+    componentDidMount(){
+        this.GetMembers();
     }
-
-    componentDidMount = async() => {
+    
+    /**
+     * Method that retrieve the members from the database
+     */
+    GetMembers = async() =>{
         let request = await Ajax.GetData("/api/members/");
-
-        let council = [];
-
-        request.data.map((member) => {
-            let alias = member.Occupation.Title.toLowerCase();
-            if (alias === "mairesse" ||
-                alias === "maire" ||
-                alias === "conseiller municipal" ||
-                alias === "conseillère municipale")
-                return council.push(member);
-            else
-                return null;
-        });
-
-        this.setState({ members: council });
+        this.setState({ members: request.data });
     }
-
+    
+    /**
+     * Method that display the members inside the page
+     */ 
     DisplayMembers = () => {
         if (this.state.members !== undefined)
             return this.state.members.map((member, index) => (
                 <MembersCard
-                index={index}
-                key={member._id}
-                member={member}
-                />
+                    index={index}
+                    key={member._id}
+                    member={member}
+                    />
             ));
     }
 

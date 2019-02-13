@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './loadingScreen.module.css';
 
+/**
+ * Component used to display the laoding screen
+ * when the user first enter the website
+ */
 class LoadingScreen extends Component {
 
     constructor(props) {

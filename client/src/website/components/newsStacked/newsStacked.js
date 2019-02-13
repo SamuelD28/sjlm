@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 import NewsDescription from '../newsDescription/newsDescription.js';
 import NewsNavigation from '../newsNavigation/newsNavigation.js';
-import ScrollTop from '../scrollTop/scrollTop.js';
+import ScrollTo from '../scrollTo/scrollTo.js';
 import { Transition, Divider } from 'semantic-ui-react';
 
 import CSSModules from 'react-css-modules';
 import styles from './newsStacked.module.css';
 
 import moment from 'moment';
-import 'moment/locale/fr'; // without this line it didn't work
+import 'moment/locale/fr';
 moment.locale('fr');
 
 /**
@@ -89,12 +89,12 @@ class NewsStacked extends Component {
             <NavLink 
                 to={`/news/${news._id}`} 
                 styleName="newsCard" 
-                className="component-card rounded medium-spacing-bot anim-bounce-up" 
+                className="component-card rounded big-spacing-bot anim-bounce-up" 
                 key={news._id}>
                 <div styleName="newsDate" className="rounded-left">
                     <h4 style={{color: "white"}}>{moment(news.DateFrom).format("Do MMMM")} </h4>
                 </div>
-                <div styleName="newsCardInfo" className="medium-gutters">
+                <div styleName="newsCardInfo" className="big-gutters">
                     <h3>{news.Title}</h3>
                     <div>
                     {news.Files.map((file, index)=>(
@@ -108,7 +108,7 @@ class NewsStacked extends Component {
     render() {
         if (this.state.years !== undefined)
             return <div styleName="newsBody">
-                    <ScrollTop 
+                    <ScrollTo 
                         anchor={document.getElementById("description")}
                         direction="left"
                         position="left"

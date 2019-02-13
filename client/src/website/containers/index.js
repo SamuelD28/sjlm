@@ -15,7 +15,9 @@ import Contact from './contact/contact.js';
 import LoadingScreen from './loadingScreen/loadingScreen.js';
 import ImportantNews from '../components/importantNews/importantNews.js';
 
-//----------Core Code-------//
+/**
+ * Routing Component used by the website section of the application.
+ */
 class Index extends Component {
 
     constructor(props) {

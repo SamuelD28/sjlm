@@ -2,19 +2,19 @@
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 
-//Css Modules Importation
-import CSSModules from 'react-css-modules';
-import styles from "./newsCategory.module.css";
-
 //Components import
 import NewsTimeline from '../../components/newsTimeline/newsTimeline.js';
 import NewsStacked from '../../components/newsStacked/newsStacked.js';
 import NewsPortrait from '../../components/newsPortrait/newsPortrait.js';
 
 import moment from 'moment';
-import 'moment/locale/fr'; // without this line it didn't work
+import 'moment/locale/fr';
 moment.locale('fr');
 
+/**
+ * Higher order component used to display the right layout
+ * for the news to be diplayed in.
+ */
 class NewsCategory extends Component {
 
     constructor(props) {
@@ -22,18 +22,37 @@ class NewsCategory extends Component {
         this.state = { currentCategory: "", history: this.props.match.params.category };
     }
 
-    async componentDidMount() {
-        let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`);
-        if (category.success)
-            this.setState({ currentCategory: category.data })
-
+    componentDidMount() {
+        this.GetCategory();
         this.GetNews();
     }
-
+    
     componentDidUpdate() {
         this.CompareCategory();
     }
-
+    
+    /**
+     * Method that gets all the category from the database
+     */
+    GetCategory = async() => {
+        let category = await Ajax.GetData(`/api/categorynews/url/${this.props.match.params.category}`);
+        if (category.success)
+            this.setState({ currentCategory: category.data })
+    }
+    
+    /**
+     * Method that get all the news that correpond to the requested category
+     */
+    GetNews = async() => {
+        let news = await Ajax.GetData(`/api/news/link/${this.props.match.params.category}`);
+        if (news.success)
+            await this.setState({ news: news.data });
+    }
+    
+    /**
+     * Method that compare the category beeing requested and the current category. If theres a difference
+     * we request the new informations
+     */
     CompareCategory = async() => {
 
         if (this.state.history !== this.props.match.params.category) {
@@ -44,15 +63,12 @@ class NewsCategory extends Component {
             }
         }
     }
-
-    GetNews = async() => {
-        let news = await Ajax.GetData(`/api/news/link/${this.props.match.params.category}`);
-        if (news.success)
-            await this.setState({ news: news.data });
-    }
-
-
-    GenerateNewsGrid = () => {
+    
+    /**
+     * Method that display the right layout with the news inside based
+     * on the template chosen by the user.
+     */
+    GenerateLayout = () => {
         if (this.state.news !== undefined && this.state.currentCategory !== "") {
 
             let template = this.state.currentCategory.Template;
@@ -67,9 +83,9 @@ class NewsCategory extends Component {
 
     render() {
         return <div>
-                    {this.GenerateNewsGrid()}
+                    {this.GenerateLayout()}
                 </div>
     }
 }
 
-export default CSSModules(NewsCategory, styles, { allowMultiple: true, handleNotFoundStyleName: "log" });
+export default NewsCategory;

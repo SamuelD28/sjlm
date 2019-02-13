@@ -9,13 +9,19 @@ import moment from 'moment';
 import 'moment/locale/fr'; // without this line it didn't work
 moment.locale('fr');
 
+/**
+ * Component sued to display all the news in a portrait layout
+ */
 class NewsPortrait extends Component {
 
     constructor(props) {
         super(props)
         this.state = {};
     }
-
+    
+    /**
+     * Method that display the news inside the layout
+     */
     DisplayNewsCard = () => {
         return this.props.news.map((news) => (
             <Transition
@@ -33,7 +39,10 @@ class NewsPortrait extends Component {
             </Transition>
         ));
     }
-
+    
+    /**
+     * Method used to strip the html from the news data.
+     */
     StripHtml = (html) => {
         var temp = document.createElement("div");
         temp.innerHTML = html;

@@ -1,3 +1,60 @@
+.home{
+    align-items: center;
+    position: relative;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.home-latest{
+    position: fixed;
+    right: 0;
+    width: 400px;
+}
+
+.page-footer{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: .85em;
+    padding: 1.5vw;
+    width: 100%;
+}
+
+.page-footer-block{
+    background-color: whitesmoke;
+    height: 5vw;
+    display: flex;
+    width: 75%;
+}
+
+.page-content{
+    margin: 3vw 0;
+    text-align: justify;
+}
+
+.page-title{
+    font-weight: bold;
+    font-size: 2.85em;
+    border-left: .3vw solid #37474F;
+    padding-left: 1vw;
+    margin: 0;
+}
+
+.page-category{
+    font-size: 2.25em;
+    margin: 0;
+}
+
+.page-social-column{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5vw;
+}
+
 .btnTop {
     position: fixed;
     text-align: center;
