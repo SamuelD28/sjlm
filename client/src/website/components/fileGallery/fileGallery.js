@@ -6,8 +6,8 @@ import {Button} from 'semantic-ui-react';
  */
 const DisplayFiles = (files) => {
     return files.map((file) => (
-        <a href={file} target="_blank" rel="noopener noreferrer">
-            <Button Basic>
+        <a href={file} target="_blank" rel="noopener noreferrer" key={file}>
+            <Button basic>
                 <i className="icon file"></i>{file.substring(file.lastIndexOf("/") + 1 ,file.length)} 
             </Button>
         </a>

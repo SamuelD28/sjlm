@@ -15,7 +15,6 @@ class ScrollTop extends Component {
                     style={(this.props.position == "left")?{left : "120px"}:{right:"20px"}}
                     color="blue" 
                     circular 
-                    inverted 
                     onClick={this.ScrollTop} 
                     className="btnTop">
                     <i 

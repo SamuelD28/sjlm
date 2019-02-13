@@ -52,11 +52,19 @@ class NewsPage extends Component {
                     <ImgGalleryColumn images={this.state.news.Images}/>
                 </div>
     }
-
+    
+    DisplayBackground = () =>{
+        
+        if(this.state.news.Images[0] !== undefined)
+            return <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.news.Images[0]}')`}}></div>
+        else 
+            return <div  styleName="newsBanner"></div>
+    }
+    
     render() {
         if (this.state.news !== undefined) {
             return <div styleName="news">
-                        <div styleName="newsBanner" style={{backgroundImage : `url('${this.state.news.Images[0]}')`}}></div>
+                        {this.DisplayBackground()}
                         <div styleName="newsBody">
                             <div styleName="newsContent">
                                 <PageHeader

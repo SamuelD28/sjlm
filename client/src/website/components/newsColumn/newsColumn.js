@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import { NavLink } from 'react-router-dom';
 
-import { Transition, Button} from 'semantic-ui-react';
+import { Transition, Button, Icon} from 'semantic-ui-react';
 
 import moment from 'moment';
 import 'moment/locale/fr';
@@ -31,13 +31,15 @@ class NewsColumn extends Component {
                         duration={1000}
                         animation="fade left">
                     <div className="large-gutters news-column-card" key={index}>
-                            <h4 style={{margin: "0"}}>
+                            <h3 style={{margin: "0"}}>
                                 <i className="icon clock outline"></i>
                                 Le {moment(item.DateFrom).format("dddd, Do MMMM")}
-                            </h4>
+                            </h3>
                             <h1 style={{margin: "1.5vw 0"}}>{item.Title}</h1>
                             <NavLink to={`/news/${item._id}`} >
-                                <Button content='Lire la suite' basic></Button>
+                                <Button basic>
+                                    Lire la suite...
+                                </Button>
                             </NavLink>
                     </div>
                 </Transition>

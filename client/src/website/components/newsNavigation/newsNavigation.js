@@ -3,13 +3,16 @@ import {Transition, Button} from 'semantic-ui-react';
 
 class NewsNavigation extends Component{
     
-    ScrollToSection = (e, id) => {
+    ScrollToSection = (e, target) => {
         e.preventDefault();
-        document.getElementById(id).scrollIntoView({
-            behavior: 'smooth',
-            block: "start",
-            inline: 'start'
-        });
+        let target_EL = document.getElementById(target);
+        if(target_EL !== undefined && target_EL !== null){
+            target_EL.scrollIntoView({
+                behavior: 'smooth',
+                block: "start",
+                inline: 'start'
+            });
+        }
     }
     
     render(){
@@ -19,11 +22,18 @@ class NewsNavigation extends Component{
                     transitionOnMount={true}>
                     <div className="component-card medium-gutters">
                         <h1>Naviguez</h1>
-                        <div>
-                        { Object.keys(this.props.targets).reverse().map((target) => (
-                            <Button onClick={(e) => this.ScrollToSection(e, target)}>
-                                {target}
-                            </Button>
+                        <div style={{display: "flex", flexWrap: "wrap"}}>
+                        { Object.keys(this.props.targets).reverse().map((target, index) => (
+                            <Transition
+                                key={target._id} 
+                                duration={500}
+                                visible={this.props.itemsVisible[index]}
+                                animation="fade right"
+                                >
+                                    <Button style={{marginBottom :".25vw"}} onClick={(e) => this.ScrollToSection(e, target)}>
+                                    {target}
+                                    </Button>
+                            </Transition>
                         ))}
                         </div>
                     </div>

@@ -11,6 +11,9 @@ import moment from 'moment';
 import 'moment/locale/fr'; // without this line it didn't work
 moment.locale('fr');
 
+/**
+ * Component used to display all the news in a chronological order
+ */
 class NewsTimeline extends Component {
 
     constructor(props) {
@@ -20,9 +23,15 @@ class NewsTimeline extends Component {
     }
 
     componentDidMount() {
+        //Set the height to the full height of the container
         Utility.AdjustFullHeight(this.newsContainer.current);
+        this.GetCalendar();
     }
-
+    
+    /**
+     * Retrieve all the news that are going to be displayed 
+     * inside the calendar
+     */
     GetCalendar = async() => {
         let news = await Ajax.GetData("/api/news/calendar");
         if (news.success) {
@@ -30,16 +39,14 @@ class NewsTimeline extends Component {
         }
     }
 
+    /**
+     * Method that display the calendar inside the form
+     */
     DisplayCalendar = () => {
-        console.log("ok");
-        if (this.state.calendar !== undefined) {
+        if (this.state.calendar !== undefined) 
             return this.state.calendar.map((news, index) => (
                 this.AppendCardToGrid(news, index)
             ))
-        }
-        else {
-            this.GetCalendar();
-        }
     }
 
     DisplayNews = () => {
@@ -47,7 +54,10 @@ class NewsTimeline extends Component {
             this.AppendCardToGrid(news, index)
         ))
     }
-
+    
+    /**
+     * Method that display the date centered in the page
+     */
     DisplayDate = (news) => {
         return <Transition
                     animation="fade right"
