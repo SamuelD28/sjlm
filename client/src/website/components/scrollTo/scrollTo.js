@@ -17,7 +17,7 @@ class ScrollTo extends Component {
 
     render() {
         return <Button  
-                    style={(this.props.position == "left")?{left : "120px"}:{right:"20px"}}
+                    style={(this.props.position === "left")?{left : "120px"}:{right:"20px"}}
                     color="blue" 
                     circular 
                     onClick={this.ScrollTo} 

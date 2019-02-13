@@ -31,6 +31,10 @@ let menuSchema = new Schema({
             validator: (value) => !(value === null),
             kind: "ObjectID"
         }
+    },
+    Hide : {
+        type: Boolean,
+        default: false
     }
 });
 

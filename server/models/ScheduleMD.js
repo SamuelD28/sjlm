@@ -8,14 +8,6 @@ let scheduleSchema = new Schema({
         type: String,
         required: true
     },
-    DateFrom : {
-        type : Date,
-        required : true
-    },
-    DateTo : {
-        type: Date,
-        required: true
-    },
     Description : {
         type : String,
         required: true

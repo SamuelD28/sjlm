@@ -31,6 +31,7 @@ class Contact extends Component{
                             bootstrapURLKeys={{ key: "AIzaSyDc2GOcungZQS8Cm2DzH2L3BllBqMy8nOk" }}
                             defaultCenter={ {lat: 45.277068, lng: -73.417819}}
                             onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+                            yesIWantToUseGoogleMapApiInternals={true}
                             defaultZoom={ 14 }>
                         </GoogleMapReact>
                     </div>

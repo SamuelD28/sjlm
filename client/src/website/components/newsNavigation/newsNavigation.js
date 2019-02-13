@@ -25,7 +25,7 @@ class NewsNavigation extends Component{
                         <div style={{display: "flex", flexWrap: "wrap"}}>
                         { Object.keys(this.props.targets).reverse().map((target, index) => (
                             <Transition
-                                key={target._id} 
+                                key={index} 
                                 duration={500}
                                 visible={this.props.itemsVisible[index]}
                                 animation="fade right"

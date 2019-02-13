@@ -10,3 +10,7 @@
     grid-template-columns: .5fr .5fr;
     grid-gap: 2vw;
 }
+
+.schedule{
+    width: 30%;
+}

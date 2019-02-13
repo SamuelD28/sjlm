@@ -14,7 +14,7 @@ class MenuSchema extends FormSchema {
             url: "/api/menus/",
             httpRequest: "POST",
             modal: true,
-            size: "small",
+            size: "mini",
             title: "Ajouter un Menu"
         });
         this.putConfig = new FormConfig({
@@ -22,28 +22,16 @@ class MenuSchema extends FormSchema {
             httpRequest: "PUT",
             modal: true,
             title: "Modifier un menu",
-            size: "small"
+            size: "mini"
         });
         this.inputs = [
             new InputSchema({
                 name: "Title",
                 group: 1,
-                width: 10,
+                width: 16,
                 type: "text",
                 label: "Titre du menu",
                 value: ""
-            }),
-            new InputSchema({
-                name: "Link",
-                type: "select",
-                group: 1,
-                id: true,
-                width: 6,
-                search: true,
-                clearable: true,
-                label: "Lien de navigation",
-                value: "",
-                generator: () => { return this.linkOptions; }
             }),
             new InputSchema({
                 name: "Principal",
@@ -51,31 +39,54 @@ class MenuSchema extends FormSchema {
                 label: "Menu principal",
                 value: false,
                 group: 2,
-                width: 4
+                width: 8
+            }),
+            new InputSchema({
+                name: "Hide",
+                group: 2,
+                width: 8,
+                type: "toggle",
+                label: "Masquer",
+                disabled: (inputs) => {
+                    return inputs[1].value;
+                },
+                value: false,
+            }),
+            new InputSchema({
+                name: "Icon",
+                group: 3,
+                width: 16,
+                type: "select",
+                label: "Icon du menu",
+                disabled: (inputs) => {
+                    return !inputs[1].value;
+                },
+                value: "",
+                list: this.GenererateIconOptions()
+            }),
+            new InputSchema({
+                name: "Link",
+                type: "select",
+                group: 4,
+                id: true,
+                width: 16,
+                search: true,
+                clearable: true,
+                label: "Lien de navigation",
+                value: "",
+                generator: () => { return this.linkOptions; }
             }),
             new InputSchema({
                 name: "ParentMenu",
                 disabled: (inputs) => {
-                    return inputs[2].value;
+                    return inputs[1].value;
                 },
                 type: "select",
-                group: 2,
-                width: 6,
+                group: 5,
+                width: 16,
                 label: "Menu parent",
                 value: "",
                 generator: () => this.menuOptions
-            }),
-            new InputSchema({
-                name: "Icon",
-                group: 2,
-                width: 6,
-                type: "select",
-                label: "Icon du menu",
-                disabled: (inputs) => {
-                    return !inputs[2].value;
-                },
-                value: "",
-                list: this.GenererateIconOptions()
             }),
         ];
         this.Init();

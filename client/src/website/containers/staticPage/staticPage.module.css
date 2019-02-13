@@ -2,7 +2,9 @@
     margin-left: 100px;
 }
 
-.noBanner {}
+.noBanner {
+    height: 30em;
+}
 
 .fullBanner {
     position: fixed;

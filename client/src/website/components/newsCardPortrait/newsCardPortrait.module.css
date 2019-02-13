@@ -1,0 +1,7 @@
+.newsImg {
+    height: 15vw;
+}
+.newsDesc {
+    color: rgba(0, 0, 0, .87);
+    text-align: justify;
+}

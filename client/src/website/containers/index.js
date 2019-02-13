@@ -8,7 +8,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './home/home.js';
 import StaticPage from './staticPage/staticPage.js';
 import NewsPage from './newsPage/newsPage.js';
-import NewsTimeline from '../components/newsTimeline/newsTimeline.js';
+import NewsTimeline from '../containers/newsTimeline/newsTimeline.js';
 import NewsCategory from './newsCategory/newsCategory.js';
 import Council from './council/council.js';
 import Contact from './contact/contact.js';

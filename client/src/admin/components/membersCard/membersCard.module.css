@@ -8,6 +8,7 @@
 
 .membersInfo {
     align-items: flex-start;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -140,7 +140,6 @@ class Dashboard extends Component{
     
     render(){
         return  <div className="admin-page">
-                    <br />
                     <section>
                         <section styleName="pieCharts">
                             <StatisticCard 
@@ -175,6 +174,10 @@ class Dashboard extends Component{
                                 chart='bar'
                                 />
                         </section>
+                    </section>
+                    <br />
+                    <section styleName="schedule">
+                        <Schedule />
                     </section>
                 </div>
     }

@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 
 //Components import
-import NewsTimeline from '../../components/newsTimeline/newsTimeline.js';
-import NewsStacked from '../../components/newsStacked/newsStacked.js';
-import NewsPortrait from '../../components/newsPortrait/newsPortrait.js';
+import NewsTimeline from '../newsTimeline/newsTimeline.js';
+import NewsStacked from '../newsStacked/newsStacked.js';
+import NewsPortrait from '../newsPortrait/newsPortrait.js';
 
 import moment from 'moment';
 import 'moment/locale/fr';
@@ -82,7 +82,7 @@ class NewsCategory extends Component {
     }
 
     render() {
-        return <div>
+        return  <div>
                     {this.GenerateLayout()}
                 </div>
     }

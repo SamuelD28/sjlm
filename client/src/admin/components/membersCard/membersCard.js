@@ -17,7 +17,7 @@ const MembersCard = (props) => {
             sizes="8vw"
             srcSet={Utility.ParseSourceSet(props.members.Photo[0])}
             alt="membre" />
-        <div styleName="membersInfo" className="component-card rounded-right">
+        <div styleName="membersInfo" className="component-card medium-gutters rounded-right">
             <h1>{props.members.FirstName} {props.members.LastName}</h1>
             <h4 className="tag-card rounded">{(props.members.Occupation !== null)?props.members.Occupation.Title: "Aucun poste assigné"}</h4>
             <h5>{props.members.Phone}</h5>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
-import {NavLink} from 'react-router-dom';
 
 import { Transition, Dropdown } from 'semantic-ui-react';
 

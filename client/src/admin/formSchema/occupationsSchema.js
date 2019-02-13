@@ -3,7 +3,6 @@
  *  multiple type of forms based on the data type.
  */
 
-//Import statements
 import { FormConfig, InputSchema, FormSchema } from '../../shared/FormGenerator/formGenerator.js';
 
 class OccupationsSchema extends FormSchema {

@@ -1,0 +1,21 @@
+.newsCard {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+}
+
+.newsDate{
+    align-items: center;
+    background: #37474f;
+    color: white;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
+}
+
+.newsCardInfo{
+    width: 80%;
+    display: inline-block;
+}

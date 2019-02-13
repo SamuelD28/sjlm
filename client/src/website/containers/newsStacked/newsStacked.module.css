@@ -1,0 +1,34 @@
+.newsBody {
+    margin-left: 100px;
+    margin-top: 3vw;
+    overflow: auto;
+    overflow-x: scroll;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    display: flex;
+    box-sizing: border-box;
+    min-height: stretch;
+}
+
+.newsDescription{
+    margin-left: 3vw;    
+}
+
+.newsWrapper {
+    box-sizing: border-box;
+    flex: 0 0 33%;
+    width: 450px;
+    height: 100%;
+    white-space: normal;
+    margin-right: 3vw;
+}
+
+.newsBackground {
+    height: 20vw;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    filter: sepia(20%) brightness(80%);
+    z-index: -1;
+}

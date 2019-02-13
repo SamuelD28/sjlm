@@ -102,19 +102,20 @@ class Navbar extends Component {
      * a principal menu
      */
     CreatePageLink = (menu) => {
-        return  <div key={menu._id}>
-                    <NavLink 
-                        to={(menu.Link !== null && menu.Link !== undefined)?menu.Link.Link:""}
-                        styleName="secondaryLink"
-                        activeClassName="active-submenu"
-                        exact
-                        onClick={(e) =>{
-                        this.HideMenuPages(e);
-                        this.SetClickedMenu();
-                        }}>
-                        {menu.Title}
-                    </NavLink>
-                </div>
+        if(!menu.Hide)
+            return  <div key={menu._id}>
+                        <NavLink 
+                            to={(menu.Link !== null && menu.Link !== undefined)?menu.Link.Link:""}
+                            styleName="secondaryLink"
+                            activeClassName="active-submenu"
+                            exact
+                            onClick={(e) =>{
+                            this.HideMenuPages(e);
+                            this.SetClickedMenu();
+                            }}>
+                            {menu.Title}
+                        </NavLink>
+                    </div>
     }
     
     /**

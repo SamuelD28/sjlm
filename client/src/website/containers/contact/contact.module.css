@@ -13,16 +13,13 @@
     grid-area: map;
 }
 
-
 .info {
-    background: white;
     margin-left: 4vw;
     grid-area: info;
     transform: translateY(-7.5vw);
 }
 
 .form {
-    background: white;
     margin-right: 4vw;
     grid-area: form;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Ajax from '../../../shared/ajax.js';
 import { NavLink } from 'react-router-dom';
 
-import { Transition, Button, Icon} from 'semantic-ui-react';
+import { Transition, Button} from 'semantic-ui-react';
 
 import moment from 'moment';
 import 'moment/locale/fr';

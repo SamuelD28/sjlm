@@ -88,14 +88,17 @@ class StaticPage extends Component {
      * on the template chosen by the user.
      */
     DisplayBanner = () => {
-
-        if (this.state.page.Template === 0)
-            return <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
-        else if (this.state.page.Template === 1)
-            return <div styleName="noBanner"></div>
+        
+        if(this.state.page.PageGallery[0] !== undefined && this.state.page.PageGallery[0] !== null){
+            if (this.state.page.Template === 0)
+                return <div styleName="bannerPhoto" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
+            else if (this.state.page.Template === 1)
+                return <div styleName="noBanner"></div>
+            else
+                return <div styleName="fullBanner" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
+        }
         else
-            return <div styleName="fullBanner" style={{backgroundImage : `url('${this.state.page.PageGallery[0]}')`}}></div>
-
+            return <div styleName="noBanner"></div>
     }
 
     render() {
