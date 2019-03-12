@@ -40,12 +40,12 @@ class Index extends Component {
         if (this.state.loading)
             return <LoadingScreen swipeUp={this.state.swipeUp} loading={this.state.loading}/>
         else
-            return <div>
+            return <div className="fill-height">
                         <Navbar navbarLite={true}/>
                         <ImportantNews {...this.props}/>
                         <Route
                             render={({ location }) => (
-                            <TransitionGroup>
+                            <TransitionGroup className="fill-height">
                                 <CSSTransition
                                     key={location.pathname}
                                     classNames="fade"

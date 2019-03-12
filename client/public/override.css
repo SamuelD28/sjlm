@@ -120,46 +120,9 @@ input[type=text]{
 }
 
 .blue{
-}
-
-.red{
-    
-}
-.orange{
-    
-}
-.yellow{
-    
-}
-.olive{
-    
-}
-.green{
-    
-}
-.teal{
-    
-}
-.blue{
-    
-}
-.violet{
-    
-}
-.purple{
-    
-}
-.pink{
-    
-}
-.brown{
-    
-}
-.grey{
-    
-}
-.black{
-    
+    color: #37474F !important; 
+    border-color: #37474F !important;
+    box-shadow: none !important;
 }
 
 

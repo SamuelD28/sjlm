@@ -71,11 +71,9 @@ class Login extends Component{
                         transitionOnMount={true}>
                     <div styleName="login">
                         <NavLink to="/">
-                            <button 
-                                styleName="loginBack"
-                                className="btn btn-outline-warning">
-                                <i className="icon reply"></i>
-                            </button>
+                            <Button styleName="loginBack" color="orange" inverted>
+                                <i style={{margin: "0"}} className="icon reply"></i>
+                            </Button>
                         </NavLink>
                         <div>
                             <Image 

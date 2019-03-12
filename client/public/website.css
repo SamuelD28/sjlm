@@ -1,7 +1,13 @@
+.fill-height{
+    height: 100%;
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    height: fill-available;
+}
+
 .home{
     align-items: center;
     position: relative;
-    height: -webkit-fill-available;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -11,6 +17,45 @@
     position: fixed;
     right: 0;
     width: 400px;
+}
+
+.btn-primary{
+    background: #37474f;
+    border: 1px solid #37474f;
+    cursor: pointer;
+    color: white;
+    padding: .5vw .75vw;
+    border-radius: 8px;
+    transition: all .1s ease-in-out;
+}
+
+.btn-primary:hover{
+    background: #313f46;
+    border-color: #313f46;
+    color: whitesmoke;
+    transition: all .1s ease-in-out;
+}
+
+.btn-primary-outline{
+    background: transparent;
+    border: 1px solid #37474f;
+    cursor: pointer;
+    color: #37474f;
+    padding: .5vw .75vw;
+    border-radius: 8px;
+    transition: all .1s ease-in-out;
+}
+
+.big-btn{
+    font-size: 1.5em;
+    padding: 1vw;
+    margin-bottom: .25vw;
+}
+
+.btn-primary-outline:hover{
+    background: #37474f;
+    color: white;
+    transition: all .1s ease-in-out;
 }
 
 .page-footer{

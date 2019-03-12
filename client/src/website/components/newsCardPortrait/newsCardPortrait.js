@@ -7,6 +7,16 @@ import {Transition} from 'semantic-ui-react';
 import styles from './newsCardPortrait.module.css';
 import CSSModules from 'react-css-modules';
 
+function StripHtml(html){
+    
+    if(html === undefined)
+        return "";
+    
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent || tmp.innerText || "";
+}
+
 const NewsCardPortrait = (props) => {
     
     return <Transition
@@ -18,7 +28,7 @@ const NewsCardPortrait = (props) => {
                     <div className="medium-gutters ">
                         <h2>{props.news.Title}</h2>
                         <h3>{moment(props.news.DateFrom).format("Do MMMM YYYY")}</h3>
-                        <p styleName="newsDesc">{this.StripHtml(props.news.Description).substring(0, 300)}...</p>
+                        <p styleName="newsDesc">{StripHtml(props.news.Description).substring(0, 300)}...</p>
                     </div>
                 </NavLink>
             </Transition>

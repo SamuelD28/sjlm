@@ -18,7 +18,7 @@ class NewsCardTimeline extends Component {
     }
 
     componentDidMount() {
-        if (this.Description.current !== null) {
+        if (this.Description.current !== null && this.props.news.Description !== undefined) {
             this.Description.current.innerHTML = this.props.news.Description.substring(0, 300) + "...";
         }
     }

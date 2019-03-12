@@ -16,18 +16,16 @@ class ScrollTo extends Component {
     }
 
     render() {
-        return <Button  
+        return <button  
                     style={(this.props.position === "left")?{left : "120px"}:{right:"20px"}}
-                    color="blue" 
-                    circular 
                     onClick={this.ScrollTo} 
-                    className="btnTop">
+                    className="btnTop btn-primary">
                     <i 
                         style={{margin: "0"}} 
                         className={(this.props.direction === "left")? "icon chevron left" : "icon chevron up"}
                         >
                     </i>
-                </Button>
+                </button>
     }
 
 }

@@ -7,7 +7,7 @@ import NewsColumn from '../../components/newsColumn/newsColumn.js'
  * Functionnal component used to display the home page.
  */
 const Home = (props) =>{
-    return <div className="home">
+    return <div className="home fill-height">
                 <BannerHome history={props.history}/>
                 <div className="home-latest">
                     <NewsColumn/>

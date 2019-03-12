@@ -79,12 +79,12 @@ class BannerHome extends Component {
 
     render() {
         if (this.state.options !== undefined && this.state.options !== null)
-            return <div styleName="bannerBody">
-                    <video styleName="bannerVideo" autoPlay muted loop>
-                        <source src="/sjlm.mp4" type="video/mp4">
-                        </source>
-                    </video>
-                    <Transition
+            return <div styleName="bannerBody" className="fill-height">
+                        <video styleName="bannerVideo" autoPlay muted loop>
+                            <source src="/sjlm.mp4" type="video/mp4">
+                            </source>
+                        </video>
+                        <Transition
                         transitionOnMount={true}
                         animation="fade up"
                         duration={1000}

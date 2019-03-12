@@ -8,7 +8,7 @@ import CSSModules from 'react-css-modules';
 import styles from './dashboard.module.css';
 
 import moment from 'moment';
-import 'moment/locale/fr'; // without this line it didn't work
+import 'moment/locale/fr'; 
 moment.locale('fr');
 
 class Dashboard extends Component{

@@ -123,12 +123,8 @@ class ContactForm extends Component{
                             style={{ minHeight: 150 }} 
                             />
                     </Form.Field>
-                    <Button 
-                        size="large"
-                        color="blue" 
-                        inverted 
-                        type='submit'><Icon name="paper plane outline"/> Envoyer
-                    </Button>
+                    <button className="btn-primary-outline" type='submit'><Icon name="paper plane outline"/> Envoyer
+                    </button>
                   </Form>
                 </div>
             </div>

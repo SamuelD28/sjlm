@@ -111,7 +111,8 @@ class StaticPage extends Component {
                                 anchor={document.querySelector("body")}
                                 />
                             <div style={(this.state.page.Template === 2)?{width :"80%"}:{width: "90%"}}>
-                                <div styleName="pageLeftColumn">
+                                <div style={(this.state.page.Template ===2 ? {marginTop: "10vw"} : {marginTop: "0"})} 
+                                    styleName="pageLeftColumn">
                                     {this.DisplaySocials()}
                                     {this.DisplayImageGallery(this.state.page.PageGallery)}
                                 </div>

@@ -13,19 +13,19 @@ const SocialIconColumn = () => {
                 <div >
                     <div className="page-social-column">
                         <a href="https://www.facebook.com/pages/Saint-Jacques-le-Mineur/109329122419446">
-                            <Button color="blue">
+                            <button className="btn-primary big-btn">
                                 <i style={{margin: "0"}} className="icon facebook f"></i>
-                            </Button>
+                            </button>
                         </a>
                         <a href="mailto:info@sjlm.ca">
-                            <Button color="blue">
+                            <button className="btn-primary big-btn">
                                 <i style={{margin: "0"}} className="icon mail"></i>
-                            </Button>
+                            </button>
                         </a>
                         <NavLink to="/contact">
-                            <Button color="blue">
+                            <button className="btn-primary big-btn">
                                 <i style={{margin: "0"}} className="icon phone"></i>
-                            </Button>
+                            </button>
                         </NavLink>
                     </div>
                 </div>
