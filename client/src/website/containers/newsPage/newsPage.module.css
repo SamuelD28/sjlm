@@ -8,7 +8,7 @@
     grid-template-areas: ". newsContent newsContent latestNews latestNews"
                          ". newsContent newsContent . ."
                          "newsFile newsFile . . ."
-                         ". newsImgGallery newsImgGallery newsImgGallery .";
+                         "newsImgGallery newsImgGallery newsImgGallery . .";
     grid-template-columns: .25fr 2fr .25fr .75fr .25fr;
     padding: 2vw 0;
     padding-left: 1vw;
@@ -47,6 +47,7 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1vw;
     padding: 1vw;
+    margin-right: 2vw;
 }
 
 .newsFile{

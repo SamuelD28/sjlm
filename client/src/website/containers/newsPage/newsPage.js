@@ -13,6 +13,7 @@ import PageFooter from '../../components/pageFooter/pageFooter.js';
 import PageContent from '../../components/pageContent/pageContent.js';
 import FileGallery from '../../components/fileGallery/fileGallery.js';
 import NewsColumn from '../../components/newsColumn/newsColumn.js';
+import ScrollTo from "../../components/scrollTo/scrollTo.js";
 
 /**
  * Component that display a page for a selected news
@@ -80,6 +81,7 @@ class NewsPage extends Component {
     render() {
         if (this.state.news !== undefined) {
             return <div styleName="news">
+                        <ScrollTo />
                         {this.DisplayBackground()}
                         <div styleName="newsBody">
                             <div styleName="newsContent">
