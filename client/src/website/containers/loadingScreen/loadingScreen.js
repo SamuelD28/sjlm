@@ -20,9 +20,9 @@ class LoadingScreen extends Component {
     }
 
     render() {
-        return <div ref={this.loading} styleName="loadingBody">
-                    <img styleName="loadingLogo" alt="logo" src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355121/images/website/logo2_bga.png"/>
-                </div>
+        return <div ref={this.loading} styleName="loadingBody" className="fill-height">
+            <img styleName="loadingLogo" alt="logo" src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355121/images/website/logo2_bga.png" />
+        </div>
     }
 }
 

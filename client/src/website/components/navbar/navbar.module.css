@@ -2,10 +2,6 @@
     position: fixed;
     top: 0;
     box-shadow: 5px 0 15px #37474f24;
-    height: 100%;
-    height: -moz-available;          /* WebKit-based browsers will ignore this. */
-    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    height: fill-available;
     font-family: 'Oswald', sans-serif;
     left: 0;
     display: flex;
@@ -110,7 +106,7 @@
     font-weight: 100;
     margin: 1.4vw 1vw;
     transition: all .5s ease;
-    position: relative;    
+    position: relative;
 }
 
 .secondaryLink::after{

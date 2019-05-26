@@ -15,15 +15,15 @@ class Navbar extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { SelectedMenuTitle: "", SelectedSubmenu: [], animationDelay: 25, ClickedMenu : "" };
+        this.state = { SelectedMenuTitle: "", SelectedSubmenu: [], animationDelay: 25, ClickedMenu: "" };
         this.navbarSecondary = React.createRef();
         this.navbarPrimary = React.createRef();
     }
-    
+
     /**
      * We pull all the menus from the database
      */
-    componentDidMount = async() => {
+    componentDidMount = async () => {
         let request = await Ajax.GetData("/api/menus");
         let itemsVisible = [];
         request.data.map(() => {
@@ -33,7 +33,7 @@ class Navbar extends Component {
         //We start the animation chain for all the menu item
         this.StartNextAnimation(0);
     }
-    
+
     /**
      * Method that waits for an animation to end before
      * starting a new one
@@ -47,7 +47,7 @@ class Navbar extends Component {
             }, this.state.animationDelay);
         }
     }
-    
+
     /**
      * Method that display all the principal menus
      */
@@ -60,27 +60,27 @@ class Navbar extends Component {
                     duration={200}
                     visible={this.state.itemsVisible[index]}
                     animation="fade right"
-                    >
+                >
                     <NavLink
-                        to={(menu.Link !== null && menu.Link !== undefined)?menu.Link.Link: ""}
+                        to={(menu.Link !== null && menu.Link !== undefined) ? menu.Link.Link : ""}
                         styleName="navbarItem primaryLink"
                         id={menu.Title}
                         exact
                         onMouseEnter={
                             (e) => {
                                 this.MenusOver(e);
-                                this.setState({SelectedMenuTitle: menu.Title,SelectedSubmenu: menu.SubMenu})
+                                this.setState({ SelectedMenuTitle: menu.Title, SelectedSubmenu: menu.SubMenu })
                             }
                         }
                         onClick={this.SetClickedMenu}
-                        >
+                    >
                         <i styleName="navIcon" className={`icon large ${menu.Icon}`}></i>
                     </NavLink>
                 </Transition>
             ));
         }
     }
-    
+
     /**
      * Method that display all the submenu item from a principal
      * menu.
@@ -96,30 +96,30 @@ class Navbar extends Component {
         else
             this.HideMenuPages();
     }
-    
+
     /**
      * Method that create a page link for all the menu inside
      * a principal menu
      */
     CreatePageLink = (menu) => {
-        if(!menu.Hide)
-            return  <div key={menu._id}>
-                        <NavLink 
-                            to={(menu.Link !== null && menu.Link !== undefined)?menu.Link.Link:""}
-                            styleName="secondaryLink"
-                            activeClassName="active-submenu"
-                            exact
-                            onClick={(e) =>{
-                            this.HideMenuPages(e);
-                            this.SetClickedMenu();
-                            }}>
-                            {menu.Title}
-                        </NavLink>
-                    </div>
+        if (!menu.Hide)
+            return <div key={menu._id}>
+                <NavLink
+                    to={(menu.Link !== null && menu.Link !== undefined) ? menu.Link.Link : ""}
+                    styleName="secondaryLink"
+                    activeClassName="active-submenu"
+                    exact
+                    onClick={(e) => {
+                        this.HideMenuPages(e);
+                        this.SetClickedMenu();
+                    }}>
+                    {menu.Title}
+                </NavLink>
+            </div>
     }
-    
+
     /**
-     * Method that change the style of the 
+     * Method that change the style of the
      * currently hovered menu.
      */
     MenusOver = (e) => {
@@ -127,7 +127,7 @@ class Navbar extends Component {
         e.target.style.backgroundColor = "#37474F";
         e.target.style.color = "whitesmoke";
     }
-    
+
     /**
      * Method that hide the menu when the user mouse
      * leave the section
@@ -141,35 +141,35 @@ class Navbar extends Component {
                 this.setState({ SelectedMenuTitle: "", SelectedSubmenu: [] });
         }
     }
-    
-    
+
+
     /**
      * Method that remove the hover style from
      * the menu when the user mouse leaves it.
      */
-    MouseExit = () =>{
+    MouseExit = () => {
         Array.from(this.navbarPrimary.current.childNodes).forEach((child) => {
-            if(child.id !== this.state.ClickedMenu){
+            if (child.id !== this.state.ClickedMenu) {
                 child.style.backgroundColor = "#f0eeed";
                 child.style.color = "#37474F";
             }
         });
     }
-    
+
     /**
      * Method that set the clicked.
      */
-    SetClickedMenu = async() => {
-        
-        await this.setState({ClickedMenu: this.state.SelectedMenuTitle});
+    SetClickedMenu = async () => {
+
+        await this.setState({ ClickedMenu: this.state.SelectedMenuTitle });
         this.MouseExit();
-        
-        if(this.state.SelectedMenuTitle !== ""){
+
+        if (this.state.SelectedMenuTitle !== "") {
             let menu = document.getElementById(this.state.ClickedMenu);
             menu.style.backgroundColor = "#37474F";
             menu.style.color = "whitesmoke";
         }
-        
+
         //we reset the scroll position to be the top of the page
         window.scrollTo(0, 0);
     }
@@ -177,39 +177,40 @@ class Navbar extends Component {
     render() {
         if (this.state.menus !== undefined)
             return <Transition
-                        transitionOnMount={true}
-                        duration={1000}
-                        animation="fade right">
-                            <div
-                                id={styles.navbar}
-                                onMouseLeave={() =>{
-                                    this.MouseExit();
-                                    this.HideMenuPages();
-                                }}>
-                                <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
-                                    <div styleName="navbarContentTitle">
-                                        {this.state.SelectedMenuTitle}
-                                    </div>
-                                    {this.DisplaySubmenu()}
-                                </div>
-                                <div id={styles.navbarPrimary} ref="navbarPrimary">
-                                    <NavLink
-                                        to="/"
-                                        styleName="navbarLogo"
-                                        onClick={(e) =>{
-                                        this.HideMenuPages(e);
-                                        this.SetClickedMenu();
-                                        }}>
-                                        <img 
-                                            src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png" 
-                                            alt="sjlm logo"/>
-                                    </NavLink>
-                                    <ul styleName="navbarContent" ref={this.navbarPrimary}>
-                                        {this.DisplayMenus()}
-                                    </ul>
-                                </div>
-                            </div>
-                        </Transition>
+                transitionOnMount={true}
+                duration={1000}
+                animation="fade right">
+                <div
+                    id={styles.navbar}
+                    className="fill-height"
+                    onMouseLeave={() => {
+                        this.MouseExit();
+                        this.HideMenuPages();
+                    }}>
+                    <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
+                        <div styleName="navbarContentTitle">
+                            {this.state.SelectedMenuTitle}
+                        </div>
+                        {this.DisplaySubmenu()}
+                    </div>
+                    <div id={styles.navbarPrimary} ref="navbarPrimary">
+                        <NavLink
+                            to="/"
+                            styleName="navbarLogo"
+                            onClick={(e) => {
+                                this.HideMenuPages(e);
+                                this.SetClickedMenu();
+                            }}>
+                            <img
+                                src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png"
+                                alt="sjlm logo" />
+                        </NavLink>
+                        <ul styleName="navbarContent" ref={this.navbarPrimary}>
+                            {this.DisplayMenus()}
+                        </ul>
+                    </div>
+                </div>
+            </Transition>
     }
 }
 

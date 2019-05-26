@@ -6,17 +6,17 @@
 
 //----------------Dependencies-------------//
 
-const   express         = require("express"),
-        app             = express(),
-        bodyParser      = require("body-parser"),
-        mongoose        = require("mongoose"),
-        methodOverride  = require("method-override"),
-        cookieParser    = require("cookie-parser"),
-        cloudinary      = require("cloudinary"),
-        log4js          = require("log4js"),
-        server          = log4js.getLogger("server"),
-        Utility         = require("./utils/utility.js"),
-        nodemailer      = require("nodemailer");
+const express = require("express"),
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose"),
+    methodOverride = require("method-override"),
+    cookieParser = require("cookie-parser"),
+    cloudinary = require("cloudinary"),
+    log4js = require("log4js"),
+    server = log4js.getLogger("server"),
+    Utility = require("./utils/utility.js"),
+    nodemailer = require("nodemailer");
 
 //------------Logging Initialisation-------------//
 
@@ -85,15 +85,15 @@ app.use(log4js.connectLogger(server, {
 }));
 
 //Declaration and importation of all the required files for the routing
-let NewsRT              = require(__dirname + "/routes/NewsRT.js"),
-    MembersRT           = require(__dirname + "/routes/MembersRT.js"),
-    PagesRt             = require(__dirname + "/routes/PagesRT.js"),
-    UserRT              = require(__dirname + "/routes/UserRT.js"),
-    CategoryNewsRT      = require(__dirname + "/routes/CategoryNewsRT.js"),
-    MenuRT              = require(__dirname + "/routes/MenuRT.js"),
-    NavigationLinksRT   = require(__dirname + "/routes/NavigationLinksRT.js"),
-    OccupationRT        = require(__dirname + "/routes/OccupationsRT.js"),
-    ScheduleRT          = require(__dirname + "/routes/ScheduleRT.js");
+let NewsRT = require(__dirname + "/routes/NewsRT.js"),
+    MembersRT = require(__dirname + "/routes/MembersRT.js"),
+    PagesRt = require(__dirname + "/routes/PagesRT.js"),
+    UserRT = require(__dirname + "/routes/UserRT.js"),
+    CategoryNewsRT = require(__dirname + "/routes/CategoryNewsRT.js"),
+    MenuRT = require(__dirname + "/routes/MenuRT.js"),
+    NavigationLinksRT = require(__dirname + "/routes/NavigationLinksRT.js"),
+    OccupationRT = require(__dirname + "/routes/OccupationsRT.js"),
+    ScheduleRT = require(__dirname + "/routes/ScheduleRT.js");
 
 app.use("/api/pages", PagesRt);
 app.use("/api/members", MembersRT);
@@ -105,20 +105,18 @@ app.use("/api/navigationlinks", NavigationLinksRT);
 app.use("/api/occupations", OccupationRT);
 app.use("/api/schedule", ScheduleRT);
 
-
-
-app.post("/send_mail" , function(req, res){
+app.post("/send_mail", function (req, res) {
     "use strict";
-    
+
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: "smtp.mailtrap.io",
         port: 2525,
         secure: false, // true for 465, false for other ports
         auth: {
-                user: "858e53657e498c", // generated ethereal user
-                pass: "a56c4d2db0a79a" // generated ethereal password
-            }
+            user: "858e53657e498c", // generated ethereal user
+            pass: "a56c4d2db0a79a" // generated ethereal password
+        }
     });
 
     // setup email data with unicode symbols
@@ -131,10 +129,10 @@ app.post("/send_mail" , function(req, res){
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions)
-        .then((info) =>{
+        .then((info) => {
             Utility.GenerateResponse(true, res, info);
         })
-        .catch((err) =>{
+        .catch((err) => {
             Utility.GenerateResponse(false, res, err);
         })
 });

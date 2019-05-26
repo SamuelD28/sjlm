@@ -16,7 +16,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: stretch;
     padding: 0 2.5vw;
     width: 20%;
 }
@@ -35,7 +34,6 @@
 
 .loginBg{
     width: 100%;
-    height: stretch;
     position: fixed;
     top: 0;
     filter: brightness(75%);

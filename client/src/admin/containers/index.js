@@ -12,21 +12,21 @@ import Resources from './resources/resources.js';
 import Administrator from './administrator/administrator.js';
 
 const Index = (props) => {
-    
-    return  <div>
-                <Navbar history={props.history}/>       
-                <Switch>    
-                    <Route exact path="/admin" component={Dashboard}/>
-                    <Route exact path="/admin/news" component={News} />
-                    <Route exact path="/admin/administrator" component={() => <Administrator user={props.user}/>} />
-                    <Route exact path="/admin/pages" component={Pages} />
-                    <Route exact path="/admin/members" component={Members} />
-                    <Route exact path="/admin/resources" component={Resources} />
-                    <Route path="/">
-                        <Redirect to="/admin" />
-                    </Route>
-                </Switch>
-            </div>
+
+    return <div className="fill-height">
+        <Navbar history={props.history} />
+        <Switch>
+            <Route exact path="/admin" component={Dashboard} />
+            <Route exact path="/admin/news" component={News} />
+            <Route exact path="/admin/administrator" component={() => <Administrator user={props.user} />} />
+            <Route exact path="/admin/pages" component={Pages} />
+            <Route exact path="/admin/members" component={Members} />
+            <Route exact path="/admin/resources" component={Resources} />
+            <Route path="/">
+                <Redirect to="/admin" />
+            </Route>
+        </Switch>
+    </div>
 }
 
 export default Index;
