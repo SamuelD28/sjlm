@@ -36,6 +36,14 @@
     width: 25%;
 }
 
+.webGallery{
+    display: block;
+}
+
+.mobileGallery{
+    display: none;
+}
+
 .pageGallery {
     background: white;
     display: grid;
@@ -51,4 +59,42 @@
     float: left;
     padding: 2.5vw;
     width: 75%;
+}
+
+@media only screen and (max-width: 800px) {
+    .staticPage {
+        margin-left: 0px;
+    }
+
+    .pageContainer {
+        padding: 2.5vw;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .webGallery{
+        display: none;
+    }
+
+    .mobileGallery{
+        display: block;
+    }
+
+    .pageGallery {
+        grid-template-columns: .5fr .5fr;
+        margin-top: 5em;
+    }
+
+    .pageLeftColumn {
+        width: 100%;
+        padding: 0;
+    }
+
+
+    .pageBody{
+        width: 100% !important;
+    }
+    .bannerPhoto, .noBanner {
+        height: 20em;
+    }
 }

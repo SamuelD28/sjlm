@@ -58,7 +58,7 @@
 .newsCategory {
     background-color: white;
     position: absolute;
-    padding: .5vw;
+    padding: .5rem;
     top: 0;
     left: 0;
     z-index: 1;
@@ -71,7 +71,7 @@
 .newsDesc {
     text-align: justify;
     color: #808080;
-    margin: .5vw 0;
+    margin: .5rem 0;
 }
 
 .newsDate {
@@ -79,7 +79,7 @@
 }
 
 .newsInfo {
-    padding: 1vw;
+    padding: 1rem;
     width: 60%;
     z-index: 1;
 }
@@ -103,4 +103,13 @@
     height: 40px;
     transform: rotateZ(45deg) translateX(10px) translateY(10px);
     box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
+}
+
+
+@media only screen and (max-width: 800px) {
+    .arrowUp {
+        top: 95%;
+        transform: rotateZ(45deg) translateX(10px) translateY(-10px);
+        box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
+    }
 }

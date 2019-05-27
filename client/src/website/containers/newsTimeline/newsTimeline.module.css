@@ -3,7 +3,7 @@
     overflow-x: scroll !important;
     white-space: nowrap;
     margin-left: 100px;
-    padding: 1vw;
+    padding: 1rem;
 }
 
 .newsWrapper {
@@ -30,13 +30,13 @@
 }
 
 .date {
-    font-size: 1.1vw;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
 .location {
-    padding-top: .5vw;
-    font-size: .9vw;
+    padding-top: .5rem;
+    font-size: .9rem;
 }
 
 .dateBorder {
@@ -64,4 +64,32 @@
 
 .lowerGrid {
     grid-area: lowerGrid;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .news {
+        margin-left: 0;
+        white-space: normal;
+    }
+
+    .newsContainer {
+        display: grid;
+        height: 100%;
+        grid-template-areas: "upperGrid" "newsDate";
+        grid-template-rows: 1fr .5fr;
+    }
+
+    .upperGrid {
+        grid-area: upperGrid;
+    }
+
+    .lowerGrid {
+        grid-area: upperGrid;
+    }
+
+    .newsWrapper {
+        width:100%;
+        height: 100%;
+    }
 }
