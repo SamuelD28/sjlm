@@ -106,9 +106,7 @@ input[type=text]{
     color: white;
 }
 
-.ui.segment{
-    margin: 0 !important;
-}
+
 
 .ui.transparent.input>input{
     padding: .25rem !important;

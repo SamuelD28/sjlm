@@ -37,7 +37,7 @@ class ContactForm extends Component {
 
         return <div className="component-card rounded large-gutters">
             <PageHeader title="Joindre" category="Contact" />
-            <div style={{ marginTop: "2vw" }}>
+            <div style={{ marginTop: "2rem" }}>
                 <Form
                     error={this.state.failure}
                     success={this.state.success}

@@ -16,15 +16,15 @@
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
-    width: 15vw;
-    height: 15vw;
+    width: 15rem;
+    height: 15rem;
 }
 
 @keyframes logo {
     0% {
-        transform: translateY(-1.5vw);
+        transform: translateY(-1.5rem);
     }
     100% {
-        transform: translateY(0vw);
+        transform: translateY(0rem);
     }
 }

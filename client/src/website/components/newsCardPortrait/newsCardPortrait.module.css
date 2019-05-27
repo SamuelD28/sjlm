@@ -1,7 +1,11 @@
 .newsImg {
-    height: 15vw;
+    height: 15rem;
 }
 .newsDesc {
     color: rgba(0, 0, 0, .87);
     text-align: justify;
+}
+
+.newsCard{
+    margin: 1rem 0;
 }

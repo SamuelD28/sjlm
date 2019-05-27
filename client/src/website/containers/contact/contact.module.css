@@ -2,10 +2,10 @@
     background: whitesmoke;
     margin-left: 100px;
     display: grid;
-    grid-template-rows: 25vw auto;
+    grid-template-rows: 25rem auto;
     grid-template-columns: .5fr .5fr;
     grid-template-areas: "map map " "info form" "footer footer ";
-    grid-gap: 1.5vw;
+    grid-gap: 1.5rem;
 }
 
 .map {
@@ -14,16 +14,36 @@
 }
 
 .info {
-    margin-left: 4vw;
+    margin-left: 4rem;
     grid-area: info;
-    transform: translateY(-7.5vw);
+    transform: translateY(-7.5rem);
 }
 
 .form {
-    margin-right: 4vw;
+    margin-right: 4rem;
     grid-area: form;
 }
 
 .footer {
     grid-area: footer;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    .contactBody {
+        margin-left: 0;
+        display: block;
+    }
+
+    .map {
+        height: 25rem;
+    }
+    .info{
+        transform: unset;
+    }
+
+    .info, .form {
+        margin: 0 0 5rem 0;
+    }
 }
