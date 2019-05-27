@@ -201,6 +201,7 @@ class Navbar extends Component {
                                 this.SetClickedMenu();
                             }}>
                             <img
+                                styleName="navbarLogoImg"
                                 src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png"
                                 alt="sjlm logo" />
                         </NavLink>

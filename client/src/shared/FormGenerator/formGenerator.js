@@ -63,7 +63,7 @@ class FormGenerator extends Component {
      * inputs : Inputs used in the form
      * formConfig : Configuration used to determine wich action to take for submitting the form
      */
-    HandleSubmit = async() => {
+    HandleSubmit = async () => {
         let formData = await this.ParseFormData();
         let request = await this.HandleRequest(formData);
         this.HandleRequestResponse(request);
@@ -104,31 +104,31 @@ class FormGenerator extends Component {
      * p_httpRequest : Optionnal argument used to explicitly specified the
      * type of request to make
      */
-    HandleRequest = async(formData, p_httpRequest) => {
+    HandleRequest = async (formData, p_httpRequest) => {
 
         await this.UpdateStateKey("FormStatus", { loading: true });
 
         //Quick fix for using a delete request. Need to be reworked
         let httpRequest =
             (p_httpRequest !== undefined) ?
-            p_httpRequest :
-            this.state.FormConfig.httpRequest;
+                p_httpRequest :
+                this.state.FormConfig.httpRequest;
 
         let request;
         let url = this.state.FormConfig.url;
         let id = this.state.FormConfig.elementId;
         switch (httpRequest) {
-        case "post":
-            request = await Ajax.PostData(url, formData);
-            break;
-        case "put":
-            request = await Ajax.PutData(url + id, formData);
-            break;
-        case "delete":
-            request = await Ajax.DeleteData(url + id);
-            break;
-        default:
-            throw new Error("The http request type must be specified under the FormConfig Object");
+            case "post":
+                request = await Ajax.PostData(url, formData);
+                break;
+            case "put":
+                request = await Ajax.PutData(url + id, formData);
+                break;
+            case "delete":
+                request = await Ajax.DeleteData(url + id);
+                break;
+            default:
+                throw new Error("The http request type must be specified under the FormConfig Object");
         }
         return request;
     }
@@ -137,7 +137,7 @@ class FormGenerator extends Component {
      * Method that handle the response from the server.
      * request : Request that was sent back from the server
      */
-    HandleRequestResponse = async(request) => {
+    HandleRequestResponse = async (request) => {
 
         if (!request.success) {
 
@@ -248,7 +248,7 @@ class FormGenerator extends Component {
     /**
      * Delete the current dataset from the database.
      */
-    HandleDelete = async() => {
+    HandleDelete = async () => {
 
         await this.UpdateStateKey("FormStatus", { openConfirm: false });
         //Need to be reworked
@@ -280,7 +280,7 @@ class FormGenerator extends Component {
     /**
      * Method that clears all the data inside the inputs of the form
      */
-    ClearForm = async() => {
+    ClearForm = async () => {
         if (this.state.TextEditor !== undefined)
             await this.UpdateStateKey("TextEditor", { value: "", html: "" });
 
@@ -320,7 +320,7 @@ class FormGenerator extends Component {
      * inputName : Name of the input to update
      * inputValueObj : New state value for the specified input name
      */
-    UpdateStateInputs = async(inputName, inputValueObj) => {
+    UpdateStateInputs = async (inputName, inputValueObj) => {
 
         let index = this.state.Inputs.findIndex(input => input.name === inputName);
         let Inputs = Array.from(this.state.Inputs);
@@ -338,22 +338,22 @@ class FormGenerator extends Component {
         if (this.state.FormConfig.modal) {
             return (
                 <Button
-                style={{float: "left"}}
-                onClick={this.HandleNegativeAction}
-                color="red"
-                size="large"
+                    style={{ float: "left" }}
+                    onClick={this.HandleNegativeAction}
+                    color="red"
+                    size="large"
                 >
-                <i  className={
-                    (this.state.FormConfig.httpRequest === "put")
-                    ? 'icon trash'
-                    : 'icon close'}>
-                </i>
-                {
-                    (this.state.FormConfig.httpRequest === "put") ?
-                    'Supprimer' :
-                    'Annuler'
-                }
-            </Button>)
+                    <i className={
+                        (this.state.FormConfig.httpRequest === "put")
+                            ? 'icon trash'
+                            : 'icon close'}>
+                    </i>
+                    {
+                        (this.state.FormConfig.httpRequest === "put") ?
+                            'Supprimer' :
+                            'Annuler'
+                    }
+                </Button>)
         }
     }
 
@@ -363,16 +363,16 @@ class FormGenerator extends Component {
     GeneratePositiveButton = () => {
         return (
             <Button
-            style={{marginLeft: "auto"}}
-            disabled={!this.state.FormStatus.modified}
-            onClick={this.HandleSubmit}
-            color="teal"
-            size="large"
+                style={{ marginLeft: "auto" }}
+                disabled={!this.state.FormStatus.modified}
+                onClick={this.HandleSubmit}
+                color="teal"
+                size="large"
             >
-            {(this.state.FormConfig.httpRequest === "put")
-            ? 'Modifier'
-            : 'Ajouter'}
-        </Button>
+                {(this.state.FormConfig.httpRequest === "put")
+                    ? 'Modifier'
+                    : 'Ajouter'}
+            </Button>
         )
     }
 
@@ -394,7 +394,7 @@ class FormGenerator extends Component {
     CreatePlainForm = () => {
         return (
             <Form
-                style={{display : "flex", flexDirection: "column"}}
+                style={{ display: "flex", flexDirection: "column" }}
                 loading={this.state.FormStatus.loading}>
                 {this.GenerateForm()}
                 {this.GenerateNegativeButton()}
@@ -409,32 +409,32 @@ class FormGenerator extends Component {
     CreateModalForm = () => {
         return (
             <Modal
-            centered={true}
-            closeIcon
-        size={this.state.FormConfig.size}
-        open={this.state.FormStatus.open}
-        onClose={this.HandleCancel}
-        trigger={
-        <div onClick={this.HandleOpen} className="modal-opener">
-            {this.state.FormConfig.modalOpener()}
-        </div>
-        }>
-        <Modal.Header>{this.state.FormConfig.title}</Modal.Header>
-            <Modal.Content>
-                <Form loading={this.state.FormStatus.loading}>
-                    {this.GenerateForm()}
-                </Form>
-            </Modal.Content>
-            <Modal.Actions>
-                <ConfirmModal
-                    open={this.state.FormStatus.openConfirm}
-                    trigger={this.GenerateNegativeButton}
-                    NegativeAction={this.CloseConfirm}
-                    PositiveAction={this.HandleDelete}
-                />
-                {this.GeneratePositiveButton()}
-            </Modal.Actions>
-        </Modal>
+                centered={true}
+                closeIcon
+                size={this.state.FormConfig.size}
+                open={this.state.FormStatus.open}
+                onClose={this.HandleCancel}
+                trigger={
+                    <div onClick={this.HandleOpen} className="modal-opener">
+                        {this.state.FormConfig.modalOpener()}
+                    </div>
+                }>
+                <Modal.Header>{this.state.FormConfig.title}</Modal.Header>
+                <Modal.Content>
+                    <Form loading={this.state.FormStatus.loading}>
+                        {this.GenerateForm()}
+                    </Form>
+                </Modal.Content>
+                <Modal.Actions>
+                    <ConfirmModal
+                        open={this.state.FormStatus.openConfirm}
+                        trigger={this.GenerateNegativeButton}
+                        NegativeAction={this.CloseConfirm}
+                        PositiveAction={this.HandleDelete}
+                    />
+                    {this.GeneratePositiveButton()}
+                </Modal.Actions>
+            </Modal>
         )
     }
 
@@ -447,39 +447,39 @@ class FormGenerator extends Component {
         if (this.state.TextEditor === undefined) {
             return (
                 <Grid>
-                <Grid.Column width={16}>
-                    <FormError errorHandler={this.state.FormStatus} />
-                    {this.GenerateFormInputs()}
-                </Grid.Column>
-            </Grid>)
+                    <Grid.Column width={16}>
+                        <FormError errorHandler={this.state.FormStatus} />
+                        {this.GenerateFormInputs()}
+                    </Grid.Column>
+                </Grid>)
         }
         //Generate a form with a text editor
         else if (!this.state.TextEditor.inline) {
             return <Grid columns='equal'>
-                        <Grid.Column>
-                            <FormError errorHandler={this.state.FormStatus} /> { this.GenerateFormInputs() }
-                        </Grid.Column>
-                        <Grid.Column width={this.state.TextEditor.width}>
-                            <TextEditor
-                                input={this.state.TextEditor}
-                                handleChangeEditor={this.HandleChangeEditor}
-                                handleChangeTextArea={this.HandleChangeTextArea}
-                                />
-                        </Grid.Column>
-                    </Grid>
+                <Grid.Column>
+                    <FormError errorHandler={this.state.FormStatus} /> {this.GenerateFormInputs()}
+                </Grid.Column>
+                <Grid.Column width={this.state.TextEditor.width}>
+                    <TextEditor
+                        input={this.state.TextEditor}
+                        handleChangeEditor={this.HandleChangeEditor}
+                        handleChangeTextArea={this.HandleChangeTextArea}
+                    />
+                </Grid.Column>
+            </Grid>
         }
         else {
             return <Grid>
-                        <Grid.Column width={16}>
-                            <FormError errorHandler={this.state.FormStatus} />
-                            { this.GenerateFormInputs() }
-                            <TextEditor
-                                input={this.state.TextEditor}
-                                handleChangeEditor={this.HandleChangeEditor}
-                                handleChangeTextArea={this.HandleChangeTextArea}
-                                />
-                        </Grid.Column>
-                    </Grid>
+                <Grid.Column width={16}>
+                    <FormError errorHandler={this.state.FormStatus} />
+                    {this.GenerateFormInputs()}
+                    <TextEditor
+                        input={this.state.TextEditor}
+                        handleChangeEditor={this.HandleChangeEditor}
+                        handleChangeTextArea={this.HandleChangeTextArea}
+                    />
+                </Grid.Column>
+            </Grid>
         }
     }
 
@@ -492,8 +492,8 @@ class FormGenerator extends Component {
             return (
 
                 <Form.Group key={index}>
-                        {this.GenerateFormFields(groups[key])}
-                    </Form.Group>
+                    {this.GenerateFormFields(groups[key])}
+                </Form.Group>
             )
         });
     }
@@ -525,52 +525,52 @@ class FormGenerator extends Component {
     GenerateFormFields = (groupedInputs) => {
         return groupedInputs.map((input, index) => {
             switch (input.type) {
-            case "email":
-            case "password":
-            case "tel":
-            case "number":
-            case "text":
-                return (
-                    <TextInput
-                                    key={index}
-                                    inputs={this.state.Inputs}
-                                    input={input}
-                                    handleChange={this.HandleChange}/>
-                );
-            case "toggle":
-                return (
-                    <ToggleInput
-                                    key={index}
-                                    inputs={this.state.Inputs}
-                                    input={input}
-                                    handleChange={this.HandleChange}/>
-                );
-            case "date":
-                return (
-                    <DatePicker
-                                    key={index}
-                                    inputs={this.state.Inputs}
-                                    input={input}
-                                    handleDateChange={this.HandleDateChange} />
-                );
-            case "uploader":
-                return (
-                    <FileInput
-                                    key={index}
-                                    inputs={this.state.Inputs}
-                                    input={input}
-                                    updateStateInputs={this.UpdateStateInputs} />
-                );
-            case "select":
-                return (
-                    <SelectInput
-                                    key={index}
-                                    inputs={this.state.Inputs}
-                                    input={input}
-                                    handleChange={this.HandleChange}/>
-                );
-            default:
-                throw new Error("No input correspond to the specified type.");
+                case "email":
+                case "password":
+                case "tel":
+                case "number":
+                case "text":
+                    return (
+                        <TextInput
+                            key={index}
+                            inputs={this.state.Inputs}
+                            input={input}
+                            handleChange={this.HandleChange} />
+                    );
+                case "toggle":
+                    return (
+                        <ToggleInput
+                            key={index}
+                            inputs={this.state.Inputs}
+                            input={input}
+                            handleChange={this.HandleChange} />
+                    );
+                case "date":
+                    return (
+                        <DatePicker
+                            key={index}
+                            inputs={this.state.Inputs}
+                            input={input}
+                            handleDateChange={this.HandleDateChange} />
+                    );
+                case "uploader":
+                    return (
+                        <FileInput
+                            key={index}
+                            inputs={this.state.Inputs}
+                            input={input}
+                            updateStateInputs={this.UpdateStateInputs} />
+                    );
+                case "select":
+                    return (
+                        <SelectInput
+                            key={index}
+                            inputs={this.state.Inputs}
+                            input={input}
+                            handleChange={this.HandleChange} />
+                    );
+                default:
+                    throw new Error("No input correspond to the specified type.");
             }
         });
     }
@@ -590,19 +590,19 @@ class FormGenerator extends Component {
     }
 }
 
-export { 
-        FormGenerator, 
-        FormConfig, 
-        FormStatus, 
-        InputSchema, 
-        EditorSchema, 
-        FormSchema, 
-        FormError, 
-        TextInput, 
-        TextEditor, 
-        ToggleInput, 
-        SelectInput, 
-        FileInput, 
-        ConfirmModal,
-        DatePicker };
-    
+export {
+    FormGenerator,
+    FormConfig,
+    FormStatus,
+    InputSchema,
+    EditorSchema,
+    FormSchema,
+    FormError,
+    TextInput,
+    TextEditor,
+    ToggleInput,
+    SelectInput,
+    FileInput,
+    ConfirmModal,
+    DatePicker
+};

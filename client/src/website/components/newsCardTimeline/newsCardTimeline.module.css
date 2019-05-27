@@ -1,4 +1,6 @@
 .wrapper{
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
     position: relative;
     height: 100%;
@@ -7,19 +9,35 @@
 .newsCard {
     background-color: white;
     cursor: pointer;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
     position: relative;
     height: 100%;
+    -webkit-transition: -webkit-transform .15s ease-in-out;
+    transition: -webkit-transform .15s ease-in-out;
+    -o-transition: transform .15s ease-in-out;
     transition: transform .15s ease-in-out;
-    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
+    transition: transform .15s ease-in-out, -webkit-transform .15s ease-in-out;
+    -webkit-box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
+            box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
 
 .newsOverlay{
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
-    flex-direction :column;
+    -webkit-box-orient :vertical;
+    -webkit-box-direction :normal;
+        -ms-flex-direction :column;
+            flex-direction :column;
     color: white;
     height: 100%;
     position: absolute;
@@ -27,8 +45,14 @@
     left: 0;
     background: #37474F;
     z-index: 1;
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    transition: -webkit-transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    -o-transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
     transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    transition: transform 0.5s cubic-bezier(.55, 0, .1, 1), -webkit-transform 0.5s cubic-bezier(.55, 0, .1, 1);
 }
 
 .newsLink{
@@ -37,13 +61,25 @@
 }
 
 .newsCard:hover > .newsImg > .newsOverlay{
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    transition: -webkit-transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    -o-transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
     transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
-    transform: translateX(0%);
+    transition: transform 0.5s cubic-bezier(.55, 0, .1, 1), -webkit-transform 0.5s cubic-bezier(.55, 0, .1, 1);
+    -webkit-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+            transform: translateX(0%);
 }
 
 .newsCard:hover {
-    transform: translateY(-1%);
+    -webkit-transform: translateY(-1%);
+        -ms-transform: translateY(-1%);
+            transform: translateY(-1%);
+    -webkit-transition: -webkit-transform .15s ease-in-out;
+    transition: -webkit-transform .15s ease-in-out;
+    -o-transition: transform .15s ease-in-out;
     transition: transform .15s ease-in-out;
+    transition: transform .15s ease-in-out, -webkit-transform .15s ease-in-out;
 }
 
 .newsImg {
@@ -91,7 +127,9 @@
     background-color: white;
     width: 40px;
     height: 40px;
-    transform: rotateZ(45deg) translateX(-10px) translateY(-10px);
+    -webkit-transform: rotateZ(45deg) translateX(-10px) translateY(-10px);
+        -ms-transform: rotate(45deg) translateX(-10px) translateY(-10px);
+            transform: rotateZ(45deg) translateX(-10px) translateY(-10px);
 }
 
 .arrowDown {
@@ -101,15 +139,21 @@
     background-color: white;
     width: 40px;
     height: 40px;
-    transform: rotateZ(45deg) translateX(10px) translateY(10px);
-    box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
+    -webkit-transform: rotateZ(45deg) translateX(10px) translateY(10px);
+        -ms-transform: rotate(45deg) translateX(10px) translateY(10px);
+            transform: rotateZ(45deg) translateX(10px) translateY(10px);
+    -webkit-box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
+            box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
 }
 
 
 @media only screen and (max-width: 800px) {
     .arrowUp {
         top: 95%;
-        transform: rotateZ(45deg) translateX(10px) translateY(-10px);
-        box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
+        -webkit-transform: rotateZ(45deg) translateX(10px) translateY(-10px);
+            -ms-transform: rotate(45deg) translateX(10px) translateY(-10px);
+                transform: rotateZ(45deg) translateX(10px) translateY(-10px);
+        -webkit-box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
+                box-shadow: 6px 6px 10px -4px rgba(0,0,0,.15);
     }
 }

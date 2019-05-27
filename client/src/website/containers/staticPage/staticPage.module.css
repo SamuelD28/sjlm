@@ -9,7 +9,8 @@
 .fullBanner {
     position: fixed;
     background-size: cover;
-    filter: sepia(40%) brightness(70%);
+    -webkit-filter: sepia(40%) brightness(70%);
+            filter: sepia(40%) brightness(70%);
     height: 100%;
     right: 0;
     width: 17.5%;
@@ -19,7 +20,8 @@
 .bannerPhoto {
     background-size: cover;
     background-attachment: fixed;
-    filter: sepia(40%) brightness(70%);
+    -webkit-filter: sepia(40%) brightness(70%);
+            filter: sepia(40%) brightness(70%);
     height: 30em;
     padding: 2.5vw 10vw;
     width: 100%;
@@ -27,10 +29,17 @@
 }
 
 .pageLeftColumn {
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
     border-right: 2px solid whitesmoke;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     padding-left: 3vw;
     float: left;
     width: 25%;
@@ -46,7 +55,9 @@
 
 .pageGallery {
     background: white;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     grid-gap: 1vw;
     margin-top: 5em;
@@ -81,6 +92,7 @@
     }
 
     .pageGallery {
+        -ms-grid-columns: .5fr 1vw .5fr;
         grid-template-columns: .5fr .5fr;
         margin-top: 5em;
     }
