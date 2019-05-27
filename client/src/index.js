@@ -8,9 +8,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //----------Core Code-------//
 ReactDOM.render(<Router>
-                    <Switch>
-                        <Route path="/admin" component={Auth(Admin, true)}/>
-                        <Route path="/login" component={Login} />
-                        <Route path="/" component={Website} />
-                    </Switch>
-                </Router>, document.getElementById("root"));
+    <Switch>
+        <Route path="/admin" component={Auth(Admin, true)} />
+        <Route path="/login" component={Login} />
+        <Route path="/" component={Website} />
+    </Switch>
+</Router>, document.getElementById("root"));

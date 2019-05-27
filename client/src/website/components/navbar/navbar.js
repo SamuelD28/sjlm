@@ -142,7 +142,6 @@ class Navbar extends Component {
         }
     }
 
-
     /**
      * Method that remove the hover style from
      * the menu when the user mouse leaves it.

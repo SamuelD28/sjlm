@@ -88,7 +88,7 @@ class BannerHome extends Component {
                     transitionOnMount={true}
                     animation="fade up"
                     duration={1000}>
-                    <div className="fill-height">
+                    <div className="fill-height" styleName="bannerTransition">
                         <div styleName="bannerContent" className="fill-height">
                             <h1 styleName='bannerSlogan'>Bienvenue à Saint-Jacques-le-Mineur</h1>
                             <div styleName='bannerKeyword'>
@@ -97,6 +97,7 @@ class BannerHome extends Component {
                                     let show = this.Duration;
                                     return <Transition
                                         key={keyword}
+                                        className="bannerTransition"
                                         animation="fade up"
                                         duration={{ hide, show }}
                                         onComplete={() => this.HideCurrentKeyword(index)}

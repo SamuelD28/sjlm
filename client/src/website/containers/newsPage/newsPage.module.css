@@ -10,9 +10,9 @@
                          "newsFile newsFile . . ."
                          "newsImgGallery newsImgGallery newsImgGallery . .";
     grid-template-columns: .25fr 2fr .25fr .75fr .25fr;
-    padding: 2vw 0;
-    padding-left: 1vw;
-    padding-right: 5vw;
+    padding: 2rem 0;
+    padding-left: 1rem;
+    padding-right: 5rem;
 }
 
 .newsBanner{
@@ -21,18 +21,18 @@
     background-size: cover;
     background-attachment: fixed;
     display: flex;
-    height: 25vw;
+    height: 25rem;
     filter:sepia(40%) brightness(70%);
 }
 
 .newsContent{
     grid-area: newsContent;
-    padding: 3vw;
+    padding: 3rem;
 }
 
 .newsImgGallery, .newsContent, .newsFile{
     background: white;
-    transform: translateY(-10vw);
+    transform: translateY(-10rem);
 }
 
 .latestNews{
@@ -45,13 +45,31 @@
     display: grid;
     grid-area: newsImgGallery;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-gap: 1vw;
-    padding: 1vw;
-    margin-right: 2vw;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin-right: 2rem;
 }
 
 .newsFile{
     border-top: 2px solid whitesmoke;
     grid-area: newsFile;
-    padding: 2vw;
+    padding: 2rem;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .news{
+        margin-left:0;
+    }
+
+    .newsBody{
+        display: grid;
+        grid-template-areas: ". newsContent newsContent newsContent ."
+                             ". newsContent newsContent newsContent ."
+                             ". latestNews latestNews latestNews ."
+                             ". newsFile newsFile newsFile  ."
+                             ". newsImgGallery newsImgGallery newsImgGallery .";
+        grid-template-columns: .25fr 2fr .25fr .75fr .25fr;
+        padding: 0;
+    }
 }

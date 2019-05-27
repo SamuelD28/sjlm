@@ -4,12 +4,12 @@
 /*Html Tag Overrides*/
 table {
     color: #666;
-    margin: .5vw 0;
+    margin: .5rem 0;
     background: white;
     border-collapse: collapse;
-    font-size: .9vw;
+    font-size: .9rem;
     max-width: 100%;
-    box-shadow: .1vw .1vw 9px whitesmoke;
+    box-shadow: .1rem .1rem 9px whitesmoke;
 }
 
 textarea{
@@ -21,7 +21,7 @@ textarea{
 }
 
 table td {
-    padding: 1vw 1.5vw;
+    padding: 1rem 1.5rem;
 }
 
 table tr {
@@ -42,7 +42,7 @@ tbody tr:first-child {
 
 tbody tr:first-child:hover {
     background: white;
-    transform: translateX(0vw);
+    transform: translateX(0rem);
 }
 
 tbody tr:hover {
@@ -92,14 +92,14 @@ img {
 
 p {
     margin-bottom: 0;
-    font-size: .85vw;
+    font-size: 1.25rem;
 }
 
 
 blockquote {
     border-left: 4px solid #ccc;
-    padding-left: .5vw;
-    margin: .3vw 0;
+    padding-left: .5rem;
+    margin: .3rem 0;
 }
 
 input[type=text]{
@@ -111,7 +111,7 @@ input[type=text]{
 }
 
 .ui.transparent.input>input{
-    padding: .25vw !important;
+    padding: .25rem !important;
 }
 
 .ui.form .field.field input:-webkit-autofill{
@@ -120,7 +120,7 @@ input[type=text]{
 }
 
 .blue{
-    color: #37474F !important; 
+    color: #37474F !important;
     border-color: #37474F !important;
     box-shadow: none !important;
 }

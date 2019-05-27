@@ -89,3 +89,37 @@
     padding: 1.5em 2em;
     margin: 1.5vw 0;
 }
+
+
+
+
+@media only screen and (max-width: 800px) {
+    .bannerContent {
+        align-items: unset;
+        justify-content: center;
+        width: 100%;
+        margin-right: 0px;
+    }
+    .bannerKeyword {
+        font-size: 1.25rem;
+        margin: 2rem 0;
+    }
+    .bannerBody{
+        width: 100%;
+    }
+    .bannerTransition{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .bannerSearch {
+        position: absolute;
+        bottom: 5%;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1em;
+    }
+    .bannerSlogan {
+        font-size: 1.1em;
+        letter-spacing: .5em;
+    }
+}

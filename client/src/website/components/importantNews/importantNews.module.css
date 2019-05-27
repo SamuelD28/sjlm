@@ -9,14 +9,14 @@
 
 .importantNews {
     background: #e91e63;
-    padding: .5vw 1vw;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
 }
 
 .importantTitle {
     font-weight: bold;
-    padding-bottom: 1vw;
+    padding-bottom: 1rem;
     border-bottom: 2px solid white;
     display: flex;
     justify-content: space-between;
@@ -25,14 +25,14 @@
 }
 
 .important {
-    margin-bottom: .5vw;
+    margin-bottom: .5rem;
     display: flex;
     justify-content: space-between;
 }
 
 .importantLink {
     color: white !important;
-    margin-left: 1vw;
+    margin-left: 1rem;
     font-weight: bold;
 }
 
@@ -45,4 +45,14 @@
 .importantLink:hover,
 .closeBtn:hover {
     color: #bababc !important;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .importantTransition {
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: .8em;
+    }
 }

@@ -6,8 +6,8 @@
 
 .admin-page {
     background-color: whitesmoke;
-    margin-left: 12.5vw;
-    padding: 3vw;
+    margin-left: 12.5rem;
+    padding: 3rem;
     position: relative;
     height: 100%;
     height: -moz-available;          /* WebKit-based browsers will ignore this. */
@@ -31,14 +31,14 @@
 }
 
 .anim-bounce-up:hover{
-    transform: translateY(-.5vw);
+    transform: translateY(-.5rem);
     transition: transform .15s;
     transition-timing-function: cubic-bezier(.36,.51,.28,1.55);
 }
 
 .section-style {
     background-color: white;
-    box-shadow: 0.2vw 0.2vw 0.5vw #D4D4D4;
+    box-shadow: 0.2rem 0.2rem 0.5rem #D4D4D4;
     padding: 1em;
 }
 
@@ -61,7 +61,7 @@
     cursor: pointer;
     word-break: break-all;
     display: inline-block;
-    padding: 1vw;
+    padding: 1rem;
     position: relative;
     width: 100%;
     border: 1px solid whitesmoke;
@@ -86,7 +86,7 @@
     border: 1px solid whitesmoke;
     text-align: center;
     letter-spacing: 1px;
-    padding: 1vw;
+    padding: 1rem;
 }
 
 .item-card-shadow:hover{
@@ -116,13 +116,13 @@
     display: inline-block;
     box-sizing: border-box;
     background: whitesmoke;
-    padding: .25vw .5vw;
+    padding: .25rem .5rem;
 }
 
 .tag-important{
     background-color: #e91e63;
     color: white;
-    padding: .5vw;
+    padding: .5rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -133,13 +133,13 @@
     cursor: pointer;
     vertical-align: center;
     position: absolute;
-    top: .5vw;
-    right: .5vw;
+    top: .5rem;
+    right: .5rem;
     font-size: 1.1em;
     background-color: #00b5ad;
     display: flex;
     align-items: center;
-    margin-bottom: 1vw;
+    margin-bottom: 1rem;
     box-shadow: 0 12px 20px -10px rgba(0, 181, 173,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0, 181, 173,.2);
 }
 
@@ -168,31 +168,31 @@
 }
 
 .large-gutters{
-    padding: 2.25vw;
+    padding: 2.25rem;
 }
 
 .big-gutters{
-    padding: 1.75vw;
+    padding: 1.75rem;
 }
 
 .medium-gutters{
-    padding: 1.25vw;
+    padding: 1.25rem;
 }
 
 .small-gutters{
-    padding: .75vw;
+    padding: .75rem;
 }
 
 .small-spacing-bot{
-    margin-bottom: .5vw;
+    margin-bottom: .5rem;
 }
 
 .medium-spacing-bot{
-    margin-bottom: .75vw;
+    margin-bottom: .75rem;
 }
 
 .big-spacing-bot{
-    margin-bottom: 1vw;
+    margin-bottom: 1rem;
 }
 
 .img-fit{
