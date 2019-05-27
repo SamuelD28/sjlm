@@ -22,8 +22,9 @@ class ScrollTo extends Component {
             className="btnTop btn-primary">
             <i
                 style={{ margin: "0" }}
-                className={(this.props.direction === "left") ? "icon chevron left" : "icon chevron up"}
-            >
+                className={(this.props.direction === "left")
+                    ? "icon chevron left"
+                    : "icon chevron up"}>
             </i>
         </button>
     }

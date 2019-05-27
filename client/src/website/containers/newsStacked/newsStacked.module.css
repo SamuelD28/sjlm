@@ -1,6 +1,6 @@
 .newsBody {
     margin-left: 100px;
-    margin-top: 3vw;
+    margin-top: 3rem;
     overflow: auto;
     overflow-x: scroll;
     white-space: nowrap;
@@ -10,8 +10,12 @@
     min-height: stretch;
 }
 
+.scrollMobile{
+    display: none;
+}
+
 .newsDescription{
-    margin-left: 3vw;    
+    margin-left: 3rem;
 }
 
 .newsWrapper {
@@ -20,15 +24,25 @@
     width: 450px;
     height: 100%;
     white-space: normal;
-    margin-right: 3vw;
+    margin-right: 3rem;
 }
 
-.newsBackground {
-    height: 20vw;
-    width: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    filter: sepia(20%) brightness(80%);
-    z-index: -1;
+@media only screen and (max-width: 800px) {
+    .newsBody, .newsDescription {
+        margin-left: 0;
+    }
+    .scrollMobile{
+        display: inline;
+    }
+    .scrollWeb{
+        display: none;
+    }
+    .newsWrapper{
+        width: 100%;
+    }
+    .newsBody {
+        white-space: normal;
+        flex-wrap: normal;
+        display: block;
+    }
 }
