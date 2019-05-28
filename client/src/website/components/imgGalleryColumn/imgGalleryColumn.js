@@ -1,5 +1,6 @@
 import React from 'react';
 import { Transition } from 'semantic-ui-react';
+import { Utility } from '../../../shared/utility';
 
 const ImgGalleryColumn = (props) => {
     if (props.images !== undefined && props.images !== null)
@@ -10,7 +11,7 @@ const ImgGalleryColumn = (props) => {
                 duration={1000}
                 transitionOnMount={true}>
                 <a href={item} target="_blank" rel="noopener noreferrer">
-                    <img alt="gallerie" key={index} src={item} className="img-sepia"/>
+                    <img alt="gallerie" key={index} srcSet={Utility.ParseSourceSet(item)} className="img-sepia" />
                 </a>
             </Transition>
         ))
