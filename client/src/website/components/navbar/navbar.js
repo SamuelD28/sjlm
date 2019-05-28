@@ -15,7 +15,7 @@ class Navbar extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { SelectedMenuTitle: "", SelectedSubmenu: [], animationDelay: 25, ClickedMenu: "" };
+        this.state = { SelectedMenuTitle: "", SelectedSubmenu: [], animationDelay: 25, ClickedMenu: "", mobileClicked: false };
         this.navbarSecondary = React.createRef();
         this.navbarPrimary = React.createRef();
     }
@@ -137,8 +137,9 @@ class Navbar extends Component {
             document.getElementById("backgroundOverlay").style.transform = "translateX(-100%)";
             this.navbarSecondary.current.style.transform = "translateX(-225px)";
 
-            if (this.state.SelectedSubmenu.length > 0)
+            if (this.state.SelectedSubmenu.length > 0) {
                 this.setState({ SelectedMenuTitle: "", SelectedSubmenu: [] });
+            }
         }
     }
 
@@ -173,44 +174,62 @@ class Navbar extends Component {
         window.scrollTo(0, 0);
     }
 
+    ToggleMenu = (e) => {
+        let navbar = document.getElementById(styles.navbar);
+
+        if (!this.state.mobileClicked) {
+            navbar.style.transform = "translateX(0%)";
+            this.setState({ mobileClicked: true });
+        } else {
+            navbar.style.transform = "translateX(-100%)"
+            this.setState({ mobileClicked: false });
+        }
+    }
+
     render() {
         if (this.state.menus !== undefined)
-            return <Transition
-                transitionOnMount={true}
-                duration={1000}
-                animation="fade right">
-                <div
-                    id={styles.navbar}
-                    className="fill-height"
-                    onMouseLeave={() => {
-                        this.MouseExit();
-                        this.HideMenuPages();
-                    }}>
-                    <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
-                        <div styleName="navbarContentTitle">
-                            {this.state.SelectedMenuTitle}
-                        </div>
-                        {this.DisplaySubmenu()}
-                    </div>
-                    <div id={styles.navbarPrimary} ref="navbarPrimary">
-                        <NavLink
-                            to="/"
-                            styleName="navbarLogo"
-                            onClick={(e) => {
-                                this.HideMenuPages(e);
-                                this.SetClickedMenu();
-                            }}>
-                            <img
-                                styleName="navbarLogoImg"
-                                src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png"
-                                alt="sjlm logo" />
-                        </NavLink>
-                        <ul styleName="navbarContent" ref={this.navbarPrimary}>
-                            {this.DisplayMenus()}
-                        </ul>
-                    </div>
+            return <div className="fill-height" styleName="wrapper">
+                <div styleName="navbarMobile"
+                    onClick={this.ToggleMenu}>
+                    <i className={(!this.state.mobileClicked) ? "icon bars" : "icon close"} style={{ margin: "0" }}></i>
                 </div>
-            </Transition>
+                <Transition
+                    transitionOnMount={true}
+                    duration={1000}
+                    animation="fade right">
+                    <div
+                        id={styles.navbar}
+                        className="fill-height"
+                        onMouseLeave={() => {
+                            this.MouseExit();
+                            this.HideMenuPages();
+                        }}>
+                        <div id={styles.navbarSecondary} ref={this.navbarSecondary}>
+                            <div styleName="navbarContentTitle">
+                                {this.state.SelectedMenuTitle}
+                            </div>
+                            {this.DisplaySubmenu()}
+                        </div>
+                        <div id={styles.navbarPrimary} ref="navbarPrimary">
+                            <NavLink
+                                to="/"
+                                styleName="navbarLogo"
+                                onClick={(e) => {
+                                    this.HideMenuPages(e);
+                                    this.SetClickedMenu();
+                                }}>
+                                <img
+                                    styleName="navbarLogoImg"
+                                    src="https://res.cloudinary.com/dohwohspb/image/upload/v1548355113/images/website/logo2_left.png"
+                                    alt="sjlm logo" />
+                            </NavLink>
+                            <ul styleName="navbarContent" ref={this.navbarPrimary}>
+                                {this.DisplayMenus()}
+                            </ul>
+                        </div>
+                    </div>
+                </Transition>
+            </div>
     }
 }
 

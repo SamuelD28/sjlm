@@ -6,7 +6,7 @@
     left: 0;
     display: flex;
     grid-area: navbar;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #navbarPrimary {
@@ -138,9 +138,38 @@
     transform: scaleX(1);
 }
 
+.wrapper{
+    position: fixed;
+    z-index: 1000;
+}
+
+.navbarMobile{
+    display: none;
+}
 
 @media only screen and (max-width: 800px) {
-    #navbar{
-        display: none !important;
+    #navbar {
+        transform: translateX(-100%);
     }
+    .navbarLogo {
+        display: none;
+    }
+    .navbarItem {
+        font-size: .8em;
+        padding: 1.5em;
+    }
+    .navbarMobile{
+        cursor: pointer;
+        display: block;
+        position: fixed;
+        font-size: 1.25rem;
+        right: .4rem;
+        top: .4rem;
+        background: white;
+        border-radius: 5rem;
+        z-index: 1000;
+        padding: 1rem;
+        text-align: center;
+    }
+
   }

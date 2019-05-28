@@ -38,37 +38,37 @@ class Index extends Component {
 
     render() {
         if (this.state.loading)
-            return <LoadingScreen swipeUp={this.state.swipeUp} loading={this.state.loading}/>
+            return <LoadingScreen swipeUp={this.state.swipeUp} loading={this.state.loading} />
         else
             return <div className="fill-height">
-                        <Navbar navbarLite={true}/>
-                        <ImportantNews {...this.props}/>
-                        <Route
-                            render={({ location }) => (
-                            <TransitionGroup className="fill-height">
-                                <CSSTransition
-                                    key={location.pathname}
-                                    classNames="fade"
-                                    timeout={600}>
-                                    <Switch location={location}>
-                                        <Route exact path="/" component={Home} />
-                                        <Route exact path="/calendrier" component={() => (<NewsTimeline calendrier={true}/>)} />
-                                        <Route exact path="/contact" component={Contact} />
-                                        <Route exact path="/conseil" component={Council} />
-                                        <Route exact path="/news/:id" component={NewsPage} />
-                                        <Route exact path="/pages/static/:link" component={StaticPage} />
-                                        <Route exact path="/news/category/:category" component={NewsCategory} />
-                                        <Route path="/">
-                                            <Redirect to="/" />
-                                        </Route>
-                                    </Switch>
-                                </CSSTransition>
-                            </TransitionGroup>
-                            )}
-                        />
-                        <div id="backgroundOverlay">
-                        </div>
-                    </div>
+                <Navbar />
+                <ImportantNews {...this.props} />
+                <Route
+                    render={({ location }) => (
+                        <TransitionGroup className="fill-height">
+                            <CSSTransition
+                                key={location.pathname}
+                                classNames="fade"
+                                timeout={600}>
+                                <Switch location={location}>
+                                    <Route exact path="/" component={Home} />
+                                    <Route exact path="/calendrier" component={() => (<NewsTimeline calendrier={true} />)} />
+                                    <Route exact path="/contact" component={Contact} />
+                                    <Route exact path="/conseil" component={Council} />
+                                    <Route exact path="/news/:id" component={NewsPage} />
+                                    <Route exact path="/pages/static/:link" component={StaticPage} />
+                                    <Route exact path="/news/category/:category" component={NewsCategory} />
+                                    <Route path="/">
+                                        <Redirect to="/" />
+                                    </Route>
+                                </Switch>
+                            </CSSTransition>
+                        </TransitionGroup>
+                    )}
+                />
+                <div id="backgroundOverlay">
+                </div>
+            </div>
     }
 }
 
