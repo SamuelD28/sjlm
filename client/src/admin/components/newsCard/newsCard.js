@@ -23,8 +23,8 @@ const NewsCard = (props) => {
                     />
                 {DisplayImportantTag(props.news)}
                 <div className="component-card rounded small-gutters">
-                    <h3>{props.news.Title}</h3>
-                    <span className="tag-card rounded">{props.news.Category.Title}</span>
+                    <h3>{props.news.Title || ""}</h3>
+                    <span className="tag-card rounded">{(props.news.Category !== null)?props.news.Category.Title: ""}</span>
                     <Divider />
                     <p>
                         <i className="clock outline icon"></i> 

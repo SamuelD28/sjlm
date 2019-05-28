@@ -228,3 +228,47 @@
      '$init': Promise { [Circular] },
      '$caught': true,
      [Symbol(mongoose#Model)]: true } }
+[2019-05-28T18:05:57.515] [ERROR] error - { ValidationError: News validation failed: Category: Path `Category` is required., Title: Path `Title` is required.
+    at MongooseError.ValidationError (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/error/validation.js:30:11)
+    at model.Document.invalidate (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/document.js:2259:32)
+    at p.doValidate.skipSchemaValidators (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/document.js:2108:17)
+    at /home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:981:9
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  errors: 
+   { Category: 
+      { ValidatorError: Path `Category` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+          at validate (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+          at /home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+          at Array.forEach (native)
+          at ObjectId.SchemaType.doValidate (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+          at /home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Category` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Category',
+        value: null,
+        reason: undefined },
+     Title: 
+      { ValidatorError: Path `Title` is required.
+          at MongooseError.ValidatorError (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+          at validate (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+          at /home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+          at Array.forEach (native)
+          at SchemaString.SchemaType.doValidate (/home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+          at /home/ubuntu/workspace/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+          at _combinedTickCallback (internal/process/next_tick.js:73:7)
+          at process._tickCallback (internal/process/next_tick.js:104:9)
+        message: 'Path `Title` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Title',
+        value: null,
+        reason: undefined } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
