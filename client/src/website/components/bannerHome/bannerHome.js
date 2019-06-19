@@ -80,10 +80,7 @@ class BannerHome extends Component {
     render() {
         if (this.state.options !== undefined && this.state.options !== null)
             return <div styleName="bannerBody">
-                <video styleName="bannerVideo" autoPlay muted loop>
-                    <source src="/sjlm.mp4" type="video/mp4">
-                    </source>
-                </video>
+                <img alt="banner" styleName="bannerVideo" src="https://res.cloudinary.com/dohwohspb/image/upload/v1547598524/images/website/St_Jacques_le_Mineur_avril_2011_140.jpg"/>
                 <Transition
                     transitionOnMount={true}
                     animation="fade up"
@@ -103,8 +100,7 @@ class BannerHome extends Component {
                                         onComplete={() => this.HideCurrentKeyword(index)}
                                         onHide={this.ChangeCurrentKeyword}
                                         transitionOnMount={true}
-                                        visible={index === this.state.currentKeyword}
-                                    >
+                                        visible={index === this.state.currentKeyword}>
                                         <span>{keyword}</span>
                                     </Transition>
                                 })}

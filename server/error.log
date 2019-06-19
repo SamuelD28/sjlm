@@ -272,3 +272,871 @@
         reason: undefined } },
   _message: 'News validation failed',
   name: 'ValidationError' }
+[2019-06-04T20:02:43.906] [ERROR] error - { ValidationError: News validation failed: Category: Path `Category` is required.
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Category: 
+      { ValidatorError: Path `Category` is required.
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at ObjectId.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Path `Category` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Category',
+        value: null,
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2019-06-04T20:22:33.399] [ERROR] error - { ValidationError: News validation failed: Category: Path `Category` is required.
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Category: 
+      { ValidatorError: Path `Category` is required.
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at ObjectId.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Path `Category` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Category',
+        value: null,
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2019-06-05T15:35:02.420] [ERROR] error - { MongoError: E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Sécurité civile" }
+    at Connection.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongodb-core/lib/connection/pool.js:443:61)
+    at emitTwo (events.js:126:13)
+    at Connection.emit (events.js:214:7)
+    at processMessage (/home/ubuntu/environment/Sjlm/server/node_modules/mongodb-core/lib/connection/connection.js:364:10)
+    at Socket.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongodb-core/lib/connection/connection.js:533:15)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  ok: 0,
+  errmsg: 'E11000 duplicate key error collection: sjlm.pages index: PageTitle_1 dup key: { : "Sécurité civile" }',
+  code: 11000,
+  codeName: 'DuplicateKey',
+  name: 'MongoError',
+  [Symbol(mongoErrorContextSymbol)]: {} }
+[2019-06-05T20:25:49.305] [ERROR] error - { ValidationError: Pages validation failed: PageContent: Path `PageContent` is required.
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { PageContent: 
+      { ValidatorError: Path `PageContent` is required.
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Path `PageContent` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'PageContent',
+        value: '',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Pages validation failed',
+  name: 'ValidationError' }
+[2019-06-07T14:50:06.567] [ERROR] error - { ValidationError: News validation failed: Category: Path `Category` is required.
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Category: 
+      { ValidatorError: Path `Category` is required.
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at ObjectId.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Path `Category` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'Category',
+        value: null,
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:22.787] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:27.759] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:28.381] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:28.617] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:28.822] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:29.011] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:29.178] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:29.387] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:29.598] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:29.771] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:29.989] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:14:30.201] [ERROR] error - { ValidationError: Validation failed: Title: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:278:20
+        message: 'Validator failed for path `Title` with value `Séance extraordinaire du Conseil (budget)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'Séance extraordinaire du Conseil (budget)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:31:50.917] [ERROR] error - { ValidationError: News validation failed: Title: Path `Title` (`Règlement 2017-351 pour fixer le taux de taxe municipale et les conditions de perception et de tarification de l'exercice 2017`) is longer than the maximum allowed length (100).
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Path `Title` (`Règlement 2017-351 pour fixer le taux de taxe municipale et les conditions de perception et de tarification de l'exercice 2017`) is longer than the maximum allowed length (100).
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Path `Title` (`Règlement 2017-351 pour fixer le taux de taxe municipale et les conditions de perception et de tarification de l\'exercice 2017`) is longer than the maximum allowed length (100).',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'maxlength',
+        path: 'Title',
+        value: 'Règlement 2017-351 pour fixer le taux de taxe municipale et les conditions de perception et de tarification de l\'exercice 2017',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2019-06-07T15:51:30.654] [ERROR] error - { ValidationError: News validation failed: Title: Validator failed for path `Title` with value `article 247.1 LCM (1ere publication)`
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Title: 
+      { ValidatorError: Validator failed for path `Title` with value `article 247.1 LCM (1ere publication)`
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/document.js:2101:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Validator failed for path `Title` with value `article 247.1 LCM (1ere publication)`',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Title',
+        value: 'article 247.1 LCM (1ere publication)',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'News validation failed',
+  name: 'ValidationError' }
+[2019-06-07T19:48:47.517] [ERROR] error - { ValidationError: Validation failed: Phone: The format of the phone number is invalid
+    at ValidationError.inspect (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:160:12)
+    at basicLayout (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/layouts.js:69:12)
+    at app (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/appenders/file.js:55:18)
+    at categoryAppenders.forEach (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:42:5)
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/log4js.js:41:21)
+    at listeners.forEach.l (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:26)
+    at Array.forEach (<anonymous>)
+    at sendToListeners (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:16:13)
+    at Object.send (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/clustering.js:78:7)
+    at Logger._log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:56:16)
+    at Logger.log (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:45:12)
+    at Logger.(anonymous function) [as error] (/home/ubuntu/environment/Sjlm/server/node_modules/log4js/lib/logger.js:84:10)
+  errors: 
+   { Phone: 
+      { ValidatorError: The format of the phone number is invalid
+    at new ValidatorError (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:978:13)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:1031:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/schematype.js:987:14)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:160:22
+    at /home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:31:39
+    at eachOfArrayLike (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:65:9)
+    at exports.default (/home/ubuntu/environment/Sjlm/server/node_modules/async/eachOf.js:9:5)
+    at _parallel (/home/ubuntu/environment/Sjlm/server/node_modules/async/internal/parallel.js:30:5)
+    at parallelLimit (/home/ubuntu/environment/Sjlm/server/node_modules/async/parallel.js:88:26)
+    at /home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/updateValidators.js:217:5
+    at model.Query.Query._findAndModify (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:3456:7)
+    at model.Query.<anonymous> (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/query.js:2902:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/home/ubuntu/environment/Sjlm/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at process.nextTick (/home/ubuntu/environment/Sjlm/server/node_modules/kareem/index.js:369:33)
+        message: 'The format of the phone number is invalid',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'user defined',
+        path: 'Phone',
+        value: '450 347-5446',
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'Validation failed',
+  name: 'ValidationError' }
+[2019-06-12T18:12:52.040] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/environment/Sjlm/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/environment/Sjlm/server/utils/utility.js:56:13)
+    at News.findByIdAndRemove.then (/home/ubuntu/environment/Sjlm/server/api/NewsAPI.js:189:21)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+[2019-06-12T18:12:57.986] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/environment/Sjlm/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/environment/Sjlm/server/utils/utility.js:56:13)
+    at News.findByIdAndRemove.then (/home/ubuntu/environment/Sjlm/server/api/NewsAPI.js:189:21)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+[2019-06-12T18:13:01.719] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/environment/Sjlm/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/environment/Sjlm/server/utils/utility.js:56:13)
+    at News.findByIdAndUpdate.then (/home/ubuntu/environment/Sjlm/server/api/NewsAPI.js:178:21)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+[2019-06-12T18:13:06.568] [ERROR] error - TypeError: The returned value was null
+    at Object.Utility.CheckIfNull (/home/ubuntu/environment/Sjlm/server/utils/utility.js:73:15)
+    at Object.Utility.GenerateResponse (/home/ubuntu/environment/Sjlm/server/utils/utility.js:56:13)
+    at News.findByIdAndRemove.then (/home/ubuntu/environment/Sjlm/server/api/NewsAPI.js:189:21)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)

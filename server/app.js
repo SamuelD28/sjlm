@@ -59,7 +59,12 @@ cloudinary.config({
 
 //Connection to the database
 mongoose.Promise = Promise;
-mongoose.connect(process.env.DATABASE, { useNewUrlParser: true, useCreateIndex: true }); //Get rid of a deprecatino warning. Must specified mongo db port in the url now
+mongoose.connect(process.env.DATABASE, { 
+        useNewUrlParser: true, 
+        useCreateIndex: true, 
+        useFindAndModify : true 
+        
+    }); //Get rid of a deprecatino warning. Must specified mongo db port in the url now
 
 //----------------Routing-------------//
 
@@ -147,7 +152,7 @@ app.listen(process.env.PORT, process.env.IP, (err) => {
         //TODO Restart the server when the process fails
     }
     else {
-        console.log(`[-Server Started Successfully PORT:${process.env.PORT} -]`);
+        console.log(`[-Server Started Successfully \nPORT:[${process.env.PORT}]\nIP:[${process.env.IP}]`);
         Utility.WriteInLog("info", "SERVER PROCESS STARTED");
     }
 });
